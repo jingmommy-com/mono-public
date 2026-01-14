@@ -5,7 +5,7 @@ media_folder: packages/jingmommy.com/public/upload
 public_folder: /upload
 collections:
   - name: pages
-    label: pages
+    label: Pages
     folder: packages/jingmommy.com/src/pages
     extension: mdx
     format: frontmatter
@@ -47,8 +47,8 @@ collections:
       - label: Body
         name: body
         widget: markdown
-  - name: pages/en
-    label: pages/en
+  - name: pages > en
+    label: Pages > En
     folder: packages/jingmommy.com/src/pages/en
     extension: mdx
     format: frontmatter
@@ -90,8 +90,8 @@ collections:
       - label: Body
         name: body
         widget: markdown
-  - name: pages/zh-tw
-    label: pages/zh-tw
+  - name: pages > zh-tw
+    label: Pages > Zh-tw
     folder: packages/jingmommy.com/src/pages/zh-tw
     extension: mdx
     format: frontmatter
@@ -133,8 +133,8 @@ collections:
       - label: Body
         name: body
         widget: markdown
-  - name: pages/zh-tw/about
-    label: pages/zh-tw/about
+  - name: pages > zh-tw > about
+    label: Pages > Zh-tw > About
     folder: packages/jingmommy.com/src/pages/zh-tw/about
     extension: mdx
     format: frontmatter
