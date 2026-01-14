@@ -1,0 +1,156 @@
+---
+import { Icon } from 'astro-icon/components'
+import { isExternalLink } from '../utils/index.ts'
+
+const {
+  fixed = true // default is fixed
+} = Astro.props
+
+// Header action links as a variable
+const headerActionLinks = [
+  {
+    href: "/zh-tw/tasting",
+    label: "預約試吃",
+    icon: "mdi:noodles",
+    iconBg: "bg-rose-300",
+    iconHoverBg: "group-hover:bg-rose-400",
+    textHover: "group-hover:text-rose-400",
+  },
+  {
+    href: "//mommybaobao.com",
+    label: "媽咪寶寶購物網",
+    icon: "mdi:cart-outline",
+    iconBg: "bg-blue-200",
+    iconHoverBg: "group-hover:bg-blue-300",
+    textHover: "group-hover:text-blue-300",
+  }
+]
+
+// Compose class string for header
+const headerBaseClasses = [
+  'bg-neutral-700',
+  'w-full',
+  'flex',
+  'items-center',
+  'justify-between',
+  'px-2',
+]
+const headerFixedClasses = [
+  'fixed',
+  'top-0',
+  'left-0',
+  'z-50'
+]
+if (fixed) {
+  headerBaseClasses.unshift(...headerFixedClasses)
+}
+const headerClass = headerBaseClasses.join(' ')
+const headerHeight = [
+  'h-16',
+  'sm:h-20',
+  'md:h-24'
+].join(' ')
+---
+
+{fixed && (
+  <div class={`w-full ${headerHeight} pointer-events-none invisible`}></div>
+)}
+<header class={headerClass}>
+  <div class="flex items-center justify-start">
+    <a href="/" class={`flex items-center py-2 ${headerHeight}`}>
+      <img src="//file.jingmommy.com/img/logo-white-448x140.png" alt="Jing Mommy Logo" class="h-full" />
+    </a>
+  </div>
+  <div class={`flex items-center gap-6 ${headerHeight} self-end justify-self-end`}>
+    <!-- Desktop Nav -->
+    <div class="hidden sm:flex items-center gap-6">
+      {
+        headerActionLinks.map(link => (
+          <a
+            href={link.href}
+            class="flex items-center gap-2 group"
+            {...(isExternalLink(link.href) ? { target: "_blank", rel: "noopener" } : {})}
+          >
+            <span class={`rounded-full ${link.iconBg} text-white shadow flex items-center justify-center w-10 h-10 ${link.iconHoverBg} transition`}>
+              <Icon name={link.icon} size="1.5em" />
+            </span>
+            <span class={`font-semibold text-lg text-white bg-transparent px-2 transition ${link.textHover}`}>
+              {link.label}
+            </span>
+          </a>
+        ))
+      }
+    </div>
+    <!-- Mobile Nav (Astro/React-like simple approach) -->
+    <div class="relative sm:hidden flex items-center">
+      <button
+        id="mobile-nav-menu-btn"
+        type="button"
+        class="flex items-center justify-center w-10 h-10 rounded text-2xl"
+        aria-label="Open menu"
+      >
+        <Icon name="mdi:format-list-bulleted" size="1.5em" class="text-gray-100" />
+      </button>
+      <div
+        id="mobile-nav-menu"
+        style="display: none;"
+        class="absolute right-0 top-12 z-50 w-48 bg-white rounded shadow-lg py-2 text-gray-900"
+      >
+        {
+          headerActionLinks.map(link => (
+            <a
+              href={link.href}
+              class={`flex items-center gap-2 px-4 py-3 transition ${link.iconHoverBg}`}
+              {...(isExternalLink(link.href) ? { target: "_blank", rel: "noopener" } : {})}
+            >
+              <span class={`rounded-full ${link.iconBg} text-white shadow flex items-center justify-center w-8 h-8`}>
+                <Icon name={link.icon} size="1.2em" />
+              </span>
+              <span class="font-semibold text-base text-gray-800">{link.label}</span>
+            </a>
+          ))
+        }
+      </div>
+      <script type="text/javascript" is:inline>
+        (function() {
+          let navMenuOpen = false
+          function toggleNavMenu() {
+            navMenuOpen = !navMenuOpen
+            const el = document.getElementById('mobile-nav-menu')
+            if (el) {
+              el.style.display = navMenuOpen ? 'block' : 'none'
+            }
+          }
+          function closeNavMenu() {
+            navMenuOpen = false
+            const el = document.getElementById('mobile-nav-menu')
+            if (el) {
+              el.style.display = 'none'
+            }
+          }
+          // Bind button toggle
+          const btn = document.getElementById('mobile-nav-menu-btn')
+          if (btn) btn.addEventListener('click', function(e) {
+            e.stopPropagation()
+            toggleNavMenu()
+          })
+          // Close menu when clicking outside
+          document.addEventListener('click', function(event) {
+            const menu = document.getElementById('mobile-nav-menu')
+            const button = document.getElementById('mobile-nav-menu-btn')
+            if (menu && menu.style.display === 'block' && !menu.contains(event.target) && !button.contains(event.target)) {
+              closeNavMenu()
+            }
+          })
+          // Attach close handler for each menu link
+          const menu = document.getElementById('mobile-nav-menu')
+          if (menu) {
+            menu.querySelectorAll('a').forEach(link => {
+              link.addEventListener('click', closeNavMenu)
+            })
+          }
+        })()
+      </script>
+    </div>
+  </div>
+</header>

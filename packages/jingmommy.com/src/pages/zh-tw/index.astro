@@ -1,0 +1,198 @@
+---
+import Layout from "../../layouts/Index.astro"
+import Slides from "../../components/Slides.astro"
+import { Icon } from 'astro-icon/components'
+
+const title = '首頁'
+// Slides images array as a variable.
+const slideImages = [
+  // { url: "//file.jingmommy.com/img/index-slides/01.avif" },
+  // { url: "//file.jingmommy.com/img/index-slides/02.jpg" },
+  // { url: "//file.jingmommy.com/img/index-slides/03.jpg" },
+  // { url: "//file.jingmommy.com/img/index-slides/04.jpg" },
+  // { url: "//file.jingmommy.com/img/index-slides/05.jpg" },
+  { url: "//jingmommy.com/images/home/new-menu.avif", alt: "New Menu", to: '//jingmommy.com/月子膳食' },
+  { url: "//jingmommy.com/images/index_slide05.jpg", alt: "Slide 5" },
+  { url: "//jingmommy.com/images/index_slide04.jpg", alt: "Slide 4" },
+  { url: "//jingmommy.com/images/index_slide02.jpg", alt: "Slide 2" },
+  { url: "//jingmommy.com/templates/jingmommy/img/index_slide09.jpg", alt: "Slide 9" }
+]
+
+// Banner buttons data: img OR icon, title, optional desc, href, newTab
+const banners = [
+  {
+    href: "/postpartum-meals/",
+    title: "月子膳食",
+    img: "https://file.jingmommy.com/img/dish.v2014-300x300/soup_kidney.gif",
+    alt: "金品月子餐 － 5 大套餐選擇，滿足不同媽咪的需求！"
+  },
+  {
+    href: "/postpartum-meals/frozen-postpartum-meal-delivery.html",
+    title: "冷凍月子餐",
+    img: "https://file.jingmommy.com/img/dish.v2014-300x300/herbal_drink_01.gif",
+    alt: "金品冷凍月子餐"
+  },
+  {
+    href: "/other/postpartum-herbal-drink-pack.html",
+    title: "月子藥膳包",
+    img: "https://file.jingmommy.com/img/herbal-pack-840x840.png",
+    alt: "金品月子藥膳包"
+  },
+  {
+    href: "/postpartum-meal-sampling-party/",
+    title: "預約試吃",
+    img: "https://file.jingmommy.com/img/dish.v2014-300x300/soup_chicken_sesame_herbal.gif",
+    alt: "金品月子餐試吃派對"
+  },
+  {
+    href: "/miscarriage-recovery-meals/",
+    title: "小產調養餐",
+    img: "https://file.jingmommy.com/img/dish.v2014-300x300/soup_beef_soy_bean.gif",
+    alt: "金品小產調養餐"
+  },
+  {
+    href: "/post-surgery-meals/",
+    title: "手術後餐",
+    img: "https://file.jingmommy.com/img/dish.v2014-300x300/porridge_cabbage_mushroom.gif",
+    alt: "金品手術後餐"
+  },
+  {
+    href: "/postpartum-meals/healthy-meal.html",
+    title: "健康餐",
+    img: "https://file.jingmommy.com/img/dish.v2014-300x300/egg_corn.gif",
+    alt: "健康餐｜每天一份好好吃飯的理由"
+  },
+  {
+    href: "/frozen-postpartum-soups/",
+    title: "冷凍湯品",
+    img: "https://file.jingmommy.com/img/dish.v2014-300x300/soup_chicken_abalone.gif",
+    alt: "金品冷凍湯品"
+  },
+  {
+    href: "/postpartum-meals/postpartum-meal-delivery-lookup.html",
+    title: "送餐範圍查詢",
+    icon: "mdi:magnify",
+  },
+  {
+    href: "//order.jingmommy.com",
+    title: "線上訂餐",
+    desc: "立即前往 →",
+    icon: "mdi:cart",
+    target: "_blank",
+    rel: "noopener",
+  }
+]
+
+const bgFlower = "https://file.jingmommy.com/img/background-flower.png"
+---
+
+<Layout>
+  <div class="w-full flex flex-col md:flex-row">
+    <div class="w-full md:w-5/12">
+      <div class="index-slides w-full h-[600px] overflow-hidden relative">
+        <Slides images={slideImages} />
+      </div>
+    </div>
+    <div class="w-full md:w-7/12 p-2 grid grid-cols-2 gap-2">
+      {
+        banners.map((banner, idx) => {
+          const isEven = idx % 2 === 0
+          const titleEl = banner.title
+            ? (
+                <span class={`rounded font-bold text-red-800 text-2xl md:text-[1.5rem] ${banner.icon ? 'max-md:bg-orange-50/75' : 'max-md:bg-white/75'}`}>
+                  {banner.title.trim()}
+                </span>
+              )
+            : null;
+          const descEl = banner.desc ? <div>{banner.desc}</div> : null
+          return (
+            <div class="relative w-full transition-transform duration-200 hover:scale-105">
+              <a
+                class={`relative flex flex-row items-center justify-between w-full h-full cursor-pointer no-underline border border-gray-400 rounded-lg overflow-hidden shadow-md transition-transform duration-200 text-orange-900 aspect-563/240 px-6 ${!!banner.icon ? 'bg-orange-50' : ''}`}
+                href={banner.href}
+                {...(banner.target ? { target: banner.target } : {})}
+                {...(banner.rel ? { rel: banner.rel } : {})}
+              >
+                {!!banner.icon ? (
+                  <div class="relative w-full h-full flex items-center justify-between">
+                    {isEven ? (
+                      // text left (absolute), icon right
+                      <>
+                        <div class="absolute left-0 top-1/2 -translate-y-1/2 flex flex-col text-left z-10 w-full pointer-events-none">
+                          <div class="inline-block pl-2">
+                            {titleEl}
+                          </div>
+                          {descEl}
+                        </div>
+                        <div class="flex-1 flex justify-end">
+                          <Icon name={banner.icon} class="text-6xl" />
+                        </div>
+                      </>
+                    ) : (
+                      // icon left, text right (absolute)
+                      <>
+                        <div class="flex-1 flex justify-start">
+                          <Icon name={banner.icon} class="text-6xl" />
+                        </div>
+                        <div class="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col text-right z-10 w-full pointer-events-none">
+                          <div class="inline-block pr-2">
+                            {titleEl}
+                          </div>
+                          {descEl}
+                        </div>
+                      </>
+                    )}
+                  </div>
+                ) : (
+                  isEven ? (
+                    // text w/ flower left, img right
+                    <>
+                      <img
+                        class="absolute max-h-full w-auto left-0"
+                        src={bgFlower}
+                        style="transform: translate(-20px, -10px) rotate(132deg);"
+                      />
+                      <img
+                        class="absolute max-h-full w-auto right-0"
+                        src={banner.img}
+                        alt={banner.alt}
+                        style="transform: scale(1.1) translate(-0.4rem,0.7rem);"
+                      />
+                      <div class="z-10 w-full">
+                        <div class="rounded px-2 inline-block">
+                          {titleEl}
+                        </div>
+                        {descEl}
+                      </div>
+                    </>
+                  ) : (
+                    // img left, text w/ flower right
+                    <>
+                      <img
+                        class="absolute max-h-full w-auto left-0"
+                        src={banner.img}
+                        alt={banner.alt}
+                        style="transform: scale(1.1) translate(0.4rem,0.7rem);"
+                      />
+                      <img
+                        class="absolute max-h-full w-auto right-0"
+                        src={bgFlower}
+                        style="transform: translate(23px,-10px) rotate(-136deg) scaleX(-1);"
+                      />
+                      <div class="z-10 w-full text-right">
+                        <div class="rounded px-2 inline-block">
+                          {titleEl}
+                        </div>
+                        {descEl}
+                      </div>
+                    </>
+                  )
+                )}
+              </a>
+            </div>
+          )
+        })
+      }
+    </div>
+  </div>
+</Layout>

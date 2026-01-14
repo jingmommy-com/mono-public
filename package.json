@@ -1,0 +1,16 @@
+{
+  "name": "mono-public",
+  "version": "0.0.1",
+  "description": "",
+  "license": "UNLICENSED",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "workspaces": [
+    "packages/jingmommy.com"
+  ],
+  "scripts": {},
+  "dependencies": {
+    "sort-package-json": "^3.2.0"
+  }
+}

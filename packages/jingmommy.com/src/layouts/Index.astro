@@ -1,0 +1,19 @@
+---
+import Layout from "./Base.astro"
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+
+const { color = 'orange' } = Astro.props
+const bgColorClass = `bg-${color}-50`
+---
+
+<Layout>
+  <Header color={color} />
+  <main class={`flex place-items-center place-content-center ${bgColorClass}`}>
+    <div class="flex flex-col bg-white w-5xl max-w-full shadow">
+      <slot></slot>
+      <hr class="my-4" />
+      <Footer color={color} />
+    </div>
+  </main>
+</Layout>

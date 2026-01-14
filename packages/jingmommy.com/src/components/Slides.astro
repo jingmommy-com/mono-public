@@ -1,0 +1,108 @@
+---
+import { Icon } from 'astro-icon/components'
+
+export interface SlideImage {
+  url: string
+  alt?: string
+  to?: string
+}
+export interface Props {
+  images: SlideImage[]
+}
+const { images = [] } = Astro.props
+---
+
+<div class="flex flex-col h-full relative">
+  <div class="slide-images flex-1 flex items-center justify-center max-h-[95%] md:max-h-none overflow-hidden relative" style="background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.50) 0%, white 100%);">
+    <div 
+      class="slide-track flex w-full h-full transition-transform duration-700 ease-in-out"
+      style="will-change: transform"
+    >
+      {images.map((img, idx) => (
+        <a
+          href={img.to ?? "#"}
+          rel={img.to ? "noopener" : undefined}
+          class="h-full w-full shrink-0 pointer-events-auto"
+          aria-disabled={img.to ? undefined : "true"}
+          style="width: 100%; height: 100%;"
+        >
+          <img
+            src={img.url}
+            class="h-full w-full object-contain"
+            alt={img.alt ?? `slide-${idx + 1}`}
+            loading="lazy"
+            style="flex-shrink:0;"
+          />
+        </a>
+      ))}
+    </div>
+  </div>
+  <div class="slide-dots w-full flex justify-center items-center z-20 h-8 gap-2">
+    {images.map((_, idx) => (
+      <span
+        class={`cursor-pointer h-3 w-3 mx-0.5 bg-neutral-400 rounded-full inline-block transition-colors duration-300 ease-in-out hover:bg-black${idx === 0 ? ' active' : ''}`}
+        data-slide={idx}
+      ></span>
+    ))}
+  </div>
+  <div class="absolute inset-0 flex items-center justify-between h-full z-10 pointer-events-none">
+    <a
+      class="prev cursor-pointer p-2 text-white font-bold text-2xl transition duration-300 ease-in-out select-none bg-black/40 rounded-lg hover:bg-black/80 ml-2 pointer-events-auto"
+      tabindex="0"
+      aria-label="Previous Slide"
+    >
+      <Icon name="left-chevron"></Icon>
+    </a>
+    <a
+      class="next cursor-pointer p-2 text-white font-bold text-2xl transition duration-300 ease-in-out select-none bg-black/40 rounded-lg hover:bg-black/80 mr-2 pointer-events-auto"
+      tabindex="0"
+      aria-label="Next Slide"
+    >
+      <Icon name="right-chevron"></Icon>
+    </a>
+  </div>
+</div>
+
+<style lang="postcss">
+@reference '../styles/global.css';
+.slide-dots {
+  span.active,
+  span:hover {
+    @apply bg-black;
+  }
+}
+</style>
+
+<script type="text/javascript" is:inline>
+  // Slides controller - slide left animation
+  ;(function() {
+    let current = 0
+    const slideTrack = () => document.querySelector('.slide-track')
+    // Select all images inside .slide-images, including those wrapped in <a>
+    const slides = () => document.querySelectorAll('.slide-images a')
+    const dots = () => document.querySelectorAll('.slide-dots span')
+    const showSlides = (idx) => {
+      const s = slides()
+      const d = dots()
+      let n = idx
+      if (n >= s.length) n = 0
+      if (n < 0) n = s.length - 1
+      // Move the slide-track to show the nth slide
+      const track = slideTrack()
+      if (track) {
+        track.style.transform = `translateX(-${n * 100}%)`
+      }
+      d.forEach((dot, i) => {
+        dot.classList.toggle('active', i === n)
+      })
+      current = n
+    }
+    document.querySelector('.prev')?.addEventListener('click', () => showSlides(current - 1))
+    document.querySelector('.next')?.addEventListener('click', () => showSlides(current + 1))
+    dots().forEach((dot, i) => {
+      dot.addEventListener('click', () => showSlides(i))
+    })
+    // Initialize position
+    showSlides(0)
+  })()
+</script>

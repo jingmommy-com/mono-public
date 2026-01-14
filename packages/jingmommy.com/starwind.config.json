@@ -1,0 +1,27 @@
+{
+  "$schema": "https://starwind.dev/config-schema.json",
+  "tailwind": {
+    "css": "src/styles/starwind.css",
+    "baseColor": "neutral",
+    "cssVariables": true
+  },
+  "componentDir": "src/components",
+  "components": [
+    {
+      "name": "breadcrumb",
+      "version": "1.1.1"
+    },
+    {
+      "name": "image",
+      "version": "1.0.0"
+    },
+    {
+      "name": "button",
+      "version": "2.2.0"
+    },
+    {
+      "name": "alert-dialog",
+      "version": "1.0.3"
+    }
+  ]
+}

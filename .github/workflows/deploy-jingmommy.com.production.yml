@@ -1,0 +1,47 @@
+env:
+  PACKAGE_ID: jingmommy.com
+  CLOUDFLARE_ACCOUNT_ID: 40a1f112c47b1094d3e6a8e98208c909
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '.github/workflows/deploy-jingmommy.com.production.yml'
+      - 'packages/jingmommy.com/package.json'
+      - 'packages/jingmommy.com/public/**'
+      - 'packages/jingmommy.com/src/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    outputs:
+      PACKAGE_ID: ${{ steps.e.outputs.PACKAGE_ID }}
+    steps:
+      - id: e
+        run: |
+          echo "PACKAGE_ID=${{env.PACKAGE_ID}}" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'npm'
+      - run: |
+          npm -w packages/${{env.PACKAGE_ID}} i
+          npm -w packages/${{env.PACKAGE_ID}} run build
+      - uses: cloudflare/wrangler-action@v3
+        id: deploy
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          workingDirectory: "packages/${{env.PACKAGE_ID}}"
+          # https://developers.cloudflare.com/workers/wrangler/commands/#deploy-1
+          command: pages deploy dist --project-name=www --branch=master --commit-dirty=true
+          accountId: ${{ env.CLOUDFLARE_ACCOUNT_ID }}
+      - run: echo ${{ steps.deploy.outputs.deployment-url }}
+  notify:
+    if: cancelled() == false
+    needs: deploy
+    secrets: inherit
+    uses: ./.github/workflows/notify.yml
+    with:
+      conclusion: ${{ needs.deploy.result }}
+      package: ${{ needs.deploy.outputs.PACKAGE_ID }}

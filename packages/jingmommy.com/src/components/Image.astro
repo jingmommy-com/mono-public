@@ -1,0 +1,15 @@
+---
+const { src, alt = 'Image', class: className = '' } = Astro.props
+import DialogImage from './DialogImage.astro'
+import { Image as SWImage } from '@/components/starwind/image'
+---
+
+<DialogImage src={src} alt={alt?.trim()}>
+  <SWImage
+    slot="trigger"
+    src={src}
+    alt={alt?.trim()}
+    class={className?.trim()}
+    loading="lazy"
+  />
+</DialogImage>

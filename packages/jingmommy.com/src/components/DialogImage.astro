@@ -1,0 +1,30 @@
+---
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogCancel
+} from '@/components/starwind/alert-dialog'
+import { Image } from '@/components/starwind/image'
+
+const { src, alt = 'Image dialog', closeText = 'Close' } = Astro.props
+---
+<AlertDialog>
+  <AlertDialogTrigger>
+    <slot name="trigger"></slot>
+  </AlertDialogTrigger>
+  <AlertDialogContent>
+    <div class="flex flex-col place-content-center place-items-center gap-4">
+      <Image
+        src={src}
+        alt={alt?.trim()}
+        class="object-contain max-h-[70vh] max-w-full rounded shadow"
+        loading="lazy"
+      />
+      <AlertDialogFooter>
+        <AlertDialogCancel>{closeText}</AlertDialogCancel>
+      </AlertDialogFooter>
+    </div>
+  </AlertDialogContent>
+</AlertDialog>

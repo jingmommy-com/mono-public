@@ -1,0 +1,23 @@
+---
+import Layout from '@/layouts/SinglePage.astro'
+---
+<Layout title="404 - Not Found">
+  <div class="w-full flex min-h-screen flex-col items-center justify-center gap-4 bg-pink-50 font-sans  text-center">
+    <div class="text-7xl font-extrabold text-pink-700 select-none">404</div>
+    <h1 class="text-2xl font-bold text-pink-900">Page Not Found</h1>
+    <p class="text-pink-900">
+      Sorry, the page you are looking for does not exist.<br/>
+      It may have been moved or deleted.
+    </p>
+    <a
+      href="/"
+      class="inline-block rounded-xl bg-pink-600 px-8 py-3 text-white font-bold shadow-lg border-2 border-pink-700 text-lg hover:bg-white hover:text-pink-700 hover:border-pink-900 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pink-300 transition-all duration-200"
+      style="box-shadow: 0 4px 20px 0 rgba(255,30,120,0.12);"
+    >
+      <div class="flex items-center gap-2">
+        <span aria-hidden="true">🏠</span>
+        <span>Return to Home</span>
+      </div>
+    </a>
+  </div>
+</Layout>

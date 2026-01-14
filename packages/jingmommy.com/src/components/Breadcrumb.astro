@@ -1,0 +1,58 @@
+---
+import {
+  Breadcrumb as SWBreadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/starwind/breadcrumb"
+
+const { title } = Astro.props
+import routeTitles from '../route-titles.json'
+const url = Astro.request.url ? new URL(Astro.request.url).pathname.replace(/\/+$/, '') || '/' : '/'
+
+// Extract language prefix if present
+let lang = 'zh-tw'
+let cleanUrl = url
+if (cleanUrl.startsWith('/zh-tw/')) {
+  cleanUrl = cleanUrl.replace(/^\/zh-tw/, '') || '/'
+} else if (cleanUrl.startsWith('/en/')) {
+  lang = 'en'
+  cleanUrl = cleanUrl.replace(/^\/en/, '') || '/'
+}
+const segments = [
+  lang,
+  ...cleanUrl.replace(/^\/|\/$/g, '').split('/')
+]
+const breadcrumbs = [
+  ...segments.map((seg, i) => {
+    const href = '/' + segments.slice(0, i + 1).join('/')
+    const label = (i === segments.length - 1 && title)
+      ? title
+      : (routeTitles as Record<string, string>)[href] ?? decodeURIComponent(seg)
+    return { href, label }
+  }),
+]
+---
+
+<SWBreadcrumb>
+  <BreadcrumbList>
+    {
+      breadcrumbs.map((crumb, idx) => (
+        idx < breadcrumbs.length - 1
+          ? [
+              <BreadcrumbItem>
+                <BreadcrumbLink href={crumb.href}>{crumb.label}</BreadcrumbLink>
+              </BreadcrumbItem>,
+              <BreadcrumbSeparator>/</BreadcrumbSeparator>
+            ]
+          : (
+              <BreadcrumbItem>
+                <BreadcrumbPage>{title ?? crumb.label}</BreadcrumbPage>
+              </BreadcrumbItem>
+            )
+      ))
+    }
+  </BreadcrumbList>
+</SWBreadcrumb>

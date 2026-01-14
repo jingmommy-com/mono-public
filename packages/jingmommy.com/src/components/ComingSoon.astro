@@ -1,0 +1,29 @@
+---
+const { title, description } = Astro.props
+---
+
+<div class="coming-soon-body">
+  <div class="coming-soon-container">
+    <h1 class="coming-soon-title">{title}</h1>
+    <p class="coming-soon-description">{description}</p>
+  </div>
+</div>
+
+<style lang="postcss">
+@reference '../styles/global.css';
+.coming-soon-body {
+  @apply flex items-center justify-center h-screen w-full bg-linear-to-br from-indigo-500 to-purple-600 text-white;
+}
+
+.coming-soon-container {
+  @apply text-center px-6;
+}
+
+.coming-soon-title {
+  @apply text-5xl font-bold mb-4;
+}
+
+.coming-soon-description {
+  @apply text-lg mb-6;
+}
+</style>

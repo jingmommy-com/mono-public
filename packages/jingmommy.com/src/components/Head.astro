@@ -1,0 +1,216 @@
+---
+import { site as sharedSite } from "../client.config.ts"
+const site = {
+  ...sharedSite,
+  ...Astro.props,
+}
+---
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>{site.title}</title>
+  <meta name="description" content={site.description} />
+  <meta name="keywords" content={site.keywords.join(',')} />
+  <meta name="author" content={site.author} />
+  <meta name="robots" content="index, follow" />
+  <meta name="rating" content="general" />
+
+  <!-- Dublin Core Metadata -->
+  <meta name="DC.title" content={site.title} />
+  <meta name="DC.creator" content={site.author} />
+  <meta name="DC.description" content={site.description} />
+  <meta name="DC.subject" content={site.description} />
+  <meta name="DC.identifier" content={site.url} />
+  <meta name="DC.language" content="zh" />
+  <meta name="DC.publisher" content={site.author} />
+  <meta name="DC.type" content="Text" />
+  <meta name="DC.format" content="text/html" />
+  <meta name="DC.coverage" content="Worldwide" />
+  <meta name="DC.charset" content="UTF-8" />
+
+  <!-- OpenGraph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={site.title} />
+  <meta property="og:description" content={site.description} />
+  <meta property="og:image" content={site.image} />
+  <meta property="og:url" content={site.url} />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={site.title} />
+  <meta name="twitter:description" content={site.description} />
+  <meta name="twitter:image" content={site.image} />
+
+  <!-- Favicons and App Icons for All Platforms -->
+  <!-- General Favicons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="https://file.jingmommy.com/favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://file.jingmommy.com/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="https://file.jingmommy.com/favicons/favicon-48x48.png">
+  <link rel="icon" type="image/svg+xml" href="https://file.jingmommy.com/favicons/favicon.svg">
+  <link rel="shortcut icon" href="https://file.jingmommy.com/favicons/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="https://file.jingmommy.com/favicons/favicon.png">
+
+  <!-- Android Chrome -->
+  <link rel="icon" type="image/png" sizes="36x36" href="https://file.jingmommy.com/favicons/android-chrome-36x36.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="https://file.jingmommy.com/favicons/android-chrome-48x48.png">
+  <link rel="icon" type="image/png" sizes="72x72" href="https://file.jingmommy.com/favicons/android-chrome-72x72.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://file.jingmommy.com/favicons/android-chrome-96x96.png">
+  <link rel="icon" type="image/png" sizes="144x144" href="https://file.jingmommy.com/favicons/android-chrome-144x144.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://file.jingmommy.com/favicons/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="https://file.jingmommy.com/favicons/android-chrome-256x256.png">
+  <link rel="icon" type="image/png" sizes="384x384" href="https://file.jingmommy.com/favicons/android-chrome-384x384.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="https://file.jingmommy.com/favicons/android-chrome-512x512.png">
+
+  <!-- Apple Touch Icons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="https://file.jingmommy.com/favicons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://file.jingmommy.com/favicons/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://file.jingmommy.com/favicons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://file.jingmommy.com/favicons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://file.jingmommy.com/favicons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://file.jingmommy.com/favicons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://file.jingmommy.com/favicons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://file.jingmommy.com/favicons/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="https://file.jingmommy.com/favicons/apple-touch-icon-167x167.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://file.jingmommy.com/favicons/apple-touch-icon-180x180.png">
+  <link rel="apple-touch-icon" sizes="1024x1024" href="https://file.jingmommy.com/favicons/apple-touch-icon-1024x1024.png">
+  <link rel="apple-touch-icon" href="https://file.jingmommy.com/favicons/apple-touch-icon.png">
+  <link rel="apple-touch-icon-precomposed" href="https://file.jingmommy.com/favicons/apple-touch-icon-precomposed.png">
+
+  <!-- App Capability Meta Tags -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="JingMommy" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+  <!-- Apple Startup/Splash Images with Responsive Media -->
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-640x1136.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1136x640.png">
+
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-750x1334.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1334x750.png">
+
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1125x2436.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2436x1125.png">
+
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1242x2208.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2208x1242.png">
+
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-828x1792.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1792x828.png">
+
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1242x2688.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2688x1242.png">
+
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1170x2532.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2532x1170.png">
+
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1179x2556.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2556x1179.png">
+
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1284x2778.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2778x1284.png">
+
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1290x2796.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2796x1290.png">
+
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1536x2048.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2048x1536.png">
+
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1668x2224.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2224x1668.png">
+
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1668x2388.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2388x1668.png">
+
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2048x2732.png">
+  <link rel="apple-touch-startup-image" media="screen and (device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2732x2048.png">
+
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1125x2436.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1136x640.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1170x2532.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1179x2556.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1242x2208.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1242x2688.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1284x2778.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1290x2796.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1334x750.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1488x2266.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1536x2048.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1620x2160.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1640x2160.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1668x2224.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1668x2388.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-1792x828.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2048x1536.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2048x2732.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2160x1620.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2160x1640.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2208x1242.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2224x1668.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2266x1488.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2388x1668.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2436x1125.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2532x1170.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2556x1179.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2688x1242.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2732x2048.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2778x1284.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-2796x1290.png">
+  <link rel="apple-touch-startup-image" href="https://file.jingmommy.com/favicons/apple-touch-startup-image-828x1792.png">
+
+  <!-- Microsoft Tiles -->
+  <meta name="msapplication-config" content="https://file.jingmommy.com/favicons/browserconfig.xml" />
+  <meta name="msapplication-TileColor" content="#ffffff" />
+  <meta name="msapplication-TileImage" content="https://file.jingmommy.com/favicons/mstile-144x144.png" />
+  <meta name="msapplication-square70x70logo" content="https://file.jingmommy.com/favicons/mstile-70x70.png" />
+  <meta name="msapplication-square150x150logo" content="https://file.jingmommy.com/favicons/mstile-150x150.png" />
+  <meta name="msapplication-wide310x150logo" content="https://file.jingmommy.com/favicons/mstile-310x150.png" />
+  <meta name="msapplication-square310x310logo" content="https://file.jingmommy.com/favicons/mstile-310x310.png" />
+
+  <!-- Manifest -->
+  <link rel="manifest" href="https://file.jingmommy.com/favicons/manifest.webmanifest" />
+
+  <!-- Yandex -->
+  <link rel="yandex-tableau-widget" href="https://file.jingmommy.com/favicons/yandex-browser-50x50.png" />
+  <meta name="yandex-tableau-widget" content="https://file.jingmommy.com/favicons/yandex-browser-manifest.json" />
+
+  <!-- Support email for mailto links, useful for accessibility/crawlers -->
+  <meta name="reply-to" content={site.supportEmail} />
+
+  <!-- site metas from old www. site, need discuss with Morris -->
+  <!-- <meta name="google-site-verification" content="PBl7LzPy6_l_KC6kzVdwabBd3lNhLxSg7JkByFiBwhw">
+  <meta name="google-site-verification" content="E3Levf4x4Ag2eSGb6kh65caai7HC0dmvdQN5d4X065c">
+  <meta name="google-site-verification" content="NZaP18JDSxbFVNHARHctd-juwTl9AUkILK9lIGpsPz8">
+  <meta name="google-site-verification" content="vfNfm7urkYxYZ2eDq6xIGmNJdWXNgCacyKH6kqioc1s">
+  <meta name="msvalidate.01" content="90B59C7220D5A0B9CEE0E451D318117B">
+  <meta name="msvalidate.01" content="ECCF895F204B7E3B452031769F31100A">
+  <meta name="msvalidate.01" content="1B32DEFBDD75A3795F4ECC875387157F">
+
+  <script src="//bat.bing.com/bat.js" async=""></script>
+  <script src="https://bat.bing.com/p/action/149002797.js" type="text/javascript" async="" data-ueto="ueto_4b7611243e"></script>
+
+  <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+  <script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=UA-39155920-2&amp;cx=c&amp;gtm=4e5ca1"></script>
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-BQRVWZ242L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BQRVWZ242L');
+    gtag("config", "G-QCHX1QRBKF");
+    gtag("config", "G-FTPN4VHEZ0");
+    gtag("config", "G-1EZQ37TFSG");
+    gtag('config', 'AW-977960343');
+    gtag('config', 'UA-39155920-2');
+  </script>
+  <script>
+    gtag('event', 'conversion', {'send_to': 'AW-977960343/DioSCL7hldwZEJf7qdID', 'value': 5.0, 'currency': 'USD'});
+  </script> -->
+  <!-- <script type="text/javascript" async="" src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/977960343/?random=1766607039897&amp;cv=11&amp;fst=1766607039897&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;en=gtag.config&amp;gtm=45je5ca1v888122072za200zd888122072xec&amp;gcd=13l3l3l3l1l1&amp;dma=0&amp;tag_exp=103116026~103200004~104527907~104528500~104684208~104684211~105391253~115583767~115938465~115938468~116184927~116184929~116251938~116251940&amp;u_w=1920&amp;u_h=1080&amp;url=https%3A%2F%2Fwww.jingmommy.com%2F&amp;frm=0&amp;tiba=%E7%BE%8E%E5%9C%8B%E9%87%91%E5%93%81%E6%9C%88%E5%AD%90%E8%86%B3%E9%A3%9F-%E8%91%B7%E9%A3%9F%E5%9D%90%E6%9C%88%E5%AD%90%E9%A4%90%2C%E5%90%84%E5%B7%9E%20%E6%9C%88%E5%AD%90%E9%A4%90%E5%A4%96%E9%80%81%2C%E6%89%8B%E8%A1%93%E5%BE%8C%E9%A4%90%2C%E5%AA%BD%E5%AA%BD&amp;hn=www.googleadservices.com&amp;npa=0&amp;pscdl=noapi&amp;auid=173118865.1766517392&amp;uaa=arm&amp;uab=64&amp;uafvl=Google%2520Chrome%3B143.0.7499.147%7CChromium%3B143.0.7499.147%7CNot%2520A(Brand%3B24.0.0.0&amp;uamb=0&amp;uam=&amp;uap=macOS&amp;uapv=15.6.1&amp;uaw=0&amp;data=event%3Dgtag.config&amp;rfmt=3&amp;fmt=4"></script> -->
+  <!-- <script src="https://cdn.onesignal.com/sdks/OneSignalPageSDKES6.js?v=151606" async=""></script> -->
+
+  <slot />
+</head>

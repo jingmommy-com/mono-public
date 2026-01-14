@@ -1,0 +1,20 @@
+---
+import Layout from '@/layouts/Base.astro'
+const title = "金品"
+const color = 'orange'
+---
+
+<Layout title={title}>
+  <div class={`flex min-h-screen items-center justify-center bg-${color}-50 font-sans`}>
+    <div class="flex flex-col items-center">
+      <div
+        class={`animate-spin mb-4 w-16 h-16 rounded-full border-8 border-${color}-200 border-t-8 border-t-${color}-500`}
+      ></div>
+      <div
+        class={`text-${color}-600 text-xl sm:text-2xl md:text-3xl font-semibold tracking-wide sm:tracking-wider`}
+      >
+        Loading...
+      </div>
+    </div>
+  </div>
+</Layout>

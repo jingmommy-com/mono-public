@@ -1,0 +1,60 @@
+---
+import Layout from "./Base.astro"
+import Breadcrumb from "../components/Breadcrumb.astro"
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+
+// https://tailwindcss.com/docs/colors
+const tailwindColors = [
+  'red',
+  'orange',
+  'amber',
+  'yellow',
+  'lime',
+  'green',
+  'emerald',
+  'teal',
+  'cyan',
+  'sky',
+  'blue',
+  'indigo',
+  'violet',
+  'purple',
+  'fuchsia',
+  'pink',
+  'rose',
+  'slate',
+  'gray',
+  'zinc',
+  'neutral',
+  'stone'
+]
+
+const { title, color: inputColor } = Astro.props
+const color = tailwindColors.includes((inputColor ?? '').trim()) ? (inputColor ?? '').trim() : 'orange'
+
+// remember to add those dynamic color classes to css @source.
+const colorFrom = `from-${color}-100`
+const colorTo = `to-${color}-50`
+const h1Color = `text-${color}-900`
+const bgColorClass = `bg-${color}-50`
+---
+
+<Layout>
+  <Header color={color} />
+  <main class={`flex place-items-center place-content-center ${bgColorClass}`}>
+    <div class="flex flex-col w-5xl max-w-full shadow bg-white">
+      <div class={`p-4 bg-linear-to-br ${colorFrom} ${colorTo} shadow-sm flex items-center rounded-t`}>
+        <Breadcrumb color={color} />
+      </div>
+      <div class="flex flex-col w-full px-4">
+        <h1 class={`text-3xl sm:text-4xl font-extrabold text-center ${h1Color} my-8`}>
+          {title?.trim() ?? ''}
+        </h1>
+        <slot></slot>
+        <hr class="my-4" />
+        <Footer color={color} />
+      </div>
+    </div>
+  </main>
+</Layout>

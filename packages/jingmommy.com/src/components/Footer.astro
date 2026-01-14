@@ -1,0 +1,97 @@
+---
+import { Icon } from 'astro-icon/components'
+import { isExternalLink } from "../utils/index.ts"
+import Image from './Image.astro'
+
+// Get color prop, default to 'fuchsia'
+const { color = 'fuchsia' } = Astro.props
+
+// Dynamic classes based on color prop
+const textColorClass = `text-${color}-900`
+const bgColorClass = `bg-${color}-800`
+
+// Footer nav links as a variable
+const navLinks = [
+  { href: "/zh-tw/about", label: "金品故事" },
+  { href: "/zh-tw/meal", label: "月子膳食" },
+  { href: "/zh-tw/miscarriage-meal", label: "小產調理餐" },
+  { href: "/zh-tw/surgery-meal", label: "金品手術後餐" },
+  { href: "/zh-tw/tasting", label: "預約試吃" },
+  { href: "//jingmommy.com/customer-service/", label: "線上客服" },
+  { href: "/zh-tw/faq", label: "常見問題" },
+  { href: "/zh-tw/review", label: "留下評論" },
+  { href: "//www.mommybaobao.com", label: "媽咪寶寶親子購物網" },
+]
+---
+
+<footer class="w-full flex flex-col gap-3">
+  <nav class="w-full flex flex-wrap gap-3 justify-center">
+    {
+      navLinks.map(link => (
+        <a
+          class={`no-underline ${textColorClass}`}
+          href={link.href}
+          {...(isExternalLink(link.href) ? { target: "_blank", rel: "noopener" } : {})}
+        >{link.label.trim()}</a>
+      ))
+    }
+  </nav>
+  <div class="w-full flex place-content-center">
+    <div class={`w-[90%] h-px ${bgColorClass}`}></div>
+  </div>
+  <div class="flex flex-col sm:flex-row place-content-evenly place-items-center gap-2">
+    <div class="flex flex-col text-center gap-0.5">
+      <div class="font-bold">連絡電話/Phone:</div>
+      <div class="w-full flex flex-col gap-0.5">
+        <div class="flex flex-row items-center gap-2">
+          <span class="text-right whitespace-nowrap">626-217-7539</span>
+          <span class="text-left">總機</span>
+        </div>
+        <div class="flex flex-row items-center gap-2">
+          <span class="text-right whitespace-nowrap">626-991-5899</span>
+          <span class="text-left">Patricia</span>
+        </div>
+        <div class="flex flex-row items-center gap-2">
+          <span class="text-right whitespace-nowrap">626-991-5786</span>
+          <span class="text-left">Miya</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-2 text-center">
+      <div class="flex flex-col gap-0.5">
+        <div class="font-bold">公司住址/Company Address:</div>
+        <div>618 Brea Canyon Road Unit F, Walnut, CA 91789</div>
+      </div>
+      <div class="flex flex-col gap-0.5">
+        <div class="font-bold">服務時間/Business Hour:</div>
+        <div>M to F / 9:00 AM to 5:00 PM Pacific Time</div>
+      </div>
+    </div>
+  </div>
+  <div class="w-full flex place-content-center">
+    <div class="w-[90%] h-px bg-gray-300"></div>
+  </div>
+  <div class="flex flex-col place-items-center text-center text-gray-800">
+    <div>金品月子膳食 著作權所有並保有文字圖片一切權利。</div>
+    <div>Copyright © Since 2010 Comtion Corp. 金品月子膳食. All Rights Reserved.</div>
+  </div>
+  <div class="w-full flex flex-row justify-center gap-4">
+    <Image src="https://file.jingmommy.com/rep/qrcode-patricia-wechat.jpg" alt="WeChat QR Code" class="w-24 h-24 object-contain rounded border border-gray-300 shadow-sm" />
+    <Image src="https://file.jingmommy.com/rep/qrcode-patricia-line.jpg" alt="Line QR Code" class="w-24 h-24 object-contain rounded border border-gray-300 shadow-sm" />
+  </div>
+  <!-- TODO: use the tidio button to replace chat buttons -->
+  <a href="//postpartummeal.com/" rel="external" class="fixed z-50 left-4 bottom-6 w-24 h-24">
+    <img src="//file.jingmommy.com/img/icon-english.png" alt="English Version of Jingmommy.com" />
+  </a>
+  <a
+    href="https://www.messenger.com/t/453550428399457/"
+    target="_blank"
+    class="fixed right-4 bottom-10 w-16 h-16 rounded-full bg-white border border-gray-300 flex items-center justify-center z-50"
+  >
+    <Icon name="messenger" class="size-[65%]" />
+  </a>
+  <!-- for sharethis bottom gap -->
+  <div class="w-full h-8"></div>
+  <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=672f7d1af026ef0013cee9b5&product=sticky-share-buttons&source=platform" async></script>
+  <div class="sharethis-sticky-share-buttons"></div>
+</footer>
