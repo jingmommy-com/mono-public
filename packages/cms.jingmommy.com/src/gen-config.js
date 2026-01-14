@@ -33,17 +33,18 @@ const configRaw = fs.readFileSync(CONFIG_FILE, "utf-8")
 const config = yaml.load(configRaw)
 const oldCollections = Array.isArray(config.collections) ? config.collections : []
 
-// Get the first "template" collection that has a 'folder' property
-const templateCollectionOriginal = oldCollections.find(item => typeof item.folder === "string")
-if (!templateCollectionOriginal) {
-  throw new Error("No template collection with 'folder' property found in config file")
+// Get all "template" collections that have a 'folder' property
+const templateCollections = oldCollections.filter(item => typeof item.folder === "string")
+if (templateCollections.length === 0) {
+  throw new Error("No template collections with 'folder' property found in config file")
 }
-const templateCollection = deepClone(templateCollectionOriginal)
 
 // Remove any collection object that has a 'folder' property
 const collectionsWithoutFolder = oldCollections.filter(item => !('folder' in item))
 
-// Helper to convert a path string like 'pages/en' to 'pages > en'
+// NOTE: Do NOT use '/' (slash) in the collection name, otherwise Decap CMS will break.
+// Decap uses the collection name after #/collections/ in the route—if we use a slash, e.g. 'a/b', the hash path becomes #/collections/a/b
+// but Decap expects the full name and does not URL encode the slash. Always use ' > ' or another safe separator, NOT '/'!
 function toCollectionName(relative) {
   return `pages${relative ? ' > ' + relative.split('/').map(s => s.trim()).filter(Boolean).join(' > ') : ''}`.trim()
 }
@@ -68,7 +69,7 @@ function toCollectionLabel(relative) {
 }
 
 // Generate a collection config for a folder, cloning from the template
-function makeCollectionData(f) {
+function makeCollectionData(f, templateCollection) {
   const name = toCollectionName(f.relative)
   const label = toCollectionLabel(f.relative)
   const folder = `packages/jingmommy.com/src/pages${f.relative ? '/' + f.relative : ''}`.replace(/\\/g,"/").trim()
@@ -80,9 +81,13 @@ function makeCollectionData(f) {
   }
 }
 
-// Generate dynamic collections for all folders under pages/
+// Generate dynamic collections for all folders under pages/ using all templates
 const folders = walkFolders(ROOT_FOLDER)
-const genCollections = folders.map(makeCollectionData)
+// For each template collection, generate all matching collections for all folders:
+let genCollections = []
+for (const templateCollection of templateCollections) {
+  genCollections = genCollections.concat(folders.map(f => makeCollectionData(f, templateCollection)))
+}
 
 // Compose the new config object: old (without folder) + generated
 const newConfig = {
