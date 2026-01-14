@@ -43,10 +43,34 @@ const templateCollection = deepClone(templateCollectionOriginal)
 // Remove any collection object that has a 'folder' property
 const collectionsWithoutFolder = oldCollections.filter(item => !('folder' in item))
 
+// Helper to convert a path string like 'pages/en' to 'pages > en'
+function toCollectionName(relative) {
+  return `pages${relative ? ' > ' + relative.split('/').map(s => s.trim()).filter(Boolean).join(' > ') : ''}`.trim()
+}
+
+// Helper to convert to Label, e.g. capitalize segments: 'pages > en/about' => 'Pages > En > About'
+function toCollectionLabel(relative) {
+  function capitalizeFirst(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1)
+  }
+  if (!relative) return 'Pages'
+  return (
+    ['Pages']
+      .concat(
+        relative
+          .split('/')
+          .map(s => s.trim())
+          .filter(Boolean)
+          .map(s => capitalizeFirst(s))
+      )
+      .join(' > ')
+  ).trim()
+}
+
 // Generate a collection config for a folder, cloning from the template
 function makeCollectionData(f) {
-  const name = `pages${f.relative ? '/' + f.relative : ''}`.replace(/\/$/,"").trim()
-  const label = name
+  const name = toCollectionName(f.relative)
+  const label = toCollectionLabel(f.relative)
   const folder = `packages/jingmommy.com/src/pages${f.relative ? '/' + f.relative : ''}`.replace(/\\/g,"/").trim()
   return {
     ...deepClone(templateCollection),
