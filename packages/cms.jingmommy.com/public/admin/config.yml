@@ -4,11 +4,14 @@ backend:
 media_folder: packages/jingmommy.com/public/upload
 public_folder: /upload
 collections:
-  - extension: mdx
+  - name: pages
+    label: pages
+    folder: packages/jingmommy.com/src/pages
+    extension: mdx
     format: frontmatter
     create: true
     delete: false
-    fields: &ref_0
+    fields:
       - label: Title
         name: title
         widget: string
@@ -44,30 +47,132 @@ collections:
       - label: Body
         name: body
         widget: markdown
-    name: pages
-    label: pages
-    folder: packages/jingmommy.com/src/pages
-  - extension: mdx
-    format: frontmatter
-    create: true
-    delete: false
-    fields: *ref_0
-    name: pages/en
+  - name: pages/en
     label: pages/en
     folder: packages/jingmommy.com/src/pages/en
-  - extension: mdx
+    extension: mdx
     format: frontmatter
     create: true
     delete: false
-    fields: *ref_0
-    name: pages/zh-tw
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Draft
+        name: draft
+        widget: boolean
+      - label: Color
+        name: color
+        widget: select
+        options:
+          - red
+          - orange
+          - amber
+          - yellow
+          - lime
+          - green
+          - emerald
+          - teal
+          - cyan
+          - sky
+          - blue
+          - indigo
+          - violet
+          - purple
+          - fuchsia
+          - pink
+          - rose
+          - slate
+          - gray
+          - zinc
+          - neutral
+          - stone
+      - label: Body
+        name: body
+        widget: markdown
+  - name: pages/zh-tw
     label: pages/zh-tw
     folder: packages/jingmommy.com/src/pages/zh-tw
-  - extension: mdx
+    extension: mdx
     format: frontmatter
     create: true
     delete: false
-    fields: *ref_0
-    name: pages/zh-tw/about
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Draft
+        name: draft
+        widget: boolean
+      - label: Color
+        name: color
+        widget: select
+        options:
+          - red
+          - orange
+          - amber
+          - yellow
+          - lime
+          - green
+          - emerald
+          - teal
+          - cyan
+          - sky
+          - blue
+          - indigo
+          - violet
+          - purple
+          - fuchsia
+          - pink
+          - rose
+          - slate
+          - gray
+          - zinc
+          - neutral
+          - stone
+      - label: Body
+        name: body
+        widget: markdown
+  - name: pages/zh-tw/about
     label: pages/zh-tw/about
     folder: packages/jingmommy.com/src/pages/zh-tw/about
+    extension: mdx
+    format: frontmatter
+    create: true
+    delete: false
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Draft
+        name: draft
+        widget: boolean
+      - label: Color
+        name: color
+        widget: select
+        options:
+          - red
+          - orange
+          - amber
+          - yellow
+          - lime
+          - green
+          - emerald
+          - teal
+          - cyan
+          - sky
+          - blue
+          - indigo
+          - violet
+          - purple
+          - fuchsia
+          - pink
+          - rose
+          - slate
+          - gray
+          - zinc
+          - neutral
+          - stone
+      - label: Body
+        name: body
+        widget: markdown

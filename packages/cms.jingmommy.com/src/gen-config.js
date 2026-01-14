@@ -23,16 +23,22 @@ function walkFolders(dir, base = "") {
   return folders
 }
 
+// Helper for deep clone
+function deepClone(obj) {
+  return JSON.parse(JSON.stringify(obj))
+}
+
 // Load config.yml and strip all collections with a 'folder' property
 const configRaw = fs.readFileSync(CONFIG_FILE, "utf-8")
 const config = yaml.load(configRaw)
 const oldCollections = Array.isArray(config.collections) ? config.collections : []
 
 // Get the first "template" collection that has a 'folder' property
-const templateCollection = oldCollections.find(item => typeof item.folder === "string")
-if (!templateCollection) {
+const templateCollectionOriginal = oldCollections.find(item => typeof item.folder === "string")
+if (!templateCollectionOriginal) {
   throw new Error("No template collection with 'folder' property found in config file")
 }
+const templateCollection = deepClone(templateCollectionOriginal)
 
 // Remove any collection object that has a 'folder' property
 const collectionsWithoutFolder = oldCollections.filter(item => !('folder' in item))
@@ -42,15 +48,8 @@ function makeCollectionData(f) {
   const name = `pages${f.relative ? '/' + f.relative : ''}`.replace(/\/$/,"").trim()
   const label = name
   const folder = `packages/jingmommy.com/src/pages${f.relative ? '/' + f.relative : ''}`.replace(/\\/g,"/").trim()
-  // Deep clone everything except name, label, folder
-  const {
-    name: _omitName,
-    label: _omitLabel,
-    folder: _omitFolder,
-    ...rest
-  } = templateCollection
   return {
-    ...rest,
+    ...deepClone(templateCollection),
     name,
     label,
     folder
