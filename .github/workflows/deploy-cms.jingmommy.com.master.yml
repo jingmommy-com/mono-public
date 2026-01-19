@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       PACKAGE_ID: ${{ steps.e.outputs.PACKAGE_ID }}
+      result: ${{ steps.netlify-result.outputs.result }}
     steps:
       - id: e
         run: |
@@ -37,12 +38,13 @@ jobs:
           args: deploy --filter "packages/${{ env.PACKAGE_ID }}" --prod --dir=public
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-      - run: |
+      - id: netlify-result
+        run: |
           if [ -z "${{ steps.deploy.outputs.NETLIFY_LIVE_URL }}" ]; then
-            echo "netlify_result=success" >> $GITHUB_OUTPUT
+            echo "result=success" >> $GITHUB_OUTPUT
             echo ${{ steps.deploy.outputs.NETLIFY_LIVE_URL }}
           else
-            echo "netlify_result=failure" >> $GITHUB_OUTPUT
+            echo "result=failure" >> $GITHUB_OUTPUT
           fi
   notify:
     if: cancelled() == false
