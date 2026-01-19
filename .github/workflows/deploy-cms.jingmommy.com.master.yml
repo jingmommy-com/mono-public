@@ -32,7 +32,7 @@ jobs:
       # https://github.com/netlify/actions/tree/master/cli
       - uses: netlify/actions/cli@master
         with:
-          args: deploy --dir=packages/${{ env.PACKAGE_ID }}/public
+          args: deploy --dir=packages/${{ env.PACKAGE_ID }}/public --site=$NETLIFY_SITE_ID
         env:
           NETLIFY_SITE_ID: ${{ env.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
