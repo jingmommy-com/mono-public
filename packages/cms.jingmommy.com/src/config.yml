@@ -10,9 +10,9 @@ collections:
   #     - name: "404"
   #       label: "404"
   #       file: "packages/jingmommy.com/src/404.md"
-  - name: "pages"
-    label: "pages"
-    folder: "packages/jingmommy.com/src/pages"
+  # This is a template for recursive configuration. The script will apply the same settings to all subfolders within the folder.
+  # see: `build/gen-config.js`
+  - folder: "packages/jingmommy.com/src/pages"
     extension: "mdx"
     format: "frontmatter"
     create: true
