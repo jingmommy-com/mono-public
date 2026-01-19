@@ -29,3 +29,21 @@ The DNS record has not been linked yet. Please use `https://jingmommy.netlify.ap
     - Build & deploy
       - Continuous deployment > Build settings
         - Build command `npm -w packages/cms.jingmommy.com run build`
+        - [x] Private logs
+        - [x] Stopped builds: Netlify builds consume credits, so we disable automatic builds and instead use GitHub Actions to build and deploy.
+
+## Limitations
+
+### Netlify Free Plan Limitations
+
+- The Netlify free plan has a usage quota.
+  If your site exceeds this quota, you may see an error message like:
+
+  ```
+  Site not available
+  This site was paused as it reached its usage limits. Please contact the site owner for more information.
+
+  If this is your site, please visit Netlify’s Billing docs page or log into your Netlify account to upgrade your plan.
+  ```
+
+- When this happens, you must wait until the next monthly cycle for your usage quota to reset, unless you upgrade your plan.
