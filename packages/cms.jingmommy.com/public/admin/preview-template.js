@@ -32,28 +32,45 @@ const baseClassArray = [
 ]
 const baseClass = baseClassArray.join(' ').trim()
 
-const Markdown = ({ className = '' }) => {
-  const mergedClass = `${baseClass} ${className}`.trim()
-  return (
-    <div className={mergedClass}>
-      <slot />
-    </div>
-  )
+class Markdown extends React.Component {
+  render() {
+    const className = typeof this.props.className === 'string' ? this.props.className.trim() : '';
+    const mergedClass = `${baseClass} ${className}`.trim();
+    const otherProps = {};
+    for (const key in this.props) {
+      if (key !== 'className' && Object.prototype.hasOwnProperty.call(this.props, key)) {
+        otherProps[key] = this.props[key];
+      }
+    }
+    // <slot /> has no meaning in React; just render children
+    return React.createElement(
+      'div',
+      { className: mergedClass, ...otherProps },
+      this.props.children
+    );
+  }
 }
 
-const MyPreview = ({ entry }) => {
-  const body = entry.getIn(['data', 'body'])
-  return (
-    <Markdown className="px-4 md:px-6 lg:px-8 max-w-full" dangerouslySetInnerHTML={{ __html: body }} />
-  )
+class MyPreview extends React.Component {
+  render() {
+    const entry = this.props.entry;
+    const body = entry && entry.getIn ? entry.getIn(['data', 'body']) : '';
+    return React.createElement(
+      Markdown,
+      {
+        className: 'px-4 md:px-6 lg:px-8 max-w-full',
+        dangerouslySetInnerHTML: { __html: body ? body.trim() : '' }
+      }
+    );
+  }
 }
 
-const config = window.CMS.getConfig()
+const config = window.CMS.getConfig();
 if (config && Array.isArray(config.collections)) {
   for (const collection of config.collections) {
     if (collection && collection.name) {
-      console.log('Registering preview template for collection:', collection.name)
-      CMS.registerPreviewTemplate(collection.name.trim(), MyPreview)
+      console.log('Registering preview template for collection:', collection.name.trim());
+      CMS.registerPreviewTemplate(collection.name.trim(), MyPreview);
     }
   }
 }
