@@ -9,5 +9,7 @@
   "scripts": {
     "build": "node ./build/gen-config.js"
   },
-  "devDependencies": {}
+  "dependencies": {
+    "js-yaml": "^4.1.1"
+  }
 }
