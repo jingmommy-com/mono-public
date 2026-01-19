@@ -1,5 +1,7 @@
----
-const { class: extraClass = '' } = Astro.props
+import React from 'react'
+
+// Those components logic should be same as `packages/jingmommy.com/src/layouts/MarkdownPage.astro'.
+
 const baseClassArray = [
   'prose',
   // h1
@@ -32,9 +34,30 @@ const baseClassArray = [
   'selection:bg-blue-100'
 ]
 const baseClass = baseClassArray.join(' ').trim()
-const mergedClass = `${baseClass} ${extraClass}`.trim()
----
 
-<div class={mergedClass}>
-  <slot />
-</div>
+const Markdown = ({ className = '' }) => {
+  const mergedClass = `${baseClass} ${className}`.trim()
+  return (
+    <div className={mergedClass}>
+      <slot />
+    </div>
+  )
+}
+
+const MyPreview = ({ entry }) => {
+  const body = entry.getIn(['data', 'body'])
+  return (
+    <Markdown className="px-4 md:px-6 lg:px-8 max-w-full" dangerouslySetInnerHTML={{ __html: body }} />
+  )
+}
+
+if (window.CMS && window.CMS.getConfig) {
+  const config = window.CMS.getConfig();
+  if (config && Array.isArray(config.collections)) {
+    config.collections.forEach(collection => {
+      if (collection && collection.name) {
+        CMS.registerPreviewTemplate(collection.name.trim(), MyPreview);
+      }
+    });
+  }
+}
