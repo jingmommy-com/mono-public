@@ -17,7 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       PACKAGE_ID: ${{ steps.e.outputs.PACKAGE_ID }}
-      NETLIFY_RESULT: ${{ steps.r.outputs.result }}
     steps:
       - id: e
         run: |
@@ -38,19 +37,16 @@ jobs:
           args: deploy --filter "packages/${{ env.PACKAGE_ID }}" --prod --dir=public
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-      - id: r
-        run: |
+      - run: |
           if [ -z "${{ steps.deploy.outputs.NETLIFY_LIVE_URL }}" ]; then
-            echo "result=failure" >> $GITHUB_OUTPUT
-          else
-            echo "result=success" >> $GITHUB_OUTPUT
-            echo ${{ steps.deploy.outputs.NETLIFY_LIVE_URL }}
+            exit 2
           fi
+          echo ${{ steps.deploy.outputs.NETLIFY_LIVE_URL }}
   notify:
     if: cancelled() == false
     needs: deploy
     secrets: inherit
     uses: ./.github/workflows/notify.yml
     with:
-      conclusion: ${{ needs.deploy.NETLIFY_RESULT }}
+      conclusion: ${{ needs.deploy.result }}
       package: ${{ needs.deploy.outputs.PACKAGE_ID }}
