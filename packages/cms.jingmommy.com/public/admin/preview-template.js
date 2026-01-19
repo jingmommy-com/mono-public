@@ -1,7 +1,4 @@
-import React from 'react'
-
 // Those components logic should be same as `packages/jingmommy.com/src/layouts/MarkdownPage.astro'.
-
 const baseClassArray = [
   'prose',
   // h1
