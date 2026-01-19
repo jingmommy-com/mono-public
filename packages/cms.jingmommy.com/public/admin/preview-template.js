@@ -51,13 +51,12 @@ const MyPreview = ({ entry }) => {
   )
 }
 
-if (window.CMS && window.CMS.getConfig) {
-  const config = window.CMS.getConfig();
-  if (config && Array.isArray(config.collections)) {
-    config.collections.forEach(collection => {
-      if (collection && collection.name) {
-        CMS.registerPreviewTemplate(collection.name.trim(), MyPreview);
-      }
-    });
+const config = window.CMS.getConfig()
+if (config && Array.isArray(config.collections)) {
+  for (const collection of config.collections) {
+    if (collection && collection.name) {
+      console.log('Registering preview template for collection:', collection.name)
+      CMS.registerPreviewTemplate(collection.name.trim(), MyPreview)
+    }
   }
 }
