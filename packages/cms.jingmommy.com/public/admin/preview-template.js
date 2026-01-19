@@ -1,76 +1,78 @@
 // Those components logic should be same as `packages/jingmommy.com/src/layouts/MarkdownPage.astro'.
-const baseClassArray = [
-  'prose',
-  // h1
-  'prose-h1:text-3xl', 'prose-h1:font-bold', 'prose-h1:border-b', 'prose-h1:border-gray-100', 'prose-h1:pb-2', 'prose-h1:mb-6', 'prose-h1:mt-8',
-  // h2
-  'prose-h2:text-2xl', 'prose-h2:font-semibold', 'prose-h2:border-b', 'prose-h2:border-gray-100', 'prose-h2:pb-1', 'prose-h2:mb-4', 'prose-h2:mt-8',
-  // h3
-  'prose-h3:text-xl', 'prose-h3:font-semibold', 'prose-h3:mt-6', 'prose-h3:mb-2',
-  // p
-  'prose-p:text-base', 'prose-p:leading-relaxed', 'prose-p:mt-4', 'prose-p:mb-4',
-  // ul, ol, li
-  'prose-ul:my-4', 'prose-ol:my-4', 'prose-li:my-1', 'prose-li:text-base', 'prose-li:leading-normal', 'prose-li:marker:text-gray-400',
-  // blockquote
-  'prose-blockquote:border-l-4', 'prose-blockquote:border-gray-300', 'prose-blockquote:bg-gray-50', 'prose-blockquote:px-4', 'prose-blockquote:py-2', 'prose-blockquote:my-6',
-  // table, th, td
-  'prose-table:w-full', 'prose-table:rounded', 'prose-table:bg-white', 'prose-th:bg-gray-100', 'prose-th:font-semibold',
-  'prose-td:px-4', 'prose-td:py-2', 'prose-table:border', 'prose-table:border-gray-200', 'prose-table:text-sm',
-  // code
-  'prose-code:bg-gray-100', 'prose-code:px-1.5', 'prose-code:py-0.5', 'prose-code:rounded', 'prose-code:text-[85%]',
-  'prose-code:before:content-none', 'prose-code:after:content-none', 'prose-code:font-mono', 'prose-code:text-pink-600',
-  // pre
-  'prose-pre:bg-gray-900', 'prose-pre:text-gray-100', 'prose-pre:rounded', 'prose-pre:p-4', 'prose-pre:overflow-x-auto', 'prose-pre:my-6',
-  // a
-  'prose-a:text-blue-600', 'prose-a:no-underline', 'hover:prose-a:underline',
-  // img
-  'prose-img:rounded-lg', 'prose-img:mx-auto', 'prose-img:my-6',
-  // hr
-  'prose-hr:border-t', 'prose-hr:my-8', 'prose-hr:border-gray-200',
-  // selection
-  'selection:bg-blue-100'
-]
-const baseClass = baseClassArray.join(' ').trim()
+(function() {
+  const baseClassArray = [
+    'prose',
+    // h1
+    'prose-h1:text-3xl', 'prose-h1:font-bold', 'prose-h1:border-b', 'prose-h1:border-gray-100', 'prose-h1:pb-2', 'prose-h1:mb-6', 'prose-h1:mt-8',
+    // h2
+    'prose-h2:text-2xl', 'prose-h2:font-semibold', 'prose-h2:border-b', 'prose-h2:border-gray-100', 'prose-h2:pb-1', 'prose-h2:mb-4', 'prose-h2:mt-8',
+    // h3
+    'prose-h3:text-xl', 'prose-h3:font-semibold', 'prose-h3:mt-6', 'prose-h3:mb-2',
+    // p
+    'prose-p:text-base', 'prose-p:leading-relaxed', 'prose-p:mt-4', 'prose-p:mb-4',
+    // ul, ol, li
+    'prose-ul:my-4', 'prose-ol:my-4', 'prose-li:my-1', 'prose-li:text-base', 'prose-li:leading-normal', 'prose-li:marker:text-gray-400',
+    // blockquote
+    'prose-blockquote:border-l-4', 'prose-blockquote:border-gray-300', 'prose-blockquote:bg-gray-50', 'prose-blockquote:px-4', 'prose-blockquote:py-2', 'prose-blockquote:my-6',
+    // table, th, td
+    'prose-table:w-full', 'prose-table:rounded', 'prose-table:bg-white', 'prose-th:bg-gray-100', 'prose-th:font-semibold',
+    'prose-td:px-4', 'prose-td:py-2', 'prose-table:border', 'prose-table:border-gray-200', 'prose-table:text-sm',
+    // code
+    'prose-code:bg-gray-100', 'prose-code:px-1.5', 'prose-code:py-0.5', 'prose-code:rounded', 'prose-code:text-[85%]',
+    'prose-code:before:content-none', 'prose-code:after:content-none', 'prose-code:font-mono', 'prose-code:text-pink-600',
+    // pre
+    'prose-pre:bg-gray-900', 'prose-pre:text-gray-100', 'prose-pre:rounded', 'prose-pre:p-4', 'prose-pre:overflow-x-auto', 'prose-pre:my-6',
+    // a
+    'prose-a:text-blue-600', 'prose-a:no-underline', 'hover:prose-a:underline',
+    // img
+    'prose-img:rounded-lg', 'prose-img:mx-auto', 'prose-img:my-6',
+    // hr
+    'prose-hr:border-t', 'prose-hr:my-8', 'prose-hr:border-gray-200',
+    // selection
+    'selection:bg-blue-100'
+  ]
+  const baseClass = baseClassArray.join(' ').trim()
 
-class Markdown extends React.Component {
-  render() {
-    const className = typeof this.props.className === 'string' ? this.props.className.trim() : '';
-    const mergedClass = `${baseClass} ${className}`.trim();
-    const otherProps = {};
-    for (const key in this.props) {
-      if (key !== 'className' && Object.prototype.hasOwnProperty.call(this.props, key)) {
-        otherProps[key] = this.props[key];
+  var Markdown = createClass({
+    render: function() {
+      var className = typeof this.props.className === 'string' ? this.props.className.trim() : ''
+      var mergedClass = (baseClass + ' ' + className).trim()
+      var otherProps = {}
+      for (var key in this.props) {
+        if (key !== 'className' && Object.prototype.hasOwnProperty.call(this.props, key)) {
+          otherProps[key] = this.props[key]
+        }
+      }
+      // <slot /> has no meaning in React; just render children
+      return h(
+        'div',
+        Object.assign({ className: mergedClass }, otherProps),
+        this.props.children
+      )
+    }
+  })
+
+  var MyPreview = createClass({
+    render: function() {
+      var entry = this.props.entry
+      var body = entry && entry.getIn ? entry.getIn(['data', 'body']) : ''
+      return h(
+        Markdown,
+        {
+          className: 'px-4 md:px-6 lg:px-8 max-w-full',
+          dangerouslySetInnerHTML: { __html: body ? body.trim() : '' }
+        }
+      )
+    }
+  })
+
+  const config = window.CMS.getConfig()
+  if (config && Array.isArray(config.collections)) {
+    for (const collection of config.collections) {
+      if (collection && collection.name) {
+        console.log('Registering preview template for collection:', collection.name.trim())
+        CMS.registerPreviewTemplate(collection.name.trim(), MyPreview)
       }
     }
-    // <slot /> has no meaning in React; just render children
-    return React.createElement(
-      'div',
-      { className: mergedClass, ...otherProps },
-      this.props.children
-    );
   }
-}
-
-class MyPreview extends React.Component {
-  render() {
-    const entry = this.props.entry;
-    const body = entry && entry.getIn ? entry.getIn(['data', 'body']) : '';
-    return React.createElement(
-      Markdown,
-      {
-        className: 'px-4 md:px-6 lg:px-8 max-w-full',
-        dangerouslySetInnerHTML: { __html: body ? body.trim() : '' }
-      }
-    );
-  }
-}
-
-const config = window.CMS.getConfig();
-if (config && Array.isArray(config.collections)) {
-  for (const collection of config.collections) {
-    if (collection && collection.name) {
-      console.log('Registering preview template for collection:', collection.name.trim());
-      CMS.registerPreviewTemplate(collection.name.trim(), MyPreview);
-    }
-  }
-}
+})()
