@@ -5,6 +5,7 @@ on:
       conclusion:
         required: true
         type: string
+        description: Only accepts 'success', 'failure', or 'cancelled' as values, matching the possible values of job.status, see https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#job-context
       package:
         required: true
         type: string

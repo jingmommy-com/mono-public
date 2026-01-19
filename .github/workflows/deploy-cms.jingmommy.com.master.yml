@@ -32,10 +32,18 @@ jobs:
       # https://github.com/netlify/actions/tree/master/cli
       # https://docs.netlify.com/api-and-cli-guides/cli-guides/get-started-with-cli/#work-with-monorepos
       - uses: netlify/actions/cli@master
+        id: deploy
         with:
           args: deploy --filter "packages/${{ env.PACKAGE_ID }}" --prod --dir=public
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      - run: |
+          if [ -z "${{ steps.deploy.outputs.NETLIFY_LIVE_URL }}" ]; then
+            echo "result=success" >> $GITHUB_OUTPUT
+            echo ${{ steps.deploy.outputs.NETLIFY_LIVE_URL }}
+          else
+            echo "result=failure" >> $GITHUB_OUTPUT
+          fi
   notify:
     if: cancelled() == false
     needs: deploy
