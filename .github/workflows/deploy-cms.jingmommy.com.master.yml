@@ -30,9 +30,10 @@ jobs:
           npm -w packages/${{env.PACKAGE_ID}} i
           npm -w packages/${{env.PACKAGE_ID}} run build
       # https://github.com/netlify/actions/tree/master/cli
+      # https://docs.netlify.com/api-and-cli-guides/cli-guides/get-started-with-cli/#work-with-monorepos
       - uses: netlify/actions/cli@master
         with:
-          args: deploy --filter=${{ env.PACKAGE_ID }} --prod --dir=public
+          args: deploy --filter "packages/${{ env.PACKAGE_ID }}" --prod --dir=public
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
   notify:
