@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       PACKAGE_ID: ${{ steps.e.outputs.PACKAGE_ID }}
-      result: ${{ steps.netlify-result.outputs.result }}
+      result: ${{ steps.result.outputs.result }}
     steps:
       - id: e
         run: |
@@ -38,7 +38,7 @@ jobs:
           args: deploy --filter "packages/${{ env.PACKAGE_ID }}" --prod --dir=public
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-      - id: netlify-result
+      - id: result
         run: |
           if [ -z "${{ steps.deploy.outputs.NETLIFY_LIVE_URL }}" ]; then
             echo "result=success" >> $GITHUB_OUTPUT
@@ -52,5 +52,5 @@ jobs:
     secrets: inherit
     uses: ./.github/workflows/notify.yml
     with:
-      conclusion: ${{ needs.deploy.netlify_result }}
+      conclusion: ${{ needs.deploy.result }}
       package: ${{ needs.deploy.outputs.PACKAGE_ID }}
