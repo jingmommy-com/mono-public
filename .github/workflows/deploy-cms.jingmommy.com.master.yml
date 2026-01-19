@@ -31,7 +31,8 @@ jobs:
           npm -w packages/${{env.PACKAGE_ID}} run build
       # https://github.com/netlify/actions/tree/master/cli
       - uses: netlify/actions/cli@master
-        run: npx netlify-cli -w packages/${{ env.PACKAGE_ID }} --prod --dir=packages/${{ env.PACKAGE_ID }}/public --site="${{ env.NETLIFY_SITE_ID }}"
+        with:
+          args: deploy --prod --dir=packages/${{ env.PACKAGE_ID }}/public --site="${{ env.NETLIFY_SITE_ID }}"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
   notify:
