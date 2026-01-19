@@ -41,10 +41,10 @@ jobs:
       - id: result
         run: |
           if [ -z "${{ steps.deploy.outputs.NETLIFY_LIVE_URL }}" ]; then
+            echo "result=failure" >> $GITHUB_OUTPUT
+          else
             echo "result=success" >> $GITHUB_OUTPUT
             echo ${{ steps.deploy.outputs.NETLIFY_LIVE_URL }}
-          else
-            echo "result=failure" >> $GITHUB_OUTPUT
           fi
   notify:
     if: cancelled() == false
