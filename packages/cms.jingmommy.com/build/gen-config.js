@@ -3,8 +3,9 @@ import path from "path"
 import yaml from "js-yaml"
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
-const ROOT_FOLDER = path.join(__dirname, '..', '..', 'jingmommy.com/src/pages')
-const CONFIG_FILE = path.join(__dirname, 'config.yml')
+const ROOT_DIR = path.join(__dirname, '..', '..', '..')
+const CONTENT_ROOT_FOLDER = path.join(__dirname, '..', '..', 'jingmommy.com/src/pages')
+const CONFIG_FILE = path.join(__dirname, '..', 'src', 'config.yml')
 const OUTPUT_FILE = path.join(__dirname, '..', 'public', 'admin', "config.yml")
 
 // Recursively scan folders under the given directory
@@ -42,47 +43,47 @@ if (templateCollections.length === 0) {
 // Remove any collection object that has a 'folder' property
 const collectionsWithoutFolder = oldCollections.filter(item => !('folder' in item))
 
+function toPaths(relative) {
+  return relative
+    .split(path.sep)
+    .map(s => s.trim())
+    .filter(Boolean)
+}
+function capitalizeFirst(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
 // NOTE: Do NOT use '/' (slash) in the collection name, otherwise Decap CMS will break.
 // Decap uses the collection name after #/collections/ in the route—if we use a slash, e.g. 'a/b', the hash path becomes #/collections/a/b
 // but Decap expects the full name and does not URL encode the slash. Always use ' > ' or another safe separator, NOT '/'!
-function toCollectionName(relative) {
-  return `pages${relative ? ' > ' + relative.split('/').map(s => s.trim()).filter(Boolean).join(' > ') : ''}`.trim()
+function toCollectionName(relativePaths, replaceSep = ' > ') {
+  return relativePaths
+    .join(replaceSep)
 }
 
-// Helper to convert to Label, e.g. capitalize segments: 'pages > en/about' => 'Pages > En > About'
-function toCollectionLabel(relative) {
-  function capitalizeFirst(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1)
-  }
-  if (!relative) return 'Pages'
-  return (
-    ['Pages']
-      .concat(
-        relative
-          .split('/')
-          .map(s => s.trim())
-          .filter(Boolean)
-          .map(s => capitalizeFirst(s))
-      )
-      .join(' > ')
-  ).trim()
+// Helper to convert to Label, e.g. capitalize segments: 'pages/en/about' => 'Pages > En > About'
+function toCollectionLabel(relativePaths, replaceSep = ' > ') {
+  if (relativePaths.length === 0) return '(No Label)'
+  return relativePaths
+    .map(s => capitalizeFirst(s))
+    .join(replaceSep)
 }
 
 // Generate a collection config for a folder, cloning from the template
 function makeCollectionData(f, templateCollection) {
-  const name = toCollectionName(f.relative)
-  const label = toCollectionLabel(f.relative)
-  const folder = `packages/jingmommy.com/src/pages${f.relative ? '/' + f.relative : ''}`.replace(/\\/g,"/").trim()
+  const basename = path.basename(templateCollection.folder)
+  const relativePath = path.join(basename, f.relative)
+  const relativePaths = toPaths(relativePath)
   return {
     ...deepClone(templateCollection),
-    name,
-    label,
-    folder
+    name: toCollectionName(relativePaths),
+    label: toCollectionLabel(relativePaths),
+    folder: path.dirname(templateCollection.folder) + (relativePath ? '/' + relativePath : '')
   }
 }
 
 // Generate dynamic collections for all folders under pages/ using all templates
-const folders = walkFolders(ROOT_FOLDER)
+const folders = walkFolders(CONTENT_ROOT_FOLDER)
 // For each template collection, generate all matching collections for all folders:
 let genCollections = []
 for (const templateCollection of templateCollections) {

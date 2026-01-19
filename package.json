@@ -7,7 +7,8 @@
   "type": "module",
   "main": "index.js",
   "workspaces": [
-    "packages/jingmommy.com"
+    "packages/jingmommy.com",
+    "packages/cms.jingmommy.com"
   ],
   "scripts": {},
   "dependencies": {

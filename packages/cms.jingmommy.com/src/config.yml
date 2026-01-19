@@ -46,4 +46,4 @@ collections:
           - zinc
           - neutral
           - stone
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Body", name: "body", widget: "markdown", modes: [raw] }
