@@ -39,10 +39,10 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
       - run: |
           if [ -z "${{ steps.deploy.outputs.NETLIFY_LIVE_URL }}" ]; then
-            echo "result=success" >> $GITHUB_OUTPUT
+            echo "netlify_result=success" >> $GITHUB_OUTPUT
             echo ${{ steps.deploy.outputs.NETLIFY_LIVE_URL }}
           else
-            echo "result=failure" >> $GITHUB_OUTPUT
+            echo "netlify_result=failure" >> $GITHUB_OUTPUT
           fi
   notify:
     if: cancelled() == false
@@ -50,5 +50,5 @@ jobs:
     secrets: inherit
     uses: ./.github/workflows/notify.yml
     with:
-      conclusion: ${{ needs.deploy.result }}
+      conclusion: ${{ needs.deploy.netlify_result }}
       package: ${{ needs.deploy.outputs.PACKAGE_ID }}
