@@ -49,7 +49,7 @@ const breadcrumbs = [
             ]
           : (
               <BreadcrumbItem>
-                <BreadcrumbPage>{title ?? crumb.label}</BreadcrumbPage>
+                <BreadcrumbPage><span class="font-bold">{title ?? crumb.label}</span></BreadcrumbPage>
               </BreadcrumbItem>
             )
       ))
