@@ -1,19 +1,43 @@
 ---
 import Layout from '@/layouts/Base.astro'
+
 const title = "金品"
 const color = 'orange'
+const locales = [
+  'en',
+  'zh-tw',
+]
+const locale = locales.includes(Astro.preferredLocale ?? '') ? Astro.preferredLocale : 'zh-tw'
+return Astro.redirect(`/${locale}/`)
 ---
 
 <Layout title={title}>
   <div class={`flex min-h-screen items-center justify-center bg-${color}-50 font-sans`}>
-    <div class="flex flex-col items-center">
-      <div
-        class={`animate-spin mb-4 w-16 h-16 rounded-full border-8 border-${color}-200 border-t-8 border-t-${color}-500`}
-      ></div>
-      <div
-        class={`text-${color}-600 text-xl sm:text-2xl md:text-3xl font-semibold tracking-wide sm:tracking-wider`}
+    <div class="flex flex-col items-center gap-4 text-gray-700 dark:text-gray-300">
+      <svg
+        class="animate-spin w-16 h-16"
+        style="display: block"
+        viewBox="0 0 50 50"
+        fill="none"
       >
-        Loading...
+        <circle
+          class="opacity-20"
+          cx="25" cy="25" r="20"
+          stroke="currentColor"
+          stroke-width="3"
+        />
+        <path
+          d="M45 25a20 20 0 1 1-20-20"
+          stroke="currentColor"
+          stroke-width="3"
+          stroke-linecap="round"
+          fill="none"
+        />
+      </svg>
+      <div
+        class={`text-xl sm:text-2xl md:text-3xl font-semibold tracking-wide sm:tracking-wider`}
+      >
+        Redirecting preferred language...
       </div>
     </div>
   </div>

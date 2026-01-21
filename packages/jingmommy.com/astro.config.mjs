@@ -170,11 +170,11 @@ export default defineConfig({
     defaultLocale: 'zh-tw',
     routing: {
       prefixDefaultLocale: true,
+      redirectToDefaultLocale: false,
     },
     // domains: {
-    //   'zh-tw': 'https://jingmeal.com',
-    //   // en: 'https://postpartummeal.com',
-    //   en: 'https://en.jingmeal.com',
+    //   'zh-tw': 'https://jingmommy.com',
+    //   en: 'https://postpartummeal.com',
     // }
   },
 })
