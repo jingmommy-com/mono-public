@@ -26,8 +26,8 @@ jobs:
         with:
           node-version: 24
           cache: 'npm'
+      - run: npm ci
       - run: |
-          npm -w packages/${{env.PACKAGE_ID}} ci
           npx -w packages/${{env.PACKAGE_ID}} node ./build/gen-redirects.js
           npm -w packages/${{env.PACKAGE_ID}} run build
       - uses: cloudflare/wrangler-action@v3
