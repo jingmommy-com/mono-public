@@ -22,7 +22,7 @@ export const redirects = [
 ]
 
 const redirectsContent = redirects.map(r => 
-  `${r.from} ${r.to} 302!`
+  `${r.from} ${r.to} 307`
 ).join('\n') + '\n'
 
 const outputPath = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../public/_redirects')
