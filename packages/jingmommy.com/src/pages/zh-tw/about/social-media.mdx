@@ -1,0 +1,52 @@
+---
+layout: ../../../layouts/MarkdownPage.astro
+title: 金品社群媒體
+color: amber
+---
+
+import { Icon } from 'astro-icon/components'
+import Image from '@/components/Image.astro'
+import facebook from '@/icons/facebook-banner.png'
+import xiaohongshu from '@/icons/xiaohongshu.png'
+import yelp from '@/icons/yelp_logo.png'
+
+<div class="flex flex-col">
+  <div class="flex flex-row items-center gap-4">
+    <a href="http://mommybaobao.com/" target="_blank" rel="noopener" class="shrink-0">
+      <img src="https://shopimg.mommybaobao.com/image/288/logo-mommybaobao.png" alt="媽咪寶寶親子購物網 logo" class="w-24" />
+    </a>
+    <div>
+      媽咪寶寶親子購物網幫助住在美國的爹地媽咪可以輕鬆的購買適合我們東方人的各類專業、優質孕媽咪生產前後所需及育兒的各項商品。媽咪寶寶親子購物網將不斷地努力開發優質的商品，並且秉持「嚴選品質」「安全可靠」「細心呵護」的三大信念為您服務。
+    </div>
+  </div>
+  <hr/>
+  <div class="flex flex-row items-center gap-4">
+    {/* ref:https://www.meta.com/brand/resources/facebook/logo/ */}
+    <a href="https://www.facebook.com/jingmommy" target="_blank" rel="noopener" class="shrink-0">
+      {/* ratio: 900/509 */}
+      <Image src={facebook} class="w-24" style={{ aspectRatio: '900 / 509' }} />
+    </a>
+    <div>
+      金品月子膳食 臉書/facebook
+    </div>
+  </div>
+  <hr/>
+  <div class="flex flex-row items-center gap-4">
+    <a href="https://www.xiaohongshu.com/user/profile/63c8d73900000000260118cc" target="_blank" rel="noopener" class="shrink-0">
+      <Image src={xiaohongshu} class="w-24" />
+    </a>
+    <div>
+      金品月子膳食 小红书
+    </div>
+  </div>
+  <hr/>
+  <div class="flex flex-row items-center gap-4">
+    {/* ref:https://www.yelp.com/brand */}
+    <a href="https://www.yelp.com/biz/jing-mommy-walnut-2" target="_blank" rel="noopener" class="shrink-0">
+      <Image src={yelp} class="w-24 not-prose" />
+    </a>
+    <div>
+      金品月子膳食 Yelp
+    </div>
+  </div>
+</div>

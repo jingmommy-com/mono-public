@@ -24,3 +24,4 @@ For editing page feature:
 - markdown
   - directly edit on github
   - copy the page from github, then edit on https://hackmd.io/
+- decap: see `packages/cms.jingmommy.com`

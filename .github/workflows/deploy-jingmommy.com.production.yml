@@ -8,6 +8,7 @@ on:
     paths:
       - '.github/workflows/deploy-jingmommy.com.production.yml'
       - 'packages/jingmommy.com/package.json'
+      - 'packages/jingmommy.com/build/**'
       - 'packages/jingmommy.com/public/**'
       - 'packages/jingmommy.com/src/**'
 
@@ -27,6 +28,7 @@ jobs:
           cache: 'npm'
       - run: |
           npm -w packages/${{env.PACKAGE_ID}} i
+          npx -w packages/${{env.PACKAGE_ID}} node ./build/gen-redirects.js
           npm -w packages/${{env.PACKAGE_ID}} run build
       - uses: cloudflare/wrangler-action@v3
         id: deploy
