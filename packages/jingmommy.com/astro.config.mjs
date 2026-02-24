@@ -177,4 +177,7 @@ export default defineConfig({
     //   en: 'https://postpartummeal.com',
     // }
   },
+  image: {
+    domains: ['file.jingmommy.com'],
+  },
 })
