@@ -19,11 +19,11 @@ import { generateRouteFiles } from './src/scripts/index.js'
 
   The best guarantee is to proactively call generateRouteFiles immediately 
   when the config loads during dev and again via the watcher, so there is 
-  always a valid route-titles.json before startup and after any change.
+  always a valid route-map.json before startup and after any change.
 
   This config now ensures:
-    1. Route titles are generated _at dev startup_ (before the dev server responds).
-    2. File watching still triggers fresh route-titles.json after add/change/unlink to relevant files.
+    1. Route files are generated _at dev startup_ (before the dev server responds).
+    2. File watching still triggers fresh route-map.json after add/change/unlink to relevant files.
 */
 
 // Immediately generateRouteFiles at dev startup, outside of hooks
@@ -31,11 +31,11 @@ if (process.env.NODE_ENV === 'development') {
   generateRouteFiles()
     .then(() => {
       // eslint-disable-next-line no-console
-      console.log('[route-titles] Initial route-titles.json generated for dev startup')
+      console.log('[route-map] Initial route files generated for dev startup')
     })
     .catch(e => {
       // eslint-disable-next-line no-console
-      console.error('[route-titles] Error generating initial route-titles.json:', e)
+      console.error('[route-map] Error generating initial route files:', e)
     })
 }
 
@@ -104,7 +104,7 @@ export default defineConfig({
       collapseWhitespace: true,
     }),
     {
-      name: 'route-titles-autogen',
+      name: 'route-map-autogen',
       hooks: {
         'astro:build:setup': async ({ logger }) => {
           await generateRouteFiles(logger)
@@ -121,7 +121,7 @@ export default defineConfig({
       // @ts-expect-error
       tailwindcss(),
       {
-        name: 'route-titles-native-watch',
+        name: 'route-map-native-watch',
         apply: 'serve',
         async configureServer(server) {
           const pagesDir = path.resolve(process.cwd(), 'src/pages')
@@ -140,12 +140,11 @@ export default defineConfig({
             if (debounceTimer) clearTimeout(debounceTimer)
             debounceTimer = setTimeout(async () => {
               // eslint-disable-next-line no-console
-              console.log(`[route-titles] Detected ${event} in ${filePath}, updating route-titles.json`)
               try {
                 await generateRouteFiles()
               } catch (e) {
                 // eslint-disable-next-line no-console
-                console.error('[route-titles] Failed to update:', e)
+                console.error('[route-map] Failed to update:', e)
               }
             }, 75)
           }
@@ -178,6 +177,13 @@ export default defineConfig({
     // }
   },
   image: {
-    domains: ['file.jingmommy.com'],
+    domains: [
+      'www.jingmommy.com',
+      'jingmommy.com',
+      'file.jingmommy.com',
+      'www.mommybaobao.com',
+      'mommybaobao.com',
+      'jingmeal.com',
+    ],
   },
 })

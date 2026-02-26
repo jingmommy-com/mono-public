@@ -50,7 +50,7 @@ Base.astro          ← html shell, imports global.css, sets font
 
 ### Route Title Auto-generation
 
-`src/scripts/index.js` exports `generateRouteFiles()`, which scans `src/pages/` and writes `src/route-titles.json` (route → title map). This is used for breadcrumb labels. It runs automatically:
+`src/scripts/index.js` exports `generateRouteFiles()`, which scans `src/pages/` and writes `src/route-map.json` (route → title map). This is used for breadcrumb labels. It runs automatically:
 - At dev server start (called directly in `astro.config.mjs`)
 - On file changes via a native `fs.watch` watcher in the Vite config
 - At build time via the `astro:build:setup` hook

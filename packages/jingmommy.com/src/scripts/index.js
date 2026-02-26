@@ -34,40 +34,53 @@ function findVariableInJavascriptContent(content, varName) {
   if (titleMatch) return titleMatch[1]
 }
 
-function extractTitleAndRoute(filepath, pagesDir, log) {
-  const ext = path.extname(filepath).toLowerCase()
-  let title = ''
+const fileId = 'route-map'
+
+function extractRouteAndAttributes(filepath, pagesDir, attrs = [], log) {
+  const basename = path.basename(filepath)
+  if (basename.startsWith('[')) {
+    return null
+  }
+  const attrsMap = {}
   let content = ''
   try {
     content = fs.readFileSync(filepath, 'utf-8')
   } catch (e) {
     return null
   }
-
+  const ext = path.extname(filepath).toLowerCase()
   switch (ext) {
     case '.md':
     case '.mdx':
-    case '.astro':
+    case '.astro': {
       try {
         const meta = grayMatter(content)
-        if (meta.data && meta.data.title) {
-          title = meta.data.title
+        for (const attr of attrs) {
+          if (meta.data && Object.hasOwn(meta.data, attr)) {
+            attrsMap[attr] = meta.data[attr]
+          }
         }
       } catch {}
-      if (!title) { // fallback try to parse the title from js content
-        title = findVariableInJavascriptContent(content, 'title')
+      for (const attr of attrs) {
+        // fallback try to parse the title from js content
+        if (!Object.hasOwn(attrsMap, attr)) {
+          attrsMap[attr] = findVariableInJavascriptContent(content, attr)
+        }
       }
       break
+    }
     case '.js':
     case '.cjs':
     case '.mjs':
     case '.ts':
     case '.jsx':
     case '.tsx':
-      title = findVariableInJavascriptContent(content, 'title')
+      for (const attr of attrs) {
+        attrsMap[attr] = findVariableInJavascriptContent(content, attr)
+      }
       break
     default: {
-      log(`[route-titles] Unknown ext: ${ext}`)
+      log(`[${fileId}] Unknown ext: ${ext}`)
     }
   }
 
@@ -85,39 +98,41 @@ function extractTitleAndRoute(filepath, pagesDir, log) {
   let route = '/' + relPath
     .replace(/\\/g, '/')
     .replace(/(?!^\/)\/+$/, '') // Trim trailing / unless it's the first /
-  return { route, title }
+  return { route, attrs: attrsMap }
 }
 
-async function generateRouteTitles(log, logError) {
+async function generateRouteMap(log, logError) {
   const __filename = fileURLToPath(import.meta.url)
   const __dirname = path.dirname(__filename)
   const rootDir = path.resolve(__dirname, '..', '..')
 
-  log('[route-titles] Collecting titles from src/pages/')
+  log(`[${fileId}] Collecting titles from src/pages/`)
 
   const pagesDir = path.resolve(rootDir, 'src', 'pages')
   if (!fs.existsSync(pagesDir)) {
-    logError(`[route-titles] src/pages directory does not exist: ${pagesDir}`)
+    logError(`[${fileId}] src/pages directory does not exist: ${pagesDir}`)
     return
   }
 
-  const routeTitles = {}
-
   const files = walkSync(pagesDir)
+  const attrs = [
+    'title'
+  ]
+  const result = {}
   for (const file of files) {
-    const res = extractTitleAndRoute(file, pagesDir, log)
-    if (res && res.route && res.title) {
-      routeTitles[res.route] = res.title
+    const res = extractRouteAndAttributes(file, pagesDir, attrs, log)
+    if (res && res.route) {
+      result[res.route] = res.attrs
     }
   }
 
-  log(`[route-titles] Extracted ${Object.keys(routeTitles).length} titles`)
+  log(`[${fileId}] Extracted ${Object.keys(result).length} routes`)
 
-  const outputFile = path.resolve(rootDir, 'src', 'route-titles.json')
+  const outputFile = path.resolve(rootDir, 'src', `${fileId}.json`)
   fs.mkdirSync(path.dirname(outputFile), { recursive: true })
-  fs.writeFileSync(outputFile, JSON.stringify(routeTitles, null, 2))
+  fs.writeFileSync(outputFile, JSON.stringify(result, null, 2))
 
-  log(`[route-titles] Wrote route titles to ${outputFile}`)
+  log(`[${fileId}] Wrote route data to ${outputFile}`)
 }
 
 export async function generateRouteFiles(logger) {
@@ -127,5 +142,5 @@ export async function generateRouteFiles(logger) {
   const logError = logger && typeof logger.error === 'function'
     ? (msg) => logger.error(msg)
     : (msg) => console.error(msg)
-  await generateRouteTitles(log, logError)
+  await generateRouteMap(log, logError)
 }

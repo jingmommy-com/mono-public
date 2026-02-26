@@ -4,14 +4,14 @@ import Layout from '@/layouts/Base.astro'
 const title = "金品"
 const color = 'orange'
 const locales = [
-  'en',
   'zh-tw',
+  'en',
 ]
-const locale = locales.includes(Astro.preferredLocale ?? '') ? Astro.preferredLocale : 'zh-tw'
+const locale = locales.includes(Astro.preferredLocale ?? '') ? Astro.preferredLocale : locales[0]
 return Astro.redirect(`/${locale}/`)
 ---
 
-<Layout title={title}>
+<Layout title={title} lang={locale}>
   <div class={`flex min-h-screen items-center justify-center bg-${color}-50 font-sans`}>
     <div class="flex flex-col items-center gap-4 text-gray-700 dark:text-gray-300">
       <svg

@@ -8,18 +8,13 @@ import {
   BreadcrumbSeparator,
 } from "@/components/starwind/breadcrumb"
 
-const { title } = Astro.props
-import routeTitles from '../route-titles.json'
-const url = Astro.request.url ? new URL(Astro.request.url).pathname.replace(/\/+$/, '') || '/' : '/'
+const { title, lang = Astro.currentLocale } = Astro.props
+import routeMap from '../route-map.json'
 
-// Extract language prefix if present
-let lang = 'zh-tw'
-let cleanUrl = url
-if (cleanUrl.startsWith('/zh-tw/')) {
-  cleanUrl = cleanUrl.replace(/^\/zh-tw/, '') || '/'
-} else if (cleanUrl.startsWith('/en/')) {
-  lang = 'en'
-  cleanUrl = cleanUrl.replace(/^\/en/, '') || '/'
+let cleanUrl = Astro.request.url ? new URL(Astro.request.url).pathname.replace(/\/+$/, '') || '/' : '/'
+const langPrefix = `/${lang}/`
+if (cleanUrl.toLowerCase().startsWith(langPrefix.toLowerCase())) {
+  cleanUrl = cleanUrl.replace(new RegExp(`^${langPrefix}`, 'i'), '') || '/'
 }
 const segments = [
   lang,
@@ -30,7 +25,7 @@ const breadcrumbs = [
     const href = '/' + segments.slice(0, i + 1).join('/')
     const label = (i === segments.length - 1 && title)
       ? title
-      : (routeTitles as Record<string, string>)[href] ?? decodeURIComponent(seg)
+      : ((routeMap as Record<string, { title?: string }>)[href]?.title ?? decodeURIComponent(seg))
     return { href, label }
   }),
 ]
