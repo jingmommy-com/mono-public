@@ -1,45 +1,95 @@
 ---
 layout: ../../../layouts/MarkdownPage.astro
 title: 冷凍甜點系列
-color: cyan
+color: rose
 ---
 
-import { site } from '../../../client.config.ts'
+import { Alert, AlertDescription } from "@/components/starwind/alert"
 
-## 冷凍甜點系列
-
-> 暖心又暖胃的無負擔小確幸
-
-以真材實料製成，低糖、無人工調味、無防腐劑，加熱即可享用，無需備料。
-
----
-
-## 適合場合
-
-- 產後下午茶
-- 探望親友的伴手禮
-- 日常暖身點心
-- 工作壓力舒緩
+<Alert variant="warning" class="text-center">
+  <AlertDescription>
+    冷凍湯品系列<strong>僅限南加州配送</strong>，目前不提供外州寄送服務。
+  </AlertDescription>
+</Alert>
 
 ---
 
-## 規格與價格
+暖心又暖胃的無負擔小確幸
 
-| 份量 | 原價 | 優惠價 |
-|------|------|--------|
-| 7 份 | $41.99 | $34.99 |
-| 14 份 | $83.99 | $67.99 |
-| 28 份 | $167.99 | $129.99 |
+想要一點甜、又不想有負擔？金品甜點系列堅持低糖、無香精、無防腐劑，選用真材實料熬煮成養生甜湯，入口暖胃又不膩。無論是月子下午茶、探望親友的小心意，還是在忙碌日子裡想慰勞自己的時刻，一包加熱即可享用，不必備料、不必顧火，方便又安心。
 
----
+#### 適合場合
 
-## 配送說明
-
-- 僅限南加州配送，不提供外州郵寄
-- 配送費 $15；滿 $200 免費配送
+- 月子下午茶點
+- 探望親友伴手禮
+- 日常暖胃小點
+- 忙碌工作後的療癒時光
 
 ---
 
-## 聯絡
+#### 規格與價格 <span style="font-weight:normal;font-size:0.95em;">（口味隨機搭配，最適合想要嚐鮮的你）</span>
 
-- 電話：<a href={`tel:${site.supportPhone}`}>{site.supportPhone}</a>
+<table>
+  <thead>
+    <tr>
+      <th>品項</th>
+      <th>價格</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>甜點 7 份</td>
+      <td>
+        <div class="flex gap-1 items-center">
+          <span class="text-gray-400 line-through text-xs">$41.99</span>
+          <span class="text-red-600 font-bold">$34.99</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>甜點 14 份</td>
+      <td>
+        <div class="flex gap-1 items-center">
+          <span class="text-gray-400 line-through text-xs">$83.99</span>
+          <span class="text-red-600 font-bold">$67.99</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>甜點 28 份</td>
+      <td>
+        <div class="flex gap-1 items-center">
+          <span class="text-gray-400 line-through text-xs">$167.99</span>
+          <span class="text-red-600 font-bold">$129.99</span>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+#### 🚚 配送方式
+
+- 自取
+- 司機配送（有區域限制）：配送區域內 $15/次，滿 $200 免費配送
+
+---
+
+import PageButtons from '../../../components/PageButtons.astro'
+
+<PageButtons
+  data={[
+    {
+      title: '開始選購 / Start Shopping',
+      icon: 'mdi:shopping',
+      url: '//order.jingmommy.com/zh/frozen-desserts',
+      target: '_blank'
+    },
+    {
+      title: '預約諮詢 / Book a Consultation',
+      icon: 'mdi:calendar-check',
+      url: '/customer-service/'
+    }
+  ]}
+/>

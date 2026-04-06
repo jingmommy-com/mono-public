@@ -1,0 +1,26 @@
+---
+import { locales } from '../client.config.ts'
+import routeMap from '../route-map.json'
+
+const routes = new Set(Object.keys(routeMap))
+
+export function getStaticPaths() {
+  const slugs: string[] = []
+  for (const key of Object.keys(routeMap as Record<string, unknown>)) {
+    const parts = key.split('/').filter(Boolean)
+    if (parts.length >= 2 && locales.includes(parts[0])) {
+      slugs.push(parts.slice(1).join('/'))
+    }
+  }
+  return slugs.map(slug => ({ params: { slug } }))
+}
+---
+
+<script is:inline define:vars={{ routes: [...routes], locales }}>
+  // Fallback for direct URL access (bookmarks, shared links).
+  const slug = location.pathname.slice(1)
+  const lang = (navigator.language || '').toLowerCase()
+  const preferred = locales.find(l => lang.startsWith(l.split('-')[0])) || 'zh-tw'
+  const target = routes.includes(`/${preferred}/${slug}`) ? preferred : 'zh-tw'
+  location.replace(`/${target}/${slug}`)
+</script>

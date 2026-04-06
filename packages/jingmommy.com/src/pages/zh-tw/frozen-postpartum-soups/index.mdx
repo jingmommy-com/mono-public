@@ -1,64 +1,76 @@
 ---
 layout: ../../../layouts/MarkdownPage.astro
 title: 冷凍湯品
-color: cyan
+color: rose
 ---
 
-import { site } from '../../../client.config.ts'
+import { Alert, AlertDescription, AlertTitle } from "@/components/starwind/alert"
 
-## 金品冷凍湯品
-
-> 一碗好湯，是最貼心的陪伴
-
-現煮急凍、無人工添加。適合產後調養、手術後恢復、日常滋補。
-
-> ⚠️ 冷凍湯品系列**僅限南加州配送**，目前不提供外州寄送服務。
+<Alert variant="warning" class="text-center">
+  <AlertDescription>
+  冷凍湯品系列<strong>僅限南加州配送</strong>，目前不提供外州寄送服務。
+  </AlertDescription>
+</Alert>
 
 ---
 
-## 湯品系列
+### 一碗好湯，是最貼心的陪伴
 
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
-  <a href="/zh-tw/frozen-postpartum-soups/taiwanese-soups" class="flex flex-col gap-1 rounded-lg border border-cyan-200 bg-cyan-50 p-4 no-underline hover:bg-cyan-100 transition-colors">
-    <span class="text-lg font-bold text-cyan-900">台式月子湯系列</span>
-    <span class="text-sm text-gray-600">豬肝湯・杜仲腰花湯・麻油雞湯，依週次調養</span>
-  </a>
-  <a href="/zh-tw/frozen-postpartum-soups/stewed-soups" class="flex flex-col gap-1 rounded-lg border border-cyan-200 bg-cyan-50 p-4 no-underline hover:bg-cyan-100 transition-colors">
-    <span class="text-lg font-bold text-cyan-900">月子燉補湯系列</span>
-    <span class="text-sm text-gray-600">平溫補・大補・發奶湯，共 20 種口味</span>
-  </a>
-  <a href="/zh-tw/frozen-postpartum-soups/chicken-essence" class="flex flex-col gap-1 rounded-lg border border-cyan-200 bg-cyan-50 p-4 no-underline hover:bg-cyan-100 transition-colors">
-    <span class="text-lg font-bold text-cyan-900">熬雞精</span>
-    <span class="text-sm text-gray-600">濃縮三天，只為你一口的元氣</span>
-  </a>
-  <a href="/zh-tw/frozen-postpartum-soups/sea-bass-soups" class="flex flex-col gap-1 rounded-lg border border-cyan-200 bg-cyan-50 p-4 no-underline hover:bg-cyan-100 transition-colors">
-    <span class="text-lg font-bold text-cyan-900">鱸魚湯</span>
-    <span class="text-sm text-gray-600">優質蛋白質，助傷口癒合</span>
-  </a>
-  <a href="/zh-tw/frozen-postpartum-soups/desserts" class="flex flex-col gap-1 rounded-lg border border-cyan-200 bg-cyan-50 p-4 no-underline hover:bg-cyan-100 transition-colors">
-    <span class="text-lg font-bold text-cyan-900">甜點系列</span>
-    <span class="text-sm text-gray-600">低糖、無防腐劑，暖心又暖胃</span>
-  </a>
-  <a href="/zh-tw/frozen-postpartum-soups/diy-sets" class="flex flex-col gap-1 rounded-lg border border-cyan-200 bg-cyan-50 p-4 no-underline hover:bg-cyan-100 transition-colors">
-    <span class="text-lg font-bold text-cyan-900">冷凍月子湯品組</span>
-    <span class="text-sm text-gray-600">入門・甜蜜・升級三種套組方案</span>
-  </a>
-  <a href="/zh-tw/frozen-postpartum-soups/nourishment-plan" class="flex flex-col gap-1 rounded-lg border border-cyan-200 bg-cyan-50 p-4 no-underline hover:bg-cyan-100 transition-colors">
-    <span class="text-lg font-bold text-cyan-900">續訂優惠湯品</span>
-    <span class="text-sm text-gray-600">坐完月子後的延續補養方案</span>
-  </a>
+月子裡的媽媽、術後康復的親友、還有在忙碌日子裡默默照顧家人的你，都值得被好好滋養。金品將中央廚房的細火慢熬，化作一包包真材實料、無人工添加的冷凍湯品，把溫暖與營養封存其中。打開、加熱、端上桌——那一口熱湯，不只是補身，更是放心與關心。
+
+---
+
+<div class="flex">
+  <a
+    class="not-prose rounded-lg border border-gray-200 py-2 px-4 hover:bg-gray-100 transition-colors"
+    href="/frozen-postpartum-soups/taiwanese-soups"
+  ><b>台式月子湯系列</b></a>
 </div>
 
----
+第一週：豬肝｜第二週：杜仲腰花｜第三／四週：麻油雞
 
-## 配送說明
-
-- 自取或司機配送均可
-- 配送費 $15／次；滿 $200 免費配送
-- 僅限**南加州**，不提供外州郵寄
+在美國坐月子最怕「沒時間、沒人煮、買不到對的月子湯」。這一系列直接照台式月子週次設計——第一週先補血、第二週溫腎固本、後期以麻油雞暖身養氣。中央廚房現煮急凍、無人工添加，打開加熱就能喝到的台式月子湯；自己喝省心，送禮更體面。
 
 ---
 
-## 聯絡
+<div class="flex">
+  <a
+    class="not-prose rounded-lg border border-gray-200 py-2 px-4 hover:bg-gray-100 transition-colors"
+    href="/frozen-postpartum-soups/stewed-soups"
+  ><b>月子燉補湯系列（平溫補／大補）</b></a>
+</div>
 
-- 電話：<a href={`tel:${site.supportPhone}`}>{site.supportPhone}</a>
+依照月子四週調理規律設計：前兩週以「平溫補」為主，溫和促進修復、補氣養血，適合產後初期、術後調理，或日常養生保健；後兩週轉為「大補」，集中補充元氣、暖身驅寒，也適合體質虛寒或冬令進補時享用。分階段補養，讓身體循序漸進回到最佳狀態。
+
+---
+
+<div class="flex">
+  <a
+    class="not-prose rounded-lg border border-gray-200 py-2 px-4 hover:bg-gray-100 transition-colors"
+    href="/frozen-postpartum-soups/chicken-essence"
+  ><b>熬雞精</b></a>
+</div>
+
+濃縮三天，只為你一口的元氣。三天慢熬、不加防腐劑，只為保留最純粹的修復力。選用老母雞與白羽雞，富含膠原蛋白、優質蛋白與營養礦物質。無防腐劑、無人工香料、純手工製作，小份量好入口，幫助產後、術後與日常補養恢復元氣。一口精華，從裡到外補回身體的底氣。
+
+---
+
+<div class="flex">
+  <a
+    class="not-prose rounded-lg border border-gray-200 py-2 px-4 hover:bg-gray-100 transition-colors"
+    href="/frozen-postpartum-soups/desserts"
+  ><b>甜點系列</b></a>
+</div>
+
+想要一點甜、又不想負擔？低糖、無香精、無防腐劑的養生甜湯，暖胃又不膩：月子下午茶、探望親友的小心意、或給自己忙碌日子的慰藉，一包加熱，身心都被好好照顧。
+
+---
+
+<div class="flex">
+  <a
+    class="not-prose rounded-lg border border-gray-200 py-2 px-4 hover:bg-gray-100 transition-colors"
+    href="/frozen-postpartum-soups/sea-bass-soups"
+  ><b>鱸魚湯</b></a>
+</div>
+
+鱸魚富含優質蛋白質與多種胺基酸，能促進傷口癒合、組織修復、增強免疫力；低脂肪、低膽固醇，清爽易吸收，特別適合產後、術後及病後的恢復期。湯底清鮮不腥，搭配溫和藥材，既能補而不燥，也不會造成消化負擔。急速冷凍封存營養，加熱即飲、方便省時，無防腐劑、純手工製作。適合產後與術後的溫和調理，也適合日常想要清清補、輕鬆配餐的人。

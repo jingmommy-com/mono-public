@@ -1,0 +1,36 @@
+---
+import { Badge } from "@/components/starwind/badge"
+// Define the type for items in the data array
+type BadgeData = string | {
+  text?: string,
+  size?: "lg" | "md" | "sm" | undefined,
+  variant?: "default" | "error" | "primary" | "secondary" | "outline" | "ghost" | "info" | "success" | "warning" | undefined,
+  [key: string]: unknown
+}
+const {
+  data = [],
+  size = "md",
+  variant = "outline",
+  class: className = "flex flex-wrap gap-1"
+}: {
+  data?: BadgeData[],
+  size: "lg" | "md" | "sm" | undefined,
+  variant: "default" | "error" | "primary" | "secondary" | "outline" | "ghost" | "info" | "success" | "warning" | undefined,
+  class?: string
+} = Astro.props
+---
+
+<div class={className}>
+  {
+    (data as BadgeData[]).map((item: BadgeData, i: number) => {
+      if (typeof item === "string") {
+        return <Badge size={size} variant={variant}>{item}</Badge>
+      }
+      if (typeof item === "object" && item !== null) {
+        const { text = "", size: itemSize, variant: itemVariant, ...rest } = item
+        return <Badge size={itemSize ?? size} variant={itemVariant ?? variant} {...rest}>{text ?? ""}</Badge>
+      }
+      return null
+    })
+  }
+</div>

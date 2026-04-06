@@ -1,0 +1,39 @@
+---
+import { Icon } from 'astro-icon/components'
+
+interface Props {
+  title: string
+  icon: string
+  url?: string
+  type?: 'a' | 'button'
+  id?: string
+  className: string
+}
+
+const {
+  title,
+  icon,
+  url,
+  type = 'a',
+  className
+} = Astro.props as Props
+---
+
+{type === 'button' ? (
+  <button
+    type="button"
+    class={className}
+  >
+    <Icon name={icon} class="mr-2 text-2xl" />
+    {title}
+  </button>
+) : (
+  <a
+    target="_blank"
+    href={url}
+    class={className}
+  >
+    <Icon name={icon} class="mr-2 text-2xl" />
+    {title}
+  </a>
+)}

@@ -1,0 +1,52 @@
+---
+layout: ../../../layouts/MarkdownPage.astro
+title: 預約試吃 - 送餐到府
+color: pink
+---
+
+import Image from '@/components/Image.astro'
+import PageButtons from '@/components/PageButtons.astro'
+import Badge from '@/components/starwind/badge'
+
+import { Alert, AlertDescription } from "@/components/starwind/alert"
+
+<Alert variant="warning" class="text-center">
+  <AlertDescription>
+    限大洛杉磯地區，有範圍限制
+  </AlertDescription>
+</Alert>
+
+---
+
+### 🌸 新手媽媽專屬試吃 — 真實體驗，安心選擇
+
+親愛的媽媽，產後的每一天都充滿挑戰，您是否擔心月子餐的味道與營養是否合適？我們精心準備了<b>「一日精緻月子餐」</b>的<b>送餐到府試吃</b>，讓您親自體驗，確保每一餐都符合您的需求，幫助您輕鬆度過產後恢復期。
+
+---
+
+#### 試吃優惠價： <Badge variant="warning">$50</Badge>（原價 ~~$110~~）
+
+- <b>真實體驗：</b>我們的試吃餐點與正式配送的月子餐一模一樣，沒有特別調整，讓您真實感受每一餐的味道與營養，消除對產後飲食的疑慮。
+- <b>專業呈現：</b>所有餐點的包裝與呈現方式都與正式配送相同，讓您提前體驗我們專業且細心的服務品質，安心享用每一口。
+- <b>無後顧之憂：</b>親自品嚐，確保月子餐的營養與口味滿足您的需求，幫助您更快做出決定，選擇最適合的產後餐點。
+
+<Image
+  src="https://file.jingmommy.com/ff/Sample_Menu_1x.p1.png"
+  alt="Sample menu image"
+  type="a"
+/>
+
+- <b>快速便捷：</b>即時訂購，隨時隨地都可以進行線上訂購。
+- <b>無需等待：</b>一經訂購，我們會有客服人員與您確認日期後，就可以準備並送到您家。
+
+---
+
+<PageButtons
+  data={[
+    {
+      title: '立即訂購：試吃餐',
+      icon: 'mdi:cart',
+      url: '//order.jingmommy.com/sample-meals/sample-meal.html'
+    },
+  ]}
+/>

@@ -1,0 +1,58 @@
+---
+import { Image } from '@/components/starwind/image'
+const { color, href, img, title, desc = null } = Astro.props
+---
+<a
+  href={href}
+  class={`
+    flex flex-row items-center justify-between w-full
+    border border-gray-400 rounded-[10px] overflow-hidden
+    shadow-md transition-colors bg-white
+    no-underline hover:bg-gray-50 hover:no-underline
+    px-5 sm:px-8 py-4 gap-4
+  `}
+  style="font-family: 'source-han-sans-traditional', 'Microsoft JhengHei', 'Microsoft YaHei', pMingliu, 'Open Sans', Arial, Helvetica, sans-serif;"
+>
+  <div class="flex flex-col justify-center items-start text-left gap-1 flex-1 min-w-0">
+    <div class="font-bold text-rose-800 leading-tight
+      text-[1.6em]
+      sm:text-[2.2em]
+      md:text-[2.5em]
+      lg:text-[1.8em]
+    ">
+      {title}
+    </div>
+    {desc && (
+      Array.isArray(desc) ? (
+        <div class="flex flex-col">
+          {desc.map((d, i) => (
+            <div
+              class="text-black
+                text-[1em]
+                sm:text-[1.55em]
+                md:text-[1.65em]
+                lg:text-[1.2em]
+              "
+            >{d}</div>
+          ))}
+        </div>
+      ) : (
+        <div
+          class="text-black
+            text-[1em]
+            sm:text-[1.55em]
+            md:text-[1.65em]
+            lg:text-[1.2em]
+          "
+        >{desc}</div>
+      )
+    )}
+  </div>
+  {img && (
+    <Image
+      src={img}
+      alt={title}
+      class="max-h-[90px] md:max-h-[120px] w-auto h-auto object-cover m-0!"
+    />
+  )}
+</a>

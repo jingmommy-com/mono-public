@@ -1,43 +1,176 @@
 ---
 layout: ../../../layouts/MarkdownPage.astro
 title: 冷凍台式月子湯
-color: cyan
+color: rose
 ---
 
-import { site } from '../../../client.config.ts'
+import { Alert, AlertDescription, AlertTitle } from "@/components/starwind/alert"
+import Badges from "@/components/Badges.astro"
 
-## 冷凍台式月子湯
-
-在美國坐月子，最怕的三件事：沒時間煮、沒人幫忙、買不到道地的台式月子湯。金品冷凍台式月子湯，讓妳在家也能天天喝到正統月子湯。
-
-三款湯品對應不同週次的調養需求：
-
-| 週次 | 湯品 | 功效 |
-|------|------|------|
-| 第一週 | 豬肝湯 | 補血 |
-| 第二週 | 杜仲腰花湯 | 暖腎補腰 |
-| 第三～四週 | 麻油雞湯 | 溫補暖身 |
+<Alert variant="warning" class="text-center">
+  <AlertDescription>
+  冷凍湯品系列<strong>僅限南加州配送</strong>，目前不提供外州寄送服務。
+  </AlertDescription>
+</Alert>
 
 ---
 
-## 規格與價格
-
-| 組合 | 原價 | 優惠價 |
-|------|------|--------|
-| 單款 7 份 | $69.99 | $59.99 |
-| 組合包 2/2/4（共 8 份）| $79.99 | $65.99 |
-| 組合包 4/4/8（共 16 份）| $159.99 | $125.99 |
+| 週次       | 湯品                      |
+| ---------- | ------------------------- |
+| 第一週     | 豬肝湯（補血）            |
+| 第二週     | 杜仲腰花湯（溫腎固本）    |
+| 第三／四週 | 麻油雞湯（暖身養氣）      |
 
 ---
 
-## 配送說明
+### 在美國坐月子，最怕三件事：
 
-- 僅限南加州配送，不提供外州郵寄
-- 配送費 $15；滿 $200 免費配送
-- 可自取
+- 沒時間自己煮
+- 身邊沒人幫忙
+- 市面上買不到「正宗台式」月子湯
+
+金品將台灣傳統月子湯現煮後冷凍，完整封存營養與香氣。<br/>
+每一碗都無人工添加、真材實料。打開、加熱、端上桌，就是熟悉的家鄉味。<br/>
+自己喝省心，送禮更體面。
+
+無論是產後調養、術後康復，還是平時想暖暖身，這系列都能幫產婦按部就班補回元氣。
 
 ---
 
-## 聯絡
+### 建議選擇
 
-- 電話：<a href={`tel:${site.supportPhone}`}>{site.supportPhone}</a>
+- 想一次準備好整個月 → 直接選綜合包 （豬肝2｜杜仲腰花2｜麻油雞4）或綜合包（豬肝4｜杜仲腰花4｜麻油雞8），一次囤好不用再擔心斷貨
+- 送禮最體面 → 推薦16份綜合包，誠意滿滿～
+
+---
+
+### 規格與價格
+
+<table>
+  <thead>
+    <tr>
+      <th class="text-center">品項</th>
+      <th class="text-center">價格</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-center">豬肝湯 7 份<br/>（補血）</td>
+      <td class="text-center">
+        <div class="flex gap-1 items-center justify-center">
+          <span class="text-gray-400 line-through text-xs">$69.99</span>
+          <span class="text-red-600 font-bold">$59.99</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">杜仲腰花湯 7 份<br/>（溫腎固本）</td>
+      <td class="text-center">
+        <div class="flex gap-1 items-center justify-center">
+          <span class="text-gray-400 line-through text-xs">$69.99</span>
+          <span class="text-red-600 font-bold">$59.99</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">麻油雞湯 7 份<br/>（暖身養氣）</td>
+      <td class="text-center">
+        <div class="flex gap-1 items-center justify-center">
+          <span class="text-gray-400 line-through text-xs">$69.99</span>
+          <span class="text-red-600 font-bold">$59.99</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">綜合包裝 2/2/4<br/>（豬肝2｜杜仲腰花2｜麻油雞4）<br/>* 綜合包：不可替換</td>
+      <td class="text-center">
+        <div class="flex gap-1 items-center justify-center">
+          <span class="text-gray-400 line-through text-xs">$79.99</span>
+          <span class="text-red-600 font-bold">$65.99</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">綜合包裝 4/4/8<br/>（豬肝4｜杜仲腰花4｜麻油雞8）<br/>* 綜合包：不可替換</td>
+      <td class="text-center">
+        <div class="flex gap-1 items-center justify-center">
+          <span class="text-gray-400 line-through text-xs">$159.99</span>
+          <span class="text-red-600 font-bold">$125.99</span>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+<table>
+  <thead>
+    <tr>
+      <th>湯品</th>
+      <th>內容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>豬肝湯</td>
+      <td>
+        <Badges data={[
+          '枸杞豬肝湯',
+          '紅棗豬肝湯',
+          '紅莧菜豬肝湯',
+          '菠菜豬肝湯',
+          '鮮菇豬肝湯',
+        ]} />
+      </td>
+    </tr>
+    <tr>
+      <td>杜仲腰花湯</td>
+      <td>
+        <Badges data={[
+          '麻油杜仲腰花',
+          '麻油杜仲素腰花',
+          '麻油杜仲里肌肉',
+        ]} />
+      </td>
+    </tr>
+    <tr>
+      <td>麻油雞</td>
+      <td>
+        <Badges data={[
+          '麻油雞',
+          '枸杞麻油雞',
+          '紅棗麻油雞',
+          '藥膳麻油雞',
+        ]} />
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+#### 🚚 配送方式
+
+- 自取
+- 司機配送（有區域限制）：配送區域內 $15/次，滿 $200 免費配送
+
+---
+
+import PageButtons from '../../../components/PageButtons.astro'
+
+<PageButtons
+  data={[
+    {
+      title: '開始選購 / Start Shopping',
+      icon: 'mdi:shopping',
+      url: '//order.jingmommy.com/zh/frozon-taiwanese-postpartum-soups',
+      target: '_blank'
+    },
+    {
+      title: '預約諮詢 / Book a Consultation',
+      icon: 'mdi:calendar-check',
+      url: '/customer-service/'
+    },
+  ]}
+/>

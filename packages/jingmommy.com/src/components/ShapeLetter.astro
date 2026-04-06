@@ -1,0 +1,38 @@
+---
+const {
+  letter = '',
+  color = '#a9490f',
+  size = 60,
+  letterColor = '#ffffff',
+  class: className = 'flex flex-shrink-0 align-middle items-center justify-center'
+} = Astro.props
+
+const svgSize = typeof size === 'number' ? `${size}px` : (size || '40px')
+const fontSize = size
+---
+<svg
+  class={className}
+  width={svgSize}
+  height={svgSize}
+  viewBox="0 0 100 100"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-label={letter}
+  role="img"
+>
+  <!-- Center the group in the SVG horizontally and vertically, and flip horizontally -->
+  <g transform="translate(50,50) scale(-1.2,1.2) translate(-50,-65)">
+    <path
+      d="M50 32 C 70 32, 80 50, 80 70 C 80 90, 60 95, 50 95 C 35 95, 20 80, 20 65 C 20 50, 35 36, 50 36 C 55 36, 60 41, 60 46 L 60 55 C 60 59, 55 64, 50 64 C 45 64, 40 59, 40 55"
+      fill={color}
+    />
+  </g>
+  <text
+    x="50"
+    y="55"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    alignment-baseline="middle"
+    fill={letterColor}
+    font-size={fontSize}
+  >{letter}</text>
+</svg>

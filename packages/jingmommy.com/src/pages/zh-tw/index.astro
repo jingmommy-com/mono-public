@@ -3,75 +3,85 @@ import Layout from "../../layouts/Index.astro"
 import Slides from "../../components/Slides.astro"
 import { Icon } from 'astro-icon/components'
 
+import routeMap from '../../route-map.json'
+
 const title = '首頁'
 // Slides images array as a variable.
 const slideImages = [
-  // { url: "//file.jingmommy.com/img/index-slides/01.avif" },
-  // { url: "//file.jingmommy.com/img/index-slides/02.jpg" },
-  // { url: "//file.jingmommy.com/img/index-slides/03.jpg" },
-  // { url: "//file.jingmommy.com/img/index-slides/04.jpg" },
-  // { url: "//file.jingmommy.com/img/index-slides/05.jpg" },
-  { url: "//jingmommy.com/images/home/new-menu.avif", alt: "New Menu", to: '//jingmommy.com/月子膳食' },
-  { url: "//jingmommy.com/images/index_slide05.jpg", alt: "Slide 5" },
-  { url: "//jingmommy.com/images/index_slide04.jpg", alt: "Slide 4" },
-  { url: "//jingmommy.com/images/index_slide02.jpg", alt: "Slide 2" },
-  { url: "//jingmommy.com/templates/jingmommy/img/index_slide09.jpg", alt: "Slide 9" }
+  {
+    url: "//file.jingmommy.com/img/index-slides/01.avif",
+    to: "/postpartum-meals"
+  },
+  {
+    url: "//file.jingmommy.com/img/index-slides/02.jpg",
+    to: "/postpartum-meals"
+  },
+  {
+    url: "//file.jingmommy.com/img/index-slides/03.jpg",
+    to: "/sample/tasting-party"
+  },
+  {
+    url: "//file.jingmommy.com/img/index-slides/04.jpg",
+    to: "/postpartum-products/herbal-drink-pack"
+  },
+  {
+    url: "//file.jingmommy.com/img/index-slides/05.jpg",
+    to: "/faq"
+  }
 ]
 
 // Banner buttons data: img OR icon, title, optional desc, href, newTab
-const banners = [
+const locale = 'zh-tw'
+type Banner = {
+  href: string
+  title?: string
+  img?: string
+  icon?: string
+  target?: string
+  rel?: string
+  desc?: string
+  alt?: string
+}
+const banners: Banner[] = [
   {
-    href: "/postpartum-meals/",
-    title: "月子膳食",
+    href: `/${locale}/postpartum-meals`,
     img: "https://file.jingmommy.com/img/dish.v2014-300x300/soup_kidney.gif",
-    alt: "金品月子餐 － 5 大套餐選擇，滿足不同媽咪的需求！"
   },
   {
-    href: "/postpartum-meals/frozen-postpartum-meal-delivery.html",
-    title: "冷凍月子餐",
+    href: `/${locale}/postpartum-meals/frozen-postpartum-meals`,
     img: "https://file.jingmommy.com/img/dish.v2014-300x300/herbal_drink_01.gif",
-    alt: "金品冷凍月子餐"
   },
   {
-    href: "/other/postpartum-herbal-drink-pack.html",
-    title: "月子藥膳包",
+    href: `/${locale}/postpartum-products/herbal-drink-pack`,
     img: "https://file.jingmommy.com/img/herbal-pack-840x840.png",
-    alt: "金品月子藥膳包"
   },
   {
-    href: "/postpartum-meal-sampling-party/",
+    href: `/${locale}/sample/tasting-party`,
     title: "預約試吃",
     img: "https://file.jingmommy.com/img/dish.v2014-300x300/soup_chicken_sesame_herbal.gif",
-    alt: "金品月子餐試吃派對"
   },
   {
-    href: "/miscarriage-recovery-meals/",
-    title: "小產調養餐",
+    href: `/${locale}/miscarriage-healing-meals`,
     img: "https://file.jingmommy.com/img/dish.v2014-300x300/soup_beef_soy_bean.gif",
-    alt: "金品小產調養餐"
   },
   {
-    href: "/post-surgery-meals/",
-    title: "手術後餐",
+    href: `/${locale}/post-surgery-meals`,
     img: "https://file.jingmommy.com/img/dish.v2014-300x300/porridge_cabbage_mushroom.gif",
-    alt: "金品手術後餐"
   },
   {
-    href: "/postpartum-meals/healthy-meal.html",
-    title: "健康餐",
+    href: `/${locale}/postpartum-meals/healthy-meals`,
     img: "https://file.jingmommy.com/img/dish.v2014-300x300/egg_corn.gif",
-    alt: "健康餐｜每天一份好好吃飯的理由"
   },
   {
-    href: "/frozen-postpartum-soups/",
-    title: "冷凍湯品",
+    href: `/${locale}/frozen-postpartum-soups`,
     img: "https://file.jingmommy.com/img/dish.v2014-300x300/soup_chicken_abalone.gif",
-    alt: "金品冷凍湯品"
   },
   {
-    href: "/postpartum-meals/postpartum-meal-delivery-lookup.html",
+    href: `/${locale}/postpartum-meals/delivery-lookup`,
     title: "送餐範圍查詢",
     icon: "mdi:magnify",
+    target: "_blank",
+    rel: "noopener",
   },
   {
     href: "//order.jingmommy.com",
@@ -80,10 +90,23 @@ const banners = [
     icon: "mdi:cart",
     target: "_blank",
     rel: "noopener",
+  },
+].map((row: Banner) => {
+  if (row.href && Object.hasOwn(routeMap, row.href)) {
+    const o = routeMap[row.href as keyof typeof routeMap]
+    if (!Object.hasOwn(row, 'title')) {
+      row.title = o?.title?.trim()
+    }
+    if (!Object.hasOwn(row, 'alt')) {
+      // @ts-ignore
+      row.alt = o?.description
+    }
   }
-]
+  return row
+})
 
 const bgFlower = "https://file.jingmommy.com/img/background-flower.png"
+
 ---
 
 <Layout>

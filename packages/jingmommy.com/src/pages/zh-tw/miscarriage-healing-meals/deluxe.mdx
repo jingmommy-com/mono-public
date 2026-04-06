@@ -4,41 +4,367 @@ title: 精緻調養餐（30天）
 color: pink
 ---
 
-import { site } from '../../../client.config.ts'
+import { Image } from '@/components/starwind/image'
+import PageButtons from '../../../components/PageButtons.astro'
+import LookupZipButton from '../../../components/LookupZipButton.astro'
 
-## 精緻調養餐 30日
+![miscarriage-care](//file.jingmommy.com/img/miscarriage-care.jpg)
 
-> 小產重於大產。以完整 30 天，循序漸進地為身體補養——先排惡露調血流，再補血補氣，最後修復子宮、恢復元氣。
+明代著名的婦醫家薛已說過：<span class="text-orange-800">『小產重於大產﹝生產﹞，因為大產﹝生產﹞如粟熟自脫，小產則如生採，傷其根蒂。』</span>也就是說，自然產就像水果熟了，自己從樹上脫落；然而小產是尚未成熟卻被硬摘下來。雖然小產看起來好像沒有事，但是小產其實比自然產更傷身體，更需要好好的調理。
 
-| 方案 | 價格 |
-|------|------|
-| 南加州新鮮配送（30天） | $2,350 |
-| 冷凍全美配送（28天） | $3,190 |
+小產後若不審慎調養身體，日後可能會有體力下降、氣虛畏寒、容易感冒、腰酸背痛、生理期障礙、不易懷孕、慣性流產...等諸多問題。
 
----
-
-## 每日餐點內容
-
-- **早餐**：養生粥
-- **午餐**：湯品、主菜、養生飯、暖身蔬菜
-- **晚餐**：台式月子湯（豬肝湯 / 麻油腰子 / 麻油雞）、藥膳燉補湯、養生飯、暖身蔬菜
-- **點心**：補養甜點
-- **飲品**：調理茶飲
+金品月子膳食的小產調養餐與坐月子相同，採漸進式調養，首先排除惡露、順暢經血，再補血、補氣已恢復體力，進一步加強子宮功能的修復，固筋骨，防老化。
 
 ---
 
-## 三階段調養重點
+<div class="text-center">
+完整30天的補養，除了調養燉品和補氣煮食及鮮翠生蔬等，還提供元氣甜品及小產後需要水分補充的養生飲品，讓妳的身體得到充分的營養，迎接美好的未來！
+</div>
 
-| 階段 | 重點 |
-|------|------|
-| 排惡露期 | 活血化瘀，促進循環 |
-| 補血補氣期 | 恢復體力，滋補身體 |
-| 子宮修復期 | 溫補暖宮，恢復元氣 |
+<style>{`
+  table.meal-details {
+    padding: 0.5rem 0.5rem;
+    border: 4px solid #ccc;
+    border-radius: 12px;
+    border-spacing: 10px;
+    border-collapse: separate;
+    width: 100%;
+  }
+  table thead tr th {
+    text-align: center;
+  }
+  table tr td {
+    text-align: center;
+  }
+  table tbody tr td:first-child {
+    min-width: 100px;
+  }
+`}</style>
+<table>
+  <tbody>
+    <tr class="bg-purple-200">
+      <td>
+        <div><b>精緻調養月子餐</b> - 30 天</div>
+        <div>$2,350</div>
+        <div>(洛杉磯地區, 有地域限制)</div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div>早餐：養生粥</div>
+        <div>午餐：午餐湯品、主菜、養生飯、溫性蔬菜</div>
+        <div>晚餐：台式月子湯、月子燉補湯、養生飯、溫性蔬菜</div>
+        <div>晚點：滋補甜點</div>
+        <div>飲料：調養飲料</div>
+      </td>
+    </tr>
+    <tr class="bg-purple-300">
+      <td>
+        <div><b>外州冷凍宅配 [四週]</b> - 28 天</div>
+        <div>$3,190</div>
+        <div>(美國各內陸州)</div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div>早餐：養生粥</div>
+        <div>午餐：午餐湯品、主菜、養生飯、溫性蔬菜</div>
+        <div>晚餐：台式月子湯、月子燉補湯、養生飯、溫性蔬菜</div>
+        <div>晚點：滋補甜點</div>
+        <div>飲料：調養飲料</div>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
-## 立即行動
+<PageButtons
+  data={[
+    {
+      title: '開始選購 / Start Shopping',
+      icon: 'mdi:cart',
+      url: '//order.jingmommy.com/miscarriage-healing-meals'
+    },
+    {
+      title: '預約諮詢 / Book a Consultation',
+      icon: 'mdi:calendar-check',
+      url: '/customer-service/'
+    },
+    [
+      {
+        title: '下載訂購單',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/金品小產調養餐訂購單.pdf'
+      },
+      {
+        title: 'Download Order Form',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/Healing_Meal_Order_Form.pdf'
+      },
+      {
+        title: '菜單',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/菜單總表.pdf'
+      },
+      {
+        title: 'Full Menu',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/Menu.pdf'
+      }
+    ]
+  ]}
+/>
 
-- [線上訂餐](//order.jingmommy.com/金品月子餐)
-- [預約諮詢](/zh-tw/customer-service/)
-- 電話：<a href={`tel:${site.supportPhone}`}>{site.supportPhone}</a>
+<LookupZipButton class="mt-4" />
+
+---
+
+{/* 調養餐固定沒有發奶餐點：月子燉補湯-發奶湯品、主菜-豬腳餐點、甜點-花生酒釀 */}
+
+import menuMeal14a from '@/assets/menu/menu_meal14a.jpg'
+import menuMeal15a from '@/assets/menu/menu_meal15a.jpg'
+import menuMeal46 from '@/assets/menu/menu_meal46.jpg'
+import menuMeal23 from '@/assets/menu/menu_meal23.jpg'
+import menuMeal22 from '@/assets/menu/menu_meal22.jpg'
+import menuMeal02a from '@/assets/menu/menu_meal02a.jpg'
+import menuMeal24 from '@/assets/menu/menu_meal24.jpg'
+import menuMeal25 from '@/assets/menu/menu_meal25.jpg'
+import menuMeal16 from '@/assets/menu/menu_meal16.jpg'
+import menuMeal04a from '@/assets/menu/menu_meal04a.jpg'
+import menuMeal50 from '@/assets/menu/menu_meal50.jpg'
+import menuMeal18 from '@/assets/menu/menu_meal18.jpg'
+import menuMeal39 from '@/assets/menu/menu_meal39.jpg'
+import menuAfterTherapy03 from '@/assets/menu/menu_after_therapy03.jpg'
+
+<table class="meal-details">
+  <tbody>
+    <tr>
+      <td colspan="2" class="bg-zinc-200 text-bold">
+        {/* 、活力蛋 */}
+        <b>早餐：</b>養生粥
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        養生粥：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal14a} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        地瓜糙米粥、香菇芹菜瘦肉粥、紅豆燕麥粥、香菇紅蘿高麗紅糙米粥、紅蘿蔔芹菜牛肉粥、枸杞糙米粥、山藥紅糙米粥、香菇芹菜瘦肉粥、芋頭糙米粥、香菇紅蘿蔔高麗菜粥等<b>更替出餐</b>
+      </td>
+    </tr>
+    {/* <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        活力蛋：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src="//file.jingmommy.com/img/dish.v2014/egg_corn.gif" className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        (烤)西式烘蛋、玉米(蒸)蛋、香菇烘蛋、(烤)西式番茄烘蛋、青豆烘蛋、香菇(蒸)蛋、九層塔烘蛋、(烤)奶香烘蛋、菠菜烘蛋、紅蘿蔔絲烘蛋、木耳烘蛋、玉米烘蛋等<b>更替出餐</b>
+      </td>
+    </tr> */}
+    <tr>
+      <td colspan="2" class="bg-zinc-200 text-bold">
+        <b>午餐：</b>午餐湯品、主菜、養生飯、溫性蔬菜
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        {/* 午餐湯 */}
+        午餐湯品：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal15a} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        雞蓉玉米濃湯、當歸黃芪鱸魚湯、羅宋湯、鮮百菇鱸魚湯、馬鈴薯蘑菇濃湯、薑絲鱸魚湯、魚肚牛肉羹、味噌豆腐魚湯、紅莧菜枸杞鱸魚湯、手作魚丸湯等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        {/* 主菜：無豬腳類 */}
+        主菜：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal46} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        茶樹菇花膠湯鮑、核桃蝦、法式牛柳、紅酒燉牛肉、烤牛小排、白醬焗小干貝、白醬焗魚片、奶油烤蝦、三杯雞、香菇蒸白魚、柱侯牛腩煲、枸杞紅棗蒸雞、京都排骨、高麗菜捲、風味豉油雞、蜜汁烤雞腿、紅燒肉、芋頭排骨、照燒肉丸、(洋)蔥爆牛肉、香菇蒸雞、甜椒鑲豬肉、起司肉丸、宫保雞丁(不辣)、香菇蒸肉餅、紫糯米珍珠丸、肉末蒸豆腐、美式BBQ烤雞翅、白糯米珍珠丸、蘆筍腰果雞丁、瑞士肉丸、獅子頭燉高麗菜、香煎雞排、酥肉羹、香蔥豬肉卷、蘑菇牛柳粒、蝦仁豆腐、甜椒鑲牛肉、八珍豆腐、醬烤雞翅、烤韓式炸雞、白醬肉丸、香煎魚排、西蘭花牛肉、蘋果彩椒牛肉捲、臘腸木耳雞、滷雞腿、時菜燴油豆腐、清炒花枝、肉燥、南瓜排骨、香乾肉絲、滷牛肉、肉絲杏鮑菇等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        養生飯：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal23} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        五穀飯、糙米飯、紅白飯、紫米飯、菜飯、香菇糯米油飯、鮮蔬鮭魚拌飯、麻油蛋炒糙米飯等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        溫性蔬菜：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal22} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        免治牛肉玉米、地瓜葉、青椒牛肉絲、薑絲菠菜、清炒蝦皮高麗菜、白花椰菜炒木耳、雪豆蝦仁、薑絲青江菜、紅椒洋蔥炒雞丁、雪菜豆乾、小豆苗炒小鮮菇、芹菜炒甜不辣、綠花椰炒玉米荀、馬鈴薯炒青椒絲、茼蒿炒紅蘿蔔絲、義大瓜炒草菇、芥蘭炒木耳絲、山藥炒紅蘿蔔片、青江菜炒木耳絲、黃豆芽炒香菇絲等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-200 text-bold">
+        <b>晚餐：</b>台式月子湯 (豬肝湯、麻油杜仲腰花、麻油雞)、月子燉補湯、養生飯、溫性蔬菜
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        台式月子湯(第一週)：豬肝湯
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal02a} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        枸杞豬肝湯、紅棗豬肝湯、紅莧菜豬肝湯、菠菜豬肝湯、鮮菇豬肝湯等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        台式月子湯(第二週)：杜仲麻油腰花
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal24} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        麻油杜仲腰花、麻油杜仲素腰花、麻油杜仲里肌肉等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        台式月子湯(第三四週)：麻油雞
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal25} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        麻油雞、枸杞麻油雞、紅棗麻油雞、藥膳麻油雞等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        {/* 晚餐湯 */}
+        月子燉補湯 (平、溫補：第1-14天)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal16} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        香菇枸杞燉雞湯、山藥排骨湯、黃豆紅蘿蔔牛肉湯、金針香菇雞湯、南北杏排骨湯、黑豆紅棗牛肉湯、山藥木耳雞湯、香菇竹笙排骨湯、首烏竹笙雞湯、木耳排骨湯等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        {/* 晚餐湯 */}
+        月子燉補湯 (大補：第15-30天)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal04a} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        靈芝虫草花雞湯、山藥紅蘿蔔牛肉湯、四物枸杞雞湯、昆布玉米牛肉湯、當歸枸杞川芎蝦、十全藥膳排骨湯、藥膳牛肉湯、當歸黨蔘竹笙雞湯、八珍排骨湯、黨參紅棗竹笙雞湯、四物排骨湯等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        養生飯：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal50} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        五穀飯、糙米飯、紅白飯、紫米飯、菜飯、香菇糯米油飯、鮮蔬鮭魚拌飯、麻油蛋炒糙米飯等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        溫性蔬菜：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal18} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        免治牛肉玉米、地瓜葉、青椒牛肉絲、薑絲菠菜、清炒蝦皮高麗菜、白花椰菜炒木耳、雪豆蝦仁、薑絲青江菜、紅椒洋蔥炒雞丁、雪菜豆乾、小豆苗炒小鮮菇、芹菜炒甜不辣、綠花椰炒玉米荀、馬鈴薯炒青椒絲、茼蒿炒紅蘿蔔絲、義大瓜炒草菇、芥蘭炒木耳絲、山藥炒紅蘿蔔片、青江菜炒木耳絲、黃豆芽炒香菇絲等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-200 text-bold">
+        <b>晚點：</b>滋補甜點
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        {/* 甜點：無花生酒釀類 */}
+        滋補甜點：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal39} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        冰糖紅棗銀耳甜湯、紅豆小湯圓、薏仁湯、枸杞黑糖糯米粥、紅豆紫米粥、紅棗燉南瓜、芝麻糊、桂圓地瓜甜湯、紅豆湯、紅棗薏仁糯米粥、芋頭甜湯、桂圓糯米粥、紅豆薏仁湯、黑糖地瓜甜湯等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-200 text-bold">
+        <b>飲料：</b>調養飲料
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        調養飲料：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuAfterTherapy03} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        紅棗桂圓茶、山楂紅棗茶、黑糖薑茶、紅棗枸杞茶、紅棗蜜棗茶等<b>更替出餐</b>
+      </td>
+    </tr>
+  </tbody>
+</table>

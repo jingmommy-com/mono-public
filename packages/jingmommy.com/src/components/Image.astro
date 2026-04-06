@@ -1,15 +1,33 @@
 ---
-const { src, alt = 'Image', class: className = '' } = Astro.props
+const { src, alt = 'Image', class: className = '', type = 'dialog' } = Astro.props
 import DialogImage from './DialogImage.astro'
 import { Image as SWImage } from '@/components/starwind/image'
 ---
 
-<DialogImage src={src} alt={alt?.trim()}>
+{type === 'dialog' ? (
+  <DialogImage src={src} alt={alt?.trim()}>
+    <SWImage
+      slot="trigger"
+      src={src}
+      alt={alt?.trim()}
+      class={className?.trim()}
+      loading="lazy"
+    />
+  </DialogImage>
+) : type === 'a' ? (
+  <a href={typeof src === 'object' && src !== null ? src.src : src} target="_blank" rel="noopener noreferrer">
+    <SWImage
+      src={src}
+      alt={alt?.trim()}
+      class={className?.trim()}
+      loading="lazy"
+    />
+  </a>
+) : (
   <SWImage
-    slot="trigger"
     src={src}
     alt={alt?.trim()}
     class={className?.trim()}
     loading="lazy"
   />
-</DialogImage>
+)}

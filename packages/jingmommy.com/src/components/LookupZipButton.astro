@@ -1,0 +1,107 @@
+---
+const {
+  id = 'deliveryStatusDialog',
+  class: className = '',
+  buttonText = '查詢送餐範圍 / Check Delivery Area',
+  closeText = '關閉',
+  dialogClass = '',
+  iframeUrl = '//order.jingmommy.com/?route=tool/zipcode_delivery_status'
+} = Astro.props
+
+const dialogId = id.trim()
+const dialogOpenId = `${dialogId}-open`
+const dialogCloseId = `${dialogId}-close`
+---
+
+<button id={dialogOpenId} type="button" class={`w-full inline-flex items-center justify-center px-3 py-2 text-white bg-indigo-400 hover:bg-indigo-500 rounded transition text-center ${className}`}>
+  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6v4m0 4h.01M2 10a8 8 0 1116 0 8 8 0 01-16 0z"/>
+  </svg>
+  {buttonText}
+</button>
+
+<div
+  id={dialogId}
+  class={`fixed inset-0 z-[1050] flex items-center justify-center bg-black/70 bg-opacity-70 transition-opacity duration-300 ${dialogClass}`}
+  style="display: none; opacity: 0;"
+>
+  <div class="relative flex flex-col justify-center w-full max-w-2xl mx-2">
+    <div class="bg-white rounded-xl px-4 py-6 relative shadow-lg flex flex-col gap-2">
+      <div class="absolute -top-6 right-2 z-10 flex justify-end w-full">
+        <button
+          type="button"
+          class="w-12 h-12 flex items-center justify-center bg-gray-200 rounded-full text-3xl font-bold hover:bg-gray-300 transition"
+          id={dialogCloseId}
+          aria-label="Close"
+        >
+          <span class="sr-only">{closeText}</span>
+          <svg class="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <iframe
+        src={iframeUrl}
+        allowtransparency="true"
+        class="w-full border-0 transition-all"
+      ></iframe>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ dialogId, dialogOpenId, dialogCloseId }}>
+function showDialog() {
+  const dialog = document.getElementById(dialogId)
+  if (!dialog) return
+  dialog.style.display = 'flex'
+  setTimeout(() => {
+    dialog.style.opacity = '1'
+  }, 10)
+}
+function hideDialog() {
+  const dialog = document.getElementById(dialogId)
+  if (!dialog) return
+  dialog.style.opacity = '0'
+  setTimeout(() => {
+    dialog.style.display = 'none'
+  }, 300)
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.getElementById(dialogId)
+  const openBtn = document.getElementById(dialogOpenId)
+  const closeBtn = document.getElementById(dialogCloseId)
+  const iframe = document.querySelector(`#${dialogId} iframe`)
+
+  if (openBtn) openBtn.addEventListener('click', showDialog)
+  if (closeBtn) closeBtn.addEventListener('click', hideDialog)
+
+  if (dialog) {
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) {
+        hideDialog()
+      }
+    })
+  }
+
+  window.addEventListener('message', function(event) {
+    if (
+      event.data &&
+      event.data.type === 'style' &&
+      event.data.height &&
+      iframe
+    ) {
+      iframe.style.height = `${event.data.height}px`
+    }
+  })
+
+  if (iframe) {
+    iframe.addEventListener('load', () => {
+      setTimeout(() => {
+        try {
+          iframe.contentWindow.postMessage({ type: 'getStyle' }, '*')
+        } catch (e) {}
+      }, 300)
+    })
+  }
+})
+</script>

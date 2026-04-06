@@ -1,13 +1,10 @@
 ---
-import Layout from '@/layouts/Base.astro'
-
+import Layout from '@/layouts/Root.astro'
+import { locales } from '../client.config.ts'
 const title = "金品"
 const color = 'orange'
-const locales = [
-  'zh-tw',
-  'en',
-]
 const locale = locales.includes(Astro.preferredLocale ?? '') ? Astro.preferredLocale : locales[0]
+// const target = `/${Astro.currentLocale}`
 return Astro.redirect(`/${locale}/`)
 ---
 

@@ -1,43 +1,183 @@
 ---
 layout: ../../../layouts/MarkdownPage.astro
 title: 冷凍月子燉補湯
-color: cyan
+color: rose
 ---
 
-import { site } from '../../../client.config.ts'
+import { Alert, AlertDescription } from "@/components/starwind/alert"
 
-## 冷凍月子燉補湯
-
-依中醫階段性理論設計，前兩週以平溫補安定身體，後兩週以大補恢復元氣、溫暖子宮。共 20 種口味。
-
----
-
-## 湯品類別
-
-- **平溫補湯品**：香菇枸杞雞湯、山藥排骨湯、黑豆牛肉湯、人蔘雞湯等（13 種）
-- **大補湯品**：當歸牛肉、枸杞雞等（11 種）
-- **發奶湯品**：花生豬腳等
+<Alert variant="warning" class="text-center">
+  <AlertDescription>
+    冷凍湯品系列<strong>僅限南加州配送</strong>，目前不提供外州寄送服務。
+  </AlertDescription>
+</Alert>
 
 ---
 
-## 規格與價格
+### 平／溫補湯品
 
-| 組合 | 原價 | 優惠價 |
-|------|------|--------|
-| 平溫補 7 份 | $90.99 | $79.99 |
-| 大補 7 份 | $104.99 | $92.99 |
-| 平溫補 14 份 | $181.99 | $142.99 |
-| 大補 14 份 | $209.99 | $168.99 |
+中醫認為，產後初期屬於「氣血兩虛」，此時需以溫和補養為主，幫助血脈生化、脾胃運化，讓身體先穩定修復，再進一步進補。平溫補湯溫潤不燥，能補氣養血又不會造成身體負擔，適合產後初期、術後康復、體質虛弱或日常保健。
 
 ---
 
-## 配送說明
+### 大補湯品
 
-- 僅限南加州配送，不提供外州郵寄
-- 配送費 $15；滿 $200 免費配送
+待氣血逐漸恢復後，轉為「補腎暖宮、固本培元」，加強驅寒、補充元氣，鞏固身體基礎。大補湯選用性溫、補氣補血的食材與藥材，適合產後後期、體質虛寒者，以及冬令進補時享用。
+
+分階段補養，讓身體循序漸進回到最佳狀態，不急不躁、由內而外恢復元氣。  
+在美國，想完整走完月子調理不容易；自己煮費時費力、外面買不到低鹽／低調味且適合坐月子的湯品，金品用中央廚房專業設備與慢火燉煮工法，將月子燉補湯原汁原味冷凍封存，真材實料，打開加熱即可享用。  
+自己喝方便安心，送禮更體面：不論是產後調養、術後康復，還是冬天想要進補，都能按部就班補回底子。
 
 ---
 
-## 聯絡
+### 建議選擇
 
-- 電話：<a href={`tel:${site.supportPhone}`}>{site.supportPhone}</a>
+- 第一次嘗試 → 選單一週份（7份），先體驗平溫補或大補的滋養
+- 想一次準備整套四週 → 選綜合包 14 份或 28 份，一次備齊完整月子燉補週期
+- 送禮最佳 → 推薦 28 份綜合包，誠意十足
+
+---
+
+### 規格與價格
+
+<table>
+  <thead>
+    <tr>
+      <th class="text-center">湯品</th>
+      <th class="text-center">價格</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-center">平溫補 7 份</td>
+      <td class="text-center">
+        <div class="flex gap-1 items-center justify-center">
+          <span class="text-gray-400 line-through text-xs">$90.99</span>
+          <span class="text-red-600 font-bold">$79.99</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">大補 7 份</td>
+      <td class="text-center">
+        <div class="flex gap-1 items-center justify-center">
+          <span class="text-gray-400 line-through text-xs">$104.99</span>
+          <span class="text-red-600 font-bold">$92.99</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">平溫補 14 份</td>
+      <td class="text-center">
+        <div class="flex gap-1 items-center justify-center">
+          <span class="text-gray-400 line-through text-xs">$181.99</span>
+          <span class="text-red-600 font-bold">$142.99</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">大補 14 份</td>
+      <td class="text-center">
+        <div class="flex gap-1 items-center justify-center">
+          <span class="text-gray-400 line-through text-xs">$209.99</span>
+          <span class="text-red-600 font-bold">$168.99</span>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+import Badges from '@/components/Badges.astro'
+
+<table>
+  <thead>
+    <tr>
+      <th>湯品</th>
+      <th>內容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>平／溫補湯品</td>
+      <td>
+        <Badges
+          data={[
+            '香菇枸杞燉雞湯',
+            '山藥排骨湯',
+            '黃豆紅蘿蔔牛肉湯',
+            '金針香菇雞湯',
+            '南北杏排骨湯',
+            '黑豆紅棗牛肉湯',
+            '山藥木耳雞湯',
+            '香菇竹笙排骨湯',
+            '首烏竹笙排骨湯',
+            '木耳排骨湯'
+          ]}
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>大補湯品</td>
+      <td>
+        <Badges
+          data={[
+            '靈芝虫草花雞湯',
+            '山藥紅蘿蔔牛肉湯',
+            '四物枸杞雞湯',
+            '昆布玉米牛肉湯',
+            '當歸枸杞穿穹蝦',
+            '十全藥膳排骨湯',
+            '藥膳牛肉湯',
+            '當歸黨參竹笙雞湯',
+            '八珍排骨湯',
+            '黨參紅棗竹笙雞湯',
+            '四物排骨湯'
+          ]}
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>發奶湯品<span class="text-red-600">*</span></td>
+      <td>
+        <Badges
+          data={[
+            '黑棗花生燉豬腳',
+            '青木瓜燉排骨湯',
+            '黑豆紅棗燉豬腳'
+          ]}
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<span class="text-red-600">*</span> 發奶湯品將隨機搭配於平溫補或大補湯品組合中。
+
+---
+
+#### 🚚 配送方式
+
+- 自取
+- 司機配送（有區域限制）：配送區域內 $15/次，滿 $200 免費配送
+
+---
+
+import PageButtons from '../../../components/PageButtons.astro'
+
+<PageButtons
+  data={[
+    {
+      title: '開始選購 / Start Shopping',
+      icon: 'mdi:shopping',
+      url: '//order.jingmommy.com/zh/frozen-postpartum-stewed-soups',
+      target: '_blank'
+    },
+    {
+      title: '預約諮詢 / Book a Consultation',
+      icon: 'mdi:calendar-check',
+      url: '/customer-service/'
+    }
+  ]}
+/>

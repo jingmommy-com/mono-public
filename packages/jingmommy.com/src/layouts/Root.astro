@@ -1,0 +1,24 @@
+---
+import "../styles/global.css"
+import Head from "../components/Head.astro"
+const { title, lang } = Astro.props
+---
+
+<!doctype html>
+<html lang={lang}>
+  <Head title={title}>
+    <meta http-equiv="refresh" content={`0; url=/${lang}`} />
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        font-family: 'Noto Sans TC', 'Microsoft JhengHei', 'Microsoft YaHei', 'PingFang TC', 'PingFang SC', Arial, Helvetica, sans-serif;
+      }
+    </style>
+  </Head>
+  <body class="font-sans antialiased">
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,101 @@
+---
+import PageButton from './PageButton.astro'
+import routeMap from '../route-map.json'
+
+type DataButton = {
+  title: string
+  icon: string
+  url?: string
+  color?: string
+  type?: 'a' | 'button',
+}
+type DataRow = DataButton | DataButton[]
+const { data = [] }: { data: DataRow[] } = Astro.props
+const baseClasses = 'inline-flex items-center justify-center border bg-white bg-clip-padding rounded-lg text-center no-underline px-4 py-3 transition-colors duration-300 ease-in-out transform hover:-translate-y-0.5 hover:text-white'
+
+function getButtonColor(idx: number) {
+  return idx === 0
+    ? 'amber'
+    : idx === 1
+    ? 'orange'
+    : idx === 2
+    ? 'sky'
+    : 'gray'
+}
+
+function getChildColor(reverseIdx: number) {
+  return reverseIdx === 0
+    ?'lime'
+    : reverseIdx === 1
+    ? 'sky'
+    : 'rose'
+}
+
+function findTitleByUrl(url: string | undefined): string {
+  if (typeof url === 'string' && url in routeMap) {
+    const entry = routeMap[url as keyof typeof routeMap]
+    if (entry && 'title' in entry && typeof entry.title === 'string') {
+      return entry.title.trim()
+    }
+  }
+  return ''
+}
+---
+
+<div class="flex flex-col gap-4 w-full not-prose">
+  {data.map((row: DataRow, rowIdx: number) => {
+    if (Array.isArray(row)) {
+      const total = Math.ceil(row.length / 2)
+      return (
+        <div class="flex flex-wrap gap-4 w-full">
+          {Array.from({ length: total }, (_, subIdx) => {
+            const first = row[subIdx * 2]
+            if (!Object.hasOwn(first, 'title')) {
+              first.title = findTitleByUrl(first.url)
+            }
+            const second = row[subIdx * 2 + 1]
+            if (!Object.hasOwn(second, 'title')) {
+              second.title = findTitleByUrl(second.url)
+            }
+            const base = `${baseClasses} w-[calc(50%_-_0.5rem)]`
+            const color = first.color ?? getChildColor(total - subIdx - 1)
+            const colorClasses = `border-${color}-500 text-${color}-500 hover:bg-${color}-500`
+            return (
+              <div class="flex flex-row gap-4 w-full">
+                <PageButton
+                  title={first.title}
+                  icon={first.icon}
+                  url={first.url}
+                  type={first.type}
+                  className={`${base} ${colorClasses}`}
+                />
+                <PageButton
+                  title={second.title}
+                  icon={second.icon}
+                  url={second.url}
+                  type={second.type}
+                  className={`${base} ${colorClasses}`}
+                />
+              </div>
+            )
+          })}
+        </div>
+      )
+    }
+    // Single button row
+    const color = row.color ?? getButtonColor(rowIdx)
+    const colorClasses = `border-${color}-500 text-${color}-500 hover:bg-${color}-500`
+    if (!Object.hasOwn(row, 'title')) {
+      row.title = findTitleByUrl(row.url)
+    }
+    return (
+      <PageButton
+        title={row.title}
+        icon={row.icon}
+        url={row.url}
+        type={row.type}
+        className={`${baseClasses} w-full ${colorClasses}`}
+      />
+    )
+  })}
+</div>

@@ -1,0 +1,18 @@
+---
+import CategoryButton from './CategoryButton.astro'
+const { list = [], color } = Astro.props
+---
+
+<div
+  class="grid grid-cols-1 lg:grid-cols-2 gap-4 my-6 not-prose"
+>
+  {list.map((item: { href: string; img?: string; title: string; desc?: string }) => (
+    <CategoryButton 
+      color={color}
+      href={item.href}
+      img={item.img}
+      title={item.title}
+      desc={item.desc}
+    />
+  ))}
+</div>

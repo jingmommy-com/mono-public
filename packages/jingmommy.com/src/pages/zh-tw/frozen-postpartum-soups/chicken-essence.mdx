@@ -1,45 +1,105 @@
 ---
 layout: ../../../layouts/MarkdownPage.astro
 title: 冷凍熬雞精
-color: cyan
+color: rose
 ---
 
-import { site } from '../../../client.config.ts'
+import { Alert, AlertDescription } from "@/components/starwind/alert"
 
-## 冷凍熬雞精
-
-> 濃縮三天，只為你一口的元氣
-
-嚴選老母雞與白羽雞，不加防腐劑、不加人工調味，慢燉三天濃縮而成。富含膠原蛋白、優質蛋白質、多種礦物質，適合產後、術後、病後及日常保健。
-
----
-
-## 規格與價格
-
-| 份量 | 原價 | 優惠價 |
-|------|------|--------|
-| 7 份 | $83.99 | $69.99 |
-| 14 份 | $167.99 | $132.99 |
-| 28 份 | $335.99 | $259.99 |
+<Alert variant="warning" class="text-center">
+  <AlertDescription>
+    冷凍湯品系列<strong>僅限南加州配送</strong>，目前不提供外州寄送服務。
+  </AlertDescription>
+</Alert>
 
 ---
 
-## 適合對象
+濃縮三天，只為你一口的元氣
 
-- 產後恢復
-- 手術後調養
-- 病後復元
-- 日常保健
+金品熬雞精遵循三天慢熬工序，不加防腐劑、不加人工香料，只為保留最純粹的修復力。嚴選老母雞與白羽雞，富含膠原蛋白、優質蛋白與多種營養礦物質，能溫和補氣補元，幫助身體快速恢復。小份量設計，好入口、易吸收，適合產後、術後、病後調養，也能作為日常補養的高品質選擇。一口精華，從裡到外補回身體的底氣。
 
 ---
 
-## 配送說明
+#### 適合族群
 
-- 僅限南加州配送，不提供外州郵寄
-- 配送費 $15；滿 $200 免費配送
+- 產後調養，幫助修復與補氣
+- 術後康復，補充體力與養分
+- 病後復原，增強抵抗力
+- 日常養生，維持元氣狀態
 
 ---
 
-## 聯絡
+#### 建議飲用方式
 
-- 電話：<a href={`tel:${site.supportPhone}`}>{site.supportPhone}</a>
+- 單次補養 → 一天一份，持續一週可明顯感受滋補力
+- 長期調養 → 一次購買多份，冷凍保存，隨時加熱即飲
+- 送禮首選 → 送給需要補養的親友最貼心
+
+---
+
+#### 規格與價格
+
+<table>
+  <thead>
+    <tr>
+      <th>品項</th>
+      <th>價格</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>熬雞精 7 份</td>
+      <td>
+        <div class="flex gap-1 items-center">
+          <span class="text-gray-400 line-through text-xs">$83.99</span>
+          <span class="text-red-600 font-bold">$69.99</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>熬雞精 14 份</td>
+      <td>
+        <div class="flex gap-1 items-center">
+          <span class="text-gray-400 line-through text-xs">$167.99</span>
+          <span class="text-red-600 font-bold">$132.99</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>熬雞精 28 份</td>
+      <td>
+        <div class="flex gap-1 items-center">
+          <span class="text-gray-400 line-through text-xs">$335.99</span>
+          <span class="text-red-600 font-bold">$259.99</span>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+#### 🚚 配送方式
+
+- 自取
+- 司機配送（有區域限制）：配送區域內 $15/次，滿 $200 免費配送
+
+---
+
+import PageButtons from '../../../components/PageButtons.astro'
+
+<PageButtons
+  data={[
+    {
+      title: '開始選購 / Start Shopping',
+      icon: 'mdi:shopping',
+      url: '//order.jingmommy.com/zh/frozen-chicken-essence',
+      target: '_blank'
+    },
+    {
+      title: '預約諮詢 / Book a Consultation',
+      icon: 'mdi:calendar-check',
+      url: '/customer-service/'
+    }
+  ]}
+/>

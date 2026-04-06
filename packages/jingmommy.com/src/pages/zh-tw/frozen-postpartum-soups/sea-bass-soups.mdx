@@ -1,45 +1,107 @@
 ---
 layout: ../../../layouts/MarkdownPage.astro
 title: 冷凍鱸魚湯
-color: cyan
+color: rose
 ---
 
-import { site } from '../../../client.config.ts'
+import { Alert, AlertDescription } from "@/components/starwind/alert"
 
-## 冷凍鱸魚湯
-
-> 清鮮滋養，修復力滿分
-
-以新鮮鱸魚搭配溫和藥材，清鮮不腥、滋補不膩。鱸魚富含優質蛋白質與多種胺基酸，中醫認為其性平味甘，具補氣健脾、促進傷口癒合、增強免疫力的功效。低脂低膽固醇，易於消化吸收。
-
----
-
-## 適合對象
-
-- 產後恢復
-- 手術後調養
-- 病後復元
-- 日常輕補
+<Alert variant="warning" class="text-center">
+  <AlertDescription>
+    冷凍湯品系列<strong>僅限南加州配送</strong>，目前不提供外州寄送服務。
+  </AlertDescription>
+</Alert>
 
 ---
 
-## 規格與價格
+清鮮滋養，修復力滿分
 
-| 份量 | 原價 | 優惠價 |
-|------|------|--------|
-| 7 份 | $111.99 | $97.99 |
-| 14 份 | $223.99 | $181.99 |
-| 28 份 | $447.99 | $349.99 |
+鱸魚富含優質蛋白質與多種胺基酸，中醫認為其性平、味甘，能補氣健脾、促進傷口癒合、組織修復並增強免疫力。低脂肪、低膽固醇、易消化吸收，特別適合產後、術後及病後的恢復期。
+
+湯底採用新鮮鱸魚搭配溫和藥材，清鮮不腥，既能補而不燥，也不會造成腸胃負擔。金品冷凍封存營養與鮮味，打開加熱即可享用，無防腐劑、純手工製作，方便又安心。
 
 ---
 
-## 配送說明
+#### 適合族群
 
-- 僅限南加州配送，不提供外州郵寄
-- 配送費 $15；滿 $200 免費配送
+- 產後調養
+- 術後康復
+- 病後恢復
+- 日常輕補配餐
 
 ---
 
-## 聯絡
+#### 建議選擇
 
-- 電話：<a href={`tel:${site.supportPhone}`}>{site.supportPhone}</a>
+- 日常備用 → 一次購買多份，冷凍保存、隨取隨用
+- 送禮貼心 → 送給術後或調養中的親友，方便又體面
+
+---
+
+#### 規格與價格
+
+<table>
+  <thead>
+    <tr>
+      <th>品項</th>
+      <th>價格</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>鱸魚湯 7 份</td>
+      <td>
+        <div class="flex gap-1 items-center">
+          <span class="text-gray-400 line-through text-xs">$111.99</span>
+          <span class="text-red-600 font-bold">$97.99</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>鱸魚湯 14 份</td>
+      <td>
+        <div class="flex gap-1 items-center">
+          <span class="text-gray-400 line-through text-xs">$223.99</span>
+          <span class="text-red-600 font-bold">$181.99</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>鱸魚湯 28 份</td>
+      <td>
+        <div class="flex gap-1 items-center">
+          <span class="text-gray-400 line-through text-xs">$447.99</span>
+          <span class="text-red-600 font-bold">$349.99</span>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+#### 🚚 配送方式
+
+- 自取
+- 司機配送（有區域限制）：配送區域內 $15/次，滿 $200 免費配送
+
+---
+
+import PageButtons from '../../../components/PageButtons.astro'
+
+<PageButtons
+  data={[
+    {
+      title: '開始選購 / Start Shopping',
+      icon: 'mdi:shopping',
+      url: '//order.jingmommy.com/zh/frozen-sea-bass-soups',
+      target: '_blank'
+    },
+    {
+      title: '預約諮詢 / Book a Consultation',
+      icon: 'mdi:calendar-check',
+      url: '/customer-service/'
+    }
+  ]}
+/>
+

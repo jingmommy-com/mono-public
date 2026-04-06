@@ -1,0 +1,143 @@
+---
+const { id = 'tasting-party-reserve', baseUrl = 'https://order.jingmommy.com/?route=form/form/tasting_party' } = Astro.props;
+// TODO: convert this vanilla JavaScript to a real Astro component
+---
+
+<script define:vars={{ tableId: id, baseUrl }}>
+document.addEventListener('DOMContentLoaded', function() {
+  // 活動資料
+  var events = [
+    { date: '2025-09-13', isFull: true },
+    { date: '2025-11-08', isFull: true },
+    { date: '2026-01-10', isFull: true },
+    { date: '2026-02-28', isFull: true },
+    { date: '2026-04-11', isFull: false },
+    { date: '2026-05-30', isFull: false },
+    { date: '2026-07-11', isFull: false },
+    { date: '2026-08-29', isFull: false },
+    { date: '2026-10-10', isFull: false },
+    { date: '2026-12-05', isFull: false },
+  ];
+
+  // Los Angeles 時區
+  function getTodayInLA() {
+    var now = new Date()
+    var laNow = new Date(now.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }))
+    laNow.setHours(0, 0, 0, 0)
+    return laNow
+  }
+
+  // 解析 yyyy-mm-dd → Date
+  function parseDate(str) {
+    var parts = str.trim().split('-')
+    return new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10))
+  }
+
+  // Format the date as yyyy.mm.dd
+  function toReadableDate(dateStr) {
+    var dateParts = dateStr.trim().split('-')
+    var formattedDate = ''
+    if (dateParts.length === 3) {
+      formattedDate = dateParts[0].trim() + '.' + dateParts[1].trim().padStart(2, '0') + '.' + dateParts[2].trim().padStart(2, '0')
+    } else {
+      formattedDate = dateStr.trim()
+    }
+    return formattedDate
+  }
+
+  function isInDays(dateStr, days) {
+    var today = getTodayInLA()
+    var target = parseDate(dateStr)
+    var diffTime = target - today
+    var diffDays = diffTime / (1000 * 60 * 60 * 24)
+    return diffDays >= 0 && diffDays < days
+  }
+
+  function buildUrl(baseUrl, params) {
+    var url = new URL(baseUrl, window.location.origin)
+    var searchParams = new URLSearchParams(url.search)
+    Object.keys(params).forEach(function(key) {
+      var value = params[key]
+      if (value === undefined || value === null) {
+        searchParams.delete(key)
+      } else {
+        searchParams.set(key, value.toString().trim())
+      }
+    })
+    url.search = searchParams.toString()
+    return url.toString()
+  }
+
+  var todayLA = getTodayInLA()
+  var displayRows = []
+  var pastCount = 0
+  var futureCount = 0
+  for (const e of events) {
+    var d = parseDate(e.date)
+    if (d < todayLA) {
+      displayRows.push({
+        ...e,
+        isPast: true
+      })
+      pastCount++
+      if (pastCount > 2) {
+        displayRows.shift()
+        pastCount--
+      }
+      continue
+    }
+    displayRows.push(e)
+    futureCount++
+    if (futureCount >= 2) {
+      break
+    }
+  }
+
+  var tbody = document.querySelector(`#${tableId} tbody`)
+  if (tbody) {
+    tbody.innerHTML = ''
+    displayRows.forEach(function(row) {
+      var tr = document.createElement('tr')
+      if (row.isPast) {
+        tr.classList.add('text-gray-400')
+      }
+
+      // 日期欄
+      var tdDate = document.createElement('td')
+      tdDate.style.fontWeight = 'bold'
+      if (row.isFull && !row.isPast) {
+        tdDate.innerHTML = '<div>' + toReadableDate(row.date) + '</div><div class="text-pink-700">(已滿｜視候補狀況加開場次)</div>'
+      } else {
+        tdDate.textContent = toReadableDate(row.date)
+      }
+
+      // 狀態欄
+      var tdStatus = document.createElement('td')
+
+      if (row.isPast) {
+        tdStatus.textContent = '圓滿結束'
+      } else if (row.isFull || isInDays(row.date, 7)) {
+        var link = document.createElement('a')
+        link.href = buildUrl(baseUrl, {
+          date: row.date
+        })
+        link.target = '_blank'
+        link.textContent = '報名候補'
+        tdStatus.appendChild(link)
+      } else if (!row.isFull) {
+        var link = document.createElement('a')
+        link.href = buildUrl(baseUrl, {
+          date: row.date
+        })
+        link.target = '_blank'
+        link.textContent = '開放報名'
+        tdStatus.appendChild(link)
+      }
+
+      tr.appendChild(tdDate)
+      tr.appendChild(tdStatus)
+      tbody.appendChild(tr)
+    })
+  }
+})
+</script>

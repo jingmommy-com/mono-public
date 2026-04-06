@@ -4,47 +4,324 @@ title: 手術後餐
 color: blue
 ---
 
-import { site } from '../../../client.config.ts'
+import { Image } from '@/components/starwind/image'
+import PageButtons from '../../../components/PageButtons.astro'
+import LookupZipButton from '../../../components/LookupZipButton.astro'
 
-## 金品手術後餐
+手術耗氣傷血，損及人體的正氣，多有氣血雙虧，或氣陰兩傷，或營衛失和的現象。術後體質也較虛弱，應多給予補氣養血的食物。
 
-手術後氣血大量耗損，體力虛弱。金品手術後餐以食療方式，盡早幫助氣血恢復、重建體力，讓身體在最短時間內回到最佳狀態。
+手術後的食療，以儘早恢復手術後氣血損傷、恢復體力為主要目的；<span class="text-orange-800">術後飲食則要適當補充營養和熱量，給予高蛋白和富含維生素的飲食</span>。
 
----
+由於各方不斷的詢問，金品專業團隊特別規劃 <b>[手術後餐]</b> 來幫助住在美國的大家來<span class="text-orange-800">解決手術後"吃"的問題</span>。金品要給您最完整的飲食計畫，讓您輕鬆攝取均衡的營養，在最快的時間內幫您補益氣血、恢復體力。
 
-## 方案與價格
+import menuAfterTherapy12 from '@/assets/menu/menu_after_therapy12.jpg'
 
-### 新鮮配送（南加州）
+<Image src={menuAfterTherapy12} class="max-w-[537px]" />
 
-| 天數 | 價格 |
-|------|------|
-| 30 天 | $2,350 |
-| 14 天 | $1,330 |
-| 單日 | $100 |
+恢復手術後的體力，您的身體需要的不僅是時間，更需要被理解與關懷。金品採用美國新鮮白羽雞所熬製的金品熬雞精，專為加速恢復和增強體力而設計，是恢復期間理想的營養補充品。
 
-### 冷凍配送（全美）
+**手術恢復的理想選擇：**
 
-| 天數 | 價格 |
-|------|------|
-| 28 天 | $3,190 |
-| 14 天 | $1,950 |
-| 7 天 | $1,050 |
+- 高質蛋白質與支鏈胺基酸（BCAA）：含豐富的蛋白質和支鏈胺基酸，有助於肌肉修復和組織重建。
+- 豐富的微量元素：包括維生素B群、鈣、鎂，為您的恢復期提供必需的營養支持。
+- 天然提取：由大骨湯和豬腳自然提煉的膠原蛋白和鈣質，增強骨骼、皮膚及關節健康。
 
----
+**專為虛弱體質設計：**
 
-## 每日餐點內容
+- 天然溫和易吸收：即使在消化系統較為脆弱的時期也能輕鬆補充。
+- 安全保障：遵循嚴格的質量標準，無添加防腐劑或人工成分，保證純淨與安全。
 
-- **早餐**：養生粥
-- **午餐**：滋補魚湯、主菜、養生飯、暖身蔬菜
-- **晚餐**：藥膳補湯、養生飯、暖身蔬菜
-- **晚點**：補養甜點
-- **飲品**：調理飲品
-- **加強**：頂級熬雞精（富含蛋白質、胺基酸、B群、鈣、鎂）
+在這段特殊的恢復期，讓金品熬雞精成為您的營養守護者，幫助您早日回歸健康和活力的生活。
 
 ---
 
-## 立即行動
+<style>{`
+  table.meal-details {
+    padding: 0.5rem 0.5rem;
+    border: 4px solid #ccc;
+    border-radius: 12px;
+    border-spacing: 10px;
+    border-collapse: separate;
+    width: 100%;
+  }
+  table thead tr th {
+    text-align: center;
+  }
+  table tr td {
+    text-align: center;
+  }
+  table tbody tr td:first-child {
+    min-width: 100px;
+  }
+`}</style>
+<table>
+  <tbody>
+    <tr class="bg-blue-100">
+      <td>
+        <div><b>金品術後補養餐</b></div>
+        <div>$2,350 / 30天 | $1,330 / 14天 | $100 / 1天</div>
+        <div>(洛杉磯地區, 有地域限制)</div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div>早餐：養生粥</div>
+        <div>午餐：滋養魚湯、主菜、養生飯、溫性蔬菜</div>
+        <div>晚餐：燉補湯、養生飯、溫性蔬菜</div>
+        <div>晚點：滋補甜點</div>
+        <div>飲料：調養飲料</div>
+        <div>調養品：熬雞精</div>
+      </td>
+    </tr>
+    <tr class="bg-blue-200">
+      <td>
+        <div><b>金品 [冷凍] 術後補養餐</b></div>
+        <div>$3,190 / 28天 | $1,950 / 14天 | $1,050 / 7天</div>
+        <div>(美國各內陸州)</div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div>早餐：養生粥</div>
+        <div>午餐：滋養魚湯、養生飯、溫性蔬菜</div>
+        <div>晚餐：燉補湯、養生飯、溫性蔬菜</div>
+        <div>晚點：滋補甜點</div>
+        <div>飲料：調養飲料</div>
+        <div>調養品：熬雞精</div>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-- [線上訂餐](//order.jingmommy.com/金品月子餐)
-- [預約諮詢](/zh-tw/customer-service/)
-- 電話：<a href={`tel:${site.supportPhone}`}>{site.supportPhone}</a>
+---
+
+<PageButtons
+  data={[
+    {
+      title: '開始選購 / Start Shopping',
+      icon: 'mdi:cart',
+      url: '//order.jingmommy.com/post-surgery-meals'
+    },
+    {
+      title: '預約諮詢 / Book a Consultation',
+      icon: 'mdi:calendar-check',
+      url: '/customer-service/'
+    },
+    [
+      {
+        title: '下載訂購單',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/金品術後補養餐訂購單.pdf'
+      },
+      {
+        title: 'Download Order Form',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/Post-Surgery_Meal_Order_Form.pdf'
+      },
+      {
+        title: '菜單',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/菜單總表.pdf'
+      },
+      {
+        title: 'Full Menu',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/Menu.pdf'
+      }
+    ]
+  ]}
+/>
+
+<LookupZipButton class="mt-4" />
+
+---
+
+import menu_meal27 from '@/assets/menu/menu_meal27.jpg'
+import menu_meal41 from '@/assets/menu/menu_meal41.jpg'
+import menu_meal46 from '@/assets/menu/menu_meal46.jpg'
+import menu_meal49 from '@/assets/menu/menu_meal49.jpg'
+import menu_meal30 from '@/assets/menu/menu_meal30.jpg'
+import menu_meal04 from '@/assets/menu/menu_meal04.jpg'
+import menu_meal38 from '@/assets/menu/menu_meal38.jpg'
+import menu_meal22 from '@/assets/menu/menu_meal22.jpg'
+import menu_meal05a from '@/assets/menu/menu_meal05a.jpg'
+import menu_meal51a from '@/assets/menu/menu_meal51a.jpg'
+import menu_meal52 from '@/assets/menu/menu_meal52.jpg'
+
+<table class="meal-details">
+  <tbody>
+    <tr>
+      <td colSpan="2" class="bg-zinc-200 text-bold">
+        <b>早餐：</b>養生粥
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        養生粥：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal27} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        地瓜糙米粥、香菇芹菜瘦肉粥、紅豆燕麥粥、香菇紅蘿高麗紅糙米粥、紅蘿蔔芹菜牛肉粥、枸杞糙米粥、山藥紅糙米粥、香菇芹菜瘦肉粥、芋頭糙米粥、香菇紅蘿蔔高麗菜粥等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colSpan="2" class="bg-zinc-200 text-bold">
+        <b>午餐：</b>滋養魚湯、主菜、養生飯、溫性蔬菜
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        滋養魚湯：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal41} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        當歸黃芪鱸魚湯、鮮百菇鱸魚湯、薑絲鱸魚湯、味噌豆腐魚湯、紅莧菜枸杞鱸魚湯等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        主菜：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal46} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        茶樹菇花膠湯鮑、核桃蝦、法式牛柳、紅酒燉牛肉、烤牛小排、白醬焗小干貝、白醬焗魚片、奶油烤蝦、三杯雞、香菇蒸白魚、柱侯牛腩煲、枸杞紅棗蒸雞、京都排骨、高麗菜捲、風味豉油雞、蜜汁烤雞腿、紅燒肉、芋頭排骨、照燒肉丸、(洋)蔥爆牛肉、香菇蒸雞、甜椒鑲豬肉、起司肉丸、宫保雞丁(不辣)、香菇蒸肉餅、紫糯米珍珠丸、肉末蒸豆腐、美式BBQ烤雞翅、白糯米珍珠丸、蘆筍腰果雞丁、瑞士肉丸、獅子頭燉高麗菜、香煎雞排、酥肉羹、香蔥豬肉卷、蘑菇牛柳粒、蝦仁豆腐、甜椒鑲牛肉、八珍豆腐、醬烤雞翅、烤韓式炸雞、白醬肉丸、香煎魚排、西蘭花牛肉、蘋果彩椒牛肉捲、臘腸木耳雞、滷雞腿、時菜燴油豆腐、紅燒豬腳、清炒花枝、肉燥、南瓜排骨、香乾肉絲、滷牛肉、肉絲杏鮑菇、青江菜滷豬腳等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        養生飯：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal49} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        五穀飯、糙米飯、紅白飯、紫米飯、菜飯、香菇糯米油飯、鮮蔬鮭魚拌飯、麻油蛋炒糙米飯等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        溫性蔬菜：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal30} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        免治牛肉玉米、地瓜葉、青椒牛肉絲、薑絲菠菜、清炒蝦皮高麗菜、白花椰菜炒木耳、雪豆蝦仁、薑絲青江菜、紅椒洋蔥炒雞丁、雪菜豆乾、小豆苗炒小鮮菇、芹菜炒甜不辣、綠花椰炒玉米荀、馬鈴薯炒青椒絲、茼蒿炒紅蘿蔔絲、義大瓜炒草菇、芥蘭炒木耳絲、山藥炒紅蘿蔔片、青江菜炒木耳絲、黃豆芽炒香菇絲等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colSpan="2" class="bg-zinc-200 text-bold">
+        <b>晚餐：</b>燉補湯、養生飯、溫性蔬菜
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        燉補湯：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal04} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        香菇枸杞燉雞湯、山藥排骨湯、黃豆紅蘿蔔牛肉湯、金針香菇雞湯、南北杏排骨湯、黑豆紅棗牛肉湯、山藥木耳雞湯、香菇竹笙排骨湯、首烏竹笙雞湯、木耳排骨湯、靈芝虫草花雞湯、山藥紅蘿蔔牛肉湯、四物枸杞雞湯、昆布玉米牛肉湯、當歸枸杞川芎蝦、十全藥膳排骨湯、藥膳牛肉湯、當歸黨蔘竹笙雞湯、八珍排骨湯、黨參紅棗竹笙雞湯、四物排骨湯等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        養生飯：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal38} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        五穀飯、糙米飯、紅白飯、紫米飯、菜飯、香菇糯米油飯、鮮蔬鮭魚拌飯、麻油蛋炒糙米飯等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        溫性蔬菜：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal22} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        免治牛肉玉米、地瓜葉、青椒牛肉絲、薑絲菠菜、清炒蝦皮高麗菜、白花椰菜炒木耳、雪豆蝦仁、薑絲青江菜、紅椒洋蔥炒雞丁、雪菜豆乾、小豆苗炒小鮮菇、芹菜炒甜不辣、綠花椰炒玉米荀、馬鈴薯炒青椒絲、茼蒿炒紅蘿蔔絲、義大瓜炒草菇、芥蘭炒木耳絲、山藥炒紅蘿蔔片、青江菜炒木耳絲、黃豆芽炒香菇絲等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colSpan="2" class="bg-zinc-200 text-bold">
+        <b>晚點：</b>滋補甜點
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        滋補甜點：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal05a} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        花生甜湯、冰糖紅棗銀耳甜湯、紅豆小湯圓、薏仁湯、枸杞黑糖糯米粥、紅豆紫米粥、紅棗燉南瓜、芝麻糊、桂圓地瓜甜湯、黃豆花生甜湯、紅豆湯、紅棗薏仁糯米粥、芋頭甜湯、酒釀湯圓、花生薏仁湯、桂圓糯米粥、紅豆薏仁湯、黑糖地瓜甜湯等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colSpan="2" class="bg-zinc-200 text-bold">
+        <b>飲料：</b>調養飲料
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        調養飲料：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal51a} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        <b>調養飲料：</b>紅棗桂圓茶、山楂紅棗茶、黑糖薑茶、紅棗枸杞茶、紅棗蜜棗茶等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colSpan="2" class="bg-zinc-200 text-bold">
+        <b>調養品：</b>熬雞精
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        頂級熬雞精：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal52} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        專業團隊多道工序與長時間慢火燉煮，濃縮出膠質、胺基酸與多種營養成分，分子細小，更容易被人體吸收，真正做到溫和滋補、快速補元氣。
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -116,7 +116,8 @@ async function generateRouteMap(log, logError) {
 
   const files = walkSync(pagesDir)
   const attrs = [
-    'title'
+    'title',
+    'description',
   ]
   const result = {}
   for (const file of files) {

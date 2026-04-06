@@ -1,7 +1,9 @@
 ---
 import Layout from "./Page.astro"
 import Markdown from "../components/Markdown.astro"
-const { title, color } = Astro.props.frontmatter ?? {}
+const { frontmatter = {}, title: propTitle, color: propColor } = Astro.props
+const title = frontmatter.title ?? propTitle ?? null
+const color = frontmatter.color ?? propColor ?? null
 ---
 
 <Layout title={title} color={color}>
