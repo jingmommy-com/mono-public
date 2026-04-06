@@ -5,7 +5,6 @@ import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import icon from 'astro-icon'
-import { minifyHtml } from 'astro-minify-html'
 
 import tailwindcss from '@tailwindcss/vite'
 import { generateRouteFiles } from './src/scripts/index.js'
@@ -121,18 +120,13 @@ function watchDirRecursive(dir, onEvent, extensions, watchers) {
 
 export default defineConfig({
   site: 'https://jingmeal.com',
+  compressHTML: true,
   integrations: [
     mdx({
       rehypePlugins: [makeRehypeLocaleLinks(['zh-tw', 'en'])],
     }),
     sitemap(),
     icon(),
-    minifyHtml({
-      removeComments: true,
-      minifyJS: true,
-      minifyCSS: true,
-      collapseWhitespace: true,
-    }),
     {
       name: 'route-map-autogen',
       hooks: {
@@ -328,17 +322,17 @@ export default defineConfig({
     // https://www.jingmommy.com/frozen-postpartum-soups/frozen-sea-bass-soups.html
     "/frozen-postpartum-soups/frozen-sea-bass-soups.html": "/frozen-postpartum-soups/sea-bass-soups",
     // https://www.jingmommy.com/frozen-postpartum-soups/frozen-postpartum-soups-the-post-confinement-nourishment-plan.html
-    "/frozen-postpartum-soups/frozen-postpartum-soups-the-post-confinement-nourishment-plan.html": "",
+    "/frozen-postpartum-soups/frozen-postpartum-soups-the-post-confinement-nourishment-plan.html": "/frozen-postpartum-soups", // discontinued product, redirect to category index
     // https://www.jingmommy.com/frozen-postpartum-soups/diy-frozen-postpartum-soup-sets.html
     "/frozen-postpartum-soups/diy-frozen-postpartum-soup-sets.html": "/frozen-postpartum-soups/tiers",
     // https://www.jingmommy.com/frozen-postpartum-soups/four-seasons-soups-spring-1-lucky-bag.html
-    "/frozen-postpartum-soups/four-seasons-soups-spring-1-lucky-bag.html": "",
+    "/frozen-postpartum-soups/four-seasons-soups-spring-1-lucky-bag.html": "/frozen-postpartum-soups", // discontinued product, redirect to category index
     // https://www.jingmommy.com/frozen-postpartum-soups/four-seasons-soups-winter-1.html
-    "/frozen-postpartum-soups/four-seasons-soups-winter-1.html": "",
+    "/frozen-postpartum-soups/four-seasons-soups-winter-1.html": "/frozen-postpartum-soups", // discontinued product, redirect to category index
     // https://www.jingmommy.com/frozen-postpartum-soups/four-seasons-soups-winter-1-lucky-bag.html
-    "/frozen-postpartum-soups/four-seasons-soups-winter-1-lucky-bag.html": "",
+    "/frozen-postpartum-soups/four-seasons-soups-winter-1-lucky-bag.html": "/frozen-postpartum-soups", // discontinued product, redirect to category index
     // https://www.jingmommy.com/frozen-postpartum-soups/four-seasons-soups-winter-2.html
-    "/frozen-postpartum-soups/four-seasons-soups-winter-2.html": "",
+    "/frozen-postpartum-soups/four-seasons-soups-winter-2.html": "/frozen-postpartum-soups", // discontinued product, redirect to category index
     // https://www.jingmommy.com/frozen-postpartum-soups/four-seasons-soups-spring-4.html
     "/frozen-postpartum-soups/four-seasons-soups-spring-4.html": "/frozen-postpartum-soups/spring-4",
     /**
@@ -387,11 +381,11 @@ export default defineConfig({
     // https://www.jingmommy.com/customer-service/reward-program.html
     "/customer-service/reward-program.html": "/", // discontinued page, redirect to homepage
     // https://www.jingmommy.com/customer-service/patricia.html
-    "/customer-service/patricia.html": "//order.jingmommy.com/patricia",
+    "/customer-service/patricia.html": "https://order.jingmommy.com/patricia",
     // https://www.jingmommy.com/customer-service/miya.html
-    "/customer-service/miya.html": "//order.jingmommy.com/miya",
+    "/customer-service/miya.html": "https://order.jingmommy.com/miya",
     // https://www.jingmommy.com/customer-service/nicole.html
-    "/customer-service/nicole.html": "//order.jingmommy.com/nicole",
+    "/customer-service/nicole.html": "https://order.jingmommy.com/nicole",
     // https://www.jingmommy.com/customer-service/customer-service-order.html
     "/customer-service/customer-service-order.html": "/customer-service",
     // https://www.jingmommy.com/customer-service/support.html

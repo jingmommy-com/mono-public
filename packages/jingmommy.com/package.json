@@ -14,14 +14,14 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.6.0",
-    "@astrojs/mdx": "^4.3.0",
-    "@astrojs/sitemap": "^3.4.1",
+    "@astrojs/cloudflare": "^13.1.7",
+    "@astrojs/mdx": "^5.0.3",
+    "@astrojs/sitemap": "^3.7.2",
     "@iconify-json/mdi": "^1.2.3",
     "@tabler/icons": "^3.36.0",
     "@tailwindcss/forms": "^0.5.11",
     "@tailwindcss/vite": "^4.1.11",
-    "astro": "^5.11.0",
+    "astro": "^6.1.4",
     "astro-breadcrumbs": "^3.3.3",
     "astro-embed": "^0.12.0",
     "astro-icon": "^1.1.5",
