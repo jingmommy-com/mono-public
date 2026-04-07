@@ -19,6 +19,10 @@ export function getStaticPaths() {
 <script is:inline define:vars={{ routes: [...routes], locales }}>
   // Fallback for direct URL access (bookmarks, shared links).
   const slug = location.pathname.slice(1)
+  const shared = ['404', 'delivery-lookup']
+  if (shared.includes(slug)) {
+    return
+  }
   const lang = (navigator.language || '').toLowerCase()
   const preferred = locales.find(l => lang.startsWith(l.split('-')[0])) || 'zh-tw'
   const target = routes.includes(`/${preferred}/${slug}`) ? preferred : 'zh-tw'
