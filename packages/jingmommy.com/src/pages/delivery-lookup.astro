@@ -148,8 +148,7 @@ const messages = {
         return
       }
       showLoading()
-      fetch('http://localhost:8888/-/api/delivery_zip', {
-      // fetch('https://order.jingmommy.com/-/api/delivery_zip', {
+      fetch('https://order.jingmommy.com/-/api/delivery_zip', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ zip_code: zip })
