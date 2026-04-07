@@ -1,11 +1,13 @@
 ---
 import Layout from "../../layouts/FullScreenPage.astro"
 import ComingSoon1 from "../../components/ComingSoon.astro"
+const title = '🚧 即將推出'
+const description = '我們正努力為您帶來精彩內容，敬請期待！'
 ---
 
-<Layout title="即將推出">
+<Layout title={title}>
   <ComingSoon1
-    title="🚧 即將推出"
-    description="我們正努力為您帶來精彩內容，敬請期待！"
+    title={title}
+    description={description}
   />
 </Layout>

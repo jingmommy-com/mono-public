@@ -30,8 +30,12 @@ function walkSync(dir, filelist = []) {
 }
 
 function findVariableInJavascriptContent(content, varName) {
-  const titleMatch = content.match(new RegExp(`${varName}\\s*[=]\\s*["'\`](.*?)["'\`]`))
-  if (titleMatch) return titleMatch[1]
+  const regex = new RegExp(
+    `(\\s)+(const|let|var)\\s+${varName}\\s*=\\s*(['"])(.*?)\\3`,
+    'm'
+  )
+  const matches = content.match(regex)
+  if (matches) return matches[4]
 }
 
 const fileId = 'route-map'

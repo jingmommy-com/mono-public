@@ -1,14 +1,15 @@
 {
   "/404": {
-    "title": "404 - Not Found"
+    "title": "404 - Not Found",
+    "description": "The page you are looking for does not exist. It may have been moved or deleted."
   },
   "/delivery-lookup": {
     "title": "配送地區查詢 / Delivery Lookup",
     "description": "查詢您的郵遞區號是否可配送月子餐及配送方式 / Check if your zipcode is eligible for postpartum meal delivery and available shipping methods."
   },
   "/en/coming-soon": {
-    "title": "Coming Soon",
-    "description": "We"
+    "title": "🚧 Coming Soon",
+    "description": "We're working hard to bring you something amazing. Stay tuned!"
   },
   "/en": {
     "title": "Home"
@@ -47,7 +48,7 @@
     "title": "貼心叮嚀"
   },
   "/zh-tw/coming-soon": {
-    "title": "即將推出",
+    "title": "🚧 即將推出",
     "description": "我們正努力為您帶來精彩內容，敬請期待！"
   },
   "/zh-tw/confinement-care-advice/dos-and-donts": {
