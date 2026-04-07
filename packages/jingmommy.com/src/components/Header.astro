@@ -1,30 +1,36 @@
 ---
 import { Icon } from 'astro-icon/components'
-import { isExternalLink } from '../utils/index.ts'
 
 const {
-  fixed = true // default is fixed
+  fixed = true, // default is fixed
+  color = 'orange',
 } = Astro.props
 
-// Header action links as a variable
-const headerActionLinks = [
-  {
-    href: "/zh-tw/tasting",
-    label: "預約試吃",
-    icon: "mdi:noodles",
-    iconBg: "bg-rose-300",
-    iconHoverBg: "group-hover:bg-rose-400",
-    textHover: "group-hover:text-rose-400",
-  },
-  {
-    href: "//mommybaobao.com",
-    label: "媽咪寶寶購物網",
-    icon: "mdi:cart-outline",
-    iconBg: "bg-blue-200",
-    iconHoverBg: "group-hover:bg-blue-300",
-    textHover: "group-hover:text-blue-300",
-  }
+const activeDesktop = `border-${color}-500 text-${color}-500`
+const activeMobile = `text-${color}-500 bg-${color}-50`
+
+const currentPath = Astro.url.pathname
+
+const navTabs = [
+  { href: "/zh-tw/about", label: "金品故事" },
+  { href: "/zh-tw/postpartum-meals", label: "月子膳食" },
+  { href: "/zh-tw/postpartum-meals/frozen-postpartum-meals", label: "冷凍月子餐" },
+  { href: "/zh-tw/miscarriage-healing-meals", label: "小產調養餐" },
+  { href: "/zh-tw/post-surgery-meals", label: "手術後餐" },
+  { href: "/zh-tw/postpartum-meals/healthy-meals", label: "健康餐" },
+  { href: "/zh-tw/postpartum-products/herbal-drink-pack", label: "月子藥膳包" },
+  { href: "/zh-tw/sample/tasting-party", label: "預約試吃" },
+  { href: "/delivery-lookup", label: "送餐範圍查詢" },
 ]
+
+const matchesTab = (href: string) =>
+  currentPath === href || currentPath === href + '/' || currentPath.startsWith(href + '/')
+
+const activeHref = navTabs
+  .filter(tab => matchesTab(tab.href))
+  .sort((a, b) => b.href.length - a.href.length)[0]?.href
+
+const isActive = (href: string) => href === activeHref
 
 // Compose class string for header
 const headerBaseClasses = [
@@ -48,7 +54,7 @@ const headerClass = headerBaseClasses.join(' ')
 const headerHeight = [
   'h-16',
   'sm:h-20',
-  'md:h-24'
+  'lg:h-24'
 ].join(' ')
 ---
 
@@ -56,101 +62,94 @@ const headerHeight = [
   <div class={`w-full ${headerHeight} pointer-events-none invisible`}></div>
 )}
 <header class={headerClass}>
-  <div class="flex items-center justify-start">
+  <div class="flex items-center justify-start shrink-0">
     <a href="/" class={`flex items-center py-2 ${headerHeight}`}>
-      <img src="//file.jingmommy.com/img/logo-white-448x140.png" alt="Jing Mommy Logo" class="h-full" />
+      <img src="//file.jingmommy.com/img/logo-white-448x140.png" alt="Jing Mommy Logo" class="h-14" />
     </a>
   </div>
-  <div class={`flex items-center gap-6 ${headerHeight} self-end justify-self-end`}>
-    <!-- Desktop Nav -->
-    <div class="hidden sm:flex items-center gap-6">
-      {
-        headerActionLinks.map(link => (
-          <a
-            href={link.href}
-            class="flex items-center gap-2 group"
-            {...(isExternalLink(link.href) ? { target: "_blank", rel: "noopener" } : {})}
-          >
-            <span class={`rounded-full ${link.iconBg} text-white shadow flex items-center justify-center w-10 h-10 ${link.iconHoverBg} transition`}>
-              <Icon name={link.icon} size="1.5em" />
-            </span>
-            <span class={`font-semibold text-lg text-white bg-transparent px-2 transition ${link.textHover}`}>
-              {link.label}
-            </span>
-          </a>
-        ))
-      }
+
+  <!-- Desktop Nav Tabs -->
+  <nav class="hidden lg:flex items-end self-end gap-1 overflow-x-auto scrollbar-none pb-0">
+    {navTabs.map(tab => (
+      <a
+        href={tab.href}
+        class:list={[
+          'px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors border-b-2',
+          isActive(tab.href)
+            ? activeDesktop
+            : 'border-transparent text-gray-300 hover:text-white hover:border-gray-400'
+        ]}
+      >
+        {tab.label}
+      </a>
+    ))}
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="relative lg:hidden flex items-center">
+    <button
+      id="mobile-nav-menu-btn"
+      type="button"
+      class="flex items-center justify-center w-10 h-10 rounded text-2xl"
+      aria-label="Open menu"
+    >
+      <Icon name="mdi:format-list-bulleted" size="1.5em" class="text-gray-100" />
+    </button>
+    <div
+      id="mobile-nav-menu"
+      style="display: none;"
+      class="absolute right-0 top-12 z-50 w-48 bg-white rounded shadow-lg py-2 text-gray-900"
+    >
+      {navTabs.map(tab => (
+        <a
+          href={tab.href}
+          class:list={[
+            'block px-4 py-2.5 text-sm font-medium transition-colors',
+            isActive(tab.href)
+              ? activeMobile
+              : 'text-gray-800 hover:bg-gray-100'
+          ]}
+        >
+          {tab.label}
+        </a>
+      ))}
     </div>
-    <!-- Mobile Nav (Astro/React-like simple approach) -->
-    <div class="relative sm:hidden flex items-center">
-      <button
-        id="mobile-nav-menu-btn"
-        type="button"
-        class="flex items-center justify-center w-10 h-10 rounded text-2xl"
-        aria-label="Open menu"
-      >
-        <Icon name="mdi:format-list-bulleted" size="1.5em" class="text-gray-100" />
-      </button>
-      <div
-        id="mobile-nav-menu"
-        style="display: none;"
-        class="absolute right-0 top-12 z-50 w-48 bg-white rounded shadow-lg py-2 text-gray-900"
-      >
-        {
-          headerActionLinks.map(link => (
-            <a
-              href={link.href}
-              class={`flex items-center gap-2 px-4 py-3 transition ${link.iconHoverBg}`}
-              {...(isExternalLink(link.href) ? { target: "_blank", rel: "noopener" } : {})}
-            >
-              <span class={`rounded-full ${link.iconBg} text-white shadow flex items-center justify-center w-8 h-8`}>
-                <Icon name={link.icon} size="1.2em" />
-              </span>
-              <span class="font-semibold text-base text-gray-800">{link.label}</span>
-            </a>
-          ))
+    <script type="text/javascript" is:inline>
+      (function() {
+        let navMenuOpen = false
+        function toggleNavMenu() {
+          navMenuOpen = !navMenuOpen
+          const el = document.getElementById('mobile-nav-menu')
+          if (el) {
+            el.style.display = navMenuOpen ? 'block' : 'none'
+          }
         }
-      </div>
-      <script type="text/javascript" is:inline>
-        (function() {
-          let navMenuOpen = false
-          function toggleNavMenu() {
-            navMenuOpen = !navMenuOpen
-            const el = document.getElementById('mobile-nav-menu')
-            if (el) {
-              el.style.display = navMenuOpen ? 'block' : 'none'
-            }
+        function closeNavMenu() {
+          navMenuOpen = false
+          const el = document.getElementById('mobile-nav-menu')
+          if (el) {
+            el.style.display = 'none'
           }
-          function closeNavMenu() {
-            navMenuOpen = false
-            const el = document.getElementById('mobile-nav-menu')
-            if (el) {
-              el.style.display = 'none'
-            }
-          }
-          // Bind button toggle
-          const btn = document.getElementById('mobile-nav-menu-btn')
-          if (btn) btn.addEventListener('click', function(e) {
-            e.stopPropagation()
-            toggleNavMenu()
-          })
-          // Close menu when clicking outside
-          document.addEventListener('click', function(event) {
-            const menu = document.getElementById('mobile-nav-menu')
-            const button = document.getElementById('mobile-nav-menu-btn')
-            if (menu && menu.style.display === 'block' && !menu.contains(event.target) && !button.contains(event.target)) {
-              closeNavMenu()
-            }
-          })
-          // Attach close handler for each menu link
+        }
+        const btn = document.getElementById('mobile-nav-menu-btn')
+        if (btn) btn.addEventListener('click', function(e) {
+          e.stopPropagation()
+          toggleNavMenu()
+        })
+        document.addEventListener('click', function(event) {
           const menu = document.getElementById('mobile-nav-menu')
-          if (menu) {
-            menu.querySelectorAll('a').forEach(link => {
-              link.addEventListener('click', closeNavMenu)
-            })
+          const button = document.getElementById('mobile-nav-menu-btn')
+          if (menu && menu.style.display === 'block' && !menu.contains(event.target) && !button.contains(event.target)) {
+            closeNavMenu()
           }
-        })()
-      </script>
-    </div>
+        })
+        const menu = document.getElementById('mobile-nav-menu')
+        if (menu) {
+          menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeNavMenu)
+          })
+        }
+      })()
+    </script>
   </div>
 </header>
