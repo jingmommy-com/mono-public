@@ -11,6 +11,7 @@ import {
 const { title, lang = Astro.currentLocale } = Astro.props
 import routeMap from '../route-map.json'
 
+const pathSep = '/'
 let cleanUrl = Astro.request.url ? new URL(Astro.request.url).pathname.replace(/\/+$/, '') || '/' : '/'
 const langPrefix = `/${lang}/`
 if (cleanUrl.toLowerCase().startsWith(langPrefix.toLowerCase())) {
@@ -18,14 +19,24 @@ if (cleanUrl.toLowerCase().startsWith(langPrefix.toLowerCase())) {
 }
 const segments = [
   lang,
-  ...cleanUrl.replace(/^\/|\/$/g, '').split('/')
+  ...cleanUrl.replace(/^\/|\/$/g, '').split(pathSep)
 ]
 const breadcrumbs = [
   ...segments.map((seg, i) => {
-    const href = '/' + segments.slice(0, i + 1).join('/')
-    const label = (i === segments.length - 1 && title)
-      ? title
-      : ((routeMap as Record<string, { title?: string }>)[href]?.title ?? decodeURIComponent(seg))
+    const href = pathSep + segments.slice(0, i + 1).join(pathSep)
+    let label
+    if (i === segments.length - 1 && title) {
+      label = title
+    } else if ((routeMap as Record<string, { title?: string }>)[href]?.title) {
+      label = (routeMap as Record<string, { title?: string }>)[href].title
+    } else if ((routeMap as Record<string, { title?: string }>)[cleanUrl]?.title) {
+      label = (routeMap as Record<string, { title?: string }>)[cleanUrl].title
+    } else {
+      label = decodeURIComponent(seg)
+    }
+    if (label !== undefined) {
+      label = label.replaceAll(pathSep, '|')
+    }
     return { href, label }
   }),
 ]

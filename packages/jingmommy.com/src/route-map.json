@@ -2,6 +2,10 @@
   "/404": {
     "title": "404 - Not Found"
   },
+  "/delivery-lookup": {
+    "title": "配送地區查詢 / Delivery Lookup",
+    "description": "查詢您的郵遞區號是否可配送月子餐及配送方式 / Check if your zipcode is eligible for postpartum meal delivery and available shipping methods."
+  },
   "/en/coming-soon": {
     "title": "Coming Soon",
     "description": "We"

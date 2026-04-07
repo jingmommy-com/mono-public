@@ -1,7 +1,11 @@
 import { locales } from './client.config.ts'
 export const onRequest = async (context, next) => {
   const { pathname } = context.url
-  if (pathname === '/404') {
+  const shared = [
+    '/404',
+    '/delivery-lookup',
+  ]
+  if (shared.includes(pathname)) {
     return next()
   }
   const hasLocale = locales.some(lang => pathname.startsWith(`/${lang}`))

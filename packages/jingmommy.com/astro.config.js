@@ -396,7 +396,7 @@ export default defineConfig({
      * Misc
      */
     // https://www.jingmommy.com/postpartum-meals/postpartum-meal-delivery-lookup.html
-    "/postpartum-meals/postpartum-meal-delivery-lookup.html": "/", // page discontinued; replaced by popup dialog and API, redirect to homepage
+    "/postpartum-meals/postpartum-meal-delivery-lookup.html": "/delivery-lookup",
     // https://www.jingmommy.com/review.html
     "/review.html": "/", // discontinued page, redirect to homepage
     // https://www.jingmommy.com/bonus-sharing/
