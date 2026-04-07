@@ -21,28 +21,44 @@
     "title": "金品"
   },
   "/zh-tw/about/central-kitchen": {
-    "title": "中央廚房"
+    "title": "中央廚房",
+    "order": 3,
+    "sidebar": true
   },
   "/zh-tw/about/founding-story": {
-    "title": "金品緣起"
+    "title": "金品緣起",
+    "order": 1,
+    "sidebar": true
   },
   "/zh-tw/about": {
-    "title": "金品故事"
+    "title": "金品故事",
+    "order": 8,
+    "sidebar": true
   },
   "/zh-tw/about/social-media": {
-    "title": "金品社群媒體"
+    "title": "金品社群媒體",
+    "order": 6,
+    "sidebar": true
   },
   "/zh-tw/about/social-video": {
-    "title": "金品社群影片"
+    "title": "金品社群影片",
+    "order": 7,
+    "sidebar": true
   },
   "/zh-tw/about/team": {
-    "title": "金品團隊"
+    "title": "金品團隊",
+    "order": 4,
+    "sidebar": true
   },
   "/zh-tw/about/testimonial": {
-    "title": "分享推薦"
+    "title": "分享推薦",
+    "order": 5,
+    "sidebar": true
   },
   "/zh-tw/about/why-us": {
-    "title": "金品堅持"
+    "title": "金品堅持",
+    "order": 2,
+    "sidebar": true
   },
   "/zh-tw/advice": {
     "title": "貼心叮嚀"
@@ -52,10 +68,13 @@
     "description": "我們正努力為您帶來精彩內容，敬請期待！"
   },
   "/zh-tw/confinement-care-advice/dos-and-donts": {
-    "title": "坐月子可吃＆不可吃"
+    "title": "坐月子可吃＆不可吃",
+    "sidebar": true
   },
   "/zh-tw/confinement-care-advice": {
-    "title": "坐月子貼心叮嚀"
+    "title": "坐月子貼心叮嚀",
+    "order": 2,
+    "sidebar": true
   },
   "/zh-tw/customer-service": {
     "title": "線上客服"
@@ -64,28 +83,44 @@
     "title": "常見問題"
   },
   "/zh-tw/frozen-postpartum-soups/chicken-essence": {
-    "title": "冷凍熬雞精"
+    "title": "冷凍熬雞精",
+    "order": 3,
+    "sidebar": true
   },
   "/zh-tw/frozen-postpartum-soups/desserts": {
-    "title": "冷凍甜點系列"
+    "title": "冷凍甜點系列",
+    "order": 4,
+    "sidebar": true
   },
   "/zh-tw/frozen-postpartum-soups": {
-    "title": "冷凍湯品"
+    "title": "冷凍湯品",
+    "order": 6,
+    "sidebar": true
   },
   "/zh-tw/frozen-postpartum-soups/sea-bass-soups": {
-    "title": "冷凍鱸魚湯"
+    "title": "冷凍鱸魚湯",
+    "order": 5,
+    "sidebar": true
   },
   "/zh-tw/frozen-postpartum-soups/spring-4": {
-    "title": "四季湯・「春分」冷凍湯品"
+    "title": "四季湯・「春分」冷凍湯品",
+    "order": 7,
+    "sidebar": true
   },
   "/zh-tw/frozen-postpartum-soups/stewed-soups": {
-    "title": "冷凍月子燉補湯"
+    "title": "冷凍月子燉補湯",
+    "order": 2,
+    "sidebar": true
   },
   "/zh-tw/frozen-postpartum-soups/taiwanese-soups": {
-    "title": "冷凍台式月子湯"
+    "title": "冷凍台式月子湯",
+    "order": 1,
+    "sidebar": true
   },
   "/zh-tw/frozen-postpartum-soups/tiers": {
-    "title": "冷凍月子湯品組"
+    "title": "冷凍月子湯品組",
+    "order": 6,
+    "sidebar": true
   },
   "/zh-tw/gallery/dish": {
     "title": "餐點實品拍攝"
@@ -97,28 +132,44 @@
     "title": "首頁"
   },
   "/zh-tw/miscarriage-healing-advice": {
-    "title": "小產貼心叮嚀"
+    "title": "小產貼心叮嚀",
+    "order": 4,
+    "sidebar": true
   },
   "/zh-tw/miscarriage-healing-meals/biweekly": {
-    "title": "雙週調養餐（14天）"
+    "title": "雙週調養餐（14天）",
+    "order": 2,
+    "sidebar": true
   },
   "/zh-tw/miscarriage-healing-meals/deluxe": {
-    "title": "精緻調養餐（30天）"
+    "title": "精緻調養餐（30天）",
+    "order": 1,
+    "sidebar": true
   },
   "/zh-tw/miscarriage-healing-meals": {
-    "title": "小產調養餐"
+    "title": "小產調養餐",
+    "order": 3,
+    "sidebar": true
   },
   "/zh-tw/news/ctitv": {
-    "title": "中天/中旺新聞"
+    "title": "中天/中旺新聞",
+    "order": 2,
+    "sidebar": true
   },
   "/zh-tw/news/ettvamerica": {
-    "title": "東森新聞"
+    "title": "東森新聞",
+    "order": 3,
+    "sidebar": true
   },
   "/zh-tw/news": {
-    "title": "媒體報導"
+    "title": "媒體報導",
+    "order": 8,
+    "sidebar": true
   },
   "/zh-tw/news/la-times": {
-    "title": "LA Times 洛杉磯時報"
+    "title": "LA Times 洛杉磯時報",
+    "order": 1,
+    "sidebar": true
   },
   "/zh-tw/plans/3tier": {
     "title": "三階層方案"
@@ -127,72 +178,116 @@
     "title": "方案"
   },
   "/zh-tw/post-surgery-meals": {
-    "title": "手術後餐"
+    "title": "手術後餐",
+    "order": 5,
+    "sidebar": true
   },
   "/zh-tw/postpartum-meals/classic-postpartum-meals": {
-    "title": "精緻月子餐"
+    "title": "精緻月子餐",
+    "order": 2,
+    "sidebar": true
   },
   "/zh-tw/postpartum-meals/daddy-meals": {
-    "title": "爸爸餐"
+    "title": "爸爸餐",
+    "order": 8,
+    "sidebar": true
   },
   "/zh-tw/postpartum-meals/easy-postpartum-meals": {
-    "title": "輕享月子餐"
+    "title": "輕享月子餐",
+    "order": 5,
+    "sidebar": true
   },
   "/zh-tw/postpartum-meals/frozen-postpartum-meals": {
-    "title": "冷凍月子餐"
+    "title": "冷凍月子餐",
+    "order": 6,
+    "sidebar": true
   },
   "/zh-tw/postpartum-meals/healthy-meals": {
     "title": "健康餐",
-    "description": "健康餐｜每天一份好好吃飯的理由"
+    "description": "健康餐｜每天一份好好吃飯的理由",
+    "order": 9,
+    "sidebar": true
   },
   "/zh-tw/postpartum-meals/herbal-postpartum-meals": {
-    "title": "藥膳月子餐"
+    "title": "藥膳月子餐",
+    "order": 1,
+    "sidebar": true
   },
   "/zh-tw/postpartum-meals": {
     "title": "月子膳食",
-    "description": "金品月子餐 － 5 大套餐選擇，滿足不同媽咪的需求！"
+    "description": "金品月子餐 － 5 大套餐選擇，滿足不同媽咪的需求！",
+    "order": 1,
+    "sidebar": true
   },
   "/zh-tw/postpartum-meals/low-carb-postpartum-meals": {
-    "title": "減醣月子餐"
+    "title": "減醣月子餐",
+    "order": 4,
+    "sidebar": true
   },
   "/zh-tw/postpartum-meals/recovery-plus-meals": {
-    "title": "續訂月子餐"
+    "title": "續訂月子餐",
+    "order": 7,
+    "sidebar": true
   },
   "/zh-tw/postpartum-meals/vita-postpartum-meals": {
-    "title": "元氣月子餐"
+    "title": "元氣月子餐",
+    "order": 3,
+    "sidebar": true
   },
   "/zh-tw/postpartum-products/belly-wrap": {
-    "title": "產後腹帶"
+    "title": "產後腹帶",
+    "order": 6,
+    "sidebar": true
   },
   "/zh-tw/postpartum-products/chicken-essence": {
-    "title": "熬雞精"
+    "title": "熬雞精",
+    "order": 2,
+    "sidebar": true
   },
   "/zh-tw/postpartum-products/du-zhong-capsule": {
-    "title": "養腰康（杜仲膠囊）"
+    "title": "養腰康（杜仲膠囊）",
+    "order": 5,
+    "sidebar": true
   },
   "/zh-tw/postpartum-products/first-month-joy-gift-box": {
-    "title": "滿月油飯禮盒"
+    "title": "滿月油飯禮盒",
+    "order": 3,
+    "sidebar": true
   },
   "/zh-tw/postpartum-products/herbal-drink-pack": {
-    "title": "月子藥膳包"
+    "title": "月子藥膳包",
+    "order": 1,
+    "sidebar": true
   },
   "/zh-tw/postpartum-products": {
-    "title": "金品月子產品"
+    "title": "金品月子產品",
+    "order": 7,
+    "sidebar": true
   },
   "/zh-tw/postpartum-products/sheng-hua-tang": {
-    "title": "生化湯"
+    "title": "生化湯",
+    "order": 4,
+    "sidebar": true
   },
   "/zh-tw/sample": {
-    "title": "預約試吃"
+    "title": "預約試吃",
+    "order": 0,
+    "sidebar": true
   },
   "/zh-tw/sample/local-delivery": {
-    "title": "預約試吃 - 送餐到府"
+    "title": "預約試吃 - 送餐到府",
+    "order": 2,
+    "sidebar": true
   },
   "/zh-tw/sample/out-of-state-shipping": {
-    "title": "預約試吃 - 外州冷凍"
+    "title": "預約試吃 - 外州冷凍",
+    "order": 3,
+    "sidebar": true
   },
   "/zh-tw/sample/tasting-party": {
-    "title": "月子餐試吃派對"
+    "title": "月子餐試吃派對",
+    "order": 1,
+    "sidebar": true
   },
   "/zh-tw/term-of-service": {
     "title": "服務條款"

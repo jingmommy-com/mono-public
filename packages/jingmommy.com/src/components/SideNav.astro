@@ -1,0 +1,161 @@
+---
+import { Icon } from 'astro-icon/components'
+import routeMap from '../route-map.json'
+import { locales } from '../client.config.ts'
+
+interface Props {
+  currentPath: string
+  color?: string
+}
+
+const { currentPath, color = 'orange' } = Astro.props
+
+const normalizedPath = currentPath.replace(/\/$/, '') || '/'
+const pathSegments = normalizedPath.split('/').filter(Boolean)
+
+// Current section base: /{locale}/{section}
+const currentSectionBase =
+  pathSegments.length >= 2 ? `/${pathSegments[0]}/${pathSegments[1]}` : null
+
+type RouteEntry = {
+  title: string
+  description?: string
+  sidebar?: boolean
+  order?: number
+}
+const allRoutes = Object.entries(routeMap as Record<string, RouteEntry>)
+
+// Infer locale; fall back to default so sidebar always has content even on non-localized pages
+const inferredLocale = pathSegments[0] ?? ''
+const locale = locales.includes(inferredLocale) ? inferredLocale : locales[0]
+
+// Only sidebar:true entries
+const sidebarRoutes = allRoutes.filter(([, meta]) => meta.sidebar === true)
+
+// Top-level sidebar entries for this locale: /{locale}/{slug} (2 segments)
+const topLevel = sidebarRoutes.filter(([href]) => {
+  const segs = href.split('/').filter(Boolean)
+  return segs.length === 2 && segs[0] === locale
+})
+
+type NavChild  = { href: string; title: string; order: number }
+type NavSection = {
+  href: string
+  title: string
+  order: number
+  children: NavChild[]
+}
+
+// Build sections: each top-level entry + its sidebar children
+const sections: NavSection[] = topLevel
+  .map(([sectionHref, sectionMeta]) => {
+    const children: NavChild[] = sidebarRoutes
+      .filter(([href]) => {
+        if (!href.startsWith(sectionHref + '/')) return false
+        return !href.slice(sectionHref.length + 1).includes('/')
+      })
+      .map(([href, meta]) => ({
+        href,
+        title: meta.title,
+        order: meta.order ?? 999,
+      }))
+      .sort((a, b) => a.order - b.order)
+
+    return {
+      href: sectionHref,
+      title: sectionMeta.title,
+      order: sectionMeta.order ?? 999,
+      children,
+    }
+  })
+  .sort((a, b) => a.order - b.order)
+
+const isActive = (href: string) =>
+  normalizedPath === href || normalizedPath === href + '/'
+
+// Color classes (safelisted shades)
+const activeClass = `text-${color}-600 bg-${color}-50 border-${color}-500`
+---
+
+<aside
+  id="side-nav"
+  class="hidden lg:flex flex-col fixed left-0 top-24 z-40 w-52 h-[calc(100vh-6rem)] bg-white/95 backdrop-blur-sm shadow-lg border-r border-gray-200 overflow-y-auto"
+>
+  <nav class="py-2 flex-1">
+    {sections.map((section, i) => {
+      // Open only if current page belongs to this section; all others closed
+      const isCurrentSection = currentSectionBase !== null && currentSectionBase === section.href
+      const hasActiveChild = section.children.some(c => isActive(c.href))
+      const defaultOpen = isCurrentSection || hasActiveChild
+      const hasChildren = section.children.length > 0
+
+      return (
+        <div>
+          <div class="flex items-center">
+            <a
+              href={section.href}
+              class:list={[
+                'flex-1 px-3 py-2 text-sm font-semibold truncate transition-colors',
+                isActive(section.href)
+                  ? activeClass
+                  : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50',
+              ]}
+            >
+              {section.title}
+            </a>
+            {hasChildren && (
+              <button
+                type="button"
+                data-toggle={i}
+                aria-label="toggle section"
+                class="px-2 py-2 text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                <Icon
+                  name="mdi:chevron-down"
+                  size="1.1em"
+                  data-chevron={i}
+                  class={`transition-transform duration-200 ${defaultOpen ? 'rotate-180' : ''}`}
+                />
+              </button>
+            )}
+          </div>
+
+          {hasChildren && (
+            <ul data-children={i} class={defaultOpen ? '' : 'hidden'}>
+              {section.children.map(child => (
+                <li>
+                  <a
+                    href={child.href}
+                    class:list={[
+                      'block pl-5 pr-3 py-1.5 text-sm border-l-2 mx-2 rounded-r transition-colors',
+                      isActive(child.href)
+                        ? activeClass + ' border-l-2'
+                        : 'border-transparent text-gray-500 hover:text-gray-800 hover:border-gray-300',
+                    ]}
+                  >
+                    {child.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )
+    })}
+  </nav>
+</aside>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-toggle]').forEach(btn => {
+    const idx = btn.dataset.toggle!
+    const children = document.querySelector<HTMLElement>(`[data-children="${idx}"]`)
+    const chevron = document.querySelector<HTMLElement>(`[data-chevron="${idx}"]`)
+    if (!children || !chevron) return
+
+    btn.addEventListener('click', () => {
+      const isOpen = !children.classList.contains('hidden')
+      children.classList.toggle('hidden', isOpen)
+      chevron.classList.toggle('rotate-180', !isOpen)
+    })
+  })
+</script>

@@ -2,6 +2,7 @@
 import Layout from "./Default.astro"
 import Breadcrumb from "../components/Breadcrumb.astro"
 import Footer from '../components/Footer.astro'
+import SideNav from '../components/SideNav.astro'
 
 import { tailwindColors } from '../client.config.ts'
 
@@ -15,6 +16,7 @@ const h1Color = `text-${color}-900`
 ---
 
 <Layout color={color}>
+  <SideNav currentPath={Astro.url.pathname} color={color} />
   <div class={`p-4 bg-linear-to-br ${colorFrom} ${colorTo} shadow-sm flex items-center rounded-t`}>
     <Breadcrumb color={color} />
   </div>
