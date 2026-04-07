@@ -213,15 +213,15 @@ export default defineConfig({
   },
   redirects: {
     // en
-    '/en/plans': '/en',
-    '/en/sample': '/en',
-    '/en/gallery': '/en',
+    '/en/plans': '/en/plans/3tier',
+    '/en/sample': '/en/sample/tasting-party',
+    '/en/gallery': '/en/gallery/dish',
     '/en/cs': '/en/customer-service',
     '/en/tos': '/en/term-of-service',
     // zh-tw
-    '/zh-tw/plans': '/zh-tw',
-    '/zh-tw/sample': '/zh-tw',
-    '/zh-tw/gallery': '/zh-tw',
+    '/zh-tw/plans': '/zh-tw/plans/3tier',
+    '/zh-tw/sample': '/zh-tw/sample/tasting-party',
+    '/zh-tw/gallery': '/zh-tw/gallery/dish',
     '/zh-tw/cs': '/zh-tw/customer-service',
     '/zh-tw/tos': '/zh-tw/term-of-service',
 

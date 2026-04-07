@@ -122,6 +122,8 @@ async function generateRouteMap(log, logError) {
   const attrs = [
     'title',
     'description',
+    'order',
+    'sidebar',
   ]
   const result = {}
   for (const file of files) {
