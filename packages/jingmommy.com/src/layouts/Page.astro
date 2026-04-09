@@ -1,13 +1,13 @@
 ---
 import Layout from "./Default.astro"
-import Breadcrumb from "../components/Breadcrumb.astro"
-import Footer from '../components/Footer.astro'
-import SideNav from '../components/SideNav.astro'
+import Breadcrumb from "@/components/Breadcrumb.astro"
+import Footer from '@/components/Footer.astro'
+import SideNav from '@/components/SideNav.astro'
 
-import { tailwindColors } from '../client.config.ts'
+import { colors } from '@/client.config.ts'
 
 const { title, color: inputColor } = Astro.props
-const color = tailwindColors.includes((inputColor ?? '').trim()) ? (inputColor ?? '').trim() : 'orange'
+const color = colors.includes((inputColor ?? '').trim()) ? (inputColor ?? '').trim() : 'orange'
 
 // remember to add those dynamic color classes to css @source.
 const colorFrom = `from-${color}-100`
@@ -15,7 +15,7 @@ const colorTo = `to-${color}-50`
 const h1Color = `text-${color}-900`
 ---
 
-<Layout color={color}>
+<Layout color={color} hasSidebar={true}>
   <SideNav currentPath={Astro.url.pathname} color={color} />
   <div class={`p-4 bg-linear-to-br ${colorFrom} ${colorTo} shadow-sm flex items-center rounded-t`}>
     <Breadcrumb color={color} />

@@ -6,9 +6,9 @@ sidebar: true
 ---
 
 import { YouTube } from 'astro-embed'
-import { site } from '../../../client.config.ts'
+import { site } from '@/client.config.ts'
 
-<YouTube id="https://youtu.be/8BmJO0t2Gks" class="mx-auto" />
+<YouTube id="8BmJO0t2Gks" class="mx-auto" />
 
 > 坐月子好比再造一個女人，不只把生產時所耗損的驚人血水、元氣補回來，如果調理得宜，更能有充沛的體力及精神邁向人生未來的路。
 > 台灣俗話說：「產前補胎，產後顧月內」。
@@ -53,5 +53,5 @@ import { site } from '../../../client.config.ts'
 
 **歡迎預約試吃＆媽媽教室**
 
-- 電話：<a href={`tel:${site.supportPhone}`}>{site.supportPhone}</a>
-- E-mail：<a href={`mailto:${site.supportEmail}`}>{site.supportEmail}</a>
+- 電話：<a href={`tel:${site.phone}`}>{site.phone}</a>
+- E-mail：<a href={`mailto:${site.email}`}>{site.email}</a>

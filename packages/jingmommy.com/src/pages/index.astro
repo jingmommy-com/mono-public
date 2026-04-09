@@ -1,6 +1,6 @@
 ---
-import Layout from '@/layouts/Root.astro'
-import { locales } from '../client.config.ts'
+import Layout from '@/layouts/SharedPageBase.astro'
+import { locales } from '@/client.config.ts'
 const title = "金品"
 const color = 'orange'
 const locale = locales.includes(Astro.preferredLocale ?? '') ? Astro.preferredLocale : locales[0]

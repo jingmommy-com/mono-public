@@ -1,0 +1,54 @@
+---
+layout: ../../../layouts/MarkdownPage.astro
+title: Social Media
+color: amber
+order: 6
+sidebar: true
+---
+
+import { Icon } from 'astro-icon/components'
+import Image from '@/components/Image.astro'
+import facebook from '@/icons/facebook-banner.png'
+import xiaohongshu from '@/icons/xiaohongshu.png'
+import yelp from '@/icons/yelp_logo.png'
+
+<div class="flex flex-col">
+  {/* <div class="flex flex-row items-center gap-4">
+    <a href="http://mommybaobao.com/" target="_blank" rel="noopener" class="shrink-0">
+      <img src="https://shopimg.mommybaobao.com/image/288/logo-mommybaobao.png" alt="Mommy Baobao Shopping Network logo" class="w-24" />
+    </a>
+    <div>
+      Mommy Baobao Shopping Network helps parents living in America easily purchase a variety of professional, high-quality prenatal and postnatal products suited for Asian families. We continuously strive to develop quality products and serve you with three core values: "curated quality," "safe and reliable," and "attentive care."
+    </div>
+  </div>
+  <hr/> */}
+  <div class="flex flex-row items-center gap-4">
+    {/* ref:https://www.meta.com/brand/resources/facebook/logo/ */}
+    <a href="https://www.facebook.com/jingmommy" target="_blank" rel="noopener" class="shrink-0">
+      {/* ratio: 900/509 */}
+      <Image src={facebook} class="w-24" style={{ aspectRatio: '900 / 509' }} />
+    </a>
+    <div>
+      Jingmommy on Facebook
+    </div>
+  </div>
+  <hr/>
+  <div class="flex flex-row items-center gap-4">
+    <a href="https://www.xiaohongshu.com/user/profile/63c8d73900000000260118cc" target="_blank" rel="noopener" class="shrink-0">
+      <Image src={xiaohongshu} class="w-24" />
+    </a>
+    <div>
+      Jingmommy on Xiaohongshu (Little Red Book)
+    </div>
+  </div>
+  <hr/>
+  <div class="flex flex-row items-center gap-4">
+    {/* ref:https://www.yelp.com/brand */}
+    <a href="https://www.yelp.com/biz/jing-mommy-walnut-2" target="_blank" rel="noopener" class="shrink-0">
+      <Image src={yelp} class="w-24 not-prose" />
+    </a>
+    <div>
+      Jingmommy on Yelp
+    </div>
+  </div>
+</div>

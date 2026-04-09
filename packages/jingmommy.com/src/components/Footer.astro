@@ -1,28 +1,36 @@
 ---
 import { Icon } from 'astro-icon/components'
-import { isExternalLink } from "../utils/index.ts"
+import { isExternalLink } from "@/utils/index.ts"
 import Image from './Image.astro'
+import { site, locales } from '@/client.config.ts'
+import zhTwFooter from '@/i18n/zh-tw/footer.ts'
+import enFooter from '@/i18n/en/footer.ts'
 
-import routeMap from '../route-map.json'
+import routeMap from '@/route-map.json'
 
 type RouteConfig = { title?: string }
 
 // Get color prop, default to 'fuchsia'
-let { color = 'fuchsia', lang = Astro.currentLocale } = Astro.props
+let { color = 'fuchsia', locale = Astro.currentLocale } = Astro.props
+
+const i18nMap: Record<string, typeof zhTwFooter> = { 'zh-tw': zhTwFooter, en: enFooter }
+const pathLocale = Astro.url.pathname.split('/').find((s: string) => locales.includes(s)) ?? locales[0]
+const t = i18nMap[pathLocale] ?? zhTwFooter
 
 // Dynamic classes based on color prop
 const textColorClass = `text-${color}-900`
 const bgColorClass = `bg-${color}-800`
 
 const navLinks = [
-  { href: `/${lang}/about` },
-  { href: `/${lang}/postpartum-meals` },
-  { href: `/${lang}/miscarriage-healing-meals` },
-  { href: `/${lang}/post-surgery-meals` },
-  { href: `/${lang}/sample` },
-  { href: `//order.jingmommy.com/contact`, label: "線上客服" },
-  { href: `/${lang}/faq` },
-  // { href: `/${lang}/customer-reviews` },
+  // { href: `/${locale}/about` },
+  // { href: `/${locale}/postpartum-meals` },
+  // { href: `/${locale}/miscarriage-healing-meals` },
+  // { href: `/${locale}/post-surgery-meals` },
+  { href: `/${locale}/sample` },
+  { href: `//order.jingmommy.com/contact`, label: t.customerService },
+  { href: `/${locale}/faq` },
+  { href: `/${locale}/sitemap` },
+  // { href: `/${locale}/customer-reviews` },
   // { href: "//mommybaobao.com", label: "媽咪寶寶親子購物網" },
 ].map(link => {
   // If link already has a label, keep it
@@ -42,30 +50,36 @@ const navLinks = [
     : ''
   return { ...link, label }
 })
+
+const fbUrl = locale === 'zh-tw'
+  ? 'https://www.messenger.com/t/148231668540780/'
+  : 'https://www.messenger.com/t/453550428399457/'
 ---
 
 <footer class="w-full flex flex-col gap-3">
   <nav class="w-full flex flex-wrap gap-3 justify-center">
-    {
-      navLinks.map(link => (
-        <a
-          class={`no-underline ${textColorClass}`}
-          href={link.href}
-          {...(isExternalLink(link.href) ? { target: "_blank", rel: "noopener" } : {})}
-        >{link?.label}</a>
-      ))
-    }
+    <div class="flex flex-wrap justify-center [&>*:not(:last-child)]:after:content-['|'] [&>*:not(:last-child)]:after:mx-2 [&>*:not(:last-child)]:after:text-gray-400">
+      {
+        navLinks.map(link => (
+          <a
+            class={`no-underline ${textColorClass}`}
+            href={link.href}
+            {...(isExternalLink(link.href) ? { target: "_blank", rel: "noopener" } : {})}
+          >{link?.label}</a>
+        ))
+      }
+    </div>
   </nav>
   <div class="w-full flex place-content-center">
     <div class={`w-[90%] h-px ${bgColorClass}`}></div>
   </div>
   <div class="flex flex-col sm:flex-row place-content-evenly place-items-center gap-2">
     <div class="flex flex-col text-center gap-0.5">
-      <div class="font-bold">連絡電話/Phone:</div>
+      <div class="font-bold">{t.phone}:</div>
       <div class="w-full flex flex-col gap-0.5">
         <div class="flex flex-row items-center gap-2">
           <span class="text-right whitespace-nowrap">626-217-7539</span>
-          <span class="text-left">總機</span>
+          <span class="text-left">{t.mainLine}</span>
         </div>
         <div class="flex flex-row items-center gap-2">
           <span class="text-right whitespace-nowrap">626-991-5899</span>
@@ -79,11 +93,11 @@ const navLinks = [
     </div>
     <div class="flex flex-col gap-2 text-center">
       <div class="flex flex-col gap-0.5">
-        <div class="font-bold">公司住址/Company Address:</div>
+        <div class="font-bold">{t.address}:</div>
         <div>618 Brea Canyon Road Unit F, Walnut, CA 91789</div>
       </div>
       <div class="flex flex-col gap-0.5">
-        <div class="font-bold">服務時間/Business Hour:</div>
+        <div class="font-bold">{t.businessHour}:</div>
         <div>M to F / 9:00 AM to 5:00 PM Pacific Time</div>
       </div>
     </div>
@@ -92,8 +106,7 @@ const navLinks = [
     <div class="w-[90%] h-px bg-gray-300"></div>
   </div>
   <div class="flex flex-col place-items-center text-center text-gray-800">
-    <div>金品月子膳食 著作權所有並保有文字圖片一切權利。</div>
-    <div>Copyright © Since 2010 Comtion Corp. 金品月子膳食. All Rights Reserved.</div>
+    <div>Copyright © Since 2010 {site.companyName} {t.brandName}. All Rights Reserved.</div>
   </div>
   <div class="w-full flex flex-row justify-center gap-4">
     <Image src="https://file.jingmommy.com/rep/qrcode-patricia-wechat.jpg" alt="WeChat QR Code" class="w-24 h-24 object-contain rounded border border-gray-300 shadow-sm" />
@@ -104,7 +117,7 @@ const navLinks = [
     <img src="//file.jingmommy.com/img/icon-english.png" alt="English Version of Jingmommy.com" />
   </a>
   <a
-    href="https://www.messenger.com/t/453550428399457/"
+    href={fbUrl}
     target="_blank"
     class="fixed right-4 bottom-10 w-16 h-16 rounded-full bg-white border border-gray-300 flex items-center justify-center z-50"
   >

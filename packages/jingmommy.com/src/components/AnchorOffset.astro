@@ -1,0 +1,9 @@
+---
+// Drop this into any MDX page that has hash links to ensure they scroll
+// below the fixed header. Works by writing the live header height to
+// --header-height on <html>, which global.css uses for scroll-margin-top.
+---
+<script>
+  import { initAnchorOffset } from '@/utils/index.ts'
+  initAnchorOffset()
+</script>

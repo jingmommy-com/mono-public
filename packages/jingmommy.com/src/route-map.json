@@ -3,16 +3,283 @@
     "title": "404 - Not Found",
     "description": "The page you are looking for does not exist. It may have been moved or deleted."
   },
-  "/delivery-lookup": {
-    "title": "配送地區查詢 / Delivery Lookup",
-    "description": "查詢您的郵遞區號是否可配送月子餐及配送方式 / Check if your zipcode is eligible for postpartum meal delivery and available shipping methods."
+  "/en/about/central-kitchen": {
+    "title": "Central Kitchen",
+    "order": 3,
+    "sidebar": true
+  },
+  "/en/about/founding-story": {
+    "title": "Founding Story",
+    "order": 1,
+    "sidebar": true
+  },
+  "/en/about": {
+    "title": "Our Story",
+    "order": 8,
+    "sidebar": true
+  },
+  "/en/about/social-media": {
+    "title": "Social Media",
+    "order": 6,
+    "sidebar": true
+  },
+  "/en/about/social-video": {
+    "title": "Social Videos",
+    "order": 7,
+    "sidebar": true
+  },
+  "/en/about/team": {
+    "title": "Our Team",
+    "order": 4,
+    "sidebar": true
+  },
+  "/en/about/testimonial": {
+    "title": "Testimonials",
+    "order": 5,
+    "sidebar": true
+  },
+  "/en/about/why-us": {
+    "title": "Why Jingmommy",
+    "order": 2,
+    "sidebar": true
+  },
+  "/en/advice": {
+    "title": "Care Advice"
   },
   "/en/coming-soon": {
     "title": "🚧 Coming Soon",
     "description": "We're working hard to bring you something amazing. Stay tuned!"
   },
+  "/en/confinement-care-advice/dos-and-donts": {
+    "title": "Postpartum Foods — What to Eat & Avoid",
+    "sidebar": true
+  },
+  "/en/confinement-care-advice": {
+    "title": "Confinement Care Tips",
+    "order": 2,
+    "sidebar": true
+  },
+  "/en/customer-service": {
+    "title": "Customer Service"
+  },
+  "/en/delivery-lookup": {
+    "title": "Delivery Lookup"
+  },
+  "/en/faq": {
+    "title": "Frequently Asked Questions"
+  },
+  "/en/frozen-postpartum-soups/chicken-essence": {
+    "title": "Frozen Slow-Simmered Chicken Essence",
+    "order": 3,
+    "sidebar": true
+  },
+  "/en/frozen-postpartum-soups/desserts": {
+    "title": "Frozen Dessert Series",
+    "order": 4,
+    "sidebar": true
+  },
+  "/en/frozen-postpartum-soups": {
+    "title": "Frozen Soups",
+    "order": 6,
+    "sidebar": true
+  },
+  "/en/frozen-postpartum-soups/sea-bass-soups": {
+    "title": "Frozen Sea Bass Soup",
+    "order": 5,
+    "sidebar": true
+  },
+  "/en/frozen-postpartum-soups/spring-4": {
+    "title": "Four Seasons Soup · \"Spring Equinox\" Frozen Soup Collection",
+    "order": 7,
+    "sidebar": true
+  },
+  "/en/frozen-postpartum-soups/stewed-soups": {
+    "title": "Frozen Postpartum Stewed Tonic Soups",
+    "order": 2,
+    "sidebar": true
+  },
+  "/en/frozen-postpartum-soups/taiwanese-soups": {
+    "title": "Frozen Taiwanese Postpartum Soups",
+    "order": 1,
+    "sidebar": true
+  },
+  "/en/frozen-postpartum-soups/tiers": {
+    "title": "Frozen Postpartum Soup Sets",
+    "order": 6,
+    "sidebar": true
+  },
+  "/en/gallery/dish": {
+    "title": "Dish Photo Gallery"
+  },
+  "/en/gallery": {
+    "title": "Gallery"
+  },
   "/en": {
     "title": "Home"
+  },
+  "/en/miscarriage-healing-advice": {
+    "title": "Miscarriage Recovery Advice",
+    "order": 4,
+    "sidebar": true
+  },
+  "/en/miscarriage-healing-meals/biweekly": {
+    "title": "Biweekly Recovery Meals (14 Days)",
+    "order": 2,
+    "sidebar": true
+  },
+  "/en/miscarriage-healing-meals/deluxe": {
+    "title": "Deluxe Recovery Meals (30 Days)",
+    "order": 1,
+    "sidebar": true
+  },
+  "/en/miscarriage-healing-meals": {
+    "title": "Miscarriage Healing Meals",
+    "order": 3,
+    "sidebar": true
+  },
+  "/en/news/ctitv": {
+    "title": "CTi TV / ZhongWang News",
+    "order": 2,
+    "sidebar": true
+  },
+  "/en/news/ettvamerica": {
+    "title": "ETTV News",
+    "order": 3,
+    "sidebar": true
+  },
+  "/en/news": {
+    "title": "Media Coverage",
+    "order": 8,
+    "sidebar": true
+  },
+  "/en/news/la-times": {
+    "title": "LA Times — Los Angeles Times",
+    "order": 1,
+    "sidebar": true
+  },
+  "/en/plans/3tier": {
+    "title": "Three-Tier Plans"
+  },
+  "/en/plans": {
+    "title": "Plans"
+  },
+  "/en/post-surgery-meals": {
+    "title": "Post-Surgery Meals",
+    "order": 5,
+    "sidebar": true
+  },
+  "/en/postpartum-meals/classic-postpartum-meals": {
+    "title": "Classic Postpartum Meals",
+    "order": 2,
+    "sidebar": true
+  },
+  "/en/postpartum-meals/daddy-meals": {
+    "title": "Daddy Meals",
+    "order": 8,
+    "sidebar": true
+  },
+  "/en/postpartum-meals/easy-postpartum-meals": {
+    "title": "Easy Postpartum Meals",
+    "order": 5,
+    "sidebar": true
+  },
+  "/en/postpartum-meals/frozen-postpartum-meals": {
+    "title": "Frozen Postpartum Meals",
+    "order": 6,
+    "sidebar": true
+  },
+  "/en/postpartum-meals/healthy-meals": {
+    "title": "Healthy Meals",
+    "description": "Healthy Meals | A reason to eat well every day",
+    "order": 9,
+    "sidebar": true
+  },
+  "/en/postpartum-meals/herbal-postpartum-meals": {
+    "title": "Herbal Postpartum Meals",
+    "order": 1,
+    "sidebar": true
+  },
+  "/en/postpartum-meals": {
+    "title": "Postpartum Meals",
+    "description": "Jingmommy Postpartum Meals — 5 plan options to meet every mom's needs!",
+    "order": 1,
+    "sidebar": true
+  },
+  "/en/postpartum-meals/low-carb-postpartum-meals": {
+    "title": "Low-Carb Postpartum Meals",
+    "order": 4,
+    "sidebar": true
+  },
+  "/en/postpartum-meals/recovery-plus-meals": {
+    "title": "Recovery Plus Meals",
+    "order": 7,
+    "sidebar": true
+  },
+  "/en/postpartum-meals/vita-postpartum-meals": {
+    "title": "Vita Postpartum Meals",
+    "order": 3,
+    "sidebar": true
+  },
+  "/en/postpartum-products/belly-wrap": {
+    "title": "Postpartum Belly Wrap",
+    "order": 6,
+    "sidebar": true
+  },
+  "/en/postpartum-products/chicken-essence": {
+    "title": "Slow-Simmered Chicken Essence",
+    "order": 2,
+    "sidebar": true
+  },
+  "/en/postpartum-products/du-zhong-capsule": {
+    "title": "Back Relief Supplement (Du Zhong Capsules)",
+    "order": 5,
+    "sidebar": true
+  },
+  "/en/postpartum-products/first-month-joy-gift-box": {
+    "title": "Full Moon Rice Gift Box",
+    "order": 3,
+    "sidebar": true
+  },
+  "/en/postpartum-products/herbal-drink-pack": {
+    "title": "Postpartum Herbal Drink Pack",
+    "order": 1,
+    "sidebar": true
+  },
+  "/en/postpartum-products": {
+    "title": "Postpartum Products",
+    "order": 7,
+    "sidebar": true
+  },
+  "/en/postpartum-products/sheng-hua-tang": {
+    "title": "Sheng Hua Tang (Postpartum Herbal Tonic)",
+    "order": 4,
+    "sidebar": true
+  },
+  "/en/sample": {
+    "title": "Tasting Experience",
+    "order": 0,
+    "sidebar": true
+  },
+  "/en/sample/local-delivery": {
+    "title": "Tasting Experience - Home Delivery",
+    "order": 2,
+    "sidebar": true
+  },
+  "/en/sample/out-of-state-shipping": {
+    "title": "Tasting Experience - Out-of-State Frozen Shipment",
+    "order": 3,
+    "sidebar": true
+  },
+  "/en/sample/tasting-party": {
+    "title": "Postpartum Meal Tasting Party",
+    "order": 1,
+    "sidebar": true
+  },
+  "/en/sitemap": {
+    "sitemap": false
+  },
+  "/en/sitemap.xml": {
+    "sitemap": false
   },
   "/en/term-of-service": {
     "title": "Terms of Service"
@@ -78,6 +345,9 @@
   },
   "/zh-tw/customer-service": {
     "title": "線上客服"
+  },
+  "/zh-tw/delivery-lookup": {
+    "title": "送餐範圍查詢"
   },
   "/zh-tw/faq": {
     "title": "常見問題"
@@ -288,6 +558,12 @@
     "title": "月子餐試吃派對",
     "order": 1,
     "sidebar": true
+  },
+  "/zh-tw/sitemap": {
+    "sitemap": false
+  },
+  "/zh-tw/sitemap.xml": {
+    "sitemap": false
   },
   "/zh-tw/term-of-service": {
     "title": "服務條款"

@@ -1,9 +1,21 @@
 ---
-const { id = 'tasting-party-reserve', baseUrl = 'https://order.jingmommy.com/?route=form/form/tasting_party' } = Astro.props;
+const { 
+  id = 'tasting-party-reserve',
+  baseUrl = 'https://order.jingmommy.com/?route=form/form/tasting_party',
+  locale = Astro.currentLocale,
+  // Bilingual/Multilingual text
+  text = {
+    full: { 'zh-tw': '已滿｜視候補狀況加開場次', en: 'Full | More slots may open if backup seats' },
+    closed: { 'zh-tw': '圓滿結束', en: 'Ended' },
+    waiting: { 'zh-tw': '報名候補', en: 'Join Waitlist' },
+    open: { 'zh-tw': '開放報名', en: 'Open for Signup' }
+  }
+} = Astro.props;
+
 // TODO: convert this vanilla JavaScript to a real Astro component
 ---
 
-<script define:vars={{ tableId: id, baseUrl }}>
+<script define:vars={{ tableId: id, baseUrl, locale, text }}>
 document.addEventListener('DOMContentLoaded', function() {
   // 活動資料
   var events = [
@@ -17,7 +29,14 @@ document.addEventListener('DOMContentLoaded', function() {
     { date: '2026-08-29', isFull: false },
     { date: '2026-10-10', isFull: false },
     { date: '2026-12-05', isFull: false },
-  ];
+  ]
+
+  function t(key) {
+    if (typeof text[key] === 'object') {
+      return text[key][locale] || text[key]['zh-tw'] || ''
+    }
+    return text[key] || ''
+  }
 
   // Los Angeles 時區
   function getTodayInLA() {
@@ -106,23 +125,22 @@ document.addEventListener('DOMContentLoaded', function() {
       var tdDate = document.createElement('td')
       tdDate.style.fontWeight = 'bold'
       if (row.isFull && !row.isPast) {
-        tdDate.innerHTML = '<div>' + toReadableDate(row.date) + '</div><div class="text-pink-700">(已滿｜視候補狀況加開場次)</div>'
+        tdDate.innerHTML = '<div>' + toReadableDate(row.date) + '</div><div class="text-pink-700">(' + t('full') + ')</div>'
       } else {
         tdDate.textContent = toReadableDate(row.date)
       }
 
       // 狀態欄
       var tdStatus = document.createElement('td')
-
       if (row.isPast) {
-        tdStatus.textContent = '圓滿結束'
+        tdStatus.textContent = t('closed')
       } else if (row.isFull || isInDays(row.date, 7)) {
         var link = document.createElement('a')
         link.href = buildUrl(baseUrl, {
           date: row.date
         })
         link.target = '_blank'
-        link.textContent = '報名候補'
+        link.textContent = t('waiting')
         tdStatus.appendChild(link)
       } else if (!row.isFull) {
         var link = document.createElement('a')
@@ -130,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
           date: row.date
         })
         link.target = '_blank'
-        link.textContent = '開放報名'
+        link.textContent = t('open')
         tdStatus.appendChild(link)
       }
 

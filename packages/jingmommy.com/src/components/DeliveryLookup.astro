@@ -1,0 +1,114 @@
+---
+import PageLayout from '@/layouts/Page.astro'
+import { Alert, AlertDescription } from '@/components/starwind/alert'
+import type { DeliveryLookupI18n } from '@/i18n/delivery-lookup.ts'
+
+interface Props {
+  t: DeliveryLookupI18n,
+  color?: string
+}
+
+const { t, color = 'orange' } = Astro.props
+const { messages } = t
+---
+
+<PageLayout title={t.title} description={t.description} color={color}>
+  <Alert variant="warning" class="mx-auto text-center max-w-160">
+    <AlertDescription>
+      {t.intro}
+    </AlertDescription>
+  </Alert>
+
+  <div class="flex justify-center pt-4">
+    <div class="w-full max-w-md flex flex-col gap-4">
+      <div
+        id="zipResult"
+        class="p-4 rounded-lg bg-blue-50 text-md font-bold hidden"
+      >
+        <div class="text-gray-800"></div>
+      </div>
+
+      <label for="zipCode" class="text-md font-medium text-gray-800">
+        {t.label}
+      </label>
+      <input
+        id="zipCode"
+        name="zipCode"
+        type="text"
+        pattern="\d{5}"
+        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder={t.placeholder}
+        autocomplete="postal-code"
+        maxlength="5"
+      />
+      <button
+        id="checkZipBtn"
+        type="button"
+        class="cursor-pointer w-full bg-blue-700 border border-blue-800 hover:bg-blue-900 text-white font-semibold py-2 px-4 rounded transition-colors"
+      >
+        {t.button}
+      </button>
+    </div>
+  </div>
+
+  <script is:inline define:vars={{ messages }}>
+    function formatZip(str) {
+      return str.trim().replace(/[\uFF10-\uFF19]/g, function(ch) {
+        return String.fromCharCode(ch.charCodeAt(0) - 0xFF10 + 0x30)
+      })
+    }
+    const zipInput = document.getElementById('zipCode')
+    const resultDiv = document.getElementById('zipResult')
+    const resultContentDiv = document.querySelector('#zipResult > div')
+    const lookupBtn = document.getElementById('checkZipBtn')
+
+    function renderMsg(msgObj) {
+      const html = msgObj.lines.map(line => `<div>${line}</div>`).join('')
+      resultContentDiv.innerHTML = html
+      resultContentDiv.className = msgObj.class || messages.default.class
+      if (msgObj === messages.default) {
+        resultDiv.classList.add('hidden')
+      } else {
+        resultDiv.classList.remove('hidden')
+        resultDiv.focus({ preventScroll: false })
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
+    }
+
+    function handleLookup() {
+      const zip = formatZip(zipInput.value)
+      if (!/^\d{5}$/.test(zip)) {
+        renderMsg(messages.zipError)
+        return
+      }
+      if (zip === '92880') {
+        renderMsg(messages.eastvale)
+        return
+      }
+      renderMsg(messages.loading)
+      fetch('https://order.jingmommy.com/-/api/delivery_zip', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ zip_code: zip })
+      })
+        .then(r => { if (!r.ok) throw new Error('Network error'); return r.json() })
+        .then(data => {
+          let code = null
+          if (Array.isArray(data.data)) {
+            const row = data.data.find(r => r.zip_code === zip)
+            if (row && typeof row.delivery_code !== 'undefined') code = row.delivery_code
+          }
+          const msgMap = { 1: messages.everyDay, 2: messages.everyOtherDay, 3: messages.frozen }
+          renderMsg(msgMap[code] ?? messages.contact)
+        })
+        .catch(e => { renderMsg(messages.systemError); console.error(e) })
+    }
+
+    if (zipInput && resultDiv && lookupBtn) {
+      zipInput.addEventListener('input', () => { zipInput.value = formatZip(zipInput.value) })
+      zipInput.addEventListener('keydown', e => { if (e.key === 'Enter') handleLookup() })
+      lookupBtn.addEventListener('click', handleLookup)
+      renderMsg(messages.default)
+    }
+  </script>
+</PageLayout>

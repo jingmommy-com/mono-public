@@ -9,7 +9,7 @@ import {
 } from "@/components/starwind/breadcrumb"
 
 const { title, lang = Astro.currentLocale } = Astro.props
-import routeMap from '../route-map.json'
+import routeMap from '@/route-map.json'
 
 const pathSep = '/'
 let cleanUrl = Astro.request.url ? new URL(Astro.request.url).pathname.replace(/\/+$/, '') || '/' : '/'

@@ -57,6 +57,19 @@ Base.astro          ← html shell, imports global.css, sets font
 
 If breadcrumbs show wrong titles, regenerate by restarting the dev server or triggering a page file save.
 
+#### Page-level route-map metadata
+
+Pages declare their own route-map metadata via top-level variable declarations in the page file's frontmatter (`.astro`) or module scope (`.ts`). These are statically parsed by `scripts/index.js` and written into `route-map.json`.
+
+**Do NOT remove these variables even if they appear unused** — they are not used at runtime, but are read by the build script.
+
+Examples:
+```js
+const sitemap = false   // exclude this page from sitemap pages
+const sidebar = true    // show this page in the sidebar nav
+const order = 3         // sort order within its sidebar section
+```
+
 ### Site Config
 
 Global site metadata (title, description, URL, support phone/email) lives in `src/client.config.ts`. Import it as:

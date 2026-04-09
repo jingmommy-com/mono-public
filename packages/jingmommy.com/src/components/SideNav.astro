@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components'
-import routeMap from '../route-map.json'
-import { locales } from '../client.config.ts'
+import routeMap from '@/route-map.json'
+import { locales } from '@/client.config.ts'
 
 interface Props {
   currentPath: string
@@ -23,7 +23,7 @@ type RouteEntry = {
   sidebar?: boolean
   order?: number
 }
-const allRoutes = Object.entries(routeMap as Record<string, RouteEntry>)
+const allRoutes = Object.entries(routeMap as unknown as Record<string, RouteEntry>)
 
 // Infer locale; fall back to default so sidebar always has content even on non-localized pages
 const inferredLocale = pathSegments[0] ?? ''
@@ -73,13 +73,30 @@ const sections: NavSection[] = topLevel
 const isActive = (href: string) =>
   normalizedPath === href || normalizedPath === href + '/'
 
+const baseClasses = [
+  'hidden',
+  'lg:flex',
+  'flex-col',
+  'fixed',
+  'left-0',
+  'z-40',
+  'w-52',
+  'bg-white/95',
+  'backdrop-blur-sm',
+  'shadow-lg',
+  'border-r',
+  'border-gray-200',
+  'overflow-y-auto'
+]
+const baseClass = baseClasses.join(' ')
+
 // Color classes (safelisted shades)
 const activeClass = `text-${color}-600 bg-${color}-50 border-${color}-500`
 ---
 
 <aside
   id="side-nav"
-  class="hidden lg:flex flex-col fixed left-0 top-24 z-40 w-52 h-[calc(100vh-6rem)] bg-white/95 backdrop-blur-sm shadow-lg border-r border-gray-200 overflow-y-auto"
+  class={baseClass}
 >
   <nav class="py-2 flex-1">
     {sections.map((section, i) => {
@@ -146,6 +163,23 @@ const activeClass = `text-${color}-600 bg-${color}-50 border-${color}-500`
 </aside>
 
 <script>
+  // Dynamically position the side nav below the header
+  function syncSideNav() {
+    const header = document.querySelector<HTMLElement>('header')
+    const nav = document.getElementById('side-nav')
+    if (!header || !nav) return
+    const h = header.offsetHeight
+    nav.style.top = `${h}px`
+    nav.style.height = `calc(100vh - ${h}px)`
+  }
+
+  syncSideNav()
+
+  // Re-sync on resize (header may wrap to more/fewer lines)
+  const ro = new ResizeObserver(syncSideNav)
+  const header = document.querySelector('header')
+  if (header) ro.observe(header)
+
   document.querySelectorAll<HTMLButtonElement>('[data-toggle]').forEach(btn => {
     const idx = btn.dataset.toggle!
     const children = document.querySelector<HTMLElement>(`[data-children="${idx}"]`)

@@ -30,12 +30,31 @@ function walkSync(dir, filelist = []) {
 }
 
 function findVariableInJavascriptContent(content, varName) {
+  // This regex matches:
+  // - string assignment (const foo = 'bar' or "bar")
+  // - number assignment (const foo = 42)
+  // - boolean assignment (const foo = true/false)
+  // It also allows for whitespace and optional semicolon.
   const regex = new RegExp(
-    `(\\s)+(const|let|var)\\s+${varName}\\s*=\\s*(['"])(.*?)\\3`,
+    // 1: declaration, 2: varName, 3: assign, 4: quote (optional), 5: value
+    String.raw`(?:^|\s)(?:const|let|var)\s+${varName}\s*=\s*(?:(['"])(.*?)\1|([0-9]+(?:\.[0-9]+)?)|(\btrue\b|\bfalse\b))`,
     'm'
   )
   const matches = content.match(regex)
-  if (matches) return matches[4]
+  if (!matches) return undefined
+  // If string assignment (groups 2 and 1):
+  if (matches[2] !== undefined) {
+    return matches[2].trim()
+  }
+  // If number assignment (group 3):
+  if (matches[3] !== undefined) {
+    return Number(matches[3])
+  }
+  // If boolean assignment (group 4):
+  if (matches[4] !== undefined) {
+    return matches[4] === 'true'
+  }
+  return undefined
 }
 
 const fileId = 'route-map'
@@ -124,6 +143,7 @@ async function generateRouteMap(log, logError) {
     'description',
     'order',
     'sidebar',
+    'sitemap',
   ]
   const result = {}
   for (const file of files) {

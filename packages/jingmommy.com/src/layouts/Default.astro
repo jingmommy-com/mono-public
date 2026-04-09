@@ -1,14 +1,14 @@
 ---
 import Layout from "./Base.astro"
-import Header from '../components/Header.astro'
+import Header from '@/components/Header.astro'
 
-const { color = 'orange' } = Astro.props
+const { color = 'orange', hasSidebar = false } = Astro.props
 const bgColorClass = `bg-${color}-50/50`
 ---
 
 <Layout>
   <Header color={color} />
-  <main class={`flex place-items-center place-content-center ${bgColorClass}`}>
+  <main class={`flex place-items-center place-content-center ${bgColorClass}${hasSidebar ? ' lg:pl-52' : ''}`}>
     <div class="flex flex-col bg-white w-5xl max-w-full shadow">
       <slot></slot>
     </div>

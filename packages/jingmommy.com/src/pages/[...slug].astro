@@ -1,6 +1,6 @@
 ---
-import { locales } from '../client.config.ts'
-import routeMap from '../route-map.json'
+import { locales } from '@/client.config.ts'
+import routeMap from '@/route-map.json'
 
 const routes = new Set(Object.keys(routeMap))
 
@@ -19,7 +19,7 @@ export function getStaticPaths() {
 <script is:inline define:vars={{ routes: [...routes], locales }}>
   // Fallback for direct URL access (bookmarks, shared links).
   const slug = location.pathname.slice(1)
-  const shared = ['404', 'delivery-lookup']
+  const shared = ['404']
   if (shared.includes(slug)) {
     return
   }

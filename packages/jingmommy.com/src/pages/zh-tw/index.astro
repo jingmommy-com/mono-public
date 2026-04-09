@@ -1,9 +1,9 @@
 ---
-import Layout from "../../layouts/Index.astro"
-import Slides from "../../components/Slides.astro"
+import Layout from "@/layouts/Index.astro"
+import Slides from "@/components/Slides.astro"
 import { Icon } from 'astro-icon/components'
 
-import routeMap from '../../route-map.json'
+import routeMap from '@/route-map.json'
 
 const title = '首頁'
 // Slides images array as a variable.
@@ -77,8 +77,7 @@ const banners: Banner[] = [
     img: "https://file.jingmommy.com/img/dish.v2014-300x300/soup_chicken_abalone.gif",
   },
   {
-    href: `/delivery-lookup`,
-    title: "送餐範圍查詢",
+    href: `/${locale}/delivery-lookup`,
     icon: "mdi:magnify",
     rel: "noopener",
   },
@@ -94,7 +93,8 @@ const banners: Banner[] = [
   if (row.href && Object.hasOwn(routeMap, row.href)) {
     const o = routeMap[row.href as keyof typeof routeMap]
     if (!Object.hasOwn(row, 'title')) {
-      row.title = o?.title?.trim()
+      // @ts-ignore
+      row.title = o?.title
     }
     if (!Object.hasOwn(row, 'alt')) {
       // @ts-ignore

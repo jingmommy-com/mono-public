@@ -1,0 +1,54 @@
+---
+layout: ../../../layouts/MarkdownPage.astro
+title: Tasting Experience - Home Delivery
+color: pink
+order: 2
+sidebar: true
+---
+
+import Image from '@/components/Image.astro'
+import PageButtons from '@/components/PageButtons.astro'
+import Badge from '@/components/starwind/badge'
+
+import { Alert, AlertDescription } from "@/components/starwind/alert"
+
+<Alert variant="warning" class="text-center">
+  <AlertDescription>
+    Greater Los Angeles area only — delivery zone restrictions apply.
+  </AlertDescription>
+</Alert>
+
+---
+
+### 🌸 New Mom Exclusive Tasting — Experience It First, Choose with Confidence
+
+Dear mama, every day after delivery is full of challenges. Are you wondering whether postpartum meals will suit your taste and nutritional needs? We've prepared a **one-day premium postpartum meal** delivered straight to your door, so you can experience it firsthand and ensure every meal meets your needs before committing.
+
+---
+
+#### Tasting Special Price: <Badge variant="warning">$50</Badge> (Regular Price ~~$110~~)
+
+- <b>Authentic Experience:</b> Our tasting meals are identical to what you'll receive during your actual postpartum meal service — no special adjustments — so you can genuinely taste and evaluate every dish.
+- <b>Professional Presentation:</b> All meals are packaged and presented the same way as regular deliveries, giving you a preview of our professional and attentive service quality.
+- <b>No Second-Guessing:</b> Taste it yourself to confirm the nutrition and flavors meet your needs, helping you make a confident decision on the right postpartum meal plan for you.
+
+<Image
+  src="https://file.jingmommy.com/ff/Sample_Menu_1x.p1.png"
+  alt="Sample menu image"
+  type="a"
+/>
+
+- <b>Quick & Convenient:</b> Order online anytime, anywhere in just a few clicks.
+- <b>No Long Wait:</b> Once your order is placed, our customer service team will confirm your preferred date and prepare your delivery right to your door.
+
+---
+
+<PageButtons
+  data={[
+    {
+      title: 'Order Now: Tasting Meal',
+      icon: 'mdi:cart',
+      url: '//order.jingmommy.com/sample-meals/sample-meal.html'
+    },
+  ]}
+/>

@@ -1,0 +1,171 @@
+---
+layout: ../../../layouts/MarkdownPage.astro
+title: Postpartum Meals
+color: rose
+description: Jingmommy Postpartum Meals — 5 plan options to meet every mom's needs!
+order: 1
+sidebar: true
+---
+
+import { site } from '@/client.config.ts'
+import CategoryButtons from '@/components/CategoryButtons.astro'
+import PageButtons from '@/components/PageButtons.astro'
+import LookupZipButton from '@/components/LookupZipButton.astro'
+import ShapeLetter from '@/components/ShapeLetter.astro'
+
+Explore our postpartum meal plans and start nourishing yourself today!
+
+<CategoryButtons
+  color={frontmatter.color}
+  list={[
+    {
+      href: '/postpartum-meals/herbal-postpartum-meals',
+      title: 'Herbal Postpartum Meals',
+      desc: 'For moms who want full-body restoration',
+      img: 'https://file.jingmommy.com/img/dish.v2014-300x300/soup_chicken_sesame_date.gif'
+    },
+    {
+      href: '/postpartum-meals/classic-postpartum-meals',
+      title: 'Classic Postpartum Meals',
+      desc: 'For comprehensive postpartum recovery',
+      img: 'https://file.jingmommy.com/img/dish.v2014-300x300/soup_chicken_abalone.gif'
+    },
+    {
+      href: '/postpartum-meals/vita-postpartum-meals',
+      title: 'Vita Postpartum Meals',
+      desc: ['For busy new moms', 'Easy to enjoy without waste!'],
+      img: 'https://file.jingmommy.com/img/dish.v2014-300x300/soup_chicken_ginseng_date.gif'
+    },
+    {
+      href: '/postpartum-meals/low-carb-postpartum-meals',
+      title: 'Low-Carb Postpartum Meals',
+      desc: ['Recover postpartum without gaining weight', 'Feel light and get back to yourself!'],
+      img: 'https://file.jingmommy.com/img/dish.v2014-300x300/soup_kidney.gif'
+    },
+    {
+      href: '/postpartum-meals/easy-postpartum-meals',
+      title: 'Easy Postpartum Meals',
+      desc: ['Flexible scheduling — no need for daily delivery', 'Nourish with ease!'],
+      img: 'https://file.jingmommy.com/img/dish.v2014-300x300/soup_chicken_abalone.gif'
+    },
+    {
+      href: '/postpartum-meals/frozen-postpartum-meals',
+      title: 'Frozen Postpartum Meals',
+      desc: 'Ideal for moms outside Los Angeles',
+      img: 'https://file.jingmommy.com/img/dish.v2014-300x300/soup_fish_herbal.gif'
+    }
+  ]}
+/>
+
+---
+
+## Give Yourself the Best Care During Confinement
+
+The postpartum period is both joyful and full of challenges. Your body needs adequate nutrition to recover, and more time to adjust to a new rhythm of life. When your baby arrives, your body is going through a profound transformation. During this time, food is not just about filling your stomach — it directly affects your recovery speed, energy levels, and even how smoothly breastfeeding goes.
+
+### 1. Save Time and Effort — Focus on Rest and Your Baby
+
+With all the postpartum body changes and newborn care, every minute is precious. Our postpartum meals require no prep or planning — simply heat and enjoy. Let us take care of all three meals so you can focus on healing and bonding with your baby.
+
+### 2. Balanced Nutrition to Support Rapid Recovery
+
+The postpartum confinement period is your body's golden window for repair. Every cell is regenerating. High-quality protein, collagen, and warming tonic ingredients are key to recovery. Our meals are carefully designed for each stage of postpartum recovery — from detox, to tissue repair, to deep nourishment — without excessive seasoning or over-supplementing, so you recover steadily and comfortably.
+
+### 3. Delicious and Suited to Modern Moms' Tastes
+
+Our meals are light, not greasy, blending Eastern and Western nutritional philosophy and cooking techniques. Diverse cooking methods — steaming, braising, slow cooking, roasting — mean nourishing food also tastes wonderful. Every dish is thoughtfully crafted to preserve the natural nutrition and flavor of fresh ingredients.
+
+Whether you choose the 30-day full-recovery Herbal or Classic Meals, the 15-day flexible Easy Meals, the budget-friendly Vita Meals, or the Low-Carb Meals for rapid body restoration — we have the right plan for you.
+
+---
+
+<PageButtons
+  data={[
+    {
+      title: '開始選購 / Start Shopping',
+      icon: 'mdi:cart',
+      url: '//order.jingmommy.com/金品月子餐',
+    },
+    {
+      title: '月子餐試吃 / Sample Meal',
+      icon: 'mdi:calendar-check',
+      url: '//order.jingmommy.com/sample-meals/',
+    },
+    [
+      {
+        title: '下載訂購單',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/金品月子膳食訂購單.pdf'
+      },
+      {
+        title: 'Download Order Form',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/Main_Order_Form.pdf'
+      },
+      {
+        title: '餐點對照表',
+        icon: 'mdi:chart-bar',
+        url: '//file.jingmommy.com/f/餐點對照表.pdf'
+      },
+      {
+        title: 'Meal Comparison Chart',
+        icon: 'mdi:chart-bar',
+        url: '//file.jingmommy.com/f/Meal_Comparison_Chart.pdf'
+      },
+      {
+        title: '菜單',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/菜單總表.pdf'
+      },
+      {
+        title: 'Full Menu',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/Menu.pdf'
+      }
+    ]
+  ]}
+/>
+
+<LookupZipButton class="mt-4" />
+
+---
+
+| Plan | Best For | Key Features |
+|------|----------|-------------|
+| **Herbal Meals** | Moms who value traditional healing and full-body restoration | Combines herbal medicine and TCM tonic cooking to replenish blood, restore energy, and boost immunity. Comprehensive nourishment for rapid postpartum confidence and health. |
+| **Classic Meals** | Moms who want effortless confinement care | A complete postpartum meal set from breakfast through dinner plus nourishing snacks — no planning needed. Enjoy balanced nutrition and full care every day so you can focus on recovery. |
+| **Vita Meals** | Moms who want lighter, simplified nutrition | Gentle, easy-to-digest meals ideal for moms with smaller appetites or transitioning from pregnancy eating. Simple yet nutritious — also great for budget-conscious families. |
+| **Low-Carb Meals** | Moms managing sugar and carb intake, especially those with a history of gestational diabetes | Helps stabilize blood sugar, reduce postpartum bloating, and support a lean physique. Sugar-free desserts make this the ideal choice for those who want to feel light and healthy. |
+| **Easy Meals** | Moms with some family support or who don't need daily postpartum meal delivery | A flexible, budget-friendly option that pairs well with home cooking, making confinement easier and more compatible with everyday life. |
+
+---
+
+<div class="flex items-center bg-white flex-wrap w-full">
+    <ShapeLetter letter="Why" />
+    <span class="text-3xl font-bold tracking-[2px] whitespace-nowrap">Confinement Matters</span>
+    <span class="text-sm font-normal text-amber-900 ml-2 tracking-[1px] whitespace-nowrap">Phased Nutritional Support: The Key to Postpartum Recovery</span>
+</div>
+
+Postpartum dietary support should follow a "phased" approach. Without the right method, indiscriminate over-supplementing can lead to excess weight gain and make it hard to regain your figure — it can also interfere with uterine contraction and the clearing of lochia. During this phase, "appropriate" is the guiding principle. Through phased nourishment, your body's physiological functions gradually restore. Follow the principle of clearing lochia first, then replenishing qi and blood — proper nourishment avoids weight gain and helps you make the most of this golden opportunity to transform your constitution.
+
+| Week | Focus |
+|------|-------|
+| Week 1 | Replenish blood, expel lochia, restore uterine function |
+| Week 2 | Promote metabolism, restore stamina, prevent postpartum back pain |
+| Weeks 3–4 | Deep replenishment of qi and blood, strengthen constitution, anti-aging, boost immunity |
+
+### Week 1: Gentle Replenishment
+
+<span class="text-amber-900">The dietary focus in Week 1 is on clearing lochia and strengthening kidney detoxification function</span>, with pork liver as the primary blood-building food.
+
+Because the postpartum constitution is one of "deficiency with stagnation," heavy supplementation is not appropriate. Instead, Week 1 focuses on promoting perspiration and helping the body eliminate excess fluids, enhancing metabolism. Take advantage of the Week 1 "postpartum diuretic period" to make the most of your golden window for postpartum weight loss!
+
+### Week 2: Warming Nourishment
+
+<span class="text-amber-900">The dietary focus in Week 2 is on preventing back and joint pain, and continuing to support uterine contraction and lochia clearance</span>, with sesame oil kidney as the primary dish, supplemented by Du Zhong herbal tonic. This uses bone- and sinew-strengthening foods to restore the joints and muscles loosened by pregnancy and childbirth.
+
+### Weeks 3 & 4: Deep Replenishment
+
+<span class="text-amber-900">By Weeks 3 and 4, most physiological functions have largely improved and lochia has mostly cleared</span> — this is the optimal time for deep nourishment. The dietary focus shifts to addressing qi deficiency, building stamina, anti-aging, and replenishing vital energy. This stage centers on delicious and nourishing sesame oil chicken — flavorful chicken with rich, warming broth that warms the body from within.
+
+**A complete 30-day phased postpartum recovery** is not just about supplementation — it is about **repairing damage, rebuilding strength, and strengthening your constitution**. The result: with each birth, you grow healthier and more radiant!

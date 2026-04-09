@@ -1,9 +1,17 @@
 ---
+import zhTw from '@/i18n/zh-tw/lookup-zip-button.ts'
+import en from '@/i18n/en/lookup-zip-button.ts'
+import { locales } from '@/client.config.ts'
+
+const i18nMap: Record<string, typeof zhTw> = { 'zh-tw': zhTw, en }
+const pathLocale = Astro.url.pathname.split('/').find((s: string) => locales.includes(s)) ?? locales[0]
+const i18n = i18nMap[pathLocale] ?? zhTw
+
 const {
   id = 'deliveryStatusDialog',
   class: className = '',
-  buttonText = '查詢送餐範圍 / Check Delivery Area',
-  closeText = '關閉',
+  buttonText = i18n.buttonText,
+  closeText = i18n.closeText,
   dialogClass = '',
   iframeUrl = '//order.jingmommy.com/?route=tool/zipcode_delivery_status'
 } = Astro.props
@@ -22,7 +30,7 @@ const dialogCloseId = `${dialogId}-close`
 
 <div
   id={dialogId}
-  class={`fixed inset-0 z-[1050] flex items-center justify-center bg-black/70 bg-opacity-70 transition-opacity duration-300 ${dialogClass}`}
+  class={`fixed inset-0 z-1050 flex items-center justify-center bg-black/70 bg-opacity-70 transition-opacity duration-300 ${dialogClass}`}
   style="display: none; opacity: 0;"
 >
   <div class="relative flex flex-col justify-center w-full max-w-2xl mx-2">

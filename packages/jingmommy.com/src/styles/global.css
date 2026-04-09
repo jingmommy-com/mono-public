@@ -1,4 +1,9 @@
 @import "tailwindcss";
+
+/* Push hash-link targets below the fixed header */
+[id] {
+  scroll-margin-top: var(--header-height, 5rem);
+}
 @plugin '@tailwindcss/typography';
 @import './starwind.css';
 

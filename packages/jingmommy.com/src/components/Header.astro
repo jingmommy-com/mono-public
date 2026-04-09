@@ -1,5 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components'
+import { locales } from '@/client.config.ts'
+import routeMap from '@/route-map.json'
 
 const {
   fixed = true, // default is fixed
@@ -11,17 +13,56 @@ const activeMobile = `text-${color}-500 bg-${color}-50`
 
 const currentPath = Astro.url.pathname
 
+// Language switcher
+const pathSegments = currentPath.split('/').filter(Boolean)
+const currentLocale = locales.includes(pathSegments[0]) ? pathSegments[0] : locales[0]
+
+const localeLabels: Record<string, string> = {
+  'zh-tw': '繁中',
+  'en': 'EN',
+}
+
+function switchUrl(targetLocale: string): string {
+  if (locales.includes(pathSegments[0])) {
+    const rest = pathSegments.slice(1)
+    return rest.length ? `/${targetLocale}/${rest.join('/')}` : `/${targetLocale}`
+  }
+  return currentPath // non-localized path, keep as-is
+}
+
+const otherLocales = locales.filter(l => l !== currentLocale)
+
 const navTabs = [
-  { href: "/zh-tw/about", label: "金品故事" },
-  { href: "/zh-tw/postpartum-meals", label: "月子膳食" },
-  { href: "/zh-tw/postpartum-meals/frozen-postpartum-meals", label: "冷凍月子餐" },
-  { href: "/zh-tw/miscarriage-healing-meals", label: "小產調養餐" },
-  { href: "/zh-tw/post-surgery-meals", label: "手術後餐" },
-  { href: "/zh-tw/postpartum-meals/healthy-meals", label: "健康餐" },
-  { href: "/zh-tw/postpartum-products/herbal-drink-pack", label: "月子藥膳包" },
-  { href: "/zh-tw/sample/tasting-party", label: "預約試吃" },
-  { href: "/delivery-lookup", label: "送餐範圍查詢" },
-]
+  { href: `/${currentLocale}/about` },
+  { href: `/${currentLocale}/postpartum-meals` },
+  { href: `/${currentLocale}/postpartum-meals/frozen-postpartum-meals` },
+  { href: `/${currentLocale}/miscarriage-healing-meals` },
+  { href: `/${currentLocale}/post-surgery-meals` },
+  { href: `/${currentLocale}/postpartum-meals/healthy-meals` },
+  { href: `/${currentLocale}/postpartum-products/herbal-drink-pack` },
+  { href: `/${currentLocale}/sample/` },
+  { href: `/${currentLocale}/delivery-lookup` },
+].map(row => {
+  if (Object.hasOwn(row, 'label')) {
+    return row as { href: string; label: string }
+  }
+  const { href } = row
+  const cleanHref = href.replace(/\/$/, '')
+  let label = ''
+  if (Object.hasOwn(routeMap, cleanHref)) {
+    // @ts-ignore
+    const meta = routeMap[cleanHref]
+    label = meta.shortName?.trim() || meta.title?.trim() || ''
+  }
+  if (!label) {
+    label = cleanHref.replace(/\/$/, '').split('/').filter(Boolean).pop() || ''
+    label = label
+      .replace(/-/g, ' ')
+      .replace(/\b\w/g, c => c.toUpperCase())
+      .trim()
+  }
+  return { ...row, label }
+})
 
 const matchesTab = (href: string) =>
   currentPath === href || currentPath === href + '/' || currentPath.startsWith(href + '/')
@@ -33,7 +74,7 @@ const activeHref = navTabs
 const isActive = (href: string) => href === activeHref
 
 // Compose class string for header
-const headerBaseClasses = [
+const baseClasses = [
   'bg-neutral-700',
   'w-full',
   'flex',
@@ -41,35 +82,57 @@ const headerBaseClasses = [
   'justify-between',
   'px-2',
 ]
-const headerFixedClasses = [
+const fixedClasses = [
   'fixed',
   'top-0',
   'left-0',
   'z-50'
 ]
 if (fixed) {
-  headerBaseClasses.unshift(...headerFixedClasses)
+  baseClasses.unshift(...fixedClasses)
 }
-const headerClass = headerBaseClasses.join(' ')
-const headerHeight = [
+const baseClass = baseClasses.join(' ')
+const heightClasses = [
   'h-16',
-  'sm:h-20',
-  'lg:h-24'
-].join(' ')
+  'sm:h-18',
+  'lg:h-20'
+]
+const heightClass = heightClasses.join(' ')
 ---
 
 {fixed && (
-  <div class={`w-full ${headerHeight} pointer-events-none invisible`}></div>
+  <div class={`w-full ${heightClass} pointer-events-none invisible`}></div>
 )}
-<header class={headerClass}>
+<header class={baseClass}>
   <div class="flex items-center justify-start shrink-0">
-    <a href="/" class={`flex items-center py-2 ${headerHeight}`}>
+    <a href="/" class={`flex items-center py-2 ${heightClass}`}>
       <img src="//file.jingmommy.com/img/logo-white-448x140.png" alt="Jing Mommy Logo" class="h-14" />
     </a>
+
+    <!-- Language Switcher -->
+    <div class="relative shrink-0 flex items-center px-1">
+      <details id="lang-switcher" class="group/lang">
+        <summary class="flex items-center gap-1 px-2 py-1.5 rounded cursor-pointer select-none list-none text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/10 transition-colors">
+          <Icon name="mdi:translate" size="1.1em" />
+          <span>{localeLabels[currentLocale]}</span>
+          <Icon name="mdi:chevron-down" size="1em" class="transition-transform group-open/lang:rotate-180" />
+        </summary>
+        <div class="absolute right-0 top-full mt-1 z-50 bg-white rounded shadow-lg py-1 min-w-[80px]">
+          {otherLocales.map(locale => (
+            <a
+              href={switchUrl(locale)}
+              class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors whitespace-nowrap"
+            >
+              {localeLabels[locale]}
+            </a>
+          ))}
+        </div>
+      </details>
+    </div>
   </div>
 
   <!-- Desktop Nav Tabs -->
-  <nav class="hidden lg:flex items-end self-end gap-1 overflow-x-auto scrollbar-none pb-0">
+  <nav class="hidden lg:flex lg:flex-wrap items-end self-end gap-1 justify-end pb-0">
     {navTabs.map(tab => (
       <a
         href={tab.href}
@@ -153,3 +216,11 @@ const headerHeight = [
     </script>
   </div>
 </header>
+
+<script>
+  // Close lang switcher when clicking outside
+  document.addEventListener('click', (e) => {
+    const el = document.getElementById('lang-switcher') as HTMLDetailsElement | null
+    if (el?.open && !el.contains(e.target as Node)) el.open = false
+  })
+</script>

@@ -1,0 +1,97 @@
+---
+layout: ../../../layouts/MarkdownPage.astro
+title: Frozen Dessert Series
+color: rose
+order: 4
+sidebar: true
+---
+
+import { Alert, AlertDescription } from "@/components/starwind/alert"
+
+<Alert variant="warning" class="text-center">
+  <AlertDescription>
+    Frozen soup series <strong>available for Southern California delivery only</strong>. Out-of-state shipping is not currently available.
+  </AlertDescription>
+</Alert>
+
+---
+
+Warm, guilt-free little pleasures for the soul
+
+Want something a little sweet without the burden? Jingmommy's Dessert Series insists on low sugar, no artificial flavoring, and no preservatives — using real, wholesome ingredients simmered into nourishing sweet soups that warm the stomach without being heavy. Whether it's an afternoon postpartum treat, a small gift for a visiting friend, or a moment of comfort during a hectic day, just heat one pack and enjoy — convenient and reassuring.
+
+#### Perfect Occasions
+
+- Postpartum afternoon snack
+- Gift for friends and family
+- Everyday warm-up treat
+- After-work comfort food
+
+---
+
+#### Sizes & Pricing <span style="font-weight:normal;font-size:0.95em;">(Flavors randomly assorted — perfect for those who love variety)</span>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Desserts 7 servings</td>
+      <td>
+        <div class="flex gap-1 items-center">
+          <span class="text-gray-400 line-through text-xs">$41.99</span>
+          <span class="text-red-600 font-bold">$34.99</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Desserts 14 servings</td>
+      <td>
+        <div class="flex gap-1 items-center">
+          <span class="text-gray-400 line-through text-xs">$83.99</span>
+          <span class="text-red-600 font-bold">$67.99</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Desserts 28 servings</td>
+      <td>
+        <div class="flex gap-1 items-center">
+          <span class="text-gray-400 line-through text-xs">$167.99</span>
+          <span class="text-red-600 font-bold">$129.99</span>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+#### 🚚 Delivery Options
+
+- Pickup
+- Driver delivery (area restrictions apply): $15/delivery within service area; free delivery on orders over $200
+
+---
+
+import PageButtons from '@/components/PageButtons.astro'
+
+<PageButtons
+  data={[
+    {
+      title: '開始選購 / Start Shopping',
+      icon: 'mdi:shopping',
+      url: '//order.jingmommy.com/zh/frozen-desserts',
+      target: '_blank'
+    },
+    {
+      title: '預約諮詢 / Book a Consultation',
+      icon: 'mdi:calendar-check',
+      url: '/customer-service/'
+    }
+  ]}
+/>

@@ -1,0 +1,99 @@
+---
+import Layout from "@/layouts/MarkdownPage.astro"
+
+import Image from '@/components/Image.astro'
+
+import dessert_peanuts from '@/assets/dish/dessert_peanuts.gif'
+import dessert_red_bean from '@/assets/dish/dessert_red_bean.gif'
+import dessert_red_bean_sweet_rice from '@/assets/dish/dessert_red_bean_sweet_rice.gif'
+import dessert_sweet_rice from '@/assets/dish/dessert_sweet_rice.gif'
+import dessert_tremella from '@/assets/dish/dessert_tremella.gif'
+import egg_corn from '@/assets/dish/egg_corn.gif'
+import herbal_drink_01 from '@/assets/dish/herbal_drink_01.gif'
+import herbal_drink_02 from '@/assets/dish/herbal_drink_02.gif'
+import herbal_drink_seng_hua_tang from '@/assets/dish/herbal_drink_seng_hua_tang.gif'
+import porridge_cabbage_mushroom from '@/assets/dish/porridge_cabbage_mushroom.gif'
+import porridge_corn_ham from '@/assets/dish/porridge_corn_ham.gif'
+import porridge_red_bean_oatmeal from '@/assets/dish/porridge_red_bean_oatmeal.gif'
+import rice_brown from '@/assets/dish/rice_brown.gif'
+import rice_salmon from '@/assets/dish/rice_salmon.gif'
+import rice_sesame_fried_rice from '@/assets/dish/rice_sesame_fried_rice.gif'
+import soup_beef_herb from '@/assets/dish/soup_beef_herb.gif'
+import soup_beef_mountain_yam from '@/assets/dish/soup_beef_mountain_yam.gif'
+import soup_beef_soy_bean from '@/assets/dish/soup_beef_soy_bean.gif'
+import soup_beef_tail_wine from '@/assets/dish/soup_beef_tail_wine.gif'
+import soup_chicken_abalone from '@/assets/dish/soup_chicken_abalone.gif'
+import soup_chicken_fugus_date from '@/assets/dish/soup_chicken_fugus_date.gif'
+import soup_chicken_ginseng_date from '@/assets/dish/soup_chicken_ginseng_date.gif'
+import soup_chicken_sesame_date from '@/assets/dish/soup_chicken_sesame_date.gif'
+import soup_chicken_sesame_herbal from '@/assets/dish/soup_chicken_sesame_herbal.gif'
+import soup_fish_date from '@/assets/dish/soup_fish_date.gif'
+import soup_fish_herbal from '@/assets/dish/soup_fish_herbal.gif'
+import soup_fish_veggie from '@/assets/dish/soup_fish_veggie.gif'
+import soup_kidney from '@/assets/dish/soup_kidney.gif'
+import soup_pork_4herbs from '@/assets/dish/soup_pork_4herbs.gif'
+import soup_pork_almond from '@/assets/dish/soup_pork_almond.gif'
+import soup_pork_feet_black_bean from '@/assets/dish/soup_pork_feet_black_bean.gif'
+import soup_pork_feet_peanuts from '@/assets/dish/soup_pork_feet_peanuts.gif'
+import soup_pork_fungus from '@/assets/dish/soup_pork_fungus.gif'
+import soup_pork_heart_herbal from '@/assets/dish/soup_pork_heart_herbal.gif'
+import soup_pork_herb from '@/assets/dish/soup_pork_herb.gif'
+import soup_pork_liver_spinach from '@/assets/dish/soup_pork_liver_spinach.gif'
+import soup_pork_papaya from '@/assets/dish/soup_pork_papaya.gif'
+import soup_shrimp_herb from '@/assets/dish/soup_shrimp_herb.gif'
+
+const title = 'Dish Photo Gallery'
+const color = 'rose'
+
+const dishes = [
+  { text: 'Peanut & Job\'s Tears Sweet Soup', src: dessert_peanuts, alt: 'dessert peanuts' },
+  { text: 'Red Bean Sweet Soup', src: dessert_red_bean, alt: 'dessert red bean' },
+  { text: 'Red Bean & Black Rice Porridge', src: dessert_red_bean_sweet_rice, alt: 'dessert red bean sweet rice' },
+  { text: 'Longan Glutinous Rice Porridge', src: dessert_sweet_rice, alt: 'dessert sweet rice' },
+  { text: 'Red Date & Snow Fungus Sweet Soup', src: dessert_tremella, alt: 'dessert tremella' },
+  { text: 'Corn Baked Egg', src: egg_corn, alt: 'egg corn' },
+  { text: 'Sweet Double Jujube Tea', src: herbal_drink_01, alt: 'herbal drink 01' },
+  { text: 'Nourishing Red Date & Longan Tea', src: herbal_drink_02, alt: 'herbal drink 02' },
+  { text: 'Sheng Hua Tang Herbal Decoction', src: herbal_drink_seng_hua_tang, alt: 'herbal drink seng hua tang' },
+  { text: 'Shiitake & Cabbage Chicken Porridge', src: porridge_cabbage_mushroom, alt: 'porridge cabbage mushroom' },
+  { text: 'Ham & Corn Chicken Porridge', src: porridge_corn_ham, alt: 'porridge corn ham' },
+  { text: 'Red Bean & Oatmeal Porridge', src: porridge_red_bean_oatmeal, alt: 'porridge red bean oatmeal' },
+  { text: 'Brown Rice', src: rice_brown, alt: 'rice brown' },
+  { text: 'Salmon Rice Bowl', src: rice_salmon, alt: 'rice salmon' },
+  { text: 'Sesame Oil Egg Fried Rice', src: rice_sesame_fried_rice, alt: 'rice sesame fried rice' },
+  { text: 'Herbal Beef Tendon Soup', src: soup_beef_herb, alt: 'soup beef herb' },
+  { text: 'Chinese Yam & Carrot Beef Soup', src: soup_beef_mountain_yam, alt: 'soup beef mountain yam' },
+  { text: 'Soybean & Carrot Beef Tendon Soup', src: soup_beef_soy_bean, alt: 'soup beef soy bean' },
+  { text: 'Red Wine Braised Oxtail', src: soup_beef_tail_wine, alt: 'soup beef tail wine' },
+  { text: 'Abalone & Chinese Yam Chicken Soup', src: soup_chicken_abalone, alt: 'soup chicken abalone' },
+  { text: 'Red Date & Wood Ear Chicken Soup', src: soup_chicken_fugus_date, alt: 'soup chicken fugus date' },
+  { text: 'Red Date & Bamboo Pith Chicken Soup', src: soup_chicken_ginseng_date, alt: 'soup chicken ginseng date' },
+  { text: 'Wolfberry Sesame Oil Chicken', src: soup_chicken_sesame_date, alt: 'soup chicken sesame date' },
+  { text: 'Herbal Sesame Oil Chicken', src: soup_chicken_sesame_herbal, alt: 'soup chicken sesame herbal' },
+  { text: 'Red Date & Wolfberry Sea Bass Soup', src: soup_fish_date, alt: 'soup fish date' },
+  { text: 'Dang Gui & Astragalus Sea Bass Soup', src: soup_fish_herbal, alt: 'soup fish herbal' },
+  { text: 'Red Amaranth & Wolfberry Sea Bass Soup', src: soup_fish_veggie, alt: 'soup fish veggie' },
+  { text: 'Du Zhong Sesame Oil Kidney', src: soup_kidney, alt: 'soup kidney' },
+  { text: 'Four Herbs Pork Rib Soup', src: soup_pork_4herbs, alt: 'soup pork 4herbs' },
+  { text: 'Sweet & Bitter Almond Pork Rib Soup', src: soup_pork_almond, alt: 'soup pork almond' },
+  { text: 'Black Bean & Red Date Braised Pork Knuckle', src: soup_pork_feet_black_bean, alt: 'soup pork feet black bean' },
+  { text: 'Black Date & Peanut Pork Knuckle Soup', src: soup_pork_feet_peanuts, alt: 'soup pork feet peanuts' },
+  { text: 'Wood Ear & Pork Rib Soup', src: soup_pork_fungus, alt: 'soup pork fungus' },
+  { text: 'Dang Gui & Codonopsis Pork Heart Soup', src: soup_pork_heart_herbal, alt: 'soup pork heart herbal' },
+  { text: 'Eight Treasure Pork Rib Soup', src: soup_pork_herb, alt: 'soup pork herb' },
+  { text: 'Spinach Pork Liver Soup', src: soup_pork_liver_spinach, alt: 'soup pork liver spinach' },
+  { text: 'Green Papaya & Pork Rib Soup', src: soup_pork_papaya, alt: 'soup pork papaya' },
+  { text: 'Dang Gui, Wolfberry & Sichuan Lovage Shrimp', src: soup_shrimp_herb, alt: 'soup shrimp herb' }
+]
+---
+
+<Layout title={title} color={color}>
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+    {dishes.map(({ text, src, alt }) => (
+      <div class="flex flex-col items-center gap-0.5">
+        <Image src={src} alt={alt} class="cursor-zoom-in" />
+        <span class="text-center">{text}</span>
+      </div>
+    ))}
+  </div>
+</Layout>

@@ -1,0 +1,97 @@
+---
+layout: ../../../layouts/MarkdownPage.astro
+title: Herbal Postpartum Meals
+color: rose
+order: 1
+sidebar: true
+---
+
+import PageButtons from '@/components/PageButtons.astro'
+import LookupZipButton from '@/components/LookupZipButton.astro'
+
+Jingmommy's [Postpartum Herbal Formula], developed by following traditional practices and carefully researching postpartum recovery, includes 30 days of herbal tonic soups. A new herbal prescription is rotated every two days (15 formulas total) to help moms replenish blood, tonify qi, eliminate dampness, dispel stagnation, and detoxify. From a TCM perspective, the formula progressively restores the body — starting with gentle replenishment, moving to warming nourishment, and culminating in deep replenishment to build a strong foundation before deeply nourishing qi and blood.
+
+There are three pillars of postpartum confinement: dietary nourishment, herbal medicine, and rest. Jingmommy's Herbal Postpartum Meals are crafted using a proprietary formula combined with premium herbal botanicals, helping you rapidly restore your health and regain your figure. Make the most of your confinement golden period and do it right!
+
+import Image from '@/components/Image.astro'
+import menuAfter11 from '@/assets/menu_after11.png'
+
+<Image
+  src={menuAfter11}
+  alt="menu image"
+  class="mx-auto max-w-128"
+  type="a"
+/>
+
+- **Breakfast**: Nourishing Porridge, Vitality Egg
+- **Lunch**: Lunch Soup, Main Dish, Wellness Rice, Warming Vegetables
+- **Afternoon Snack**: Nourishing Dessert
+- **Dinner**: Taiwanese Postpartum Soup, Tonic Stewed Soup, Main Dish, Wellness Rice, Warming Vegetables
+- **Evening Snack**: Nourishing Dessert
+- **Beverage**: Recovery Drink
+- **Herbal Medicine**: <span class="text-red-600">Jingmommy 30-Day Postpartum Herbal Formula</span>
+
+---
+
+### Jingmommy Recovery Focus by Week
+
+- **Week 1 (Gentle Replenishment):** Sheng Hua Tang<span class="text-red-600">*</span> and pork liver soup to help clear toxins accumulated during 10 months of pregnancy
+- **Week 2 (Warming Nourishment):** Sesame oil kidney to prevent postpartum back pain — begin replenishing blood and qi, building stamina, and improving fatigue
+- **Weeks 3 & 4 (Deep Replenishment):** Sesame oil chicken soup to restore stamina and replenish vital energy — the optimal time for deep qi and blood nourishment
+
+<span class="text-red-600">*</span> Sheng Hua Tang requires a separate add-on purchase
+
+---
+
+<p class={`text-center font-bold text-${frontmatter.color}-600`}>Jingmommy Herbal Postpartum Meals $2,890 (Los Angeles area, delivery area restrictions apply)</p>
+
+---
+
+<PageButtons
+  data={[
+    {
+      title: '開始選購 / Start Shopping',
+      icon: 'mdi:cart',
+      url: '//order.jingmommy.com/herbal-postpartum-meals'
+    },
+    {
+      title: '月子餐試吃 / Sample Meal',
+      icon: 'mdi:calendar-check',
+      url: '//order.jingmommy.com/sample-meals/'
+    },
+    [
+      {
+        title: '下載訂購單',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/金品月子膳食訂購單.pdf'
+      },
+      {
+        title: 'Download Order Form',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/Main_Order_Form.pdf'
+      },
+      {
+        title: '餐點對照表',
+        icon: 'mdi:chart-bar',
+        url: '//file.jingmommy.com/f/餐點對照表.pdf'
+      },
+      {
+        title: 'Meal Comparison Chart',
+        icon: 'mdi:chart-bar',
+        url: '//file.jingmommy.com/f/Meal_Comparison_Chart.pdf'
+      },
+      {
+        title: '菜單',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/菜單總表.pdf'
+      },
+      {
+        title: 'Full Menu',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/Menu.pdf'
+      }
+    ]
+  ]}
+/>
+
+<LookupZipButton class="mt-4" />

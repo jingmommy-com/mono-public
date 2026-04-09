@@ -1,6 +1,5 @@
-// first one is default
 export const locales = [
-  'zh-tw',
+  'zh-tw', // first one is default
   'en',
 ]
 export const site = {
@@ -13,11 +12,12 @@ export const site = {
   //
   image: "https://file.jingmommy.com/favicons/favicon-48x48.png",
   url: "https://jingmommy.com",
-  supportEmail: "order@jingmommy.com",
-  supportPhone: '(626) 217-7539',
+  email: "order@jingmommy.com",
+  phone: '(626) 217-7539',
+  companyName: 'Comtion Corp.',
 }
 // https://tailwindcss.com/docs/colors
-export const tailwindColors = [
+export const colors = [
   'red',
   'orange',
   'amber',

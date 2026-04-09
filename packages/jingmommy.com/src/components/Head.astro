@@ -1,5 +1,5 @@
 ---
-import { site as sharedSite } from "../client.config.ts"
+import { site as sharedSite } from "@/client.config.ts"
 const site = {
   ...sharedSite,
   ...Astro.props,
@@ -178,7 +178,7 @@ const site = {
   <meta name="yandex-tableau-widget" content="https://file.jingmommy.com/favicons/yandex-browser-manifest.json" />
 
   <!-- Support email for mailto links, useful for accessibility/crawlers -->
-  <meta name="reply-to" content={site.supportEmail} />
+  <meta name="reply-to" content={site.email} />
 
   <!-- site metas from old www. site, need discuss with Morris -->
   <!-- <meta name="google-site-verification" content="PBl7LzPy6_l_KC6kzVdwabBd3lNhLxSg7JkByFiBwhw">
