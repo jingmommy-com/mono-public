@@ -18,7 +18,11 @@
     "order": 8,
     "sidebar": true
   },
-  "/en/about/social-media": {},
+  "/en/about/social-media": {
+    "title": "Social Media",
+    "order": 6,
+    "sidebar": true
+  },
   "/en/about/social-video": {
     "title": "Social Videos",
     "order": 7,
@@ -74,7 +78,11 @@
     "order": 4,
     "sidebar": true
   },
-  "/en/frozen-postpartum-soups": {},
+  "/en/frozen-postpartum-soups": {
+    "title": "Frozen Soups",
+    "order": 6,
+    "sidebar": true
+  },
   "/en/frozen-postpartum-soups/sea-bass-soups": {
     "title": "Frozen Sea Bass Soup",
     "order": 5,
@@ -237,7 +245,11 @@
     "order": 1,
     "sidebar": true
   },
-  "/en/postpartum-products": {},
+  "/en/postpartum-products": {
+    "title": "Postpartum Products",
+    "order": 7,
+    "sidebar": true
+  },
   "/en/postpartum-products/sheng-hua-tang": {
     "title": "Sheng Hua Tang (Postpartum Herbal Tonic)",
     "order": 4,
