@@ -50,7 +50,6 @@ function makeRehypeLocaleLinks(locales) {
     if (!locale) return
     const walk = (node) => {
       if (node.type === 'element' && node.tagName === 'a') {
-        console.log(node)
         const href = node.properties?.href
         if (
           typeof href === 'string' &&

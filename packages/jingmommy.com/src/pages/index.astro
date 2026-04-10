@@ -5,15 +5,11 @@ import { locales } from '@/client.config.ts'
 const title = 'JingMommy'
 const locale = locales.includes(Astro.preferredLocale ?? '') ? Astro.preferredLocale : locales[0]
 const target = `/${locale}/`
-// In production, redirect immediately server-side.
-// In dev, fall through to the page so the loading screen is visible for testing.
-if (!import.meta.env.DEV) {
-  return Astro.redirect(target)
-}
+const delay = import.meta.env.DEV ? 2000 : 0
 ---
 
 <Layout title={title}>
-  <script is:inline define:vars={{ target }}>
-    setTimeout(() => { window.location.href = target }, 2000)
+  <script is:inline define:vars={{ target, delay }}>
+    setTimeout(() => { window.location.href = target }, delay)
   </script>
 </Layout>
