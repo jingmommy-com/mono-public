@@ -8,6 +8,7 @@
  */
 import BasePage from './themes/base/Page.astro'
 import ModernPage from './themes/modern/Page.astro'
+import { defaultTheme } from '@/themes.ts'
 import type { ThemeName } from '@/themes.ts'
 
 const themeMap: Record<ThemeName, any> = {
@@ -15,7 +16,7 @@ const themeMap: Record<ThemeName, any> = {
   modern: ModernPage,
 }
 
-const { theme = 'base', ...rest } = Astro.props as { theme?: ThemeName; [key: string]: unknown }
-const Layout = themeMap[theme] ?? BasePage
+const { theme = defaultTheme, ...rest } = Astro.props as { theme?: ThemeName; [key: string]: unknown }
+const Layout = themeMap[theme] ?? themeMap[defaultTheme]
 ---
 <Layout {...rest}><slot /></Layout>

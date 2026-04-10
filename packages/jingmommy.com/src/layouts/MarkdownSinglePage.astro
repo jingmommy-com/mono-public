@@ -1,6 +1,7 @@
 ---
 import BaseMarkdownSinglePage from './themes/base/MarkdownSinglePage.astro'
 import ModernMarkdownSinglePage from './themes/modern/MarkdownSinglePage.astro'
+import { defaultTheme } from '@/themes.ts'
 import type { ThemeName } from '@/themes.ts'
 
 const themeMap: Record<ThemeName, any> = {
@@ -9,7 +10,7 @@ const themeMap: Record<ThemeName, any> = {
 }
 
 const { frontmatter = {}, theme: propTheme, ...rest } = Astro.props
-const theme: ThemeName = frontmatter.theme ?? propTheme ?? 'base'
-const Layout = themeMap[theme] ?? BaseMarkdownSinglePage
+const theme: ThemeName = frontmatter.theme ?? propTheme ?? defaultTheme
+const Layout = themeMap[theme] ?? themeMap[defaultTheme]
 ---
 <Layout frontmatter={frontmatter} {...rest}><slot /></Layout>

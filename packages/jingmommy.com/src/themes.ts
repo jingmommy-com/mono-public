@@ -14,7 +14,7 @@
 
 export const themes = ['base', 'modern'] as const
 export type ThemeName = (typeof themes)[number]
-export const defaultTheme: ThemeName = 'base'
+export const defaultTheme: ThemeName = themes[0]
 
 /**
  * Use this class string wherever you need to escape both Tailwind Typography
