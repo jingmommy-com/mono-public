@@ -48,6 +48,36 @@ Base.astro          ← html shell, imports global.css, sets font
 
 `Page.astro` accepts a `color` prop (Tailwind color name, defaults to `orange`) to theme the gradient header, h1 text, and background. Dynamic color classes are explicitly safelisted via `@source inline(...)` in `src/styles/global.css` — **add new colors there if needed**.
 
+### Theme System
+
+Layouts support a theme prop that selects a visual variant. The theme registry lives in `src/themes.ts`.
+
+**Directory structure:**
+```
+src/
+  themes.ts                     ← ThemeName type + themes list
+  layouts/
+    Page.astro                  ← theme router (delegates to themes/*/Page.astro)
+    MarkdownPage.astro          ← passes frontmatter.theme → Page
+    themes/
+      base/Page.astro           ← default design (light gradient bar + centered h1)
+      modern/Page.astro         ← bold banner design (colored hero with title inside)
+```
+
+**Currently only `Page.astro` is theme-aware.** All other layouts (Default, MarkdownSinglePage, etc.) use the base design. Theme-specific versions of those can be added later.
+
+**Selecting a theme:**
+- `.astro` page: `<Page theme="modern" ... />`
+- `.mdx` frontmatter: `theme: modern`
+- Default is `base` if omitted.
+
+**Adding a new theme:**
+1. Add the name to `themes` in `src/themes.ts`
+2. Create `src/layouts/themes/<name>/Page.astro`
+3. Import and register it in `src/layouts/Page.astro`'s `themeMap`
+
+**Components** are shared across all themes (no per-theme component overrides yet).
+
 ### Route Title Auto-generation
 
 `src/scripts/index.js` exports `generateRouteFiles()`, which scans `src/pages/` and writes `src/route-map.json` (route → title map). This is used for breadcrumb labels. It runs automatically:

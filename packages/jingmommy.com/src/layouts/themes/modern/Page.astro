@@ -1,0 +1,37 @@
+---
+import Layout from "../../Default.astro"
+import Breadcrumb from "@/components/Breadcrumb.astro"
+import Footer from '@/components/Footer.astro'
+import SideNav from '@/components/SideNav.astro'
+import { colors } from '@/client.config.ts'
+
+const { title, color: inputColor } = Astro.props
+const color = colors.includes((inputColor ?? '').trim()) ? (inputColor ?? '').trim() : 'orange'
+
+const bannerFrom = `from-${color}-700`
+const bannerTo   = `to-${color}-500`
+const borderColor = `border-${color}-200`
+---
+
+<Layout color={color} hasSidebar={true}>
+  <SideNav currentPath={Astro.url.pathname} color={color} />
+
+  <!-- Full-width colored hero banner: breadcrumb + title merged -->
+  <div class={`w-full bg-linear-to-r ${bannerFrom} ${bannerTo} px-6 pt-4 pb-8 shadow-md`}>
+    <div class="opacity-75 text-white [&_*]:text-white [&_a]:text-white/80 [&_a:hover]:text-white mb-2">
+      <Breadcrumb color={color} />
+    </div>
+    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white drop-shadow-sm leading-tight">
+      {title?.trim() ?? ''}
+    </h1>
+  </div>
+
+  <!-- Content area: slight negative overlap for depth effect -->
+  <div class="flex flex-col w-full px-4 sm:px-6 -mt-2">
+    <div class="bg-white rounded-t shadow-sm px-4 sm:px-6 pt-6 pb-2">
+      <slot />
+    </div>
+    <div class={`border-t ${borderColor} mt-4`}></div>
+    <Footer color={color} />
+  </div>
+</Layout>

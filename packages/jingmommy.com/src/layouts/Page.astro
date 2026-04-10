@@ -1,31 +1,21 @@
 ---
-import Layout from "./Default.astro"
-import Breadcrumb from "@/components/Breadcrumb.astro"
-import Footer from '@/components/Footer.astro'
-import SideNav from '@/components/SideNav.astro'
+/**
+ * Theme router for Page layout.
+ * Delegates to src/layouts/themes/<theme>/Page.astro.
+ * Falls back to base theme if the requested theme is not registered here.
+ *
+ * To add a new theme: import its Page.astro and add it to `themeMap` below.
+ */
+import BasePage from './themes/base/Page.astro'
+import ModernPage from './themes/modern/Page.astro'
+import type { ThemeName } from '@/themes.ts'
 
-import { colors } from '@/client.config.ts'
+const themeMap: Record<ThemeName, any> = {
+  base:   BasePage,
+  modern: ModernPage,
+}
 
-const { title, color: inputColor } = Astro.props
-const color = colors.includes((inputColor ?? '').trim()) ? (inputColor ?? '').trim() : 'orange'
-
-// remember to add those dynamic color classes to css @source.
-const colorFrom = `from-${color}-100`
-const colorTo = `to-${color}-50`
-const h1Color = `text-${color}-900`
+const { theme = 'base', ...rest } = Astro.props as { theme?: ThemeName; [key: string]: unknown }
+const PageLayout = themeMap[theme] ?? BasePage
 ---
-
-<Layout color={color} hasSidebar={true}>
-  <SideNav currentPath={Astro.url.pathname} color={color} />
-  <div class={`p-4 bg-linear-to-br ${colorFrom} ${colorTo} shadow-sm flex items-center rounded-t`}>
-    <Breadcrumb color={color} />
-  </div>
-  <div class="flex flex-col w-full px-4">
-    <h1 class={`text-3xl sm:text-4xl font-extrabold text-center ${h1Color} my-8`}>
-      {title?.trim() ?? ''}
-    </h1>
-    <slot></slot>
-    <hr class="my-4" />
-    <Footer color={color} />
-  </div>
-</Layout>
+<PageLayout {...rest}><slot /></PageLayout>

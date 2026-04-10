@@ -1,0 +1,29 @@
+---
+import Layout from "../../Default.astro"
+import Breadcrumb from "@/components/Breadcrumb.astro"
+import Footer from '@/components/Footer.astro'
+import SideNav from '@/components/SideNav.astro'
+import { colors } from '@/client.config.ts'
+
+const { title, color: inputColor } = Astro.props
+const color = colors.includes((inputColor ?? '').trim()) ? (inputColor ?? '').trim() : 'orange'
+
+const colorFrom = `from-${color}-100`
+const colorTo = `to-${color}-50`
+const h1Color = `text-${color}-900`
+---
+
+<Layout color={color} hasSidebar={true}>
+  <SideNav currentPath={Astro.url.pathname} color={color} />
+  <div class={`p-4 bg-linear-to-br ${colorFrom} ${colorTo} shadow-sm flex items-center rounded-t`}>
+    <Breadcrumb color={color} />
+  </div>
+  <div class="flex flex-col w-full px-4">
+    <h1 class={`text-3xl sm:text-4xl font-extrabold text-center ${h1Color} my-8`}>
+      {title?.trim() ?? ''}
+    </h1>
+    <slot />
+    <hr class="my-4" />
+    <Footer color={color} />
+  </div>
+</Layout>
