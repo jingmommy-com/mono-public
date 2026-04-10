@@ -1,5 +1,5 @@
 ---
-import PageLayout from '@/layouts/Page.astro'
+import Layout from '@/layouts/Page.astro'
 import { Alert, AlertDescription } from '@/components/starwind/alert'
 import type { DeliveryLookupI18n } from '@/i18n/delivery-lookup.ts'
 
@@ -12,7 +12,7 @@ const { t, color = 'orange' } = Astro.props
 const { messages } = t
 ---
 
-<PageLayout title={t.title} description={t.description} color={color}>
+<Layout title={t.title} description={t.description} color={color}>
   <Alert variant="warning" class="mx-auto text-center max-w-160">
     <AlertDescription>
       {t.intro}
@@ -111,4 +111,4 @@ const { messages } = t
       renderMsg(messages.default)
     }
   </script>
-</PageLayout>
+</Layout>

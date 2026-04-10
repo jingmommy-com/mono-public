@@ -2,6 +2,8 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this package.
 
+See [CONVENTIONS.md](./CONVENTIONS.md) for code style rules (quotes, imports, etc.).
+
 ## Project Goal
 
 This is a new static Astro site being built to **replace the old jingmommy.com site**, which runs on Classic ASP and is too difficult to maintain. The primary ongoing work is migrating pages from the live site to this new codebase.
