@@ -15,3 +15,10 @@
 export const themes = ['base', 'modern'] as const
 export type ThemeName = (typeof themes)[number]
 export const defaultTheme: ThemeName = 'base'
+
+/**
+ * Use this class string wherever you need to escape both Tailwind Typography
+ * prose styles (not-prose) and Starwind's prose styles (not-sw-prose).
+ * Import and apply to any element that should not inherit prose formatting.
+ */
+export const notProse = 'not-prose not-sw-prose'

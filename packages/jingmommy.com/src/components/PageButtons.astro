@@ -1,6 +1,7 @@
 ---
 import PageButton from './PageButton.astro'
 import routeMap from '@/route-map.json'
+import { notProse } from '@/themes.ts'
 
 type DataButton = {
   title: string
@@ -42,7 +43,7 @@ function findTitleByUrl(url: string | undefined): string {
 }
 ---
 
-<div class="flex flex-col gap-4 w-full not-prose">
+<div class:list={['flex flex-col gap-4 w-full', notProse]}>
   {data.map((row: DataRow, rowIdx: number) => {
     if (Array.isArray(row)) {
       const total = Math.ceil(row.length / 2)

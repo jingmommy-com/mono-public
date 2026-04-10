@@ -62,11 +62,17 @@ src/
     Page.astro                  ← theme router (delegates to themes/*/Page.astro)
     MarkdownPage.astro          ← passes frontmatter.theme → Page
     themes/
-      base/Page.astro           ← default design (light gradient bar + centered h1)
-      modern/Page.astro         ← bold banner design (colored hero with title inside)
+      base/
+        Page.astro              ← default design (light gradient bar + centered h1)
+        MarkdownPage.astro      ← wraps base Page, uses base Markdown
+        MarkdownSinglePage.astro← wraps Base.astro, uses base Markdown
+      modern/
+        Page.astro              ← bold banner design (colored hero with title inside)
+        MarkdownPage.astro      ← wraps modern Page, uses starwind Markdown
+        MarkdownSinglePage.astro← wraps Base.astro, uses starwind Markdown
 ```
 
-**Currently only `Page.astro` is theme-aware.** All other layouts (Default, MarkdownSinglePage, etc.) use the base design. Theme-specific versions of those can be added later.
+**`Default`, `Index`, `FullScreenPage`, and `FullScreenLoading` are not theme-aware** — they always use the base design.
 
 **Selecting a theme:**
 - `.astro` page: `<Page theme="modern" ... />`

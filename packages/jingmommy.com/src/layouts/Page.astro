@@ -16,6 +16,6 @@ const themeMap: Record<ThemeName, any> = {
 }
 
 const { theme = 'base', ...rest } = Astro.props as { theme?: ThemeName; [key: string]: unknown }
-const PageLayout = themeMap[theme] ?? BasePage
+const Layout = themeMap[theme] ?? BasePage
 ---
-<PageLayout {...rest}><slot /></PageLayout>
+<Layout {...rest}><slot /></Layout>

@@ -1,0 +1,12 @@
+---
+import Layout from '../../Base.astro'
+import Markdown from '@/components/Markdown.astro'
+
+const { title } = Astro.props.frontmatter ?? {}
+---
+
+<Layout title={title}>
+  <Markdown theme='starwind'>
+    <slot />
+  </Markdown>
+</Layout>

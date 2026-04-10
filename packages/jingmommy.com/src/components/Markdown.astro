@@ -1,5 +1,8 @@
 ---
-const { class: extraClass = '' } = Astro.props
+import Prose from '@/components/starwind/prose/Prose.astro'
+
+const { class: extraClass = '', theme = 'base' } = Astro.props
+
 const baseClassArray = [
   'prose',
   // h1
@@ -36,6 +39,8 @@ const baseClass = baseClassArray.join(' ').trim()
 const mergedClass = `${baseClass} ${extraClass}`.trim()
 ---
 
-<div class={mergedClass}>
-  <slot />
-</div>
+{theme === 'starwind' ? (
+  <Prose class={extraClass}><slot /></Prose>
+) : (
+  <div class={mergedClass}><slot /></div>
+)}

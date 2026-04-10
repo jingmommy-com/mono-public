@@ -1,10 +1,11 @@
 ---
 import CategoryButton from './CategoryButton.astro'
+import { notProse } from '@/themes.ts'
 const { list = [], color } = Astro.props
 ---
 
 <div
-  class="grid grid-cols-1 lg:grid-cols-2 gap-4 my-6 not-prose"
+  class:list={['grid grid-cols-1 lg:grid-cols-2 gap-4 my-6', notProse]}
 >
   {list.map((item: { href: string; img?: string; title: string; desc?: string }) => (
     <CategoryButton 

@@ -1,0 +1,14 @@
+---
+import Layout from '../modern/Page.astro'
+import Markdown from '@/components/Markdown.astro'
+
+const { frontmatter = {}, title: propTitle, color: propColor } = Astro.props
+const title = frontmatter.title ?? propTitle ?? null
+const color = frontmatter.color ?? propColor ?? null
+---
+
+<Layout title={title} color={color}>
+  <Markdown theme='starwind' class='px-4 md:px-6 lg:px-8 max-w-full'>
+    <slot />
+  </Markdown>
+</Layout>

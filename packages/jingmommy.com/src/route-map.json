@@ -18,11 +18,7 @@
     "order": 8,
     "sidebar": true
   },
-  "/en/about/social-media": {
-    "title": "Social Media",
-    "order": 6,
-    "sidebar": true
-  },
+  "/en/about/social-media": {},
   "/en/about/social-video": {
     "title": "Social Videos",
     "order": 7,
@@ -78,11 +74,7 @@
     "order": 4,
     "sidebar": true
   },
-  "/en/frozen-postpartum-soups": {
-    "title": "Frozen Soups",
-    "order": 6,
-    "sidebar": true
-  },
+  "/en/frozen-postpartum-soups": {},
   "/en/frozen-postpartum-soups/sea-bass-soups": {
     "title": "Frozen Sea Bass Soup",
     "order": 5,
@@ -245,11 +237,7 @@
     "order": 1,
     "sidebar": true
   },
-  "/en/postpartum-products": {
-    "title": "Postpartum Products",
-    "order": 7,
-    "sidebar": true
-  },
+  "/en/postpartum-products": {},
   "/en/postpartum-products/sheng-hua-tang": {
     "title": "Sheng Hua Tang (Postpartum Herbal Tonic)",
     "order": 4,
@@ -270,11 +258,7 @@
     "order": 3,
     "sidebar": true
   },
-  "/en/sample/tasting-party": {
-    "title": "Postpartum Meal Tasting Party",
-    "order": 1,
-    "sidebar": true
-  },
+  "/en/sample/tasting-party": {},
   "/en/sitemap": {
     "sitemap": false
   },
@@ -302,11 +286,7 @@
     "order": 8,
     "sidebar": true
   },
-  "/zh-tw/about/social-media": {
-    "title": "金品社群媒體",
-    "order": 6,
-    "sidebar": true
-  },
+  "/zh-tw/about/social-media": {},
   "/zh-tw/about/social-video": {
     "title": "金品社群影片",
     "order": 7,
@@ -362,11 +342,7 @@
     "order": 4,
     "sidebar": true
   },
-  "/zh-tw/frozen-postpartum-soups": {
-    "title": "冷凍湯品",
-    "order": 6,
-    "sidebar": true
-  },
+  "/zh-tw/frozen-postpartum-soups": {},
   "/zh-tw/frozen-postpartum-soups/sea-bass-soups": {
     "title": "冷凍鱸魚湯",
     "order": 5,

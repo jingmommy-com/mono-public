@@ -39,6 +39,10 @@
     {
       "name": "video",
       "version": "1.0.1"
+    },
+    {
+      "name": "prose",
+      "version": "1.0.1"
     }
   ]
 }

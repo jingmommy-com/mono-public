@@ -4,8 +4,7 @@ title: Postpartum Meal Tasting Party
 color: pink
 order: 1
 sidebar: true
----
-
+import { notProse } from '@/themes.ts'
 import Image from '@/components/Image.astro'
 import Badge from '@/components/starwind/badge'
 import { YouTube } from 'astro-embed'
@@ -49,8 +48,8 @@ We also host a **Mini Mommy Class** on-site, sharing postpartum care concepts an
 #### How to Register
 
 1. Online: Select your preferred date below, click "Register," fill in your information, and submit. We will contact you shortly to confirm your spot.
-2. Phone: <a href="tel:6262177539" class="not-prose text-pink-700 font-bold">(626) 217-7539</a>
-3. E-mail: <a href="mailto:Service@JingMommy.com" class="not-prose text-pink-700 font-bold">Service@JingMommy.com</a>
+2. Phone: <a href="tel:6262177539" class={`${notProse} text-pink-700 font-bold`}>(626) 217-7539</a>
+3. E-mail: <a href="mailto:Service@JingMommy.com" class={`${notProse} text-pink-700 font-bold`}>Service@JingMommy.com</a>
 
 <table class="table text-center" id="tasting-party-reserve">
   <thead>
@@ -82,7 +81,7 @@ import JS from '@/components/js/tasting-party-preserve.astro'
 - Please limit attendance to <b>two adults</b> (let us know in advance if you are bringing children).
 - If you need to cancel or reschedule, please notify us in advance so we can open your spot to other moms — thank you for your understanding!
 - To maintain event quality, a no-show fee of $20 per person may be charged for unexcused absences.
-- <a target="_blank" href="//order.jingmommy.com/sample-meals" title="Tasting Experience" class="not-prose"><Badge variant="warning">Home Delivery Tasting</Badge></a> and the tasting party are <span class="text-pink-700 font-bold">mutually exclusive — choose one</span>
+- <a target="_blank" href="//order.jingmommy.com/sample-meals" title="Tasting Experience" class={notProse}><Badge variant="warning">Home Delivery Tasting</Badge></a> and the tasting party are <span class="text-pink-700 font-bold">mutually exclusive — choose one</span>
 
 ---
 
@@ -96,6 +95,6 @@ import JS from '@/components/js/tasting-party-preserve.astro'
 
 ---
 
-<div>If weather, traffic, or scheduling makes it difficult to attend in person, you may opt for the <a target="_blank" href="//order.jingmommy.com/sample-meals" title="Tasting Experience" class="not-prose"><Badge variant="warning">Home Delivery Tasting</Badge></a> instead — enjoy JingMommy postpartum meals from the comfort of your home.</div>
+<div>If weather, traffic, or scheduling makes it difficult to attend in person, you may opt for the <a target="_blank" href="//order.jingmommy.com/sample-meals" title="Tasting Experience" class={notProse}><Badge variant="warning">Home Delivery Tasting</Badge></a> instead — enjoy JingMommy postpartum meals from the comfort of your home.</div>
 
 With JingMommy, every postpartum meal is a culinary delight — varied, delicious, and never boring!

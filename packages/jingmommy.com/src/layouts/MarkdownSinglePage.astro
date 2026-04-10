@@ -1,11 +1,15 @@
 ---
-import Layout from "./Base.astro"
-import Markdown from "@/components/Markdown.astro"
-const { title } = Astro.props.frontmatters ?? {}
----
+import BaseMarkdownSinglePage from './themes/base/MarkdownSinglePage.astro'
+import ModernMarkdownSinglePage from './themes/modern/MarkdownSinglePage.astro'
+import type { ThemeName } from '@/themes.ts'
 
-<Layout title={title}>
-  <Markdown>
-    <slot />
-  </Markdown>
-</Layout>
+const themeMap: Record<ThemeName, any> = {
+  base:   BaseMarkdownSinglePage,
+  modern: ModernMarkdownSinglePage,
+}
+
+const { frontmatter = {}, theme: propTheme, ...rest } = Astro.props
+const theme: ThemeName = frontmatter.theme ?? propTheme ?? 'base'
+const Layout = themeMap[theme] ?? BaseMarkdownSinglePage
+---
+<Layout frontmatter={frontmatter} {...rest}><slot /></Layout>

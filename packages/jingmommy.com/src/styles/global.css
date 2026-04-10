@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* Push hash-link targets below the fixed header */
 [id] {

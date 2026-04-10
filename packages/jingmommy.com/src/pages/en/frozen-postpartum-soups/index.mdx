@@ -4,10 +4,8 @@ title: Frozen Soups
 color: rose
 order: 6
 sidebar: true
----
-
-import { Alert, AlertDescription, AlertTitle } from "@/components/starwind/alert"
-
+import { notProse } from '@/themes.ts'
+import { Alert, AlertDescription, AlertTitle } from '@/components/starwind/alert'
 <Alert variant="warning" class="text-center">
   <AlertDescription>
   Frozen soup series <strong>available for Southern California delivery only</strong>. Out-of-state shipping is not currently available.
@@ -24,7 +22,7 @@ Whether you're a new postpartum mom, a recovering loved one after surgery, or so
 
 <div class="flex">
   <a
-    class="not-prose rounded-lg border border-gray-200 py-2 px-4 hover:bg-gray-100 transition-colors"
+    class={`${notProse} rounded-lg border border-gray-200 py-2 px-4 hover:bg-gray-100 transition-colors`}
     href="/frozen-postpartum-soups/taiwanese-soups"
   ><b>Taiwanese Postpartum Soup Series</b></a>
 </div>
@@ -37,7 +35,7 @@ The biggest fears when doing confinement in America: no time to cook, no one to 
 
 <div class="flex">
   <a
-    class="not-prose rounded-lg border border-gray-200 py-2 px-4 hover:bg-gray-100 transition-colors"
+    class={`${notProse} rounded-lg border border-gray-200 py-2 px-4 hover:bg-gray-100 transition-colors`}
     href="/frozen-postpartum-soups/stewed-soups"
   ><b>Postpartum Stewed Tonic Soup Series (Mild / Warming / Intensive)</b></a>
 </div>
@@ -48,7 +46,7 @@ Designed around the four-week postpartum recovery rhythm: the first two weeks fo
 
 <div class="flex">
   <a
-    class="not-prose rounded-lg border border-gray-200 py-2 px-4 hover:bg-gray-100 transition-colors"
+    class={`${notProse} rounded-lg border border-gray-200 py-2 px-4 hover:bg-gray-100 transition-colors`}
     href="/frozen-postpartum-soups/chicken-essence"
   ><b>Slow-Simmered Chicken Essence</b></a>
 </div>
@@ -59,7 +57,7 @@ Three days of slow simmering, just for one sip of vitality. No preservatives, no
 
 <div class="flex">
   <a
-    class="not-prose rounded-lg border border-gray-200 py-2 px-4 hover:bg-gray-100 transition-colors"
+    class={`${notProse} rounded-lg border border-gray-200 py-2 px-4 hover:bg-gray-100 transition-colors`}
     href="/frozen-postpartum-soups/desserts"
   ><b>Dessert Series</b></a>
 </div>
@@ -70,7 +68,7 @@ Want something a little sweet without the guilt? These nourishing dessert soups 
 
 <div class="flex">
   <a
-    class="not-prose rounded-lg border border-gray-200 py-2 px-4 hover:bg-gray-100 transition-colors"
+    class={`${notProse} rounded-lg border border-gray-200 py-2 px-4 hover:bg-gray-100 transition-colors`}
     href="/frozen-postpartum-soups/sea-bass-soups"
   ><b>Sea Bass Soup</b></a>
 </div>
