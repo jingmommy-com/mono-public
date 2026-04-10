@@ -258,7 +258,11 @@
     "order": 3,
     "sidebar": true
   },
-  "/en/sample/tasting-party": {},
+  "/en/sample/tasting-party": {
+    "title": "Postpartum Meal Tasting Party",
+    "order": 1,
+    "sidebar": true
+  },
   "/en/sitemap": {
     "sitemap": false
   },
@@ -269,7 +273,7 @@
     "title": "Terms of Service"
   },
   "/": {
-    "title": "金品"
+    "title": "JingMommy"
   },
   "/zh-tw/about/central-kitchen": {
     "title": "中央廚房",
@@ -286,7 +290,11 @@
     "order": 8,
     "sidebar": true
   },
-  "/zh-tw/about/social-media": {},
+  "/zh-tw/about/social-media": {
+    "title": "金品社群媒體",
+    "order": 6,
+    "sidebar": true
+  },
   "/zh-tw/about/social-video": {
     "title": "金品社群影片",
     "order": 7,
@@ -342,7 +350,11 @@
     "order": 4,
     "sidebar": true
   },
-  "/zh-tw/frozen-postpartum-soups": {},
+  "/zh-tw/frozen-postpartum-soups": {
+    "title": "冷凍湯品",
+    "order": 6,
+    "sidebar": true
+  },
   "/zh-tw/frozen-postpartum-soups/sea-bass-soups": {
     "title": "冷凍鱸魚湯",
     "order": 5,

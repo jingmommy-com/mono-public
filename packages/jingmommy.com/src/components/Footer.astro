@@ -54,6 +54,12 @@ const navLinks = [
 const fbUrl = locale === 'zh-tw'
   ? 'https://www.messenger.com/t/148231668540780/'
   : 'https://www.messenger.com/t/453550428399457/'
+
+// English button: switch current URL to /en/... equivalent
+const pathSegments = Astro.url.pathname.split('/').filter(Boolean)
+const enUrl = locales.includes(pathSegments[0])
+  ? '/en/' + pathSegments.slice(1).join('/')
+  : '/en'
 ---
 
 <footer class="w-full flex flex-col gap-3">
@@ -113,9 +119,11 @@ const fbUrl = locale === 'zh-tw'
     <Image src="https://file.jingmommy.com/rep/qrcode-patricia-line.jpg" alt="Line QR Code" class="w-24 h-24 object-contain rounded border border-gray-300 shadow-sm" />
   </div>
   <!-- TODO: use the tidio button to replace chat buttons -->
-  <a href="//postpartummeal.com/" rel="external" class="fixed z-50 left-4 bottom-6 w-24 h-24">
-    <img src="//file.jingmommy.com/img/icon-english.png" alt="English Version of Jingmommy.com" />
-  </a>
+  {pathLocale !== 'en' && (
+    <a href={enUrl} class="fixed z-50 left-4 bottom-6 w-24 h-24">
+      <img src="//file.jingmommy.com/img/icon-english.png" alt="English Version of Jingmommy.com" />
+    </a>
+  )}
   <a
     href={fbUrl}
     target="_blank"
