@@ -1,7 +1,15 @@
 ---
-import { site as sharedSite } from '@/client.config.ts'
+import { site as sharedSite, locales } from '@/client.config.ts'
+import zhTwSite from '@/i18n/zh-tw/site.ts'
+import enSite from '@/i18n/en/site.ts'
+
+const siteI18nMap: Record<string, typeof zhTwSite> = { 'zh-tw': zhTwSite, en: enSite }
+const pathLocale = Astro.url.pathname.split('/').find((s: string) => locales.includes(s)) ?? locales[0]
+const localeSite = siteI18nMap[pathLocale] ?? zhTwSite
+
 const site = {
   ...sharedSite,
+  ...localeSite,
   ...Astro.props,
 }
 ---
