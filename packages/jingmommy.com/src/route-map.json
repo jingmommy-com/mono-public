@@ -256,17 +256,17 @@
     "sidebar": true
   },
   "/en/sample": {
-    "title": "Tasting Experience",
+    "title": "Sampling",
     "order": 0,
     "sidebar": true
   },
   "/en/sample/local-delivery": {
-    "title": "Tasting Experience - Home Delivery",
+    "title": "Sampling - Home Delivery",
     "order": 2,
     "sidebar": true
   },
   "/en/sample/out-of-state-shipping": {
-    "title": "Tasting Experience - Out-of-State Frozen Shipment",
+    "title": "Sampling - Out-of-State Frozen Shipment",
     "order": 3,
     "sidebar": true
   },
