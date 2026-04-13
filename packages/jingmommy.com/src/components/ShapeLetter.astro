@@ -2,13 +2,63 @@
 const {
   letter = '',
   color = '#a9490f',
-  size = 60,
+  size = null,
   letterColor = '#ffffff',
   class: className = 'flex flex-shrink-0 align-middle items-center justify-center'
 } = Astro.props
 
-const svgSize = typeof size === 'number' ? `${size}px` : (size || '40px')
-const fontSize = size
+// Utility to count visible "fullwidth-adjusted" glyphs in a string
+function getFullwidthAdjustedLength(str: string): number {
+  if (!str) return 0
+  // Count as 2 for typical CJK fullwidth characters, 1 for others
+  // Use regex for Unicode ranges common in East Asian scripts and fullwidth forms
+  let count = 0
+  for (const char of str) {
+    // Fullwidth: U+1100–U+115F (Hangul), U+2E80–U+2EFF (CJK Radicals), U+3000–U+303F (CJK symbols/punct), U+3040–U+309F (Hiragana), U+30A0–U+30FF (Katakana), U+3400–U+4DBF (CJK Ext), U+4E00–U+9FFF (CJK Unified), U+FF01–U+FF60 (Fullwidth ASCII)
+    if (/[\u1100-\u115F\u2E80-\u2EFF\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\uFF01-\uFF60\uFFE0-\uFFE6]/.test(char)) {
+      count += 2
+    } else {
+      count += 1.2
+    }
+  }
+  return count
+}
+
+// Determine glyph length to adjust SVG and font size
+let adjustedLength = getFullwidthAdjustedLength(letter)
+const adjustedLengthMax = 8
+if (adjustedLength > adjustedLengthMax) {
+  adjustedLength = adjustedLengthMax
+}
+
+// Default base SVG size and font size
+const defaultSvgSize = 60
+const defaultFontSize = 3
+
+// If user passes size, use it as the outer box and font size, else set both based on letter length.
+// Letters should always "fit the shape" visually.
+let svgSizeUnit, fontSizeUnit
+const svgIncr = 0.125
+const fontIncr = -0.125
+const svgRatio = 1 + (adjustedLength - 1) * svgIncr
+const fontRatio = 1 + (adjustedLength - 1) * fontIncr
+if (typeof size === 'number') {
+  svgSizeUnit = size
+  fontSizeUnit = size
+} else {
+  svgSizeUnit = defaultSvgSize * svgRatio
+  if (fontRatio > 0) {
+    fontSizeUnit = defaultFontSize * fontRatio
+  } else {
+    fontSizeUnit = defaultFontSize
+  }
+  if (fontSizeUnit < 1) {
+    fontSizeUnit = 1
+  }
+}
+
+const svgSize = `${svgSizeUnit}px`
+const fontSize = `${fontSizeUnit}em`
 ---
 <svg
   class={className}
@@ -28,7 +78,7 @@ const fontSize = size
   </g>
   <text
     x="50"
-    y="55"
+    y="52"
     text-anchor="middle"
     dominant-baseline="middle"
     alignment-baseline="middle"
