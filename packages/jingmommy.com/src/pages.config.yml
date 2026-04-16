@@ -1,0 +1,346 @@
+# Central metadata for route-map generation.
+# Nested folder tree matching src/pages/ structure.
+# Leaf nodes contain only metadata fields: order, sidebar, sitemap.
+# index keys map to the parent folder's route (e.g. sample/index → /en/sample).
+#
+# Per-page inline declarations (frontmatter / const) override these values.
+
+en:
+  coming-soon:
+    sitemap: false
+  sitemap:
+    sitemap: false
+  sitemap.xml:
+    sitemap: false
+
+  about:
+    index:
+      order: 8
+      sidebar: true
+    founding-story:
+      order: 1
+      sidebar: true
+    why-us:
+      order: 2
+      sidebar: true
+    central-kitchen:
+      order: 3
+      sidebar: true
+    team:
+      order: 4
+      sidebar: true
+    testimonial:
+      order: 5
+      sidebar: true
+    social-media:
+      order: 6
+      sidebar: true
+    social-video:
+      order: 7
+      sidebar: true
+
+  confinement-care-advice:
+    index:
+      order: 2
+      sidebar: true
+    dos-and-donts:
+      sidebar: true
+
+  frozen-postpartum-soups:
+    index:
+      order: 6
+      sidebar: true
+    taiwanese-soups:
+      order: 1
+      sidebar: true
+    stewed-soups:
+      order: 2
+      sidebar: true
+    chicken-essence:
+      order: 3
+      sidebar: true
+    desserts:
+      order: 4
+      sidebar: true
+    sea-bass-soups:
+      order: 5
+      sidebar: true
+    tiers:
+      order: 6
+      sidebar: true
+    spring-4:
+      order: 7
+      sidebar: true
+
+  miscarriage-healing-meals:
+    index:
+      order: 3
+      sidebar: true
+    deluxe:
+      order: 1
+      sidebar: true
+    biweekly:
+      order: 2
+      sidebar: true
+
+  miscarriage-healing-advice:
+    order: 4
+    sidebar: true
+
+  news:
+    index:
+      order: 8
+      sidebar: true
+    la-times:
+      order: 1
+      sidebar: true
+    ctitv:
+      order: 2
+      sidebar: true
+    ettvamerica:
+      order: 3
+      sidebar: true
+
+  post-surgery-meals:
+    index:
+      order: 5
+      sidebar: true
+
+  postpartum-meals:
+    index:
+      order: 1
+      sidebar: true
+    herbal-postpartum-meals:
+      order: 1
+      sidebar: true
+    classic-postpartum-meals:
+      order: 2
+      sidebar: true
+    vita-postpartum-meals:
+      order: 3
+      sidebar: true
+    low-carb-postpartum-meals:
+      order: 4
+      sidebar: true
+    easy-postpartum-meals:
+      order: 5
+      sidebar: true
+    frozen-postpartum-meals:
+      order: 6
+      sidebar: true
+    recovery-plus-meals:
+      order: 7
+      sidebar: true
+    daddy-meals:
+      order: 8
+      sidebar: true
+    healthy-meals:
+      order: 9
+      sidebar: true
+
+  postpartum-products:
+    index:
+      order: 7
+      sidebar: true
+    herbal-drink-pack:
+      order: 1
+      sidebar: true
+    chicken-essence:
+      order: 2
+      sidebar: true
+    first-month-joy-gift-box:
+      order: 3
+      sidebar: true
+    sheng-hua-tang:
+      order: 4
+      sidebar: true
+    du-zhong-capsule:
+      order: 5
+      sidebar: true
+    belly-wrap:
+      order: 6
+      sidebar: true
+
+  sample:
+    index:
+      order: 0
+      sidebar: true
+    tasting-party:
+      order: 1
+      sidebar: true
+    local-delivery:
+      order: 2
+      sidebar: true
+    out-of-state-shipping:
+      order: 3
+      sidebar: true
+
+zh-tw:
+  coming-soon:
+    sitemap: false
+  sitemap:
+    sitemap: false
+  sitemap.xml:
+    sitemap: false
+
+  about:
+    index:
+      order: 8
+      sidebar: true
+    founding-story:
+      order: 1
+      sidebar: true
+    why-us:
+      order: 2
+      sidebar: true
+    central-kitchen:
+      order: 3
+      sidebar: true
+    team:
+      order: 4
+      sidebar: true
+    testimonial:
+      order: 5
+      sidebar: true
+    social-media:
+      order: 6
+      sidebar: true
+    social-video:
+      order: 7
+      sidebar: true
+
+  confinement-care-advice:
+    index:
+      order: 2
+      sidebar: true
+    dos-and-donts:
+      sidebar: true
+
+  frozen-postpartum-soups:
+    index:
+      order: 6
+      sidebar: true
+    taiwanese-soups:
+      order: 1
+      sidebar: true
+    stewed-soups:
+      order: 2
+      sidebar: true
+    chicken-essence:
+      order: 3
+      sidebar: true
+    desserts:
+      order: 4
+      sidebar: true
+    sea-bass-soups:
+      order: 5
+      sidebar: true
+    tiers:
+      order: 6
+      sidebar: true
+    spring-4:
+      order: 7
+      sidebar: true
+
+  miscarriage-healing-meals:
+    index:
+      order: 3
+      sidebar: true
+    deluxe:
+      order: 1
+      sidebar: true
+    biweekly:
+      order: 2
+      sidebar: true
+
+  miscarriage-healing-advice:
+    order: 4
+    sidebar: true
+
+  news:
+    index:
+      order: 8
+      sidebar: true
+    la-times:
+      order: 1
+      sidebar: true
+    ctitv:
+      order: 2
+      sidebar: true
+    ettvamerica:
+      order: 3
+      sidebar: true
+
+  post-surgery-meals:
+    index:
+      order: 5
+      sidebar: true
+
+  postpartum-meals:
+    index:
+      order: 1
+      sidebar: true
+    herbal-postpartum-meals:
+      order: 1
+      sidebar: true
+    classic-postpartum-meals:
+      order: 2
+      sidebar: true
+    vita-postpartum-meals:
+      order: 3
+      sidebar: true
+    low-carb-postpartum-meals:
+      order: 4
+      sidebar: true
+    easy-postpartum-meals:
+      order: 5
+      sidebar: true
+    frozen-postpartum-meals:
+      order: 6
+      sidebar: true
+    recovery-plus-meals:
+      order: 7
+      sidebar: true
+    daddy-meals:
+      order: 8
+      sidebar: true
+    healthy-meals:
+      order: 9
+      sidebar: true
+
+  postpartum-products:
+    index:
+      order: 7
+      sidebar: true
+    herbal-drink-pack:
+      order: 1
+      sidebar: true
+    chicken-essence:
+      order: 2
+      sidebar: true
+    first-month-joy-gift-box:
+      order: 3
+      sidebar: true
+    sheng-hua-tang:
+      order: 4
+      sidebar: true
+    du-zhong-capsule:
+      order: 5
+      sidebar: true
+    belly-wrap:
+      order: 6
+      sidebar: true
+
+  sample:
+    index:
+      order: 0
+      sidebar: true
+    tasting-party:
+      order: 1
+      sidebar: true
+    local-delivery:
+      order: 2
+      sidebar: true
+    out-of-state-shipping:
+      order: 3
+      sidebar: true

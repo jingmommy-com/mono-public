@@ -95,18 +95,22 @@ src/
 
 If breadcrumbs show wrong titles, regenerate by restarting the dev server or triggering a page file save.
 
-#### Page-level route-map metadata
+#### Route-map metadata — centralized config
 
-Pages declare their own route-map metadata via top-level variable declarations in the page file's frontmatter (`.astro`) or module scope (`.ts`). These are statically parsed by `scripts/index.js` and written into `route-map.json`.
+`src/pages.config.yml` is the primary place to set `order`, `sidebar`, and `sitemap` metadata for pages. Keys are the page file path relative to `src/pages/`, without extension, keeping `index`:
 
-**Do NOT remove these variables even if they appear unused** — they are not used at runtime, but are read by the build script.
+```yaml
+en/sample/tasting-party:
+  order: 1
+  sidebar: true
 
-Examples:
-```js
-const sitemap = false   // exclude this page from sitemap pages
-const sidebar = true    // show this page in the sidebar nav
-const order = 3         // sort order within its sidebar section
+en/sitemap.xml:
+  sitemap: false
 ```
+
+**Pages can still declare these as inline variables** (frontmatter in `.mdx`, or `const` in `.astro`/`.ts`) — the page value overrides the config value if both are present. Use inline declarations sparingly, only when a page needs to differ from what the config says.
+
+**Do NOT remove inline variable declarations** from `.astro` and `.ts` files unless you have confirmed the value is covered in `pages.config.yml` — they are not used at runtime, but are read by the build script.
 
 ### Site Config
 

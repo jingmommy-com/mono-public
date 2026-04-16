@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import grayMatter from 'gray-matter'
+import yaml from 'js-yaml'
 
 const allowedExtensions = [
   '.mdx',
@@ -59,11 +60,24 @@ function findVariableInJavascriptContent(content, varName) {
 
 const fileId = 'route-map'
 
-function extractRouteAndAttributes(filepath, pagesDir, attrs = [], log) {
-  const basename = path.basename(filepath)
-  if (basename.startsWith('[')) {
-    return null
+function filePathToRouteUrl(filepath, pagesDir) {
+  let relPath = path.relative(pagesDir, filepath)
+  relPath = path.join(
+    path.dirname(relPath),
+    path.parse(relPath).name
+  )
+  if (path.basename(relPath) === 'index') {
+    relPath = path.dirname(relPath)
+    if (relPath === '.') {
+      relPath = ''
+    }
   }
+  return '/' + relPath
+    .replace(/\\/g, '/')
+    .replace(/(?!^\/)\/+$/, '') // Trim trailing / unless it's the first /
+}
+
+function extractAttrs(filepath, attrs = [], log) {
   const attrsMap = {}
   let content = ''
   try {
@@ -85,7 +99,7 @@ function extractRouteAndAttributes(filepath, pagesDir, attrs = [], log) {
         }
       } catch {}
       for (const attr of attrs) {
-        // fallback try to parse the title from js content
+        // fallback: parse from JS content
         if (!Object.hasOwn(attrsMap, attr)) {
           attrsMap[attr] = findVariableInJavascriptContent(content, attr)
         }
@@ -106,22 +120,59 @@ function extractRouteAndAttributes(filepath, pagesDir, attrs = [], log) {
       log(`[${fileId}] Unknown ext: ${ext}`)
     }
   }
+  return attrsMap
+}
 
-  let relPath = path.relative(pagesDir, filepath)
-  relPath = path.join(
-    path.dirname(relPath),
-    path.parse(relPath).name
+const METADATA_KEYS = new Set(['order', 'sidebar', 'sitemap', 'title', 'description'])
+
+/**
+ * Returns true if every key in obj is a known metadata field (leaf node).
+ */
+function isLeaf(obj) {
+  return (
+    obj !== null &&
+    typeof obj === 'object' &&
+    Object.keys(obj).every(k => METADATA_KEYS.has(k))
   )
-  if (path.basename(relPath) === 'index') {
-    relPath = path.dirname(relPath)
-    if (relPath === '.') {
-      relPath = ''
+}
+
+/**
+ * Recursively flatten a nested pages.config.yml tree into a fileKey → attrs map.
+ * Keys mirror the file path relative to src/pages/ without extension (e.g. "en/sample/index").
+ * Leaf detection: a node whose every key is a metadata key is a page entry.
+ */
+function flattenConfigTree(node, parts = []) {
+  if (!node || typeof node !== 'object') return {}
+  const result = {}
+  for (const [key, val] of Object.entries(node)) {
+    const nextParts = [...parts, key]
+    if (isLeaf(val)) {
+      result[nextParts.join('/')] = val
+    } else if (val && typeof val === 'object') {
+      Object.assign(result, flattenConfigTree(val, nextParts))
     }
   }
-  let route = '/' + relPath
-    .replace(/\\/g, '/')
-    .replace(/(?!^\/)\/+$/, '') // Trim trailing / unless it's the first /
-  return { route, attrs: attrsMap }
+  return result
+}
+
+/**
+ * Load src/pages.config.yml and return a map of fileKey → attrs.
+ * fileKey is the path relative to src/pages/ without extension (e.g. "en/sample/index").
+ * Returns {} if the file doesn't exist.
+ */
+function loadPagesConfig(rootDir, log) {
+  const configFile = path.resolve(rootDir, 'src', 'pages.config.yml')
+  if (!fs.existsSync(configFile)) return {}
+  try {
+    const raw = fs.readFileSync(configFile, 'utf-8')
+    const parsed = yaml.load(raw) ?? {}
+    const result = flattenConfigTree(parsed)
+    log(`[${fileId}] Loaded pages.config.yml (${Object.keys(result).length} entries)`)
+    return result
+  } catch (e) {
+    log(`[${fileId}] Warning: failed to parse pages.config.yml — ${e.message}`)
+    return {}
+  }
 }
 
 async function generateRouteMap(log, logError) {
@@ -137,19 +188,29 @@ async function generateRouteMap(log, logError) {
     return
   }
 
+  // Load centralized config first (lower priority)
+  const configAttrs = loadPagesConfig(rootDir, log)
+
   const files = walkSync(pagesDir)
-  const attrs = [
-    'title',
-    'description',
-    'order',
-    'sidebar',
-    'sitemap',
-  ]
   const result = {}
   for (const file of files) {
-    const res = extractRouteAndAttributes(file, pagesDir, attrs, log)
-    if (res && res.route) {
-      result[res.route] = res.attrs
+    if (path.basename(file).startsWith('[')) continue
+
+    // File key (relative path without extension) for config lookup
+    const relRaw = path.relative(pagesDir, file)
+    const fileKey = path.join(path.dirname(relRaw), path.parse(relRaw).name)
+      .replace(/\\/g, '/')
+
+    const route = filePathToRouteUrl(file, pagesDir)
+    const pageAttrs = extractAttrs(file, METADATA_KEYS, log)
+    if (!pageAttrs) continue
+
+    // Merge: config base first (by file key), then page attrs override (page wins)
+    result[route] = {
+      ...(configAttrs[fileKey] ?? {}),
+      ...Object.fromEntries(
+        Object.entries(pageAttrs).filter(([, v]) => v !== undefined)
+      ),
     }
   }
 

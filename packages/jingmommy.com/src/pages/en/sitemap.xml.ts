@@ -1,7 +1,6 @@
 import routeMap from '@/route-map.json'
 import { site } from '@/client.config.ts'
 
-const sitemap = false
 
 export async function GET() {
   const locale = 'en'
