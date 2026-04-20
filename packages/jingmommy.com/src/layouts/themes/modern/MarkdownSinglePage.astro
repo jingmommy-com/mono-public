@@ -2,11 +2,14 @@
 import Layout from '../../Base.astro'
 import Markdown from '@/components/Markdown.astro'
 
-const { title } = Astro.props.frontmatter ?? {}
+const { frontmatter = {} } = Astro.props
+const { title } = frontmatter
 ---
 
 <Layout title={title}>
-  <Markdown theme='starwind'>
-    <slot />
-  </Markdown>
+  <div class="max-w-3xl mx-auto px-6 py-10">
+    <Markdown theme='starwind'>
+      <slot />
+    </Markdown>
+  </div>
 </Layout>

@@ -108,8 +108,19 @@ import { Icon } from 'astro-icon/components'
   }
   table.frozen-soups-tiers-comparison-chart td,
   table.frozen-soups-tiers-comparison-chart th {
-    text-align: center;
     padding: 0.5em;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+  }
+  table.frozen-soups-tiers-comparison-chart td svg,
+  table.frozen-soups-tiers-comparison-chart th svg,
+  table.frozen-soups-tiers-comparison-chart td .astro-icon,
+  table.frozen-soups-tiers-comparison-chart th .astro-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
   }
   table.frozen-soups-tiers-comparison-chart tbody tr th {
     background-color: var(--frozen-soups-body-title-bg);
