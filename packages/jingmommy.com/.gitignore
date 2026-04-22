@@ -28,3 +28,4 @@ pnpm-debug.log*
 !.vscode/extensions.json
 
 public/_redirects
+.doc/
