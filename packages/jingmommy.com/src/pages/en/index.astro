@@ -1,4 +1,488 @@
 ---
-const title = 'Home'
-return Astro.redirect("/en/coming-soon")
+import { Image } from "astro:assets"
+import Base from "@/layouts/themes/en/Base.astro"
+import TopBar from "@/components/en/TopBar.astro"
+import Footer from "@/components/en/Footer.astro"
+import Botanical from "@/components/en/Botanical.astro"
+import Plans from "@/components/en/Plans.astro"
+import PressBand from "@/components/en/PressBand.astro"
+import TasteCTA from "@/components/en/TasteCTA.astro"
+import { brand, route } from "@/config/en.ts"
+import zyzImg from "@/assets/en/zyz-sesame-oil-chicken.jpg"
+import nicoleImg from "@/assets/en/nicole-huang.jpg"
+
+const title = "JingMommy — Authentic Chinese Postpartum Meals, Delivered"
+const description =
+  "JingMommy delivers authentic Chinese postpartum (Zuo Yue Zi) meals across the US. Founded 2010, 10,000+ mothers served. Fresh daily in SoCal, frozen nationwide. Featured in LA Times, PBS & Washington Post. Sample meals from $50."
+
+// "As featured in" outlets — only used on this page (single-page config).
+const press = [
+  "LA Times",
+  "Washington Post",
+  "PBS",
+  "SET Taiwan",
+  "CTI",
+  "World Journal",
+]
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "FoodEstablishment",
+    name: "JingMommy",
+    alternateName: "JingMommy Postpartum Meals",
+    description:
+      "Authentic Chinese postpartum (Zuo Yue Zi) meal delivery, founded 2010. Over 10,000 mothers served across the US. Fresh daily delivery in Southern California, frozen nationwide.",
+    url: "https://www.postpartummeal.com",
+    telephone: "+1-626-217-7539",
+    foundingDate: "2010",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "618 Brea Canyon Road Unit F",
+      addressLocality: "Walnut",
+      addressRegion: "CA",
+      postalCode: "91789",
+      addressCountry: "US",
+    },
+    areaServed: "United States",
+    servesCuisine: "Chinese postpartum confinement meals (Zuo Yue Zi)",
+    priceRange: "$$-$$$",
+    founder: {
+      "@type": "Person",
+      name: "Nicole Huang",
+      jobTitle: "Founder",
+      description:
+        "Founder of JingMommy and a leading English-language authority on Chinese postpartum care (Zuo Yue Zi).",
+    },
+    makesOffer: [
+      {
+        "@type": "Offer",
+        name: "Herbal Meal Plan",
+        price: "2890",
+        priceCurrency: "USD",
+        description: "30-day plan: three meals plus a daily herbal drink.",
+      },
+      {
+        "@type": "Offer",
+        name: "Classic Meal Plan",
+        price: "2590",
+        priceCurrency: "USD",
+        description: "30-day plan: three comforting meals a day.",
+      },
+      {
+        "@type": "Offer",
+        name: "Vita Meal Plan",
+        price: "2299",
+        priceCurrency: "USD",
+        description: "30-day plan: two lighter meals plus a dessert.",
+      },
+      {
+        "@type": "Offer",
+        name: "Low Carb Meal Plan",
+        price: "1999",
+        priceCurrency: "USD",
+        description:
+          "30-day plan: warming meals without rice, grains, or sweet drinks.",
+      },
+      {
+        "@type": "Offer",
+        name: "Easy Meal Plan",
+        price: "1550",
+        priceCurrency: "USD",
+        description: "30-day plan: warm meals delivered every other day.",
+      },
+      {
+        "@type": "Offer",
+        name: "Sample Meal (local)",
+        price: "50",
+        priceCurrency: "USD",
+        description:
+          "A full day of sample meals, fresh delivery in Southern California.",
+      },
+      {
+        "@type": "Offer",
+        name: "Sample Meal (frozen nationwide)",
+        price: "80",
+        priceCurrency: "USD",
+        description:
+          "A full day of sample meals, frozen FedEx delivery nationwide.",
+      },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What is Zuo Yue Zi?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: 'Zuo Yue Zi, literally "sitting the month," is the Chinese postpartum recovery tradition built around warmth, rest, and staged nourishment over about thirty days. It has been practiced for more than 2,000 years and is one of the most complete postpartum care systems in the world.',
+        },
+      },
+    ],
+  },
+]
 ---
+
+<Base title={title} description={description} jsonLd={jsonLd}>
+  <TopBar />
+
+  <!-- ============ HERO ============ -->
+  <section class="hero hero-signature">
+    <Botanical variant="hero-tl" />
+    <Botanical variant="hero-br" />
+    <div class="hero-inner">
+      <p class="eyebrow reveal">Since 2010 · The real Zuo Yue Zi, in English</p>
+      <h1 class="reveal">
+        You planned everything, except the <span
+          style="color:#A8842C;font-size:1.15em;font-weight:600">RECOVERY.</span
+        >
+      </h1>
+      <p class="lede reveal">
+        Fresh, hot Chinese postpartum meals — delivered to your door, every
+        single day.
+      </p>
+      <div class="hero-cta reveal">
+        <a href={route("/plans")} class="btn btn-primary"
+          >Explore meal plans</a
+        >
+        <a href={route("/sample")} class="btn btn-ghost"
+          >Try a Taste — Free or from $50</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE PROBLEM ============ -->
+  <section class="band band-paper">
+    <div class="narrow center reveal">
+      <p class="eyebrow">The fourth trimester</p>
+      <h2 style="margin-bottom:28px">
+        The trimester nobody<br />prepares you for.
+      </h2>
+      <p style="font-size:19px;color:var(--ink-soft)">
+        You've been told how to prepare for pregnancy. For birth. But almost no
+        one tells you how to
+        <em>recover</em> — how to rebuild a body that just spent nine months building
+        a person.
+      </p>
+      <p style="font-size:19px;color:var(--ink-soft)">
+        For over 2,000 years, Chinese mothers have known the answer. They call
+        it Zuo Yue Zi — sitting the month — and it works. We make it simple to
+        follow, wherever you are.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ THREE STEPS ============ -->
+  <section class="band band-cream">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">How it works</p>
+        <h2>Three steps to a gentler recovery</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-rule"></div>
+          <p class="step-num">Step one</p>
+          <h3>Learn</h3>
+          <p>
+            New to Zuo Yue Zi? We explain the tradition, the three stages of
+            recovery, and what to eat — in plain English, without the guilt.
+          </p>
+        </div>
+        <div class="step reveal">
+          <div class="step-rule"></div>
+          <p class="step-num">Step two</p>
+          <h3>Taste</h3>
+          <p>
+            Join a free local tasting, or order a sample meal for $50 local or
+            $80 frozen nationwide. Try the food before you commit — most mothers
+            do exactly that.
+          </p>
+        </div>
+        <div class="step reveal">
+          <div class="step-rule"></div>
+          <p class="step-num">Step three</p>
+          <h3>Recover</h3>
+          <p>
+            Choose your plan. We deliver fresh daily across Southern California,
+            or frozen nationwide. You rest. We cook.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT IS ZUO YUE ZI ============ -->
+  <section class="band band-paper" id="zyz">
+    <div class="wrap">
+      <div class="zyz">
+        <div class="zyz-img reveal">
+          <Image
+            src={zyzImg}
+            alt="A black bowl of sesame oil chicken soup with goji berries — a classic Zuo Yue Zi postpartum dish from JingMommy"
+            widths={[440, 760]}
+            sizes="(max-width: 900px) 90vw, 520px"
+          />
+        </div>
+        <div class="zyz-body reveal">
+          <p class="eyebrow">Restorative wisdom</p>
+          <h2>What is Zuo Yue Zi?</h2>
+          <p class="zyz-hook">
+            If you grew up hearing "you should do Zuo Yue Zi" but had no idea
+            how to start — or your partner thinks it sounds old-fashioned — this
+            is for you.
+          </p>
+          <p>
+            Zuo Yue Zi (坐月子), literally "sitting the month," is the Chinese
+            practice of structured postpartum recovery through warmth, rest, and
+            staged nourishment. Practiced for over 2,000 years, it's not a fad,
+            not a restrictive ritual, and not reserved for Chinese families.
+          </p>
+          <p>
+            What you eat in the first 30 days after birth shapes your hormones,
+            your milk supply, and your energy — for months to come.
+          </p>
+          <p class="zyz-quote">
+            "In Chinese tradition, the first month after birth is not a burden
+            to endure — it is the most important gift a woman can give herself."
+          </p>
+        </div>
+      </div>
+
+      <!-- three stages -->
+      <div class="stages">
+        <div class="stage reveal">
+          <p class="stage-tag">Week 1 · Mild</p>
+          <h3>Gentle start</h3>
+          <p>
+            Light, warm nourishment — bone broth, iron-rich liver, calming herbs
+            — to support uterine recovery, rebuild blood, and hydrate deeply.
+          </p>
+        </div>
+        <div class="stage reveal">
+          <p class="stage-tag">Week 2 · Warm</p>
+          <h3>Rebuild strength</h3>
+          <p>
+            Blood-nourishing meats, leafy greens, and eucommia bark — long
+            trusted to ease the lower-back ache so many new mothers carry — to
+            restore stamina and support milk flow.
+          </p>
+        </div>
+        <div class="stage reveal">
+          <p class="stage-tag">Weeks 3–4 · Heat</p>
+          <h3>Deep nourishment</h3>
+          <p>
+            Warming, revitalizing meals — sesame oil chicken, rich bone broths —
+            to rebuild Qi, support hormones, and awaken long-term strength.
+          </p>
+        </div>
+      </div>
+
+      <div class="partner reveal">
+        <p class="eyebrow">A note for partners &amp; family</p>
+        <h3>For the people who love her</h3>
+        <p>
+          Zuo Yue Zi isn't about isolation or strict rules. It's about making
+          sure she gets warm, nutrient-dense food while her body does profound
+          work — recovering from labor, establishing milk supply, rebalancing
+          hormones.
+        </p>
+        <p>
+          If her mother or grandmother would have cooked for her, this is the
+          modern version of that. You don't have to understand every ingredient.
+          You just have to make sure she's fed — really fed, the way her body
+          needs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DIFFERENTIATORS ============ -->
+  <section class="band band-cream">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Why mothers choose us</p>
+        <h2>Care you can taste — and trust</h2>
+      </div>
+      <div class="diff">
+        <div class="diff-item reveal">
+          <div class="diff-mark">❀</div>
+          <h3>Authentic, not approximated</h3>
+          <p>
+            Every meal follows the real three-stage Zuo Yue Zi framework — the
+            same food wisdom Chinese families have followed for generations. We
+            make the real thing.
+          </p>
+        </div>
+        <div class="diff-item reveal">
+          <div class="diff-mark">❀</div>
+          <h3>Our own certified kitchen</h3>
+          <p>
+            We own and operate a 5,000+ sq ft facility in Walnut, CA — with our
+            own certified central kitchen at its heart. Open and transparent, so
+            every mother who visits can see exactly how her food is made.
+          </p>
+        </div>
+        <div class="diff-item reveal">
+          <div class="diff-mark">❀</div>
+          <h3>A real, bilingual team</h3>
+          <p>
+            Questions about your plan or your recovery? You'll reach a person
+            who understands both the food and the feelings — in English or
+            Chinese.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIAL ============ -->
+  <section class="band band-paper" id="stories" style="overflow:hidden">
+    <Botanical variant="testimonial" />
+    <div class="testi reveal">
+      <p class="eyebrow" style="margin-bottom:24px">Real stories</p>
+      <p class="testi-quote">
+        "My milk came in so much that I ended up donating and feeding four
+        babies. Any American non-Chinese mamas reading this: don't hesitate.
+        This is the stuff that really nourishes you."
+      </p>
+      <p class="testi-by">Michelle W. · Las Vegas</p>
+      <p class="testi-context">First-time mom · frozen nationwide delivery</p>
+      <p class="testi-disclaimer">
+        Individual results vary. Every body and every recovery is different.
+      </p>
+    </div>
+
+    <div class="wrap">
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <p class="q">
+            I originally wanted to try this to connect with my culture. The
+            actual food was better than the tasting box. Worth every penny — you
+            benefit from both the food and the service.
+          </p>
+          <p class="by">Tiffany T. · California</p>
+          <p class="ctx">Second-generation Chinese-American · first baby</p>
+        </div>
+        <div class="testi-card reveal">
+          <p class="q">
+            I don't speak Chinese, but the team answered all my questions in
+            detail. She made me feel comfortable and genuinely cared for.
+            Because of her, I found the right postpartum service for me.
+          </p>
+          <p class="by">Michelle N. · Southern California</p>
+          <p class="ctx">Non-Chinese · C-section recovery</p>
+        </div>
+        <div class="testi-card reveal">
+          <p class="q">
+            It felt like having someone quietly take care of me behind the
+            scenes — at the exact moment I needed it most and had nothing left
+            to give.
+          </p>
+          <p class="by">A JingMommy mother</p>
+          <p class="ctx">Classic Meal · local fresh delivery</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MEAL PLANS ============ -->
+  <section class="band band-cream" id="plans">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Find your plan</p>
+        <h2>Five ways to be nourished</h2>
+        <p>
+          Fresh daily delivery across Southern California. Frozen nationwide via
+          FedEx. Each plan is a full 30-day course of recovery.
+        </p>
+        <p style="font-size:15px;color:var(--muted);margin-top:10px">
+          Prices shown are for fresh delivery in SoCal. Shipping nationwide?
+          Frozen plans start at $2,790 — <a
+            href={route("/plans")}
+            style="color:var(--accent-deep)">see full plan details</a
+          >.
+        </p>
+      </div>
+      <Plans
+        cta
+        ctaLabel="See full plan details"
+        ctaHref={route("/plans")}
+      />
+    </div>
+  </section>
+
+  <!-- ============ NICOLE STORY ============ -->
+  <section class="band band-paper" id="story">
+    <div class="wrap">
+      <div class="story">
+        <div class="story-portrait reveal">
+          <Image
+            src={nicoleImg}
+            alt="Nicole Huang, founder of JingMommy"
+            widths={[380, 640]}
+            sizes="(max-width: 900px) 80vw, 420px"
+          />
+        </div>
+        <div class="story-body reveal">
+          <p class="eyebrow">Our story</p>
+          <h2>She didn't start a business.</h2>
+          <p class="sub">
+            She started a revolution in how America cares for new mothers.
+          </p>
+          <p>
+            When Nicole Huang had her own children in the United States, her
+            parents were in Taiwan — and there was no one to cook for her. So
+            she did what she has always done: she researched. She immersed
+            herself in the principles of Zuo Yue Zi and applied everything she
+            learned to her own recovery.
+          </p>
+          <p>
+            What she found on the other side surprised her. She couldn't stop
+            thinking about all the mothers who weren't getting that care. She
+            began writing on Yahoo! Blog — then the most widely read platform in
+            the Chinese-speaking world — and her readership grew past
+            <strong>160,000</strong>. Mothers across America found her. What
+            began as a blog became a community; what began as advice became a
+            calling.
+          </p>
+          <p>
+            In 2004 she became a distributor for the postpartum formulas of Dr.
+            Zhuang Shu-Qi, Taiwan's foremost authority on postpartum care. In
+            2010 she founded JingMommy. In 2016 she built out a 5,000+ sq ft
+            facility in Walnut, CA, with its own certified central kitchen —
+            open and transparent, so any mother who visits can see exactly how
+            her food is made.
+          </p>
+          <p>
+            Since 2010, over <strong>10,000 mothers</strong> across the US have trusted
+            JingMommy with their recovery — built on one belief:
+          </p>
+          <p class="story-sign">Your recovery matters, because you matter.</p>
+          <a href={route("/about/founding-story")} class="story-more"
+            >Read Nicole's full story →</a
+          >
+        </div>
+      </div>
+
+      <div class="book-teaser reveal">
+        <p class="eyebrow">Coming soon</p>
+        <h3>Nicole is writing the book.</h3>
+        <p>
+          A guide for English-speaking families on the ancient practice of
+          postpartum confinement care — and how to bring it into modern American
+          life. Drawn from 15 years and over 10,000 mothers. Inquiries from
+          publishers and media welcome.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <PressBand press={press} />
+  <TasteCTA />
+  <Footer />
+</Base>

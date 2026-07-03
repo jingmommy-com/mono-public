@@ -32,10 +32,42 @@ npm -w packages/jingmommy.com run lint       # Format with Prettier (writes in p
 
 ### Routing & i18n
 
-- Default locale is `zh-tw` with `prefixDefaultLocale: true` — all routes have a locale prefix (`/zh-tw/...`, `/en/...`)
+- Locales are `en` (default), `zh-tw`, `en-old` — declared once in `src/client.config.ts` and imported by `astro.config.js` (single source of truth). `prefixDefaultLocale: true`, so all routes have a locale prefix (`/en/...`, `/zh-tw/...`, `/en-old/...`)
 - Root `src/pages/index.astro` handles redirect from `/`
 - Pages are mirrored under `src/pages/zh-tw/` and `src/pages/en/`
 - MDX pages use `layout` frontmatter to select a layout
+
+#### Locale ↔ domain routing
+
+The **same build is deployed to two production domains**, each of which owns a subset
+of locales:
+
+| Domain | Locales |
+|---|---|
+| `jingmommy.com` | `zh-tw` |
+| `postpartummeal.com` | `en`, `en-old` |
+
+This mapping lives in **`siteDomains`** in `src/client.config.ts` (the single source of
+truth — update it there when locales/domains change).
+
+**Rule:** when switching language to a locale owned by a *different* production domain,
+the destination URL must include that domain. Example: on `jingmommy.com/zh-tw/about`,
+switching to `/en/about` must go to `https://postpartummeal.com/en/about` (not
+`jingmommy.com/en/about`).
+
+**Environments:** this domain hop happens **only on the production hosts** above (matched
+with or without a leading `www.`). On **local dev** and the **`jingmeal.com` staging**
+environment, language switching stays same-origin (just a path change) — no domain hop.
+
+**Mechanism (client-side, because it depends on the runtime hostname):**
+- Any language-switch link opts in with `data-locale-target="<locale>"` next to a normal
+  same-origin `href` (e.g. `href="/en/about"`).
+- `src/components/LocaleDomainSwitch.astro` inlines a small script that, only when the
+  current hostname is a known production domain, rewrites those links whose target locale
+  belongs to another domain into absolute cross-domain URLs.
+- It is included wherever switch links appear: `src/components/Header.astro` (zh-tw /
+  en-old) and `src/components/en/LangSwitch.astro` (en). Add it anywhere new switch links
+  are introduced.
 
 ### Layout Hierarchy
 
@@ -119,6 +151,23 @@ Global site metadata (title, description, URL, support phone/email) lives in `sr
 ```ts
 import { site } from '../client.config.ts'
 ```
+
+#### Config placement
+
+Decide where a piece of config lives by how widely it is used:
+
+- **(a) Shared across languages** (language-independent facts — address, phone, brand
+  name, founded year, etc.) → **`src/client.config.ts`** (the `site` object).
+  `config/en.ts` composes its `brand` from `site` fields and adds en-only copy. Derive
+  `tel:` links from `site.phone` (e.g. `` `tel:${site.phone.replace(/[^0-9]/g, '')}` ``)
+  rather than storing a separate value.
+- **(b) One language, multiple pages** (nav, footer, plans, order URLs, the `route()`
+  helper — en labels/paths) → **`src/config/en.ts`**.
+- **(c) One language, one page** (e.g. the landing page's "as featured in" `press` list)
+  → **inline in that page**, passed to any component as a prop.
+
+Follow this when adding new config: promote a value up (page → `config/en.ts` →
+`client.config.ts`) only once it's actually reused at that wider scope.
 
 ### UI Components
 

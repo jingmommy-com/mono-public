@@ -1,0 +1,1395 @@
+---
+import Base from "@/layouts/themes/en/Base.astro"
+import TopBar from "@/components/en/TopBar.astro"
+import Footer from "@/components/en/Footer.astro"
+import Botanical from "@/components/en/Botanical.astro"
+import CtaBand from "@/components/en/CtaBand.astro"
+import { route } from "@/config/en.ts"
+
+const title = "What Is Zuo Yue Zi? The Chinese Postpartum Tradition — JingMommy"
+const description =
+  "Zuo Yue Zi is the 2,000-year-old Chinese practice of structured postpartum recovery through warmth, rest, and staged nourishment. Learn the three-stage framework, four principles, and what to eat."
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "What Is Zuo Yue Zi? The Chinese Postpartum Tradition",
+    author: {
+      "@type": "Person",
+      name: "Nicole Huang",
+      jobTitle: "Founder, JingMommy",
+    },
+    publisher: { "@type": "Organization", name: "JingMommy" },
+    about: "Zuo Yue Zi — Chinese postpartum confinement and recovery",
+  },
+]
+const p7 = (hash: string) => `${route("/guide/chinese-food-therapy")}#${hash}`
+---
+
+<Base title={title} description={description} jsonLd={jsonLd}>
+  <TopBar active={route("/guide/why-zuo-yue-zi")} />
+
+  <!-- HERO -->
+  <section class="hero p3-hero">
+    <Botanical variant="hero-tl" />
+    <Botanical variant="hero-br" />
+    <div class="hero-inner">
+      <p class="eyebrow reveal">Why Zuo Yue Zi</p>
+      <h1 class="reveal">
+        If you grew up hearing about <em>Zuo Yue Zi,</em><br />or have no idea
+        how to start —<br />this page is for you.
+      </h1>
+      <p class="definition reveal">
+        Zuo Yue Zi (坐月子) — literally “sitting the month” — is the Chinese
+        practice of structured postpartum recovery through warmth, rest, and
+        staged nourishment. Practiced for over 2,000 years, it is one of the
+        most complete postpartum care systems in the world.
+      </p>
+      <p class="lede reveal">
+        It is not a fad, not a restrictive ritual, and not reserved for Chinese
+        families. What you eat in the first 30 days after birth affects your
+        hormones, your milk supply, your energy, and your long-term recovery —
+        for months to come.
+      </p>
+      <a href={route("/sample")} class="hero-gift reveal"
+        >Buying this as a gift for someone? Start here →</a
+      >
+    </div>
+  </section>
+
+  <!-- REAL OUTCOMES -->
+  <section class="band band-paper">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">What mothers experience</p>
+        <h2>Real outcomes from<br />10,000+ families.</h2>
+        <p>
+          Mothers who follow the Zuo Yue Zi framework consistently report the
+          same results — stronger milk supply, faster return of energy, reduced
+          joint pain. These are not promises. They are what happens when the
+          body gets what it actually needs.
+        </p>
+      </div>
+      <div class="outcomes">
+        <div class="outcome reveal">
+          <div class="outcome-mark">i.</div>
+          <h3>Stronger milk supply</h3>
+          <p>Iron- and collagen-rich foods support lactation from Week 1.</p>
+        </div>
+        <div class="outcome reveal">
+          <div class="outcome-mark">ii.</div>
+          <h3>Faster energy return</h3>
+          <p>Blood restoration in the first week makes the difference.</p>
+        </div>
+        <div class="outcome reveal">
+          <div class="outcome-mark">iii.</div>
+          <h3>Less joint pain</h3>
+          <p>Warmth and circulation protect against postpartum wind.</p>
+        </div>
+      </div>
+      <div class="feature-quote reveal">
+        <p class="q">
+          “My milk came in so much that I ended up donating and feeding four
+          babies. Any American non-Chinese mamas reading this: don’t hesitate.
+          This is the stuff that really nourishes you.”
+        </p>
+        <p class="by">Michelle W. · Las Vegas</p>
+        <p class="ctx">First-time mom, frozen delivery</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE WINDOW -->
+  <section class="band band-cream">
+    <div class="wrap">
+      <div class="window-grid">
+        <div class="window-body reveal">
+          <p class="eyebrow">The window</p>
+          <h2>Why the first<br />30 days change<br />everything.</h2>
+          <p>
+            Your body just went through one of the most physically demanding
+            events of your life. Childbirth involves profound blood loss and a
+            massive expenditure of vital energy. Traditional Chinese medicine
+            describes the postpartum body as in a state of deficiency, stasis,
+            and cold — more open and more vulnerable than it has ever been.
+          </p>
+          <p>
+            But vulnerability is also opportunity. That same openness makes this
+            window uniquely powerful for healing. With the right nourishment and
+            the right sequence, a woman can not only recover fully — she can
+            emerge with a stronger constitution than she had before pregnancy.
+          </p>
+          <p class="window-quote">
+            “In Chinese tradition, the first month after birth is not a burden
+            to endure — it is the most important gift a woman can give herself.”
+          </p>
+        </div>
+        <div
+          class="window-img reveal"
+          role="img"
+          aria-label="Warm bowl of traditional postpartum soup"
+        >
+          <svg
+            viewBox="0 0 400 500"
+            preserveAspectRatio="xMidYMid slice"
+            style="width:100%;height:100%"
+          >
+            <rect width="400" height="500" fill="#EAE0D3"></rect>
+            <g opacity="0.55">
+              <rect x="0" y="380" width="400" height="120" fill="#D8C9B4"
+              ></rect>
+              <ellipse cx="200" cy="290" rx="120" ry="40" fill="#A88560"
+              ></ellipse>
+              <ellipse cx="200" cy="270" rx="115" ry="55" fill="#C9A57A"
+              ></ellipse>
+              <ellipse cx="200" cy="262" rx="100" ry="45" fill="#D9BC8F"
+              ></ellipse>
+              <ellipse
+                cx="190"
+                cy="255"
+                rx="15"
+                ry="6"
+                fill="#8E5C42"
+                opacity="0.4"></ellipse>
+              <ellipse
+                cx="220"
+                cy="260"
+                rx="12"
+                ry="5"
+                fill="#A85A5A"
+                opacity="0.5"></ellipse>
+              <circle cx="210" cy="250" r="3" fill="#5E6B4F"></circle>
+              <circle cx="195" cy="265" r="2.5" fill="#5E6B4F"></circle>
+              <path
+                d="M170 230 Q175 215 185 220 M210 225 Q220 210 230 218"
+                stroke="#8E5C42"
+                stroke-width="1.5"
+                fill="none"
+                opacity="0.6"></path>
+            </g>
+            <g opacity="0.4">
+              <path
+                d="M170 200 Q175 180 165 165 Q175 175 185 165 Q185 185 190 200"
+                stroke="#A89B91"
+                stroke-width="1.2"
+                fill="none"></path>
+              <path
+                d="M195 195 Q200 175 195 160 Q200 170 210 162 Q210 180 215 195"
+                stroke="#A89B91"
+                stroke-width="1.2"
+                fill="none"></path>
+              <path
+                d="M220 198 Q225 178 220 162 Q225 174 235 165 Q235 184 240 200"
+                stroke="#A89B91"
+                stroke-width="1.2"
+                fill="none"></path>
+            </g>
+            <g opacity="0.45">
+              <circle cx="48" cy="60" r="22" fill="#D99FB0"></circle>
+              <circle cx="48" cy="60" r="7" fill="#E8C46A"></circle>
+              <path
+                d="M60 85 C55 100 50 115 55 130"
+                stroke="#5E6B4F"
+                stroke-width="1.5"
+                fill="none"></path>
+            </g>
+            <g opacity="0.4">
+              <circle cx="350" cy="430" r="26" fill="#C77D7D"></circle>
+              <circle cx="350" cy="430" r="8" fill="#E8C46A"></circle>
+              <path
+                d="M338 410 C320 395 305 392 290 400"
+                stroke="#5E6B4F"
+                stroke-width="1.5"
+                fill="none"></path>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREE PILLARS -->
+  <section class="band band-paper">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">The canonical structure</p>
+        <h2>Zuo Yue Zi rests on<br />three pillars.</h2>
+        <p>
+          Across two millennia, Chinese postpartum care has been organized
+          around three things, in this order. Food first. Herbs alongside. Rest
+          underneath it all.
+        </p>
+      </div>
+      <div class="three-pillars">
+        <div class="pillar reveal">
+          <div class="pillar-mark">i.</div>
+          <h3>Food</h3>
+          <p>
+            Warm, iron- and collagen-rich, staged across 30 days. The foundation
+            of every other pillar.
+          </p>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-mark">ii.</div>
+          <h3>Herbs</h3>
+          <p>
+            Traditional postpartum formulas that work with the food to support
+            blood, milk, and energy.
+          </p>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-mark">iii.</div>
+          <h3>Rest</h3>
+          <p>
+            Sleep and gentle movement — described in classical teaching as “the
+            world’s greatest nourishment.”
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUR PRINCIPLES -->
+  <section class="band band-cream">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Four principles</p>
+        <h2>What Zuo Yue Zi<br />actually protects.</h2>
+        <p>
+          Chinese postpartum care organizes recovery around four guiding
+          principles. Each has a 2,000-year track record — and a straightforward
+          modern explanation.
+        </p>
+      </div>
+      <div class="principles">
+        <div class="principle reveal">
+          <p class="principle-tag">First</p>
+          <p class="principle-tcm">避風寒 · Protect warmth</p>
+          <h3>Guard against cold.</h3>
+          <p>
+            After birth, the body’s defenses are lowered. Cold water, cold food,
+            and drafts can penetrate deeply — causing joint pain and hormonal
+            disruption that may not surface until years later. Warmth is
+            protective, not superstitious.
+          </p>
+        </div>
+        <div class="principle reveal">
+          <p class="principle-tag">Second</p>
+          <p class="principle-tcm">先清後補 · Sequence matters</p>
+          <h3>Clear first, then nourish.</h3>
+          <p>
+            Rich food too soon is a burden, not a benefit. The stomach must
+            first recover its ability to receive. Only after lochia clears and
+            digestion stabilizes can the body convert nourishment into Qi,
+            blood, and milk.
+          </p>
+        </div>
+        <div class="principle reveal">
+          <p class="principle-tag">Third</p>
+          <p class="principle-tcm">動靜有度 · Rest with circulation</p>
+          <h3>Move gently — rest, don’t freeze.</h3>
+          <p>
+            Complete bed rest is a myth. Prolonged stillness impairs blood
+            circulation and slows lochia discharge. Gentle movement within the
+            first day supports uterine recovery. The goal is rest — not
+            immobility.
+          </p>
+        </div>
+        <div class="principle reveal">
+          <p class="principle-tag">Fourth</p>
+          <p class="principle-tcm">心平氣和 · Peace feeds recovery</p>
+          <h3>Calm emotions, protect milk.</h3>
+          <p>
+            After birth, emotional swings are normal — not weakness. Stress
+            directly restricts milk flow and can trigger mastitis. Sleep is the
+            body’s deepest medicine. Family support is not optional — it is part
+            of the prescription.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAIWANESE TRADITION + 3 STAGES -->
+  <section class="band band-paper">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Taiwanese tradition</p>
+        <h2>The three-stage<br />recovery framework.</h2>
+      </div>
+      <div class="stages-intro reveal">
+        <p>
+          Zuo Yue Zi exists across the Chinese-speaking world — but Taiwan is
+          where the tradition never broke. The knowledge was most carefully
+          preserved here, passed down through generations of mothers, refined by
+          practitioners, and elevated into both a cultural expectation and a
+          genuine craft. Taiwanese postpartum cooking is not a regional
+          variation of the tradition. For many, it is the tradition at its most
+          complete.
+        </p>
+        <p>
+          Each stage is anchored by a signature dish Taiwanese families have
+          prepared for generations. These are not comfort food — they are
+          precision nutrition, chosen because they deliver exactly what the body
+          needs at exactly the right moment.
+        </p>
+      </div>
+
+      <div class="stage-list">
+        <div class="stage-card reveal">
+          <div class="stage-side">
+            <p class="stage-week">Week 1</p>
+            <p class="stage-phase">Mild</p>
+          </div>
+          <div class="stage-body">
+            <h3>Pork liver soup</h3>
+            <p class="stage-zh">豬肝湯 · replenish lost blood</p>
+            <span class="stage-purpose">Iron restoration</span>
+            <p>
+              Childbirth depletes blood rapidly, and restoring it is the single
+              most urgent priority in the first week. In Taiwanese tradition,
+              pork liver soup is the first dish prepared for a new mother —
+              often within days of birth. The reason is simple: you cannot
+              rebuild on an empty foundation. Blood first. Everything else
+              follows.
+            </p>
+            <div class="reasoning">
+              <p class="reason-label">Why now and not later</p>
+              <p class="reason-text">
+                The body is still clearing lochia and digestion is fragile. This
+                soup is gentle enough to receive, nourishing enough to matter.
+                Rich, heavy food at this stage would overwhelm a system that is
+                still clearing — not yet ready to build.
+              </p>
+              <a href={p7("pork-liver-soup")} class="p7-link"
+                >What’s in this dish — Chinese Food Therapy →</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="stage-card reveal">
+          <div class="stage-side">
+            <p class="stage-week">Week 2</p>
+            <p class="stage-phase">Warm</p>
+          </div>
+          <div class="stage-body">
+            <h3>Eucommia kidney soup</h3>
+            <p class="stage-zh">杜仲腰花 · strengthen the kidney and spine</p>
+            <span class="stage-purpose">Kidney &amp; spine support</span>
+            <p>
+              Once blood is stabilized, the tradition turns its attention to the
+              lower back and kidneys — the part of the body that bore nine
+              months of pregnancy and labor. Many women who skip this stage
+              develop chronic back pain that persists for years. This dish
+              exists precisely to prevent that.
+            </p>
+            <div class="reasoning">
+              <p class="reason-label">Why now and not earlier</p>
+              <p class="reason-text">
+                Restore blood first, strengthen the spine second. Attempting
+                this before Week 1 is complete would be like reinforcing the
+                walls before the foundation is set. By Week 2, the body is ready
+                — and this is exactly when the support matters most.
+              </p>
+              <a href={p7("eucommia-kidney-soup")} class="p7-link"
+                >What’s in this dish — Chinese Food Therapy →</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="stage-card featured reveal">
+          <div class="stage-side">
+            <p class="stage-week">Weeks 3–4</p>
+            <p class="stage-phase">Heat</p>
+          </div>
+          <div class="stage-body">
+            <h3>Sesame oil chicken soup</h3>
+            <p class="stage-zh">
+              麻油雞 · the great restoration of Qi and blood
+            </p>
+            <span class="stage-purpose">Deep Qi &amp; blood restoration</span>
+            <p>
+              This is the dish Taiwanese mothers look forward to. By Weeks 3 and
+              4, the body has been prepared — blood replenished, structure
+              supported — and is finally ready to receive deep, warming
+              nourishment. Most women describe this as the moment they begin to
+              feel like themselves again.
+            </p>
+            <div class="reasoning">
+              <p class="reason-label">Why this is saved for last</p>
+              <p class="reason-text">
+                Served too early, its warming power overwhelms a system still
+                clearing and rebuilding. Served at the right time, it is
+                transformative. That is what the sequence is for.
+              </p>
+              <a href={p7("sesame-oil-chicken-soup")} class="p7-link"
+                >What’s in this dish — Chinese Food Therapy →</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nicole-bar reveal">
+        <div class="nicole-avatar" aria-hidden="true">N</div>
+        <p class="nicole-text">
+          <strong>Nicole Huang</strong> is the founder of JingMommy and has been immersed
+          in the practice of Chinese postpartum care since 2004 — beginning with postpartum
+          herbal formulations and expanding into full meal programs in 2008. Through
+          JingMommy’s meal delivery service and Zuo Yue Zi workshops, her work has
+          reached over 10,000 families across the United States. Featured in the LA
+          Times and on PBS.
+        </p>
+      </div>
+
+      <div class="midcta reveal">
+        <p class="q">
+          “I originally wanted to try this to connect with my culture. The
+          actual food was better than the tasting event. Worth every penny.”
+        </p>
+        <p class="by">Tiffany T. · California</p>
+        <div class="midcta-divider"></div>
+        <p class="midcta-price">
+          Plans from $1,550 for 30 days. Shipping surcharge may apply.<br />Try
+          a sample first — no commitment required.
+        </p>
+        <div class="midcta-buttons">
+          <a href={route("/sample")} class="btn btn-primary btn-sm"
+            >Local sample — $50</a
+          >
+          <a href={route("/plans")} class="btn btn-ghost btn-sm"
+            >See all plans</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MYTHS -->
+  <section class="band band-cream">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Common myths</p>
+        <h2>What Zuo Yue Zi<br />is not.</h2>
+      </div>
+      <div class="myths">
+        <div class="myth-item featured reveal">
+          <p class="myth-q">“You can’t wash your hair or shower.”</p>
+          <div class="myth-a">
+            <p>
+              This is where tradition and modern comfort need to be balanced
+              carefully. After birth, your body’s defenses are at their lowest —
+              pores open, blood depleted, warmth easily lost. In TCM, this
+              vulnerability is what makes new mothers susceptible to
+              <em>postpartum wind</em> (月內風) — a condition where cold or damp penetrates
+              the joints and meridians during this unguarded window, causing chronic
+              joint pain, persistent headaches, numbness, or body aches that can linger
+              for years.
+            </p>
+            <p>
+              It is not superstition. Peer-reviewed research classifies
+              puerperal wind syndrome as a real postpartum condition with
+              symptoms including pain, numbness, heaviness, and coldness of the
+              body after childbirth — often with no abnormality visible on
+              imaging or blood tests, making it difficult to treat after the
+              fact.
+            </p>
+            <p>
+              The goal is not to avoid cleaning — it is to avoid cold and damp
+              at all costs.
+            </p>
+            <ul class="myth-sublist">
+              <li>
+                <span class="lbl">Hair</span>
+                Delay washing as long as comfortably possible. Between washes, a traditional
+                method is rubbing alcohol diluted with warm water, applied with a
+                cotton ball to cleanse and sanitize the scalp as needed — this keeps
+                the scalp fresh without introducing cold water or dampness to the
+                head. When you do wash, dry completely with a hairdryer immediately.
+                No air-drying, ever.
+              </li>
+              <li>
+                <span class="lbl">Showering</span>
+                No soaking baths. A quick hot shower is fine — but before you start,
+                hang your towel and fresh clothes over the shower curtain rod or on
+                top of the shower door. Dry yourself completely before opening that
+                door. Stepping out into cooler air while still damp is exactly what
+                causes the problem.
+              </li>
+              <li>
+                <span class="lbl">Intimate hygiene</span>
+                This one should never be skipped. Most hospitals provide a peri-rinse
+                bottle at discharge — use it with warm water after every bathroom
+                visit. A bidet on warm setting works just as well. Keeping this area
+                clean is non-negotiable for postpartum healing.
+              </li>
+            </ul>
+            <span class="myth-close"
+              >The underlying principle is simple: warmth in, cold out. Every
+              hygiene decision during this month runs through that filter.</span
+            >
+          </div>
+        </div>
+
+        <div class="myth-item reveal">
+          <p class="myth-q">“It’s only for Chinese families.”</p>
+          <div class="myth-a">
+            <p>
+              Your body’s postpartum biology is the same regardless of heritage.
+              Iron, collagen, warmth, rest, and emotional support are not
+              culturally exclusive — they are human. Many of JingMommy’s most
+              loyal customers are non-Chinese mothers who found that traditional
+              postpartum food worked better than anything else they tried.
+            </p>
+          </div>
+        </div>
+
+        <div class="myth-item reveal">
+          <p class="myth-q">“The richer the food right away, the better.”</p>
+          <div class="myth-a">
+            <p>
+              This is the most common mistake. Giving the body heavy, rich food
+              before digestion has recovered actually slows recovery — an
+              overwhelmed stomach cannot convert it into nourishment. The staged
+              approach is not conservative. It is more effective.
+            </p>
+          </div>
+        </div>
+
+        <div class="myth-item reveal">
+          <p class="myth-q">“I should stay completely in bed for 30 days.”</p>
+          <div class="myth-a">
+            <p>
+              Classical teaching says the opposite: prolonged stillness impairs
+              blood flow and slows lochia discharge. Gentle movement within the
+              first day supports uterine contraction and recovery. The goal is
+              rest — not immobility.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNER BOX -->
+  <section class="band band-paper">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">For partners &amp; family</p>
+        <h2>A note for<br />the people who love her.</h2>
+      </div>
+      <div class="partner-note reveal">
+        <p class="eyebrow">For husbands, partners &amp; family members</p>
+        <h3>
+          If you are the one trying to figure out how to help — start here.
+        </h3>
+        <p>
+          Zuo Yue Zi is not about isolation or strict rules. It is about making
+          sure she gets warm, nutrient-dense food during a period when her body
+          is doing profound work: recovering from labor, restoring blood,
+          rebuilding structural strength, and rebalancing hormones.
+        </p>
+        <p>
+          In Chinese and Taiwanese tradition, feeding a new mother well is the
+          whole family’s responsibility. If her mother or grandmother would have
+          cooked for her, JingMommy is the modern version of that.
+        </p>
+        <p>
+          You don’t have to understand every herb. You just have to make sure
+          she is fed — really fed, the way her body needs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="band band-cream">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Quick answers</p>
+        <h2>Frequently asked.</h2>
+      </div>
+      <div class="faq">
+        <div class="faq-item reveal">
+          <h3 class="faq-q">Do I have to do all 30 days?</h3>
+          <p class="faq-a">
+            The three stages build on each other — stopping early means missing
+            the kidney support and deep restoration that Weeks 3–4 deliver. That
+            said, if daily delivery doesn’t fit your lifestyle, our Easy Meal
+            plan starts at $1,550 and delivers every other day, so you can weave
+            traditional Chinese postpartum nourishment into your routine without
+            the full daily commitment. Even partial support makes a real
+            difference.
+          </p>
+        </div>
+        <div class="faq-item reveal">
+          <h3 class="faq-q">Can I skip organ meats like liver or kidney?</h3>
+          <p class="faq-a">
+            We’d encourage you to start with the soup first — even just sipping
+            the broth without eating the organ delivers meaningful nourishment,
+            and many customers who were hesitant at first found the flavor much
+            gentler than expected. The broth carries more of the healing than
+            most people realize. If after trying it you genuinely can’t get
+            there, reach out and we’ll work something out together — we’d rather
+            find a solution than have you miss out on the recovery benefits
+            entirely.
+          </p>
+        </div>
+        <div class="faq-item reveal">
+          <h3 class="faq-q">I had a C-section. Does this still apply?</h3>
+          <p class="faq-a">
+            Yes — and arguably more so. Surgical birth involves greater blood
+            loss and a longer healing process. The iron-first staging and
+            warming progression directly supports C-section recovery. The
+            first-week meals are intentionally gentle to accommodate lower
+            appetite after surgery.
+          </p>
+        </div>
+        <div class="faq-item reveal">
+          <h3 class="faq-q">
+            How does this fit with my OB’s postpartum advice?
+          </h3>
+          <p class="faq-a">
+            Very well, in most cases. The principles of iron restoration, staged
+            nourishment, and warming collagen-rich foods align closely with what
+            modern sports medicine understands about recovery from significant
+            physical trauma. Most OBs are simply unfamiliar with Zuo Yue Zi — it
+            falls outside their training, not outside the evidence. If your care
+            team has specific dietary requirements, share them with us and we’ll
+            adjust your plan accordingly.
+          </p>
+        </div>
+        <div class="faq-item reveal">
+          <h3 class="faq-q">What if I’m not breastfeeding?</h3>
+          <p class="faq-a">
+            We can remove ingredients used to stimulate milk supply from your
+            meals — just note it when you get in touch. One thing to be aware
+            of: because our menus are designed as a complete system, removing
+            certain ingredients may result in some dishes repeating more
+            frequently across your plan. The core recovery benefits — blood
+            restoration, warmth, and nourishment — remain fully intact.
+          </p>
+        </div>
+        <div class="faq-item reveal">
+          <h3 class="faq-q">
+            Can I arrange this as a gift, or order before my due date?
+          </h3>
+          <p class="faq-a">
+            Yes — and we strongly recommend it. The first days after birth are
+            busy and overwhelming enough without having to research and
+            coordinate meals. Ordering in advance means one less thing to worry
+            about when it matters most. A deposit secures your plan, and you
+            simply notify us when delivery should begin. Over 90% of our
+            families place their order before the due date — it helps us plan
+            ahead and ensures your meals are ready the moment you need them.
+            First meals can arrive within days of delivery.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    eyebrow="Ready when you are"
+    heading="Try it before you commit."
+    body="Start with a sample. No commitment. Over 10,000 mothers have trusted JingMommy for their postpartum recovery."
+    buttons={[
+      {
+        label: "Local sample — $50",
+        href: route("/sample"),
+        variant: "primary",
+      },
+      {
+        label: "Frozen sample — $80",
+        href: route("/sample"),
+        variant: "ghost",
+      },
+    ]}
+  />
+
+  <Footer />
+</Base>
+
+<style>
+  /* Page 3 — Why Zuo Yue Zi (scoped, page-specific sections) */
+  .p3-hero {
+    padding: 96px 0 112px;
+  }
+  .p3-hero h1 {
+    font-size: 62px;
+    line-height: 1.08;
+    letter-spacing: 0.005em;
+    margin-bottom: 30px;
+  }
+  .p3-hero h1 em {
+    font-style: italic;
+    color: var(--accent-deep);
+    font-weight: 500;
+  }
+  .p3-hero .lede {
+    font-size: 21px;
+    color: var(--ink-soft);
+    max-width: 680px;
+    margin: 0 auto 28px;
+    white-space: normal;
+  }
+  .p3-hero .definition {
+    font-family: "EB Garamond", serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 620px;
+    margin: 0 auto 36px;
+    line-height: 1.6;
+  }
+  .hero-gift {
+    display: inline-block;
+    font-family: "Jost", sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 3px;
+    transition: all 0.2s;
+  }
+  .hero-gift:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+  .btn-sm {
+    padding: 13px 26px;
+    font-size: 12px;
+  }
+
+  .outcomes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .outcome {
+    text-align: center;
+    padding: 0 16px;
+  }
+  .outcome-mark {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 48px;
+    line-height: 1;
+    color: var(--accent);
+    margin-bottom: 18px;
+    font-style: italic;
+  }
+  .outcome h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  .outcome p {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .feature-quote {
+    max-width: 780px;
+    margin: 80px auto 0;
+    text-align: center;
+    padding: 0 32px;
+  }
+  .feature-quote .q {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.36;
+    color: var(--ink);
+    margin-bottom: 26px;
+    letter-spacing: 0.005em;
+  }
+  .feature-quote .by {
+    font-family: "Jost", sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    margin-bottom: 6px;
+  }
+  .feature-quote .ctx {
+    font-size: 15.5px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .window-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 84px;
+    align-items: center;
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+  .window-body .eyebrow {
+    margin-bottom: 18px;
+  }
+  .window-body h2 {
+    margin-bottom: 24px;
+  }
+  .window-body p {
+    font-size: 18px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  .window-quote {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.42;
+    color: var(--accent-deep);
+    border-left: 2px solid var(--accent);
+    padding-left: 24px;
+    margin: 30px 0 0;
+  }
+  .window-img {
+    position: relative;
+    min-height: 480px;
+    border-radius: 3px;
+    overflow: hidden;
+    background: var(--cream-deep);
+  }
+  .window-img svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .three-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1040px;
+    margin: 0 auto;
+    border-top: 1px solid var(--line);
+  }
+  .pillar {
+    padding: 48px 36px;
+    border-right: 1px solid var(--line);
+    text-align: center;
+  }
+  .pillar:last-child {
+    border-right: none;
+  }
+  .pillar-mark {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .pillar h3 {
+    font-size: 25px;
+    margin-bottom: 14px;
+  }
+  .pillar p {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 1040px;
+    margin: 0 auto;
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+  .principle {
+    padding: 48px 44px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .principle:nth-child(even) {
+    border-right: none;
+  }
+  .principle:nth-child(3),
+  .principle:nth-child(4) {
+    border-bottom: none;
+  }
+  .principle-tag {
+    font-family: "Jost", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    margin-bottom: 10px;
+  }
+  .principle-tcm {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--accent);
+    margin-bottom: 14px;
+    line-height: 1.4;
+  }
+  .principle h3 {
+    font-size: 25px;
+    margin-bottom: 14px;
+  }
+  .principle p {
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+
+  .stages-intro {
+    max-width: 760px;
+    margin: 0 auto 56px;
+  }
+  .stages-intro p {
+    font-size: 18px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  .stage-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .stage-card {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    align-items: start;
+    padding: 48px 44px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: var(--paper);
+    position: relative;
+  }
+  .stage-card.featured {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+  .stage-card.featured h3,
+  .stage-card.featured .stage-body p {
+    color: #d6cab8;
+  }
+  .stage-card.featured h3 {
+    color: var(--paper);
+  }
+  .stage-card.featured .stage-week {
+    color: #e8d5c2;
+  }
+  .stage-card.featured .stage-phase,
+  .stage-card.featured .stage-zh {
+    color: var(--accent);
+  }
+  .stage-card.featured .reasoning {
+    border-top-color: rgba(255, 255, 255, 0.15);
+  }
+  .stage-card.featured .reason-label {
+    color: var(--accent);
+  }
+  .stage-card.featured .reason-text {
+    color: #d6cab8;
+  }
+  .stage-card.featured .p7-link {
+    color: #e8d5c2;
+    border-color: rgba(232, 213, 194, 0.4);
+  }
+  .stage-card.featured .p7-link:hover {
+    color: var(--paper);
+    border-color: var(--paper);
+  }
+  .stage-card.featured .stage-purpose {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .stage-side {
+    text-align: left;
+    padding-top: 6px;
+  }
+  .stage-week {
+    font-family: "Jost", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    margin-bottom: 8px;
+  }
+  .stage-phase {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 42px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stage-body h3 {
+    font-size: 30px;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .stage-zh {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--accent-deep);
+    margin-bottom: 18px;
+    letter-spacing: 0.02em;
+  }
+  .stage-purpose {
+    display: inline-block;
+    font-family: "Jost", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    padding: 5px 14px;
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    margin-bottom: 18px;
+  }
+  .stage-body p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 0;
+  }
+  .reasoning {
+    margin-top: 24px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+  }
+  .reason-label {
+    font-family: "Jost", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    margin-bottom: 8px;
+  }
+  .reason-text {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+  .p7-link {
+    display: inline-block;
+    font-family: "Jost", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 3px;
+    transition: all 0.2s;
+  }
+  .p7-link:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+
+  .nicole-bar {
+    max-width: 880px;
+    margin: 80px auto 0;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+    align-items: center;
+    padding: 32px 36px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: var(--paper);
+  }
+  .nicole-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--accent-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 26px;
+    color: var(--paper);
+    font-weight: 600;
+  }
+  .nicole-text {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+  .nicole-text strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .midcta {
+    max-width: 880px;
+    margin: 64px auto 0;
+    text-align: center;
+    padding: 48px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: var(--cream);
+  }
+  .midcta .q {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.42;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .midcta .by {
+    font-family: "Jost", sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    margin-bottom: 32px;
+  }
+  .midcta-divider {
+    width: 48px;
+    height: 1px;
+    background: var(--accent);
+    margin: 0 auto 28px;
+  }
+  .midcta-price {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+  .midcta-buttons {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .myths {
+    max-width: 840px;
+    margin: 0 auto;
+  }
+  .myth-item {
+    padding: 36px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .myth-item:last-child {
+    border-bottom: none;
+  }
+  .myth-item.featured {
+    padding: 44px 0;
+  }
+  .myth-q {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--accent-deep);
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 30px;
+  }
+  .myth-q::before {
+    content: "\2715";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    font-family: "Jost", sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    color: var(--rose-deep);
+  }
+  .myth-a {
+    font-size: 17px;
+    color: var(--ink-soft);
+    line-height: 1.72;
+  }
+  .myth-a p {
+    margin-bottom: 14px;
+  }
+  .myth-sublist {
+    margin: 24px 0 14px;
+    padding: 0;
+    list-style: none;
+  }
+  .myth-sublist li {
+    padding: 14px 0;
+    border-top: 1px solid var(--line-soft);
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 1.66;
+  }
+  .myth-sublist li:first-child {
+    border-top: none;
+  }
+  .myth-sublist .lbl {
+    font-family: "Jost", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .myth-close {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--accent-deep);
+    margin-top: 18px;
+    display: block;
+  }
+
+  .partner-note {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 52px 56px;
+    text-align: center;
+    position: relative;
+  }
+  .partner-note .eyebrow {
+    margin-bottom: 14px;
+  }
+  .partner-note h3 {
+    font-size: 30px;
+    margin-bottom: 22px;
+  }
+  .partner-note p {
+    font-size: 17px;
+    color: var(--ink-soft);
+    line-height: 1.72;
+    margin-bottom: 16px;
+  }
+  .partner-note p:last-child {
+    margin-bottom: 0;
+  }
+
+  .faq {
+    max-width: 840px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    padding: 32px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .faq-item:last-child {
+    border-bottom: none;
+  }
+  .faq-q {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.32;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .faq-a {
+    font-size: 17px;
+    color: var(--ink-soft);
+    line-height: 1.72;
+  }
+
+  @media (max-width: 900px) {
+    .p3-hero {
+      padding: 64px 0 80px;
+    }
+    .window-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .window-img {
+      min-height: 340px;
+    }
+    .three-pillars,
+    .principles {
+      grid-template-columns: 1fr;
+    }
+    .pillar {
+      border-right: none;
+      border-bottom: 1px solid var(--line);
+    }
+    .pillar:last-child {
+      border-bottom: none;
+    }
+    .principle {
+      border-right: none;
+      border-bottom: 1px solid var(--line);
+    }
+    .principle:last-child {
+      border-bottom: none;
+    }
+    .outcomes {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .stage-card {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 36px 32px;
+    }
+    .stage-phase {
+      font-size: 32px;
+    }
+    .nicole-bar {
+      padding: 28px 24px;
+      grid-template-columns: 48px 1fr;
+      gap: 18px;
+    }
+    .nicole-avatar {
+      width: 48px;
+      height: 48px;
+      font-size: 21px;
+    }
+    .midcta {
+      padding: 36px 28px;
+    }
+    .midcta .q {
+      font-size: 20px;
+    }
+    .partner-note {
+      padding: 36px 28px;
+    }
+    .partner-note h3 {
+      font-size: 24px;
+    }
+    .feature-quote .q {
+      font-size: 22px;
+    }
+  }
+  @media (max-width: 560px) {
+    .p3-hero h1 {
+      font-size: 38px;
+    }
+    .p3-hero .lede {
+      font-size: 18px;
+    }
+    .stage-card {
+      padding: 28px 22px;
+    }
+    .myth-q {
+      font-size: 21px;
+      padding-left: 26px;
+    }
+    .faq-q {
+      font-size: 21px;
+    }
+  }
+</style>

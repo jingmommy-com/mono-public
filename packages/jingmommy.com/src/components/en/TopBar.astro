@@ -1,0 +1,30 @@
+---
+/* Sticky top navigation bar. Shared across all en pages. */
+import { brand, nav, navCta, route } from "@/config/en.ts"
+
+interface Props {
+  /** href of the current page, to mark its nav link active. */
+  active?: string
+}
+const { active } = Astro.props
+---
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href={route("/")} class="logo">{brand.name}</a>
+    <button class="menu-btn" aria-label="Open menu">☰</button>
+    <nav class="nav" id="nav">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class={active === item.href ? "active" : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a href={navCta.href} class="nav-cta">{navCta.label}</a>
+    </nav>
+  </div>
+</header>

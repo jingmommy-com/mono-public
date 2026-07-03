@@ -1,0 +1,1070 @@
+---
+import Base from "@/layouts/themes/en/Base.astro"
+import TopBar from "@/components/en/TopBar.astro"
+import Footer from "@/components/en/Footer.astro"
+import Botanical from "@/components/en/Botanical.astro"
+import { brand, route } from "@/config/en.ts"
+
+const title = "Contact & Order — JingMommy Postpartum Meals"
+const description =
+  "Contact JingMommy to order, gift, or plan Chinese postpartum (Zuo Yue Zi) meals. Call or text 626-217-7539, send a message, or check delivery to your ZIP. English & Chinese spoken."
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "FoodEstablishment",
+    name: "JingMommy",
+    telephone: "+1-626-217-7539",
+    email: brand.email,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "618 Brea Canyon Road Unit F",
+      addressLocality: "Walnut",
+      addressRegion: "CA",
+      postalCode: "91789",
+      addressCountry: "US",
+    },
+    areaServed: "United States",
+    openingHours: "Mo-Fr 09:00-17:00",
+  },
+]
+---
+
+<Base title={title} description={description} jsonLd={jsonLd}>
+  <TopBar active={route("/contact")} />
+
+  <!-- HERO -->
+  <section class="c9-hero">
+    <Botanical variant="hero-tl" />
+    <Botanical variant="hero-br" />
+    <div class="c9-hero-inner reveal">
+      <p class="eyebrow">Contact &amp; Order</p>
+      <h1>We’re here.<br />And we respond fast.</h1>
+      <p class="lede">
+        If you’re expecting soon, reach out now — we’ll have everything ready
+        before the baby comes.
+      </p>
+      <p class="hero-note">
+        English &amp; Chinese spoken &nbsp;·&nbsp; Texts and calls welcome
+      </p>
+      <div class="hero-cta">
+        <a href={brand.phoneHref} class="btn btn-primary">Call or text now</a>
+        <a href="#contact-form" class="btn btn-ghost">Send a message</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT METHODS -->
+  <section class="band band-cream" id="reach-us">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Reach us</p>
+        <h2>A real person picks up.</h2>
+        <p>
+          Call, text, or send a message. We love hearing from expectant mothers
+          early — that’s how we make sure everything is ready when it matters
+          most.
+        </p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card reveal">
+          <div class="contact-mark">☏</div>
+          <h3>Main Line</h3>
+          <p class="contact-role">Orders &amp; General Questions</p>
+          <a href="tel:6262177539" class="contact-phone">626-217-7539</a>
+          <p class="contact-note">Call or text — both welcome</p>
+        </div>
+        <div class="contact-card reveal">
+          <div class="contact-mark">❀</div>
+          <h3>Sales &amp; Plans</h3>
+          <p class="contact-role">Orders, Gifts &amp; Tastings</p>
+          <a href="tel:6269915899" class="contact-phone">626-991-5899</a>
+          <p class="contact-note">English &amp; Chinese spoken</p>
+        </div>
+        <div class="contact-card reveal">
+          <div class="contact-mark">✿</div>
+          <h3>Customer Care</h3>
+          <p class="contact-role">After Your Order</p>
+          <a href="tel:6269915786" class="contact-phone">626-991-5786</a>
+          <p class="contact-note">English &amp; Chinese spoken</p>
+        </div>
+      </div>
+      <div class="hours-wrap reveal">
+        <p class="hours-formal">
+          Monday to Friday &nbsp;·&nbsp; 9am – 5pm Pacific
+        </p>
+        <p class="hours-informal">
+          But honestly, we are usually around later than that.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section class="band band-paper" id="contact-form">
+    <div class="wrap">
+      <div class="form-layout">
+        <div class="form-copy reveal">
+          <p class="eyebrow">Send a message</p>
+          <h2>Tell us about you<br />and your baby.</h2>
+          <p class="sub">
+            We read every message ourselves and get back to you personally.
+          </p>
+
+          <form
+            id="jm-form"
+            action="https://api.web3forms.com/submit"
+            method="POST"
+            novalidate
+          >
+            <input
+              type="hidden"
+              name="access_key"
+              value="357108c1-a0b3-4192-9958-38b461dc013e"
+            />
+            <input
+              type="hidden"
+              name="subject"
+              value="New message from the postpartummeal.com contact form"
+            />
+            <input
+              type="hidden"
+              name="from_name"
+              value="JingMommy — postpartummeal.com"
+            />
+            <!-- honeypot: bots that fill this in are silently rejected by Web3Forms -->
+            <input
+              type="checkbox"
+              name="botcheck"
+              tabindex="-1"
+              autocomplete="off"
+              style="display:none"
+            />
+            <div class="form-row">
+              <div class="form-group">
+                <label for="f-name">Your name</label>
+                <input
+                  type="text"
+                  id="f-name"
+                  name="name"
+                  placeholder="First name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="f-phone">Phone number</label>
+                <input
+                  type="tel"
+                  id="f-phone"
+                  name="phone"
+                  placeholder="(626) 000-0000"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="f-email">Email address</label>
+              <input
+                type="email"
+                id="f-email"
+                name="email"
+                placeholder="yourname@example.com"
+                required
+              />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="f-due"
+                  >Due date <span style="font-size:10px;opacity:.7"
+                    >(if known)</span
+                  ></label
+                >
+                <input type="date" id="f-due" name="due_date" />
+              </div>
+              <div class="form-group">
+                <label for="f-topic">How can we help?</label>
+                <select id="f-topic" name="topic">
+                  <option value="">Select one…</option>
+                  <option value="order">Order a meal plan</option>
+                  <option value="gift">Gift a meal</option>
+                  <option value="taste">Try a taste</option>
+                  <option value="expecting">Planning ahead (expecting)</option>
+                  <option value="delivery">Delivery or shipping question</option
+                  >
+                  <option value="visit">Arrange a kitchen visit</option>
+                  <option value="other">Something else</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="f-msg">Your message</label>
+              <textarea
+                id="f-msg"
+                name="message"
+                placeholder="Tell us a little about what you need — due date, dietary preferences, delivery location, questions about plans, or anything else on your mind."
+              ></textarea>
+            </div>
+            <div class="form-submit">
+              <button type="submit" class="btn btn-primary">Send message</button
+              >
+              <p
+                class="form-error"
+                id="form-error"
+                role="alert"
+                aria-live="assertive"
+              >
+              </p>
+            </div>
+          </form>
+
+          <div
+            class="form-success"
+            id="form-success"
+            role="alert"
+            aria-live="polite"
+          >
+            <div class="success-mark">❀</div>
+            <h3>Message received.</h3>
+            <p>
+              We’ll be in touch soon. If you need a faster response, call or
+              text our sales team directly at&nbsp;<a href="tel:6269915899"
+                >626-991-5899</a
+              >.
+            </p>
+          </div>
+        </div>
+
+        <aside class="form-panel reveal">
+          <p class="eyebrow">Why reach out early</p>
+          <h3>The best time to plan is before you need it.</h3>
+          <p>
+            Most mothers who tell us they wish they’d called sooner did so from
+            the delivery room. A five-minute conversation now means everything
+            is in place when it matters most.
+          </p>
+          <div class="panel-rule"></div>
+          <ul class="panel-checklist">
+            <li>
+              Order at least one month before your due date to save yourself the
+              last-minute hassle
+            </li>
+            <li>We coordinate around your actual delivery date</li>
+            <li>Dietary preferences and restrictions confirmed upfront</li>
+            <li>Gift orders coordinated directly with the recipient</li>
+            <li>Nationwide frozen orders arranged in advance</li>
+          </ul>
+          <div class="panel-quote">
+            “Ever since my postpartum experience, I held onto their number. I
+            reached out again for post-surgical meals. Which other service
+            actually cares about your well-being?”
+          </div>
+          <p class="panel-by">Caroline P. · Buena Park, CA</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- DELIVERY AREA -->
+  <section class="band band-cream" id="delivery">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Delivery</p>
+        <h2>Fresh locally. Frozen nationwide.</h2>
+        <p>
+          Wherever you are, we can reach you. Enter your ZIP code to see what’s
+          available in your area.
+        </p>
+      </div>
+      <div class="zip-wrap reveal">
+        <div class="zip-row">
+          <input
+            type="text"
+            class="zip-input"
+            id="zip-input"
+            placeholder="ZIP code"
+            maxlength="5"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            aria-label="ZIP code"
+          />
+          <button class="btn btn-ghost" id="zip-check">Check</button>
+        </div>
+        <p class="zip-result" id="zip-result" role="status" aria-live="polite">
+        </p>
+      </div>
+      <div class="zone-grid reveal">
+        <div class="zone">
+          <p class="zone-tag">Southern California</p>
+          <h3>Fresh daily delivery</h3>
+          <p class="zone-desc">
+            Meals prepared in our Walnut kitchen and delivered the same morning
+            — warm, seasonal, and as nourishing as the day they were made.
+          </p>
+          <ul>
+            <li>Los Angeles County</li>
+            <li>Orange County</li>
+            <li>San Gabriel Valley</li>
+            <li>Inland Empire</li>
+          </ul>
+          <p
+            style="font-size:14px;color:var(--muted);margin-top:14px;font-style:italic"
+          >
+            Delivery is limited to specific areas within each county or city —
+            not every address qualifies. Contact us to confirm yours.
+          </p>
+        </div>
+        <div class="zone">
+          <p class="zone-tag">Rest of the US</p>
+          <h3>Frozen nationwide</h3>
+          <p class="zone-desc">
+            Our frozen plans ship via FedEx Priority Overnight, packed in
+            thermal packaging with ice packs to hold temperature in transit — so
+            every meal arrives ready for your freezer.
+          </p>
+          <ul>
+            <li>Continental US — 48 states</li>
+            <li>FedEx Priority Overnight shipping</li>
+            <li>Thermal packaging + ice packs hold temperature</li>
+            <li>Shipped weekly</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KITCHEN ADDRESS -->
+  <section class="band band-paper" id="kitchen">
+    <div class="wrap">
+      <div class="kitchen-layout">
+        <div class="kitchen-addr reveal">
+          <p class="eyebrow">Our kitchen</p>
+          <h3>You’re welcome to visit.</h3>
+          <address>
+            618 Brea Canyon Road<br />
+            Unit F<br />
+            Walnut, CA 91789
+          </address>
+        </div>
+        <div class="kitchen-body reveal">
+          <p>
+            Our 5,000+ sq ft facility in Walnut is where every meal is prepared
+            — using the same ingredients, the same recipes, and the same care
+            we’ve put into every delivery since 2010.
+          </p>
+          <p>
+            Mothers who visit often tell us the kitchen is what convinced them.
+            If you’d like to see where your meals are made before you order,
+            reach out and we’ll arrange a time.
+          </p>
+          <a href="#contact-form" class="btn btn-ghost" style="margin-top:8px"
+            >Arrange a kitchen visit</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING QUOTE -->
+  <section class="close-band">
+    <Botanical variant="taste-tl" />
+    <Botanical variant="taste-br" />
+    <div class="close-inner reveal">
+      <p class="eyebrow">Said by a real mother</p>
+      <p class="close-quote">
+        “Take care of your body with great food, and take care of your soul with
+        a team that genuinely cares for you.”
+      </p>
+      <p class="close-by">Jessica T. · Pasadena, CA</p>
+      <div class="close-cta">
+        <a href={brand.phoneHref} class="btn btn-primary">Call or text now</a>
+        <a href="#contact-form" class="btn btn-ghost">Send a message</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<script is:inline>
+  // Contact form submits to Web3Forms via AJAX (so we can keep the inline
+  // success panel instead of redirecting). The access_key is a public,
+  // client-side key, carried as a hidden field on the form itself.
+  var form = document.getElementById("jm-form")
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault()
+      var errEl = document.getElementById("form-error")
+      if (errEl) errEl.classList.remove("visible")
+
+      var name = document.getElementById("f-name").value.trim()
+      var email = document.getElementById("f-email").value.trim()
+      if (!name) {
+        document.getElementById("f-name").focus()
+        return
+      }
+      if (!email) {
+        document.getElementById("f-email").focus()
+        return
+      }
+
+      var btn = form.querySelector('button[type="submit"]')
+      var btnLabel = btn ? btn.textContent : ""
+      if (btn) {
+        btn.disabled = true
+        btn.textContent = "Sending…"
+      }
+
+      function fail() {
+        if (btn) {
+          btn.disabled = false
+          btn.textContent = btnLabel
+        }
+        if (errEl) {
+          errEl.textContent =
+            "Something went wrong sending your message. Please try again, or call or text us at 626-991-5899."
+          errEl.classList.add("visible")
+        }
+      }
+
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      })
+        .then(function (res) {
+          return res.json()
+        })
+        .then(function (json) {
+          if (!json || !json.success) throw new Error("submit failed")
+          form.style.display = "none"
+          var success = document.getElementById("form-success")
+          success.classList.add("visible")
+          success.scrollIntoView({ behavior: "smooth", block: "center" })
+        })
+        .catch(fail)
+    })
+  }
+
+  // Delivery lookup calls the order system's API and maps `delivery_code` to a
+  // message. Codes: 0 = ask us, 1 = local free delivery, 2 = local every-other-day
+  // (surcharge applies online by default), 3 = FedEx/frozen, 4 = no service.
+  var DELIVERY_MESSAGES = {
+    "0": {
+      cls: "zip-result",
+      text: "We’re not certain about your area yet — contact us and we’ll check delivery for your ZIP.",
+    },
+    "1": {
+      cls: "zip-result fresh",
+      text: "Great news — we deliver fresh meals daily to most areas with your ZIP. Contact us to confirm your delivery day.",
+    },
+    "2": {
+      cls: "zip-result fresh",
+      text: "Good news — your ZIP qualifies for local every-other-day delivery. A delivery surcharge may apply; contact us to confirm the details for your area.",
+    },
+    "3": {
+      cls: "zip-result frozen",
+      text: "Your area is served by our frozen nationwide program — same meals, same ingredients, shipped via FedEx Priority Overnight in thermal packaging that holds temperature in transit.",
+    },
+    "4": {
+      cls: "zip-result",
+      text: "We currently ship frozen meals to the continental US only, so we're not yet able to reach this ZIP code. Contact us and we'll let you know if that changes.",
+    },
+  }
+
+  function checkZip() {
+    var raw = document.getElementById("zip-input").value.trim()
+    var result = document.getElementById("zip-result")
+    if (!/^\d{5}$/.test(raw)) {
+      result.textContent = "Please enter a 5-digit ZIP code."
+      result.className = "zip-result"
+      return
+    }
+    result.textContent = "Checking…"
+    result.className = "zip-result"
+    fetch(
+      "https://order.jingmommy.com/-/api/delivery_zip?zip_code=" +
+        encodeURIComponent(raw)
+    )
+      .then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status)
+        return res.json()
+      })
+      .then(function (data) {
+        var msg = DELIVERY_MESSAGES[String(data && data.delivery_code)] ||
+          DELIVERY_MESSAGES["0"]
+        result.textContent = msg.text
+        result.className = msg.cls
+      })
+      .catch(function () {
+        result.textContent =
+          "We couldn't check that ZIP right now — please try again in a moment, or contact us and we'll look it up for you."
+        result.className = "zip-result"
+      })
+  }
+  var zipBtn = document.getElementById("zip-check")
+  var zipInput = document.getElementById("zip-input")
+  if (zipBtn) zipBtn.addEventListener("click", checkZip)
+  if (zipInput)
+    zipInput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault()
+        checkZip()
+      }
+    })
+</script>
+
+<style>
+  /* Page 9 — Contact & Order (scoped, page-specific sections) */
+  .c9-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 96px 0 112px;
+    background: linear-gradient(180deg, var(--paper) 0%, var(--cream) 100%);
+  }
+  .c9-hero-inner {
+    position: relative;
+    z-index: 3;
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 32px;
+  }
+  .c9-hero h1 {
+    margin-bottom: 28px;
+  }
+  .c9-hero .lede {
+    font-size: 21px;
+    color: var(--ink-soft);
+    max-width: 640px;
+    margin: 0 auto 14px;
+    line-height: 1.6;
+  }
+  .hero-note {
+    font-family: "Jost", sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    margin-bottom: 40px;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .contact-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 42px 32px;
+    text-align: center;
+    transition: all 0.25s;
+  }
+  .contact-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+  .contact-mark {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 46px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 18px;
+    opacity: 0.65;
+  }
+  .contact-card h3 {
+    font-size: 27px;
+    margin-bottom: 6px;
+  }
+  .contact-role {
+    font-family: "Jost", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 22px;
+  }
+  .contact-phone {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 30px;
+    color: var(--ink);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+    letter-spacing: 0.01em;
+  }
+  .contact-phone:hover {
+    color: var(--accent-deep);
+  }
+  .contact-note {
+    font-size: 15.5px;
+    color: var(--muted);
+  }
+  .hours-wrap {
+    max-width: 680px;
+    margin: 56px auto 0;
+    text-align: center;
+    border-top: 1px solid var(--line);
+    padding-top: 44px;
+  }
+  .hours-formal {
+    font-family: "Jost", sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .hours-informal {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 26px;
+    color: var(--accent-deep);
+    line-height: 1.4;
+  }
+
+  .form-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 72px;
+    align-items: start;
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+  .form-copy .eyebrow {
+    margin-bottom: 16px;
+  }
+  .form-copy h2 {
+    margin-bottom: 10px;
+  }
+  .form-copy .sub {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--accent-deep);
+    margin-bottom: 36px;
+    line-height: 1.45;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .form-group {
+    margin-bottom: 22px;
+  }
+  .form-group label {
+    font-family: "Jost", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    display: block;
+    margin-bottom: 9px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    font-family: "EB Garamond", serif;
+    font-size: 17px;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 13px 16px;
+    outline: none;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(180, 123, 92, 0.08);
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: var(--muted);
+    opacity: 0.7;
+  }
+  .form-group textarea {
+    resize: vertical;
+    min-height: 138px;
+    line-height: 1.6;
+  }
+  .form-group select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1L6 7L11 1' stroke='%238E5C42' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+  .form-submit {
+    margin-top: 6px;
+  }
+  .form-submit .btn-primary {
+    width: 100%;
+    text-align: center;
+    padding: 18px;
+    font-size: 13px;
+  }
+  .form-submit .btn-primary:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+  .form-error {
+    display: none;
+    margin-top: 14px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #b23b3b;
+    text-align: center;
+  }
+  .form-error.visible {
+    display: block;
+  }
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 56px 32px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: var(--cream);
+  }
+  .form-success.visible {
+    display: block;
+  }
+  .success-mark {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 56px;
+    color: var(--accent);
+    opacity: 0.75;
+    margin-bottom: 20px;
+    line-height: 1;
+  }
+  .form-success h3 {
+    margin-bottom: 14px;
+  }
+  .form-success p {
+    color: var(--muted);
+    font-size: 17px;
+  }
+  .form-success a {
+    color: var(--accent-deep);
+  }
+  .form-panel {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 44px 38px;
+    position: sticky;
+    top: 100px;
+  }
+  .form-panel .eyebrow {
+    margin-bottom: 18px;
+  }
+  .form-panel h3 {
+    font-size: 26px;
+    margin-bottom: 16px;
+  }
+  .form-panel p {
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .panel-rule {
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+    margin: 26px 0;
+  }
+  .panel-quote {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 21px;
+    color: var(--accent-deep);
+    line-height: 1.5;
+    border-left: 2px solid var(--accent);
+    padding-left: 20px;
+    margin: 22px 0 12px;
+  }
+  .panel-by {
+    font-family: "Jost", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .panel-checklist {
+    list-style: none;
+    margin: 20px 0 0;
+  }
+  .panel-checklist li {
+    font-size: 16px;
+    color: var(--muted);
+    padding: 7px 0;
+    border-bottom: 1px solid var(--line-soft);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .panel-checklist li:last-child {
+    border-bottom: none;
+  }
+  .panel-checklist li::before {
+    content: "—";
+    color: var(--accent);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 18px;
+    line-height: 1.5;
+    flex-shrink: 0;
+  }
+
+  .zip-wrap {
+    max-width: 540px;
+    margin: 0 auto 64px;
+    text-align: center;
+  }
+  .zip-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+  }
+  .zip-input {
+    font-family: "EB Garamond", serif;
+    font-size: 18px;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 13px 18px;
+    width: 160px;
+    outline: none;
+    text-align: center;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+    letter-spacing: 0.1em;
+  }
+  .zip-input:focus {
+    border-color: var(--accent);
+  }
+  .zip-result {
+    margin-top: 16px;
+    min-height: 26px;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .zip-result.fresh {
+    color: var(--leaf);
+  }
+  .zip-result.frozen {
+    color: var(--accent-deep);
+  }
+  .zone-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 900px;
+    margin: 0 auto;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .zone {
+    padding: 44px 40px;
+    background: var(--paper);
+  }
+  .zone:first-child {
+    border-right: 1px solid var(--line);
+  }
+  .zone-tag {
+    font-family: "Jost", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    margin-bottom: 14px;
+  }
+  .zone h3 {
+    font-size: 26px;
+    margin-bottom: 14px;
+  }
+  .zone .zone-desc {
+    font-size: 16px;
+    color: var(--muted);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .zone ul {
+    list-style: none;
+  }
+  .zone li {
+    font-size: 15.5px;
+    color: var(--muted);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--line-soft);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .zone li:last-child {
+    border-bottom: none;
+  }
+  .zone li::before {
+    content: "·";
+    color: var(--accent);
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .kitchen-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .kitchen-addr {
+    border-left: 2px solid var(--accent);
+    padding-left: 30px;
+  }
+  .kitchen-addr .eyebrow {
+    margin-bottom: 16px;
+  }
+  .kitchen-addr h3 {
+    font-size: 28px;
+    margin-bottom: 18px;
+  }
+  .kitchen-addr address {
+    font-style: normal;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  .kitchen-body p {
+    font-size: 17px;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+
+  .close-band {
+    position: relative;
+    overflow: hidden;
+    padding: 112px 0;
+    background: var(--accent-deep);
+    color: var(--paper);
+    text-align: center;
+  }
+  .close-inner {
+    position: relative;
+    z-index: 3;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .close-band .eyebrow {
+    color: #e8d5c2;
+    margin-bottom: 28px;
+  }
+  .close-quote {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 1.35;
+    color: var(--paper);
+    margin-bottom: 22px;
+    letter-spacing: 0.005em;
+  }
+  .close-by {
+    font-family: "Jost", sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #e8d5c2;
+    margin-bottom: 40px;
+  }
+  .close-cta {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .close-band .btn-primary {
+    background: var(--paper);
+    color: var(--accent-deep);
+  }
+  .close-band .btn-primary:hover {
+    background: var(--cream);
+    color: var(--ink);
+  }
+  .close-band .btn-ghost {
+    border-color: rgba(240, 228, 216, 0.5);
+    color: #f0e4d8;
+  }
+  .close-band .btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+  }
+
+  @media (max-width: 900px) {
+    .c9-hero {
+      padding: 64px 0 72px;
+    }
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+    .form-layout {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .form-panel {
+      position: static;
+    }
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+    .zone-grid {
+      grid-template-columns: 1fr;
+    }
+    .zone:first-child {
+      border-right: none;
+      border-bottom: 1px solid var(--line);
+    }
+    .kitchen-layout {
+      grid-template-columns: 1fr;
+      gap: 44px;
+    }
+    .close-quote {
+      font-size: 26px;
+    }
+  }
+  @media (max-width: 560px) {
+    .c9-hero .lede {
+      font-size: 18px;
+    }
+    .zip-row {
+      flex-direction: column;
+      align-items: center;
+    }
+    .zip-input {
+      width: 100%;
+      max-width: 240px;
+    }
+  }
+</style>

@@ -13,7 +13,7 @@ type RouteConfig = { title?: string }
 // Get color prop, default to 'fuchsia'
 let { color = 'fuchsia', locale = Astro.currentLocale } = Astro.props
 
-const i18nMap: Record<string, typeof zhTwFooter> = { 'zh-tw': zhTwFooter, en: enFooter }
+const i18nMap: Record<string, typeof zhTwFooter> = { 'zh-tw': zhTwFooter, en: enFooter, 'en-old': enFooter }
 const pathLocale = Astro.url.pathname.split('/').find((s: string) => locales.includes(s)) ?? locales[0]
 const t = i18nMap[pathLocale] ?? zhTwFooter
 

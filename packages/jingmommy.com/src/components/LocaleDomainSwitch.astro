@@ -1,0 +1,46 @@
+---
+/*
+  Domain-aware locale switching.
+
+  The same build is deployed to multiple production domains, each owning a subset
+  of locales (see `siteDomains` in client.config.ts). When a language-switch link
+  points at a locale owned by a *different* production domain, the destination has
+  to include that domain — otherwise we'd land on a locale the current domain
+  doesn't serve.
+
+  This runs client-side (the decision depends on the runtime hostname), so:
+    • On a known production host (jingmommy.com / postpartummeal.com, ±www):
+      rewrite `a[data-locale-target]` links whose locale belongs to another domain
+      into absolute cross-domain URLs.
+    • On any other host (local dev, jingmeal.com staging): do nothing — links stay
+      same-origin.
+
+  Switch links opt in by adding `data-locale-target="<locale>"` alongside a normal
+  same-origin `href` (e.g. `/en/about`).
+*/
+import { siteDomains } from '@/client.config.ts'
+---
+
+<script is:inline define:vars={{ siteDomains }}>
+  ;(function () {
+    var localeDomain = {}
+    Object.keys(siteDomains).forEach(function (domain) {
+      siteDomains[domain].forEach(function (locale) {
+        localeDomain[locale] = domain
+      })
+    })
+
+    var host = location.hostname.replace(/^www\./, '')
+    // Only hop domains on a known production host; dev/staging stay same-origin.
+    if (!Object.prototype.hasOwnProperty.call(siteDomains, host)) return
+
+    document.querySelectorAll('a[data-locale-target]').forEach(function (link) {
+      var targetLocale = link.getAttribute('data-locale-target')
+      var targetDomain = localeDomain[targetLocale]
+      if (targetDomain && targetDomain !== host) {
+        // `href` is a same-origin path (e.g. /en/about) — make it absolute to the owning domain.
+        link.href = 'https://' + targetDomain + link.getAttribute('href')
+      }
+    })
+  })()
+</script>

@@ -1,0 +1,43 @@
+---
+/*
+  Shared full-width terracotta CTA band with pale botanical corners.
+  Used by every page for its closing "next step". Fully configurable.
+*/
+import Botanical from "./Botanical.astro"
+
+interface Button {
+  label: string
+  href: string
+  variant?: "primary" | "ghost"
+}
+interface Props {
+  eyebrow: string
+  heading: string
+  body: string
+  buttons: Button[]
+  id?: string
+}
+const { eyebrow, heading, body, buttons, id } = Astro.props
+---
+
+<section class="ctaband" id={id} aria-label="Get started">
+  <Botanical variant="taste-tl" />
+  <Botanical variant="taste-br" />
+  <div class="ctaband-inner reveal">
+    <p class="eyebrow">{eyebrow}</p>
+    <h2>{heading}</h2>
+    <p>{body}</p>
+    <div class="hero-cta">
+      {
+        buttons.map((b) => (
+          <a
+            href={b.href}
+            class:list={["btn", `btn-${b.variant ?? "primary"}`]}
+          >
+            {b.label}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

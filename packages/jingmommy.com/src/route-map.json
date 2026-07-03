@@ -1,288 +1,323 @@
 {
   "/404": {
-    "title": "404 - Not Found",
-    "description": "The page you are looking for does not exist. It may have been moved or deleted."
+    "title": "404 — Page Not Found · JingMommy"
   },
-  "/en/about/central-kitchen": {
+  "/en/about/founding-story": {
+    "title": "Our Story — Nicole Huang, Founder of JingMommy",
+    "description": "Nicole Huang built JingMommy to bring authentic Chinese postpartum care — Zuo Yue Zi — to mothers across America. Over 10,000 families served since 2010. Featured in LA Times and PBS."
+  },
+  "/en/about/testimonial": {
+    "title": "Real Stories — Mothers on JingMommy Postpartum Meals",
+    "description": "Real reviews from mothers who tried authentic Chinese postpartum (Zuo Yue Zi) meals — Chinese, ABC, and non-Chinese moms across the US. First-name attribution, honest voice, results-vary disclosure."
+  },
+  "/en/contact": {
+    "title": "Contact & Order — JingMommy Postpartum Meals",
+    "description": "Contact JingMommy to order, gift, or plan Chinese postpartum (Zuo Yue Zi) meals. Call or text 626-217-7539, send a message, or check delivery to your ZIP. English & Chinese spoken."
+  },
+  "/en/faq": {
+    "title": "Frequently Asked Questions — JingMommy Zuo Yue Zi Postpartum Meals",
+    "description": "Answers to the questions families ask most about JingMommy’s Zuo Yue Zi postpartum meal plans — the tradition, the food, breastfeeding, delivery, plans, and ordering."
+  },
+  "/en/guide/chinese-food-therapy": {
+    "title": "Chinese Food Therapy for Postpartum Recovery — JingMommy",
+    "description": "Chinese food therapy (食療) for postpartum recovery: ginger, sesame oil, rice wine, red dates, goji, Dang Gui, sesame oil chicken and sea bass soup — the science and tradition behind every JingMommy meal."
+  },
+  "/en/guide/why-zuo-yue-zi": {
+    "title": "What Is Zuo Yue Zi? The Chinese Postpartum Tradition — JingMommy",
+    "description": "Zuo Yue Zi is the 2,000-year-old Chinese practice of structured postpartum recovery through warmth, rest, and staged nourishment. Learn the three-stage framework, four principles, and what to eat."
+  },
+  "/en": {
+    "title": "JingMommy — Authentic Chinese Postpartum Meals, Delivered",
+    "description": "JingMommy delivers authentic Chinese postpartum (Zuo Yue Zi) meals across the US. Founded 2010, 10,000+ mothers served. Fresh daily in SoCal, frozen nationwide. Featured in LA Times, PBS & Washington Post. Sample meals from $50."
+  },
+  "/en/plans": {
+    "title": "Meal Plans — Chinese Postpartum (Zuo Yue Zi) Delivery — JingMommy",
+    "description": "Five fresh and four frozen 30-day Chinese postpartum meal plans, from $1,550. Same kitchen, same three-stage Zuo Yue Zi program — delivered fresh in SoCal or shipped frozen nationwide."
+  },
+  "/en/sample": {
+    "title": "Try a Taste — Free Tasting & Sample Meals — JingMommy",
+    "description": "Taste authentic Chinese postpartum meals before you commit. Join a free tasting event in Southern California, or order a full sample day — $50 fresh local, $80 frozen nationwide. Gift options too."
+  },
+  "/en-old/about/central-kitchen": {
     "order": 3,
     "sidebar": true,
     "title": "Central Kitchen"
   },
-  "/en/about/founding-story": {
+  "/en-old/about/founding-story": {
     "order": 1,
     "sidebar": true,
     "title": "Founding Story"
   },
-  "/en/about": {
+  "/en-old/about": {
     "order": 8,
     "sidebar": true,
     "title": "Our Story"
   },
-  "/en/about/social-media": {
+  "/en-old/about/social-media": {
     "order": 6,
     "sidebar": true,
     "title": "Social Media"
   },
-  "/en/about/social-video": {
+  "/en-old/about/social-video": {
     "order": 7,
     "sidebar": true,
     "title": "Social Videos"
   },
-  "/en/about/team": {
+  "/en-old/about/team": {
     "order": 4,
     "sidebar": true,
     "title": "Our Team"
   },
-  "/en/about/testimonial": {
+  "/en-old/about/testimonial": {
     "order": 5,
     "sidebar": true,
     "title": "Testimonials"
   },
-  "/en/about/why-us": {
+  "/en-old/about/why-us": {
     "order": 2,
     "sidebar": true,
     "title": "Why Jingmommy"
   },
-  "/en/advice": {
+  "/en-old/advice": {
     "title": "Care Advice"
   },
-  "/en/coming-soon": {
+  "/en-old/coming-soon": {
     "sitemap": false,
     "title": "🚧 Coming Soon",
     "description": "We're working hard to bring you something amazing. Stay tuned!"
   },
-  "/en/confinement-care-advice/dos-and-donts": {
-    "sidebar": true,
-    "title": "Postpartum Foods — What to Eat & Avoid"
-  },
-  "/en/confinement-care-advice": {
-    "order": 2,
-    "sidebar": true,
-    "title": "Confinement Care Tips"
-  },
-  "/en/customer-service": {
+  "/en-old/customer-service": {
     "title": "Customer Service"
   },
-  "/en/delivery-lookup": {
+  "/en-old/delivery-lookup": {
     "title": "Delivery Lookup"
   },
-  "/en/faq": {
+  "/en-old/faq": {
     "title": "Frequently Asked Questions"
   },
-  "/en/frozen-postpartum-soups/chicken-essence": {
+  "/en-old/frozen-postpartum-soups/chicken-essence": {
     "order": 3,
     "sidebar": true,
     "title": "Frozen Slow-Simmered Chicken Essence"
   },
-  "/en/frozen-postpartum-soups/desserts": {
+  "/en-old/frozen-postpartum-soups/desserts": {
     "order": 4,
     "sidebar": true,
     "title": "Frozen Dessert Series"
   },
-  "/en/frozen-postpartum-soups": {
+  "/en-old/frozen-postpartum-soups": {
     "order": 6,
     "sidebar": true,
     "title": "Frozen Soups"
   },
-  "/en/frozen-postpartum-soups/sea-bass-soups": {
+  "/en-old/frozen-postpartum-soups/sea-bass-soups": {
     "order": 5,
     "sidebar": true,
     "title": "Frozen Sea Bass Soup"
   },
-  "/en/frozen-postpartum-soups/spring-4": {
+  "/en-old/frozen-postpartum-soups/spring-4": {
     "order": 7,
     "sidebar": true,
     "title": "Four Seasons Soup · \"Spring Equinox\" Frozen Soup Collection"
   },
-  "/en/frozen-postpartum-soups/stewed-soups": {
+  "/en-old/frozen-postpartum-soups/stewed-soups": {
     "order": 2,
     "sidebar": true,
     "title": "Frozen Postpartum Stewed Tonic Soups"
   },
-  "/en/frozen-postpartum-soups/taiwanese-soups": {
+  "/en-old/frozen-postpartum-soups/taiwanese-soups": {
     "order": 1,
     "sidebar": true,
     "title": "Frozen Taiwanese Postpartum Soups"
   },
-  "/en/frozen-postpartum-soups/tiers": {
+  "/en-old/frozen-postpartum-soups/tiers": {
     "order": 6,
     "sidebar": true,
     "title": "Frozen Postpartum Soup Sets"
   },
-  "/en/gallery/dish": {
+  "/en-old/gallery/dish": {
     "title": "Dish Photo Gallery"
   },
-  "/en/gallery": {
+  "/en-old/gallery": {
     "title": "Gallery"
   },
-  "/en": {
-    "title": "Home"
+  "/en-old/guide/confinement-care-advice": {
+    "order": 2,
+    "sidebar": true,
+    "title": "Confinement Care Tips"
   },
-  "/en/miscarriage-healing-advice": {
+  "/en-old/guide/dos-and-donts": {
+    "sidebar": true,
+    "title": "Postpartum Foods — What to Eat & Avoid"
+  },
+  "/en-old/guide/miscarriage-healing-advice": {
     "order": 4,
     "sidebar": true,
     "title": "Miscarriage Recovery Advice"
   },
-  "/en/miscarriage-healing-meals/biweekly": {
+  "/en-old": {
+    "title": "Home"
+  },
+  "/en-old/miscarriage-healing-meals/biweekly": {
     "order": 2,
     "sidebar": true,
     "title": "Biweekly Recovery Meals (14 Days)"
   },
-  "/en/miscarriage-healing-meals/deluxe": {
+  "/en-old/miscarriage-healing-meals/deluxe": {
     "order": 1,
     "sidebar": true,
     "title": "Deluxe Recovery Meals (30 Days)"
   },
-  "/en/miscarriage-healing-meals": {
+  "/en-old/miscarriage-healing-meals": {
     "order": 3,
     "sidebar": true,
     "title": "Miscarriage Healing Meals"
   },
-  "/en/news/ctitv": {
+  "/en-old/news/ctitv": {
     "order": 2,
     "sidebar": true,
     "title": "CTi TV / ZhongWang News"
   },
-  "/en/news/ettvamerica": {
+  "/en-old/news/ettvamerica": {
     "order": 3,
     "sidebar": true,
     "title": "ETTV News"
   },
-  "/en/news": {
+  "/en-old/news": {
     "order": 8,
     "sidebar": true,
     "title": "Media Coverage"
   },
-  "/en/news/la-times": {
+  "/en-old/news/la-times": {
     "order": 1,
     "sidebar": true,
     "title": "LA Times — Los Angeles Times"
   },
-  "/en/plans/3tier": {
+  "/en-old/plans/3tier": {
     "title": "Three-Tier Plans"
   },
-  "/en/plans": {
+  "/en-old/plans": {
     "title": "Plans"
   },
-  "/en/post-surgery-meals": {
+  "/en-old/post-surgery-meals": {
     "order": 5,
     "sidebar": true,
     "title": "Post-Surgery Meals"
   },
-  "/en/postpartum-meals/classic-postpartum-meals": {
+  "/en-old/postpartum-meals/classic-postpartum-meals": {
     "order": 2,
     "sidebar": true,
     "title": "Classic Postpartum Meals"
   },
-  "/en/postpartum-meals/daddy-meals": {
+  "/en-old/postpartum-meals/daddy-meals": {
     "order": 8,
     "sidebar": true,
     "title": "Daddy Meals"
   },
-  "/en/postpartum-meals/easy-postpartum-meals": {
+  "/en-old/postpartum-meals/easy-postpartum-meals": {
     "order": 5,
     "sidebar": true,
     "title": "Easy Postpartum Meals"
   },
-  "/en/postpartum-meals/frozen-postpartum-meals": {
+  "/en-old/postpartum-meals/frozen-postpartum-meals": {
     "order": 6,
     "sidebar": true,
     "title": "Frozen Postpartum Meals"
   },
-  "/en/postpartum-meals/healthy-meals": {
+  "/en-old/postpartum-meals/healthy-meals": {
     "order": 9,
     "sidebar": true,
     "title": "Healthy Meals",
     "description": "Healthy Meals | A reason to eat well every day"
   },
-  "/en/postpartum-meals/herbal-postpartum-meals": {
+  "/en-old/postpartum-meals/herbal-postpartum-meals": {
     "order": 1,
     "sidebar": true,
     "title": "Herbal Postpartum Meals"
   },
-  "/en/postpartum-meals": {
+  "/en-old/postpartum-meals": {
     "order": 1,
     "sidebar": true,
     "title": "Postpartum Meals",
     "description": "Jingmommy Postpartum Meals — 5 plan options to meet every mom's needs!"
   },
-  "/en/postpartum-meals/low-carb-postpartum-meals": {
+  "/en-old/postpartum-meals/low-carb-postpartum-meals": {
     "order": 4,
     "sidebar": true,
     "title": "Low-Carb Postpartum Meals"
   },
-  "/en/postpartum-meals/recovery-plus-meals": {
+  "/en-old/postpartum-meals/recovery-plus-meals": {
     "order": 7,
     "sidebar": true,
     "title": "Recovery Plus Meals"
   },
-  "/en/postpartum-meals/vita-postpartum-meals": {
+  "/en-old/postpartum-meals/vita-postpartum-meals": {
     "order": 3,
     "sidebar": true,
     "title": "Vita Postpartum Meals"
   },
-  "/en/postpartum-products/belly-wrap": {
+  "/en-old/postpartum-products/belly-wrap": {
     "order": 6,
     "sidebar": true,
     "title": "Postpartum Belly Wrap"
   },
-  "/en/postpartum-products/chicken-essence": {
+  "/en-old/postpartum-products/chicken-essence": {
     "order": 2,
     "sidebar": true,
     "title": "Slow-Simmered Chicken Essence"
   },
-  "/en/postpartum-products/du-zhong-capsule": {
+  "/en-old/postpartum-products/du-zhong-capsule": {
     "order": 5,
     "sidebar": true,
     "title": "Back Relief Supplement (Du Zhong Capsules)"
   },
-  "/en/postpartum-products/first-month-joy-gift-box": {
+  "/en-old/postpartum-products/first-month-joy-gift-box": {
     "order": 3,
     "sidebar": true,
     "title": "Full Moon Rice Gift Box"
   },
-  "/en/postpartum-products/herbal-drink-pack": {
+  "/en-old/postpartum-products/herbal-drink-pack": {
     "order": 1,
     "sidebar": true,
     "title": "Postpartum Herbal Drink Pack"
   },
-  "/en/postpartum-products": {
+  "/en-old/postpartum-products": {
     "order": 7,
     "sidebar": true,
     "title": "Postpartum Products"
   },
-  "/en/postpartum-products/sheng-hua-tang": {
+  "/en-old/postpartum-products/sheng-hua-tang": {
     "order": 4,
     "sidebar": true,
     "title": "Sheng Hua Tang (Postpartum Herbal Tonic)"
   },
-  "/en/sample": {
+  "/en-old/sample": {
     "order": 0,
     "sidebar": true,
     "title": "Sampling"
   },
-  "/en/sample/local-delivery": {
+  "/en-old/sample/local-delivery": {
     "order": 2,
     "sidebar": true,
     "title": "Sampling - Home Delivery"
   },
-  "/en/sample/out-of-state-shipping": {
+  "/en-old/sample/out-of-state-shipping": {
     "order": 3,
     "sidebar": true,
     "title": "Sampling - Out-of-State Frozen Shipment"
   },
-  "/en/sample/tasting-party": {
+  "/en-old/sample/tasting-party": {
     "order": 1,
     "sidebar": true,
     "title": "Postpartum Meal Tasting Party"
   },
-  "/en/sitemap": {
+  "/en-old/sitemap": {
     "sitemap": false
   },
-  "/en/sitemap.xml": {
+  "/en-old/sitemap.xml": {
     "sitemap": false
   },
-  "/en/term-of-service": {
+  "/en-old/term-of-service": {
     "title": "Terms of Service"
   },
   "/": {
@@ -335,15 +370,6 @@
     "sitemap": false,
     "title": "🚧 即將推出",
     "description": "我們正努力為您帶來精彩內容，敬請期待！"
-  },
-  "/zh-tw/confinement-care-advice/dos-and-donts": {
-    "sidebar": true,
-    "title": "坐月子可吃＆不可吃"
-  },
-  "/zh-tw/confinement-care-advice": {
-    "order": 2,
-    "sidebar": true,
-    "title": "坐月子貼心叮嚀"
   },
   "/zh-tw/customer-service": {
     "title": "線上客服"
@@ -400,13 +426,22 @@
   "/zh-tw/gallery": {
     "title": "相簿"
   },
-  "/zh-tw": {
-    "title": "首頁"
+  "/zh-tw/guide/confinement-care-advice": {
+    "order": 2,
+    "sidebar": true,
+    "title": "坐月子貼心叮嚀"
   },
-  "/zh-tw/miscarriage-healing-advice": {
+  "/zh-tw/guide/dos-and-donts": {
+    "sidebar": true,
+    "title": "坐月子可吃＆不可吃"
+  },
+  "/zh-tw/guide/miscarriage-healing-advice": {
     "order": 4,
     "sidebar": true,
     "title": "小產貼心叮嚀"
+  },
+  "/zh-tw": {
+    "title": "首頁"
   },
   "/zh-tw/miscarriage-healing-meals/biweekly": {
     "order": 2,

@@ -18,13 +18,17 @@ export function getStaticPaths() {
 
 <script is:inline define:vars={{ routes: [...routes], locales }}>
   // Fallback for direct URL access (bookmarks, shared links).
-  const slug = location.pathname.slice(1)
-  const shared = ['404']
-  if (shared.includes(slug)) {
-    return
-  }
-  const lang = (navigator.language || '').toLowerCase()
-  const preferred = locales.find(l => lang.startsWith(l.split('-')[0])) || 'zh-tw'
-  const target = routes.includes(`/${preferred}/${slug}`) ? preferred : 'zh-tw'
-  location.replace(`/${target}/${slug}`)
+  // Wrapped in an IIFE so the early `return` is valid (top-level return is a
+  // compile error under Astro 7's compiler).
+  ;(function () {
+    const slug = location.pathname.slice(1)
+    const shared = ['404']
+    if (shared.includes(slug)) {
+      return
+    }
+    const lang = (navigator.language || '').toLowerCase()
+    const preferred = locales.find(l => lang.startsWith(l.split('-')[0])) || 'zh-tw'
+    const target = routes.includes(`/${preferred}/${slug}`) ? preferred : 'zh-tw'
+    location.replace(`/${target}/${slug}`)
+  })()
 </script>

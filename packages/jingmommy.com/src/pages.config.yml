@@ -5,7 +5,7 @@
 #
 # Per-page inline declarations (frontmatter / const) override these values.
 
-en:
+en-old:
   coming-soon:
     sitemap: false
   sitemap:
@@ -39,11 +39,14 @@ en:
       order: 7
       sidebar: true
 
-  confinement-care-advice:
-    index:
+  guide:
+    confinement-care-advice:
       order: 2
       sidebar: true
     dos-and-donts:
+      sidebar: true
+    miscarriage-healing-advice:
+      order: 4
       sidebar: true
 
   frozen-postpartum-soups:
@@ -82,10 +85,6 @@ en:
     biweekly:
       order: 2
       sidebar: true
-
-  miscarriage-healing-advice:
-    order: 4
-    sidebar: true
 
   news:
     index:
@@ -209,11 +208,14 @@ zh-tw:
       order: 7
       sidebar: true
 
-  confinement-care-advice:
-    index:
+  guide:
+    confinement-care-advice:
       order: 2
       sidebar: true
     dos-and-donts:
+      sidebar: true
+    miscarriage-healing-advice:
+      order: 4
       sidebar: true
 
   frozen-postpartum-soups:
@@ -252,10 +254,6 @@ zh-tw:
     biweekly:
       order: 2
       sidebar: true
-
-  miscarriage-healing-advice:
-    order: 4
-    sidebar: true
 
   news:
     index:

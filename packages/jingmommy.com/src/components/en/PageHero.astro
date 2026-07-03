@@ -1,0 +1,27 @@
+---
+/*
+  Interior-page hero: centered eyebrow + serif headline + italic accent lede,
+  cream gradient background, sketch botanical corners. Shared by pages 2–9.
+  Pass `title`/`lede` as strings, or use the default slot for richer markup.
+*/
+import BotanSketch from "./BotanSketch.astro"
+
+interface Props {
+  eyebrow: string
+  title?: string
+  lede?: string
+}
+const { eyebrow, title, lede } = Astro.props
+---
+
+<section class="phero" aria-labelledby="hero-title">
+  <BotanSketch variant="tl" class="phero-botan-tl" />
+  <BotanSketch variant="br" class="phero-botan-br" />
+  <div class="phero-inner">
+    <p class="eyebrow">{eyebrow}</p>
+    {title && <h1 id="hero-title" set:html={title} />}
+    <slot name="title" />
+    {lede && <p class="phero-lede" set:html={lede} />}
+    <slot />
+  </div>
+</section>

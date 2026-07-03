@@ -1,6 +1,6 @@
 import fs from "fs"
 import path from "path"
-import yaml from "js-yaml"
+import * as yaml from 'js-yaml'
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
 const ROOT_DIR = path.join(__dirname, '..', '..', '..')

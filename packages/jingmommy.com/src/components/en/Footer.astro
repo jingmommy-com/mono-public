@@ -1,0 +1,38 @@
+---
+/* Site footer. Shared across all en pages. */
+import { brand, footerColumns, route } from "@/config/en.ts"
+const year = new Date().getFullYear()
+---
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href={route("/")} class="logo">{brand.name}</a>
+        <p class="footer-tag">{brand.tagline}</p>
+      </div>
+      {
+        footerColumns.map((col) => (
+          <div>
+            <h4>{col.heading}</h4>
+            <ul>
+              {col.links.map((link) => (
+                <li>
+                  {link.href ? (
+                    <a href={link.href}>{link.label}</a>
+                  ) : (
+                    link.label
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+    <div class="footer-bottom">
+      <span>© {year} {brand.name} · {brand.domain}</span>
+      <span>{brand.promise}</span>
+    </div>
+  </div>
+</footer>

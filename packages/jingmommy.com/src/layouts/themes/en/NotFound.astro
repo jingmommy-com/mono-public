@@ -1,0 +1,170 @@
+---
+/*
+  "en" theme 404 body — elegant botanical minimalism, matching the en design system
+  (Cormorant / EB Garamond / Jost, warm cream, terracotta accent, vintage roses).
+  Self-contained: scoped styles + hard-coded palette so it can coexist with the base
+  404 in the same document without importing the global en theme.css.
+*/
+---
+
+<div class="en404">
+  <!-- botanical roses bleeding off the corners -->
+  <svg class="en404-botan tl" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+    <g opacity="0.85">
+      <path d="M5 190 C25 155 55 130 80 112 C100 98 112 90 128 78" stroke="#5E6B4F" stroke-width="2" fill="none"></path>
+      <ellipse cx="115" cy="60" rx="30" ry="36" fill="#D99FB0" opacity="0.78"></ellipse>
+      <path d="M115 28 C128 37 134 50 130 64 C126 78 118 86 115 88 C112 86 104 78 100 64 C96 50 102 37 115 28Z" fill="#C77D7D" opacity="0.65"></path>
+      <path d="M148 60 C140 74 128 82 115 82 C102 82 90 74 82 60 C90 46 102 38 115 38 C128 38 140 46 148 60Z" fill="#C77D7D" opacity="0.6"></path>
+      <ellipse cx="115" cy="60" rx="18" ry="22" fill="#C77D7D" opacity="0.68"></ellipse>
+      <circle cx="115" cy="60" r="10" fill="#E8C46A" opacity="0.9"></circle>
+      <circle cx="115" cy="60" r="6" fill="#A8842C" opacity="0.7"></circle>
+      <ellipse cx="72" cy="112" rx="9" ry="16" fill="#5E6B4F" opacity="0.45" transform="rotate(-30 72 112)"></ellipse>
+      <ellipse cx="50" cy="138" rx="8" ry="14" fill="#6E7A5C" opacity="0.38" transform="rotate(-50 50 138)"></ellipse>
+    </g>
+  </svg>
+  <svg class="en404-botan br" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+    <g opacity="0.85">
+      <path d="M5 190 C25 155 55 130 80 112 C100 98 112 90 128 78" stroke="#5E6B4F" stroke-width="2" fill="none"></path>
+      <ellipse cx="115" cy="60" rx="30" ry="36" fill="#D99FB0" opacity="0.78"></ellipse>
+      <path d="M115 28 C128 37 134 50 130 64 C126 78 118 86 115 88 C112 86 104 78 100 64 C96 50 102 37 115 28Z" fill="#C77D7D" opacity="0.65"></path>
+      <path d="M148 60 C140 74 128 82 115 82 C102 82 90 74 82 60 C90 46 102 38 115 38 C128 38 140 46 148 60Z" fill="#C77D7D" opacity="0.6"></path>
+      <ellipse cx="115" cy="60" rx="18" ry="22" fill="#C77D7D" opacity="0.68"></ellipse>
+      <circle cx="115" cy="60" r="10" fill="#E8C46A" opacity="0.9"></circle>
+      <circle cx="115" cy="60" r="6" fill="#A8842C" opacity="0.7"></circle>
+      <ellipse cx="72" cy="112" rx="9" ry="16" fill="#5E6B4F" opacity="0.45" transform="rotate(-30 72 112)"></ellipse>
+      <ellipse cx="50" cy="138" rx="8" ry="14" fill="#6E7A5C" opacity="0.38" transform="rotate(-50 50 138)"></ellipse>
+    </g>
+  </svg>
+
+  <div class="en404-inner">
+    <p class="en404-eyebrow">Error 404</p>
+    <p class="en404-num">404</p>
+    <h1 class="en404-title">This page has wandered off the path.</h1>
+    <p class="en404-lede">
+      The page you’re looking for may have moved, been renamed, or never existed. Let’s get you back
+      to something nourishing.
+    </p>
+    <div class="en404-cta">
+      <a href="/en/" class="en404-btn en404-btn-primary">Return home</a>
+      <a href="/en/plans" class="en404-btn en404-btn-ghost">Explore meal plans</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .en404 {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 22px;
+    background: linear-gradient(180deg, #faf6f1 0%, #f1e9df 100%);
+    color: #2b1810;
+    font-family: 'EB Garamond', 'Georgia', serif;
+    line-height: 1.7;
+  }
+  .en404-botan {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    width: 260px;
+  }
+  .en404-botan.tl {
+    top: -30px;
+    left: -34px;
+  }
+  .en404-botan.br {
+    bottom: -30px;
+    right: -34px;
+    transform: rotate(180deg);
+  }
+  .en404-inner {
+    position: relative;
+    z-index: 3;
+    max-width: 620px;
+  }
+  .en404-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #8e5c42;
+    margin: 0 0 18px;
+  }
+  .en404-num {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-weight: 500;
+    font-size: 120px;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    color: #b47b5c;
+    margin: 0 0 8px;
+  }
+  .en404-title {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 1.12;
+    color: #2b1810;
+    margin: 0 0 20px;
+  }
+  .en404-lede {
+    font-size: 19px;
+    color: #4a3a33;
+    max-width: 520px;
+    margin: 0 auto 36px;
+  }
+  .en404-cta {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .en404-btn {
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 16px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.25s;
+    border: 1px solid transparent;
+  }
+  .en404-btn-primary {
+    background: #8e5c42;
+    color: #faf6f1;
+  }
+  .en404-btn-primary:hover {
+    background: #2b1810;
+    transform: translateY(-1px);
+  }
+  .en404-btn-ghost {
+    background: transparent;
+    border-color: #8e5c42;
+    color: #8e5c42;
+  }
+  .en404-btn-ghost:hover {
+    background: #8e5c42;
+    color: #faf6f1;
+  }
+  @media (max-width: 560px) {
+    .en404-num {
+      font-size: 88px;
+    }
+    .en404-title {
+      font-size: 32px;
+    }
+    .en404-lede {
+      font-size: 17px;
+    }
+    .en404-botan {
+      width: 170px;
+    }
+  }
+</style>

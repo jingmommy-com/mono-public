@@ -1,0 +1,373 @@
+---
+import { Image } from "astro:assets"
+import Base from "@/layouts/themes/en/Base.astro"
+import TopBar from "@/components/en/TopBar.astro"
+import Footer from "@/components/en/Footer.astro"
+import PageHero from "@/components/en/PageHero.astro"
+import BotanSketch from "@/components/en/BotanSketch.astro"
+import CtaBand from "@/components/en/CtaBand.astro"
+import { route } from "@/config/en.ts"
+import nicoleImg from "@/assets/en/nicole-huang.jpg"
+
+const title = "Our Story — Nicole Huang, Founder of JingMommy"
+const description =
+  "Nicole Huang built JingMommy to bring authentic Chinese postpartum care — Zuo Yue Zi — to mothers across America. Over 10,000 families served since 2010. Featured in LA Times and PBS."
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Nicole Huang",
+    jobTitle: "Founder, JingMommy",
+    description:
+      "Founder of JingMommy, the United States' leading provider of authentic Chinese postpartum (Zuo Yue Zi) meal delivery. Over two decades of experience and 10,000+ mothers served.",
+    alumniOf: "California State University, Los Angeles",
+    knowsAbout: [
+      "Zuo Yue Zi",
+      "Postpartum Recovery",
+      "Chinese Food Therapy",
+      "Traditional Chinese Medicine Nutrition",
+    ],
+    sameAs: [
+      "https://www.latimes.com/health/la-xpm-2013-jan-13-la-me-chinese-birth-20121204-story.html",
+      "https://youtu.be/VxsV4yu3c5c",
+    ],
+  },
+]
+
+const ctaButtons = [
+  {
+    label: "Explore Meal Plans",
+    href: route("/plans"),
+    variant: "primary" as const,
+  },
+  {
+    label: "Try a Taste — from $50",
+    href: route("/sample"),
+    variant: "ghost" as const,
+  },
+]
+---
+
+<Base title={title} description={description} jsonLd={jsonLd}>
+  <a href="#main" class="skip-link sans">Skip to content</a>
+  <TopBar active={route("/about/founding-story")} />
+
+  <main id="main">
+    <PageHero
+      eyebrow="Founder Story"
+      title="She didn’t start a business."
+      lede="She started a revolution in how America cares for new mothers."
+    />
+
+    <!-- opener -->
+    <section class="opener" aria-label="Who this page is for">
+      <div class="opener-inner">
+        <p class="opener-box reveal">
+          If you grew up hearing about Zuo Yue Zi but never knew how to start —
+          or you’re not Chinese and just discovered this tradition and want to
+          know if it’s really for you — you’re in the right place.
+        </p>
+      </div>
+    </section>
+
+    <!-- Nicole's story -->
+    <section class="founder" aria-labelledby="story-title">
+      <div class="founder-inner">
+        <div class="founder-grid">
+          <div class="founder-text reveal">
+            <p class="eyebrow">Nicole’s Story</p>
+            <h2 id="story-title">
+              From a daughter of Taiwan to founder of an American tradition.
+            </h2>
+            <p class="lead">
+              Every mother deserves to be taken care of after she gives birth.
+            </p>
+            <p>
+              Not discharged with a pamphlet. Not left to figure it out alone. <em
+                >Taken care of</em
+              > — the way generations of Chinese families have always understood it:
+              with warmth, with real food, with someone who knows exactly what a body
+              needs after the most demanding experience of its life.
+            </p>
+            <p>
+              Nicole Huang built JingMommy because she knew what that care felt
+              like — and she knew too many mothers in America were going without
+              it.
+            </p>
+            <p>
+              Nicole grew up in Taiwan, immigrated to the United States, and
+              eventually earned her MBA from Cal State LA. She moves between
+              both worlds fluently — the traditional Chinese culture she was
+              raised in, and the modern American life she built. That fluency is
+              exactly what made her see something others missed: that the most
+              important month of a woman’s postpartum life was being left
+              entirely to chance.
+            </p>
+            <p>
+              When Nicole had her own children in the United States, her parents
+              were in Taiwan — and there was no one to cook for her. So she did
+              what she has always done: she researched. She immersed herself in
+              the principles of Zuo Yue Zi — the traditional Chinese practice of
+              postpartum nourishment followed across East Asia for over 2,000
+              years — and applied everything she learned to her own recovery.
+              What she found on the other side surprised her. Not just
+              physically, but in the way it felt to be genuinely nourished and
+              genuinely cared for at the moment she needed it most.
+            </p>
+            <p>
+              <em
+                >She couldn’t stop thinking about all the mothers who weren’t
+                getting that.</em>
+            </p>
+            <p>
+              She began helping friends. Then friends of friends. She started
+              writing on Yahoo! Blog — at the time, the most widely read
+              blogging platform in the Chinese-speaking world — and her
+              readership grew to over 160,000. Mothers across the United States
+              found her: Chinese-Americans who had grown up with the tradition
+              but needed guidance navigating it in America. Immigrant mothers,
+              far from family, doing it alone. Non-Chinese mothers who had
+              discovered Zuo Yue Zi through research and felt, instinctively,
+              that this was exactly what they had been looking for.
+            </p>
+            <p>
+              What began as a blog became a community. What began as advice
+              became a calling.
+            </p>
+          </div>
+
+          <aside
+            class="founder-image reveal"
+            aria-label="Photo of Nicole Huang"
+          >
+            <Image
+              src={nicoleImg}
+              alt="Nicole Huang, founder of JingMommy"
+              widths={[440, 640]}
+              sizes="(max-width: 900px) 90vw, 440px"
+            />
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- timeline -->
+    <section class="timeline-section" aria-labelledby="timeline-title">
+      <BotanSketch variant="tl" class="timeline-botan-tl" opacity={0.4} />
+      <BotanSketch variant="br" class="timeline-botan-br" opacity={0.4} />
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <p class="eyebrow">A Two-Decade Journey</p>
+          <h2 id="timeline-title">Built one mother at a time, since 2003.</h2>
+        </div>
+        <div class="timeline">
+          <ol class="timeline-track" aria-label="JingMommy company history">
+            <li class="timeline-item reveal">
+              <div class="timeline-year">2003</div>
+              <div class="timeline-desc">
+                Began formally studying and teaching traditional Zuo Yue Zi
+                postpartum care.
+              </div>
+            </li>
+            <li class="timeline-item reveal">
+              <div class="timeline-year">2004</div>
+              <div class="timeline-desc">
+                Became a distributor for postpartum herbal products developed by
+                Dr. Zhuang Shu-Qi, Taiwan’s leading authority on postpartum
+                care.
+              </div>
+            </li>
+            <li class="timeline-item reveal">
+              <div class="timeline-year">2008</div>
+              <div class="timeline-desc">
+                Entered the postpartum meal space — because advice alone was
+                never going to be enough.
+              </div>
+            </li>
+            <li class="timeline-item reveal">
+              <div class="timeline-year">2010</div>
+              <div class="timeline-desc">Officially founded JingMommy.</div>
+            </li>
+            <li class="timeline-item reveal">
+              <div class="timeline-year">2016</div>
+              <div class="timeline-desc">
+                Built a new central kitchen in Walnut, California — today over
+                5,000 square feet of certified kitchen and office space, open
+                and transparent.
+              </div>
+            </li>
+            <li class="timeline-item reveal">
+              <div class="timeline-year">Today</div>
+              <div class="timeline-desc">
+                Over <strong>10,000 mothers</strong> across the continental United
+                States have trusted JingMommy with their recovery.
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <CtaBand
+      eyebrow="Begin Where You Are"
+      heading="Ready to feel the difference?"
+      body="Begin with a tasting, or explore the plans built for the most important month of your life."
+      buttons={ctaButtons}
+    />
+
+    <!-- what Nicole believes -->
+    <section class="believes" aria-labelledby="believes-title">
+      <div class="believes-inner">
+        <div class="head reveal">
+          <p class="eyebrow">What Nicole Believes</p>
+          <h2 id="believes-title">
+            A philosophy of care, refined over 20 years.
+          </h2>
+        </div>
+
+        <div class="pull-quote reveal">
+          <blockquote>
+            Western culture treats postpartum recovery like a race back to
+            normal. Get up. Get out. Get back to work. Chinese medicine says the
+            opposite: this is the window. This is when your body is most open to
+            healing, most responsive to nourishment, most in need of real rest.
+            What you do in this first month shapes how you feel for years.
+          </blockquote>
+          <cite>Nicole Huang — Founder, JingMommy</cite>
+        </div>
+
+        <div class="believes-body">
+          <p class="reveal">
+            The mothers who come to JingMommy arrive from different places. Some
+            grew up hearing about Zuo Yue Zi but never knew how to start — or
+            worried their partner would think it was strange. Some found this
+            tradition through research, wanting specific results: better milk
+            supply, faster recovery, more energy. Some didn’t find JingMommy at
+            all — someone who loved them did, and made the call on their behalf.
+          </p>
+
+          <p class="reveal">
+            <strong>Nicole built this for all three of them.</strong>
+          </p>
+
+          <figure class="testimonial reveal">
+            <p class="testimonial-quote">
+              My milk came in so abundantly that I ended up donating to feed
+              four other babies. Any American non-Chinese mamas reading this:
+              don’t hesitate. This is the stuff that really nourishes you.
+            </p>
+            <figcaption class="testimonial-author">
+              Michelle W. — Las Vegas
+            </figcaption>
+          </figure>
+
+          <p class="reveal">
+            Every meal comes from a kitchen Nicole owns. Every recipe has been
+            refined over more than two decades. Every question is answered by a
+            dedicated, bilingual team — real people who genuinely care and are
+            ready to coordinate around whatever you need.
+          </p>
+        </div>
+
+        <div class="tagline reveal">
+          <p>Real food. Real care. Real recovery.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- as seen in -->
+    <section class="media" aria-labelledby="media-title">
+      <BotanSketch variant="tl" class="media-botan-tl" opacity={0.35} />
+      <BotanSketch variant="br" class="media-botan-br" opacity={0.35} />
+      <div class="head reveal">
+        <p class="eyebrow">Press &amp; Recognition</p>
+        <h2 id="media-title">As Seen In</h2>
+        <p style="font-size:18px;color:var(--muted);margin-top:12px">
+          JingMommy’s work has been recognized by both American and
+          Chinese-language media.
+        </p>
+      </div>
+
+      <div class="media-grid">
+        <article class="media-item reveal">
+          <div class="media-logo">LA Times</div>
+          <div class="media-desc">
+            <h3>A cultural feature on Zuo Yue Zi in Southern California</h3>
+            <p>
+              Featured in a Los Angeles Times cultural story on Zuo Yue Zi and
+              the Chinese postpartum meal delivery tradition in Southern
+              California.
+            </p>
+            <p class="meta">January 13, 2013</p>
+            <a
+              class="media-link"
+              href="https://www.latimes.com/health/la-xpm-2013-jan-13-la-me-chinese-birth-20121204-story.html"
+              target="_blank"
+              rel="noopener noreferrer">Read the article</a
+            >
+          </div>
+        </article>
+
+        <article class="media-item reveal">
+          <div class="media-logo">PBS</div>
+          <div class="media-desc">
+            <h3>Lucky Chow: Made in China</h3>
+            <p>
+              Featured on the PBS-distributed food and culture series exploring
+              how traditional Chinese postpartum practices are finding new life
+              in America. The segment visited JingMommy’s kitchen in Walnut, CA
+              — showcasing the food therapy philosophy, the three-stage Zuo Yue
+              Zi recovery diet, and a Chinese postpartum meal delivery operation
+              serving families across the continental United States.
+            </p>
+            <p class="meta">2016</p>
+            <a
+              class="media-link"
+              href="https://youtu.be/VxsV4yu3c5c"
+              target="_blank"
+              rel="noopener noreferrer">Watch the segment</a
+            >
+          </div>
+        </article>
+
+        <article class="media-item reveal">
+          <div class="media-logo zh">中文媒體</div>
+          <div class="media-desc">
+            <h3>Leading Chinese-language media</h3>
+            <p>
+              Multiple features in the leading Chinese-language media serving
+              the US community, including <strong>World Journal</strong> (世界日報),
+              <strong>CTS</strong> (中天新聞), and <strong>EBC</strong> (東森新聞).
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- what's coming -->
+    <section class="coming" aria-labelledby="coming-title">
+      <div class="coming-inner reveal">
+        <p class="eyebrow">What’s Coming</p>
+        <h2 id="coming-title">A book for English-speaking families.</h2>
+        <p>
+          Nicole is currently working on a book for English-speaking families on
+          the ancient practice of Zuo Yue Zi postpartum care and its modern
+          application in the United States. Drawing on more than two decades of
+          experience and over 10,000 families served, the book will bridge the
+          gap between traditional Chinese wisdom and the lived reality of
+          mothers in America today.
+        </p>
+      </div>
+    </section>
+
+    <CtaBand
+      eyebrow="Take the Next Step"
+      heading="The most important month begins here."
+      body="Choose a plan, or start with a taste. Every step at your pace."
+      buttons={ctaButtons}
+    />
+  </main>
+
+  <Footer />
+</Base>

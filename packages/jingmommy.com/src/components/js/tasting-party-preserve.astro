@@ -1,8 +1,10 @@
 ---
-const { 
+import { tastingEvents } from '@/config/tasting-events.ts'
+
+const {
   id = 'tasting-party-reserve',
   baseUrl = 'https://order.jingmommy.com/?route=form/form/tasting_party',
-  locale = Astro.currentLocale,
+  locale = Astro.currentLocale === 'en-old' ? 'en' : Astro.currentLocale,
   // Bilingual/Multilingual text
   text = {
     full: { 'zh-tw': '已滿｜視候補狀況加開場次', en: 'Full | More slots may open if backup seats' },
@@ -15,22 +17,8 @@ const {
 // TODO: convert this vanilla JavaScript to a real Astro component
 ---
 
-<script define:vars={{ tableId: id, baseUrl, locale, text }}>
+<script define:vars={{ tableId: id, baseUrl, locale, text, events: tastingEvents }}>
 document.addEventListener('DOMContentLoaded', function() {
-  // 活動資料
-  var events = [
-    { date: '2025-09-13', isFull: true },
-    { date: '2025-11-08', isFull: true },
-    { date: '2026-01-10', isFull: true },
-    { date: '2026-02-28', isFull: true },
-    { date: '2026-04-11', isFull: false },
-    { date: '2026-05-30', isFull: false },
-    { date: '2026-07-11', isFull: false },
-    { date: '2026-08-29', isFull: false },
-    { date: '2026-10-10', isFull: false },
-    { date: '2026-12-05', isFull: false },
-  ]
-
   function t(key) {
     if (typeof text[key] === 'object') {
       return text[key][locale] || text[key]['zh-tw'] || ''

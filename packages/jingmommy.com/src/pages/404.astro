@@ -1,22 +1,54 @@
 ---
-import Layout from '@/layouts/FullScreenPage.astro'
-const title = '404 - Not Found'
-const description = "The page you are looking for does not exist. It may have been moved or deleted."
+/*
+  Theme-aware 404.
+
+  A static site serves a single /404.html for every not-found URL, so the theme
+  can't be chosen at build time — it's chosen client-side from the path prefix:
+    • /zh-tw/* and /en-old/*  → base theme (also covers `modern`, which falls back to base)
+    • everything else (/en/*, unknown roots) → en theme
+
+  Both themed bodies are rendered; an inline head script sets `data-nf` on <html>
+  before paint and CSS hides the non-matching one (no flash of the wrong theme).
+*/
+import '@/styles/global.css'
+import BaseNotFound from '@/layouts/themes/base/NotFound.astro'
+import EnNotFound from '@/layouts/themes/en/NotFound.astro'
+
+const title = '404 — Page Not Found · JingMommy'
 ---
-<Layout title={title}>
-  <div class="w-full flex min-h-screen flex-col items-center justify-center gap-4 bg-pink-50 font-sans  text-center">
-    <div class="text-7xl font-extrabold text-pink-700 select-none">404</div>
-    <h1 class="text-2xl font-bold text-pink-900">{title}</h1>
-    <p class="text-pink-900">{description}</p>
-    <a
-      href="/"
-      class="inline-block rounded-xl bg-pink-600 px-8 py-3 text-white font-bold shadow-lg border-2 border-pink-700 text-lg hover:bg-white hover:text-pink-700 hover:border-pink-900 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pink-300 transition-all duration-200"
-      style="box-shadow: 0 4px 20px 0 rgba(255,30,120,0.12);"
-    >
-      <div class="flex items-center gap-2">
-        <span aria-hidden="true">🏠</span>
-        <span>Return to Home</span>
-      </div>
-    </a>
-  </div>
-</Layout>
+
+<!doctype html>
+<html lang="en" data-nf="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script is:inline>
+      ;(function () {
+        var p = location.pathname
+        var isBase = p.indexOf('/zh-tw') === 0 || p.indexOf('/en-old') === 0
+        document.documentElement.setAttribute('data-nf', isBase ? 'base' : 'en')
+      })()
+    </script>
+  </head>
+  <body>
+    <div class="nf-slot nf-base"><BaseNotFound /></div>
+    <div class="nf-slot nf-en"><EnNotFound /></div>
+  </body>
+</html>
+
+<style>
+  html[data-nf='en'] .nf-base {
+    display: none;
+  }
+  html[data-nf='base'] .nf-en {
+    display: none;
+  }
+</style>

@@ -5,9 +5,15 @@ import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import icon from 'astro-icon'
+// Astro 7 defaults Markdown to the Sätteri processor; keep the remark/rehype
+// pipeline (needed by our rehype plugin + raw HTML in MDX). Requires @astrojs/markdown-remark.
+import { unified } from '@astrojs/markdown-remark'
+import remarkGfm from 'remark-gfm'
 
 import tailwindcss from '@tailwindcss/vite'
 import { generateRouteFiles } from './src/scripts/index.js'
+// Single source of truth for locales — shared with the app via src/client.config.ts.
+import { locales, defaultLocale } from './src/client.config.ts'
 
 /*
   Why does generateRouteFiles not trigger correctly when running `astro dev`?
@@ -120,9 +126,14 @@ function watchDirRecursive(dir, onEvent, extensions, watchers) {
 export default defineConfig({
   site: 'https://jingmeal.com',
   compressHTML: true,
+  markdown: {
+    // Use the remark/rehype pipeline (Astro's pre-7 default) instead of Sätteri.
+    processor: unified(),
+  },
   integrations: [
     mdx({
-      rehypePlugins: [makeRehypeLocaleLinks(['zh-tw', 'en'])],
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: [makeRehypeLocaleLinks(locales)],
     }),
     sitemap(),
     icon(),
@@ -188,8 +199,8 @@ export default defineConfig({
     ],
   },
   i18n: {
-    locales: ['zh-tw', 'en'],
-    defaultLocale: 'zh-tw',
+    locales,
+    defaultLocale,
     routing: {
       prefixDefaultLocale: true,
       redirectToDefaultLocale: false,
@@ -211,12 +222,14 @@ export default defineConfig({
     ],
   },
   redirects: {
-    // en
-    '/en/plans': '/en/plans/3tier',
-    '/en/sample': '/en/sample/tasting-party',
-    '/en/gallery': '/en/gallery/dish',
-    '/en/cs': '/en/customer-service',
-    '/en/tos': '/en/term-of-service',
+    '/': '/en', // redirect root to default locale
+    // en-old (legacy English pages, formerly at /en/*)
+    '/en-old': '/en-old/coming-soon', // en-old index page 沒做, 所以先 redirect to a coming-soon page
+    '/en-old/plans': '/en-old/plans/3tier',
+    '/en-old/sample': '/en-old/sample/tasting-party',
+    '/en-old/gallery': '/en-old/gallery/dish',
+    '/en-old/cs': '/en-old/customer-service',
+    '/en-old/tos': '/en-old/term-of-service',
     // zh-tw
     '/zh-tw/plans': '/zh-tw/plans/3tier',
     '/zh-tw/sample': '/zh-tw/sample/tasting-party',
@@ -302,11 +315,11 @@ export default defineConfig({
     "/post-surgery-meals": "/post-surgery-meals",
     /** Confinement Care Advice */
     // https://www.jingmommy.com/confinement-care-advice/
-    "/confinement-care-advice": "/confinement-care-advice",
+    "/confinement-care-advice": "/guide/confinement-care-advice",
     // https://www.jingmommy.com/confinement-care-advice/dos-and-donts-for-confinement.html
-    "/confinement-care-advice/dos-and-donts-for-confinement.html": "/confinement-care-advice/dos-and-donts",
+    "/confinement-care-advice/dos-and-donts-for-confinement.html": "/guide/dos-and-donts",
     // https://www.jingmommy.com/miscarriage-recovery-advice/
-    "/miscarriage-recovery-advice": "/miscarriage-healing-advice",
+    "/miscarriage-recovery-advice": "/guide/miscarriage-healing-advice",
     /**
      * Frozen Postpartum Soups
      */

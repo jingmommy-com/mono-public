@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import grayMatter from 'gray-matter'
-import yaml from 'js-yaml'
+import * as yaml from 'js-yaml'
 
 const allowedExtensions = [
   '.mdx',

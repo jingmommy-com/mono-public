@@ -1,0 +1,104 @@
+---
+/*
+  Floating language switch for en pages — jumps to the Chinese (zh-tw) site.
+  Fixed to the bottom-left, icon-only (Tabler `language` icon).
+  Styled in the en theme (uses theme.css CSS variables, available because
+  Base.astro imports the en theme.css globally).
+
+  The en (new design) and zh-tw (legacy) sites don't share a 1:1 route structure,
+  so this links to the zh-tw home by default. Pass `href` to override per page.
+*/
+import LocaleDomainSwitch from '@/components/LocaleDomainSwitch.astro'
+
+interface Props {
+  href?: string
+}
+const { href = '/zh-tw/' } = Astro.props
+---
+
+<a
+  class="lang-switch"
+  href={href}
+  data-locale-target="zh-tw"
+  hreflang="zh-Hant-TW"
+  aria-label="切換到中文 · Switch to Chinese"
+  title="中文"
+>
+  <!-- Tabler icon: language -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M9 6.371c0 4.418 -2.239 6.629 -5 6.629"></path>
+    <path d="M4 6.371h7"></path>
+    <path d="M5 9c0 2.144 2.252 3.908 6 4"></path>
+    <path d="M12 20l4 -9l4 9"></path>
+    <path d="M19.1 18h-6.2"></path>
+    <path d="M6.694 3l.793 .582"></path>
+  </svg>
+</a>
+
+<LocaleDomainSwitch />
+
+<style>
+  .lang-switch {
+    position: fixed;
+    left: 22px;
+    bottom: 22px;
+    z-index: 60;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    background: rgba(250, 246, 241, 0.95);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--accent-deep);
+    border-radius: 2px;
+    color: var(--accent-deep);
+    text-decoration: none;
+    box-shadow: 0 6px 20px rgba(43, 24, 16, 0.12);
+    transition: all 0.2s ease;
+  }
+  .lang-switch:hover {
+    background: var(--accent-deep);
+    color: var(--paper);
+    transform: translateY(-1px);
+  }
+  .lang-switch:focus-visible {
+    outline: 2px solid var(--accent-deep);
+    outline-offset: 3px;
+  }
+  .lang-switch svg {
+    display: block;
+    width: 22px;
+    height: 22px;
+  }
+  @media (max-width: 560px) {
+    .lang-switch {
+      left: 16px;
+      bottom: 16px;
+      width: 42px;
+      height: 42px;
+    }
+    .lang-switch svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lang-switch {
+      transition: none;
+    }
+    .lang-switch:hover {
+      transform: none;
+    }
+  }
+</style>

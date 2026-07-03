@@ -1,0 +1,92 @@
+---
+/*
+  Base layout for the "en" design.
+  Self-contained html shell: warm-cream botanical theme, self-imported Google
+  Fonts (Cormorant Garamond / EB Garamond / Jost), scroll-reveal + mobile-nav
+  scripts. Every en page renders through this.
+*/
+import "@/styles/themes/en/theme.css"
+import LangSwitch from "@/components/en/LangSwitch.astro"
+import ExternalLinksNewTab from "@/components/en/ExternalLinksNewTab.astro"
+
+interface Props {
+  title: string
+  description?: string
+  /** JSON-LD structured-data objects to inline in <head>. */
+  jsonLd?: unknown[]
+}
+
+const {
+  title,
+  description = "JingMommy delivers authentic Chinese postpartum (Zuo Yue Zi) meals across the US. Founded 2010, 10,000+ mothers served. Fresh daily in SoCal, frozen nationwide.",
+  jsonLd = [],
+} = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    {
+      jsonLd.map((obj) => (
+        <script type="application/ld+json" set:html={JSON.stringify(obj)} />
+      ))
+    }
+  </head>
+  <body>
+    <slot />
+    <LangSwitch />
+    <ExternalLinksNewTab />
+
+    <script is:inline>
+      ;(function () {
+        var els = document.querySelectorAll(".reveal")
+        if (!("IntersectionObserver" in window)) {
+          els.forEach(function (e) {
+            e.classList.add("in")
+          })
+        } else {
+          var io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (en) {
+                if (en.isIntersecting) {
+                  en.target.classList.add("in")
+                  io.unobserve(en.target)
+                }
+              })
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+          )
+          els.forEach(function (e) {
+            io.observe(e)
+          })
+        }
+        var nav = document.getElementById("nav")
+        var btn = document.querySelector(".menu-btn")
+        if (btn && nav) {
+          btn.addEventListener("click", function () {
+            nav.classList.toggle("open")
+          })
+          nav.querySelectorAll("a").forEach(function (a) {
+            a.addEventListener("click", function () {
+              nav.classList.remove("open")
+            })
+          })
+        }
+      })()
+    </script>
+  </body>
+</html>
