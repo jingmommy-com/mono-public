@@ -51,8 +51,8 @@ import { Alert, AlertDescription } from '@/components/starwind/alert'
       <td>熬雞精 7 份</td>
       <td>
         <div class="flex gap-1 items-center">
-          <span class="text-gray-400 line-through text-xs">$83.99</span>
-          <span class="text-red-600 font-bold">$69.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_chicken_essence_7.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_chicken_essence_7.price)}</span>
         </div>
       </td>
     </tr>
@@ -60,8 +60,8 @@ import { Alert, AlertDescription } from '@/components/starwind/alert'
       <td>熬雞精 14 份</td>
       <td>
         <div class="flex gap-1 items-center">
-          <span class="text-gray-400 line-through text-xs">$167.99</span>
-          <span class="text-red-600 font-bold">$132.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_chicken_essence_14.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_chicken_essence_14.price)}</span>
         </div>
       </td>
     </tr>
@@ -69,8 +69,8 @@ import { Alert, AlertDescription } from '@/components/starwind/alert'
       <td>熬雞精 28 份</td>
       <td>
         <div class="flex gap-1 items-center">
-          <span class="text-gray-400 line-through text-xs">$335.99</span>
-          <span class="text-red-600 font-bold">$259.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_chicken_essence_28.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_chicken_essence_28.price)}</span>
         </div>
       </td>
     </tr>
@@ -82,11 +82,12 @@ import { Alert, AlertDescription } from '@/components/starwind/alert'
 #### 🚚 配送方式
 
 - 自取
-- 司機配送（有區域限制）：配送區域內 $15/次，滿 $200 免費配送
+- 司機配送（有區域限制）：配送區域內 {usd(products.local_delivery_fee_1trip.price)}/次，滿 {usd(products.free_local_delivery_minimum_frozen_soup.price)} 免費配送
 
 ---
 
 import PageButtons from '@/components/PageButtons.astro'
+import { products, usd } from '@/client.config.ts'
 
 <PageButtons
   data={[

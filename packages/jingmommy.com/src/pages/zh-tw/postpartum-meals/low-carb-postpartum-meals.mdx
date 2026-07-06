@@ -6,6 +6,7 @@ color: rose
 
 import PageButtons from '@/components/PageButtons.astro'
 import LookupZipButton from '@/components/LookupZipButton.astro'
+import { products, usd } from '@/client.config.ts'
 
 **減醣月子餐——產後恢復不發胖，讓妳輕盈回歸！**
 
@@ -65,7 +66,7 @@ import LookupZipButton from '@/components/LookupZipButton.astro'
 
 ---
 
-<div style="text-align: center; font-weight: bold; color: #ff1493;">金品減醣月子餐 $1999 (洛杉磯地區, 有地域限制)</div>
+<div style="text-align: center; font-weight: bold; color: #ff1493;">金品減醣月子餐 {usd(products.local_lowcarb_30d.price)} (洛杉磯地區, 有地域限制)</div>
 
 ---
 

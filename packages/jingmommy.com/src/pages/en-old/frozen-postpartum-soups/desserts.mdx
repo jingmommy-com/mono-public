@@ -41,8 +41,8 @@ Want something a little sweet without the burden? Jingmommy's Dessert Series ins
       <td>Desserts 7 servings</td>
       <td>
         <div class="flex gap-1 items-center">
-          <span class="text-gray-400 line-through text-xs">$41.99</span>
-          <span class="text-red-600 font-bold">$34.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_dessert_7.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_dessert_7.price)}</span>
         </div>
       </td>
     </tr>
@@ -50,8 +50,8 @@ Want something a little sweet without the burden? Jingmommy's Dessert Series ins
       <td>Desserts 14 servings</td>
       <td>
         <div class="flex gap-1 items-center">
-          <span class="text-gray-400 line-through text-xs">$83.99</span>
-          <span class="text-red-600 font-bold">$67.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_dessert_14.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_dessert_14.price)}</span>
         </div>
       </td>
     </tr>
@@ -59,8 +59,8 @@ Want something a little sweet without the burden? Jingmommy's Dessert Series ins
       <td>Desserts 28 servings</td>
       <td>
         <div class="flex gap-1 items-center">
-          <span class="text-gray-400 line-through text-xs">$167.99</span>
-          <span class="text-red-600 font-bold">$129.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_dessert_28.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_dessert_28.price)}</span>
         </div>
       </td>
     </tr>
@@ -72,11 +72,12 @@ Want something a little sweet without the burden? Jingmommy's Dessert Series ins
 #### 🚚 Delivery Options
 
 - Pickup
-- Driver delivery (area restrictions apply): $15/delivery within service area; free delivery on orders over $200
+- Driver delivery (area restrictions apply): {usd(products.local_delivery_fee_1trip.price)}/delivery within service area; free delivery on orders over {usd(products.free_local_delivery_minimum_frozen_soup.price)}
 
 ---
 
 import PageButtons from '@/components/PageButtons.astro'
+import { products, usd } from '@/client.config.ts'
 
 <PageButtons
   data={[

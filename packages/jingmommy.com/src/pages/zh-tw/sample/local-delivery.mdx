@@ -9,6 +9,7 @@ import PageButtons from '@/components/PageButtons.astro'
 import Badge from '@/components/starwind/badge'
 
 import { Alert, AlertDescription } from '@/components/starwind/alert'
+import { products, usd } from '@/client.config.ts'
 
 <Alert variant="warning" class="text-center">
   <AlertDescription>
@@ -24,7 +25,7 @@ import { Alert, AlertDescription } from '@/components/starwind/alert'
 
 ---
 
-#### 試吃優惠價： <Badge variant="warning">$50</Badge>（原價 ~~$110~~）
+#### 試吃優惠價： <Badge variant="warning">{usd(products.local_classic_sample_1d.price)}</Badge>（原價 ~~{usd(products.local_classic_sample_1d.compare_at_price)}~~）
 
 - <b>真實體驗：</b>我們的試吃餐點與正式配送的月子餐一模一樣，沒有特別調整，讓您真實感受每一餐的味道與營養，消除對產後飲食的疑慮。
 - <b>專業呈現：</b>所有餐點的包裝與呈現方式都與正式配送相同，讓您提前體驗我們專業且細心的服務品質，安心享用每一口。

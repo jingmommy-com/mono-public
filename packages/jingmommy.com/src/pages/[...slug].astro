@@ -27,7 +27,7 @@ export function getStaticPaths() {
       return
     }
     const lang = (navigator.language || '').toLowerCase()
-    const preferred = locales.find(l => lang.startsWith(l.split('-')[0])) || 'zh-tw'
+    const preferred = locales.find(l => lang === l) || locales.find(l => lang.startsWith(l.split('-')[0])) || 'zh-tw'
     const target = routes.includes(`/${preferred}/${slug}`) ? preferred : 'zh-tw'
     location.replace(`/${target}/${slug}`)
   })()

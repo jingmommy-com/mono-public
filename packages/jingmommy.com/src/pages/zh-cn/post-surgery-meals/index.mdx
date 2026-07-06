@@ -1,0 +1,328 @@
+---
+layout: ../../../layouts/MarkdownPage.astro
+title: 手术后餐
+color: blue
+---
+
+import { Image } from '@/components/starwind/image'
+import PageButtons from '@/components/PageButtons.astro'
+import LookupZipButton from '@/components/LookupZipButton.astro'
+
+手术耗气伤血，损及人体的正气，多有气血双亏，或气阴两伤，或营卫失和的现象。术后体质也较虚弱，应多给予补气养血的食物。
+
+手术后的食疗，以尽早恢复手术后气血损伤、恢复体力为主要目的；<span class="text-orange-800">术后饮食则要适当补充营养和热量，给予高蛋白和富含维生素的饮食</span>。
+
+由于各方不断的询问，金品专业团队特别规划 <b>[手术后餐]</b> 来帮助住在美国的大家来<span class="text-orange-800">解决手术后"吃"的问题</span>。金品要给您最完整的饮食计划，让您轻松摄取均衡的营养，在最快的时间内帮您补益气血、恢复体力。
+
+import menuAfterTherapy12 from '@/assets/menu/menu_after_therapy12.jpg'
+
+<Image src={menuAfterTherapy12} class="max-w-[537px]" />
+
+恢复手术后的体力，您的身体需要的不仅是时间，更需要被理解与关怀。金品采用美国新鲜白羽鸡所熬制的金品熬鸡精，专为加速恢复和增强体力而设计，是恢复期间理想的营养补充品。
+
+**手术恢复的理想选择：**
+
+- 高质蛋白质与支链胺基酸（BCAA）：含丰富的蛋白质和支链胺基酸，有助于肌肉修复和组织重建。
+- 丰富的微量元素：包括维生素B群、钙、镁，为您的恢复期提供必需的营养支持。
+- 天然提取：由大骨汤和猪脚自然提炼的胶原蛋白和钙质，增强骨骼、皮肤及关节健康。
+
+**专为虚弱体质设计：**
+
+- 天然温和易吸收：即使在消化系统较为脆弱的时期也能轻松补充。
+- 安全保障：遵循严格的质量标准，无添加防腐剂或人工成分，保证纯净与安全。
+
+在这段特殊的恢复期，让金品熬鸡精成为您的营养守护者，帮助您早日回归健康和活力的生活。
+
+---
+
+<style>{`
+  table.meal-details {
+    padding: 0.5rem 0.5rem;
+    border: 4px solid #ccc;
+    border-radius: 12px;
+    border-spacing: 10px;
+    border-collapse: separate;
+    width: 100%;
+  }
+  table thead tr th {
+    text-align: center;
+  }
+  table tr td {
+    text-align: center;
+  }
+  table tbody tr td:first-child {
+    min-width: 100px;
+  }
+`}</style>
+<table>
+  <tbody>
+    <tr class="bg-blue-100">
+      <td>
+        <div><b>金品术后补养餐</b></div>
+        <div>{usd(products.local_post_surgery_30d.price)} / 30天 | {usd(products.local_post_surgery_14d.price)} / 14天 | {usd(products.local_post_surgery_1d.price)} / 1天</div>
+        <div>(洛杉矶地区, 有地域限制)</div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div>早餐：养生粥</div>
+        <div>午餐：滋养鱼汤、主菜、养生饭、温性蔬菜</div>
+        <div>晚餐：炖补汤、养生饭、温性蔬菜</div>
+        <div>晚点：滋补甜点</div>
+        <div>饮料：调养饮料</div>
+        <div>调养品：熬鸡精</div>
+      </td>
+    </tr>
+    <tr class="bg-blue-200">
+      <td>
+        <div><b>金品 [冷冻] 术后补养餐</b></div>
+        <div>{usd(products.frozen_post_surgery_4w.price)} / 28天 | {usd(products.frozen_post_surgery_2w.price)} / 14天 | {usd(products.frozen_post_surgery_1w.price)} / 7天</div>
+        <div>(美国各内陆州)</div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div>早餐：养生粥</div>
+        <div>午餐：滋养鱼汤、养生饭、温性蔬菜</div>
+        <div>晚餐：炖补汤、养生饭、温性蔬菜</div>
+        <div>晚点：滋补甜点</div>
+        <div>饮料：调养饮料</div>
+        <div>调养品：熬鸡精</div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+<PageButtons
+  data={[
+    {
+      title: '开始选购 / Start Shopping',
+      icon: 'mdi:cart',
+      url: '//order.jingmommy.com/post-surgery-meals'
+    },
+    {
+      title: '预约咨询 / Book a Consultation',
+      icon: 'mdi:calendar-check',
+      url: '/customer-service/'
+    },
+    [
+      {
+        title: '下载订购单',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/金品術後補養餐訂購單.pdf'
+      },
+      {
+        title: 'Download Order Form',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/Post-Surgery_Meal_Order_Form.pdf'
+      },
+      {
+        title: '菜单',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/菜單總表.pdf'
+      },
+      {
+        title: 'Full Menu',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/Menu.pdf'
+      }
+    ]
+  ]}
+/>
+
+<LookupZipButton class="mt-4" />
+
+---
+
+import menu_meal27 from '@/assets/menu/menu_meal27.jpg'
+import menu_meal41 from '@/assets/menu/menu_meal41.jpg'
+import menu_meal46 from '@/assets/menu/menu_meal46.jpg'
+import menu_meal49 from '@/assets/menu/menu_meal49.jpg'
+import menu_meal30 from '@/assets/menu/menu_meal30.jpg'
+import menu_meal04 from '@/assets/menu/menu_meal04.jpg'
+import menu_meal38 from '@/assets/menu/menu_meal38.jpg'
+import menu_meal22 from '@/assets/menu/menu_meal22.jpg'
+import menu_meal05a from '@/assets/menu/menu_meal05a.jpg'
+import menu_meal51a from '@/assets/menu/menu_meal51a.jpg'
+import menu_meal52 from '@/assets/menu/menu_meal52.jpg'
+import { products, usd } from '@/client.config.ts'
+
+<table class="meal-details">
+  <tbody>
+    <tr>
+      <td colSpan="2" class="bg-zinc-200 text-bold">
+        <b>早餐：</b>养生粥
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        养生粥：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal27} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        地瓜糙米粥、香菇芹菜瘦肉粥、红豆燕麦粥、香菇红萝高丽红糙米粥、红萝卜芹菜牛肉粥、枸杞糙米粥、山药红糙米粥、香菇芹菜瘦肉粥、芋头糙米粥、香菇红萝卜高丽菜粥等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colSpan="2" class="bg-zinc-200 text-bold">
+        <b>午餐：</b>滋养鱼汤、主菜、养生饭、温性蔬菜
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        滋养鱼汤：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal41} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        当归黄芪鲈鱼汤、鲜百菇鲈鱼汤、姜丝鲈鱼汤、味噌豆腐鱼汤、红苋菜枸杞鲈鱼汤等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        主菜：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal46} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        茶树菇花胶汤鲍、核桃虾、法式牛柳、红酒炖牛肉、烤牛小排、白酱焗小干贝、白酱焗鱼片、奶油烤虾、三杯鸡、香菇蒸白鱼、柱侯牛腩煲、枸杞红枣蒸鸡、京都排骨、高丽菜卷、风味豉油鸡、蜜汁烤鸡腿、红烧肉、芋头排骨、照烧肉丸、(洋)葱爆牛肉、香菇蒸鸡、甜椒镶猪肉、起司肉丸、宫保鸡丁(不辣)、香菇蒸肉饼、紫糯米珍珠丸、肉末蒸豆腐、美式BBQ烤鸡翅、白糯米珍珠丸、芦笋腰果鸡丁、瑞士肉丸、狮子头炖高丽菜、香煎鸡排、酥肉羹、香葱猪肉卷、蘑菇牛柳粒、虾仁豆腐、甜椒镶牛肉、八珍豆腐、酱烤鸡翅、烤韩式炸鸡、白酱肉丸、香煎鱼排、西兰花牛肉、苹果彩椒牛肉卷、腊肠木耳鸡、卤鸡腿、时菜烩油豆腐、红烧猪脚、清炒花枝、肉燥、南瓜排骨、香干肉丝、卤牛肉、肉丝杏鲍菇、青江菜卤猪脚等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        养生饭：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal49} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        五谷饭、糙米饭、红白饭、紫米饭、菜饭、香菇糯米油饭、鲜蔬鲑鱼拌饭、麻油蛋炒糙米饭等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        温性蔬菜：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal30} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        免治牛肉玉米、地瓜叶、青椒牛肉丝、姜丝菠菜、清炒虾皮高丽菜、白花椰菜炒木耳、雪豆虾仁、姜丝青江菜、红椒洋葱炒鸡丁、雪菜豆干、小豆苗炒小鲜菇、芹菜炒甜不辣、绿花椰炒玉米荀、马铃薯炒青椒丝、茼蒿炒红萝卜丝、义大瓜炒草菇、芥兰炒木耳丝、山药炒红萝卜片、青江菜炒木耳丝、黄豆芽炒香菇丝等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colSpan="2" class="bg-zinc-200 text-bold">
+        <b>晚餐：</b>炖补汤、养生饭、温性蔬菜
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        炖补汤：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal04} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        香菇枸杞炖鸡汤、山药排骨汤、黄豆红萝卜牛肉汤、金针香菇鸡汤、南北杏排骨汤、黑豆红枣牛肉汤、山药木耳鸡汤、香菇竹笙排骨汤、首乌竹笙鸡汤、木耳排骨汤、灵芝虫草花鸡汤、山药红萝卜牛肉汤、四物枸杞鸡汤、昆布玉米牛肉汤、当归枸杞川芎虾、十全药膳排骨汤、药膳牛肉汤、当归党参竹笙鸡汤、八珍排骨汤、党参红枣竹笙鸡汤、四物排骨汤等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        养生饭：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal38} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        五谷饭、糙米饭、红白饭、紫米饭、菜饭、香菇糯米油饭、鲜蔬鲑鱼拌饭、麻油蛋炒糙米饭等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        温性蔬菜：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal22} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        免治牛肉玉米、地瓜叶、青椒牛肉丝、姜丝菠菜、清炒虾皮高丽菜、白花椰菜炒木耳、雪豆虾仁、姜丝青江菜、红椒洋葱炒鸡丁、雪菜豆干、小豆苗炒小鲜菇、芹菜炒甜不辣、绿花椰炒玉米荀、马铃薯炒青椒丝、茼蒿炒红萝卜丝、义大瓜炒草菇、芥兰炒木耳丝、山药炒红萝卜片、青江菜炒木耳丝、黄豆芽炒香菇丝等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colSpan="2" class="bg-zinc-200 text-bold">
+        <b>晚点：</b>滋补甜点
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        滋补甜点：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal05a} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        花生甜汤、冰糖红枣银耳甜汤、红豆小汤圆、薏仁汤、枸杞黑糖糯米粥、红豆紫米粥、红枣炖南瓜、芝麻糊、桂圆地瓜甜汤、黄豆花生甜汤、红豆汤、红枣薏仁糯米粥、芋头甜汤、酒酿汤圆、花生薏仁汤、桂圆糯米粥、红豆薏仁汤、黑糖地瓜甜汤等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colSpan="2" class="bg-zinc-200 text-bold">
+        <b>饮料：</b>调养饮料
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        调养饮料：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal51a} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        <b>调养饮料：</b>红枣桂圆茶、山楂红枣茶、黑糖姜茶、红枣枸杞茶、红枣蜜枣茶等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colSpan="2" class="bg-zinc-200 text-bold">
+        <b>调养品：</b>熬鸡精
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        顶级熬鸡精：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menu_meal52} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        专业团队多道工序与长时间慢火炖煮，浓缩出胶质、胺基酸与多种营养成分，分子细小，更容易被人体吸收，真正做到温和滋补、快速补元气。
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,108 @@
+---
+layout: ../../../layouts/MarkdownPage.astro
+title: 冷冻鲈鱼汤
+color: rose
+---
+
+import { Alert, AlertDescription } from '@/components/starwind/alert'
+
+<Alert variant="warning" class="text-center">
+  <AlertDescription>
+    冷冻汤品系列<strong>仅限南加州配送</strong>，目前不提供外州寄送服务。
+  </AlertDescription>
+</Alert>
+
+---
+
+清鲜滋养，修复力满分
+
+鲈鱼富含优质蛋白质与多种胺基酸，中医认为其性平、味甘，能补气健脾、促进伤口愈合、组织修复并增强免疫力。低脂肪、低胆固醇、易消化吸收，特别适合产后、术后及病后的恢复期。
+
+汤底采用新鲜鲈鱼搭配温和药材，清鲜不腥，既能补而不燥，也不会造成肠胃负担。金品冷冻封存营养与鲜味，打开加热即可享用，无防腐剂、纯手工制作，方便又安心。
+
+---
+
+#### 适合族群
+
+- 产后调养
+- 术后康复
+- 病后恢复
+- 日常轻补配餐
+
+---
+
+#### 建议选择
+
+- 日常备用 → 一次购买多份，冷冻保存、随取随用
+- 送礼贴心 → 送给术后或调养中的亲友，方便又体面
+
+---
+
+#### 规格与价格
+
+<table>
+  <thead>
+    <tr>
+      <th>品项</th>
+      <th>价格</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>鲈鱼汤 7 份</td>
+      <td>
+        <div class="flex gap-1 items-center">
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_fish_soup_7.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_fish_soup_7.price)}</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>鲈鱼汤 14 份</td>
+      <td>
+        <div class="flex gap-1 items-center">
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_fish_soup_14.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_fish_soup_14.price)}</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>鲈鱼汤 28 份</td>
+      <td>
+        <div class="flex gap-1 items-center">
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_fish_soup_28.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_fish_soup_28.price)}</span>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+#### 🚚 配送方式
+
+- 自取
+- 司机配送（有区域限制）：配送区域内 {usd(products.local_delivery_fee_1trip.price)}/次，满 {usd(products.free_local_delivery_minimum_frozen_soup.price)} 免费配送
+
+---
+
+import PageButtons from '@/components/PageButtons.astro'
+import { products, usd } from '@/client.config.ts'
+
+<PageButtons
+  data={[
+    {
+      title: '开始选购 / Start Shopping',
+      icon: 'mdi:shopping',
+      url: '//order.jingmommy.com/zh/frozen-sea-bass-soups',
+      target: '_blank'
+    },
+    {
+      title: '预约咨询 / Book a Consultation',
+      icon: 'mdi:calendar-check',
+      url: '/customer-service/'
+    }
+  ]}
+/>
+

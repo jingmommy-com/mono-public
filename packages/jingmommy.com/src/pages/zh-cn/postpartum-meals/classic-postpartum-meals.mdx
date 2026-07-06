@@ -1,0 +1,89 @@
+---
+layout: ../../../layouts/MarkdownPage.astro
+title: 精致月子餐
+color: rose
+---
+
+import PageButtons from '@/components/PageButtons.astro'
+import LookupZipButton from '@/components/LookupZipButton.astro'
+import { products, usd } from '@/client.config.ts'
+
+女性从怀孕开始，子宫便随着胎儿的成长而撑大，内脏受到胎儿压迫，怀孕的过程中，心肺和泌尿功能、骨骼关节、肠胃系统、内分泌系统等等产生了极大的生理变化。怀胎十月后，又必须经历剧痛、失血、消耗气力的生产过程。
+
+金品月子膳食做月子的原理传承自老祖宗的智慧，做月子三大元素「麻油、老姜、米酒」，健康优质的麻油配上带皮老姜来帮助产妇祛寒并使其排便顺畅，再以米酒水为「药引」，每日新鲜用心地帮准妈妈准备营养的料理。
+
+做月子的原理是经由产后饮食的调养，让产妇撑大的子宫可以完全收缩、修复、恢复。帮助内脏能渐进复位，修复损耗，回复健康。故产后妇女应把握产后调养的机会，正确的外在（产后运动）＋内在（饮食调养）把月子做好，正确地做月子可以让产妇恢复体能、改善体质、调理宿疾，也才能越生越健康，越生越美丽。
+
+---
+
+- **早餐**：养生粥、活力蛋
+- **午餐**：午餐汤品、主菜、养生饭、温性蔬菜
+- **午点**：滋补甜点
+- **晚餐**：台式月子汤、月子炖补汤、主菜、养生饭、温性蔬菜
+- **晚点**：滋补甜点
+- **饮品**：调养饮料
+
+---
+
+### 金品月子餐调理重点
+
+- **第一周(平补):** 以生化汤<span class="text-red-600">*</span>及猪肝汤来帮助排除怀胎10月累积在身体里的毒素
+- **第二周(温补):** 以麻油腰子预防产后腰酸背痛 - 开始补血补气,增进体力,改善疲惫体质
+- **第三、四周(大补):** 以麻油鸡汤来调整体力,补充元气 - 进补最佳时期,全方位大补血补气
+
+<span class="text-red-600">*</span> 生化汤需额外加购
+
+---
+
+<p class={`text-center font-bold text-${frontmatter.color}-600`}>金品精致月子餐 {usd(products.local_classic_30d.price)}（洛杉矶地区，有地域限制）</p>
+
+---
+
+<PageButtons
+  data={[
+    {
+      title: '开始选购 / Start Shopping',
+      icon: 'mdi:cart',
+      url: '//order.jingmommy.com/classic-postpartum-meals'
+    },
+    {
+      title: '月子餐试吃 / Sample Meal',
+      icon: 'mdi:calendar-check',
+      url: '//order.jingmommy.com/sample-meals/'
+    },
+    [
+      {
+        title: '下载订购单',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/金品月子膳食訂購單.pdf'
+      },
+      {
+        title: 'Download Order Form',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/Main_Order_Form.pdf'
+      },
+      {
+        title: '餐点对照表',
+        icon: 'mdi:chart-bar',
+        url: '//file.jingmommy.com/f/餐點對照表.pdf'
+      },
+      {
+        title: 'Meal Comparison Chart',
+        icon: 'mdi:chart-bar',
+        url: '//file.jingmommy.com/f/Meal_Comparison_Chart.pdf'
+      },
+      {
+        title: '菜单',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/菜單總表.pdf'
+      },
+      {
+        title: 'Full Menu',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/Menu.pdf'
+      }
+    ]
+  ]}
+/>
+
+<LookupZipButton class="mt-4" />

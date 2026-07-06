@@ -1,0 +1,267 @@
+---
+layout: ../../../layouts/MarkdownPage.astro
+title: 冷冻月子汤品组
+color: rose
+---
+
+import Badge from '@/components/starwind/badge'
+
+<style>{`
+  :root {
+    --color-tier-basic: rgb(161 181 76);
+    --color-tier-dessert: rgb(235 95 151);
+    --color-tier-premium: rgb(80 183 211);
+    --color-tier-starter: rgb(120 120 120);
+  }
+`}</style>
+
+#### 🌸 <Badge size="lg" style={{ backgroundColor: 'var(--color-tier-basic)', color: '#fff' }}>月子冷冻汤品</Badge> {usd(products.frozen_soup_set_basic_28.price)}／28天
+
+入门级｜好坐月子的最简单方式
+
+想补身、没时间自己煮？这组帮妳搞定基本调理。每天加热即饮，零压力补养，适合预算精简、想轻松完成月子调理的妈妈。
+
+✔ 台式月子汤 x28｜暖宫祛寒（包含：猪肝汤 x7、腰花汤 x7、麻油鸡 x14）<br/>
+✔ 月子炖补汤 x28｜温补养气（包含：平温补炖补汤 x14、大补炖补汤 x14）
+
+---
+
+#### 🍯 <Badge size="lg" style={{ backgroundColor: 'var(--color-tier-dessert)', color: '#fff' }}>甜蜜冷冻汤品</Badge> {usd(products.frozen_soup_set_dessert_28.price)}／28天
+
+升级版｜甜汤加进妳的月子仪式感
+
+除了每日的台式月子汤＋炖补汤，再多一份「心情疗愈」。照顾身体，也照顾心情。适合想在坐月子期间多一点幸福感的妈妈。
+
+✔ 台式月子汤 x28｜暖宫祛寒（包含：猪肝汤 x7、腰花汤 x7、麻油鸡 x14）<br/>
+✔ 月子炖补汤 x28｜温补养气（包含：平温补炖补汤 x14、大补炖补汤 x14）<br/>
+✔ 甜点 x28｜低糖养生甜汤，暖胃不腻
+
+---
+
+#### 🐔 <Badge size="lg" style={{ backgroundColor: 'var(--color-tier-premium)', color: '#fff' }}>升级冷冻汤品</Badge> {usd(products.frozen_soup_set_premium_28.price)}／28天
+
+旗舰版｜加强修复力的补养
+
+全套台式月子汤＋炖补汤＋甜点，再加强化补养，帮助体力恢复更快、气血循环更好，让月子不只是休息，而是彻底重生。
+
+✔ 台式月子汤 x28｜暖宫祛寒（包含：猪肝汤 x7、腰花汤 x7、麻油鸡 x14）<br/>
+✔ 月子炖补汤 x28｜温补养气（包含：平温补炖补汤 x14、大补炖补汤 x14）<br/>
+✔ 甜点 x28｜低糖养生甜汤，暖胃不腻<br/>
+✔ 熬鸡精 x28｜补气补元、修复升级
+
+---
+
+#### 🥣 <Badge size="lg" style={{ backgroundColor: 'var(--color-tier-starter)', color: '#fff' }}>促销入门组</Badge> {usd(products.frozen_soup_set_starter_7item.price)}
+
+尝鲜版｜订购前先试吃，更安心
+
+✔ 台式月子汤 x1｜暖宫祛寒（包含：麻油鸡 x1）<br/>
+✔ 月子炖补汤 x2｜温补养气（包含：平温补炖补汤 x1、大补炖补汤 x1）<br/>
+✔ 甜点 x2｜低糖养生甜汤，暖胃不腻<br/>
+✔ 熬鸡精 x1｜补气补元、修复升级<br/>
+✔ 鲈鱼汤 x1
+
+---
+
+### 📊 方案内容比较表
+
+import { Icon } from 'astro-icon/components'
+
+<style>{`
+  :root {
+    --frozen-soups-th-title-bg: rgb(179 169 160);
+    --frozen-soups-body-title-bg: rgb(209 198 191);
+
+    --frozen-soups-th-basic-tier-bg: var(--color-tier-basic);
+    --frozen-soups-th-dessert-tier-bg: var(--color-tier-dessert);
+    --frozen-soups-th-premium-tier-bg: var(--color-tier-premium);
+    --frozen-soups-th-starter-tier-bg: var(--color-tier-starter);
+
+    --frozen-soups-even-row-bg: rgb(234 230 226);
+    --frozen-soups-tfoot-row-bg: #fbeee0;
+    --frozen-soups-tfoot-title-bg: var(--frozen-soups-body-title-bg);
+    --frozen-soups-tfoot-price-bg: rgb(240 210 141);
+    --frozen-soups-tfoot-day-bg: rgb(222 218 203);
+    --frozen-soups-th-text: white;
+  }
+  table.frozen-soups-tiers-comparison-chart thead tr th {
+    color: var(--frozen-soups-th-text);
+    font-weight: bold;
+  }
+  table.frozen-soups-tiers-comparison-chart thead tr th:nth-of-type(1) {
+    background-color: var(--frozen-soups-th-title-bg);
+  }
+  table.frozen-soups-tiers-comparison-chart thead tr th:nth-of-type(2) {
+    background-color: var(--frozen-soups-th-basic-tier-bg);
+  }
+  table.frozen-soups-tiers-comparison-chart thead tr th:nth-of-type(3) {
+    background-color: var(--frozen-soups-th-dessert-tier-bg);
+  }
+  table.frozen-soups-tiers-comparison-chart thead tr th:nth-of-type(4) {
+    background-color: var(--frozen-soups-th-premium-tier-bg);
+  }
+  table.frozen-soups-tiers-comparison-chart thead tr th:nth-of-type(5) {
+    background-color: var(--frozen-soups-th-starter-tier-bg);
+  }
+  table.frozen-soups-tiers-comparison-chart tbody tr:nth-child(even) {
+    background-color: var(--frozen-soups-even-row-bg);
+  }
+  table.frozen-soups-tiers-comparison-chart td,
+  table.frozen-soups-tiers-comparison-chart th {
+    padding: 0.5em;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+  }
+  table.frozen-soups-tiers-comparison-chart td svg,
+  table.frozen-soups-tiers-comparison-chart th svg,
+  table.frozen-soups-tiers-comparison-chart td .astro-icon,
+  table.frozen-soups-tiers-comparison-chart th .astro-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  table.frozen-soups-tiers-comparison-chart tbody tr th {
+    background-color: var(--frozen-soups-body-title-bg);
+    color: var(--frozen-soups-th-text);
+  }
+  table.frozen-soups-tiers-comparison-chart tfoot tr:first-child th {
+    background: linear-gradient(90deg, var(--frozen-soups-tfoot-title-bg) 5%, var(--frozen-soups-tfoot-price-bg) 100%);
+  }
+  table.frozen-soups-tiers-comparison-chart tfoot tr:first-child td {
+    background-color: var(--frozen-soups-tfoot-price-bg);
+  }
+  table.frozen-soups-tiers-comparison-chart tfoot tr:last-child th {
+    background: linear-gradient(90deg, var(--frozen-soups-tfoot-title-bg) 5%, var(--frozen-soups-tfoot-day-bg) 100%);
+  }
+  table.frozen-soups-tiers-comparison-chart tfoot tr:last-child td {
+    background-color: var(--frozen-soups-tfoot-day-bg);
+  }
+`}</style>
+
+<table class="frozen-soups-tiers-comparison-chart">
+  <thead>
+    <tr>
+      <th>内容</th>
+      <th>
+        <span class="hidden md:inline">🌸 月子冷冻汤品</span>
+        <span class="inline md:hidden">入门版</span>
+      </th>
+      <th>
+        <span class="hidden md:inline">🍯 甜蜜冷冻汤品</span>
+        <span class="inline md:hidden">甜蜜版</span>
+      </th>
+      <th>
+        <span class="hidden md:inline">🐔 升级冷冻汤品</span>
+        <span class="inline md:hidden">升级版</span>
+      </th>
+      <th>
+        <span class="hidden md:inline">🥣 促销入门组</span>
+        <span class="inline md:hidden">尝鲜包</span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>猪肝汤</th>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td><Icon name="mdi:minus" class="text-gray-300 inline" /></td>
+    </tr>
+    <tr>
+      <th>腰花汤</th>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td><Icon name="mdi:minus" class="text-gray-300 inline" /></td>
+    </tr>
+    <tr>
+      <th>麻油鸡</th>
+      <td>14</td>
+      <td>14</td>
+      <td>14</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>平温补</th>
+      <td>14</td>
+      <td>14</td>
+      <td>14</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>大补</th>
+      <td>14</td>
+      <td>14</td>
+      <td>14</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>甜点</th>
+      <td><Icon name="mdi:minus" class="text-gray-300 inline" /></td>
+      <td>28</td>
+      <td>28</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>熬鸡精</th>
+      <td><Icon name="mdi:minus" class="text-gray-300 inline" /></td>
+      <td><Icon name="mdi:minus" class="text-gray-300 inline" /></td>
+      <td>28</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>鲈鱼汤</th>
+      <td><Icon name="mdi:minus" class="text-gray-300 inline" /></td>
+      <td><Icon name="mdi:minus" class="text-gray-300 inline" /></td>
+      <td><Icon name="mdi:minus" class="text-gray-300 inline" /></td>
+      <td>1</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>价格</th>
+      <td>{usd(products.frozen_soup_set_basic_28.price)}</td>
+      <td>{usd(products.frozen_soup_set_dessert_28.price)}</td>
+      <td>{usd(products.frozen_soup_set_premium_28.price)}</td>
+      <td>{usd(products.frozen_soup_set_starter_7item.price)}</td>
+    </tr>
+    <tr>
+      <th>天数</th>
+      <td>28天</td>
+      <td>28天</td>
+      <td>28天</td>
+      <td><Icon name="mdi:minus" class="text-gray-300 inline" /></td>
+    </tr>
+  </tfoot>
+</table>
+
+---
+
+#### 🚚 配送方式
+
+- 自取
+- 司机配送（有区域限制）：配送区域内 {usd(products.local_delivery_fee_1trip.price)}/次，满 {usd(products.free_local_delivery_minimum_frozen_soup.price)} 免费配送
+
+---
+
+import PageButtons from '@/components/PageButtons.astro'
+import { products, usd } from '@/client.config.ts'
+
+<PageButtons
+  data={[
+    {
+      title: '开始选购 / Start Shopping',
+      icon: 'mdi:shopping',
+      url: '//order.jingmommy.com/zh/diy-frozen-postpartum-soup-sets',
+      target: '_blank'
+    },
+    {
+      title: '预约咨询 / Book a Consultation',
+      icon: 'mdi:calendar-check',
+      url: '/customer-service/'
+    }
+  ]}
+/>

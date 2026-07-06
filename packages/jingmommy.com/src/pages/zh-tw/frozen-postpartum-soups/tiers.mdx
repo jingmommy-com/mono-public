@@ -15,7 +15,7 @@ import Badge from '@/components/starwind/badge'
   }
 `}</style>
 
-#### 🌸 <Badge size="lg" style={{ backgroundColor: 'var(--color-tier-basic)', color: '#fff' }}>月子冷凍湯品</Badge> $550／28天
+#### 🌸 <Badge size="lg" style={{ backgroundColor: 'var(--color-tier-basic)', color: '#fff' }}>月子冷凍湯品</Badge> {usd(products.frozen_soup_set_basic_28.price)}／28天
 
 入門級｜好坐月子的最簡單方式
 
@@ -26,7 +26,7 @@ import Badge from '@/components/starwind/badge'
 
 ---
 
-#### 🍯 <Badge size="lg" style={{ backgroundColor: 'var(--color-tier-dessert)', color: '#fff' }}>甜蜜冷凍湯品</Badge> $680／28天
+#### 🍯 <Badge size="lg" style={{ backgroundColor: 'var(--color-tier-dessert)', color: '#fff' }}>甜蜜冷凍湯品</Badge> {usd(products.frozen_soup_set_dessert_28.price)}／28天
 
 升級版｜甜湯加進妳的月子儀式感
 
@@ -38,7 +38,7 @@ import Badge from '@/components/starwind/badge'
 
 ---
 
-#### 🐔 <Badge size="lg" style={{ backgroundColor: 'var(--color-tier-premium)', color: '#fff' }}>升級冷凍湯品</Badge> $940／28天
+#### 🐔 <Badge size="lg" style={{ backgroundColor: 'var(--color-tier-premium)', color: '#fff' }}>升級冷凍湯品</Badge> {usd(products.frozen_soup_set_premium_28.price)}／28天
 
 旗艦版｜加強修復力的補養
 
@@ -51,7 +51,7 @@ import Badge from '@/components/starwind/badge'
 
 ---
 
-#### 🥣 <Badge size="lg" style={{ backgroundColor: 'var(--color-tier-starter)', color: '#fff' }}>促銷入門組</Badge> $66
+#### 🥣 <Badge size="lg" style={{ backgroundColor: 'var(--color-tier-starter)', color: '#fff' }}>促銷入門組</Badge> {usd(products.frozen_soup_set_starter_7item.price)}
 
 嚐鮮版｜訂購前先試吃，更安心
 
@@ -223,10 +223,10 @@ import { Icon } from 'astro-icon/components'
   <tfoot>
     <tr>
       <th>價格</th>
-      <td>$550</td>
-      <td>$680</td>
-      <td>$940</td>
-      <td>$66</td>
+      <td>{usd(products.frozen_soup_set_basic_28.price)}</td>
+      <td>{usd(products.frozen_soup_set_dessert_28.price)}</td>
+      <td>{usd(products.frozen_soup_set_premium_28.price)}</td>
+      <td>{usd(products.frozen_soup_set_starter_7item.price)}</td>
     </tr>
     <tr>
       <th>天數</th>
@@ -243,11 +243,12 @@ import { Icon } from 'astro-icon/components'
 #### 🚚 配送方式
 
 - 自取
-- 司機配送（有區域限制）：配送區域內 $15/次，滿 $200 免費配送
+- 司機配送（有區域限制）：配送區域內 {usd(products.local_delivery_fee_1trip.price)}/次，滿 {usd(products.free_local_delivery_minimum_frozen_soup.price)} 免費配送
 
 ---
 
 import PageButtons from '@/components/PageButtons.astro'
+import { products, usd } from '@/client.config.ts'
 
 <PageButtons
   data={[

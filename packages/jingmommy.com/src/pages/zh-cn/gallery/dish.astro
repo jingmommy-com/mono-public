@@ -1,0 +1,98 @@
+---
+import Layout from '@/layouts/MarkdownPage.astro'
+import Image from '@/components/Image.astro'
+
+import dessert_peanuts from '@/assets/dish/dessert_peanuts.gif'
+import dessert_red_bean from '@/assets/dish/dessert_red_bean.gif'
+import dessert_red_bean_sweet_rice from '@/assets/dish/dessert_red_bean_sweet_rice.gif'
+import dessert_sweet_rice from '@/assets/dish/dessert_sweet_rice.gif'
+import dessert_tremella from '@/assets/dish/dessert_tremella.gif'
+import egg_corn from '@/assets/dish/egg_corn.gif'
+import herbal_drink_01 from '@/assets/dish/herbal_drink_01.gif'
+import herbal_drink_02 from '@/assets/dish/herbal_drink_02.gif'
+import herbal_drink_seng_hua_tang from '@/assets/dish/herbal_drink_seng_hua_tang.gif'
+import porridge_cabbage_mushroom from '@/assets/dish/porridge_cabbage_mushroom.gif'
+import porridge_corn_ham from '@/assets/dish/porridge_corn_ham.gif'
+import porridge_red_bean_oatmeal from '@/assets/dish/porridge_red_bean_oatmeal.gif'
+import rice_brown from '@/assets/dish/rice_brown.gif'
+import rice_salmon from '@/assets/dish/rice_salmon.gif'
+import rice_sesame_fried_rice from '@/assets/dish/rice_sesame_fried_rice.gif'
+import soup_beef_herb from '@/assets/dish/soup_beef_herb.gif'
+import soup_beef_mountain_yam from '@/assets/dish/soup_beef_mountain_yam.gif'
+import soup_beef_soy_bean from '@/assets/dish/soup_beef_soy_bean.gif'
+import soup_beef_tail_wine from '@/assets/dish/soup_beef_tail_wine.gif'
+import soup_chicken_abalone from '@/assets/dish/soup_chicken_abalone.gif'
+import soup_chicken_fugus_date from '@/assets/dish/soup_chicken_fugus_date.gif'
+import soup_chicken_ginseng_date from '@/assets/dish/soup_chicken_ginseng_date.gif'
+import soup_chicken_sesame_date from '@/assets/dish/soup_chicken_sesame_date.gif'
+import soup_chicken_sesame_herbal from '@/assets/dish/soup_chicken_sesame_herbal.gif'
+import soup_fish_date from '@/assets/dish/soup_fish_date.gif'
+import soup_fish_herbal from '@/assets/dish/soup_fish_herbal.gif'
+import soup_fish_veggie from '@/assets/dish/soup_fish_veggie.gif'
+import soup_kidney from '@/assets/dish/soup_kidney.gif'
+import soup_pork_4herbs from '@/assets/dish/soup_pork_4herbs.gif'
+import soup_pork_almond from '@/assets/dish/soup_pork_almond.gif'
+import soup_pork_feet_black_bean from '@/assets/dish/soup_pork_feet_black_bean.gif'
+import soup_pork_feet_peanuts from '@/assets/dish/soup_pork_feet_peanuts.gif'
+import soup_pork_fungus from '@/assets/dish/soup_pork_fungus.gif'
+import soup_pork_heart_herbal from '@/assets/dish/soup_pork_heart_herbal.gif'
+import soup_pork_herb from '@/assets/dish/soup_pork_herb.gif'
+import soup_pork_liver_spinach from '@/assets/dish/soup_pork_liver_spinach.gif'
+import soup_pork_papaya from '@/assets/dish/soup_pork_papaya.gif'
+import soup_shrimp_herb from '@/assets/dish/soup_shrimp_herb.gif'
+
+const title = '餐点实品拍摄'
+const color = 'rose'
+
+const dishes = [
+  { text: '花生薏仁汤', src: dessert_peanuts, alt: 'dessert peanuts' },
+  { text: '红豆汤', src: dessert_red_bean, alt: 'dessert red bean' },
+  { text: '红豆紫米粥', src: dessert_red_bean_sweet_rice, alt: 'dessert red bean sweet rice' },
+  { text: '桂圆糯米粥', src: dessert_sweet_rice, alt: 'dessert sweet rice' },
+  { text: '红枣银耳甜汤', src: dessert_tremella, alt: 'dessert tremella' },
+  { text: '玉米烘蛋', src: egg_corn, alt: 'egg corn' },
+  { text: '甜蜜双枣茶', src: herbal_drink_01, alt: 'herbal drink 01' },
+  { text: '滋补红枣桂圆茶', src: herbal_drink_02, alt: 'herbal drink 02' },
+  { text: '生化汤', src: herbal_drink_seng_hua_tang, alt: 'herbal drink seng hua tang' },
+  { text: '香菇高丽菜鸡粥', src: porridge_cabbage_mushroom, alt: 'porridge cabbage mushroom' },
+  { text: '火腿鸡蓉玉米粥', src: porridge_corn_ham, alt: 'porridge corn ham' },
+  { text: '红豆燕麦粥', src: porridge_red_bean_oatmeal, alt: 'porridge red bean oatmeal' },
+  { text: '糙米饭', src: rice_brown, alt: 'rice brown' },
+  { text: '鲑鱼拌饭', src: rice_salmon, alt: 'rice salmon' },
+  { text: '麻油蛋炒饭', src: rice_sesame_fried_rice, alt: 'rice sesame fried rice' },
+  { text: '药膳牛腱汤', src: soup_beef_herb, alt: 'soup beef herb' },
+  { text: '山药红萝卜牛肉汤', src: soup_beef_mountain_yam, alt: 'soup beef mountain yam' },
+  { text: '黄豆红萝卜牛腱汤', src: soup_beef_soy_bean, alt: 'soup beef soy bean' },
+  { text: '红酒炖牛尾', src: soup_beef_tail_wine, alt: 'soup beef tail wine' },
+  { text: '鲍鱼山药炖鸡汤', src: soup_chicken_abalone, alt: 'soup chicken abalone' },
+  { text: '红枣木耳炖鸡汤', src: soup_chicken_fugus_date, alt: 'soup chicken fugus date' },
+  { text: '红枣竹笙炖鸡汤', src: soup_chicken_ginseng_date, alt: 'soup chicken ginseng date' },
+  { text: '枸杞麻油鸡', src: soup_chicken_sesame_date, alt: 'soup chicken sesame date' },
+  { text: '药膳麻油鸡', src: soup_chicken_sesame_herbal, alt: 'soup chicken sesame herbal' },
+  { text: '红枣枸杞鲈鱼汤', src: soup_fish_date, alt: 'soup fish date' },
+  { text: '当归黄芪鲈鱼汤', src: soup_fish_herbal, alt: 'soup fish herbal' },
+  { text: '红苋菜枸杞鲈鱼汤', src: soup_fish_veggie, alt: 'soup fish veggie' },
+  { text: '杜仲麻油腰花', src: soup_kidney, alt: 'soup kidney' },
+  { text: '四物排骨汤', src: soup_pork_4herbs, alt: 'soup pork 4herbs' },
+  { text: '南北杏排骨汤', src: soup_pork_almond, alt: 'soup pork almond' },
+  { text: '黑豆红枣炖猪脚', src: soup_pork_feet_black_bean, alt: 'soup pork feet black bean' },
+  { text: '黑枣花生猪脚汤', src: soup_pork_feet_peanuts, alt: 'soup pork feet peanuts' },
+  { text: '木耳排骨汤', src: soup_pork_fungus, alt: 'soup pork fungus' },
+  { text: '当归党参猪心汤', src: soup_pork_heart_herbal, alt: 'soup pork heart herbal' },
+  { text: '八珍排骨汤', src: soup_pork_herb, alt: 'soup pork herb' },
+  { text: '波菜猪肝汤', src: soup_pork_liver_spinach, alt: 'soup pork liver spinach' },
+  { text: '青木瓜炖排骨汤', src: soup_pork_papaya, alt: 'soup pork papaya' },
+  { text: '当归枸杞川芎虾', src: soup_shrimp_herb, alt: 'soup shrimp herb' }
+]
+---
+
+<Layout title={title} color={color}>
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+    {dishes.map(({ text, src, alt }) => (
+      <div class="flex flex-col items-center gap-0.5">
+        <Image src={src} alt={alt} class="cursor-zoom-in" />
+        <span class="text-center">{text}</span>
+      </div>
+    ))}
+  </div>
+</Layout>

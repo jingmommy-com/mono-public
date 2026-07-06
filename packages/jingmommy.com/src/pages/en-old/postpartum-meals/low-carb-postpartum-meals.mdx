@@ -6,6 +6,7 @@ color: rose
 
 import PageButtons from '@/components/PageButtons.astro'
 import LookupZipButton from '@/components/LookupZipButton.astro'
+import { products, usd } from '@/client.config.ts'
 
 **Low-Carb Postpartum Meals — Recover postpartum without gaining weight, feel light and get back to yourself!**
 
@@ -65,7 +66,7 @@ Many younger moms already follow low-carb, keto, or intermittent fasting (IF) an
 
 ---
 
-<div style="text-align: center; font-weight: bold; color: #ff1493;">Jingmommy Low-Carb Postpartum Meals $1,999 (Los Angeles area, delivery area restrictions apply)</div>
+<div style="text-align: center; font-weight: bold; color: #ff1493;">Jingmommy Low-Carb Postpartum Meals {usd(products.local_lowcarb_30d.price)} (Los Angeles area, delivery area restrictions apply)</div>
 
 ---
 

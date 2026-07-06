@@ -6,6 +6,7 @@ color: rose
 
 import Image from '@/components/Image.astro'
 import PageButtons from '@/components/PageButtons.astro'
+import { products, usd } from '@/client.config.ts'
 
 ### 👶 歡迎寶寶滿月 ‧ 傳遞百年「彌月祝福」的最佳方式
 
@@ -63,13 +64,13 @@ import PageButtons from '@/components/PageButtons.astro'
     <tr>
       <td>🥚 初喜滿月禮盒</td>
       <td>24 oz 油飯、紅蛋 2 顆、雞腿 1 隻</td>
-      <td>$23.99</td>
+      <td>{usd(products.full_moon_joy_box_single.price)}</td>
       <td>象徵初生喜悅，是親友收到後第一份滿滿祝福</td>
     </tr>
     <tr>
       <td>🐔 雙喜滿月禮盒</td>
       <td>24 oz 油飯、紅蛋 2 顆、雞腿 2 隻</td>
-      <td>$26.99</td>
+      <td>{usd(products.full_moon_joy_box_double.price)}</td>
       <td>兩隻雞腿代表雙倍福氣與圓滿，喜上加喜、誠意加倍</td>
     </tr>
   </tbody>

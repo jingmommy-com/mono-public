@@ -1,9 +1,10 @@
 ---
 import zhTw from '@/i18n/zh-tw/lookup-zip-button.ts'
+import zhCn from '@/i18n/zh-cn/lookup-zip-button.ts'
 import en from '@/i18n/en/lookup-zip-button.ts'
 import { locales } from '@/client.config.ts'
 
-const i18nMap: Record<string, typeof zhTw> = { 'zh-tw': zhTw, en, 'en-old': en }
+const i18nMap: Record<string, typeof zhTw> = { 'zh-tw': zhTw, 'zh-cn': zhCn, en, 'en-old': en }
 const pathLocale = Astro.url.pathname.split('/').find((s: string) => locales.includes(s)) ?? locales[0]
 const i18n = i18nMap[pathLocale] ?? zhTw
 

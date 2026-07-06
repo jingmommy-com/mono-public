@@ -7,6 +7,7 @@ import PageHero from "@/components/en/PageHero.astro"
 import BotanSketch from "@/components/en/BotanSketch.astro"
 import CtaBand from "@/components/en/CtaBand.astro"
 import { route } from "@/config/en.ts"
+import { products, usd } from '@/client.config.ts'
 import nicoleImg from "@/assets/en/nicole-huang.jpg"
 
 const title = "Our Story — Nicole Huang, Founder of JingMommy"
@@ -42,7 +43,7 @@ const ctaButtons = [
     variant: "primary" as const,
   },
   {
-    label: "Try a Taste — from $50",
+    label: `Try a Taste — from ${usd(products.local_classic_sample_1d.price)}`,
     href: route("/sample"),
     variant: "ghost" as const,
   },

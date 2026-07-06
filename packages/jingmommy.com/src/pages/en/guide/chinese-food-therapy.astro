@@ -5,6 +5,7 @@ import Footer from "@/components/en/Footer.astro"
 import Botanical from "@/components/en/Botanical.astro"
 import TasteCTA from "@/components/en/TasteCTA.astro"
 import { route, orderSampleUrl } from "@/config/en.ts"
+import { products, usd } from '@/client.config.ts'
 
 const title = "Chinese Food Therapy for Postpartum Recovery — JingMommy"
 const description =
@@ -270,8 +271,8 @@ const jsonLd = [
       <p class="eyebrow">Curious?</p>
       <h2>Taste what these three do together.</h2>
       <p>
-        A full day of meals, before you commit to a plan. $50 fresh in Southern
-        California, $80 frozen via FedEx nationwide.
+        A full day of meals, before you commit to a plan. {usd(products.local_classic_sample_1d.price)} fresh in Southern
+        California, {usd(products.frozen_classic_sample_8item.price)} frozen via FedEx nationwide.
       </p>
       <a href={orderSampleUrl} class="btn btn-primary">Order a sample</a>
     </div>
@@ -517,10 +518,10 @@ const jsonLd = [
         <h3>Ready to taste what your body has been waiting for?</h3>
         <div class="closing-cta-btns">
           <a href={route("/sample")} class="btn btn-primary"
-            >Try $50 Local Sample</a
+            >Try {usd(products.local_classic_sample_1d.price)} Local Sample</a
           >
           <a href={route("/sample")} class="btn btn-primary"
-            >Try $80 Frozen Sample</a
+            >Try {usd(products.frozen_classic_sample_8item.price)} Frozen Sample</a
           >
           <a href={route("/plans")} class="btn btn-ghost">See Meal Plans</a
           >
@@ -555,7 +556,7 @@ const jsonLd = [
               biological, not cultural. But you do not have to take our word for
               it. Try a full day of meals before you commit —
               <a href={route("/sample")}
-                >$50 fresh in Southern California, or $80 frozen via FedEx
+                >{usd(products.local_classic_sample_1d.price)} fresh in Southern California, or {usd(products.frozen_classic_sample_8item.price)} frozen via FedEx
                 nationwide →</a
               >. Most moms decide within a few bites.
             </p>

@@ -1,0 +1,100 @@
+---
+layout: ../../../layouts/MarkdownPage.astro
+title: 月子餐试吃派对
+color: pink
+---
+
+import { notProse } from '@/themes.ts'
+import Image from '@/components/Image.astro'
+import Badge from '@/components/starwind/badge'
+import { YouTube } from 'astro-embed'
+
+import event01 from '@/assets/event/event_01.jpg'
+import { site, products, usd } from '@/client.config.ts'
+
+<span class="text-red-600">*</span> 送餐到府试吃，跟试吃派对只能<span class="text-pink-700 font-bold"> 2 选 1</span>
+
+<Image
+  src={event01}
+  alt="event_01"
+  class="max-w-lg"
+  type="a"
+/>
+
+<YouTube id="CHhB7obCamg" posterQuality="max" params="rel=0&frameborder=0" title="金品月子膳食 [试吃派对] - JingMommy Sampling Party" class="mx-auto" />
+
+想一次尝遍十多道人气月子餐，还能提前了解坐月子该怎么吃、怎么补？
+
+金品为准妈妈设计的试吃派对，就是妳不能错过的一次安心体验！
+
+👉 这不只是一场试吃，而是一次「月子预演」<br/>
+在真正开始前，先亲自吃过、确认过，让这个决定更安心。
+
+在我们专业中央厨房内，妳将品尝到10+道实际出餐菜色（如油饭、麻油鸡、炖汤、甜品等），不是特别调整的样品，而是未来每天会吃到的真实餐点。
+
+✔ 同样制作<br/>
+✔ 同样标准<br/>
+👉 先吃，才会放心。
+
+现场更安排【迷你妈妈教室】，分享坐月子观念与实用技巧，帮助妳少走弯路、提前准备。
+
+💛 我们希望妳带走的，不只是「吃过」<br/>
+✔ 确认自己吃得习惯<br/>
+✔ 理解餐点如何帮助恢复<br/>
+✔ 对选择更有把握
+
+---
+
+#### 报名方式
+
+1. 网上报名：请于下方选择想参加的日期，点选「报名」后填写个人资料并送出。我们收到报名后，将尽快与您联系并确认名额。
+2. 电话报名：<a href="tel:6262177539" class={`${notProse} text-pink-700 font-bold`}>(626) 217-7539</a>
+3. E-mail 报名：<a href="mailto:Service@JingMommy.com" class={`${notProse} text-pink-700 font-bold`}>Service@JingMommy.com</a>
+
+<table class="table text-center" id="tasting-party-reserve">
+  <thead>
+    <tr class="bg-pink-100">
+      <td class="w-1/2">
+        <b>活动日期</b>
+      </td>
+      <td class="w-1/2">
+        <b>报名状况</b>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+import JS from '@/components/js/tasting-party-preserve.astro'
+
+<JS />
+
+---
+
+#### 活动说明
+
+- 每次 2 场，12:15 (中文场次) / 11:00 (英文场次)。每场约 45 分钟
+- 现场签单的妈咪可获得专属小礼物一份，数量有限，送完为止。
+- 试吃派对活动完全免费，但<span class="text-pink-700 font-bold">名额有限</span>，需事先确认报名才可以入场。
+- 当月试吃派对<b>优先开放给『预产期在三个月内的妈咪』</b>(预产期较后的妈咪也欢迎报名，但将依报名状况安排候补)。
+- 活动原则上以<b>两个大人</b>为上限 (如果有小孩请另行通知)。
+- 如您临时无法前来或需调整日期，烦请提前告知，以便我们保留宝贵名额予他人，感谢您的体谅！
+- 为维护品质，报名后若未出席（除特殊原因）将酌收每人 {usd(products.tasting_party_no_show_fee.price)} 空位费。
+- <a target="_blank" href="//order.jingmommy.com/sample-meals" title="预约试吃" class={notProse}><Badge variant="warning">送餐到府试吃</Badge></a>，跟试吃派对只能<span class="text-pink-700 font-bold"> 2 选 1</span>
+
+---
+
+#### 活动地点
+
+<div>
+  <div>金品中央厨房</div>
+  <div class="text-pink-700">618 Brea Canyon Rd. #F</div>
+  <div class="text-pink-700">Walnut, CA 91789</div>
+</div>
+
+---
+
+<div>若因天气、交通或行程不便无法前来，可改选择 <a target="_blank" href="//order.jingmommy.com/sample-meals" title="预约试吃" class={notProse}><Badge variant="warning">送餐到府试吃</Badge></a>，让妳在家安心体验金品月子餐。</div>
+
+金品月子膳食让妳坐月子就像是在享受一场美食的飨宴，变化多端，好吃不腻！

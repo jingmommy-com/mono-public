@@ -59,7 +59,7 @@ import menuAfterTherapy12 from '@/assets/menu/menu_after_therapy12.jpg'
     <tr class="bg-blue-100">
       <td>
         <div><b>金品術後補養餐</b></div>
-        <div>$2,350 / 30天 | $1,330 / 14天 | $100 / 1天</div>
+        <div>{usd(products.local_post_surgery_30d.price)} / 30天 | {usd(products.local_post_surgery_14d.price)} / 14天 | {usd(products.local_post_surgery_1d.price)} / 1天</div>
         <div>(洛杉磯地區, 有地域限制)</div>
       </td>
     </tr>
@@ -76,7 +76,7 @@ import menuAfterTherapy12 from '@/assets/menu/menu_after_therapy12.jpg'
     <tr class="bg-blue-200">
       <td>
         <div><b>金品 [冷凍] 術後補養餐</b></div>
-        <div>$3,190 / 28天 | $1,950 / 14天 | $1,050 / 7天</div>
+        <div>{usd(products.frozen_post_surgery_4w.price)} / 28天 | {usd(products.frozen_post_surgery_2w.price)} / 14天 | {usd(products.frozen_post_surgery_1w.price)} / 7天</div>
         <div>(美國各內陸州)</div>
       </td>
     </tr>
@@ -147,6 +147,7 @@ import menu_meal22 from '@/assets/menu/menu_meal22.jpg'
 import menu_meal05a from '@/assets/menu/menu_meal05a.jpg'
 import menu_meal51a from '@/assets/menu/menu_meal51a.jpg'
 import menu_meal52 from '@/assets/menu/menu_meal52.jpg'
+import { products, usd } from '@/client.config.ts'
 
 <table class="meal-details">
   <tbody>

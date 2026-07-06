@@ -6,6 +6,7 @@ color: rose
 
 import Image from '@/components/Image.astro'
 import PageButtons from '@/components/PageButtons.astro'
+import { products, usd } from '@/client.config.ts'
 
 ### 四季湯：春分湯品 - 讓身體「重新開機」
 
@@ -50,17 +51,17 @@ import PageButtons from '@/components/PageButtons.astro'
 **【春分湯品方案】**  
 為了滿足不同家庭的口味與份量需求，這次特別開放自選組合：
 
-- 經典 8 碗超值組：$99.99 - 全場最超值，為您搭配好的節氣體驗
-- 彈性 8 碗自選組：$109.99 - 依喜好自由搭配，小孩/老人喝最安心
-- 家庭 12 碗自選組：$159.99 - 滿足全家口味的 clean eating 乾淨湯
+- 經典 8 碗超值組：{usd(products.frozen_soup_spring_4_set_8.price)} - 全場最超值，為您搭配好的節氣體驗
+- 彈性 8 碗自選組：{usd(products.frozen_soup_spring_4_set_8_custom.price)} - 依喜好自由搭配，小孩/老人喝最安心
+- 家庭 12 碗自選組：{usd(products.frozen_soup_spring_4_set_12_custom.price)} - 滿足全家口味的 clean eating 乾淨湯
 
 ---
 
-**【人氣加購推薦 - 冷凍】**(滿 $200 享免運 *有地區限制)
+**【人氣加購推薦 - 冷凍】**(滿 {usd(products.free_local_delivery_minimum_frozen_soup.price)} 享免運 *有地區限制)
 
-- 古早味油飯：20oz $18 / 40oz $35
-- 手作熬雞精：10oz $10
-- 台式小糕餅 綜合8入 $25：紅棗蛋糕 / 枸杞蛋糕 / 蔓越莓司康 / 葡萄乾司康 (各2個，杯子蛋糕尺寸)
+- 古早味油飯：20oz {usd(products.frozen_sticky_rice_20oz.price)} / 40oz {usd(products.frozen_sticky_rice_40oz.price)}
+- 手作熬雞精：10oz {usd(products.chicken_essence.price)}
+- 台式小糕餅 綜合8入 {usd(products.frozen_taiwanese_pastries_8.price)}：紅棗蛋糕 / 枸杞蛋糕 / 蔓越莓司康 / 葡萄乾司康 (各2個，杯子蛋糕尺寸)
 
 ---
 

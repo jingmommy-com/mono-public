@@ -1,4 +1,5 @@
 import type { DeliveryLookupI18n } from '../delivery-lookup.ts'
+import { products, usd } from '@/client.config.ts'
 
 const t: DeliveryLookupI18n = {
   title: 'Delivery Area Lookup',
@@ -31,7 +32,7 @@ const t: DeliveryLookupI18n = {
       lines: ['Free delivery every other day.'],
     },
     everyOtherDay: {
-      lines: ["Delivery every other day (two days' meals per delivery) with a $200/month shipping surcharge."],
+      lines: [`Delivery every other day (two days' meals per delivery) with a ${usd(products.local_delivery_fee_15d.price)}/month shipping surcharge.`],
     },
     frozen: {
       lines: ['Frozen meal delivery available.'],

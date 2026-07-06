@@ -52,8 +52,8 @@ import { Alert, AlertDescription } from '@/components/starwind/alert'
       <td class="text-center">平溫補 7 份</td>
       <td class="text-center">
         <div class="flex gap-1 items-center justify-center">
-          <span class="text-gray-400 line-through text-xs">$90.99</span>
-          <span class="text-red-600 font-bold">$79.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_dinner_soup_warming_7.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_dinner_soup_warming_7.price)}</span>
         </div>
       </td>
     </tr>
@@ -61,8 +61,8 @@ import { Alert, AlertDescription } from '@/components/starwind/alert'
       <td class="text-center">大補 7 份</td>
       <td class="text-center">
         <div class="flex gap-1 items-center justify-center">
-          <span class="text-gray-400 line-through text-xs">$104.99</span>
-          <span class="text-red-600 font-bold">$92.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_dinner_soup_restorative_7.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_dinner_soup_restorative_7.price)}</span>
         </div>
       </td>
     </tr>
@@ -70,8 +70,8 @@ import { Alert, AlertDescription } from '@/components/starwind/alert'
       <td class="text-center">平溫補 14 份</td>
       <td class="text-center">
         <div class="flex gap-1 items-center justify-center">
-          <span class="text-gray-400 line-through text-xs">$181.99</span>
-          <span class="text-red-600 font-bold">$142.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_dinner_soup_warming_14.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_dinner_soup_warming_14.price)}</span>
         </div>
       </td>
     </tr>
@@ -79,8 +79,8 @@ import { Alert, AlertDescription } from '@/components/starwind/alert'
       <td class="text-center">大補 14 份</td>
       <td class="text-center">
         <div class="flex gap-1 items-center justify-center">
-          <span class="text-gray-400 line-through text-xs">$209.99</span>
-          <span class="text-red-600 font-bold">$168.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_dinner_soup_restorative_14.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_dinner_soup_restorative_14.price)}</span>
         </div>
       </td>
     </tr>
@@ -160,11 +160,12 @@ import Badges from '@/components/Badges.astro'
 #### 🚚 配送方式
 
 - 自取
-- 司機配送（有區域限制）：配送區域內 $15/次，滿 $200 免費配送
+- 司機配送（有區域限制）：配送區域內 {usd(products.local_delivery_fee_1trip.price)}/次，滿 {usd(products.free_local_delivery_minimum_frozen_soup.price)} 免費配送
 
 ---
 
 import PageButtons from '@/components/PageButtons.astro'
+import { products, usd } from '@/client.config.ts'
 
 <PageButtons
   data={[

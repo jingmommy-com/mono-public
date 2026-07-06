@@ -6,6 +6,7 @@ color: blue
 
 import PageButtons from '@/components/PageButtons.astro'
 import LookupZipButton from '@/components/LookupZipButton.astro'
+import { products, usd } from '@/client.config.ts'
 
 **While mom is doing her confinement, who's taking care of dad's meals?**
 
@@ -26,7 +27,7 @@ Daily Contents:
 - **Lunch**: Main Dish, Warming Vegetables, Wellness Rice
 - **Dinner**: Main Dish, Warming Vegetables, Wellness Rice
 
-**$25 / day**  
+**{usd(products.local_daddy_1d.price)} / day**  
 **Add-on with Jingmommy Postpartum Meals — not sold separately**
 
 ---

@@ -1,0 +1,84 @@
+---
+layout: ../../../layouts/MarkdownPage.astro
+title: 爸爸餐
+color: blue
+---
+
+import PageButtons from '@/components/PageButtons.astro'
+import LookupZipButton from '@/components/LookupZipButton.astro'
+import { products, usd } from '@/client.config.ts'
+
+**当妈妈坐月子，谁来照顾爸爸的一日三餐？**
+
+妈妈正在坐月子，餐餐有人送、照顾得好好的；
+但身为爸爸的你，是不是常常这样：
+
+- 下班回家才发现自己还没吃饭
+- 不想吵醒刚休息的妈妈，只能默默叫外送
+- 一边顾宝宝一边狼吞虎咽，吃得又冷又油
+- 明明是家里的支柱，却没人顾你的胃
+
+**「爸爸餐」就是为你这样的时刻准备的。**
+
+---
+
+✅ 每日内容：
+
+- **午餐**：主菜、温性蔬菜、养生饭
+- **晚餐**：主菜、温性蔬菜、养生饭
+
+**💰 {usd(products.local_daddy_1d.price)}／天**  
+**📦 随金品月子餐加购，不单售**
+
+---
+
+**🌿 爸爸也该吃得好一点**
+
+你是支持妈妈恢复最重要的力量，  
+也是孩子第一眼看到的安全感。  
+这个阶段的你，比谁都需要体力、情绪稳定、吃得营养。
+
+**金品爸爸餐，不是奢侈，是刚好。**  
+让你也能吃得暖、吃得饱，不用再委屈凑合每一餐。
+
+---
+
+💛 不只妈妈值得被照顾，  
+这段日子，爸爸也需要一份被看见的用心。  
+📍立即加购，让一家三口都吃得安心！
+
+---
+
+<PageButtons
+  data={[
+    {
+      title: '开始选购 / Start Shopping',
+      icon: 'mdi:cart',
+      url: '//order.jingmommy.com/postpartum-meals'
+    },
+    [
+      // {
+      //   title: '下载订购单',
+      //   icon: 'mdi:download',
+      //   url: '//file.jingmommy.com/f/金品爸爸餐訂購單.pdf'
+      // },
+      // {
+      //   title: 'Download Order Form',
+      //   icon: 'mdi:download',
+      //   url: '//file.jingmommy.com/f/Daddy_Meal_Order_Form.pdf'
+      // },
+      {
+        title: '菜单',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/菜單總表.pdf'
+      },
+      {
+        title: 'Full Menu',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/Menu.pdf'
+      },
+    ]
+  ]}
+/>
+
+---

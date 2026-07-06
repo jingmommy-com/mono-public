@@ -4,7 +4,7 @@
   facts live in client.config.ts (`site`); single-page config lives in the page.
   Business facts (plan names/prices, sample pricing) are locked per the brief.
 */
-import { site } from "@/client.config.ts"
+import { site, products, usd } from '@/client.config.ts'
 
 export const LOCALE = "en"
 const base = `/${LOCALE}`
@@ -96,7 +96,7 @@ export const footerColumns = [
 export const plans = [
   {
     name: "Herbal",
-    price: "$2,890",
+    price: usd(products.local_herbal_30d.price),
     per: "30 days",
     featured: true,
     badge: "Most complete",
@@ -105,28 +105,28 @@ export const plans = [
   },
   {
     name: "Classic",
-    price: "$2,590",
+    price: usd(products.local_classic_30d.price),
     per: "30 days",
     desc: "Complete daily support without the guesswork. Three warm, comforting meals a day — meals that feel like Mom’s.",
     persona: "For the mom who wants daily care, simply.",
   },
   {
     name: "Vita",
-    price: "$2,299",
+    price: usd(products.local_vita_30d.price),
     per: "30 days",
     desc: "A lighter, minimalist take — two nourishing meals a day plus a dessert. Perfect for smaller appetites or warmer seasons.",
     persona: "For the mom who prefers lighter portions.",
   },
   {
     name: "Low Carb",
-    price: "$1,999",
+    price: usd(products.local_lowcarb_30d.price),
     per: "30 days",
     desc: "The same warm healing, without rice, grains, or sweet drinks. For the mom caring for her body on her own terms.",
     persona: "For the mom managing blood sugar or going grain-free.",
   },
   {
     name: "Easy",
-    price: "$1,550",
+    price: usd(products.local_easy_15d.price),
     per: "30 days · 15 deliveries",
     desc: "Nourishment with breathing room — warm meals every other day. Ideal if you have help at home and want to supplement.",
     persona: "For the mom who has family helping and wants to fill the gaps.",

@@ -33,7 +33,7 @@ const title = '404 — Page Not Found · JingMommy'
     <script is:inline>
       ;(function () {
         var p = location.pathname
-        var isBase = p.indexOf('/zh-tw') === 0 || p.indexOf('/en-old') === 0
+        var isBase = p.indexOf('/zh-tw') === 0 || p.indexOf('/zh-cn') === 0 || p.indexOf('/en-old') === 0
         document.documentElement.setAttribute('data-nf', isBase ? 'base' : 'en')
       })()
     </script>

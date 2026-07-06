@@ -2,10 +2,11 @@
 import '@/styles/global.css'
 import Head from '@/components/Head.astro'
 const { title } = Astro.props
+const lang = Astro.url.pathname.startsWith('/zh-cn') ? 'zh-cn' : 'zh-tw'
 ---
 
 <!doctype html>
-<html lang="zh-tw">
+<html lang={lang}>
   <Head title={title}>
     <style>
       html,

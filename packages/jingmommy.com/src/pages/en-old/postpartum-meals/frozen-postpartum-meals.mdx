@@ -7,6 +7,7 @@ color: rose
 import { Icon } from 'astro-icon/components'
 import PageButtons from '@/components/PageButtons.astro'
 import LookupZipButton from '@/components/LookupZipButton.astro'
+import { products, usd } from '@/client.config.ts'
 
 Jingmommy's Frozen Postpartum Meals have long been the top choice for moms outside the Los Angeles area! Over the years, Jingmommy has helped thousands of out-of-state moms do their confinement properly from every corner of America. The advantage of our frozen meals is their convenience and great taste — flash-frozen packaging preserves the original flavor of every dish. Jingmommy Frozen Postpartum Meals are the perfect companion when you're far from home with limited access to proper ingredients and support. Recover well right from the comfort of your own home!
 
@@ -15,10 +16,10 @@ Jingmommy's Frozen Postpartum Meals have long been the top choice for moms outsi
 ### Frozen Herbal Meals (shipping included)
 
 <span class="inline-flex gap-0.5 flex-wrap">
-  <span class="inline-block rounded-full bg-yellow-100 text-amber-800 px-3 py-1 text-sm font-semibold">$1,250 / 1 week</span>
-  <span class="inline-block rounded-full bg-yellow-100 text-amber-800 px-3 py-1 text-sm font-semibold">$2,250 / 2 weeks</span>
-  <span class="inline-block rounded-full bg-yellow-100 text-amber-800 px-3 py-1 text-sm font-semibold">$3,190 / 3 weeks</span>
-  <span class="inline-block rounded-full bg-yellow-100 text-amber-800 px-3 py-1 text-sm font-semibold">$3,890 / 4 weeks</span>
+  <span class="inline-block rounded-full bg-yellow-100 text-amber-800 px-3 py-1 text-sm font-semibold">{usd(products.frozen_herbal_1w.price)} / 1 week</span>
+  <span class="inline-block rounded-full bg-yellow-100 text-amber-800 px-3 py-1 text-sm font-semibold">{usd(products.frozen_herbal_2w.price)} / 2 weeks</span>
+  <span class="inline-block rounded-full bg-yellow-100 text-amber-800 px-3 py-1 text-sm font-semibold">{usd(products.frozen_herbal_3w.price)} / 3 weeks</span>
+  <span class="inline-block rounded-full bg-yellow-100 text-amber-800 px-3 py-1 text-sm font-semibold">{usd(products.frozen_herbal_4w.price)} / 4 weeks</span>
 </span>
 
 - Breakfast: Nourishing Porridge, Energizing Egg
@@ -34,10 +35,10 @@ Jingmommy's Frozen Postpartum Meals have long been the top choice for moms outsi
 ### Frozen Classic Meals (shipping included)
 
 <span class="inline-flex gap-0.5 flex-wrap">
-  <span class="inline-block rounded-full bg-cyan-100 text-cyan-800 px-3 py-1 text-sm font-semibold">$1,150 / 1 week</span>
-  <span class="inline-block rounded-full bg-cyan-100 text-cyan-800 px-3 py-1 text-sm font-semibold">$2,050 / 2 weeks</span>
-  <span class="inline-block rounded-full bg-cyan-100 text-cyan-800 px-3 py-1 text-sm font-semibold">$2,890 / 3 weeks</span>
-  <span class="inline-block rounded-full bg-cyan-100 text-cyan-800 px-3 py-1 text-sm font-semibold">$3,490 / 4 weeks</span>
+  <span class="inline-block rounded-full bg-cyan-100 text-cyan-800 px-3 py-1 text-sm font-semibold">{usd(products.frozen_classic_1w.price)} / 1 week</span>
+  <span class="inline-block rounded-full bg-cyan-100 text-cyan-800 px-3 py-1 text-sm font-semibold">{usd(products.frozen_classic_2w.price)} / 2 weeks</span>
+  <span class="inline-block rounded-full bg-cyan-100 text-cyan-800 px-3 py-1 text-sm font-semibold">{usd(products.frozen_classic_3w.price)} / 3 weeks</span>
+  <span class="inline-block rounded-full bg-cyan-100 text-cyan-800 px-3 py-1 text-sm font-semibold">{usd(products.frozen_classic_4w.price)} / 4 weeks</span>
 </span>
 
 - Breakfast: Nourishing Porridge, Energizing Egg
@@ -49,13 +50,13 @@ Jingmommy's Frozen Postpartum Meals have long been the top choice for moms outsi
 
 ---
 
-### Frozen Happiness Soups (shipping included)
+### Frozen Soup & Dessert (shipping included)
 
 <span class="inline-flex gap-0.5 flex-wrap">
-  <span class="inline-block rounded-full bg-rose-100 text-rose-800 px-3 py-1 text-sm font-semibold">$750 / 1 week</span>
-  <span class="inline-block rounded-full bg-rose-100 text-rose-800 px-3 py-1 text-sm font-semibold">$1,350 / 2 weeks</span>
-  <span class="inline-block rounded-full bg-rose-100 text-rose-800 px-3 py-1 text-sm font-semibold">$1,850 / 3 weeks</span>
-  <span class="inline-block rounded-full bg-rose-100 text-rose-800 px-3 py-1 text-sm font-semibold">$2,190 / 4 weeks</span>
+  <span class="inline-block rounded-full bg-rose-100 text-rose-800 px-3 py-1 text-sm font-semibold">{usd(products.frozen_soup_dessert_1w.price)} / 1 week</span>
+  <span class="inline-block rounded-full bg-rose-100 text-rose-800 px-3 py-1 text-sm font-semibold">{usd(products.frozen_soup_dessert_2w.price)} / 2 weeks</span>
+  <span class="inline-block rounded-full bg-rose-100 text-rose-800 px-3 py-1 text-sm font-semibold">{usd(products.frozen_soup_dessert_3w.price)} / 3 weeks</span>
+  <span class="inline-block rounded-full bg-rose-100 text-rose-800 px-3 py-1 text-sm font-semibold">{usd(products.frozen_soup_dessert_4w.price)} / 4 weeks</span>
 </span>
 
 We take care of the hardest part of daily postpartum meals — the soups. The slow-simmered tonic soups that take so much time, the tricky kidney and pork liver soups, the technically demanding fish soups, and the desserts. Get all the essential postpartum soups you need, rest fully during your confinement, and enjoy very reasonable prices!
@@ -139,7 +140,7 @@ We take care of the hardest part of daily postpartum meals — the soups. The sl
       <th></th>
       <th><span class="text-yellow-600">Frozen Classic Meals</span></th>
       <th><span class="text-cyan-600">Frozen Herbal Meals</span></th>
-      <th><span class="text-rose-600">Frozen Happiness Soups</span></th>
+      <th><span class="text-rose-600">Frozen Soup & Dessert</span></th>
     </tr>
   </thead>
   <tbody>
@@ -233,37 +234,37 @@ We take care of the hardest part of daily postpartum meals — the soups. The sl
       <td>
         <span class="text-yellow-600">Frozen Herbal Meals</span>
       </td>
-      <td>$1,250</td>
-      <td>$2,250</td>
-      <td>$3,190</td>
-      <td>$3,890</td>
+      <td>{usd(products.frozen_herbal_1w.price)}</td>
+      <td>{usd(products.frozen_herbal_2w.price)}</td>
+      <td>{usd(products.frozen_herbal_3w.price)}</td>
+      <td>{usd(products.frozen_herbal_4w.price)}</td>
     </tr>
     <tr>
       <td>
         <span class="text-cyan-600">Frozen Classic Meals</span>
       </td>
-      <td>$1,150</td>
-      <td>$2,050</td>
-      <td>$2,890</td>
-      <td>$3,490</td>
+      <td>{usd(products.frozen_classic_1w.price)}</td>
+      <td>{usd(products.frozen_classic_2w.price)}</td>
+      <td>{usd(products.frozen_classic_3w.price)}</td>
+      <td>{usd(products.frozen_classic_4w.price)}</td>
     </tr>
     <tr>
       <td>
-        <span class="text-rose-500">Frozen Happiness Soups + Herbal Formula</span>
+        <span class="text-rose-500">Frozen Soup & Dessert + Herbal Formula</span>
       </td>
-      <td>$850</td>
-      <td>$1,550</td>
-      <td>$2,150</td>
-      <td>$2,590</td>
+      <td>{usd(products.frozen_soup_dessert_1w.price + products.frozen_herbal_drink_7_1w.price)}</td>
+      <td>{usd(products.frozen_soup_dessert_2w.price + 2 * products.frozen_herbal_drink_7_1w.price)}</td>
+      <td>{usd(products.frozen_soup_dessert_3w.price + 3 * products.frozen_herbal_drink_7_1w.price)}</td>
+      <td>{usd(products.frozen_soup_dessert_4w.price + 4 * products.frozen_herbal_drink_7_1w.price)}</td>
     </tr>
     <tr>
       <td>
-        <span class="text-rose-500">Frozen Happiness Soups</span>
+        <span class="text-rose-500">Frozen Soup & Dessert</span>
       </td>
-      <td>$750</td>
-      <td>$1,350</td>
-      <td>$1,850</td>
-      <td>$2,190</td>
+      <td>{usd(products.frozen_soup_dessert_1w.price)}</td>
+      <td>{usd(products.frozen_soup_dessert_2w.price)}</td>
+      <td>{usd(products.frozen_soup_dessert_3w.price)}</td>
+      <td>{usd(products.frozen_soup_dessert_4w.price)}</td>
     </tr>
   </tbody>
   <tfoot>

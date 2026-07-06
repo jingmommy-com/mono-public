@@ -6,6 +6,7 @@ color: blue
 
 import PageButtons from '@/components/PageButtons.astro'
 import LookupZipButton from '@/components/LookupZipButton.astro'
+import { products, usd } from '@/client.config.ts'
 
 **當媽媽坐月子，誰來照顧爸爸的一日三餐？**
 
@@ -26,7 +27,7 @@ import LookupZipButton from '@/components/LookupZipButton.astro'
 - **午餐**：主菜、溫性蔬菜、養生飯
 - **晚餐**：主菜、溫性蔬菜、養生飯
 
-**💰 $25／天**  
+**💰 {usd(products.local_daddy_1d.price)}／天**  
 **📦 隨金品月子餐加購，不單售**
 
 ---

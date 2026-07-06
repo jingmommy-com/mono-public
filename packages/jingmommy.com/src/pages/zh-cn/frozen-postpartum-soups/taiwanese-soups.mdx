@@ -1,0 +1,177 @@
+---
+layout: ../../../layouts/MarkdownPage.astro
+title: 冷冻台式月子汤
+color: rose
+---
+
+import { Alert, AlertDescription, AlertTitle } from '@/components/starwind/alert'
+import Badges from '@/components/Badges.astro'
+
+<Alert variant="warning" class="text-center">
+  <AlertDescription>
+  冷冻汤品系列<strong>仅限南加州配送</strong>，目前不提供外州寄送服务。
+  </AlertDescription>
+</Alert>
+
+---
+
+| 周次       | 汤品                      |
+| ---------- | ------------------------- |
+| 第一周     | 猪肝汤（补血）            |
+| 第二周     | 杜仲腰花汤（温肾固本）    |
+| 第三／四周 | 麻油鸡汤（暖身养气）      |
+
+---
+
+### 在美国坐月子，最怕三件事：
+
+- 没时间自己煮
+- 身边没人帮忙
+- 市面上买不到「正宗台式」月子汤
+
+金品将台湾传统月子汤现煮后冷冻，完整封存营养与香气。<br/>
+每一碗都无人工添加、真材实料。打开、加热、端上桌，就是熟悉的家乡味。<br/>
+自己喝省心，送礼更体面。
+
+无论是产后调养、术后康复，还是平时想暖暖身，这系列都能帮产妇按部就班补回元气。
+
+---
+
+### 建议选择
+
+- 想一次准备好整个月 → 直接选综合包 （猪肝2｜杜仲腰花2｜麻油鸡4）或综合包（猪肝4｜杜仲腰花4｜麻油鸡8），一次囤好不用再担心断货
+- 送礼最体面 → 推荐16份综合包，诚意满满～
+
+---
+
+### 规格与价格
+
+<table>
+  <thead>
+    <tr>
+      <th class="text-center">品项</th>
+      <th class="text-center">价格</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-center">猪肝汤 7 份<br/>（补血）</td>
+      <td class="text-center">
+        <div class="flex gap-1 items-center justify-center">
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_taiwanese_soup_liver_7.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_taiwanese_soup_liver_7.price)}</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">杜仲腰花汤 7 份<br/>（温肾固本）</td>
+      <td class="text-center">
+        <div class="flex gap-1 items-center justify-center">
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_taiwanese_soup_kidney_7.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_taiwanese_soup_kidney_7.price)}</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">麻油鸡汤 7 份<br/>（暖身养气）</td>
+      <td class="text-center">
+        <div class="flex gap-1 items-center justify-center">
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_taiwanese_soup_chicken_7.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_taiwanese_soup_chicken_7.price)}</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">综合包装 2/2/4<br/>（猪肝2｜杜仲腰花2｜麻油鸡4）<br/>* 综合包：不可替换</td>
+      <td class="text-center">
+        <div class="flex gap-1 items-center justify-center">
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_taiwanese_soup_set_224.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_taiwanese_soup_set_224.price)}</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">综合包装 4/4/8<br/>（猪肝4｜杜仲腰花4｜麻油鸡8）<br/>* 综合包：不可替换</td>
+      <td class="text-center">
+        <div class="flex gap-1 items-center justify-center">
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_taiwanese_soup_set_448.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_taiwanese_soup_set_448.price)}</span>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+<table>
+  <thead>
+    <tr>
+      <th>汤品</th>
+      <th>内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>猪肝汤</td>
+      <td>
+        <Badges data={[
+          '枸杞猪肝汤',
+          '红枣猪肝汤',
+          '红苋菜猪肝汤',
+          '菠菜猪肝汤',
+          '鲜菇猪肝汤',
+        ]} />
+      </td>
+    </tr>
+    <tr>
+      <td>杜仲腰花汤</td>
+      <td>
+        <Badges data={[
+          '麻油杜仲腰花',
+          '麻油杜仲素腰花',
+          '麻油杜仲里肌肉',
+        ]} />
+      </td>
+    </tr>
+    <tr>
+      <td>麻油鸡</td>
+      <td>
+        <Badges data={[
+          '麻油鸡',
+          '枸杞麻油鸡',
+          '红枣麻油鸡',
+          '药膳麻油鸡',
+        ]} />
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+#### 🚚 配送方式
+
+- 自取
+- 司机配送（有区域限制）：配送区域内 {usd(products.local_delivery_fee_1trip.price)}/次，满 {usd(products.free_local_delivery_minimum_frozen_soup.price)} 免费配送
+
+---
+
+import PageButtons from '@/components/PageButtons.astro'
+import { products, usd } from '@/client.config.ts'
+
+<PageButtons
+  data={[
+    {
+      title: '开始选购 / Start Shopping',
+      icon: 'mdi:shopping',
+      url: '//order.jingmommy.com/zh/frozon-taiwanese-postpartum-soups',
+      target: '_blank'
+    },
+    {
+      title: '预约咨询 / Book a Consultation',
+      icon: 'mdi:calendar-check',
+      url: '/customer-service/'
+    },
+  ]}
+/>

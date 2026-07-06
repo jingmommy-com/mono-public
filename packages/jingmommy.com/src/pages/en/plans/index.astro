@@ -4,11 +4,12 @@ import TopBar from "@/components/en/TopBar.astro"
 import Footer from "@/components/en/Footer.astro"
 import PageHero from "@/components/en/PageHero.astro"
 import { brand, route, orderUrl, orderSampleUrl, planOrderUrls } from "@/config/en.ts"
+import { products, usd } from '@/client.config.ts'
 
 const title =
   "Meal Plans — Chinese Postpartum (Zuo Yue Zi) Delivery — JingMommy"
 const description =
-  "Five fresh and four frozen 30-day Chinese postpartum meal plans, from $1,550. Same kitchen, same three-stage Zuo Yue Zi program — delivered fresh in SoCal or shipped frozen nationwide."
+  `Five fresh and four frozen 30-day Chinese postpartum meal plans, from ${usd(products.local_easy_15d.price)}. Same kitchen, same three-stage Zuo Yue Zi program — delivered fresh in SoCal or shipped frozen nationwide.`
 
 const jsonLd = [
   {
@@ -90,7 +91,7 @@ const jsonLd = [
               <div><strong>3 meals a day</strong></div>
               <div>Daily herbal drinks <strong>included</strong></div>
             </div>
-            <div class="plan-price">$2,890</div>
+            <div class="plan-price">{usd(products.local_herbal_30d.price)}</div>
             <div class="plan-tag">30 days</div>
             <a href={planOrderUrls.herbal} class="plan-link">Learn more →</a>
           </div>
@@ -105,9 +106,9 @@ const jsonLd = [
             </p>
             <div class="plan-spec">
               <div><strong>3 meals a day</strong></div>
-              <div>Herbal drinks add-on, $10/day</div>
+              <div>Herbal drinks add-on, {usd(products.herbal_drink.price)}/day</div>
             </div>
-            <div class="plan-price">$2,590</div>
+            <div class="plan-price">{usd(products.local_classic_30d.price)}</div>
             <div class="plan-tag">30 days</div>
             <a href={planOrderUrls.classic} class="plan-link">Learn more →</a>
           </div>
@@ -123,9 +124,9 @@ const jsonLd = [
             </p>
             <div class="plan-spec">
               <div><strong>2 meals a day + dessert</strong></div>
-              <div>Herbal drinks add-on, $10/day</div>
+              <div>Herbal drinks add-on, {usd(products.herbal_drink.price)}/day</div>
             </div>
-            <div class="plan-price">$2,299</div>
+            <div class="plan-price">{usd(products.local_vita_30d.price)}</div>
             <div class="plan-tag">30 days</div>
             <a href={planOrderUrls.vita} class="plan-link">Learn more →</a>
           </div>
@@ -140,9 +141,9 @@ const jsonLd = [
             </p>
             <div class="plan-spec">
               <div><strong>3 meals a day</strong></div>
-              <div>Herbal drinks add-on, $10/day</div>
+              <div>Herbal drinks add-on, {usd(products.herbal_drink.price)}/day</div>
             </div>
-            <div class="plan-price">$1,999</div>
+            <div class="plan-price">{usd(products.local_lowcarb_30d.price)}</div>
             <div class="plan-tag">30 days</div>
             <a href={planOrderUrls.lowCarb} class="plan-link">Learn more →</a>
           </div>
@@ -158,9 +159,9 @@ const jsonLd = [
             </p>
             <div class="plan-spec">
               <div><strong>3 meals a day, delivered 15 times</strong></div>
-              <div>Herbal drinks add-on, $10/day</div>
+              <div>Herbal drinks add-on, {usd(products.herbal_drink.price)}/day</div>
             </div>
-            <div class="plan-price">$1,550</div>
+            <div class="plan-price">{usd(products.local_easy_15d.price)}</div>
             <div class="plan-tag">30 days</div>
             <a href={planOrderUrls.easy} class="plan-link">Learn more →</a>
           </div>
@@ -173,7 +174,7 @@ const jsonLd = [
               try a sample first.
             </p>
             <a href={route("/sample")} class="helper-link"
-              >→ Try the $50 Local Tasting</a
+              >→ Try the {usd(products.local_classic_sample_1d.price)} Local Tasting</a
             >
             <a href={brand.phoneHref} class="helper-link"
               >→ Or call us at {brand.phone}</a
@@ -208,7 +209,7 @@ const jsonLd = [
             <div class="plan-spec">
               <div><strong>3 meals + dessert + herbal drink</strong></div>
             </div>
-            <div class="plan-price">$3,890</div>
+            <div class="plan-price">{usd(products.frozen_herbal_4w.price)}</div>
             <div class="plan-tag">
               4 weeks · FedEx Priority Overnight shipping included
             </div>
@@ -225,7 +226,7 @@ const jsonLd = [
             <div class="plan-spec">
               <div><strong>3 meals + dessert</strong> (no herbal drink)</div>
             </div>
-            <div class="plan-price">$3,490</div>
+            <div class="plan-price">{usd(products.frozen_classic_4w.price)}</div>
             <div class="plan-tag">
               4 weeks · FedEx Priority Overnight shipping included
             </div>
@@ -243,9 +244,9 @@ const jsonLd = [
             </p>
             <div class="plan-spec">
               <div><strong>2 meals a day + dessert, 5 days/week</strong></div>
-              <div>Herbal drinks add-on, $100/week</div>
+              <div>Herbal drinks add-on, {usd(products.frozen_herbal_drink_7_1w.price)}/week</div>
             </div>
-            <div class="plan-price">$2,790</div>
+            <div class="plan-price">{usd(products.frozen_essential_4w.price)}</div>
             <div class="plan-tag">
               4 weeks · FedEx Priority Overnight shipping included
             </div>
@@ -268,9 +269,9 @@ const jsonLd = [
                   2 desserts</strong
                 >
               </div>
-              <div>Herbal drinks add-on, $100/week</div>
+              <div>Herbal drinks add-on, {usd(products.frozen_herbal_drink_7_1w.price)}/week</div>
             </div>
-            <div class="plan-price">$2,190</div>
+            <div class="plan-price">{usd(products.frozen_soup_dessert_4w.price)}</div>
             <div class="plan-tag">
               4 weeks · FedEx Priority Overnight shipping included
             </div>
@@ -291,7 +292,7 @@ const jsonLd = [
               freezer and 2 days in the fridge — they thaw naturally as you go.
             </p>
             <a href={route("/sample")} class="helper-link"
-              >→ Try the $80 Frozen Tasting (8 items, real recipes)</a
+              >→ Try the {usd(products.frozen_classic_sample_8item.price)} Frozen Tasting (8 items, real recipes)</a
             >
           </div>
         </div>
@@ -324,9 +325,9 @@ const jsonLd = [
               >
               <tr
                 ><td>Daily herbal drinks</td><td class="included">Included</td
-                ><td>Add-on $10/day</td><td>Add-on $10/day</td><td
-                  >Add-on $10/day</td
-                ><td>Add-on $10/day</td></tr
+                ><td>Add-on {usd(products.herbal_drink.price)}/day</td><td>Add-on {usd(products.herbal_drink.price)}/day</td><td
+                  >Add-on {usd(products.herbal_drink.price)}/day</td
+                ><td>Add-on {usd(products.herbal_drink.price)}/day</td></tr
               >
               <tr
                 ><td>What’s distinctive</td><td>Full traditional regimen</td><td
@@ -335,10 +336,10 @@ const jsonLd = [
                 ><td>Every other day delivery</td></tr
               >
               <tr
-                ><td>30-day price</td><td class="price">$2,890</td><td
-                  class="price">$2,590</td
-                ><td class="price">$2,299</td><td class="price">$1,999</td><td
-                  class="price">$1,550</td
+                ><td>30-day price</td><td class="price">{usd(products.local_herbal_30d.price)}</td><td
+                  class="price">{usd(products.local_classic_30d.price)}</td
+                ><td class="price">{usd(products.local_vita_30d.price)}</td><td class="price">{usd(products.local_lowcarb_30d.price)}</td><td
+                  class="price">{usd(products.local_easy_15d.price)}</td
                 ></tr
               >
               <tr
@@ -388,13 +389,13 @@ const jsonLd = [
               >
               <tr
                 ><td>Herbal drinks</td><td class="included">Included</td><td
-                  >Add-on $100/wk</td
-                ><td>Add-on $100/wk</td><td>Add-on $100/wk</td></tr
+                  >Add-on {usd(products.frozen_herbal_drink_7_1w.price)}/wk</td
+                ><td>Add-on {usd(products.frozen_herbal_drink_7_1w.price)}/wk</td><td>Add-on {usd(products.frozen_herbal_drink_7_1w.price)}/wk</td></tr
               >
               <tr
-                ><td>4-week price</td><td class="price">$3,890</td><td
-                  class="price">$3,490</td
-                ><td class="price">$2,790</td><td class="price">$2,190</td></tr
+                ><td>4-week price</td><td class="price">{usd(products.frozen_herbal_4w.price)}</td><td
+                  class="price">{usd(products.frozen_classic_4w.price)}</td
+                ><td class="price">{usd(products.frozen_essential_4w.price)}</td><td class="price">{usd(products.frozen_soup_dessert_4w.price)}</td></tr
               >
               <tr
                 ><td>Best for</td><td class="best-for"
@@ -556,15 +557,15 @@ const jsonLd = [
               frozen. The full 30-day course of drinks, no add-on cost.
             </li>
             <li>
-              <strong>Add to a fresh meal plan — $10/day.</strong> Available with
+              <strong>Add to a fresh meal plan — {usd(products.herbal_drink.price)}/day.</strong> Available with
               Classic, Vita, Low Carb, or Easy plans.
             </li>
             <li>
-              <strong>Add to a frozen meal plan — $100/week.</strong> Available with
+              <strong>Add to a frozen meal plan — {usd(products.frozen_herbal_drink_7_1w.price)}/week.</strong> Available with
               Classic, Essential, or Soup &amp; Dessert plans.
             </li>
             <li>
-              <strong>$349 standalone Herbal Pack.</strong> For the mom who has home-cooked
+              <strong>{usd(products.herbal_drink_pack_30d.price)} standalone Herbal Pack.</strong> For the mom who has home-cooked
               meals covered, but doesn’t want to miss the herbal layer of Zuo Yue
               Zi. Ships nationwide.
             </li>
@@ -584,7 +585,7 @@ const jsonLd = [
         <div class="sample-options">
           <div class="sample-option">
             <div class="place">Southern California</div>
-            <div class="price-label">$50 · Local Tasting</div>
+            <div class="price-label">{usd(products.local_classic_sample_1d.price)} · Local Tasting</div>
             <p>
               A full sample day — breakfast, lunch, dinner, herbal drink,
               dessert. Delivered to your door.
@@ -592,7 +593,7 @@ const jsonLd = [
           </div>
           <div class="sample-option">
             <div class="place">Continental US</div>
-            <div class="price-label">$80 · Frozen Tasting</div>
+            <div class="price-label">{usd(products.frozen_classic_sample_8item.price)} · Frozen Tasting</div>
             <p>
               8 individual items — sea bass soup, recovery stew soup, oil rice,
               main, dessert, breakfast porridge, herbal drink. Same recipes,
@@ -647,8 +648,8 @@ const jsonLd = [
         <div class="answer">
           This is exactly why we offer a tasting first. Most mothers expecting
           strange flavors are surprised by how warming and comforting the food
-          actually is. Order the $50 Local Tasting if you’re in our Southern
-          California delivery area, or the $80 Frozen Tasting if you’re not. If
+          actually is. Order the {usd(products.local_classic_sample_1d.price)} Local Tasting if you’re in our Southern
+          California delivery area, or the {usd(products.frozen_classic_sample_8item.price)} Frozen Tasting if you’re not. If
           the food’s not for you, you’ll know before committing to a plan.
         </div>
       </details>
@@ -740,7 +741,7 @@ const jsonLd = [
       <div class="final-actions">
         <div class="final-card">
           <h4>Try a tasting first</h4>
-          <div class="sub">$50 Local · $80 Frozen Tasting</div>
+          <div class="sub">{usd(products.local_classic_sample_1d.price)} Local · {usd(products.frozen_classic_sample_8item.price)} Frozen Tasting</div>
           <a href={orderSampleUrl} class="btn btn-primary"
             >Order a Tasting</a
           >

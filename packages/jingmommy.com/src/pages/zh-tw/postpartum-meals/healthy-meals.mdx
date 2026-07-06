@@ -7,6 +7,7 @@ description: 健康餐｜每天一份好好吃飯的理由
 
 import PageButtons from '@/components/PageButtons.astro'
 import LookupZipButton from '@/components/LookupZipButton.astro'
+import { products, usd } from '@/client.config.ts'
 
 **給每天想吃得安心一點的你，不用再為三餐煩惱。**
 
@@ -54,7 +55,7 @@ import LookupZipButton from '@/components/LookupZipButton.astro'
       <td class="text-center">
         <b>Ａ方案</b>｜<b>三餐＋湯飲組</b>｜含運費<br/>
         想吃得更完整，調理一點點也不負擔<br/>
-        💰$65／天　👫雙人價 $115／天
+        💰{usd(products.local_healthy_a_1d.price)}／天　👫雙人價 {usd(products.local_healthy_a2_1d.price)}／天
       </td>
     </tr>
     <tr>
@@ -69,7 +70,7 @@ import LookupZipButton from '@/components/LookupZipButton.astro'
       <td class="text-center">
         <b>Ｂ方案</b>｜<b>三餐組</b>｜含運費<br/>
         一天三餐不想亂吃，從早照顧到晚<br/>
-        💰$55／天　👫雙人價 $95／天
+        💰{usd(products.local_healthy_b_1d.price)}／天　👫雙人價 {usd(products.local_healthy_b2_1d.price)}／天
       </td>
     </tr>
     <tr>
@@ -83,7 +84,7 @@ import LookupZipButton from '@/components/LookupZipButton.astro'
       <td class="text-center">
         <b>Ｃ方案</b>｜<b>雙餐組</b>｜含運費<br/>
         適合注重午晚餐健康又希望簡單生活的你<br/>
-        💰$45／天　👫雙人價 $75／天
+        💰{usd(products.local_healthy_c_1d.price)}／天　👫雙人價 {usd(products.local_healthy_c2_1d.price)}／天
       </td>
     </tr>
     <tr>

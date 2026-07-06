@@ -6,6 +6,7 @@ color: rose
 
 import PageButtons from '@/components/PageButtons.astro'
 import LookupZipButton from '@/components/LookupZipButton.astro'
+import { products, usd } from '@/client.config.ts'
 
 **"Easy Postpartum Meals" — Flexible scheduling, no need for daily postpartum meals, nourish with ease!**
 
@@ -76,7 +77,7 @@ Confinement expenses add up, and you may not want to commit your entire budget t
 
 ---
 
-<p class={`text-center font-bold text-${frontmatter.color}-600`}>Jingmommy Easy Postpartum Meals $1,550 (Los Angeles area, delivery area restrictions apply)</p>
+<p class={`text-center font-bold text-${frontmatter.color}-600`}>Jingmommy Easy Postpartum Meals {usd(products.local_easy_15d.price)} (Los Angeles area, delivery area restrictions apply)</p>
 
 ---
 

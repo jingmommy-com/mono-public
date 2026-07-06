@@ -6,6 +6,7 @@ color: rose
 
 import PageButtons from '@/components/PageButtons.astro'
 import LookupZipButton from '@/components/LookupZipButton.astro'
+import { products, usd } from '@/client.config.ts'
 
 **「元氣月子餐」— 精華不減，價格更親民！**
 
@@ -74,7 +75,7 @@ import LookupZipButton from '@/components/LookupZipButton.astro'
 
 ---
 
-<p class={`text-center font-bold text-${frontmatter.color}-600`}>金品元氣月子餐 $2299 (洛杉磯地區, 有地域限制)</p>
+<p class={`text-center font-bold text-${frontmatter.color}-600`}>金品元氣月子餐 {usd(products.local_vita_30d.price)} (洛杉磯地區, 有地域限制)</p>
 
 ---
 

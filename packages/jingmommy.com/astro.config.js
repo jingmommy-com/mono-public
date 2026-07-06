@@ -224,7 +224,6 @@ export default defineConfig({
   redirects: {
     '/': '/en', // redirect root to default locale
     // en-old (legacy English pages, formerly at /en/*)
-    '/en-old': '/en-old/coming-soon', // en-old index page 沒做, 所以先 redirect to a coming-soon page
     '/en-old/plans': '/en-old/plans/3tier',
     '/en-old/sample': '/en-old/sample/tasting-party',
     '/en-old/gallery': '/en-old/gallery/dish',
@@ -236,6 +235,12 @@ export default defineConfig({
     '/zh-tw/gallery': '/zh-tw/gallery/dish',
     '/zh-tw/cs': '/zh-tw/customer-service',
     '/zh-tw/tos': '/zh-tw/term-of-service',
+    // zh-cn
+    '/zh-cn/plans': '/zh-cn/plans/3tier',
+    '/zh-cn/sample': '/zh-cn/sample/tasting-party',
+    '/zh-cn/gallery': '/zh-cn/gallery/dish',
+    '/zh-cn/cs': '/zh-cn/customer-service',
+    '/zh-cn/tos': '/zh-cn/term-of-service',
 
     // history reason for old www.jingmommy.com website
     /**

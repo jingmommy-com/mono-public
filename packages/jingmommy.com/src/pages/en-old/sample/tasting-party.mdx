@@ -10,7 +10,7 @@ import Badge from '@/components/starwind/badge'
 import { YouTube } from 'astro-embed'
 
 import event01 from '@/assets/event/event_01.jpg'
-import { site } from '@/client.config.ts'
+import { site, products, usd } from '@/client.config.ts'
 
 * Home delivery tasting and the tasting party are <span class="text-pink-700 font-bold">mutually exclusive — choose one</span>
 
@@ -80,7 +80,7 @@ import JS from '@/components/js/tasting-party-preserve.astro'
 - Current-month parties <b>give priority to moms with a due date within 3 months</b> (moms with later due dates are welcome to register and will be placed on a waitlist as needed).
 - Please limit attendance to <b>two adults</b> (let us know in advance if you are bringing children).
 - If you need to cancel or reschedule, please notify us in advance so we can open your spot to other moms — thank you for your understanding!
-- To maintain event quality, a no-show fee of $20 per person may be charged for unexcused absences.
+- To maintain event quality, a no-show fee of {usd(products.tasting_party_no_show_fee.price)} per person may be charged for unexcused absences.
 - <a target="_blank" href="//order.jingmommy.com/sample-meals" title="Sampling" class={notProse}><Badge variant="warning">Home Delivery Sampling</Badge></a> and the tasting party are <span class="text-pink-700 font-bold">mutually exclusive — choose one</span>
 
 ---

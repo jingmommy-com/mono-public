@@ -1,0 +1,162 @@
+---
+layout: ../../../layouts/MarkdownPage.astro
+title: 健康餐
+color: green
+description: 健康餐｜每天一份好好吃饭的理由
+---
+
+import PageButtons from '@/components/PageButtons.astro'
+import LookupZipButton from '@/components/LookupZipButton.astro'
+import { products, usd } from '@/client.config.ts'
+
+**给每天想吃得安心一点的你，不用再为三餐烦恼。**
+
+忙碌的生活里，你不是没时间吃饭，而是**没时间煮、也不想再将就**。我们常常为了方便，选择外送便当或餐厅外食。但外食太油太咸，吃着吃着，就发现身体越来越沉重、越来越不舒服。你其实想得很简单——每天有人帮你准备一份**刚刚好的熟食热饭**，帮你照顾身体，也不用为三餐烦恼。
+
+我们懂这样的困扰，也知道你不是真的挑嘴，而是对「吃进身体的东西」有基本的期待——**要安心、要健康、要刚刚好。**
+
+**✅ 现煮现送，不是冷冻食品**
+
+金品的健康餐，每一道都是当天清晨专人现煮，从中央厨房出餐后直送到你手上，让你在忙碌的日子里，也能吃到像家里煮的热熟食。
+
+**✅ 少油少盐，吃得比较安心**
+
+我们不强调清淡无味，而是讲究「调味刚好」：有香气，但不过重；有滋味，但不刺激。用的是温和食材与温性烹调，让长辈、孕妇、上班族都能自在享用，不用担心口干或肠胃不适。
+
+**✅ 不用自己想菜单，也不怕踩雷**
+
+每天交给我们就好。我们的菜色组合，营养均衡又有变化，不必再为了今天吃什么而烦恼。
+
+---
+
+**适合谁？**
+
+- 长时间久坐、工作繁忙、不想再乱吃的上班族
+- 正在怀孕、对食材特别小心的准妈妈
+- 肠胃敏感、牙口挑食、想要熟食温补的长辈
+
+---
+
+**我们希望你记得的不是食物的名字，而是那种：**
+
+「这一餐，让我心里也安定下来了。」
+
+现在就让健康餐，成为你生活里最稳定的照顾。
+
+---
+
+**套餐选择**
+
+每天都有刚刚好的照顾，依需求自由选择
+
+<table class="w-full">
+  <tbody>
+    <tr class="bg-yellow-100">
+      <td class="text-center">
+        <b>Ａ方案</b>｜<b>三餐＋汤饮组</b>｜含运费<br/>
+        想吃得更完整，调理一点点也不负担<br/>
+        💰{usd(products.local_healthy_a_1d.price)}／天　👫双人价 {usd(products.local_healthy_a2_1d.price)}／天
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <b>早餐：</b>活力蛋、养生粥<br/>
+        <b>午餐：</b>午餐炖补汤、主菜、温性蔬菜、养生饭<br/>
+        <b>晚餐：</b>主菜、温性蔬菜、养生饭<br/>
+        🎁 推广期间加赠：调养饮料
+      </td>
+    </tr>
+    <tr class="bg-cyan-100">
+      <td class="text-center">
+        <b>Ｂ方案</b>｜<b>三餐组</b>｜含运费<br/>
+        一天三餐不想乱吃，从早照顾到晚<br/>
+        💰{usd(products.local_healthy_b_1d.price)}／天　👫双人价 {usd(products.local_healthy_b2_1d.price)}／天
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <b>早餐：</b>活力蛋、养生粥<br/>
+        <b>午餐：</b>主菜、温性蔬菜、养生饭<br/>
+        <b>晚餐：</b>主菜、温性蔬菜、养生饭
+      </td>
+    </tr>
+    <tr class="bg-red-100">
+      <td class="text-center">
+        <b>Ｃ方案</b>｜<b>双餐组</b>｜含运费<br/>
+        适合注重午晚餐健康又希望简单生活的你<br/>
+        💰{usd(products.local_healthy_c_1d.price)}／天　👫双人价 {usd(products.local_healthy_c2_1d.price)}／天
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <b>午餐：</b>主菜、温性蔬菜、养生饭<br/>
+        <b>晚餐：</b>主菜、温性蔬菜、养生饭
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+**一份熟食，不只是吃饱**
+
+是让你在混乱生活中，找回**稳定、节奏与自我照顾的勇气**
+
+---
+
+**📦 配送方式｜当日现煮现送（周一至周日）**<br/>
+**💬 订购方式｜线上预约，弹性天数/周数可选**<br/>
+**📍 出餐地区｜洛杉矶地区（有范围限制）**
+
+---
+
+<PageButtons
+  data={[
+    {
+      title: '开始选购 / Start Shopping',
+      icon: 'mdi:cart',
+      url: '//order.jingmommy.com/healthy-meals'
+    },
+    {
+      title: '预约咨询 / Book a Consultation',
+      icon: 'mdi:calendar-check',
+      url: '/customer-service/'
+    },
+    [
+      {
+        title: '下载订购单',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/金品健康餐訂購單.pdf'
+      },
+      {
+        title: 'Download Order Form',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/Healthy_Meal_Order_Form.pdf'
+      },
+      {
+        title: '餐点对照表',
+        icon: 'mdi:chart-bar',
+        url: '//file.jingmommy.com/f/健康餐對照表.pdf'
+      },
+      {
+        title: 'Meal Comparison Chart',
+        icon: 'mdi:chart-bar',
+        url: '//file.jingmommy.com/f/Healthy_Meal_Comparison_Chart.pdf'
+      },
+      {
+        title: '菜单',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/菜單總表.pdf'
+      },
+      {
+        title: 'Full Menu',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/Menu.pdf'
+      }
+    ]
+  ]}
+/>
+
+<LookupZipButton class="mt-4" />
+
+---

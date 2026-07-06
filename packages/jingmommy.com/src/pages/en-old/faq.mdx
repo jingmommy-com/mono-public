@@ -70,8 +70,8 @@ The menu items in both plans are identical, but the Herbal Postpartum Meal inclu
 
 A: JingMommy warmly invites you to experience our postpartum meals in one of three ways:
 - [Tasting Party (Free)](/sample/tasting-party): A buffet-style event held at our central kitchen where you can sample 10+ postpartum dishes. (Sample menu: sticky rice, shiitake egg custard, longan red date tea, goji berry tea, angelica sea bass soup, black fungus pork rib soup, yam carrot beef soup, black date peanut pork knuckle, sesame oil chicken, mushroom cabbage porridge, longan glutinous rice porridge, silver ear fungus with rock sugar, peanut sweet soup, red bean purple rice porridge, and more.)
-- [Home Delivery Tasting ($50)](/sample/local-delivery): Experience a full day of our postpartum meals delivered right to your door at a special introductory price. Just visit our website to order.
-- [Out-of-State Frozen Tasting ($80)](/sample/out-of-state-shipping): Out-of-state moms pay only the FedEx Priority Overnight shipping fee to receive a frozen tasting set and experience our quality before subscribing.
+- [Home Delivery Tasting ({usd(products.local_classic_sample_1d.price)})](/sample/local-delivery): Experience a full day of our postpartum meals delivered right to your door at a special introductory price. Just visit our website to order.
+- [Out-of-State Frozen Tasting ({usd(products.frozen_classic_sample_8item.price)})](/sample/out-of-state-shipping): Out-of-state moms pay only the FedEx Priority Overnight shipping fee to receive a frozen tasting set and experience our quality before subscribing.
 
 ---
 
@@ -291,6 +291,7 @@ A: Caring for a new mother and baby while also cooking is quite demanding for fa
 ---
 
 import PageButtons from '@/components/PageButtons.astro'
+import { products, usd } from '@/client.config.ts'
 
 <PageButtons
   data={[

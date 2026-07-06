@@ -27,16 +27,13 @@
     "description": "Zuo Yue Zi is the 2,000-year-old Chinese practice of structured postpartum recovery through warmth, rest, and staged nourishment. Learn the three-stage framework, four principles, and what to eat."
   },
   "/en": {
-    "title": "JingMommy — Authentic Chinese Postpartum Meals, Delivered",
-    "description": "JingMommy delivers authentic Chinese postpartum (Zuo Yue Zi) meals across the US. Founded 2010, 10,000+ mothers served. Fresh daily in SoCal, frozen nationwide. Featured in LA Times, PBS & Washington Post. Sample meals from $50."
+    "title": "JingMommy — Authentic Chinese Postpartum Meals, Delivered"
   },
   "/en/plans": {
-    "title": "Meal Plans — Chinese Postpartum (Zuo Yue Zi) Delivery — JingMommy",
-    "description": "Five fresh and four frozen 30-day Chinese postpartum meal plans, from $1,550. Same kitchen, same three-stage Zuo Yue Zi program — delivered fresh in SoCal or shipped frozen nationwide."
+    "title": "Meal Plans — Chinese Postpartum (Zuo Yue Zi) Delivery — JingMommy"
   },
   "/en/sample": {
-    "title": "Try a Taste — Free Tasting & Sample Meals — JingMommy",
-    "description": "Taste authentic Chinese postpartum meals before you commit. Join a free tasting event in Southern California, or order a full sample day — $50 fresh local, $80 frozen nationwide. Gift options too."
+    "title": "Try a Taste — Free Tasting & Sample Meals — JingMommy"
   },
   "/en-old/about/central-kitchen": {
     "order": 3,
@@ -322,6 +319,289 @@
   },
   "/": {
     "title": "JingMommy"
+  },
+  "/zh-cn/about/central-kitchen": {
+    "order": 3,
+    "sidebar": true,
+    "title": "中央厨房"
+  },
+  "/zh-cn/about/founding-story": {
+    "order": 1,
+    "sidebar": true,
+    "title": "金品缘起"
+  },
+  "/zh-cn/about": {
+    "order": 8,
+    "sidebar": true,
+    "title": "金品故事"
+  },
+  "/zh-cn/about/social-media": {
+    "order": 6,
+    "sidebar": true,
+    "title": "金品社群媒体"
+  },
+  "/zh-cn/about/social-video": {
+    "order": 7,
+    "sidebar": true,
+    "title": "金品社群影片"
+  },
+  "/zh-cn/about/team": {
+    "order": 4,
+    "sidebar": true,
+    "title": "金品团队"
+  },
+  "/zh-cn/about/testimonial": {
+    "order": 5,
+    "sidebar": true,
+    "title": "分享推荐"
+  },
+  "/zh-cn/about/why-us": {
+    "order": 2,
+    "sidebar": true,
+    "title": "金品坚持"
+  },
+  "/zh-cn/advice": {
+    "title": "贴心叮咛"
+  },
+  "/zh-cn/coming-soon": {
+    "sitemap": false,
+    "title": "🚧 即将推出",
+    "description": "我们正努力为您带来精彩内容，敬请期待！"
+  },
+  "/zh-cn/customer-service": {
+    "title": "线上客服"
+  },
+  "/zh-cn/delivery-lookup": {
+    "title": "送餐范围查询"
+  },
+  "/zh-cn/faq": {
+    "title": "常见问题"
+  },
+  "/zh-cn/frozen-postpartum-soups/chicken-essence": {
+    "order": 3,
+    "sidebar": true,
+    "title": "冷冻熬鸡精"
+  },
+  "/zh-cn/frozen-postpartum-soups/desserts": {
+    "order": 4,
+    "sidebar": true,
+    "title": "冷冻甜点系列"
+  },
+  "/zh-cn/frozen-postpartum-soups": {
+    "order": 6,
+    "sidebar": true,
+    "title": "冷冻汤品"
+  },
+  "/zh-cn/frozen-postpartum-soups/sea-bass-soups": {
+    "order": 5,
+    "sidebar": true,
+    "title": "冷冻鲈鱼汤"
+  },
+  "/zh-cn/frozen-postpartum-soups/spring-4": {
+    "order": 7,
+    "sidebar": true,
+    "title": "四季汤・「春分」冷冻汤品"
+  },
+  "/zh-cn/frozen-postpartum-soups/stewed-soups": {
+    "order": 2,
+    "sidebar": true,
+    "title": "冷冻月子炖补汤"
+  },
+  "/zh-cn/frozen-postpartum-soups/taiwanese-soups": {
+    "order": 1,
+    "sidebar": true,
+    "title": "冷冻台式月子汤"
+  },
+  "/zh-cn/frozen-postpartum-soups/tiers": {
+    "order": 6,
+    "sidebar": true,
+    "title": "冷冻月子汤品组"
+  },
+  "/zh-cn/gallery/dish": {
+    "title": "餐点实品拍摄"
+  },
+  "/zh-cn/gallery": {
+    "title": "相簿"
+  },
+  "/zh-cn/guide/confinement-care-advice": {
+    "order": 2,
+    "sidebar": true,
+    "title": "坐月子贴心叮咛"
+  },
+  "/zh-cn/guide/dos-and-donts": {
+    "sidebar": true,
+    "title": "坐月子可吃＆不可吃"
+  },
+  "/zh-cn/guide/miscarriage-healing-advice": {
+    "order": 4,
+    "sidebar": true,
+    "title": "小产贴心叮咛"
+  },
+  "/zh-cn": {
+    "title": "首页"
+  },
+  "/zh-cn/miscarriage-healing-meals/biweekly": {
+    "order": 2,
+    "sidebar": true,
+    "title": "双周调养餐（14天）"
+  },
+  "/zh-cn/miscarriage-healing-meals/deluxe": {
+    "order": 1,
+    "sidebar": true,
+    "title": "精致调养餐（30天）"
+  },
+  "/zh-cn/miscarriage-healing-meals": {
+    "order": 3,
+    "sidebar": true,
+    "title": "小产调养餐"
+  },
+  "/zh-cn/news/ctitv": {
+    "order": 2,
+    "sidebar": true,
+    "title": "中天/中旺新闻"
+  },
+  "/zh-cn/news/ettvamerica": {
+    "order": 3,
+    "sidebar": true,
+    "title": "东森新闻"
+  },
+  "/zh-cn/news": {
+    "order": 8,
+    "sidebar": true,
+    "title": "媒体报导"
+  },
+  "/zh-cn/news/la-times": {
+    "order": 1,
+    "sidebar": true,
+    "title": "LA Times 洛杉矶时报"
+  },
+  "/zh-cn/plans/3tier": {
+    "title": "三阶层方案"
+  },
+  "/zh-cn/plans": {
+    "title": "方案"
+  },
+  "/zh-cn/post-surgery-meals": {
+    "order": 5,
+    "sidebar": true,
+    "title": "手术后餐"
+  },
+  "/zh-cn/postpartum-meals/classic-postpartum-meals": {
+    "order": 2,
+    "sidebar": true,
+    "title": "精致月子餐"
+  },
+  "/zh-cn/postpartum-meals/daddy-meals": {
+    "order": 8,
+    "sidebar": true,
+    "title": "爸爸餐"
+  },
+  "/zh-cn/postpartum-meals/easy-postpartum-meals": {
+    "order": 5,
+    "sidebar": true,
+    "title": "轻享月子餐"
+  },
+  "/zh-cn/postpartum-meals/frozen-postpartum-meals": {
+    "order": 6,
+    "sidebar": true,
+    "title": "冷冻月子餐"
+  },
+  "/zh-cn/postpartum-meals/healthy-meals": {
+    "order": 9,
+    "sidebar": true,
+    "title": "健康餐",
+    "description": "健康餐｜每天一份好好吃饭的理由"
+  },
+  "/zh-cn/postpartum-meals/herbal-postpartum-meals": {
+    "order": 1,
+    "sidebar": true,
+    "title": "药膳月子餐"
+  },
+  "/zh-cn/postpartum-meals": {
+    "order": 1,
+    "sidebar": true,
+    "title": "月子膳食",
+    "description": "金品月子餐 － 5 大套餐选择，满足不同妈咪的需求！"
+  },
+  "/zh-cn/postpartum-meals/low-carb-postpartum-meals": {
+    "order": 4,
+    "sidebar": true,
+    "title": "减糖月子餐"
+  },
+  "/zh-cn/postpartum-meals/recovery-plus-meals": {
+    "order": 7,
+    "sidebar": true,
+    "title": "续订月子餐"
+  },
+  "/zh-cn/postpartum-meals/vita-postpartum-meals": {
+    "order": 3,
+    "sidebar": true,
+    "title": "元气月子餐"
+  },
+  "/zh-cn/postpartum-products/belly-wrap": {
+    "order": 6,
+    "sidebar": true,
+    "title": "产后腹带"
+  },
+  "/zh-cn/postpartum-products/chicken-essence": {
+    "order": 2,
+    "sidebar": true,
+    "title": "熬鸡精"
+  },
+  "/zh-cn/postpartum-products/du-zhong-capsule": {
+    "order": 5,
+    "sidebar": true,
+    "title": "养腰康（杜仲胶囊）"
+  },
+  "/zh-cn/postpartum-products/first-month-joy-gift-box": {
+    "order": 3,
+    "sidebar": true,
+    "title": "满月油饭礼盒"
+  },
+  "/zh-cn/postpartum-products/herbal-drink-pack": {
+    "order": 1,
+    "sidebar": true,
+    "title": "月子药膳包"
+  },
+  "/zh-cn/postpartum-products": {
+    "order": 7,
+    "sidebar": true,
+    "title": "金品月子产品"
+  },
+  "/zh-cn/postpartum-products/sheng-hua-tang": {
+    "order": 4,
+    "sidebar": true,
+    "title": "生化汤"
+  },
+  "/zh-cn/sample": {
+    "order": 0,
+    "sidebar": true,
+    "title": "预约试吃"
+  },
+  "/zh-cn/sample/local-delivery": {
+    "order": 2,
+    "sidebar": true,
+    "title": "预约试吃 - 送餐到府"
+  },
+  "/zh-cn/sample/out-of-state-shipping": {
+    "order": 3,
+    "sidebar": true,
+    "title": "预约试吃 - 外州冷冻"
+  },
+  "/zh-cn/sample/tasting-party": {
+    "order": 1,
+    "sidebar": true,
+    "title": "月子餐试吃派对"
+  },
+  "/zh-cn/sitemap": {
+    "sitemap": false,
+    "title": "网站地图"
+  },
+  "/zh-cn/sitemap.xml": {
+    "sitemap": false
+  },
+  "/zh-cn/term-of-service": {
+    "title": "服务条款"
   },
   "/zh-tw/about/central-kitchen": {
     "order": 3,

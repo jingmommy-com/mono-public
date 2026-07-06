@@ -1,0 +1,371 @@
+---
+layout: ../../../layouts/MarkdownPage.astro
+title: 精致调养餐（30天）
+color: pink
+---
+
+import { Image } from '@/components/starwind/image'
+import PageButtons from '@/components/PageButtons.astro'
+import LookupZipButton from '@/components/LookupZipButton.astro'
+
+![miscarriage-care](//file.jingmommy.com/img/miscarriage-care.jpg)
+
+明代著名的妇医家薛已说过：<span class="text-orange-800">『小产重于大产﹝生产﹞，因为大产﹝生产﹞如粟熟自脱，小产则如生采，伤其根蒂。』</span>也就是说，自然产就像水果熟了，自己从树上脱落；然而小产是尚未成熟却被硬摘下来。虽然小产看起来好像没有事，但是小产其实比自然产更伤身体，更需要好好的调理。
+
+小产后若不审慎调养身体，日后可能会有体力下降、气虚畏寒、容易感冒、腰酸背痛、生理期障碍、不易怀孕、惯性流产...等诸多问题。
+
+金品月子膳食的小产调养餐与坐月子相同，采渐进式调养，首先排除恶露、顺畅经血，再补血、补气已恢复体力，进一步加强子宫功能的修复，固筋骨，防老化。
+
+---
+
+<div class="text-center">
+完整30天的补养，除了调养炖品和补气煮食及鲜翠生蔬等，还提供元气甜品及小产后需要水分补充的养生饮品，让妳的身体得到充分的营养，迎接美好的未来！
+</div>
+
+<style>{`
+  table.meal-details {
+    padding: 0.5rem 0.5rem;
+    border: 4px solid #ccc;
+    border-radius: 12px;
+    border-spacing: 10px;
+    border-collapse: separate;
+    width: 100%;
+  }
+  table thead tr th {
+    text-align: center;
+  }
+  table tr td {
+    text-align: center;
+  }
+  table tbody tr td:first-child {
+    min-width: 100px;
+  }
+`}</style>
+<table>
+  <tbody>
+    <tr class="bg-purple-200">
+      <td>
+        <div><b>精致调养月子餐</b> - 30 天</div>
+        <div>{usd(products.local_miscarriage_30d.price)}</div>
+        <div>(洛杉矶地区, 有地域限制)</div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div>早餐：养生粥</div>
+        <div>午餐：午餐汤品、主菜、养生饭、温性蔬菜</div>
+        <div>晚餐：台式月子汤、月子炖补汤、养生饭、温性蔬菜</div>
+        <div>晚点：滋补甜点</div>
+        <div>饮料：调养饮料</div>
+      </td>
+    </tr>
+    <tr class="bg-purple-300">
+      <td>
+        <div><b>外州冷冻宅配 [四周]</b> - 28 天</div>
+        <div>{usd(products.frozen_miscarriage_4w.price)}</div>
+        <div>(美国各内陆州)</div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div>早餐：养生粥</div>
+        <div>午餐：午餐汤品、主菜、养生饭、温性蔬菜</div>
+        <div>晚餐：台式月子汤、月子炖补汤、养生饭、温性蔬菜</div>
+        <div>晚点：滋补甜点</div>
+        <div>饮料：调养饮料</div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+<PageButtons
+  data={[
+    {
+      title: '开始选购 / Start Shopping',
+      icon: 'mdi:cart',
+      url: '//order.jingmommy.com/miscarriage-healing-meals'
+    },
+    {
+      title: '预约咨询 / Book a Consultation',
+      icon: 'mdi:calendar-check',
+      url: '/customer-service/'
+    },
+    [
+      {
+        title: '下载订购单',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/金品小產調養餐訂購單.pdf'
+      },
+      {
+        title: 'Download Order Form',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/Healing_Meal_Order_Form.pdf'
+      },
+      {
+        title: '菜单',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/菜單總表.pdf'
+      },
+      {
+        title: 'Full Menu',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/Menu.pdf'
+      }
+    ]
+  ]}
+/>
+
+<LookupZipButton class="mt-4" />
+
+---
+
+{/* 调养餐固定没有发奶餐点：月子炖补汤-发奶汤品、主菜-猪脚餐点、甜点-花生酒酿 */}
+
+import menuMeal14a from '@/assets/menu/menu_meal14a.jpg'
+import menuMeal15a from '@/assets/menu/menu_meal15a.jpg'
+import menuMeal46 from '@/assets/menu/menu_meal46.jpg'
+import menuMeal23 from '@/assets/menu/menu_meal23.jpg'
+import menuMeal22 from '@/assets/menu/menu_meal22.jpg'
+import menuMeal02a from '@/assets/menu/menu_meal02a.jpg'
+import menuMeal24 from '@/assets/menu/menu_meal24.jpg'
+import menuMeal25 from '@/assets/menu/menu_meal25.jpg'
+import menuMeal16 from '@/assets/menu/menu_meal16.jpg'
+import menuMeal04a from '@/assets/menu/menu_meal04a.jpg'
+import menuMeal50 from '@/assets/menu/menu_meal50.jpg'
+import menuMeal18 from '@/assets/menu/menu_meal18.jpg'
+import menuMeal39 from '@/assets/menu/menu_meal39.jpg'
+import menuAfterTherapy03 from '@/assets/menu/menu_after_therapy03.jpg'
+import { products, usd } from '@/client.config.ts'
+
+<table class="meal-details">
+  <tbody>
+    <tr>
+      <td colspan="2" class="bg-zinc-200 text-bold">
+        {/* 、活力蛋 */}
+        <b>早餐：</b>养生粥
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        养生粥：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal14a} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        地瓜糙米粥、香菇芹菜瘦肉粥、红豆燕麦粥、香菇红萝高丽红糙米粥、红萝卜芹菜牛肉粥、枸杞糙米粥、山药红糙米粥、香菇芹菜瘦肉粥、芋头糙米粥、香菇红萝卜高丽菜粥等<b>更替出餐</b>
+      </td>
+    </tr>
+    {/* <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        活力蛋：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src="//file.jingmommy.com/img/dish.v2014/egg_corn.gif" className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        (烤)西式烘蛋、玉米(蒸)蛋、香菇烘蛋、(烤)西式番茄烘蛋、青豆烘蛋、香菇(蒸)蛋、九层塔烘蛋、(烤)奶香烘蛋、菠菜烘蛋、红萝卜丝烘蛋、木耳烘蛋、玉米烘蛋等<b>更替出餐</b>
+      </td>
+    </tr> */}
+    <tr>
+      <td colspan="2" class="bg-zinc-200 text-bold">
+        <b>午餐：</b>午餐汤品、主菜、养生饭、温性蔬菜
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        {/* 午餐汤 */}
+        午餐汤品：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal15a} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        鸡蓉玉米浓汤、当归黄芪鲈鱼汤、罗宋汤、鲜百菇鲈鱼汤、马铃薯蘑菇浓汤、姜丝鲈鱼汤、鱼肚牛肉羹、味噌豆腐鱼汤、红苋菜枸杞鲈鱼汤、手作鱼丸汤等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        {/* 主菜：无猪脚类 */}
+        主菜：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal46} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        茶树菇花胶汤鲍、核桃虾、法式牛柳、红酒炖牛肉、烤牛小排、白酱焗小干贝、白酱焗鱼片、奶油烤虾、三杯鸡、香菇蒸白鱼、柱侯牛腩煲、枸杞红枣蒸鸡、京都排骨、高丽菜卷、风味豉油鸡、蜜汁烤鸡腿、红烧肉、芋头排骨、照烧肉丸、(洋)葱爆牛肉、香菇蒸鸡、甜椒镶猪肉、起司肉丸、宫保鸡丁(不辣)、香菇蒸肉饼、紫糯米珍珠丸、肉末蒸豆腐、美式BBQ烤鸡翅、白糯米珍珠丸、芦笋腰果鸡丁、瑞士肉丸、狮子头炖高丽菜、香煎鸡排、酥肉羹、香葱猪肉卷、蘑菇牛柳粒、虾仁豆腐、甜椒镶牛肉、八珍豆腐、酱烤鸡翅、烤韩式炸鸡、白酱肉丸、香煎鱼排、西兰花牛肉、苹果彩椒牛肉卷、腊肠木耳鸡、卤鸡腿、时菜烩油豆腐、清炒花枝、肉燥、南瓜排骨、香干肉丝、卤牛肉、肉丝杏鲍菇等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        养生饭：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal23} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        五谷饭、糙米饭、红白饭、紫米饭、菜饭、香菇糯米油饭、鲜蔬鲑鱼拌饭、麻油蛋炒糙米饭等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        温性蔬菜：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal22} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        免治牛肉玉米、地瓜叶、青椒牛肉丝、姜丝菠菜、清炒虾皮高丽菜、白花椰菜炒木耳、雪豆虾仁、姜丝青江菜、红椒洋葱炒鸡丁、雪菜豆干、小豆苗炒小鲜菇、芹菜炒甜不辣、绿花椰炒玉米荀、马铃薯炒青椒丝、茼蒿炒红萝卜丝、义大瓜炒草菇、芥兰炒木耳丝、山药炒红萝卜片、青江菜炒木耳丝、黄豆芽炒香菇丝等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-200 text-bold">
+        <b>晚餐：</b>台式月子汤 (猪肝汤、麻油杜仲腰花、麻油鸡)、月子炖补汤、养生饭、温性蔬菜
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        台式月子汤(第一周)：猪肝汤
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal02a} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        枸杞猪肝汤、红枣猪肝汤、红苋菜猪肝汤、菠菜猪肝汤、鲜菇猪肝汤等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        台式月子汤(第二周)：杜仲麻油腰花
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal24} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        麻油杜仲腰花、麻油杜仲素腰花、麻油杜仲里肌肉等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        台式月子汤(第三四周)：麻油鸡
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal25} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        麻油鸡、枸杞麻油鸡、红枣麻油鸡、药膳麻油鸡等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        {/* 晚餐汤 */}
+        月子炖补汤 (平、温补：第1-14天)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal16} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        香菇枸杞炖鸡汤、山药排骨汤、黄豆红萝卜牛肉汤、金针香菇鸡汤、南北杏排骨汤、黑豆红枣牛肉汤、山药木耳鸡汤、香菇竹笙排骨汤、首乌竹笙鸡汤、木耳排骨汤等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        {/* 晚餐汤 */}
+        月子炖补汤 (大补：第15-30天)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal04a} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        灵芝虫草花鸡汤、山药红萝卜牛肉汤、四物枸杞鸡汤、昆布玉米牛肉汤、当归枸杞川芎虾、十全药膳排骨汤、药膳牛肉汤、当归党参竹笙鸡汤、八珍排骨汤、党参红枣竹笙鸡汤、四物排骨汤等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        养生饭：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal50} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        五谷饭、糙米饭、红白饭、紫米饭、菜饭、香菇糯米油饭、鲜蔬鲑鱼拌饭、麻油蛋炒糙米饭等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        温性蔬菜：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal18} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        免治牛肉玉米、地瓜叶、青椒牛肉丝、姜丝菠菜、清炒虾皮高丽菜、白花椰菜炒木耳、雪豆虾仁、姜丝青江菜、红椒洋葱炒鸡丁、雪菜豆干、小豆苗炒小鲜菇、芹菜炒甜不辣、绿花椰炒玉米荀、马铃薯炒青椒丝、茼蒿炒红萝卜丝、义大瓜炒草菇、芥兰炒木耳丝、山药炒红萝卜片、青江菜炒木耳丝、黄豆芽炒香菇丝等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-200 text-bold">
+        <b>晚点：</b>滋补甜点
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        {/* 甜点：无花生酒酿类 */}
+        滋补甜点：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuMeal39} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        冰糖红枣银耳甜汤、红豆小汤圆、薏仁汤、枸杞黑糖糯米粥、红豆紫米粥、红枣炖南瓜、芝麻糊、桂圆地瓜甜汤、红豆汤、红枣薏仁糯米粥、芋头甜汤、桂圆糯米粥、红豆薏仁汤、黑糖地瓜甜汤等<b>更替出餐</b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-200 text-bold">
+        <b>饮料：</b>调养饮料
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bg-zinc-100 text-bold">
+        调养饮料：
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <Image src={menuAfterTherapy03} className="aspect-square object-cover w-full" />
+      </td>
+      <td>
+        红枣桂圆茶、山楂红枣茶、黑糖姜茶、红枣枸杞茶、红枣蜜枣茶等<b>更替出餐</b>
+      </td>
+    </tr>
+  </tbody>
+</table>

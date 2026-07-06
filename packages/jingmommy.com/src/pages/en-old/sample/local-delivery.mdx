@@ -9,6 +9,7 @@ import PageButtons from '@/components/PageButtons.astro'
 import Badge from '@/components/starwind/badge'
 
 import { Alert, AlertDescription } from '@/components/starwind/alert'
+import { products, usd } from '@/client.config.ts'
 
 <Alert variant="warning" class="text-center">
   <AlertDescription>
@@ -24,7 +25,7 @@ Dear mama, every day after delivery is full of challenges. Are you wondering whe
 
 ---
 
-#### Sampling Special Price: <Badge variant="warning">$50</Badge> (Regular Price ~~$110~~)
+#### Sampling Special Price: <Badge variant="warning">{usd(products.local_classic_sample_1d.price)}</Badge> (Regular Price ~~{usd(products.local_classic_sample_1d.compare_at_price)}~~)
 
 - <b>Authentic Experience:</b> Our sampling meals are identical to what you'll receive during your actual postpartum meal service — no special adjustments — so you can genuinely sample and evaluate every dish.
 - <b>Professional Presentation:</b> All meals are packaged and presented the same way as regular deliveries, giving you a preview of our professional and attentive service quality.

@@ -6,6 +6,7 @@ color: rose
 
 import PageButtons from '@/components/PageButtons.astro'
 import LookupZipButton from '@/components/LookupZipButton.astro'
+import { products, usd } from '@/client.config.ts'
 
 **「輕享月子餐」—靈活選擇，不用天天吃月子餐，輕鬆補養更自在！**
 
@@ -76,7 +77,7 @@ import LookupZipButton from '@/components/LookupZipButton.astro'
 
 ---
 
-<p class={`text-center font-bold text-${frontmatter.color}-600`}>金品輕享月子餐 $1550 (洛杉磯地區, 有地域限制)</p>
+<p class={`text-center font-bold text-${frontmatter.color}-600`}>金品輕享月子餐 {usd(products.local_easy_15d.price)} (洛杉磯地區, 有地域限制)</p>
 
 ---
 

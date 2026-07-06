@@ -1,0 +1,49 @@
+---
+layout: ../../../layouts/MarkdownPage.astro
+title: 预约试吃 - 外州冷冻
+color: pink
+---
+
+import PageButtons from '@/components/PageButtons.astro'
+import Badge from '@/components/starwind/badge'
+import Badges from '@/components/Badges.astro'
+import { products, usd } from '@/client.config.ts'
+
+### 🌸 外州新手妈妈专属冷冻试吃 — 真实体验，安心选择
+
+亲爱的妈妈，产后的每一天都充满挑战，您是否担心冷冻月子餐的味道与营养是否合适？无论您身处何地，我们精心准备的冷冻试吃组合，让您亲自体验，确保每一餐都符合您的需求，帮助您轻松度过产后恢复期。
+
+#### 试吃优惠价：<Badge variant="warning">{usd(products.frozen_classic_sample_8item.price)}</Badge>
+
+- <b>真实体验：</b>我们的冷冻试吃餐点与正式寄送的月子餐一模一样，没有特别调整，让您真实感受每一餐的味道与营养，消除对产后饮食的疑虑。
+- <b>专业呈现：</b>所有餐点的包装与餐点都与正式寄送相同，使用高品质冷冻包装，确保食材新鲜、营养不流失，让您提前体验我们专业且细心的服务品质。
+- <b>快速便捷：</b>即时订购，随时随地都可以进行线上订购。
+- <b>无需等待：</b>订购后，我们的客服人员会与您联系，确认出餐日期后就会准备并送到您家，让您轻松享用我们的月子餐。
+
+#### 冷冻试吃内容
+
+<Badges
+  data={[
+    '鲈鱼汤',
+    '月子炖补汤',
+    '油饭',
+    '主菜',
+    '甜点',
+    '早餐粥',
+    '调养饮料',
+  ]}
+/>
+
+共 8 份单品。
+
+---
+
+<PageButtons
+  data={[
+    {
+      title: '立即订购：冷冻试吃餐',
+      icon: 'mdi:cart',
+      url: '//order.jingmommy.com/sample-meals/frozen-sample-meal.html'
+    },
+  ]}
+/>

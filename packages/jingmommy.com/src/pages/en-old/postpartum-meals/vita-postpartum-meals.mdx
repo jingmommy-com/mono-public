@@ -6,6 +6,7 @@ color: rose
 
 import PageButtons from '@/components/PageButtons.astro'
 import LookupZipButton from '@/components/LookupZipButton.astro'
+import { products, usd } from '@/client.config.ts'
 
 **"Vita Postpartum Meals" — All the essentials, at a more accessible price!**
 
@@ -74,7 +75,7 @@ For modern moms, appropriate nourishment is the key! "Vita Postpartum Meals" red
 
 ---
 
-<p class={`text-center font-bold text-${frontmatter.color}-600`}>Jingmommy Vita Postpartum Meals $2,299 (Los Angeles area, delivery area restrictions apply)</p>
+<p class={`text-center font-bold text-${frontmatter.color}-600`}>Jingmommy Vita Postpartum Meals {usd(products.local_vita_30d.price)} (Los Angeles area, delivery area restrictions apply)</p>
 
 ---
 

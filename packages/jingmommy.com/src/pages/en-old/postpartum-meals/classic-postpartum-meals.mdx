@@ -6,6 +6,7 @@ color: rose
 
 import PageButtons from '@/components/PageButtons.astro'
 import LookupZipButton from '@/components/LookupZipButton.astro'
+import { products, usd } from '@/client.config.ts'
 
 From the moment of pregnancy, a woman's uterus expands as the baby grows, and internal organs are compressed. Throughout the pregnancy, the cardiovascular and urinary systems, skeletal joints, digestive system, and endocrine system all undergo enormous physiological changes. After ten months of carrying a baby, the mother must then endure a painful, blood-depleting, and energy-consuming labor and delivery.
 
@@ -34,7 +35,7 @@ The principle of postpartum confinement is to use dietary care to allow the expa
 
 ---
 
-<p class={`text-center font-bold text-${frontmatter.color}-600`}>Jingmommy Classic Postpartum Meals $2,590 (Los Angeles area, delivery area restrictions apply)</p>
+<p class={`text-center font-bold text-${frontmatter.color}-600`}>Jingmommy Classic Postpartum Meals {usd(products.local_classic_30d.price)} (Los Angeles area, delivery area restrictions apply)</p>
 
 ---
 

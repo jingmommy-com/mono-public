@@ -1,0 +1,96 @@
+---
+layout: ../../../layouts/MarkdownPage.astro
+title: 药膳月子餐
+color: rose
+---
+
+import PageButtons from '@/components/PageButtons.astro'
+import LookupZipButton from '@/components/LookupZipButton.astro'
+
+金品月子膳食遵循古法并依照产后月子复原状况精心研发的 [ 金品月子药膳 ] 有 30 天药汤，每两天就换一帖药方（共15帖药方）帮妈咪补血、补气、去湿、去瘀、排毒。从中医的角度循序渐进为妈咪调理好身体，从平补、温补、大补、有系统的把底子打好再大补气血。
+
+坐月子有三大重点：食补、药补、休息。 金品药膳月子餐是由独家配方搭配顶级草本汉材之养生法精制而成，能让妳快速达到恢复健康、回复身材的效果。让妳把握坐月子的黄金期，有效率的把月子坐好!
+
+import Image from '@/components/Image.astro'
+import menuAfter11 from '@/assets/menu_after11.png'
+import { products, usd } from '@/client.config.ts'
+
+<Image
+  src={menuAfter11}
+  alt="menu image"
+  class="mx-auto max-w-128"
+  type="a"
+/>
+
+- **早餐**：养生粥、元气蛋
+- **午餐**：午餐汤品、主菜、养生饭、温性蔬菜
+- **午点**：滋补甜点
+- **晚餐**：台式月子汤、月子炖补汤、主菜、养生饭、温性蔬菜
+- **晚点**：滋补甜点
+- **饮品**：调养饮料
+- **药膳**：<span class="text-red-600">金品30天月子药膳</span>
+
+---
+
+### 金品月子餐调理重点
+
+- **第一周(平补):** 以生化汤<span class="text-red-600">*</span>及猪肝汤来帮助排除怀胎10月累积在身体里的毒素
+- **第二周(温补):** 以麻油腰子预防产后腰酸背痛 - 开始补血补气,增进体力,改善疲惫体质
+- **第三、四周(大补):** 以麻油鸡汤来调整体力,补充元气 - 进补最佳时期,全方位大补血补气
+
+<span class="text-red-600">*</span> 生化汤需加购
+
+---
+
+<p class={`text-center font-bold text-${frontmatter.color}-600`}>金品药膳月子餐 {usd(products.local_herbal_30d.price)} (洛杉矶地区, 有地域限制)</p>
+
+---
+
+<PageButtons
+  data={[
+    {
+      title: '开始选购 / Start Shopping',
+      icon: 'mdi:cart',
+      url: '//order.jingmommy.com/herbal-postpartum-meals'
+    },
+    {
+      title: '月子餐试吃 / Sample Meal',
+      icon: 'mdi:calendar-check',
+      url: '//order.jingmommy.com/sample-meals/'
+    },
+    [
+      {
+        title: '下载订购单',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/金品月子膳食訂購單.pdf'
+      },
+      {
+        title: 'Download Order Form',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/Main_Order_Form.pdf'
+      },
+      {
+        title: '餐点对照表',
+        icon: 'mdi:chart-bar',
+        url: '//file.jingmommy.com/f/餐點對照表.pdf'
+      },
+      {
+        title: 'Meal Comparison Chart',
+        icon: 'mdi:chart-bar',
+        url: '//file.jingmommy.com/f/Meal_Comparison_Chart.pdf'
+      },
+      {
+        title: '菜单',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/菜單總表.pdf'
+      },
+      {
+        title: 'Full Menu',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/Menu.pdf'
+      }
+    ]
+  ]}
+/>
+
+<LookupZipButton class="mt-4" />

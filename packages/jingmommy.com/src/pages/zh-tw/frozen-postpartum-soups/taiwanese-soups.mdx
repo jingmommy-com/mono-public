@@ -58,8 +58,8 @@ import Badges from '@/components/Badges.astro'
       <td class="text-center">豬肝湯 7 份<br/>（補血）</td>
       <td class="text-center">
         <div class="flex gap-1 items-center justify-center">
-          <span class="text-gray-400 line-through text-xs">$69.99</span>
-          <span class="text-red-600 font-bold">$59.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_taiwanese_soup_liver_7.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_taiwanese_soup_liver_7.price)}</span>
         </div>
       </td>
     </tr>
@@ -67,8 +67,8 @@ import Badges from '@/components/Badges.astro'
       <td class="text-center">杜仲腰花湯 7 份<br/>（溫腎固本）</td>
       <td class="text-center">
         <div class="flex gap-1 items-center justify-center">
-          <span class="text-gray-400 line-through text-xs">$69.99</span>
-          <span class="text-red-600 font-bold">$59.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_taiwanese_soup_kidney_7.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_taiwanese_soup_kidney_7.price)}</span>
         </div>
       </td>
     </tr>
@@ -76,8 +76,8 @@ import Badges from '@/components/Badges.astro'
       <td class="text-center">麻油雞湯 7 份<br/>（暖身養氣）</td>
       <td class="text-center">
         <div class="flex gap-1 items-center justify-center">
-          <span class="text-gray-400 line-through text-xs">$69.99</span>
-          <span class="text-red-600 font-bold">$59.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_taiwanese_soup_chicken_7.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_taiwanese_soup_chicken_7.price)}</span>
         </div>
       </td>
     </tr>
@@ -85,8 +85,8 @@ import Badges from '@/components/Badges.astro'
       <td class="text-center">綜合包裝 2/2/4<br/>（豬肝2｜杜仲腰花2｜麻油雞4）<br/>* 綜合包：不可替換</td>
       <td class="text-center">
         <div class="flex gap-1 items-center justify-center">
-          <span class="text-gray-400 line-through text-xs">$79.99</span>
-          <span class="text-red-600 font-bold">$65.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_taiwanese_soup_set_224.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_taiwanese_soup_set_224.price)}</span>
         </div>
       </td>
     </tr>
@@ -94,8 +94,8 @@ import Badges from '@/components/Badges.astro'
       <td class="text-center">綜合包裝 4/4/8<br/>（豬肝4｜杜仲腰花4｜麻油雞8）<br/>* 綜合包：不可替換</td>
       <td class="text-center">
         <div class="flex gap-1 items-center justify-center">
-          <span class="text-gray-400 line-through text-xs">$159.99</span>
-          <span class="text-red-600 font-bold">$125.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_taiwanese_soup_set_448.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_taiwanese_soup_set_448.price)}</span>
         </div>
       </td>
     </tr>
@@ -153,11 +153,12 @@ import Badges from '@/components/Badges.astro'
 #### 🚚 配送方式
 
 - 自取
-- 司機配送（有區域限制）：配送區域內 $15/次，滿 $200 免費配送
+- 司機配送（有區域限制）：配送區域內 {usd(products.local_delivery_fee_1trip.price)}/次，滿 {usd(products.free_local_delivery_minimum_frozen_soup.price)} 免費配送
 
 ---
 
 import PageButtons from '@/components/PageButtons.astro'
+import { products, usd } from '@/client.config.ts'
 
 <PageButtons
   data={[

@@ -1,4 +1,5 @@
 import type { DeliveryLookupI18n } from '../delivery-lookup.ts'
+import { products, usd } from '@/client.config.ts'
 
 const t: DeliveryLookupI18n = {
   title: '配送地區查詢',
@@ -31,7 +32,7 @@ const t: DeliveryLookupI18n = {
       lines: ['每2天免費新鮮配送。'],
     },
     everyOtherDay: {
-      lines: ['每月附加 $200 美元運費，每隔一天送兩天的餐點。'],
+      lines: [`每月附加 ${usd(products.local_delivery_fee_15d.price)} 美元運費，每隔一天送兩天的餐點。`],
     },
     frozen: {
       lines: ['冷凍運送。'],

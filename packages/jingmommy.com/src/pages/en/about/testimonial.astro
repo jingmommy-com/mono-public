@@ -6,6 +6,7 @@ import PageHero from "@/components/en/PageHero.astro"
 import Botanical from "@/components/en/Botanical.astro"
 import CtaBand from "@/components/en/CtaBand.astro"
 import { route, orderSampleUrl } from "@/config/en.ts"
+import { products, usd } from '@/client.config.ts'
 import { tastingReserveUrl } from "@/config/tasting-events.ts"
 
 const title = "Real Stories — Mothers on JingMommy Postpartum Meals"
@@ -279,7 +280,7 @@ const description =
   <CtaBand
     eyebrow="Read enough?"
     heading="Taste it for yourself."
-    body="Thousands of mothers tried JingMommy before they ordered — most signed up the same week. Join a free local tasting, or have a full sample day delivered: $50 fresh in SoCal, $80 frozen nationwide."
+    body={`Thousands of mothers tried JingMommy before they ordered — most signed up the same week. Join a free local tasting, or have a full sample day delivered: ${usd(products.local_classic_sample_1d.price)} fresh in SoCal, ${usd(products.frozen_classic_sample_8item.price)} frozen nationwide.`}
     buttons={[
       {
         label: "Reserve a tasting",
@@ -287,7 +288,7 @@ const description =
         variant: "primary",
       },
       {
-        label: "Order a sample — $50",
+        label: `Order a sample — ${usd(products.local_classic_sample_1d.price)}`,
         href: orderSampleUrl,
         variant: "ghost",
       },

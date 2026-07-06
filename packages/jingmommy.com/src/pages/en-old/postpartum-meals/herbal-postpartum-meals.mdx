@@ -13,6 +13,7 @@ There are three pillars of postpartum confinement: dietary nourishment, herbal m
 
 import Image from '@/components/Image.astro'
 import menuAfter11 from '@/assets/menu_after11.png'
+import { products, usd } from '@/client.config.ts'
 
 <Image
   src={menuAfter11}
@@ -41,7 +42,7 @@ import menuAfter11 from '@/assets/menu_after11.png'
 
 ---
 
-<p class={`text-center font-bold text-${frontmatter.color}-600`}>Jingmommy Herbal Postpartum Meals $2,890 (Los Angeles area, delivery area restrictions apply)</p>
+<p class={`text-center font-bold text-${frontmatter.color}-600`}>Jingmommy Herbal Postpartum Meals {usd(products.local_herbal_30d.price)} (Los Angeles area, delivery area restrictions apply)</p>
 
 ---
 

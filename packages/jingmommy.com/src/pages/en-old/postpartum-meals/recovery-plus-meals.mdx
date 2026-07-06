@@ -6,6 +6,7 @@ color: rose
 
 import PageButtons from '@/components/PageButtons.astro'
 import LookupZipButton from '@/components/LookupZipButton.astro'
+import { products, usd } from '@/client.config.ts'
 
 **Recovery Plus Meals — Sustaining You Beyond 30 Days**
 
@@ -23,7 +24,7 @@ Recovery Plus Plans A / B / C let you choose the most personalized replenishment
 
 ---
 
-**Recovery Plus Plan A | $70 / day (regular price $75)**
+**Recovery Plus Plan A | {usd(products.local_recovery_plus_a_1d.price)} / day (regular price {usd(products.local_recovery_plus_a_1d.compare_at_price)})**
 
 Most complete tonic nourishment | Lunch and dinner + tonic soups and desserts all included
 
@@ -35,7 +36,7 @@ For moms still breastfeeding or not yet fully recovered. Midday chicken essence 
 
 ---
 
-**Recovery Plus Plan B | $60 / day (regular price $65)**
+**Recovery Plus Plan B | {usd(products.local_recovery_plus_b_1d.price)} / day (regular price {usd(products.local_recovery_plus_b_1d.compare_at_price)})**
 
 Gentle nourishment | Streamlined menu balancing budget and nutrition in one.
 
@@ -47,7 +48,7 @@ For moms who are starting to have a little time to do simple cooking, but still 
 
 ---
 
-**Recovery Plus Plan C | $45 / day (regular price $50)**
+**Recovery Plus Plan C | {usd(products.local_recovery_plus_c_1d.price)} / day (regular price {usd(products.local_recovery_plus_c_1d.compare_at_price)})**
 
 Light replenishment | Soup set designed for busy moms<br/>
 Concentrated nourishment | Budget-conscious, still get great soups every day

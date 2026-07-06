@@ -6,6 +6,7 @@ color: rose
 
 import Image from '@/components/Image.astro'
 import PageButtons from '@/components/PageButtons.astro'
+import { products, usd } from '@/client.config.ts'
 
 ### Four Seasons Soup: Spring Equinox — Let Your Body "Reboot"
 
@@ -50,17 +51,17 @@ Commercial soups are often over-seasoned with MSG or chemical broths, but cookin
 **【Spring Equinox Soup Packages】**  
 To accommodate different family tastes and quantities, we are offering customizable combinations:
 
-- Classic 8-Bowl Value Set: $99.99 — Best value, curated seasonal experience
-- Flexible 8-Bowl Custom Set: $109.99 — Mix and match to your preference; safest choice for kids and seniors
-- Family 12-Bowl Custom Set: $159.99 — Clean eating soups to satisfy the whole family
+- Classic 8-Bowl Value Set: {usd(products.frozen_soup_spring_4_set_8.price)} — Best value, curated seasonal experience
+- Flexible 8-Bowl Custom Set: {usd(products.frozen_soup_spring_4_set_8_custom.price)} — Mix and match to your preference; safest choice for kids and seniors
+- Family 12-Bowl Custom Set: {usd(products.frozen_soup_spring_4_set_12_custom.price)} — Clean eating soups to satisfy the whole family
 
 ---
 
-**【Popular Add-Ons — Frozen】** (Free delivery on orders over $200 *area restrictions apply)
+**【Popular Add-Ons — Frozen】** (Free delivery on orders over {usd(products.free_local_delivery_minimum_frozen_soup.price)} *area restrictions apply)
 
-- Traditional Glutinous Oil Rice: 20oz $18 / 40oz $35
-- Handmade Chicken Essence: 10oz $10
-- Taiwanese Assorted Mini Pastries 8-pack $25: Red Date Cake / Wolfberry Cake / Cranberry Scone / Raisin Scone (2 of each, cupcake size)
+- Traditional Glutinous Oil Rice: 20oz {usd(products.frozen_sticky_rice_20oz.price)} / 40oz {usd(products.frozen_sticky_rice_40oz.price)}
+- Handmade Chicken Essence: 10oz {usd(products.chicken_essence.price)}
+- Taiwanese Assorted Mini Pastries 8-pack {usd(products.frozen_taiwanese_pastries_8.price)}: Red Date Cake / Wolfberry Cake / Cranberry Scone / Raisin Scone (2 of each, cupcake size)
 
 ---
 

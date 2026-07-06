@@ -51,8 +51,8 @@ Jingmommy's Chicken Essence follows a three-day slow-simmering process with no p
       <td>Chicken Essence 7 servings</td>
       <td>
         <div class="flex gap-1 items-center">
-          <span class="text-gray-400 line-through text-xs">$83.99</span>
-          <span class="text-red-600 font-bold">$69.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_chicken_essence_7.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_chicken_essence_7.price)}</span>
         </div>
       </td>
     </tr>
@@ -60,8 +60,8 @@ Jingmommy's Chicken Essence follows a three-day slow-simmering process with no p
       <td>Chicken Essence 14 servings</td>
       <td>
         <div class="flex gap-1 items-center">
-          <span class="text-gray-400 line-through text-xs">$167.99</span>
-          <span class="text-red-600 font-bold">$132.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_chicken_essence_14.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_chicken_essence_14.price)}</span>
         </div>
       </td>
     </tr>
@@ -69,8 +69,8 @@ Jingmommy's Chicken Essence follows a three-day slow-simmering process with no p
       <td>Chicken Essence 28 servings</td>
       <td>
         <div class="flex gap-1 items-center">
-          <span class="text-gray-400 line-through text-xs">$335.99</span>
-          <span class="text-red-600 font-bold">$259.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_chicken_essence_28.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_chicken_essence_28.price)}</span>
         </div>
       </td>
     </tr>
@@ -82,11 +82,12 @@ Jingmommy's Chicken Essence follows a three-day slow-simmering process with no p
 #### 🚚 Delivery Options
 
 - Pickup
-- Driver delivery (area restrictions apply): $15/delivery within service area; free delivery on orders over $200
+- Driver delivery (area restrictions apply): {usd(products.local_delivery_fee_1trip.price)}/delivery within service area; free delivery on orders over {usd(products.free_local_delivery_minimum_frozen_soup.price)}
 
 ---
 
 import PageButtons from '@/components/PageButtons.astro'
+import { products, usd } from '@/client.config.ts'
 
 <PageButtons
   data={[

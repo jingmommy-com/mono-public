@@ -36,6 +36,7 @@ jobs:
         with:
           args: deploy --filter "packages/${{ env.PACKAGE_ID }}" --prod --dir=public
         env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
       - run: |
           if [ -z "${{ steps.deploy.outputs.NETLIFY_LIVE_URL }}" ]; then

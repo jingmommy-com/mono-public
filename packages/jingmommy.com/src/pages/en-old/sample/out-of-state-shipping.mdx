@@ -7,12 +7,13 @@ color: pink
 import PageButtons from '@/components/PageButtons.astro'
 import Badge from '@/components/starwind/badge'
 import Badges from '@/components/Badges.astro'
+import { products, usd } from '@/client.config.ts'
 
 ### 🌸 Out-of-State New Mom Exclusive — Frozen Sampling, Choose with Confidence
 
 Dear mama, every day after delivery is full of challenges. Wondering whether our frozen postpartum meals will suit your taste and nutritional needs? No matter where you are, our carefully prepared frozen tasting set lets you try it firsthand to ensure every meal meets your needs during recovery.
 
-#### Sampling Special Price: <Badge variant="warning">$80</Badge>
+#### Sampling Special Price: <Badge variant="warning">{usd(products.frozen_classic_sample_8item.price)}</Badge>
 
 - <b>Authentic Experience:</b> Our frozen sampling meals are identical to what we ship for the actual postpartum meal service — no special adjustments — so you can genuinely evaluate the flavor and nutrition.
 - <b>Professional Presentation:</b> All meals are packaged the same way as regular frozen shipments, using high-quality frozen packaging to preserve freshness and nutrition.

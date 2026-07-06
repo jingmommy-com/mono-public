@@ -15,7 +15,7 @@ import Badge from '@/components/starwind/badge'
   }
 `}</style>
 
-#### 🌸 <Badge size="lg" style={{ backgroundColor: 'var(--color-tier-basic)', color: '#fff' }}>Postpartum Frozen Soup Set</Badge> $550 / 28 days
+#### 🌸 <Badge size="lg" style={{ backgroundColor: 'var(--color-tier-basic)', color: '#fff' }}>Postpartum Frozen Soup Set</Badge> {usd(products.frozen_soup_set_basic_28.price)} / 28 days
 
 Starter Level | The simplest way to do confinement right
 
@@ -26,7 +26,7 @@ Want to nourish your body but don't have time to cook? This set handles your bas
 
 ---
 
-#### 🍯 <Badge size="lg" style={{ backgroundColor: 'var(--color-tier-dessert)', color: '#fff' }}>Sweet Frozen Soup Set</Badge> $680 / 28 days
+#### 🍯 <Badge size="lg" style={{ backgroundColor: 'var(--color-tier-dessert)', color: '#fff' }}>Sweet Frozen Soup Set</Badge> {usd(products.frozen_soup_set_dessert_28.price)} / 28 days
 
 Upgraded Level | Add a little sweetness to your confinement ritual
 
@@ -38,7 +38,7 @@ Beyond the daily Taiwanese postpartum soups and stewed tonic soups, enjoy an add
 
 ---
 
-#### 🐔 <Badge size="lg" style={{ backgroundColor: 'var(--color-tier-premium)', color: '#fff' }}>Premium Frozen Soup Set</Badge> $940 / 28 days
+#### 🐔 <Badge size="lg" style={{ backgroundColor: 'var(--color-tier-premium)', color: '#fff' }}>Premium Frozen Soup Set</Badge> {usd(products.frozen_soup_set_premium_28.price)} / 28 days
 
 Flagship Level | Intensive restorative nourishment
 
@@ -51,7 +51,7 @@ Full Taiwanese postpartum soups + stewed tonic soups + desserts, plus enhanced r
 
 ---
 
-#### 🥣 <Badge size="lg" style={{ backgroundColor: 'var(--color-tier-starter)', color: '#fff' }}>Starter Sampler Set</Badge> $66
+#### 🥣 <Badge size="lg" style={{ backgroundColor: 'var(--color-tier-starter)', color: '#fff' }}>Starter Sampler Set</Badge> {usd(products.frozen_soup_set_starter_7item.price)}
 
 Trial Level | Try before you commit — for complete peace of mind
 
@@ -223,10 +223,10 @@ import { Icon } from 'astro-icon/components'
   <tfoot>
     <tr>
       <th>Price</th>
-      <td>$550</td>
-      <td>$680</td>
-      <td>$940</td>
-      <td>$66</td>
+      <td>{usd(products.frozen_soup_set_basic_28.price)}</td>
+      <td>{usd(products.frozen_soup_set_dessert_28.price)}</td>
+      <td>{usd(products.frozen_soup_set_premium_28.price)}</td>
+      <td>{usd(products.frozen_soup_set_starter_7item.price)}</td>
     </tr>
     <tr>
       <th>Days</th>
@@ -243,11 +243,12 @@ import { Icon } from 'astro-icon/components'
 #### 🚚 Delivery Options
 
 - Pickup
-- Driver delivery (area restrictions apply): $15/delivery within service area; free delivery on orders over $200
+- Driver delivery (area restrictions apply): {usd(products.local_delivery_fee_1trip.price)}/delivery within service area; free delivery on orders over {usd(products.free_local_delivery_minimum_frozen_soup.price)}
 
 ---
 
 import PageButtons from '@/components/PageButtons.astro'
+import { products, usd } from '@/client.config.ts'
 
 <PageButtons
   data={[

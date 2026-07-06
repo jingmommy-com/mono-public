@@ -46,7 +46,7 @@ import LookupZipButton from '@/components/LookupZipButton.astro'
     <tr class="bg-purple-200">
       <td>
         <div><b>精緻調養月子餐</b> - 30 天</div>
-        <div>$2,350</div>
+        <div>{usd(products.local_miscarriage_30d.price)}</div>
         <div>(洛杉磯地區, 有地域限制)</div>
       </td>
     </tr>
@@ -62,7 +62,7 @@ import LookupZipButton from '@/components/LookupZipButton.astro'
     <tr class="bg-purple-300">
       <td>
         <div><b>外州冷凍宅配 [四週]</b> - 28 天</div>
-        <div>$3,190</div>
+        <div>{usd(products.frozen_miscarriage_4w.price)}</div>
         <div>(美國各內陸州)</div>
       </td>
     </tr>
@@ -137,6 +137,7 @@ import menuMeal50 from '@/assets/menu/menu_meal50.jpg'
 import menuMeal18 from '@/assets/menu/menu_meal18.jpg'
 import menuMeal39 from '@/assets/menu/menu_meal39.jpg'
 import menuAfterTherapy03 from '@/assets/menu/menu_after_therapy03.jpg'
+import { products, usd } from '@/client.config.ts'
 
 <table class="meal-details">
   <tbody>

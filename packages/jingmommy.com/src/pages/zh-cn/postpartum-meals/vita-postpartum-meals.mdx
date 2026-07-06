@@ -1,0 +1,131 @@
+---
+layout: ../../../layouts/MarkdownPage.astro
+title: 元气月子餐
+color: rose
+---
+
+import PageButtons from '@/components/PageButtons.astro'
+import LookupZipButton from '@/components/LookupZipButton.astro'
+import { products, usd } from '@/client.config.ts'
+
+**「元气月子餐」— 精华不减，价格更亲民！**
+
+妳是不是想吃专业的月子餐，但又不希望一次订购太多，担心吃不完或预算超出？金品月子膳食全新推出「元气月子餐」，提供刚刚好的营养调理，让妳轻松补身体，价格更亲民！
+
+---
+
+**为什么选择「元气月子餐」？**
+
+#### 1. 营养不减，价格更实惠！
+
+我们精选最重要的调养餐点，去除早餐及一份甜点，保留月子期间最关键的主餐与炖补汤品，让妈妈们既能补身体，又能有效控制预算！
+
+✔ 每天均衡主食：严选蛋白质、膳食纤维、优质油脂，帮助产后恢复<br/>
+✔ 温补炖汤不减量：月子炖补汤品仍然照常供应，补血补气，维持身体能量<br/>
+✔ 甜点适量保留：减少甜点摄取，避免过多糖分影响身体修复<br/>
+🟡「减少不必要的负担，让补养更轻盈，价格更亲民！」
+
+#### 2. 适合忙碌的新手妈妈，轻松享用不浪费！
+
+刚生产的妳，可能没有太多时间吃完完整的月子餐，尤其是早晨常常被宝宝哺乳、换尿布打乱作息，早餐反而变成「吃不完、浪费」的一餐。
+
+「元气月子餐」帮妳省去早餐，让每一餐都能吃得刚刚好，不浪费、不负担！
+
+✔ 适合睡眠不固定、早上没时间吃早餐的妈妈<br/>
+✔ 确保每一餐都吃得到最需要的营养，没有额外负担<br/>
+🟡「更符合妈妈的真实作息，让每一口都是关键补养！」
+
+#### 3. 符合产后恢复需求，补养不过量！
+
+对现代妈妈来说，适量补养才是关键！「元气月子餐」减少甜点与早餐，避免摄取过多糖分与热量，让妳补得刚刚好，恢复更轻盈！
+
+✔ 避免过度摄取糖分，减少产后水肿与血糖波动<br/>
+✔ 餐点更精简，让身体吸收最关键的营养素<br/>
+🟡「补对营养，身体恢复更快，体态管理更轻松！」
+
+#### 4. 灵活选择，适合不同需求的妈妈
+
+✔ 适合产后已经有额外补充食物的妈妈（如家人帮忙准备早餐）<br/>
+✔ 适合轻量饮食、希望控制预算的妈妈<br/>
+🟡「元气月子餐」享受无负担的调养计划，让产后恢复更轻松！
+
+---
+
+#### 📦 **适合这样的妳：**
+
+✅ **习惯轻量饮食，希望控制食量但仍维持营养均衡**<br/>
+✅ **预算有限，想用更亲民的价格享受产后专业调养**
+
+---
+
+- 午餐：午餐汤品、主菜、养生饭、温性蔬菜
+- 晚餐：台式月子汤、月子炖补汤、主菜、养生饭、温性蔬菜
+- 甜点：滋补甜点
+- 饮料：调养饮料
+
+---
+
+### 金品月子餐调理重点
+
+- **第一周(平补):** 以生化汤<span class="text-red-600">*</span>及猪肝汤来帮助排除怀胎10月累积在身体里的毒素
+- **第二周(温补):** 以麻油腰子预防产后腰酸背痛 - 开始补血补气,增进体力,改善疲惫体质
+- **第三、四周(大补):** 以麻油鸡汤来调整体力,补充元气 - 进补最佳时期,全方位大补血补气
+
+<span class="text-red-600">*</span> 生化汤需加购
+
+---
+
+<p class={`text-center font-bold text-${frontmatter.color}-600`}>金品元气月子餐 {usd(products.local_vita_30d.price)} (洛杉矶地区, 有地域限制)</p>
+
+---
+
+<PageButtons
+  data={[
+    {
+      title: '开始选购 / Start Shopping',
+      icon: 'mdi:cart',
+      url: '//order.jingmommy.com/vita-postpartum-meals'
+    },
+    {
+      title: '月子餐试吃 / Sample Meal',
+      icon: 'mdi:calendar-check',
+      url: '//order.jingmommy.com/sample-meals/'
+    },
+    [
+      {
+        title: '下载订购单',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/金品月子膳食訂購單.pdf'
+      },
+      {
+        title: 'Download Order Form',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/Main_Order_Form.pdf'
+      },
+      {
+        title: '餐点对照表',
+        icon: 'mdi:chart-bar',
+        url: '//file.jingmommy.com/f/餐點對照表.pdf'
+      },
+      {
+        title: 'Meal Comparison Chart',
+        icon: 'mdi:chart-bar',
+        url: '//file.jingmommy.com/f/Meal_Comparison_Chart.pdf'
+      },
+      {
+        title: '菜单',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/菜單總表.pdf'
+      },
+      {
+        title: 'Full Menu',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/Menu.pdf'
+      }
+    ]
+  ]}
+/>
+
+<LookupZipButton class="mt-4" />
+
+---

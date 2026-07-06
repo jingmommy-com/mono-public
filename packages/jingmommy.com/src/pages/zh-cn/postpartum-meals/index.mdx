@@ -1,0 +1,168 @@
+---
+layout: ../../../layouts/MarkdownPage.astro
+title: 月子膳食
+color: rose
+description: 金品月子餐 － 5 大套餐选择，满足不同妈咪的需求！
+---
+
+import { site } from '@/client.config.ts'
+import CategoryButtons from '@/components/CategoryButtons.astro'
+import PageButtons from '@/components/PageButtons.astro'
+import LookupZipButton from '@/components/LookupZipButton.astro'
+import ShapeLetter from '@/components/ShapeLetter.astro'
+
+🔍 立即探索我们的月子餐方案，迎接更美好的自己！
+
+<CategoryButtons
+  color={frontmatter.color}
+  list={[
+    {
+      href: '/postpartum-meals/herbal-postpartum-meals',
+      title: '金品药膳月子餐',
+      desc: '适合全方位元气妈咪',
+      img: 'https://file.jingmommy.com/img/dish.v2014-300x300/soup_chicken_sesame_date.gif'
+    },
+    {
+      href: '/postpartum-meals/classic-postpartum-meals',
+      title: '金品精致月子餐',
+      desc: '适合全方位产后妈咪',
+      img: 'https://file.jingmommy.com/img/dish.v2014-300x300/soup_chicken_abalone.gif'
+    },
+    {
+      href: '/postpartum-meals/vita-postpartum-meals',
+      title: '金品元气月子餐',
+      desc: ['适合忙碌的新手妈妈', '轻松享用不浪费！'],
+      img: 'https://file.jingmommy.com/img/dish.v2014-300x300/soup_chicken_ginseng_date.gif'
+    },
+    {
+      href: '/postpartum-meals/low-carb-postpartum-meals',
+      title: '金品减糖月子餐',
+      desc: ['产后恢复不发胖', '让妳轻盈回归！'],
+      img: 'https://file.jingmommy.com/img/dish.v2014-300x300/soup_kidney.gif'
+    },
+    {
+      href: '/postpartum-meals/easy-postpartum-meals',
+      title: '金品轻享月子餐',
+      desc: ['灵活选择，不用天天吃月子餐', '轻松补养更自在！'],
+      img: 'https://file.jingmommy.com/img/dish.v2014-300x300/soup_chicken_abalone.gif'
+    },
+    {
+      href: '/postpartum-meals/frozen-postpartum-meals',
+      title: '金品冷冻月子餐',
+      desc: '适合外州妈咪选用',
+      img: 'https://file.jingmommy.com/img/dish.v2014-300x300/soup_fish_herbal.gif'
+    }
+  ]}
+/>
+
+---
+
+## 坐月子，给自己最好的照顾
+
+生产后的日子，既幸福又充满挑战，妳的身体需要足够的营养来恢复，也需要更多时间来适应新的生活节奏。当宝宝来到这世界，妈妈的身体正在经历一场蜕变，这时候饮食不只是填饱肚子，更影响恢复速度、体力调整、甚至哺乳顺利与否。
+
+### 1. 省时又省心，让妳专注休息与宝宝
+
+面对产后身体变化、新生儿照顾，时间显得更加宝贵。我们的月子餐免备料、无需烦恼，简单加热即可享用，让妳在坐月子期间不必为三餐忧心，专注于身体恢复与亲子时光。
+
+### 2. 营养均衡，帮助迅速恢复
+
+坐月子是产后黄金修复期，身体的每一个细胞都在自我修复。优质蛋白质、胶原蛋白、温补食材是恢复的关键。我们的月子餐依据产后各阶段需求设计，从排毒、修复到滋补，不过度调味、不过度进补，让补养刚刚好，不造成负担，帮助一步步回到最佳状态。
+
+### 3. 美味可口，适合现代妈妈口味
+
+餐点以清爽不油腻为主，融合中西营养理念与烹调方式。多元烹调（如蒸、炖、焖、烤）让补身同时也吃得开心。每道料理精心设计，保留食材原始营养与美味，满足不同妈妈需求。
+
+无论是30天完整修复的药膳餐、精致餐，15天轻量调理的轻享餐、经济实惠的元气餐、帮助快速恢复体态的减糖餐，我们都有适合妳的方案，让妳随需求选择最合适的月子调养法。
+
+---
+
+<PageButtons
+  data={[
+    {
+      title: '开始选购 / Start Shopping',
+      icon: 'mdi:cart',
+      url: '//order.jingmommy.com/金品月子餐',
+    },
+    {
+      title: '月子餐试吃 / Sample Meal',
+      icon: 'mdi:calendar-check',
+      url: '//order.jingmommy.com/sample-meals/',
+    },
+    [
+      {
+        title: '下载订购单',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/金品月子膳食訂購單.pdf'
+      },
+      {
+        title: 'Download Order Form',
+        icon: 'mdi:download',
+        url: '//file.jingmommy.com/f/Main_Order_Form.pdf'
+      },
+      {
+        title: '餐点对照表',
+        icon: 'mdi:chart-bar',
+        url: '//file.jingmommy.com/f/餐點對照表.pdf'
+      },
+      {
+        title: 'Meal Comparison Chart',
+        icon: 'mdi:chart-bar',
+        url: '//file.jingmommy.com/f/Meal_Comparison_Chart.pdf'
+      },
+      {
+        title: '菜单',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/菜單總表.pdf'
+      },
+      {
+        title: 'Full Menu',
+        icon: 'mdi:silverware-fork-knife',
+        url: '//file.jingmommy.com/f/Menu.pdf'
+      }
+    ]
+  ]}
+/>
+
+<LookupZipButton class="mt-4" />
+
+---
+
+| 方案     | 适合对象 | 方案特色 |
+|----------|----------|----------|
+| **药膳餐** | 适合重视传统调理、全身恢复的妈咪 | 结合药膳与中草本调理，帮助补血、恢复元气、提升免疫力。全方位呵护与补养，让妈咪在产后快速恢复自信与健康光采。 |
+| **经典餐** | 希望轻松坐月子的妈咪 | 从早餐到晚餐加上滋养点心的完整月子餐，无需烦恼，天天享有均衡营养与全面照顾，让妈咪安心专注于产后恢复。 |
+| **活力餐** | 想要轻盈、简化饮食的妈咪 | 温和易消化的餐点设计，适合食量较小、或正从怀孕饮食过渡的妈咪。简单不失营养，也很适合预算考量的家庭。 |
+| **减糖餐** | 适合控制糖分与碳水的妈咪，特别是有妊娠糖尿病史者 | 帮助稳定血糖、减少产后胀气、促进轻盈体态。无糖甜点设计，是希望保持清爽与健康感的理想选择。 |
+| **轻享餐** | 适合有部分家庭支援或不需天天吃月子餐的妈咪 | 弹性高、价格实惠的选择，可搭配家中料理一起食用，让坐月子更轻松自在，也更容易融入日常生活。 |
+
+---
+
+<div class="flex items-center bg-white flex-wrap w-full">
+    <ShapeLetter letter="为" />
+    <span class="text-3xl font-bold tracking-[2px] whitespace-nowrap">什么坐月子</span>
+    <span class="text-sm font-normal text-amber-900 ml-2 tracking-[1px] whitespace-nowrap">阶段性食补：产后恢复窈窕的关键</span>
+</div>
+
+产后的食补要采取”阶段性食补”的方式，如果不懂方法，一昧的大补特补，不但会补得过多而发胖、导致身材难以恢复，也会影响产后子宫的收缩与恶露的排净。在这个阶段"得宜”是食补的大原则，透过"阶段性食补”恢复生理各种机能。把握先排恶露、后补气血的原则，正确的补养避免发胖，好好的把握住坐月子改变体质的机会。
+
+| 周次 | 重点 |
+|------|------|
+| 第一周 | 补血、排除恶露、恢复子功机能 |
+| 第二周 | 促进代谢、恢复体力、预防产后腰酸背痛 |
+| 第三～四周 | 大补气血、调养体力、抗衰老、增强免疫力 |
+
+### 第一周：平补
+
+<span class="text-amber-900">第一周饮食重点以恶露排净、加强肾脏排泄功能为目标</span>，以猪肝补血为主。
+因为生产后是"虚淤并见”的体质，并不适合大补。所以产后第一周以促进发汗、让身体利水消肿为目的，将体内多余的水分排出来，加强新陈代谢。把握第一周"产后利尿期”，才能掌握产后减重的黄金时期!
+
+### 第二周：温补
+
+<span class="text-amber-900">第二周饮食重点在于预防腰酸背痛、筋骨酸痛、并继续帮助子宫收缩且将恶露排净</span>，以麻油腰花为主，佐以杜仲药膳。利用具有补筋骨的食补来调养产妇因怀孕与生产而松弛的筋骨。
+
+### 第三、四周：大补
+
+<span class="text-amber-900">第三、四周大部分的生理机能已获得大幅度的改善、恶露也将净</span>，是进补的最佳时机。饮食重点以改善气虚、增强体力、抗老养颜、补充元气。这阶段以好吃又养身的麻油鸡为主，不但可以吃到鸡肉甜味、又可喝到浓郁麻油鸡汤，越喝身体越暖和。
+
+**完整的30天阶段性坐月子调理**不是仅仅进补而已，更是能让妳**修复损伤，补充体力，强化体质**。让妳越生越健康、越生越美丽！

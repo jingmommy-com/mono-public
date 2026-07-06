@@ -4,6 +4,7 @@ import { isExternalLink } from '@/utils/index.ts'
 import Image from './Image.astro'
 import { site, locales } from '@/client.config.ts'
 import zhTwFooter from '@/i18n/zh-tw/footer.ts'
+import zhCnFooter from '@/i18n/zh-cn/footer.ts'
 import enFooter from '@/i18n/en/footer.ts'
 
 import routeMap from '@/route-map.json'
@@ -13,7 +14,7 @@ type RouteConfig = { title?: string }
 // Get color prop, default to 'fuchsia'
 let { color = 'fuchsia', locale = Astro.currentLocale } = Astro.props
 
-const i18nMap: Record<string, typeof zhTwFooter> = { 'zh-tw': zhTwFooter, en: enFooter, 'en-old': enFooter }
+const i18nMap: Record<string, typeof zhTwFooter> = { 'zh-tw': zhTwFooter, 'zh-cn': zhCnFooter, en: enFooter, 'en-old': enFooter }
 const pathLocale = Astro.url.pathname.split('/').find((s: string) => locales.includes(s)) ?? locales[0]
 const t = i18nMap[pathLocale] ?? zhTwFooter
 
@@ -51,7 +52,7 @@ const navLinks = [
   return { ...link, label }
 })
 
-const fbUrl = locale === 'zh-tw'
+const fbUrl = locale === 'zh-tw' || locale === 'zh-cn'
   ? 'https://www.messenger.com/t/148231668540780/'
   : 'https://www.messenger.com/t/453550428399457/'
 

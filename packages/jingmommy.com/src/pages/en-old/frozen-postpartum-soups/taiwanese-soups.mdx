@@ -58,8 +58,8 @@ Whether for postpartum recovery, post-surgical healing, or simply warming yourse
       <td class="text-center">Pork Liver Soup 7 servings<br/>(Nourish Blood)</td>
       <td class="text-center">
         <div class="flex gap-1 items-center justify-center">
-          <span class="text-gray-400 line-through text-xs">$69.99</span>
-          <span class="text-red-600 font-bold">$59.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_taiwanese_soup_liver_7.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_taiwanese_soup_liver_7.price)}</span>
         </div>
       </td>
     </tr>
@@ -67,8 +67,8 @@ Whether for postpartum recovery, post-surgical healing, or simply warming yourse
       <td class="text-center">Du Zhong Kidney Soup 7 servings<br/>(Warm Kidneys & Tonify)</td>
       <td class="text-center">
         <div class="flex gap-1 items-center justify-center">
-          <span class="text-gray-400 line-through text-xs">$69.99</span>
-          <span class="text-red-600 font-bold">$59.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_taiwanese_soup_kidney_7.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_taiwanese_soup_kidney_7.price)}</span>
         </div>
       </td>
     </tr>
@@ -76,8 +76,8 @@ Whether for postpartum recovery, post-surgical healing, or simply warming yourse
       <td class="text-center">Sesame Oil Chicken Soup 7 servings<br/>(Warm Body & Replenish Qi)</td>
       <td class="text-center">
         <div class="flex gap-1 items-center justify-center">
-          <span class="text-gray-400 line-through text-xs">$69.99</span>
-          <span class="text-red-600 font-bold">$59.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_taiwanese_soup_chicken_7.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_taiwanese_soup_chicken_7.price)}</span>
         </div>
       </td>
     </tr>
@@ -85,8 +85,8 @@ Whether for postpartum recovery, post-surgical healing, or simply warming yourse
       <td class="text-center">Assorted Pack 2/2/4<br/>(Pork Liver×2 | Du Zhong Kidney×2 | Sesame Oil Chicken×4)<br/>* Assorted packs: no substitutions</td>
       <td class="text-center">
         <div class="flex gap-1 items-center justify-center">
-          <span class="text-gray-400 line-through text-xs">$79.99</span>
-          <span class="text-red-600 font-bold">$65.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_taiwanese_soup_set_224.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_taiwanese_soup_set_224.price)}</span>
         </div>
       </td>
     </tr>
@@ -94,8 +94,8 @@ Whether for postpartum recovery, post-surgical healing, or simply warming yourse
       <td class="text-center">Assorted Pack 4/4/8<br/>(Pork Liver×4 | Du Zhong Kidney×4 | Sesame Oil Chicken×8)<br/>* Assorted packs: no substitutions</td>
       <td class="text-center">
         <div class="flex gap-1 items-center justify-center">
-          <span class="text-gray-400 line-through text-xs">$159.99</span>
-          <span class="text-red-600 font-bold">$125.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_taiwanese_soup_set_448.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_taiwanese_soup_set_448.price)}</span>
         </div>
       </td>
     </tr>
@@ -153,11 +153,12 @@ Whether for postpartum recovery, post-surgical healing, or simply warming yourse
 #### 🚚 Delivery Options
 
 - Pickup
-- Driver delivery (area restrictions apply): $15/delivery within service area; free delivery on orders over $200
+- Driver delivery (area restrictions apply): {usd(products.local_delivery_fee_1trip.price)}/delivery within service area; free delivery on orders over {usd(products.free_local_delivery_minimum_frozen_soup.price)}
 
 ---
 
 import PageButtons from '@/components/PageButtons.astro'
+import { products, usd } from '@/client.config.ts'
 
 <PageButtons
   data={[

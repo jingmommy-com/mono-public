@@ -6,6 +6,7 @@ color: rose
 
 import Image from '@/components/Image.astro'
 import PageButtons from '@/components/PageButtons.astro'
+import { products, usd } from '@/client.config.ts'
 
 ### Welcome Baby's Full Moon — The Best Way to Share a Centuries-Old Blessing
 
@@ -63,13 +64,13 @@ Let a warm, fragrant box of sesame oil glutinous rice carry your heartfelt grati
     <tr>
       <td>First Joy Full Moon Gift Box</td>
       <td>24 oz sesame oil glutinous rice, 2 red eggs, 1 chicken leg</td>
-      <td>$23.99</td>
+      <td>{usd(products.full_moon_joy_box_single.price)}</td>
       <td>Symbolizes the joy of new life — the very first full blessing for family and friends to receive</td>
     </tr>
     <tr>
       <td>Double Joy Full Moon Gift Box</td>
       <td>24 oz sesame oil glutinous rice, 2 red eggs, 2 chicken legs</td>
-      <td>$26.99</td>
+      <td>{usd(products.full_moon_joy_box_double.price)}</td>
       <td>Two chicken legs represent double blessings and completeness — double the joy, double the sincerity</td>
     </tr>
   </tbody>

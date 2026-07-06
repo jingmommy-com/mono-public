@@ -46,7 +46,7 @@ The full 30-day program, in addition to tonic stewed dishes, qi-nourishing cooke
     <tr class="bg-purple-200">
       <td>
         <div><b>Deluxe Recovery Postpartum Meals</b> - 30 Days</div>
-        <div>$2,350</div>
+        <div>{usd(products.local_miscarriage_30d.price)}</div>
         <div>(Los Angeles area, delivery area restrictions apply)</div>
       </td>
     </tr>
@@ -62,7 +62,7 @@ The full 30-day program, in addition to tonic stewed dishes, qi-nourishing cooke
     <tr class="bg-purple-300">
       <td>
         <div><b>Out-of-State Frozen Shipping [4 Weeks]</b> - 28 Days</div>
-        <div>$3,190</div>
+        <div>{usd(products.frozen_miscarriage_4w.price)}</div>
         <div>(Continental U.S. states)</div>
       </td>
     </tr>
@@ -137,6 +137,7 @@ import menuMeal50 from '@/assets/menu/menu_meal50.jpg'
 import menuMeal18 from '@/assets/menu/menu_meal18.jpg'
 import menuMeal39 from '@/assets/menu/menu_meal39.jpg'
 import menuAfterTherapy03 from '@/assets/menu/menu_after_therapy03.jpg'
+import { products, usd } from '@/client.config.ts'
 
 <table class="meal-details">
   <tbody>

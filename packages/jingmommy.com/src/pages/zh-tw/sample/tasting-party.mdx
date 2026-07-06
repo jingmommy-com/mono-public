@@ -10,7 +10,7 @@ import Badge from '@/components/starwind/badge'
 import { YouTube } from 'astro-embed'
 
 import event01 from '@/assets/event/event_01.jpg'
-import { site } from '@/client.config.ts'
+import { site, products, usd } from '@/client.config.ts'
 
 <span class="text-red-600">*</span> 送餐到府試吃，跟試吃派對只能<span class="text-pink-700 font-bold"> 2 選 1</span>
 
@@ -80,7 +80,7 @@ import JS from '@/components/js/tasting-party-preserve.astro'
 - 當月試吃派對<b>優先開放給『預產期在三個月內的媽咪』</b>(預產期較後的媽咪也歡迎報名，但將依報名狀況安排候補)。
 - 活動原則上以<b>兩個大人</b>為上限 (如果有小孩請另行通知)。
 - 如您臨時無法前來或需調整日期，煩請提前告知，以便我們保留寶貴名額予他人，感謝您的體諒！
-- 為維護品質，報名後若未出席（除特殊原因）將酌收每人 $20 空位費。
+- 為維護品質，報名後若未出席（除特殊原因）將酌收每人 {usd(products.tasting_party_no_show_fee.price)} 空位費。
 - <a target="_blank" href="//order.jingmommy.com/sample-meals" title="預約試吃" class={notProse}><Badge variant="warning">送餐到府試吃</Badge></a>，跟試吃派對只能<span class="text-pink-700 font-bold"> 2 選 1</span>
 
 ---

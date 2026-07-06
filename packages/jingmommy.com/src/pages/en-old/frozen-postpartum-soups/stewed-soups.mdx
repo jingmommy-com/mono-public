@@ -52,8 +52,8 @@ Convenient for yourself, impressive as a gift: whether for postpartum recovery, 
       <td class="text-center">Mild-Warming 7 servings</td>
       <td class="text-center">
         <div class="flex gap-1 items-center justify-center">
-          <span class="text-gray-400 line-through text-xs">$90.99</span>
-          <span class="text-red-600 font-bold">$79.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_dinner_soup_warming_7.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_dinner_soup_warming_7.price)}</span>
         </div>
       </td>
     </tr>
@@ -61,8 +61,8 @@ Convenient for yourself, impressive as a gift: whether for postpartum recovery, 
       <td class="text-center">Intensive 7 servings</td>
       <td class="text-center">
         <div class="flex gap-1 items-center justify-center">
-          <span class="text-gray-400 line-through text-xs">$104.99</span>
-          <span class="text-red-600 font-bold">$92.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_dinner_soup_restorative_7.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_dinner_soup_restorative_7.price)}</span>
         </div>
       </td>
     </tr>
@@ -70,8 +70,8 @@ Convenient for yourself, impressive as a gift: whether for postpartum recovery, 
       <td class="text-center">Mild-Warming 14 servings</td>
       <td class="text-center">
         <div class="flex gap-1 items-center justify-center">
-          <span class="text-gray-400 line-through text-xs">$181.99</span>
-          <span class="text-red-600 font-bold">$142.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_dinner_soup_warming_14.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_dinner_soup_warming_14.price)}</span>
         </div>
       </td>
     </tr>
@@ -79,8 +79,8 @@ Convenient for yourself, impressive as a gift: whether for postpartum recovery, 
       <td class="text-center">Intensive 14 servings</td>
       <td class="text-center">
         <div class="flex gap-1 items-center justify-center">
-          <span class="text-gray-400 line-through text-xs">$209.99</span>
-          <span class="text-red-600 font-bold">$168.99</span>
+          <span class="text-gray-400 line-through text-xs">{usd(products.frozen_dinner_soup_restorative_14.compare_at_price)}</span>
+          <span class="text-red-600 font-bold">{usd(products.frozen_dinner_soup_restorative_14.price)}</span>
         </div>
       </td>
     </tr>
@@ -160,11 +160,12 @@ import Badges from '@/components/Badges.astro'
 #### 🚚 Delivery Options
 
 - Pickup
-- Driver delivery (area restrictions apply): $15/delivery within service area; free delivery on orders over $200
+- Driver delivery (area restrictions apply): {usd(products.local_delivery_fee_1trip.price)}/delivery within service area; free delivery on orders over {usd(products.free_local_delivery_minimum_frozen_soup.price)}
 
 ---
 
 import PageButtons from '@/components/PageButtons.astro'
+import { products, usd } from '@/client.config.ts'
 
 <PageButtons
   data={[

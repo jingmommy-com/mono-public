@@ -7,6 +7,7 @@ description: Healthy Meals | A reason to eat well every day
 
 import PageButtons from '@/components/PageButtons.astro'
 import LookupZipButton from '@/components/LookupZipButton.astro'
+import { products, usd } from '@/client.config.ts'
 
 **For those who want to eat with peace of mind every day — no more stressing about three meals.**
 
@@ -54,7 +55,7 @@ Just-right care every day — choose freely based on your needs
       <td class="text-center">
         <b>Plan A</b> | <b>Three Meals + Tonic Soup Set</b> | Shipping included<br/>
         For those who want more complete care — with a little extra nourishment at no burden<br/>
-        $65 / day &nbsp;&nbsp; Couples price $115 / day
+        {usd(products.local_healthy_a_1d.price)} / day &nbsp;&nbsp; Couples price {usd(products.local_healthy_a2_1d.price)} / day
       </td>
     </tr>
     <tr>
@@ -69,7 +70,7 @@ Just-right care every day — choose freely based on your needs
       <td class="text-center">
         <b>Plan B</b> | <b>Three Meals Set</b> | Shipping included<br/>
         For those who don't want to eat poorly at any meal — care from morning to night<br/>
-        $55 / day &nbsp;&nbsp; Couples price $95 / day
+        {usd(products.local_healthy_b_1d.price)} / day &nbsp;&nbsp; Couples price {usd(products.local_healthy_b2_1d.price)} / day
       </td>
     </tr>
     <tr>
@@ -83,7 +84,7 @@ Just-right care every day — choose freely based on your needs
       <td class="text-center">
         <b>Plan C</b> | <b>Two Meals Set</b> | Shipping included<br/>
         For those who care about healthy lunch and dinner and want a simpler lifestyle<br/>
-        $45 / day &nbsp;&nbsp; Couples price $75 / day
+        {usd(products.local_healthy_c_1d.price)} / day &nbsp;&nbsp; Couples price {usd(products.local_healthy_c2_1d.price)} / day
       </td>
     </tr>
     <tr>

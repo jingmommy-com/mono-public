@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components'
 import { locales } from '@/client.config.ts'
+import localeMeta from '@/i18n/locales.ts'
 import routeMap from '@/route-map.json'
 import LocaleDomainSwitch from '@/components/LocaleDomainSwitch.astro'
 
@@ -18,11 +19,9 @@ const currentPath = Astro.url.pathname
 const pathSegments = currentPath.split('/').filter(Boolean)
 const currentLocale = locales.includes(pathSegments[0]) ? pathSegments[0] : locales[0]
 
-const localeLabels: Record<string, string> = {
-  'zh-tw': '中文',
-  'en': 'English',
-  'en-old': 'English (Old)',
-}
+const localeLabels: Record<string, string> = Object.fromEntries(
+  locales.map(locale => [locale, localeMeta[locale]?.label ?? locale])
+)
 
 function switchUrl(targetLocale: string): string {
   if (locales.includes(pathSegments[0])) {

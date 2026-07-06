@@ -1,0 +1,53 @@
+---
+layout: ../../../layouts/MarkdownPage.astro
+title: 预约试吃 - 送餐到府
+color: pink
+---
+
+import Image from '@/components/Image.astro'
+import PageButtons from '@/components/PageButtons.astro'
+import Badge from '@/components/starwind/badge'
+
+import { Alert, AlertDescription } from '@/components/starwind/alert'
+import { products, usd } from '@/client.config.ts'
+
+<Alert variant="warning" class="text-center">
+  <AlertDescription>
+    限大洛杉矶地区，有范围限制
+  </AlertDescription>
+</Alert>
+
+---
+
+### 🌸 新手妈妈专属试吃 — 真实体验，安心选择
+
+亲爱的妈妈，产后的每一天都充满挑战，您是否担心月子餐的味道与营养是否合适？我们精心准备了<b>「一日精致月子餐」</b>的<b>送餐到府试吃</b>，让您亲自体验，确保每一餐都符合您的需求，帮助您轻松度过产后恢复期。
+
+---
+
+#### 试吃优惠价： <Badge variant="warning">{usd(products.local_classic_sample_1d.price)}</Badge>（原价 ~~{usd(products.local_classic_sample_1d.compare_at_price)}~~）
+
+- <b>真实体验：</b>我们的试吃餐点与正式配送的月子餐一模一样，没有特别调整，让您真实感受每一餐的味道与营养，消除对产后饮食的疑虑。
+- <b>专业呈现：</b>所有餐点的包装与呈现方式都与正式配送相同，让您提前体验我们专业且细心的服务品质，安心享用每一口。
+- <b>无后顾之忧：</b>亲自品尝，确保月子餐的营养与口味满足您的需求，帮助您更快做出决定，选择最适合的产后餐点。
+
+<Image
+  src="https://file.jingmommy.com/ff/Sample_Menu_1x.p1.png"
+  alt="Sample menu image"
+  type="a"
+/>
+
+- <b>快速便捷：</b>即时订购，随时随地都可以进行线上订购。
+- <b>无需等待：</b>一经订购，我们会有客服人员与您确认日期后，就可以准备并送到您家。
+
+---
+
+<PageButtons
+  data={[
+    {
+      title: '立即订购：试吃餐',
+      icon: 'mdi:cart',
+      url: '//order.jingmommy.com/sample-meals/sample-meal.html'
+    },
+  ]}
+/>

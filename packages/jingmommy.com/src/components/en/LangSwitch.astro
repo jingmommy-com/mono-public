@@ -1,48 +1,66 @@
 ---
 /*
-  Floating language switch for en pages — jumps to the Chinese (zh-tw) site.
-  Fixed to the bottom-left, icon-only (Tabler `language` icon).
-  Styled in the en theme (uses theme.css CSS variables, available because
-  Base.astro imports the en theme.css globally).
+  Floating language switch for en pages — a drop-up menu listing the Chinese
+  locales. Fixed to the bottom-left, icon-only trigger (Tabler `language` icon);
+  the menu opens upward. Styled in the en theme (uses theme.css CSS variables,
+  available because Base.astro imports the en theme.css globally).
 
-  The en (new design) and zh-tw (legacy) sites don't share a 1:1 route structure,
-  so this links to the zh-tw home by default. Pass `href` to override per page.
+  The en (new design) and zh sites don't share a 1:1 route structure, so the
+  menu links to each locale's home. Locales come from client.config.ts and
+  labels/hreflang from i18n/locales.ts — every locale except the current one
+  is listed.
 */
 import LocaleDomainSwitch from '@/components/LocaleDomainSwitch.astro'
+import { locales } from '@/client.config.ts'
+import localeMeta from '@/i18n/locales.ts'
 
-interface Props {
-  href?: string
-}
-const { href = '/zh-tw/' } = Astro.props
+const pathSegments = Astro.url.pathname.split('/').filter(Boolean)
+const currentLocale = locales.includes(pathSegments[0]) ? pathSegments[0] : locales[0]
+
+const languages = locales
+  .filter(locale => locale !== currentLocale)
+  .map(locale => ({ locale, href: `/${locale}/`, ...localeMeta[locale] }))
 ---
 
-<a
-  class="lang-switch"
-  href={href}
-  data-locale-target="zh-tw"
-  hreflang="zh-Hant-TW"
-  aria-label="切換到中文 · Switch to Chinese"
-  title="中文"
->
-  <!-- Tabler icon: language -->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="1.8"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    aria-hidden="true"
-  >
-    <path d="M9 6.371c0 4.418 -2.239 6.629 -5 6.629"></path>
-    <path d="M4 6.371h7"></path>
-    <path d="M5 9c0 2.144 2.252 3.908 6 4"></path>
-    <path d="M12 20l4 -9l4 9"></path>
-    <path d="M19.1 18h-6.2"></path>
-    <path d="M6.694 3l.793 .582"></path>
-  </svg>
-</a>
+<details class="lang-switch" id="lang-switch">
+  <summary aria-label="Switch language · 切換語言" title="Language">
+    <!-- Tabler icon: language -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M9 6.371c0 4.418 -2.239 6.629 -5 6.629"></path>
+      <path d="M4 6.371h7"></path>
+      <path d="M5 9c0 2.144 2.252 3.908 6 4"></path>
+      <path d="M12 20l4 -9l4 9"></path>
+      <path d="M19.1 18h-6.2"></path>
+      <path d="M6.694 3l.793 .582"></path>
+    </svg>
+  </summary>
+  <div class="lang-menu">
+    {
+      languages.map(lang => (
+        <a href={lang.href} data-locale-target={lang.locale} hreflang={lang.hreflang}>
+          {lang.label}
+        </a>
+      ))
+    }
+  </div>
+</details>
+
+<script>
+  // Close the drop-up when clicking outside it
+  document.addEventListener('click', (e) => {
+    const el = document.getElementById('lang-switch') as HTMLDetailsElement | null
+    if (el?.open && !el.contains(e.target as Node)) el.open = false
+  })
+</script>
 
 <LocaleDomainSwitch />
 
@@ -52,6 +70,8 @@ const { href = '/zh-tw/' } = Astro.props
     left: 22px;
     bottom: 22px;
     z-index: 60;
+  }
+  .lang-switch summary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -63,41 +83,83 @@ const { href = '/zh-tw/' } = Astro.props
     border: 1px solid var(--accent-deep);
     border-radius: 2px;
     color: var(--accent-deep);
-    text-decoration: none;
+    cursor: pointer;
+    list-style: none;
     box-shadow: 0 6px 20px rgba(43, 24, 16, 0.12);
     transition: all 0.2s ease;
   }
-  .lang-switch:hover {
+  .lang-switch summary::-webkit-details-marker {
+    display: none;
+  }
+  .lang-switch summary:hover,
+  .lang-switch[open] summary {
     background: var(--accent-deep);
     color: var(--paper);
+  }
+  .lang-switch summary:hover {
     transform: translateY(-1px);
   }
-  .lang-switch:focus-visible {
+  .lang-switch summary:focus-visible {
     outline: 2px solid var(--accent-deep);
     outline-offset: 3px;
   }
-  .lang-switch svg {
+  .lang-switch summary svg {
     display: block;
     width: 22px;
     height: 22px;
+  }
+  /* drop-up menu, opens above the trigger */
+  .lang-menu {
+    position: absolute;
+    left: 0;
+    bottom: calc(100% + 8px);
+    min-width: 128px;
+    background: rgba(250, 246, 241, 0.97);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--accent-deep);
+    border-radius: 2px;
+    box-shadow: 0 6px 20px rgba(43, 24, 16, 0.12);
+    overflow: hidden;
+  }
+  .lang-menu a {
+    display: block;
+    padding: 10px 14px;
+    color: var(--accent-deep);
+    text-decoration: none;
+    font-size: 15px;
+    white-space: nowrap;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .lang-menu a + a {
+    border-top: 1px solid rgba(43, 24, 16, 0.12);
+  }
+  .lang-menu a:hover,
+  .lang-menu a:focus-visible {
+    background: var(--accent-deep);
+    color: var(--paper);
+    outline: none;
   }
   @media (max-width: 560px) {
     .lang-switch {
       left: 16px;
       bottom: 16px;
+    }
+    .lang-switch summary {
       width: 42px;
       height: 42px;
     }
-    .lang-switch svg {
+    .lang-switch summary svg {
       width: 20px;
       height: 20px;
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    .lang-switch {
+    .lang-switch summary,
+    .lang-menu a {
       transition: none;
     }
-    .lang-switch:hover {
+    .lang-switch summary:hover {
       transform: none;
     }
   }

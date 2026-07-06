@@ -6,6 +6,7 @@ color: rose
 
 import PageButtons from '@/components/PageButtons.astro'
 import LookupZipButton from '@/components/LookupZipButton.astro'
+import { products, usd } from '@/client.config.ts'
 
 **💛 續訂月子餐 ─ 給妳 Beyond 30 Days 的續航力**
 
@@ -23,7 +24,7 @@ import LookupZipButton from '@/components/LookupZipButton.astro'
 
 ---
 
-**🌿 續訂月子餐 A｜$70／天 (原價 $75)**
+**🌿 續訂月子餐 A｜{usd(products.local_recovery_plus_a_1d.price)}／天 (原價 {usd(products.local_recovery_plus_a_1d.compare_at_price)})**
 
 溫補最到位｜日夜雙餐 + 補湯甜點全配
 
@@ -35,7 +36,7 @@ import LookupZipButton from '@/components/LookupZipButton.astro'
 
 ---
 
-**🌿 續訂月子餐 B｜$60／天 (原價 $65)**
+**🌿 續訂月子餐 B｜{usd(products.local_recovery_plus_b_1d.price)}／天 (原價 {usd(products.local_recovery_plus_b_1d.compare_at_price)})**
 
 溫和補養｜精簡菜單，預算與營養一次兼顧。
 
@@ -47,7 +48,7 @@ import LookupZipButton from '@/components/LookupZipButton.astro'
 
 ---
 
-**🌿 續訂月子餐 C｜$45／天 (原價 $50)**
+**🌿 續訂月子餐 C｜{usd(products.local_recovery_plus_c_1d.price)}／天 (原價 {usd(products.local_recovery_plus_c_1d.compare_at_price)})**
 
 輕盈補元｜專為忙碌媽媽設計的湯品組<br/>
 濃縮補養｜精打細算也能天天喝到好湯

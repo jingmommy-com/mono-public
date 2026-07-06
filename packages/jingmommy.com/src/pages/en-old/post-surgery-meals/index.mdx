@@ -59,7 +59,7 @@ During this special recovery period, let Jingmommy's Chicken Essence be your nut
     <tr class="bg-blue-100">
       <td>
         <div><b>Jingmommy Post-Surgery Recovery Meals</b></div>
-        <div>$2,350 / 30 days | $1,330 / 14 days | $100 / 1 day</div>
+        <div>{usd(products.local_post_surgery_30d.price)} / 30 days | {usd(products.local_post_surgery_14d.price)} / 14 days | {usd(products.local_post_surgery_1d.price)} / 1 day</div>
         <div>(Los Angeles area, delivery area restrictions apply)</div>
       </td>
     </tr>
@@ -76,7 +76,7 @@ During this special recovery period, let Jingmommy's Chicken Essence be your nut
     <tr class="bg-blue-200">
       <td>
         <div><b>Jingmommy [Frozen] Post-Surgery Recovery Meals</b></div>
-        <div>$3,190 / 28 days | $1,950 / 14 days | $1,050 / 7 days</div>
+        <div>{usd(products.frozen_post_surgery_4w.price)} / 28 days | {usd(products.frozen_post_surgery_2w.price)} / 14 days | {usd(products.frozen_post_surgery_1w.price)} / 7 days</div>
         <div>(Continental U.S. states)</div>
       </td>
     </tr>
@@ -147,6 +147,7 @@ import menu_meal22 from '@/assets/menu/menu_meal22.jpg'
 import menu_meal05a from '@/assets/menu/menu_meal05a.jpg'
 import menu_meal51a from '@/assets/menu/menu_meal51a.jpg'
 import menu_meal52 from '@/assets/menu/menu_meal52.jpg'
+import { products, usd } from '@/client.config.ts'
 
 <table class="meal-details">
   <tbody>
