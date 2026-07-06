@@ -32,7 +32,7 @@ const site = {
   <meta name="DC.description" content={site.description} />
   <meta name="DC.subject" content={site.description} />
   <meta name="DC.identifier" content={site.url} />
-  <meta name="DC.language" content="zh" />
+  <meta name="DC.language" content={pathLocale.startsWith('zh') ? 'zh' : 'en'} />
   <meta name="DC.publisher" content={site.brandName} />
   <meta name="DC.type" content="Text" />
   <meta name="DC.format" content="text/html" />

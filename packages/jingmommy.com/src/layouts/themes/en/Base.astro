@@ -6,8 +6,9 @@
   scripts. Every en page renders through this.
 */
 import "@/styles/themes/en/theme.css"
-import LangSwitch from "@/components/en/LangSwitch.astro"
-import ExternalLinksNewTab from "@/components/en/ExternalLinksNewTab.astro"
+import Head from "@/components/Head.astro"
+import LangSwitch from "@/components/themes/en/LangSwitch.astro"
+import ExternalLinksNewTab from "@/components/themes/en/ExternalLinksNewTab.astro"
 
 interface Props {
   title: string
@@ -25,15 +26,7 @@ const {
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
+  <Head title={title} description={description}>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -45,7 +38,7 @@ const {
         <script type="application/ld+json" set:html={JSON.stringify(obj)} />
       ))
     }
-  </head>
+  </Head>
   <body>
     <slot />
     <LangSwitch />

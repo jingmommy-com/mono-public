@@ -116,7 +116,12 @@ src/
 2. Create `src/layouts/themes/<name>/Page.astro`
 3. Import and register it in `src/layouts/Page.astro`'s `themeMap`
 
-**Components** are shared across all themes (no per-theme component overrides yet).
+**Components** are themed too: theme-specific components live in
+`src/components/themes/<name>/` (`base` serves the zh-tw/zh-cn/en-old site,
+`en` serves the en design). Only genuinely locale/theme-agnostic components
+stay at the `src/components/` root (currently `Head`, `ComingSoon`,
+`AnchorOffset`, `LocaleDomainSwitch`, `Markdown`, plus the managed
+`starwind/` library).
 
 ### Route Title Auto-generation
 
@@ -172,7 +177,7 @@ Follow this when adding new config: promote a value up (page → `config/en.ts` 
 ### UI Components
 
 - **Starwind** components (shadcn-style, Tailwind-based) live in `src/components/starwind/` — managed via `starwind.config.json`. Do not hand-edit these.
-- Custom components are directly in `src/components/`
+- Shared (theme-agnostic) components are directly in `src/components/`; theme-specific ones are under `src/components/themes/<name>/` (see "Theme System")
 - Icons use `astro-icon` with the `@iconify-json/mdi` icon set
 
 ### Path Alias

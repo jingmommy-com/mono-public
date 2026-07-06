@@ -37,9 +37,12 @@ import { siteDomains } from '@/client.config.ts'
     document.querySelectorAll('a[data-locale-target]').forEach(function (link) {
       var targetLocale = link.getAttribute('data-locale-target')
       var targetDomain = localeDomain[targetLocale]
-      if (targetDomain && targetDomain !== host) {
+      var href = link.getAttribute('href')
+      // Only rewrite same-origin paths — keeps this idempotent if the
+      // component is included more than once on a page.
+      if (targetDomain && targetDomain !== host && href && href.charAt(0) === '/') {
         // `href` is a same-origin path (e.g. /en/about) — make it absolute to the owning domain.
-        link.href = 'https://' + targetDomain + link.getAttribute('href')
+        link.href = 'https://' + targetDomain + href
       }
     })
   })()

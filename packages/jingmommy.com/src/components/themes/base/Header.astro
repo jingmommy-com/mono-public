@@ -26,7 +26,11 @@ const localeLabels: Record<string, string> = Object.fromEntries(
 function switchUrl(targetLocale: string): string {
   if (locales.includes(pathSegments[0])) {
     const rest = pathSegments.slice(1)
-    return rest.length ? `/${targetLocale}/${rest.join('/')}` : `/${targetLocale}`
+    const target = rest.length ? `/${targetLocale}/${rest.join('/')}` : `/${targetLocale}`
+    // Locales are not 1:1 — when the page doesn't exist in the target locale,
+    // send the click to that locale's index instead of a 404. Direct URL
+    // visits (bookmarks etc.) still get the 404 page.
+    return Object.hasOwn(routeMap, target) ? target : `/${targetLocale}/`
   }
   return currentPath // non-localized path, keep as-is
 }

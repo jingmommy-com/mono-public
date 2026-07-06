@@ -56,11 +56,14 @@ const fbUrl = locale === 'zh-tw' || locale === 'zh-cn'
   ? 'https://www.messenger.com/t/148231668540780/'
   : 'https://www.messenger.com/t/453550428399457/'
 
-// English button: switch current URL to /en/... equivalent
+// English button: switch current URL to /en/... equivalent. Locales are not
+// 1:1, so when the en page doesn't exist, link to the en index instead of a
+// 404 (direct URL visits still get the 404 page).
 const pathSegments = Astro.url.pathname.split('/').filter(Boolean)
-const enUrl = locales.includes(pathSegments[0])
+const enTarget = locales.includes(pathSegments[0]) && pathSegments.length > 1
   ? '/en/' + pathSegments.slice(1).join('/')
   : '/en'
+const enUrl = Object.hasOwn(routeMap, enTarget) ? enTarget : '/en/'
 ---
 
 <footer class="w-full flex flex-col gap-3">
@@ -121,7 +124,7 @@ const enUrl = locales.includes(pathSegments[0])
   </div>
   <!-- TODO: use the tidio button to replace chat buttons -->
   {pathLocale !== 'en' && (
-    <a href={enUrl} class="fixed z-50 left-4 bottom-6 w-24 h-24">
+    <a href={enUrl} data-locale-target="en" class="fixed z-50 left-4 bottom-6 w-24 h-24">
       <img src="//file.jingmommy.com/img/icon-english.png" alt="English Version of Jingmommy.com" />
     </a>
   )}
