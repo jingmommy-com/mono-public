@@ -6,7 +6,8 @@ color: rose
 
 import Image from '@/components/themes/base/Image.astro'
 import PageButtons from '@/components/themes/base/PageButtons.astro'
-import { products, usd } from '@/client.config.ts'
+import { products } from '@/config/index.ts'
+import { orderUrl, usd } from '@/utils/index.ts'
 
 ### 四季汤：春分汤品 - 让身体「重新开机」
 
@@ -65,7 +66,7 @@ import { products, usd } from '@/client.config.ts'
 
 ---
 
-🌿 春分团购主小福利 好汤最适合顺手分享！只要帮朋友一起下单（不含自己的1套），即可享主揪专属回馈：帮朋友揪1套：您自己的1套享9折，揪2套：您自己的1套享8折，揪3套：您自己的1套享7折（最低至5折）。整笔团购订单还有额外%红利回馈。有兴趣当团购主，欢迎到[网址申请](//order.jingmommy.com/?route=form/form/apply_group_buy_host)。
+🌿 春分团购主小福利 好汤最适合顺手分享！只要帮朋友一起下单（不含自己的1套），即可享主揪专属回馈：帮朋友揪1套：您自己的1套享9折，揪2套：您自己的1套享8折，揪3套：您自己的1套享7折（最低至5折）。整笔团购订单还有额外%红利回馈。有兴趣当团购主，欢迎到<a href={orderUrl('group_buy_host_form', 'zh-cn')}>网址申请</a>。
 
 🔥 社群互动活动：想拿福利吗？加入专属群组(LINE/WeChat)就能领取群组专属福利喔！  
 【结单窗口】
@@ -93,14 +94,14 @@ import { products, usd } from '@/client.config.ts'
     {
       title: '开始选购 / Start Shopping',
       icon: 'mdi:shopping',
-      url: '//order.jingmommy.com/zh/four-seasons-soups-spring-4.html',
+      url: orderUrl('frozen_soup_spring_4', 'zh-cn'),
       target: '_blank',
       qrcode: '//file.jingmommy.com/img/qrcode/qr-code_four-seasons-soups-spring-4.png'
     },
     {
       title: '申请成为团购主 / Sign Up to Host',
       icon: 'mdi:calendar-check',
-      url: '//order.jingmommy.com/?route=form/form/apply_group_buy_host',
+      url: orderUrl('group_buy_host_form', 'zh-cn'),
       target: '_blank'
     }
   ]}

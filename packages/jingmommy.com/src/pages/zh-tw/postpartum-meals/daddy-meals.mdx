@@ -6,7 +6,8 @@ color: blue
 
 import PageButtons from '@/components/themes/base/PageButtons.astro'
 import LookupZipButton from '@/components/themes/base/LookupZipButton.astro'
-import { products, usd } from '@/client.config.ts'
+import { products } from '@/config/index.ts'
+import { orderUrl, usd } from '@/utils/index.ts'
 
 **當媽媽坐月子，誰來照顧爸爸的一日三餐？**
 
@@ -54,7 +55,7 @@ import { products, usd } from '@/client.config.ts'
     {
       title: '開始選購 / Start Shopping',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/postpartum-meals'
+      url: orderUrl('postpartum_meals', 'zh-tw')
     },
     [
       // {

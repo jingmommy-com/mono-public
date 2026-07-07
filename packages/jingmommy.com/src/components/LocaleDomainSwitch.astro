@@ -3,7 +3,7 @@
   Domain-aware locale switching.
 
   The same build is deployed to multiple production domains, each owning a subset
-  of locales (see `siteDomains` in client.config.ts). When a language-switch link
+  of locales (see `siteDomains` in config/index.ts). When a language-switch link
   points at a locale owned by a *different* production domain, the destination has
   to include that domain — otherwise we'd land on a locale the current domain
   doesn't serve.
@@ -18,7 +18,7 @@
   Switch links opt in by adding `data-locale-target="<locale>"` alongside a normal
   same-origin `href` (e.g. `/en/about`).
 */
-import { siteDomains } from '@/client.config.ts'
+import { siteDomains } from '@/config/index.ts'
 ---
 
 <script is:inline define:vars={{ siteDomains }}>

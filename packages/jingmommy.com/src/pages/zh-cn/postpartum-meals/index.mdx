@@ -5,11 +5,12 @@ color: rose
 description: 金品月子餐 － 5 大套餐选择，满足不同妈咪的需求！
 ---
 
-import { site } from '@/client.config.ts'
+import { site } from '@/config/index.ts'
 import CategoryButtons from '@/components/themes/base/CategoryButtons.astro'
 import PageButtons from '@/components/themes/base/PageButtons.astro'
 import LookupZipButton from '@/components/themes/base/LookupZipButton.astro'
 import ShapeLetter from '@/components/themes/base/ShapeLetter.astro'
+import { orderUrl } from '@/utils/index.ts'
 
 🔍 立即探索我们的月子餐方案，迎接更美好的自己！
 
@@ -82,12 +83,12 @@ import ShapeLetter from '@/components/themes/base/ShapeLetter.astro'
     {
       title: '开始选购 / Start Shopping',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/金品月子餐',
+      url: orderUrl('postpartum_meals_zh', 'zh-cn'),
     },
     {
       title: '月子餐试吃 / Sample Meal',
       icon: 'mdi:calendar-check',
-      url: '//order.jingmommy.com/sample-meals/',
+      url: orderUrl('sample_meals', 'zh-cn'),
     },
     [
       {

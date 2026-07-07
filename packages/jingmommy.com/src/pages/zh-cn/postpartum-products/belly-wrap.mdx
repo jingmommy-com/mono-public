@@ -6,6 +6,7 @@ color: rose
 
 import Image from '@/components/themes/base/Image.astro'
 import PageButtons from '@/components/themes/base/PageButtons.astro'
+import { orderUrl } from '@/utils/index.ts'
 
 怀孕期间由于胎儿成长快速子宫被撑大，五脏六腑受到挤压移位变形移位，就像一颗小西瓜一样。<br/>
 因此坐月子期间妈咪必须特别注意预防「内脏下垂」的状况，因所有「妇女病」及「未老先衰」都是从「内脏下垂」开始的，更糟糕的事会产生小腹！所以绑腹带就十分重要了，绑腹带可以帮助子宫收缩、内脏回到原位，减缓腰酸背痛的情形发生。
@@ -76,7 +77,7 @@ import PageButtons from '@/components/themes/base/PageButtons.astro'
     {
       title: '开始选购 / Start Shopping',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/postpartum-products'
+      url: orderUrl('postpartum_products', 'zh-cn')
     },
     {
       title: '预约咨询 / Book a Consultation',

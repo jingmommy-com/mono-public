@@ -3,8 +3,9 @@ import Base from "@/layouts/themes/en/Base.astro"
 import TopBar from "@/components/themes/en/TopBar.astro"
 import Footer from "@/components/themes/en/Footer.astro"
 import PageHero from "@/components/themes/en/PageHero.astro"
-import { brand, route, orderUrl, orderSampleUrl, planOrderUrls } from "@/config/en.ts"
-import { products, usd } from '@/client.config.ts'
+
+import { site, phones, products } from '@/config/index.ts'
+import { route, formatNumber, orderUrl, phoneDisplay, usd } from '@/utils/index.ts'
 
 const title =
   "Meal Plans — Chinese Postpartum (Zuo Yue Zi) Delivery — JingMommy"
@@ -20,27 +21,27 @@ const jsonLd = [
       {
         "@type": "Product",
         name: "Herbal Meal",
-        offers: { "@type": "Offer", price: "2890", priceCurrency: "USD" },
+        offers: { "@type": "Offer", price: String(products.local_herbal_30d.price), priceCurrency: "USD" },
       },
       {
         "@type": "Product",
         name: "Classic Meal",
-        offers: { "@type": "Offer", price: "2590", priceCurrency: "USD" },
+        offers: { "@type": "Offer", price: String(products.local_classic_30d.price), priceCurrency: "USD" },
       },
       {
         "@type": "Product",
         name: "Vita Meal",
-        offers: { "@type": "Offer", price: "2299", priceCurrency: "USD" },
+        offers: { "@type": "Offer", price: String(products.local_vita_30d.price), priceCurrency: "USD" },
       },
       {
         "@type": "Product",
         name: "Low Carb Meal",
-        offers: { "@type": "Offer", price: "1999", priceCurrency: "USD" },
+        offers: { "@type": "Offer", price: String(products.local_lowcarb_30d.price), priceCurrency: "USD" },
       },
       {
         "@type": "Product",
         name: "Easy Meal",
-        offers: { "@type": "Offer", price: "1550", priceCurrency: "USD" },
+        offers: { "@type": "Offer", price: String(products.local_easy_15d.price), priceCurrency: "USD" },
       },
     ].map((p, i) => ({ "@type": "ListItem", position: i + 1, item: p })),
   },
@@ -48,7 +49,7 @@ const jsonLd = [
 ---
 
 <Base title={title} description={description} jsonLd={jsonLd}>
-  <TopBar active={route("/plans")} />
+  <TopBar active={route("/plans", 'en')} />
 
   <PageHero
     eyebrow="Meal Plans"
@@ -76,7 +77,7 @@ const jsonLd = [
       <div class="tab-content active" id="tab-fresh">
         <p class="tab-intro">
           Fresh delivery covers most areas of Southern California.
-          <a href={`${route("/contact")}#delivery`}>Check your zip code →</a>
+          <a href={`${route("/contact", 'en')}#delivery`}>Check your zip code →</a>
         </p>
         <div class="plan-grid">
           <div class="plan-card">
@@ -93,7 +94,7 @@ const jsonLd = [
             </div>
             <div class="plan-price">{usd(products.local_herbal_30d.price)}</div>
             <div class="plan-tag">30 days</div>
-            <a href={planOrderUrls.herbal} class="plan-link">Learn more →</a>
+            <a href={orderUrl('local_herbal', 'en')} class="plan-link">Learn more →</a>
           </div>
 
           <div class="plan-card">
@@ -110,7 +111,7 @@ const jsonLd = [
             </div>
             <div class="plan-price">{usd(products.local_classic_30d.price)}</div>
             <div class="plan-tag">30 days</div>
-            <a href={planOrderUrls.classic} class="plan-link">Learn more →</a>
+            <a href={orderUrl('local_classic', 'en')} class="plan-link">Learn more →</a>
           </div>
 
           <div class="plan-card">
@@ -128,7 +129,7 @@ const jsonLd = [
             </div>
             <div class="plan-price">{usd(products.local_vita_30d.price)}</div>
             <div class="plan-tag">30 days</div>
-            <a href={planOrderUrls.vita} class="plan-link">Learn more →</a>
+            <a href={orderUrl('local_vita', 'en')} class="plan-link">Learn more →</a>
           </div>
 
           <div class="plan-card">
@@ -145,7 +146,7 @@ const jsonLd = [
             </div>
             <div class="plan-price">{usd(products.local_lowcarb_30d.price)}</div>
             <div class="plan-tag">30 days</div>
-            <a href={planOrderUrls.lowCarb} class="plan-link">Learn more →</a>
+            <a href={orderUrl('local_lowcarb', 'en')} class="plan-link">Learn more →</a>
           </div>
 
           <div class="plan-card">
@@ -163,7 +164,7 @@ const jsonLd = [
             </div>
             <div class="plan-price">{usd(products.local_easy_15d.price)}</div>
             <div class="plan-tag">30 days</div>
-            <a href={planOrderUrls.easy} class="plan-link">Learn more →</a>
+            <a href={orderUrl('local_easy', 'en')} class="plan-link">Learn more →</a>
           </div>
 
           <div class="plan-card helper-card">
@@ -173,11 +174,11 @@ const jsonLd = [
               Chinese postpartum food before, the easiest way to decide is to
               try a sample first.
             </p>
-            <a href={route("/sample")} class="helper-link"
+            <a href={route("/sample", 'en')} class="helper-link"
               >→ Try the {usd(products.local_classic_sample_1d.price)} Local Tasting</a
             >
-            <a href={brand.phoneHref} class="helper-link"
-              >→ Or call us at {brand.phone}</a
+            <a href={`tel:${phones.main}`} class="helper-link"
+              >→ Or call us at {phoneDisplay(phones.main)}</a
             >
           </div>
         </div>
@@ -192,7 +193,7 @@ const jsonLd = [
           the continental US. Shipping included.
           <br /><span class="tab-intro-note"
             >If you’re in California, special pricing may apply — call us at <strong
-              >{brand.phone}</strong
+              >{phoneDisplay(phones.main)}</strong
             >.</span
           >
         </p>
@@ -213,7 +214,7 @@ const jsonLd = [
             <div class="plan-tag">
               4 weeks · FedEx Priority Overnight shipping included
             </div>
-            <a href={planOrderUrls.frozenHerbal} class="plan-link">Learn more →</a>
+            <a href={orderUrl('frozen_herbal', 'en')} class="plan-link">Learn more →</a>
           </div>
 
           <div class="plan-card">
@@ -230,7 +231,7 @@ const jsonLd = [
             <div class="plan-tag">
               4 weeks · FedEx Priority Overnight shipping included
             </div>
-            <a href={planOrderUrls.frozenClassic} class="plan-link">Learn more →</a>
+            <a href={orderUrl('frozen_classic', 'en')} class="plan-link">Learn more →</a>
           </div>
 
           <div class="plan-card">
@@ -250,7 +251,7 @@ const jsonLd = [
             <div class="plan-tag">
               4 weeks · FedEx Priority Overnight shipping included
             </div>
-            <a href={planOrderUrls.frozenEssential} class="plan-link">Learn more →</a>
+            <a href={orderUrl('frozen_essential', 'en')} class="plan-link">Learn more →</a>
           </div>
 
           <div class="plan-card">
@@ -275,7 +276,7 @@ const jsonLd = [
             <div class="plan-tag">
               4 weeks · FedEx Priority Overnight shipping included
             </div>
-            <a href={planOrderUrls.frozenSoupDessert} class="plan-link">Learn more →</a>
+            <a href={orderUrl('frozen_soup_dessert', 'en')} class="plan-link">Learn more →</a>
           </div>
 
           <div class="plan-card helper-card span2">
@@ -291,7 +292,7 @@ const jsonLd = [
               freezer (worth it if you’re doing a full month), or keep 5 days in the
               freezer and 2 days in the fridge — they thaw naturally as you go.
             </p>
-            <a href={route("/sample")} class="helper-link"
+            <a href={route("/sample", 'en')} class="helper-link"
               >→ Try the {usd(products.frozen_classic_sample_8item.price)} Frozen Tasting (8 items, real recipes)</a
             >
           </div>
@@ -595,14 +596,14 @@ const jsonLd = [
             <div class="place">Continental US</div>
             <div class="price-label">{usd(products.frozen_classic_sample_8item.price)} · Frozen Tasting</div>
             <p>
-              8 individual items — sea bass soup, recovery stew soup, oil rice,
-              main, dessert, breakfast porridge, herbal drink. Same recipes,
-              same packaging as the full plan. Not a complete day’s meals — a
-              real taste of what’s inside.
+              8 individual items — fish soup, dinner soup, sticky rice, entrée,
+              dessert, breakfast porridge, breakfast egg, healing drink. Same
+              recipes, same packaging as the full plan. Not a complete day’s
+              meals — a real taste of what’s inside.
             </p>
           </div>
         </div>
-        <a href={orderSampleUrl} class="btn btn-primary"
+        <a href={orderUrl('sample_meals', 'en')} class="btn btn-primary"
           >Order a Tasting</a
         >
       </div>
@@ -617,7 +618,7 @@ const jsonLd = [
         <h2>Questions other mothers have asked.</h2>
         <p style="font-style:italic;color:var(--muted);margin-top:16px">
           These are real questions our team answers every day. If yours isn’t
-          here, call us at {brand.phone}.
+          here, call us at {phoneDisplay(phones.main)}.
         </p>
       </div>
 
@@ -720,14 +721,14 @@ const jsonLd = [
       </div>
       <div class="narrow" style="padding:0;text-align:center">
         <p>
-          If you know which plan fits, you can <a href={orderUrl}
+          If you know which plan fits, you can <a href={orderUrl('home', 'en')}
             >order online →</a
           >. If you have questions — about timing, plan choice, or anything
           specific to your situation — call us at
-          <strong>{brand.phone}</strong> and we’ll walk you through it.
+          <strong>{phoneDisplay(phones.main)}</strong> and we’ll walk you through it.
         </p>
         <p class="trusted-line">
-          <strong>Trusted by 10,000+ mothers since 2010.</strong>
+          <strong>Trusted by {formatNumber(site.mothersServed)}+ mothers since {site.founded}.</strong>
         </p>
         <blockquote>
           The food was good, with ample portions and excellent packaging. Now
@@ -742,18 +743,18 @@ const jsonLd = [
         <div class="final-card">
           <h4>Try a tasting first</h4>
           <div class="sub">{usd(products.local_classic_sample_1d.price)} Local · {usd(products.frozen_classic_sample_8item.price)} Frozen Tasting</div>
-          <a href={orderSampleUrl} class="btn btn-primary"
+          <a href={orderUrl('sample_meals', 'en')} class="btn btn-primary"
             >Order a Tasting</a
           >
         </div>
         <div class="final-card">
           <h4>Reserve a plan</h4>
-          <div class="sub">Or call {brand.phone} with questions</div>
-          <a href={orderUrl} class="btn btn-primary">Order Now</a>
+          <div class="sub">Or call {phoneDisplay(phones.main)} with questions</div>
+          <a href={orderUrl('home', 'en')} class="btn btn-primary">Order Now</a>
         </div>
       </div>
       <p class="gift-line">
-        Ordering for someone else? <a href={route("/sample")}
+        Ordering for someone else? <a href={route("/sample", 'en')}
           >Gift a plan →</a>
       </p>
     </div>

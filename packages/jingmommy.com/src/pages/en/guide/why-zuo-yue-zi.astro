@@ -4,8 +4,8 @@ import TopBar from "@/components/themes/en/TopBar.astro"
 import Footer from "@/components/themes/en/Footer.astro"
 import Botanical from "@/components/themes/en/Botanical.astro"
 import CtaBand from "@/components/themes/en/CtaBand.astro"
-import { route } from "@/config/en.ts"
-import { products, usd } from '@/client.config.ts'
+import { site, products } from '@/config/index.ts'
+import { route, formatNumber, usd } from '@/utils/index.ts'
 
 const title = "What Is Zuo Yue Zi? The Chinese Postpartum Tradition — JingMommy"
 const description =
@@ -25,11 +25,11 @@ const jsonLd = [
     about: "Zuo Yue Zi — Chinese postpartum confinement and recovery",
   },
 ]
-const p7 = (hash: string) => `${route("/guide/chinese-food-therapy")}#${hash}`
+const p7 = (hash: string) => `${route("/guide/chinese-food-therapy", 'en')}#${hash}`
 ---
 
 <Base title={title} description={description} jsonLd={jsonLd}>
-  <TopBar active={route("/guide/why-zuo-yue-zi")} />
+  <TopBar active={route("/guide/why-zuo-yue-zi", 'en')} />
 
   <!-- HERO -->
   <section class="hero p3-hero">
@@ -53,7 +53,7 @@ const p7 = (hash: string) => `${route("/guide/chinese-food-therapy")}#${hash}`
         hormones, your milk supply, your energy, and your long-term recovery —
         for months to come.
       </p>
-      <a href={route("/sample")} class="hero-gift reveal"
+      <a href={route("/sample", 'en')} class="hero-gift reveal"
         >Buying this as a gift for someone? Start here →</a
       >
     </div>
@@ -64,7 +64,7 @@ const p7 = (hash: string) => `${route("/guide/chinese-food-therapy")}#${hash}`
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">What mothers experience</p>
-        <h2>Real outcomes from<br />10,000+ families.</h2>
+        <h2>Real outcomes from<br />{formatNumber(site.mothersServed)}+ families.</h2>
         <p>
           Mothers who follow the Zuo Yue Zi framework consistently report the
           same results — stronger milk supply, faster return of energy, reduced
@@ -441,7 +441,7 @@ const p7 = (hash: string) => `${route("/guide/chinese-food-therapy")}#${hash}`
           in the practice of Chinese postpartum care since 2004 — beginning with postpartum
           herbal formulations and expanding into full meal programs in 2008. Through
           JingMommy’s meal delivery service and Zuo Yue Zi workshops, her work has
-          reached over 10,000 families across the United States. Featured in the LA
+          reached over {formatNumber(site.mothersServed)} families across the United States. Featured in the LA
           Times and on PBS.
         </p>
       </div>
@@ -458,10 +458,10 @@ const p7 = (hash: string) => `${route("/guide/chinese-food-therapy")}#${hash}`
           a sample first — no commitment required.
         </p>
         <div class="midcta-buttons">
-          <a href={route("/sample")} class="btn btn-primary btn-sm"
+          <a href={route("/sample", 'en')} class="btn btn-primary btn-sm"
             >Local sample — {usd(products.local_classic_sample_1d.price)}</a
           >
-          <a href={route("/plans")} class="btn btn-ghost btn-sm"
+          <a href={route("/plans", 'en')} class="btn btn-ghost btn-sm"
             >See all plans</a
           >
         </div>
@@ -696,16 +696,16 @@ const p7 = (hash: string) => `${route("/guide/chinese-food-therapy")}#${hash}`
   <CtaBand
     eyebrow="Ready when you are"
     heading="Try it before you commit."
-    body="Start with a sample. No commitment. Over 10,000 mothers have trusted JingMommy for their postpartum recovery."
+    body={`Start with a sample. No commitment. Over ${formatNumber(site.mothersServed)} mothers have trusted JingMommy for their postpartum recovery.`}
     buttons={[
       {
         label: `Local sample — ${usd(products.local_classic_sample_1d.price)}`,
-        href: route("/sample"),
+        href: route("/sample", 'en'),
         variant: "primary",
       },
       {
         label: `Frozen sample — ${usd(products.frozen_classic_sample_8item.price)}`,
-        href: route("/sample"),
+        href: route("/sample", 'en'),
         variant: "ghost",
       },
     ]}

@@ -1,28 +1,21 @@
 ---
 import { tastingEvents } from '@/config/tasting-events.ts'
+import { tastingPartyI18n } from '@/i18n/index.ts'
+import { orderUrl } from '@/utils/index.ts'
 
 const {
   id = 'tasting-party-reserve',
-  baseUrl = 'https://order.jingmommy.com/?route=form/form/tasting_party',
-  locale = Astro.currentLocale === 'en-old' ? 'en' : Astro.currentLocale,
-  // Bilingual/Multilingual text
-  text = {
-    full: { 'zh-tw': '已滿｜視候補狀況加開場次', 'zh-cn': '已满｜视候补状况加开场次', en: 'Full | More slots may open if backup seats' },
-    closed: { 'zh-tw': '圓滿結束', 'zh-cn': '圆满结束', en: 'Ended' },
-    waiting: { 'zh-tw': '報名候補', 'zh-cn': '报名候补', en: 'Join Waitlist' },
-    open: { 'zh-tw': '開放報名', 'zh-cn': '开放报名', en: 'Open for Signup' }
-  }
+  baseUrl = orderUrl('tasting_party_form', Astro.currentLocale),
+  // Per-locale status labels (see src/i18n/<locale>/tasting-party.ts)
+  text = tastingPartyI18n[Astro.currentLocale ?? ''] ?? tastingPartyI18n['zh-tw'],
 } = Astro.props;
 
 // TODO: convert this vanilla JavaScript to a real Astro component
 ---
 
-<script define:vars={{ tableId: id, baseUrl, locale, text, events: tastingEvents }}>
+<script define:vars={{ tableId: id, baseUrl, text, events: tastingEvents }}>
 document.addEventListener('DOMContentLoaded', function() {
   function t(key) {
-    if (typeof text[key] === 'object') {
-      return text[key][locale] || text[key]['zh-tw'] || ''
-    }
     return text[key] || ''
   }
 

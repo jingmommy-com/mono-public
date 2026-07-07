@@ -6,7 +6,8 @@ color: rose
 
 import PageButtons from '@/components/themes/base/PageButtons.astro'
 import LookupZipButton from '@/components/themes/base/LookupZipButton.astro'
-import { products, usd } from '@/client.config.ts'
+import { products } from '@/config/index.ts'
+import { orderUrl, usd } from '@/utils/index.ts'
 
 **「輕享月子餐」—靈活選擇，不用天天吃月子餐，輕鬆補養更自在！**
 
@@ -86,12 +87,12 @@ import { products, usd } from '@/client.config.ts'
     {
       title: '開始選購 / Start Shopping',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/easy-postpartum-meals'
+      url: orderUrl('local_easy', 'zh-tw')
     },
     {
       title: '月子餐試吃 / Sample Meal',
       icon: 'mdi:calendar-check',
-      url: '//order.jingmommy.com/sample-meals/'
+      url: orderUrl('sample_meals', 'zh-tw')
     },
     [
       {

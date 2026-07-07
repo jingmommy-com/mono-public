@@ -1,6 +1,38 @@
 ---
 /* Site footer. Shared across all en pages. */
-import { brand, footerColumns, route } from "@/config/en.ts"
+import enBrand from '@/i18n/en/brand.ts'
+import { site, phones } from '@/config/index.ts'
+import { route, phoneDisplay } from '@/utils/index.ts'
+
+const footerColumns = [
+  {
+    heading: 'Explore',
+    links: [
+      { label: 'Our Story', href: route('/about/founding-story', 'en') },
+      { label: 'Why Zuo Yue Zi', href: route('/guide/why-zuo-yue-zi', 'en') },
+      { label: 'Chinese Food Therapy', href: route('/guide/chinese-food-therapy', 'en') },
+      { label: 'Meal Plans', href: route('/plans', 'en') },
+      { label: 'Real Stories', href: route('/about/testimonial', 'en') },
+    ],
+  },
+  {
+    heading: 'Get Started',
+    links: [
+      { label: 'Try a Taste', href: route('/sample', 'en') },
+      { label: 'FAQ', href: route('/faq', 'en') },
+      { label: 'Contact', href: route('/contact', 'en') },
+    ],
+  },
+  {
+    heading: 'Reach Us',
+    links: [
+      { label: phoneDisplay(phones.main), href: `tel:${phones.main}` },
+      { label: enBrand.languages, href: route('/contact', 'en') },
+      { label: `${site.address.addressLocality}, ${site.address.addressRegion}` },
+      { label: 'Fresh local · Frozen nationwide' },
+    ],
+  },
+]
 const year = new Date().getFullYear()
 ---
 
@@ -8,8 +40,8 @@ const year = new Date().getFullYear()
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <a href={route("/")} class="logo">{brand.name}</a>
-        <p class="footer-tag">{brand.tagline}</p>
+        <a href={route("/", 'en')} class="logo">{site.brandName}</a>
+        <p class="footer-tag">{enBrand.tagline}</p>
       </div>
       {
         footerColumns.map((col) => (
@@ -31,8 +63,8 @@ const year = new Date().getFullYear()
       }
     </div>
     <div class="footer-bottom">
-      <span>© {year} {brand.name} · {brand.domain}</span>
-      <span>{brand.promise}</span>
+      <span>© {year} {site.brandName} · {enBrand.domain}</span>
+      <span>{enBrand.promise}</span>
     </div>
   </div>
 </footer>

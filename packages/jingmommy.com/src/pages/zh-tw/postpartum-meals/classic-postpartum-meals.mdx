@@ -6,7 +6,8 @@ color: rose
 
 import PageButtons from '@/components/themes/base/PageButtons.astro'
 import LookupZipButton from '@/components/themes/base/LookupZipButton.astro'
-import { products, usd } from '@/client.config.ts'
+import { products } from '@/config/index.ts'
+import { orderUrl, usd } from '@/utils/index.ts'
 
 女性從懷孕開始，子宮便隨著胎兒的成長而撐大，內臟受到胎兒壓迫，懷孕的過程中，心肺和泌尿功能、骨骼關節、腸胃系統、內分泌系統等等產生了極大的生理變化。懷胎十月後，又必須經歷劇痛、失血、消耗氣力的生產過程。
 
@@ -44,12 +45,12 @@ import { products, usd } from '@/client.config.ts'
     {
       title: '開始選購 / Start Shopping',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/classic-postpartum-meals'
+      url: orderUrl('local_classic', 'zh-tw')
     },
     {
       title: '月子餐試吃 / Sample Meal',
       icon: 'mdi:calendar-check',
-      url: '//order.jingmommy.com/sample-meals/'
+      url: orderUrl('sample_meals', 'zh-tw')
     },
     [
       {

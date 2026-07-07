@@ -6,7 +6,6 @@ const t: FooterI18n = {
   mainLine: 'Main',
   address: 'Address',
   businessHour: 'Business Hours',
-  brandName: 'JingMommy',
 }
 
 export default t

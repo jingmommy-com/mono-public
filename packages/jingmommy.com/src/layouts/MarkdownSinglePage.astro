@@ -1,8 +1,8 @@
 ---
 import BaseMarkdownSinglePage from './themes/base/MarkdownSinglePage.astro'
 import ModernMarkdownSinglePage from './themes/modern/MarkdownSinglePage.astro'
-import { defaultTheme } from '@/themes.ts'
-import type { ThemeName } from '@/themes.ts'
+import { defaultTheme } from '@/config/index.ts'
+import type { ThemeName } from '@/config/index.ts'
 
 const themeMap: Record<ThemeName, any> = {
   base:   BaseMarkdownSinglePage,

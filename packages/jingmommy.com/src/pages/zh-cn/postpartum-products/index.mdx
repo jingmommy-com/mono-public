@@ -4,8 +4,9 @@ title: 金品月子产品
 color: rose
 ---
 
-import { notProse } from '@/themes.ts'
+import { notProse } from '@/config/index.ts'
 import PageButtons from '@/components/themes/base/PageButtons.astro'
+import { orderUrl } from '@/utils/index.ts'
 
 ### 🎁 金品月子产品
 
@@ -104,7 +105,7 @@ import PageButtons from '@/components/themes/base/PageButtons.astro'
     {
       title: '开始选购 / Start Shopping',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/postpartum-products'
+      url: orderUrl('postpartum_products', 'zh-cn')
     },
     {
       title: '预约咨询 / Book a Consultation',

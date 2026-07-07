@@ -4,5 +4,4 @@ export interface FooterI18n {
   mainLine: string
   address: string
   businessHour: string
-  brandName: string
 }

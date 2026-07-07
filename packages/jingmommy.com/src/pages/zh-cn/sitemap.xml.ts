@@ -1,5 +1,5 @@
 import routeMap from '@/route-map.json'
-import { site } from '@/client.config.ts'
+import { site } from '@/config/index.ts'
 
 
 export async function GET() {

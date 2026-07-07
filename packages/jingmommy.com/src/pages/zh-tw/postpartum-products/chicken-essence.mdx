@@ -6,6 +6,7 @@ color: rose
 
 import Image from '@/components/themes/base/Image.astro'
 import PageButtons from '@/components/themes/base/PageButtons.astro'
+import { orderUrl } from '@/utils/index.ts'
 
 #### 💛 坐月子最懂你的一口修復力
 
@@ -67,7 +68,7 @@ import PageButtons from '@/components/themes/base/PageButtons.astro'
     {
       title: '開始選購 / Start Shopping',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/postpartum-products'
+      url: orderUrl('postpartum_products', 'zh-tw')
     },
     {
       title: '預約諮詢 / Book a Consultation',

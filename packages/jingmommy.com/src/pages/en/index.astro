@@ -7,14 +7,14 @@ import Botanical from "@/components/themes/en/Botanical.astro"
 import Plans from "@/components/themes/en/Plans.astro"
 import PressBand from "@/components/themes/en/PressBand.astro"
 import TasteCTA from "@/components/themes/en/TasteCTA.astro"
-import { brand, route } from "@/config/en.ts"
-import { products, usd } from '@/client.config.ts'
+import { site, phones, products } from '@/config/index.ts'
+import { route, formatNumber, usd } from '@/utils/index.ts'
 import zyzImg from "@/assets/en/zyz-sesame-oil-chicken.jpg"
 import nicoleImg from "@/assets/en/nicole-huang.jpg"
 
 const title = "JingMommy — Authentic Chinese Postpartum Meals, Delivered"
 const description =
-  `JingMommy delivers authentic Chinese postpartum (Zuo Yue Zi) meals across the US. Founded 2010, 10,000+ mothers served. Fresh daily in SoCal, frozen nationwide. Featured in LA Times, PBS & Washington Post. Sample meals from ${usd(products.local_classic_sample_1d.price)}.`
+  `JingMommy delivers authentic Chinese postpartum (Zuo Yue Zi) meals across the US. Founded ${site.founded}, ${formatNumber(site.mothersServed)}+ mothers served. Fresh daily in SoCal, frozen nationwide. Featured in LA Times, PBS & Washington Post. Sample meals from ${usd(products.local_classic_sample_1d.price)}.`
 
 // "As featured in" outlets — only used on this page (single-page config).
 const press = [
@@ -33,18 +33,11 @@ const jsonLd = [
     name: "JingMommy",
     alternateName: "JingMommy Postpartum Meals",
     description:
-      "Authentic Chinese postpartum (Zuo Yue Zi) meal delivery, founded 2010. Over 10,000 mothers served across the US. Fresh daily delivery in Southern California, frozen nationwide.",
+      `Authentic Chinese postpartum (Zuo Yue Zi) meal delivery, founded ${site.founded}. Over ${formatNumber(site.mothersServed)} mothers served across the US. Fresh daily delivery in Southern California, frozen nationwide.`,
     url: "https://www.postpartummeal.com",
-    telephone: "+1-626-217-7539",
-    foundingDate: "2010",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "618 Brea Canyon Road Unit F",
-      addressLocality: "Walnut",
-      addressRegion: "CA",
-      postalCode: "91789",
-      addressCountry: "US",
-    },
+    telephone: `+1${phones.main}`,
+    foundingDate: site.founded,
+    address: site.address,
     areaServed: "United States",
     servesCuisine: "Chinese postpartum confinement meals (Zuo Yue Zi)",
     priceRange: "$$-$$$",
@@ -59,28 +52,28 @@ const jsonLd = [
       {
         "@type": "Offer",
         name: "Herbal Meal Plan",
-        price: "2890",
+        price: String(products.local_herbal_30d.price),
         priceCurrency: "USD",
         description: "30-day plan: three meals plus a daily herbal drink.",
       },
       {
         "@type": "Offer",
         name: "Classic Meal Plan",
-        price: "2590",
+        price: String(products.local_classic_30d.price),
         priceCurrency: "USD",
         description: "30-day plan: three comforting meals a day.",
       },
       {
         "@type": "Offer",
         name: "Vita Meal Plan",
-        price: "2299",
+        price: String(products.local_vita_30d.price),
         priceCurrency: "USD",
         description: "30-day plan: two lighter meals plus a dessert.",
       },
       {
         "@type": "Offer",
         name: "Low Carb Meal Plan",
-        price: "1999",
+        price: String(products.local_lowcarb_30d.price),
         priceCurrency: "USD",
         description:
           "30-day plan: warming meals without rice, grains, or sweet drinks.",
@@ -88,14 +81,14 @@ const jsonLd = [
       {
         "@type": "Offer",
         name: "Easy Meal Plan",
-        price: "1550",
+        price: String(products.local_easy_15d.price),
         priceCurrency: "USD",
         description: "30-day plan: warm meals delivered every other day.",
       },
       {
         "@type": "Offer",
         name: "Sample Meal (local)",
-        price: "50",
+        price: String(products.local_classic_sample_1d.price),
         priceCurrency: "USD",
         description:
           "A full day of sample meals, fresh delivery in Southern California.",
@@ -103,7 +96,7 @@ const jsonLd = [
       {
         "@type": "Offer",
         name: "Sample Meal (frozen nationwide)",
-        price: "80",
+        price: String(products.frozen_classic_sample_8item.price),
         priceCurrency: "USD",
         description:
           "A full day of sample meals, frozen FedEx delivery nationwide.",
@@ -135,7 +128,7 @@ const jsonLd = [
     <Botanical variant="hero-tl" />
     <Botanical variant="hero-br" />
     <div class="hero-inner">
-      <p class="eyebrow reveal">Since 2010 · The real Zuo Yue Zi, in English</p>
+      <p class="eyebrow reveal">Since {site.founded} · The real Zuo Yue Zi, in English</p>
       <h1 class="reveal">
         You planned everything, except the <span
           style="color:#A8842C;font-size:1.15em;font-weight:600">RECOVERY.</span
@@ -146,10 +139,10 @@ const jsonLd = [
         single day.
       </p>
       <div class="hero-cta reveal">
-        <a href={route("/plans")} class="btn btn-primary"
+        <a href={route("/plans", 'en')} class="btn btn-primary"
           >Explore meal plans</a
         >
-        <a href={route("/sample")} class="btn btn-ghost"
+        <a href={route("/sample", 'en')} class="btn btn-ghost"
           >Try a Taste — Free or from {usd(products.local_classic_sample_1d.price)}</a
         >
       </div>
@@ -404,7 +397,7 @@ const jsonLd = [
         <p style="font-size:15px;color:var(--muted);margin-top:10px">
           Prices shown are for fresh delivery in SoCal. Shipping nationwide?
           Frozen plans start at {usd(products.frozen_essential_4w.price)} — <a
-            href={route("/plans")}
+            href={route("/plans", 'en')}
             style="color:var(--accent-deep)">see full plan details</a
           >.
         </p>
@@ -412,7 +405,7 @@ const jsonLd = [
       <Plans
         cta
         ctaLabel="See full plan details"
-        ctaHref={route("/plans")}
+        ctaHref={route("/plans", 'en')}
       />
     </div>
   </section>
@@ -454,17 +447,17 @@ const jsonLd = [
           <p>
             In 2004 she became a distributor for the postpartum formulas of Dr.
             Zhuang Shu-Qi, Taiwan's foremost authority on postpartum care. In
-            2010 she founded JingMommy. In 2016 she built out a 5,000+ sq ft
+            {site.founded} she founded JingMommy. In 2016 she built out a 5,000+ sq ft
             facility in Walnut, CA, with its own certified central kitchen —
             open and transparent, so any mother who visits can see exactly how
             her food is made.
           </p>
           <p>
-            Since 2010, over <strong>10,000 mothers</strong> across the US have trusted
+            Since {site.founded}, over <strong>{formatNumber(site.mothersServed)} mothers</strong> across the US have trusted
             JingMommy with their recovery — built on one belief:
           </p>
           <p class="story-sign">Your recovery matters, because you matter.</p>
-          <a href={route("/about/founding-story")} class="story-more"
+          <a href={route("/about/founding-story", 'en')} class="story-more"
             >Read Nicole's full story →</a
           >
         </div>
@@ -476,7 +469,7 @@ const jsonLd = [
         <p>
           A guide for English-speaking families on the ancient practice of
           postpartum confinement care — and how to bring it into modern American
-          life. Drawn from 15 years and over 10,000 mothers. Inquiries from
+          life. Drawn from 15 years and over {formatNumber(site.mothersServed)} mothers. Inquiries from
           publishers and media welcome.
         </p>
       </div>

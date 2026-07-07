@@ -1,6 +1,18 @@
 ---
 /* Sticky top navigation bar. Shared across all en pages. */
-import { brand, nav, navCta, route } from "@/config/en.ts"
+import { site } from '@/config/index.ts'
+import { route } from '@/utils/index.ts'
+
+/** Primary top-bar navigation (Try a Taste is rendered as the CTA). */
+const nav = [
+  { label: 'Our Story', href: route('/about/founding-story', 'en') },
+  { label: 'Why Zuo Yue Zi', href: route('/guide/why-zuo-yue-zi', 'en') },
+  { label: 'Food Therapy', href: route('/guide/chinese-food-therapy', 'en') },
+  { label: 'Meal Plans', href: route('/plans', 'en') },
+  { label: 'Real Stories', href: route('/about/testimonial', 'en') },
+]
+
+const navCta = { label: 'Try a Taste', href: route('/sample', 'en') }
 
 interface Props {
   /** href of the current page, to mark its nav link active. */
@@ -11,7 +23,7 @@ const { active } = Astro.props
 
 <header class="topbar">
   <div class="topbar-inner">
-    <a href={route("/")} class="logo">{brand.name}</a>
+    <a href={route("/", 'en')} class="logo">{site.brandName}</a>
     <button class="menu-btn" aria-label="Open menu">☰</button>
     <nav class="nav" id="nav">
       {

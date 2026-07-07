@@ -2,6 +2,8 @@
 import Layout from '@/layouts/Page.astro'
 import { Alert, AlertDescription } from '@/components/starwind/alert'
 import type { DeliveryLookupI18n } from '@/i18n/delivery-lookup.ts'
+import { site, products } from '@/config/index.ts'
+import { orderUrl, usd, interpolate, getPathLocale } from '@/utils/index.ts'
 
 interface Props {
   t: DeliveryLookupI18n,
@@ -9,7 +11,29 @@ interface Props {
 }
 
 const { t, color = 'orange' } = Astro.props
-const { messages } = t
+
+// Per-message styling — layout concern, so it lives here as component config
+// (placement rule (c)), never in the i18n files.
+const messageClasses: Record<string, string> = {
+  loading: 'text-gray-400',
+  systemError: 'text-rose-600',
+  zipError: 'text-rose-600',
+  default: 'text-gray-700',
+}
+
+// Compose config values into the i18n message templates ({token} placeholders).
+const vars = {
+  postalCode: site.address.postalCode,
+  shippingSurcharge: usd(products.local_delivery_fee_15d.price),
+  customerServiceUrl: orderUrl('customer_service', getPathLocale(Astro.url.pathname)),
+}
+const messages = Object.fromEntries(
+  Object.entries(t.messages).map(([key, lines]) => [
+    key,
+    { class: messageClasses[key], lines: lines.map(line => interpolate(line, vars)) },
+  ])
+)
+const placeholder = interpolate(t.placeholder, vars)
 ---
 
 <Layout title={t.title} description={t.description} color={color}>
@@ -37,7 +61,7 @@ const { messages } = t
         type="text"
         pattern="\d{5}"
         class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder={t.placeholder}
+        placeholder={placeholder}
         autocomplete="postal-code"
         maxlength="5"
       />
@@ -51,7 +75,7 @@ const { messages } = t
     </div>
   </div>
 
-  <script is:inline define:vars={{ messages }}>
+  <script is:inline define:vars={{ messages, deliveryZipApi: orderUrl('delivery_zip_api') }}>
     function formatZip(str) {
       return str.trim().replace(/[\uFF10-\uFF19]/g, function(ch) {
         return String.fromCharCode(ch.charCodeAt(0) - 0xFF10 + 0x30)
@@ -86,20 +110,20 @@ const { messages } = t
         return
       }
       renderMsg(messages.loading)
-      fetch('https://order.jingmommy.com/-/api/delivery_zip', {
+      fetch(deliveryZipApi, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ zip_code: zip })
       })
         .then(r => { if (!r.ok) throw new Error('Network error'); return r.json() })
         .then(data => {
-          let code = null
+          let delivery_code = null
           if (Array.isArray(data.data)) {
             const row = data.data.find(r => r.zip_code === zip)
-            if (row && typeof row.delivery_code !== 'undefined') code = row.delivery_code
+            if (row && typeof row.delivery_code !== 'undefined') delivery_code = row.delivery_code
           }
           const msgMap = { 1: messages.everyDay, 2: messages.everyOtherDay, 3: messages.frozen }
-          renderMsg(msgMap[code] ?? messages.contact)
+          renderMsg(msgMap[delivery_code] ?? messages.contact)
         })
         .catch(e => { renderMsg(messages.systemError); console.error(e) })
     }

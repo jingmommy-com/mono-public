@@ -4,13 +4,13 @@ title: 月子餐试吃派对
 color: pink
 ---
 
-import { notProse } from '@/themes.ts'
+import { notProse, site, products, phones } from '@/config/index.ts'
+import { addressLine2, addressLine1, orderUrl, phoneDisplay, usd } from '@/utils/index.ts'
 import Image from '@/components/themes/base/Image.astro'
 import Badge from '@/components/starwind/badge'
 import { YouTube } from 'astro-embed'
 
 import event01 from '@/assets/event/event_01.jpg'
-import { site, products, usd } from '@/client.config.ts'
 
 <span class="text-red-600">*</span> 送餐到府试吃，跟试吃派对只能<span class="text-pink-700 font-bold"> 2 选 1</span>
 
@@ -48,7 +48,7 @@ import { site, products, usd } from '@/client.config.ts'
 #### 报名方式
 
 1. 网上报名：请于下方选择想参加的日期，点选「报名」后填写个人资料并送出。我们收到报名后，将尽快与您联系并确认名额。
-2. 电话报名：<a href="tel:6262177539" class={`${notProse} text-pink-700 font-bold`}>(626) 217-7539</a>
+2. 电话报名：<a href={`tel:${phones.main}`} class={`${notProse} text-pink-700 font-bold`}>{phoneDisplay(phones.main)}</a>
 3. E-mail 报名：<a href="mailto:Service@JingMommy.com" class={`${notProse} text-pink-700 font-bold`}>Service@JingMommy.com</a>
 
 <table class="table text-center" id="tasting-party-reserve">
@@ -81,7 +81,7 @@ import JS from '@/components/themes/base/js/tasting-party-preserve.astro'
 - 活动原则上以<b>两个大人</b>为上限 (如果有小孩请另行通知)。
 - 如您临时无法前来或需调整日期，烦请提前告知，以便我们保留宝贵名额予他人，感谢您的体谅！
 - 为维护品质，报名后若未出席（除特殊原因）将酌收每人 {usd(products.tasting_party_no_show_fee.price)} 空位费。
-- <a target="_blank" href="//order.jingmommy.com/sample-meals" title="预约试吃" class={notProse}><Badge variant="warning">送餐到府试吃</Badge></a>，跟试吃派对只能<span class="text-pink-700 font-bold"> 2 选 1</span>
+- <a target="_blank" href={orderUrl('sample_meals', 'zh-cn')} title="预约试吃" class={notProse}><Badge variant="warning">送餐到府试吃</Badge></a>，跟试吃派对只能<span class="text-pink-700 font-bold"> 2 选 1</span>
 
 ---
 
@@ -89,12 +89,12 @@ import JS from '@/components/themes/base/js/tasting-party-preserve.astro'
 
 <div>
   <div>金品中央厨房</div>
-  <div class="text-pink-700">618 Brea Canyon Rd. #F</div>
-  <div class="text-pink-700">Walnut, CA 91789</div>
+  <div class="text-pink-700">{addressLine1(site.address)}</div>
+  <div class="text-pink-700">{addressLine2(site.address)}</div>
 </div>
 
 ---
 
-<div>若因天气、交通或行程不便无法前来，可改选择 <a target="_blank" href="//order.jingmommy.com/sample-meals" title="预约试吃" class={notProse}><Badge variant="warning">送餐到府试吃</Badge></a>，让妳在家安心体验金品月子餐。</div>
+<div>若因天气、交通或行程不便无法前来，可改选择 <a target="_blank" href={orderUrl('sample_meals', 'zh-cn')} title="预约试吃" class={notProse}><Badge variant="warning">送餐到府试吃</Badge></a>，让妳在家安心体验金品月子餐。</div>
 
 金品月子膳食让妳坐月子就像是在享受一场美食的飨宴，变化多端，好吃不腻！

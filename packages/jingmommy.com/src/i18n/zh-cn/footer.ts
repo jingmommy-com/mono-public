@@ -6,7 +6,6 @@ const t: FooterI18n = {
   mainLine: '总机',
   address: '公司住址',
   businessHour: '服务时间',
-  brandName: '金品月子膳食',
 }
 
 export default t

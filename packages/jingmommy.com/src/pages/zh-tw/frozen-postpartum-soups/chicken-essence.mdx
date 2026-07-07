@@ -87,14 +87,15 @@ import { Alert, AlertDescription } from '@/components/starwind/alert'
 ---
 
 import PageButtons from '@/components/themes/base/PageButtons.astro'
-import { products, usd } from '@/client.config.ts'
+import { products } from '@/config/index.ts'
+import { orderUrl, usd } from '@/utils/index.ts'
 
 <PageButtons
   data={[
     {
       title: '開始選購 / Start Shopping',
       icon: 'mdi:shopping',
-      url: '//order.jingmommy.com/zh/frozen-chicken-essence',
+      url: orderUrl('frozen_chicken_essence', 'zh-tw'),
       target: '_blank'
     },
     {

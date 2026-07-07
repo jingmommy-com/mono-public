@@ -41,6 +41,7 @@ import PageButtons from '@/components/themes/base/PageButtons.astro'
 <p class="text-center">完整的 30 天阶段性坐月子调理不是仅仅进补而已，更是能让妳修复损伤，补充体力，强化体质。让妳越生越健康、越生越美丽！</p>
 
 import { Alert, AlertDescription } from '@/components/starwind/alert'
+import { orderUrl } from '@/utils/index.ts'
 
 <Alert variant="warning" class="text-center">
   <AlertDescription>
@@ -81,7 +82,7 @@ import { Alert, AlertDescription } from '@/components/starwind/alert'
     {
       title: '开始选购 / Start Shopping',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/postpartum-products'
+      url: orderUrl('postpartum_products', 'zh-cn')
     },
     {
       title: '预约咨询 / Book a Consultation',

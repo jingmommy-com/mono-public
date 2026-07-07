@@ -6,7 +6,8 @@ color: rose
 
 import PageButtons from '@/components/themes/base/PageButtons.astro'
 import LookupZipButton from '@/components/themes/base/LookupZipButton.astro'
-import { products, usd } from '@/client.config.ts'
+import { products } from '@/config/index.ts'
+import { orderUrl, usd } from '@/utils/index.ts'
 
 **「元气月子餐」— 精华不减，价格更亲民！**
 
@@ -84,12 +85,12 @@ import { products, usd } from '@/client.config.ts'
     {
       title: '开始选购 / Start Shopping',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/vita-postpartum-meals'
+      url: orderUrl('local_vita', 'zh-cn')
     },
     {
       title: '月子餐试吃 / Sample Meal',
       icon: 'mdi:calendar-check',
-      url: '//order.jingmommy.com/sample-meals/'
+      url: orderUrl('sample_meals', 'zh-cn')
     },
     [
       {

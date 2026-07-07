@@ -5,15 +5,16 @@ import Footer from "@/components/themes/en/Footer.astro"
 import PageHero from "@/components/themes/en/PageHero.astro"
 import BotanSketch from "@/components/themes/en/BotanSketch.astro"
 import Botanical from "@/components/themes/en/Botanical.astro"
-import { brand, route, orderSampleUrl } from "@/config/en.ts"
-import { products, usd } from '@/client.config.ts'
-import { tastingReserveUrl } from "@/config/tasting-events.ts"
+import enBrand from '@/i18n/en/brand.ts'
+import { phones, products } from '@/config/index.ts'
+import { route, orderUrl, phoneDisplay, usd } from '@/utils/index.ts'
+import { tastingReserveUrl } from '@/utils/index.ts'
 
 const title = "Try a Taste — Free Tasting & Sample Meals — JingMommy"
 const description =
   `Taste authentic Chinese postpartum meals before you commit. Join a free tasting event in Southern California, or order a full sample day — ${usd(products.local_classic_sample_1d.price)} fresh local, ${usd(products.frozen_classic_sample_8item.price)} frozen nationwide. Gift options too.`
 // Free tasting-party reservation, pre-filled with the next active date.
-const tastingUrl = tastingReserveUrl("en-gb")
+const tastingUrl = tastingReserveUrl('en')
 
 const jsonLd = [
   {
@@ -26,13 +27,13 @@ const jsonLd = [
       {
         "@type": "Offer",
         name: "Local sample (Southern California)",
-        price: "50",
+        price: String(products.local_classic_sample_1d.price),
         priceCurrency: "USD",
       },
       {
         "@type": "Offer",
         name: "Frozen sample (nationwide)",
-        price: "80",
+        price: String(products.frozen_classic_sample_8item.price),
         priceCurrency: "USD",
       },
     ],
@@ -41,7 +42,7 @@ const jsonLd = [
 ---
 
 <Base title={title} description={description} jsonLd={jsonLd}>
-  <TopBar active={route("/sample")} />
+  <TopBar active={route("/sample", 'en')} />
 
   <PageHero
     eyebrow="Not sure yet?"
@@ -50,7 +51,7 @@ const jsonLd = [
   >
     <div class="hero-cta" style="margin-top:12px">
       <a href={tastingUrl} class="btn btn-primary">Reserve a tasting</a>
-      <a href={orderSampleUrl} class="btn btn-ghost">Order a sample — from {usd(products.local_classic_sample_1d.price)}</a>
+      <a href={orderUrl('sample_meals', 'en')} class="btn btn-ghost">Order a sample — from {usd(products.local_classic_sample_1d.price)}</a>
     </div>
   </PageHero>
 
@@ -124,7 +125,7 @@ const jsonLd = [
               as the full plan. A true taste of what’s inside.
             </div>
           </div>
-          <a href={orderSampleUrl} class="btn btn-primary">Order a sample</a>
+          <a href={orderUrl('sample_meals', 'en')} class="btn btn-primary">Order a sample</a>
         </div>
       </div>
       <p class="either-note reveal">
@@ -254,12 +255,12 @@ const jsonLd = [
         </p>
       </div>
       <div class="gift-cta reveal">
-        <a href={brand.phoneHref} class="btn btn-primary"
+        <a href={`tel:${phones.main}`} class="btn btn-primary"
           >Contact us to arrange a gift</a
         >
         <span class="phone"
-          >Call or text <a href={brand.phoneHref}>{brand.phone}</a> · {
-            brand.languages
+          >Call or text <a href={`tel:${phones.main}`}>{phoneDisplay(phones.main)}</a> · {
+            enBrand.languages
           }</span
         >
       </div>
@@ -279,7 +280,7 @@ const jsonLd = [
       </p>
       <div class="hero-cta">
         <a href={tastingUrl} class="btn btn-primary">Reserve a tasting</a>
-        <a href={orderSampleUrl} class="btn btn-ghost">Order a sample — from {usd(products.local_classic_sample_1d.price)}</a>
+        <a href={orderUrl('sample_meals', 'en')} class="btn btn-ghost">Order a sample — from {usd(products.local_classic_sample_1d.price)}</a>
       </div>
       <a href="#gift" class="close-gift-link"
         >Giving it to someone? Arrange a gift →</a

@@ -100,7 +100,7 @@ import menuAfterTherapy12 from '@/assets/menu/menu_after_therapy12.jpg'
     {
       title: '开始选购 / Start Shopping',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/post-surgery-meals'
+      url: orderUrl('local_post_surgery', 'zh-cn')
     },
     {
       title: '预约咨询 / Book a Consultation',
@@ -147,7 +147,8 @@ import menu_meal22 from '@/assets/menu/menu_meal22.jpg'
 import menu_meal05a from '@/assets/menu/menu_meal05a.jpg'
 import menu_meal51a from '@/assets/menu/menu_meal51a.jpg'
 import menu_meal52 from '@/assets/menu/menu_meal52.jpg'
-import { products, usd } from '@/client.config.ts'
+import { products } from '@/config/index.ts'
+import { orderUrl, usd } from '@/utils/index.ts'
 
 <table class="meal-details">
   <tbody>

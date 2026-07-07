@@ -4,7 +4,7 @@
 
   A static site serves a single /404.html for every not-found URL, so the theme
   can't be chosen at build time — it's chosen client-side from the path prefix:
-    • /zh-tw/* and /en-old/*  → base theme (also covers `modern`, which falls back to base)
+    • /zh-tw/* and /en-translated/*  → base theme (also covers `modern`, which falls back to base)
     • everything else (/en/*, unknown roots) → en theme
 
   Both themed bodies are rendered; an inline head script sets `data-nf` on <html>
@@ -33,7 +33,7 @@ const title = '404 — Page Not Found · JingMommy'
     <script is:inline>
       ;(function () {
         var p = location.pathname
-        var isBase = p.indexOf('/zh-tw') === 0 || p.indexOf('/zh-cn') === 0 || p.indexOf('/en-old') === 0
+        var isBase = p.indexOf('/zh-tw') === 0 || p.indexOf('/zh-cn') === 0 || p.indexOf('/en-translated') === 0
         document.documentElement.setAttribute('data-nf', isBase ? 'base' : 'en')
       })()
     </script>

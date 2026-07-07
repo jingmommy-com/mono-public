@@ -9,7 +9,8 @@ import PageButtons from '@/components/themes/base/PageButtons.astro'
 import Badge from '@/components/starwind/badge'
 
 import { Alert, AlertDescription } from '@/components/starwind/alert'
-import { products, usd } from '@/client.config.ts'
+import { products } from '@/config/index.ts'
+import { orderUrl, usd } from '@/utils/index.ts'
 
 <Alert variant="warning" class="text-center">
   <AlertDescription>
@@ -47,7 +48,7 @@ import { products, usd } from '@/client.config.ts'
     {
       title: '立即訂購：試吃餐',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/sample-meals/sample-meal.html'
+      url: orderUrl('local_classic_sample_1d', 'zh-tw')
     },
   ]}
 />

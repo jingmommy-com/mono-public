@@ -8,8 +8,8 @@
  */
 import BasePage from './themes/base/Page.astro'
 import ModernPage from './themes/modern/Page.astro'
-import { defaultTheme } from '@/themes.ts'
-import type { ThemeName } from '@/themes.ts'
+import { defaultTheme } from '@/config/index.ts'
+import type { ThemeName } from '@/config/index.ts'
 
 const themeMap: Record<ThemeName, any> = {
   base:   BasePage,

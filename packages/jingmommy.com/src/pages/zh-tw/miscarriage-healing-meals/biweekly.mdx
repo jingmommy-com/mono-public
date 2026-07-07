@@ -98,7 +98,7 @@ import LookupZipButton from '@/components/themes/base/LookupZipButton.astro'
     {
       title: '開始選購 / Start Shopping',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/miscarriage-healing-meals'
+      url: orderUrl('local_miscarriage', 'zh-tw')
     },
     {
       title: '預約諮詢 / Book a Consultation',
@@ -150,7 +150,8 @@ import menuMeal50 from '@/assets/menu/menu_meal50.jpg'
 import menuMeal18 from '@/assets/menu/menu_meal18.jpg'
 import menuMeal39 from '@/assets/menu/menu_meal39.jpg'
 import menuAfterTherapy03 from '@/assets/menu/menu_after_therapy03.jpg'
-import { products, usd } from '@/client.config.ts'
+import { products } from '@/config/index.ts'
+import { orderUrl, usd } from '@/utils/index.ts'
 
 <table class="meal-details">
   <tbody>

@@ -6,13 +6,12 @@
   available because Base.astro imports the en theme.css globally).
 
   The en (new design) and zh sites don't share a 1:1 route structure, so the
-  menu links to each locale's home. Locales come from client.config.ts and
+  menu links to each locale's home. Locales come from config/index.ts and
   labels/hreflang from i18n/locales.ts — every locale except the current one
   is listed.
 */
 import LocaleDomainSwitch from '@/components/LocaleDomainSwitch.astro'
-import { locales } from '@/client.config.ts'
-import localeMeta from '@/i18n/locales.ts'
+import { locales, localeMeta } from '@/config/index.ts'
 
 const pathSegments = Astro.url.pathname.split('/').filter(Boolean)
 const currentLocale = locales.includes(pathSegments[0]) ? pathSegments[0] : locales[0]

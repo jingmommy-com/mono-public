@@ -7,7 +7,8 @@ description: 健康餐｜每天一份好好吃饭的理由
 
 import PageButtons from '@/components/themes/base/PageButtons.astro'
 import LookupZipButton from '@/components/themes/base/LookupZipButton.astro'
-import { products, usd } from '@/client.config.ts'
+import { products } from '@/config/index.ts'
+import { orderUrl, usd } from '@/utils/index.ts'
 
 **给每天想吃得安心一点的你，不用再为三餐烦恼。**
 
@@ -115,7 +116,7 @@ import { products, usd } from '@/client.config.ts'
     {
       title: '开始选购 / Start Shopping',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/healthy-meals'
+      url: orderUrl('local_healthy', 'zh-cn')
     },
     {
       title: '预约咨询 / Book a Consultation',

@@ -7,7 +7,8 @@ color: rose
 import { Icon } from 'astro-icon/components'
 import PageButtons from '@/components/themes/base/PageButtons.astro'
 import LookupZipButton from '@/components/themes/base/LookupZipButton.astro'
-import { products, usd } from '@/client.config.ts'
+import { products } from '@/config/index.ts'
+import { orderUrl, usd } from '@/utils/index.ts'
 
 金品月子膳食的冷凍月子餐一直是外州媽咪們的首選！多年來金品幫助過了上千位外州媽咪在美國的各個角落好好的坐月子。冷凍月子餐的優點在於方便好吃，急凍包裝也能保持餐點的原味。金品月子冷凍月子餐就是媽咪在外州食材取得不易且孤立無援的時候的好幫手。讓您輕輕鬆鬆就在家裡做好月子！
 
@@ -73,12 +74,12 @@ import { products, usd } from '@/client.config.ts'
     {
       title: '開始選購 / Start Shopping',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/frozen-postpartum-meals'
+      url: orderUrl('frozen', 'zh-tw')
     },
     {
       title: '月子餐試吃 / Sample Meal',
       icon: 'mdi:calendar-check',
-      url: '//order.jingmommy.com/sample-meals/'
+      url: orderUrl('sample_meals', 'zh-tw')
     },
     [
       {

@@ -1,8 +1,10 @@
 import type { SiteI18n } from '../site.ts'
+import { site } from '@/config/index.ts'
+import { formatNumber } from '@/utils/index.ts'
 
 const t: SiteI18n = {
   title: 'JingMommy - Postpartum Meal Delivery, Confinement Meals & Recovery Cuisine in the US',
-  description: 'JingMommy provides professional postpartum meal delivery, confinement meals, post-surgery meals, and miscarriage recovery meals across the United States.',
+  description: `JingMommy delivers authentic Chinese postpartum (Zuo Yue Zi) meals across the US. Founded ${site.founded}, ${formatNumber(site.mothersServed)}+ mothers served. Fresh daily in SoCal, frozen nationwide.`,
   keywords: [
     'postpartum meal delivery',
     'confinement meal',

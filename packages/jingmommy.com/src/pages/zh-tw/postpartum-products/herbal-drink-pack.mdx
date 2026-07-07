@@ -41,6 +41,7 @@ import PageButtons from '@/components/themes/base/PageButtons.astro'
 <p class="text-center">完整的 30 天階段性坐月子調理不是僅僅進補而已，更是能讓妳修復損傷，補充體力，強化體質。讓妳越生越健康、越生越美麗！</p>
 
 import { Alert, AlertDescription } from '@/components/starwind/alert'
+import { orderUrl } from '@/utils/index.ts'
 
 <Alert variant="warning" class="text-center">
   <AlertDescription>
@@ -81,7 +82,7 @@ import { Alert, AlertDescription } from '@/components/starwind/alert'
     {
       title: '開始選購 / Start Shopping',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/postpartum-products'
+      url: orderUrl('postpartum_products', 'zh-tw')
     },
     {
       title: '預約諮詢 / Book a Consultation',

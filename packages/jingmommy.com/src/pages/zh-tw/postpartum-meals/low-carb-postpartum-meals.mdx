@@ -6,7 +6,8 @@ color: rose
 
 import PageButtons from '@/components/themes/base/PageButtons.astro'
 import LookupZipButton from '@/components/themes/base/LookupZipButton.astro'
-import { products, usd } from '@/client.config.ts'
+import { products } from '@/config/index.ts'
+import { orderUrl, usd } from '@/utils/index.ts'
 
 **減醣月子餐——產後恢復不發胖，讓妳輕盈回歸！**
 
@@ -75,12 +76,12 @@ import { products, usd } from '@/client.config.ts'
     {
       title: '開始選購 / Start Shopping',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/low-carb-postpartum-meals'
+      url: orderUrl('local_lowcarb', 'zh-tw')
     },
     {
       title: '月子餐試吃 / Sample Meal',
       icon: 'mdi:calendar-check',
-      url: '//order.jingmommy.com/sample-meals/'
+      url: orderUrl('sample_meals', 'zh-tw')
     },
     [
       {

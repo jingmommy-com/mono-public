@@ -13,7 +13,8 @@ import LookupZipButton from '@/components/themes/base/LookupZipButton.astro'
 
 import Image from '@/components/themes/base/Image.astro'
 import menuAfter11 from '@/assets/menu_after11.png'
-import { products, usd } from '@/client.config.ts'
+import { products } from '@/config/index.ts'
+import { orderUrl, usd } from '@/utils/index.ts'
 
 <Image
   src={menuAfter11}
@@ -51,12 +52,12 @@ import { products, usd } from '@/client.config.ts'
     {
       title: '開始選購 / Start Shopping',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/herbal-postpartum-meals'
+      url: orderUrl('local_herbal', 'zh-tw')
     },
     {
       title: '月子餐試吃 / Sample Meal',
       icon: 'mdi:calendar-check',
-      url: '//order.jingmommy.com/sample-meals/'
+      url: orderUrl('sample_meals', 'zh-tw')
     },
     [
       {

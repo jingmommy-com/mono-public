@@ -6,6 +6,7 @@ color: rose
 
 import Image from '@/components/themes/base/Image.astro'
 import PageButtons from '@/components/themes/base/PageButtons.astro'
+import { orderUrl } from '@/utils/index.ts'
 
 ### 亲爱的，妳的腰让金品帮妳顾好
 
@@ -92,7 +93,7 @@ import PageButtons from '@/components/themes/base/PageButtons.astro'
     {
       title: '开始选购 / Start Shopping',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/postpartum-products'
+      url: orderUrl('postpartum_products', 'zh-cn')
     },
     {
       title: '预约咨询 / Book a Consultation',

@@ -1,7 +1,8 @@
 ---
 import Layout from '@/layouts/FullScreenLoading.astro'
+import { orderUrl } from '@/utils/index.ts'
 const title = '線上客服'
-return Astro.redirect('https://order.jingmommy.com/customer-service')
+return Astro.redirect(orderUrl('customer_service', 'zh-tw'))
 ---
 
 <Layout></Layout>

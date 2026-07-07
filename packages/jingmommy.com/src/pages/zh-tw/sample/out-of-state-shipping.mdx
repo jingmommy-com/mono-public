@@ -7,7 +7,8 @@ color: pink
 import PageButtons from '@/components/themes/base/PageButtons.astro'
 import Badge from '@/components/starwind/badge'
 import Badges from '@/components/themes/base/Badges.astro'
-import { products, usd } from '@/client.config.ts'
+import { products } from '@/config/index.ts'
+import { orderUrl, usd } from '@/utils/index.ts'
 
 ### 🌸 外州新手媽媽專屬冷凍試吃 — 真實體驗，安心選擇
 
@@ -30,6 +31,7 @@ import { products, usd } from '@/client.config.ts'
     '主菜',
     '甜點',
     '早餐粥',
+    '活力蛋',
     '調養飲料',
   ]}
 />
@@ -43,7 +45,7 @@ import { products, usd } from '@/client.config.ts'
     {
       title: '立即訂購：冷凍試吃餐',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/sample-meals/frozen-sample-meal.html'
+      url: orderUrl('frozen_classic_sample_8item', 'zh-tw')
     },
   ]}
 />

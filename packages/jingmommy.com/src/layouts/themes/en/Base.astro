@@ -9,6 +9,7 @@ import "@/styles/themes/en/theme.css"
 import Head from "@/components/Head.astro"
 import LangSwitch from "@/components/themes/en/LangSwitch.astro"
 import ExternalLinksNewTab from "@/components/themes/en/ExternalLinksNewTab.astro"
+import enSite from '@/i18n/en/site.ts'
 
 interface Props {
   title: string
@@ -19,7 +20,7 @@ interface Props {
 
 const {
   title,
-  description = "JingMommy delivers authentic Chinese postpartum (Zuo Yue Zi) meals across the US. Founded 2010, 10,000+ mothers served. Fresh daily in SoCal, frozen nationwide.",
+  description = enSite.description,
   jsonLd = [],
 } = Astro.props
 ---

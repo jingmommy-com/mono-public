@@ -3,16 +3,14 @@ import Base from "@/layouts/themes/en/Base.astro"
 import TopBar from "@/components/themes/en/TopBar.astro"
 import Footer from "@/components/themes/en/Footer.astro"
 import Botanical from "@/components/themes/en/Botanical.astro"
-import { route } from "@/config/en.ts"
-import { products, usd } from '@/client.config.ts'
+import { phones, products } from '@/config/index.ts'
+import { route, phoneDisplay, usd } from '@/utils/index.ts'
 
 const title =
   "Frequently Asked Questions — JingMommy Zuo Yue Zi Postpartum Meals"
 const description =
   "Answers to the questions families ask most about JingMommy’s Zuo Yue Zi postpartum meal plans — the tradition, the food, breastfeeding, delivery, plans, and ordering."
 
-const sales = "tel:626-991-5899"
-const care = "tel:909-910-0285"
 
 // One source of truth: drives both the accordion and the FAQPage schema.
 const categories = [
@@ -23,7 +21,7 @@ const categories = [
     items: [
       {
         q: "What is Zuo Yue Zi?",
-        a: `<p>If you have only just heard about it, that is completely okay. Zuo Yue Zi, literally “sitting the month,” is the Chinese postpartum recovery tradition built around warmth, rest, and staged nourishment during the first month after birth.</p><p>For more than 2,000 years, Chinese families have treated this window as something worth protecting — not a time to “bounce back,” but a time to be fed, supported, and allowed to recover. JingMommy makes that tradition easier to follow in modern life, whether you grew up with it or are discovering it for the first time.</p><p>To learn more about the full tradition, visit our <a href="${route("/guide/why-zuo-yue-zi")}">Zuo Yue Zi guide</a>.</p>`,
+        a: `<p>If you have only just heard about it, that is completely okay. Zuo Yue Zi, literally “sitting the month,” is the Chinese postpartum recovery tradition built around warmth, rest, and staged nourishment during the first month after birth.</p><p>For more than 2,000 years, Chinese families have treated this window as something worth protecting — not a time to “bounce back,” but a time to be fed, supported, and allowed to recover. JingMommy makes that tradition easier to follow in modern life, whether you grew up with it or are discovering it for the first time.</p><p>To learn more about the full tradition, visit our <a href="${route("/guide/why-zuo-yue-zi", 'en')}">Zuo Yue Zi guide</a>.</p>`,
       },
       {
         q: "Is Zuo Yue Zi only for Chinese families?",
@@ -143,7 +141,7 @@ const categories = [
       },
       {
         q: "How do I know which full plan is right for me?",
-        a: `<p>Start with three questions: Do you want herbal drinks included? Do you want three meals a day or something lighter? Are you inside the fresh delivery area?</p><p>If you want the most traditional, complete experience, choose Herbal. If you want full meal support but no herbs included, Classic is usually the fit. If your appetite is smaller or you already have some food support at home, Vita may feel easier. If you are keeping carbs lower, Low Carb is the simplest match. If you want flexibility and every-other-day delivery, Easy is a gentle way to begin.</p><p>Still unsure? Text us at <a href="${sales}">626-991-5899</a> with your due date, ZIP code, breastfeeding plan, and any restrictions. We will help you choose without pressure.</p>`,
+        a: `<p>Start with three questions: Do you want herbal drinks included? Do you want three meals a day or something lighter? Are you inside the fresh delivery area?</p><p>If you want the most traditional, complete experience, choose Herbal. If you want full meal support but no herbs included, Classic is usually the fit. If your appetite is smaller or you already have some food support at home, Vita may feel easier. If you are keeping carbs lower, Low Carb is the simplest match. If you want flexibility and every-other-day delivery, Easy is a gentle way to begin.</p><p>Still unsure? Text us at <a href="tel:${phones.salesPatricia}">${phoneDisplay(phones.salesPatricia)}</a> with your due date, ZIP code, breastfeeding plan, and any restrictions. We will help you choose without pressure.</p>`,
       },
       {
         q: "What is the difference between fresh and frozen plans?",
@@ -151,7 +149,7 @@ const categories = [
       },
       {
         q: "Can I switch plans after I order?",
-        a: `<p>Usually, yes — especially before your meals begin. Before service starts, switching plans is very easy for us to adjust in the system.</p><p>After service has started, changes need to be requested by noon the day before your next delivery. Our central kitchen prepares ingredients and schedules production in advance, so same-day changes are usually not possible.</p><p>If you are still deciding between two plans, contact us before ordering. A quick conversation can prevent choosing something too light, too much, or not aligned with your recovery goals. Text or call us at <a href="${sales}">626-991-5899</a>.</p>`,
+        a: `<p>Usually, yes — especially before your meals begin. Before service starts, switching plans is very easy for us to adjust in the system.</p><p>After service has started, changes need to be requested by noon the day before your next delivery. Our central kitchen prepares ingredients and schedules production in advance, so same-day changes are usually not possible.</p><p>If you are still deciding between two plans, contact us before ordering. A quick conversation can prevent choosing something too light, too much, or not aligned with your recovery goals. Text or call us at <a href="tel:${phones.salesPatricia}">${phoneDisplay(phones.salesPatricia)}</a>.</p>`,
       },
     ],
   },
@@ -174,7 +172,7 @@ const categories = [
       },
       {
         q: `How is the ${usd(products.frozen_classic_sample_8item.price)} frozen tasting different?`,
-        a: `<p>The frozen tasting ships overnight by FedEx to the continental United States. It includes eight individual items made from our real recipes and packed the same way as the full frozen program: a sea bass soup, a recovery stew soup, Taiwanese Sticky Rice, an entrée, a restorative dessert, breakfast porridge, a breakfast egg dish, and a healing drink.</p><p>It is not meant to be a full day of meals. It is meant to give you a true taste of the food, texture, packaging, and reheating experience before ordering a full frozen plan.</p>`,
+        a: `<p>The frozen tasting ships overnight by FedEx to the continental United States. It includes eight individual items made from our real recipes and packed the same way as the full frozen program: a fish soup, a dinner soup, sticky rice with shiitake, an entrée, a dessert, breakfast porridge, a breakfast egg, and a healing drink.</p><p>It is not meant to be a full day of meals. It is meant to give you a true taste of the food, texture, packaging, and reheating experience before ordering a full frozen plan.</p>`,
       },
       {
         q: "Do the tastings include the herbal drinks?",
@@ -205,7 +203,7 @@ const categories = [
       },
       {
         q: "What information do I need to place a gift order?",
-        a: `<p>The most helpful details are the mom’s name, due date, delivery ZIP code, phone number, food restrictions, and whether she prefers fresh or frozen service.</p><p>If you do not know everything yet, that is okay. Contact us with what you have, and we will help you arrange the rest. For help with gift orders, text or call <a href="${sales}">626-991-5899</a>.</p>`,
+        a: `<p>The most helpful details are the mom’s name, due date, delivery ZIP code, phone number, food restrictions, and whether she prefers fresh or frozen service.</p><p>If you do not know everything yet, that is okay. Contact us with what you have, and we will help you arrange the rest. For help with gift orders, text or call <a href="tel:${phones.salesPatricia}">${phoneDisplay(phones.salesPatricia)}</a>.</p>`,
       },
     ],
   },
@@ -270,19 +268,19 @@ const categories = [
     items: [
       {
         q: "How do I confirm my start date after delivery?",
-        a: `<p>Text or call customer service at <a href="${care}">909-910-0285</a> as soon as you know when you would like to begin. The latest time to confirm is noon the day before your targeted first delivery.</p><p>Please include your name and order number so we can find your order quickly. That is the fastest way to lock in your start date and make sure the kitchen and delivery team are ready for you.</p>`,
+        a: `<p>Text or call customer service at <a href="tel:${phones.customerService}">${phoneDisplay(phones.customerService)}</a> as soon as you know when you would like to begin. The latest time to confirm is noon the day before your targeted first delivery.</p><p>Please include your name and order number so we can find your order quickly. That is the fastest way to lock in your start date and make sure the kitchen and delivery team are ready for you.</p>`,
       },
       {
         q: "Who should I contact if there is an issue after delivery?",
-        a: `<p>Reach out to customer service by phone or text at <a href="${care}">909-910-0285</a>. Have your name and order number ready if possible.</p><p>One quick guide so you always know where to go: for questions before you order — choosing a plan, gifts, tastings — text or call your sales rep or <a href="${sales}">626-991-5899</a>. For anything after your order is placed — start dates, delivery changes, meal issues — customer service at <a href="${care}">909-910-0285</a> is your line.</p><p>Postpartum days are busy enough. If something needs attention, we want to help you solve it quickly instead of sending you in circles.</p>`,
+        a: `<p>Reach out to customer service by phone or text at <a href="tel:${phones.customerService}">${phoneDisplay(phones.customerService)}</a>. Have your name and order number ready if possible.</p><p>One quick guide so you always know where to go: for questions before you order — choosing a plan, gifts, tastings — text or call your sales rep or <a href="tel:${phones.salesPatricia}">${phoneDisplay(phones.salesPatricia)}</a>. For anything after your order is placed — start dates, delivery changes, meal issues — customer service at <a href="tel:${phones.customerService}">${phoneDisplay(phones.customerService)}</a> is your line.</p><p>Postpartum days are busy enough. If something needs attention, we want to help you solve it quickly instead of sending you in circles.</p>`,
       },
       {
         q: "Can I make special requests?",
-        a: `<p>Of course. Tell us as early as you can, ideally when you order. For delivery changes or day-to-day adjustments, contact us no later than noon the day before delivery.</p><p>Some requests are easy, and some depend on the plan or kitchen schedule. Either way, we will tell you clearly what we can do. Reach out to customer service by phone or text at <a href="${care}">909-910-0285</a>, and have your name and order number ready if possible.</p>`,
+        a: `<p>Of course. Tell us as early as you can, ideally when you order. For delivery changes or day-to-day adjustments, contact us no later than noon the day before delivery.</p><p>Some requests are easy, and some depend on the plan or kitchen schedule. Either way, we will tell you clearly what we can do. Reach out to customer service by phone or text at <a href="tel:${phones.customerService}">${phoneDisplay(phones.customerService)}</a>, and have your name and order number ready if possible.</p>`,
       },
       {
         q: "I read everything and still do not know what to choose. What should I do?",
-        a: `<p>That is normal. You are choosing food for one of the most vulnerable months of your life — it should feel like a thoughtful decision.</p><p>Text or call your sales rep or <a href="${sales}">626-991-5899</a> with your due date, ZIP code, whether you plan to breastfeed, any restrictions, and whether you want fresh or frozen delivery. We will help you narrow it down. No pressure, no complicated sales script — just a real person helping you figure out what fits.</p>`,
+        a: `<p>That is normal. You are choosing food for one of the most vulnerable months of your life — it should feel like a thoughtful decision.</p><p>Text or call your sales rep or <a href="tel:${phones.salesPatricia}">${phoneDisplay(phones.salesPatricia)}</a> with your due date, ZIP code, whether you plan to breastfeed, any restrictions, and whether you want fresh or frozen delivery. We will help you narrow it down. No pressure, no complicated sales script — just a real person helping you figure out what fits.</p>`,
       },
     ],
   },
@@ -311,7 +309,7 @@ const jsonLd = [
 ---
 
 <Base title={title} description={description} jsonLd={jsonLd}>
-  <TopBar active={route("/faq")} />
+  <TopBar active={route("/faq", 'en')} />
 
   <!-- HERO -->
   <section class="faq-hero">
@@ -326,7 +324,7 @@ const jsonLd = [
         are exactly who this page is for. Below are the questions families ask
         us most often — about the tradition, the food, breastfeeding, delivery,
         timing, and how to choose the right plan. If you still feel unsure after
-        reading, text or call us at <a href={sales}>626-991-5899</a>. We help
+        reading, text or call us at <a href={`tel:${phones.salesPatricia}`}>{phoneDisplay(phones.salesPatricia)}</a>. We help
         moms make this decision every day.
       </p>
       <div class="rule"></div>
@@ -371,10 +369,10 @@ const jsonLd = [
           <h2>Ready for the next step?</h2>
           <p>
             If you are still exploring, start with a <a
-              href={route("/sample")}>tasting</a
+              href={route("/sample", 'en')}>tasting</a
             >. If you already know you want the full traditional experience,
             look at the
-            <a href={route("/plans")}>Herbal plan</a> first. And if you are ordering
+            <a href={route("/plans", 'en')}>Herbal plan</a> first. And if you are ordering
             for someone you love, contact us and we will help you arrange the timing
             with her.
           </p>

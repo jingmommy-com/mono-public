@@ -3,7 +3,49 @@
   The five meal-plan cards. Shared between the landing page and Meal Plans page.
   Cards come from config `plans`; each has a botanical corner sprig.
 */
-import { plans, route } from "@/config/en.ts"
+import { products } from '@/config/index.ts'
+import { route, usd } from '@/utils/index.ts'
+
+/** The five 30-day meal plans. Names + prices are locked business facts. */
+const plans = [
+  {
+    name: 'Herbal',
+    price: usd(products.local_herbal_30d.price),
+    per: '30 days',
+    featured: true,
+    badge: 'Most complete',
+    desc: 'The full, uncompromising experience — three meals plus a daily herbal drink. The closest thing to a grandmother cooking for you.',
+    persona: 'For the mom who wants to do this completely.',
+  },
+  {
+    name: 'Classic',
+    price: usd(products.local_classic_30d.price),
+    per: '30 days',
+    desc: 'Complete daily support without the guesswork. Three warm, comforting meals a day — meals that feel like Mom’s.',
+    persona: 'For the mom who wants daily care, simply.',
+  },
+  {
+    name: 'Vita',
+    price: usd(products.local_vita_30d.price),
+    per: '30 days',
+    desc: 'A lighter, minimalist take — two nourishing meals a day plus a dessert. Perfect for smaller appetites or warmer seasons.',
+    persona: 'For the mom who prefers lighter portions.',
+  },
+  {
+    name: 'Low Carb',
+    price: usd(products.local_lowcarb_30d.price),
+    per: '30 days',
+    desc: 'The same warm healing, without rice, grains, or sweet drinks. For the mom caring for her body on her own terms.',
+    persona: 'For the mom managing blood sugar or going grain-free.',
+  },
+  {
+    name: 'Easy',
+    price: usd(products.local_easy_15d.price),
+    per: '30 days · 15 deliveries',
+    desc: 'Nourishment with breathing room — warm meals every other day. Ideal if you have help at home and want to supplement.',
+    persona: 'For the mom who has family helping and wants to fill the gaps.',
+  },
+]
 
 interface Props {
   /** Show the "See full plan details" button below the grid. */
@@ -14,7 +56,7 @@ interface Props {
 const {
   cta = false,
   ctaLabel = "See full plan details",
-  ctaHref = route("/plans"),
+  ctaHref = route("/plans", 'en'),
 } = Astro.props
 ---
 

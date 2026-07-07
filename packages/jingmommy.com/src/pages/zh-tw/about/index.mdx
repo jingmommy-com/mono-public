@@ -3,8 +3,9 @@ layout: ../../../layouts/MarkdownPage.astro
 title: 金品故事
 ---
 
+import { phoneDisplay } from '@/utils/index.ts'
 import { YouTube } from 'astro-embed'
-import { site } from '@/client.config.ts'
+import { site, phones } from '@/config/index.ts'
 
 <YouTube id="8BmJO0t2Gks" class="mx-auto" />
 
@@ -51,5 +52,5 @@ import { site } from '@/client.config.ts'
 
 **歡迎預約試吃＆媽媽教室**
 
-- 電話：<a href={`tel:${site.phone}`}>{site.phone}</a>
+- 電話：<a href={`tel:${phones.main}`}>{phoneDisplay(phones.main)}</a>
 - E-mail：<a href={`mailto:${site.email}`}>{site.email}</a>

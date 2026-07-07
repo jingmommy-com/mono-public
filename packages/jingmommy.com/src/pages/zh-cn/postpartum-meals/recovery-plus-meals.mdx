@@ -6,7 +6,8 @@ color: rose
 
 import PageButtons from '@/components/themes/base/PageButtons.astro'
 import LookupZipButton from '@/components/themes/base/LookupZipButton.astro'
-import { products, usd } from '@/client.config.ts'
+import { products } from '@/config/index.ts'
+import { orderUrl, usd } from '@/utils/index.ts'
 
 **💛 续订月子餐 ─ 给妳 Beyond 30 Days 的续航力**
 
@@ -82,7 +83,7 @@ import { products, usd } from '@/client.config.ts'
     {
       title: '开始选购 / Start Shopping',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/recovery-plus-meals'
+      url: orderUrl('local_recovery_plus', 'zh-cn')
     },
     {
       title: '预约咨询 / Book a Consultation',

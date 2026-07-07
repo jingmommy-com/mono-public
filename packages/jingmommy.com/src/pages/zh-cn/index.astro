@@ -4,6 +4,7 @@ import Slides from '@/components/themes/base/Slides.astro'
 import { Icon } from 'astro-icon/components'
 
 import routeMap from '@/route-map.json'
+import { orderUrl } from '@/utils/index.ts'
 
 const title = '首页'
 // Slides images array as a variable.
@@ -82,7 +83,7 @@ const banners: Banner[] = [
     rel: "noopener",
   },
   {
-    href: "//order.jingmommy.com",
+    href: orderUrl('home', 'zh-cn'),
     title: "线上订餐",
     desc: "立即前往 →",
     icon: "mdi:cart",

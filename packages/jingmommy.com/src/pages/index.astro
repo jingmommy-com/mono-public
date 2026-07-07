@@ -1,6 +1,6 @@
 ---
 import Layout from '@/layouts/FullScreenLoading.astro'
-import { locales } from '@/client.config.ts'
+import { locales } from '@/config/index.ts'
 
 const title = 'JingMommy'
 const locale = locales.includes(Astro.preferredLocale ?? '') ? Astro.preferredLocale : locales[0]

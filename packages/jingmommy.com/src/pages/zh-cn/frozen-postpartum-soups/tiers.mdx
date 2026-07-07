@@ -248,14 +248,15 @@ import { Icon } from 'astro-icon/components'
 ---
 
 import PageButtons from '@/components/themes/base/PageButtons.astro'
-import { products, usd } from '@/client.config.ts'
+import { products } from '@/config/index.ts'
+import { orderUrl, usd } from '@/utils/index.ts'
 
 <PageButtons
   data={[
     {
       title: '开始选购 / Start Shopping',
       icon: 'mdi:shopping',
-      url: '//order.jingmommy.com/zh/diy-frozen-postpartum-soup-sets',
+      url: orderUrl('frozen_soup_set', 'zh-cn'),
       target: '_blank'
     },
     {

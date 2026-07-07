@@ -1,0 +1,8 @@
+---
+import Layout from '@/layouts/FullScreenLoading.astro'
+import { orderUrl } from '@/utils/index.ts'
+const title = 'Customer Service'
+return Astro.redirect(orderUrl('customer_service', 'en-translated'))
+---
+
+<Layout></Layout>

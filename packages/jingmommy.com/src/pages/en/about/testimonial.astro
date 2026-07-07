@@ -5,9 +5,9 @@ import Footer from "@/components/themes/en/Footer.astro"
 import PageHero from "@/components/themes/en/PageHero.astro"
 import Botanical from "@/components/themes/en/Botanical.astro"
 import CtaBand from "@/components/themes/en/CtaBand.astro"
-import { route, orderSampleUrl } from "@/config/en.ts"
-import { products, usd } from '@/client.config.ts'
-import { tastingReserveUrl } from "@/config/tasting-events.ts"
+import { products } from '@/config/index.ts'
+import { route, orderUrl, usd } from '@/utils/index.ts'
+import { tastingReserveUrl } from '@/utils/index.ts'
 
 const title = "Real Stories — Mothers on JingMommy Postpartum Meals"
 const description =
@@ -15,7 +15,7 @@ const description =
 ---
 
 <Base title={title} description={description}>
-  <TopBar active={route("/about/testimonial")} />
+  <TopBar active={route("/about/testimonial", 'en')} />
 
   <PageHero
     eyebrow="Real stories"
@@ -284,12 +284,12 @@ const description =
     buttons={[
       {
         label: "Reserve a tasting",
-        href: tastingReserveUrl("en-gb"),
+        href: tastingReserveUrl('en'),
         variant: "primary",
       },
       {
         label: `Order a sample — ${usd(products.local_classic_sample_1d.price)}`,
-        href: orderSampleUrl,
+        href: orderUrl('sample_meals', 'en'),
         variant: "ghost",
       },
     ]}

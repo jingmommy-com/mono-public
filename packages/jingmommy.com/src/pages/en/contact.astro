@@ -3,27 +3,21 @@ import Base from "@/layouts/themes/en/Base.astro"
 import TopBar from "@/components/themes/en/TopBar.astro"
 import Footer from "@/components/themes/en/Footer.astro"
 import Botanical from "@/components/themes/en/Botanical.astro"
-import { brand, route } from "@/config/en.ts"
+import { site, phones } from '@/config/index.ts'
+import { addressLine2, addressLine1, route, orderUrl, phoneDisplay } from '@/utils/index.ts'
 
 const title = "Contact & Order — JingMommy Postpartum Meals"
 const description =
-  "Contact JingMommy to order, gift, or plan Chinese postpartum (Zuo Yue Zi) meals. Call or text 626-217-7539, send a message, or check delivery to your ZIP. English & Chinese spoken."
+  `Contact JingMommy to order, gift, or plan Chinese postpartum (Zuo Yue Zi) meals. Call or text ${phoneDisplay(phones.main)}, send a message, or check delivery to your ZIP. English & Chinese spoken.`
 
 const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "FoodEstablishment",
     name: "JingMommy",
-    telephone: "+1-626-217-7539",
-    email: brand.email,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "618 Brea Canyon Road Unit F",
-      addressLocality: "Walnut",
-      addressRegion: "CA",
-      postalCode: "91789",
-      addressCountry: "US",
-    },
+    telephone: `+1${phones.main}`,
+    email: site.email,
+    address: site.address,
     areaServed: "United States",
     openingHours: "Mo-Fr 09:00-17:00",
   },
@@ -31,7 +25,7 @@ const jsonLd = [
 ---
 
 <Base title={title} description={description} jsonLd={jsonLd}>
-  <TopBar active={route("/contact")} />
+  <TopBar active={route("/contact", 'en')} />
 
   <!-- HERO -->
   <section class="c9-hero">
@@ -48,7 +42,7 @@ const jsonLd = [
         English &amp; Chinese spoken &nbsp;·&nbsp; Texts and calls welcome
       </p>
       <div class="hero-cta">
-        <a href={brand.phoneHref} class="btn btn-primary">Call or text now</a>
+        <a href={`tel:${phones.main}`} class="btn btn-primary">Call or text now</a>
         <a href="#contact-form" class="btn btn-ghost">Send a message</a>
       </div>
     </div>
@@ -71,21 +65,21 @@ const jsonLd = [
           <div class="contact-mark">☏</div>
           <h3>Main Line</h3>
           <p class="contact-role">Orders &amp; General Questions</p>
-          <a href="tel:6262177539" class="contact-phone">626-217-7539</a>
+          <a href={`tel:${phones.main}`} class="contact-phone">{phoneDisplay(phones.main)}</a>
           <p class="contact-note">Call or text — both welcome</p>
         </div>
         <div class="contact-card reveal">
           <div class="contact-mark">❀</div>
           <h3>Sales &amp; Plans</h3>
           <p class="contact-role">Orders, Gifts &amp; Tastings</p>
-          <a href="tel:6269915899" class="contact-phone">626-991-5899</a>
+          <a href={`tel:${phones.salesPatricia}`} class="contact-phone">{phoneDisplay(phones.salesPatricia)}</a>
           <p class="contact-note">English &amp; Chinese spoken</p>
         </div>
         <div class="contact-card reveal">
           <div class="contact-mark">✿</div>
           <h3>Customer Care</h3>
           <p class="contact-role">After Your Order</p>
-          <a href="tel:6269915786" class="contact-phone">626-991-5786</a>
+          <a href={`tel:${phones.salesMiya}`} class="contact-phone">{phoneDisplay(phones.salesMiya)}</a>
           <p class="contact-note">English &amp; Chinese spoken</p>
         </div>
       </div>
@@ -226,8 +220,8 @@ const jsonLd = [
             <h3>Message received.</h3>
             <p>
               We’ll be in touch soon. If you need a faster response, call or
-              text our sales team directly at&nbsp;<a href="tel:6269915899"
-                >626-991-5899</a
+              text our sales team directly at&nbsp;<a href={`tel:${phones.salesPatricia}`}
+                >{phoneDisplay(phones.salesPatricia)}</a
               >.
             </p>
           </div>
@@ -339,16 +333,15 @@ const jsonLd = [
           <p class="eyebrow">Our kitchen</p>
           <h3>You’re welcome to visit.</h3>
           <address>
-            618 Brea Canyon Road<br />
-            Unit F<br />
-            Walnut, CA 91789
+            {addressLine1(site.address)}<br />
+            {addressLine2(site.address)}
           </address>
         </div>
         <div class="kitchen-body reveal">
           <p>
             Our 5,000+ sq ft facility in Walnut is where every meal is prepared
             — using the same ingredients, the same recipes, and the same care
-            we’ve put into every delivery since 2010.
+            we’ve put into every delivery since {site.founded}.
           </p>
           <p>
             Mothers who visit often tell us the kitchen is what convinced them.
@@ -375,7 +368,7 @@ const jsonLd = [
       </p>
       <p class="close-by">Jessica T. · Pasadena, CA</p>
       <div class="close-cta">
-        <a href={brand.phoneHref} class="btn btn-primary">Call or text now</a>
+        <a href={`tel:${phones.main}`} class="btn btn-primary">Call or text now</a>
         <a href="#contact-form" class="btn btn-ghost">Send a message</a>
       </div>
     </div>
@@ -384,7 +377,7 @@ const jsonLd = [
   <Footer />
 </Base>
 
-<script is:inline>
+<script is:inline define:vars={{ salesPhone: phoneDisplay(phones.salesPatricia), deliveryZipApi: orderUrl('delivery_zip_api', 'en') }}>
   // Contact form submits to Web3Forms via AJAX (so we can keep the inline
   // success panel instead of redirecting). The access_key is a public,
   // client-side key, carried as a hidden field on the form itself.
@@ -420,7 +413,7 @@ const jsonLd = [
         }
         if (errEl) {
           errEl.textContent =
-            "Something went wrong sending your message. Please try again, or call or text us at 626-991-5899."
+            "Something went wrong sending your message. Please try again, or call or text us at " + salesPhone + "."
           errEl.classList.add("visible")
         }
       }
@@ -473,10 +466,16 @@ const jsonLd = [
     },
   }
 
+  function formatZip(str) {
+    return str.trim().replace(/[\uFF10-\uFF19]/g, function(ch) {
+      return String.fromCharCode(ch.charCodeAt(0) - 0xFF10 + 0x30)
+    })
+  }
   function checkZip() {
-    var raw = document.getElementById("zip-input").value.trim()
+    var raw = document.getElementById("zip-input").value
+    var zip = formatZip(raw)
     var result = document.getElementById("zip-result")
-    if (!/^\d{5}$/.test(raw)) {
+    if (!/^\d{5}$/.test(zip)) {
       result.textContent = "Please enter a 5-digit ZIP code."
       result.className = "zip-result"
       return
@@ -484,15 +483,20 @@ const jsonLd = [
     result.textContent = "Checking…"
     result.className = "zip-result"
     fetch(
-      "https://order.jingmommy.com/-/api/delivery_zip?zip_code=" +
-        encodeURIComponent(raw)
+      deliveryZipApi + "?zip_code=" +
+        encodeURIComponent(zip)
     )
       .then(function (res) {
         if (!res.ok) throw new Error("HTTP " + res.status)
         return res.json()
       })
       .then(function (data) {
-        var msg = DELIVERY_MESSAGES[String(data && data.delivery_code)] ||
+        let delivery_code = null
+        if (Array.isArray(data.data)) {
+          const row = data.data.find(r => r.zip_code === zip)
+          if (row && typeof row.delivery_code !== 'undefined') delivery_code = row.delivery_code
+        }
+        var msg = DELIVERY_MESSAGES[String(delivery_code)] ||
           DELIVERY_MESSAGES["0"]
         result.textContent = msg.text
         result.className = msg.cls

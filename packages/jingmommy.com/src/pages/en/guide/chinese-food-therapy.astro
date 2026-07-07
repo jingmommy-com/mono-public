@@ -4,8 +4,8 @@ import TopBar from "@/components/themes/en/TopBar.astro"
 import Footer from "@/components/themes/en/Footer.astro"
 import Botanical from "@/components/themes/en/Botanical.astro"
 import TasteCTA from "@/components/themes/en/TasteCTA.astro"
-import { route, orderSampleUrl } from "@/config/en.ts"
-import { products, usd } from '@/client.config.ts'
+import { products } from '@/config/index.ts'
+import { route, orderUrl, usd } from '@/utils/index.ts'
 
 const title = "Chinese Food Therapy for Postpartum Recovery — JingMommy"
 const description =
@@ -28,7 +28,7 @@ const jsonLd = [
 ---
 
 <Base title={title} description={description} jsonLd={jsonLd}>
-  <TopBar active={route("/guide/chinese-food-therapy")} />
+  <TopBar active={route("/guide/chinese-food-therapy", 'en')} />
 
   <!-- HERO -->
   <section class="hero hero-signature p7-hero">
@@ -69,7 +69,7 @@ const jsonLd = [
         recovery in ways that show up for years.
       </p>
       <p class="link-line">
-        New to Zuo Yue Zi? Start with <a href={route("/guide/why-zuo-yue-zi")}
+        New to Zuo Yue Zi? Start with <a href={route("/guide/why-zuo-yue-zi", 'en')}
           >Why Zuo Yue Zi →</a
         > for the full overview. This page goes deeper into the food itself.
       </p>
@@ -274,7 +274,7 @@ const jsonLd = [
         A full day of meals, before you commit to a plan. {usd(products.local_classic_sample_1d.price)} fresh in Southern
         California, {usd(products.frozen_classic_sample_8item.price)} frozen via FedEx nationwide.
       </p>
-      <a href={orderSampleUrl} class="btn btn-primary">Order a sample</a>
+      <a href={orderUrl('sample_meals', 'en')} class="btn btn-primary">Order a sample</a>
     </div>
   </section>
 
@@ -517,13 +517,13 @@ const jsonLd = [
       <div class="closing-cta">
         <h3>Ready to taste what your body has been waiting for?</h3>
         <div class="closing-cta-btns">
-          <a href={route("/sample")} class="btn btn-primary"
+          <a href={route("/sample", 'en')} class="btn btn-primary"
             >Try {usd(products.local_classic_sample_1d.price)} Local Sample</a
           >
-          <a href={route("/sample")} class="btn btn-primary"
+          <a href={route("/sample", 'en')} class="btn btn-primary"
             >Try {usd(products.frozen_classic_sample_8item.price)} Frozen Sample</a
           >
-          <a href={route("/plans")} class="btn btn-ghost">See Meal Plans</a
+          <a href={route("/plans", 'en')} class="btn btn-ghost">See Meal Plans</a
           >
         </div>
       </div>
@@ -555,7 +555,7 @@ const jsonLd = [
               behind it — warmth, targeted nourishment, real ingredients — are
               biological, not cultural. But you do not have to take our word for
               it. Try a full day of meals before you commit —
-              <a href={route("/sample")}
+              <a href={route("/sample", 'en')}
                 >{usd(products.local_classic_sample_1d.price)} fresh in Southern California, or {usd(products.frozen_classic_sample_8item.price)} frozen via FedEx
                 nationwide →</a
               >. Most moms decide within a few bites.
@@ -598,7 +598,7 @@ const jsonLd = [
             <p>
               For mothers recovering from harder births, we strongly recommend
               our
-              <a href={route("/plans")}>Herbal Meal plan →</a>, which
+              <a href={route("/plans", 'en')}>Herbal Meal plan →</a>, which
               includes targeted Chinese herbal recovery support at every stage
               of your thirty days. It is the deepest level of recovery support
               we offer, and it is built specifically for moms whose bodies need

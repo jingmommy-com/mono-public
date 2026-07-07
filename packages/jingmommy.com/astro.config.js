@@ -12,8 +12,8 @@ import remarkGfm from 'remark-gfm'
 
 import tailwindcss from '@tailwindcss/vite'
 import { generateRouteFiles } from './src/scripts/index.js'
-// Single source of truth for locales — shared with the app via src/client.config.ts.
-import { locales, defaultLocale } from './src/client.config.ts'
+// Single source of truth for locales — shared with the app via src/config/index.ts.
+import { locales, defaultLocale } from './src/config/index.ts'
 
 /*
   Why does generateRouteFiles not trigger correctly when running `astro dev`?
@@ -223,12 +223,12 @@ export default defineConfig({
   },
   redirects: {
     '/': '/en', // redirect root to default locale
-    // en-old (legacy English pages, formerly at /en/*)
-    '/en-old/plans': '/en-old/plans/3tier',
-    '/en-old/sample': '/en-old/sample/tasting-party',
-    '/en-old/gallery': '/en-old/gallery/dish',
-    '/en-old/cs': '/en-old/customer-service',
-    '/en-old/tos': '/en-old/term-of-service',
+    // en-translated (legacy English pages, formerly at /en/*)
+    '/en-translated/plans': '/en-translated/plans/3tier',
+    '/en-translated/sample': '/en-translated/sample/tasting-party',
+    '/en-translated/gallery': '/en-translated/gallery/dish',
+    '/en-translated/cs': '/en-translated/customer-service',
+    '/en-translated/tos': '/en-translated/term-of-service',
     // zh-tw
     '/zh-tw/plans': '/zh-tw/plans/3tier',
     '/zh-tw/sample': '/zh-tw/sample/tasting-party',

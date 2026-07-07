@@ -6,7 +6,8 @@ color: rose
 
 import Image from '@/components/themes/base/Image.astro'
 import PageButtons from '@/components/themes/base/PageButtons.astro'
-import { products, usd } from '@/client.config.ts'
+import { products } from '@/config/index.ts'
+import { orderUrl, usd } from '@/utils/index.ts'
 
 ### 四季湯：春分湯品 - 讓身體「重新開機」
 
@@ -65,7 +66,7 @@ import { products, usd } from '@/client.config.ts'
 
 ---
 
-🌿 春分團購主小福利 好湯最適合順手分享！只要幫朋友一起下單（不含自己的1套），即可享主揪專屬回饋：幫朋友揪1套：您自己的1套享9折，揪2套：您自己的1套享8折，揪3套：您自己的1套享7折（最低至5折）。整筆團購訂單還有額外%紅利回饋。有興趣當團購主，歡迎到[網址申請](//order.jingmommy.com/?route=form/form/apply_group_buy_host)。
+🌿 春分團購主小福利 好湯最適合順手分享！只要幫朋友一起下單（不含自己的1套），即可享主揪專屬回饋：幫朋友揪1套：您自己的1套享9折，揪2套：您自己的1套享8折，揪3套：您自己的1套享7折（最低至5折）。整筆團購訂單還有額外%紅利回饋。有興趣當團購主，歡迎到<a href={orderUrl('group_buy_host_form', 'zh-tw')}>網址申請</a>。
 
 🔥 社群互動活動：想拿福利嗎？加入專屬群組(LINE/WeChat)就能領取群組專屬福利喔！  
 【結單窗口】
@@ -93,14 +94,14 @@ import { products, usd } from '@/client.config.ts'
     {
       title: '開始選購 / Start Shopping',
       icon: 'mdi:shopping',
-      url: '//order.jingmommy.com/zh/four-seasons-soups-spring-4.html',
+      url: orderUrl('frozen_soup_spring_4', 'zh-tw'),
       target: '_blank',
       qrcode: '//file.jingmommy.com/img/qrcode/qr-code_four-seasons-soups-spring-4.png'
     },
     {
       title: '申請成為團購主 / Sign Up to Host',
       icon: 'mdi:calendar-check',
-      url: '//order.jingmommy.com/?route=form/form/apply_group_buy_host',
+      url: orderUrl('group_buy_host_form', 'zh-tw'),
       target: '_blank'
     }
   ]}

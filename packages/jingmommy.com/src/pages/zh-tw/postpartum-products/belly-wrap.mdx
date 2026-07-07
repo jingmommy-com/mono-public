@@ -6,6 +6,7 @@ color: rose
 
 import Image from '@/components/themes/base/Image.astro'
 import PageButtons from '@/components/themes/base/PageButtons.astro'
+import { orderUrl } from '@/utils/index.ts'
 
 懷孕期間由於胎兒成長快速子宮被撐大，五臟六腑受到擠壓移位變形移位，就像一顆小西瓜一樣。<br/>
 因此坐月子期間媽咪必須特別注意預防「內臟下垂」的狀況，因所有「婦女病」及「未老先衰」都是從「內臟下垂」開始的，更糟糕的事會產生小腹！所以綁腹帶就十分重要了，綁腹帶可以幫助子宮收縮、內臟回到原位，減緩腰酸背痛的情形發生。
@@ -76,7 +77,7 @@ import PageButtons from '@/components/themes/base/PageButtons.astro'
     {
       title: '開始選購 / Start Shopping',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/postpartum-products'
+      url: orderUrl('postpartum_products', 'zh-tw')
     },
     {
       title: '預約諮詢 / Book a Consultation',

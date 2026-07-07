@@ -137,7 +137,7 @@ function isLeaf(obj) {
 }
 
 /**
- * Recursively flatten a nested pages.config.yml tree into a fileKey → attrs map.
+ * Recursively flatten a nested config/pages.yml tree into a fileKey → attrs map.
  * Keys mirror the file path relative to src/pages/ without extension (e.g. "en/sample/index").
  * Leaf detection: a node whose every key is a metadata key is a page entry.
  */
@@ -156,21 +156,21 @@ function flattenConfigTree(node, parts = []) {
 }
 
 /**
- * Load src/pages.config.yml and return a map of fileKey → attrs.
+ * Load src/config/pages.yml and return a map of fileKey → attrs.
  * fileKey is the path relative to src/pages/ without extension (e.g. "en/sample/index").
  * Returns {} if the file doesn't exist.
  */
 function loadPagesConfig(rootDir, log) {
-  const configFile = path.resolve(rootDir, 'src', 'pages.config.yml')
+  const configFile = path.resolve(rootDir, 'src', 'config', 'pages.yml')
   if (!fs.existsSync(configFile)) return {}
   try {
     const raw = fs.readFileSync(configFile, 'utf-8')
     const parsed = yaml.load(raw) ?? {}
     const result = flattenConfigTree(parsed)
-    log(`[${fileId}] Loaded pages.config.yml (${Object.keys(result).length} entries)`)
+    log(`[${fileId}] Loaded config/pages.yml (${Object.keys(result).length} entries)`)
     return result
   } catch (e) {
-    log(`[${fileId}] Warning: failed to parse pages.config.yml — ${e.message}`)
+    log(`[${fileId}] Warning: failed to parse config/pages.yml — ${e.message}`)
     return {}
   }
 }

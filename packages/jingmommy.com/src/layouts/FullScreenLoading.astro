@@ -1,6 +1,6 @@
 ---
 import Layout from './FullScreenPage.astro'
-import { colors } from '@/client.config.ts'
+import { colors } from '@/config/index.ts'
 
 const { title, color: inputColor } = Astro.props
 const color = colors.includes((inputColor ?? '').trim()) ? (inputColor ?? '').trim() : 'orange'

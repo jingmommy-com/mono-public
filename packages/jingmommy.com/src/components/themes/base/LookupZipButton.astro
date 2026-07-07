@@ -1,12 +1,8 @@
 ---
-import zhTw from '@/i18n/zh-tw/lookup-zip-button.ts'
-import zhCn from '@/i18n/zh-cn/lookup-zip-button.ts'
-import en from '@/i18n/en/lookup-zip-button.ts'
-import { locales } from '@/client.config.ts'
+import { lookupZipButtonI18n } from '@/i18n/index.ts'
+import { getPathLocale, orderUrl } from '@/utils/index.ts'
 
-const i18nMap: Record<string, typeof zhTw> = { 'zh-tw': zhTw, 'zh-cn': zhCn, en, 'en-old': en }
-const pathLocale = Astro.url.pathname.split('/').find((s: string) => locales.includes(s)) ?? locales[0]
-const i18n = i18nMap[pathLocale] ?? zhTw
+const i18n = lookupZipButtonI18n[getPathLocale(Astro.url.pathname)]
 
 const {
   id = 'deliveryStatusDialog',
@@ -14,7 +10,7 @@ const {
   buttonText = i18n.buttonText,
   closeText = i18n.closeText,
   dialogClass = '',
-  iframeUrl = '//order.jingmommy.com/?route=tool/zipcode_delivery_status'
+  iframeUrl = orderUrl('zipcode_delivery_status', getPathLocale(Astro.url.pathname))
 } = Astro.props
 
 const dialogId = id.trim()

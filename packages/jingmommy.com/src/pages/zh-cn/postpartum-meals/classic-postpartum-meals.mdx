@@ -6,7 +6,8 @@ color: rose
 
 import PageButtons from '@/components/themes/base/PageButtons.astro'
 import LookupZipButton from '@/components/themes/base/LookupZipButton.astro'
-import { products, usd } from '@/client.config.ts'
+import { products } from '@/config/index.ts'
+import { orderUrl, usd } from '@/utils/index.ts'
 
 女性从怀孕开始，子宫便随着胎儿的成长而撑大，内脏受到胎儿压迫，怀孕的过程中，心肺和泌尿功能、骨骼关节、肠胃系统、内分泌系统等等产生了极大的生理变化。怀胎十月后，又必须经历剧痛、失血、消耗气力的生产过程。
 
@@ -44,12 +45,12 @@ import { products, usd } from '@/client.config.ts'
     {
       title: '开始选购 / Start Shopping',
       icon: 'mdi:cart',
-      url: '//order.jingmommy.com/classic-postpartum-meals'
+      url: orderUrl('local_classic', 'zh-cn')
     },
     {
       title: '月子餐试吃 / Sample Meal',
       icon: 'mdi:calendar-check',
-      url: '//order.jingmommy.com/sample-meals/'
+      url: orderUrl('sample_meals', 'zh-cn')
     },
     [
       {
