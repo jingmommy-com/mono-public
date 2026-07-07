@@ -35,6 +35,12 @@ npm -w packages/jingmommy.com run lint       # Format with Prettier (writes in p
 - Locales are `en` (default), `zh-tw`, `zh-cn`, `en-translated` — declared once in `src/config/index.ts` and imported by `astro.config.js` (single source of truth). `prefixDefaultLocale: true`, so all routes have a locale prefix (`/en/...`, `/zh-tw/...`, `/en-translated/...`)
 - Root `src/pages/index.astro` handles redirect from `/`
 - Pages are mirrored under `src/pages/zh-tw/` and `src/pages/en/`
+- **zh-cn is generated, never hand-edited**: `src/pages/zh-cn/` and
+  `src/i18n/zh-cn/` are a pure 1:1 OpenCC (Traditional → Simplified)
+  translation of their zh-tw counterparts. After changing anything under
+  zh-tw, regenerate with `npm -w packages/jingmommy.com run gen:zh-cn`
+  (see `src/scripts/generate-zh-cn.mjs`) — it deletes and rewrites the
+  zh-cn directories wholesale
 - MDX pages use `layout` frontmatter to select a layout
 
 #### Locale ↔ domain routing
