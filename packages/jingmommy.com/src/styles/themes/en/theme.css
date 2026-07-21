@@ -208,7 +208,6 @@ section[id] {
   color: var(--ink-soft);
   max-width: 780px;
   margin: 0 auto 14px;
-  white-space: nowrap;
 }
 .hero .trust {
   font-family: "Jost", sans-serif;
