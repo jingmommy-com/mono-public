@@ -1,0 +1,604 @@
+---
+import Base from "@/layouts/themes/en/Base.astro"
+import TopBar from "@/components/themes/en/TopBar.astro"
+import Footer from "@/components/themes/en/Footer.astro"
+import Botanical from "@/components/themes/en/Botanical.astro"
+
+import { phones, products } from '@/config/index.ts'
+import { route, orderUrl, phoneDisplay, usd } from '@/utils/index.ts'
+
+const herbalAddonPrice = products.herbal_drink.price * 30
+
+const title = "Easy Meal Plan — Recovery That Fits Your Life | JingMommy"
+const description =
+  `The JingMommy Easy Meal plan: ${usd(products.local_easy_15d.price)} flat for 15 full days of Zuo Yue Zi recovery meals, delivered every other day across 30 days. Same kitchen, same dishes — a gentler rhythm.`
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: "JingMommy Easy Meal Plan",
+    alternateName: "輕享月子餐",
+    description: `Traditional Chinese postpartum (Zuo Yue Zi) recovery meals at a gentler rhythm — 15 complete days of warm, cooked-from-scratch meals, delivered every other day across a 30-day window. A single flat price of ${usd(products.local_easy_15d.price)}.`,
+    brand: { "@type": "Brand", name: "JingMommy" },
+    offers: [
+      { "@type": "Offer", name: "Easy Meal — 15 one-day meals · 15 deliveries within 30 days", price: String(products.local_easy_15d.price), priceCurrency: "USD", availability: "https://schema.org/InStock" },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      { "@type": "Question", name: "Is every-other-day delivery enough to do Zuo Yue Zi properly?", acceptedAnswer: { "@type": "Answer", text: "Every Easy Meal delivery is a complete day of food — the same eleven items as our Classic plan, from the same kitchen. Nothing in the day is reduced. What changes is how often the driver comes: 15 full days of meals across your 30-day window, so the days your family cooks aren't doubled up on." } },
+      { "@type": "Question", name: "What do I eat on the days between deliveries?", acceptedAnswer: { "@type": "Answer", text: "Those days are yours — family cooking, your own kitchen, or a craving you've been saving. Easy Meal is built for mothers who already have some help at home, so it fills the gaps rather than replacing every meal." } },
+      { "@type": "Question", name: "Can I add the herbal drinks to the Easy Meal plan?", acceptedAnswer: { "@type": "Answer", text: `Yes. The postpartum herbal drinks are an optional add-on at ${usd(herbalAddonPrice)}, delivered two cups per delivery so you have one for the day the meals arrive and one for the day in between.` } },
+      { "@type": "Question", name: "When should I order?", acceptedAnswer: { "@type": "Answer", text: "We recommend ordering at least one month before your due date. The week your baby arrives, you will not have the bandwidth to compare plans or fill out forms — and you shouldn't have to. Your start date can be adjusted once the baby comes." } },
+    ],
+  },
+]
+---
+
+<Base title={title} description={description} jsonLd={jsonLd}>
+  <TopBar active={route("/plans", 'en')} />
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <Botanical variant="hero-tl" />
+    <Botanical variant="hero-br" />
+    <div class="hero-inner">
+      <p class="eyebrow">Zuo Yue Zi Meal Plan</p>
+      <h1>Easy Meal</h1>
+      <p class="cn-title">輕享月子餐</p>
+      <p class="hero-sub">Recovery That Fits Your Life</p>
+      <p class="lede">You've earned a gentle month. <em>Every-other-day delivery</em> is one full day of food — with room left for the days your family cooks.</p>
+      <p class="hero-price"><span class="from">15 full days of meals · 15 deliveries within 30 days</span>{usd(products.local_easy_15d.price)}</p>
+      <div class="hero-cta">
+        <a href="#pricing" class="btn btn-primary">See what's included</a>
+        <a href="#taste" class="btn btn-ghost">Try a taste first</a>
+      </div>
+    </div>
+    <div class="hero-banner reveal">
+      <div class="img-slot">
+        <span class="slot-icon">❀</span>
+        <span class="slot-label">Hero Image</span>
+        <span class="slot-hint">Wide, warm shot of one full Easy Meal day · ~1600 × 640</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OPENING ============ -->
+  <section class="opening">
+    <div class="narrow reveal">
+      <p>Someone at home has already offered to help — your mother, your mother-in-law, your husband. What makes you pause probably isn't <em>whether</em> someone will cook. It's whether they'll wear themselves out doing it.</p>
+      <p>A full postpartum day is a lot to make from scratch. It's easy for one big pot of soup to stretch across three days — or for a willing helper who doesn't know Zuo Yue Zi to reach for the wrong ingredients, blurring the stages that are meant to cleanse first and nourish later. All heart, not always the right food for the moment.</p>
+      <p class="pull">Every-other-day delivery is one full day of food — with room left for the days your family cooks.</p>
+      <p>Delivering every other day lets your family still prepare some of your meals, without standing over the stove all month — while every other day, you get a complete day of proper, stage-by-stage recovery food. They don't burn out. You still heal well.</p>
+      <p>And if you're not sure Chinese postpartum food will suit your taste, the rhythm helps there too: our meals on delivery days, your own familiar food in between. No all-or-nothing.</p>
+    </div>
+  </section>
+
+  <div class="floral-divider reveal">
+    <span class="line"></span>
+    <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><g><circle cx="20" cy="20" r="4" fill="#A8842C" opacity="0.85"/><ellipse cx="20" cy="9" rx="4.5" ry="7" fill="#C77D7D" opacity="0.7"/><ellipse cx="20" cy="31" rx="4.5" ry="7" fill="#C77D7D" opacity="0.7"/><ellipse cx="9" cy="20" rx="7" ry="4.5" fill="#C77D7D" opacity="0.7"/><ellipse cx="31" cy="20" rx="7" ry="4.5" fill="#C77D7D" opacity="0.7"/><ellipse cx="12" cy="12" rx="5" ry="6" fill="#D99FB0" opacity="0.6" transform="rotate(-45 12 12)"/><ellipse cx="28" cy="12" rx="5" ry="6" fill="#D99FB0" opacity="0.6" transform="rotate(45 28 12)"/><ellipse cx="12" cy="28" rx="5" ry="6" fill="#D99FB0" opacity="0.6" transform="rotate(45 12 28)"/><ellipse cx="28" cy="28" rx="5" ry="6" fill="#D99FB0" opacity="0.6" transform="rotate(-45 28 28)"/></g></svg>
+    <span class="line r"></span>
+  </div>
+
+  <!-- ============ DAILY ============ -->
+  <section class="daily" id="daily">
+    <svg class="botan daily-botan" viewBox="0 0 240 240" fill="none" aria-hidden="true">
+      <g>
+        <path d="M220 30 C200 70 175 100 145 122" stroke="#5E6B4F" stroke-width="2" fill="none" opacity="0.6"/>
+        <ellipse cx="180" cy="80" rx="12" ry="19" fill="#5E6B4F" opacity="0.4" transform="rotate(35 180 80)"/>
+        <ellipse cx="150" cy="105" rx="10" ry="16" fill="#6E7A5C" opacity="0.38" transform="rotate(20 150 105)"/>
+        <ellipse cx="115" cy="140" rx="34" ry="40" fill="#D99FB0" opacity="0.55"/>
+        <path d="M115 103 C130 112 137 128 133 145 C129 160 119 170 115 172 C111 170 101 160 97 145 C93 128 100 112 115 103Z" fill="#C77D7D" opacity="0.5"/>
+        <circle cx="115" cy="140" r="11" fill="#E8C46A" opacity="0.8"/>
+        <circle cx="115" cy="140" r="6" fill="#A8842C" opacity="0.65"/>
+      </g>
+    </svg>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">What Arrives Every Other Day</p>
+        <h2>A full day of healing, every time</h2>
+        <p>Each of your fifteen deliveries brings:</p>
+      </div>
+      <div class="daily-grid reveal">
+        <div class="daily-cell">
+          <div class="img-slot"><span class="slot-icon">❀</span><span class="slot-label">Dish Photo</span><span class="slot-hint">A warming soup or broth · ~600 × 400</span></div>
+          <div class="cell-body">
+            <div class="num"><span>一</span></div>
+            <h3>A complete day, not a lighter one</h3>
+            <p>Breakfast, lunch, and dinner in full — the same eleven items as the Classic plan, balanced the traditional way to restore strength, energy, and gut health.</p>
+          </div>
+        </div>
+        <div class="daily-cell">
+          <div class="img-slot"><span class="slot-icon">❀</span><span class="slot-label">Dish Photo</span><span class="slot-hint">Sesame oil chicken or a braise · ~600 × 400</span></div>
+          <div class="cell-body">
+            <div class="num"><span>二</span></div>
+            <h3>Warm, cooked-from-scratch dishes</h3>
+            <p>Nothing pre-packaged, nothing shortcut. Every dish is built on hours of slow simmering and warming ingredients that support postpartum circulation and gentle recovery.</p>
+          </div>
+        </div>
+        <div class="daily-cell">
+          <div class="img-slot"><span class="slot-icon">❀</span><span class="slot-label">Dish Photo</span><span class="slot-hint">A packed day's meal set, ready for delivery · ~600 × 400</span></div>
+          <div class="cell-body">
+            <div class="num"><span>三</span></div>
+            <h3>A rhythm with room in it</h3>
+            <p>Fifteen deliveries across your thirty days, arriving every other day — so the food is there when you need it, and the table is free when your family wants to cook.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section class="gallery" id="gallery">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">On the Table</p>
+        <h2>A look at the food</h2>
+        <p>Real dishes from an Easy Meal delivery.</p>
+      </div>
+      <div class="gallery-grid reveal">
+        <div class="img-slot"><span class="slot-icon">❀</span><span class="slot-label">Feature Dish</span><span class="slot-hint">Tall hero dish · ~800 × 880</span></div>
+        <div class="img-slot"><span class="slot-icon">❀</span><span class="slot-label">Dish</span><span class="slot-hint">~520 × 440</span></div>
+        <div class="img-slot"><span class="slot-icon">❀</span><span class="slot-label">Dish</span><span class="slot-hint">~520 × 440</span></div>
+        <div class="img-slot"><span class="slot-icon">❀</span><span class="slot-label">Dish</span><span class="slot-hint">~520 × 440</span></div>
+        <div class="img-slot"><span class="slot-icon">❀</span><span class="slot-label">Dish</span><span class="slot-hint">~520 × 440</span></div>
+      </div>
+      <p class="gallery-note">Menus rotate across your fifteen deliveries to follow the recovery sequence.</p>
+    </div>
+  </section>
+
+  <div class="floral-divider reveal">
+    <span class="line"></span>
+    <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><g><circle cx="20" cy="20" r="4" fill="#A8842C" opacity="0.85"/><ellipse cx="20" cy="9" rx="4.5" ry="7" fill="#C77D7D" opacity="0.7"/><ellipse cx="20" cy="31" rx="4.5" ry="7" fill="#C77D7D" opacity="0.7"/><ellipse cx="9" cy="20" rx="7" ry="4.5" fill="#C77D7D" opacity="0.7"/><ellipse cx="31" cy="20" rx="7" ry="4.5" fill="#C77D7D" opacity="0.7"/><ellipse cx="12" cy="12" rx="5" ry="6" fill="#D99FB0" opacity="0.6" transform="rotate(-45 12 12)"/><ellipse cx="28" cy="12" rx="5" ry="6" fill="#D99FB0" opacity="0.6" transform="rotate(45 28 12)"/><ellipse cx="12" cy="28" rx="5" ry="6" fill="#D99FB0" opacity="0.6" transform="rotate(45 12 28)"/><ellipse cx="28" cy="28" rx="5" ry="6" fill="#D99FB0" opacity="0.6" transform="rotate(-45 28 28)"/></g></svg>
+    <span class="line r"></span>
+  </div>
+
+  <!-- ============ PERSONA ============ -->
+  <section class="persona">
+    <svg class="botan persona-botan" viewBox="0 0 280 280" fill="none" aria-hidden="true">
+      <g>
+        <path d="M260 270 C240 230 215 200 185 178" stroke="#5E6B4F" stroke-width="2" fill="none" opacity="0.6"/>
+        <ellipse cx="210" cy="205" rx="12" ry="19" fill="#5E6B4F" opacity="0.35" transform="rotate(30 210 205)"/>
+        <ellipse cx="150" cy="140" rx="34" ry="40" fill="#D99FB0" opacity="0.6"/>
+        <path d="M150 103 C165 112 172 128 168 145 C164 160 154 170 150 172 C146 170 136 160 132 145 C128 128 135 112 150 103Z" fill="#C77D7D" opacity="0.5"/>
+        <circle cx="150" cy="140" r="11" fill="#E8C46A" opacity="0.8"/>
+      </g>
+    </svg>
+    <div class="wrap">
+      <div class="persona-grid reveal">
+        <div class="persona-left">
+          <p class="eyebrow">Perfect For You If…</p>
+          <h2>You have help at home. We fill the gaps.</h2>
+          <p>The Easy Meal is for the mom who wants to supplement her meals, not replace all of them. Full days of recovery food, at a pace that leaves room for everyone else.</p>
+        </div>
+        <div class="persona-right">
+          <p>Maybe your mother or mother-in-law flew in and has already claimed the kitchen — and a daily delivery would only mean good food going cold in the fridge. Or you like cooking, and you want a plan that makes space for it.</p>
+          <p>Maybe you're watching the budget, and you'd rather do fifteen real days of Zuo Yue Zi than stretch for thirty. Or maybe this whole tradition is new to you, and you'd like to step in gently before committing your entire month — <em>curious, not certain, and that's a perfectly good place to start</em>.</p>
+          <p>Whichever one sounds like you, the food is the same food. Only the rhythm is yours to choose.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUOTE ============ -->
+  <section class="band band-cream-deep" style="overflow:hidden;position:relative">
+    <Botanical variant="testimonial" />
+    <div class="quote-mark">"</div>
+    <div class="testi reveal">
+      <p class="eyebrow">Moms Say</p>
+      <p class="testi-quote">"I loved the every-other-day rhythm — it gave me the freedom to enjoy family meals or cravings, while still feeling nourished and supported."</p>
+      <p class="testi-by">— An Easy Meal mom</p>
+    </div>
+  </section>
+
+  <!-- ============ ADD-ONS ============ -->
+  <section class="addons" id="addons">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Make It Yours</p>
+        <h2>Two ways to go deeper</h2>
+        <p>The Easy plan is complete on its own. These add-ons are here if you want more.</p>
+      </div>
+      <div class="addon-grid reveal">
+        <div class="addon-card">
+          <div class="img-slot"><span class="slot-icon">❀</span><span class="slot-label">Add-on Photo</span><span class="slot-hint">A cup of chicken essence · ~760 × 400</span></div>
+          <div class="addon-body">
+            <p class="tag">Recovery Booster</p>
+            <h3>Slow-Simmered Chicken Essence</h3>
+            <p class="cn">熬雞精</p>
+            <p>Your go-to recovery booster — slowly simmered for hours from <strong>aged hens and white-feather chickens</strong> until every drop is rich with collagen, protein, and minerals, then concentrated into one small, warming cup.</p>
+            <p>Easy to sip on the days you're too tired for a full meal, it arrives ready to warm — no cooking, no cleanup. On the Easy plan, mothers often keep a few in the fridge for the in-between days.</p>
+            <p class="addon-price">{usd(products.chicken_essence.price)} / serving · add on whenever you like</p>
+          </div>
+        </div>
+        <div class="addon-card">
+          <div class="img-slot"><span class="slot-icon">❀</span><span class="slot-label">Add-on Photo</span><span class="slot-hint">The daily herbal drinks · ~760 × 400</span></div>
+          <div class="addon-body">
+            <p class="tag">Herbal Add-On</p>
+            <h3>The 30-Day Herbal Drinks</h3>
+            <p class="cn">月子藥膳</p>
+            <p>The daily herbal drinks that have anchored Chinese postpartum recovery for generations — <strong>15 formulas</strong> that follow the traditional recovery sequence, stage by stage across your thirty days.</p>
+            <p>On the Easy plan they arrive <strong>two cups per delivery</strong> — one for the day your meals come, one for the day in between — so your herbal drinks stay daily even when the deliveries don't.</p>
+            <p class="addon-price">{usd(herbalAddonPrice)} · optional add-on · 2 cups per delivery</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="floral-divider reveal">
+    <span class="line"></span>
+    <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><g><circle cx="20" cy="20" r="4" fill="#A8842C" opacity="0.85"/><ellipse cx="20" cy="9" rx="4.5" ry="7" fill="#C77D7D" opacity="0.7"/><ellipse cx="20" cy="31" rx="4.5" ry="7" fill="#C77D7D" opacity="0.7"/><ellipse cx="9" cy="20" rx="7" ry="4.5" fill="#C77D7D" opacity="0.7"/><ellipse cx="31" cy="20" rx="7" ry="4.5" fill="#C77D7D" opacity="0.7"/><ellipse cx="12" cy="12" rx="5" ry="6" fill="#D99FB0" opacity="0.6" transform="rotate(-45 12 12)"/><ellipse cx="28" cy="12" rx="5" ry="6" fill="#D99FB0" opacity="0.6" transform="rotate(45 28 12)"/><ellipse cx="12" cy="28" rx="5" ry="6" fill="#D99FB0" opacity="0.6" transform="rotate(45 12 28)"/><ellipse cx="28" cy="28" rx="5" ry="6" fill="#D99FB0" opacity="0.6" transform="rotate(-45 28 28)"/></g></svg>
+    <span class="line r"></span>
+  </div>
+
+  <!-- ============ PRICING ============ -->
+  <section class="pricing" id="pricing">
+    <svg class="botan pricing-botan" viewBox="0 0 240 240" fill="none" aria-hidden="true">
+      <g>
+        <path d="M20 210 C40 170 65 140 95 118" stroke="#5E6B4F" stroke-width="2" fill="none" opacity="0.6"/>
+        <ellipse cx="60" cy="160" rx="12" ry="19" fill="#5E6B4F" opacity="0.4" transform="rotate(-30 60 160)"/>
+        <ellipse cx="90" cy="135" rx="10" ry="16" fill="#6E7A5C" opacity="0.38" transform="rotate(-15 90 135)"/>
+        <ellipse cx="125" cy="100" rx="34" ry="40" fill="#D99FB0" opacity="0.55"/>
+        <path d="M125 63 C140 72 147 88 143 105 C139 120 129 130 125 132 C121 130 111 120 107 105 C103 88 110 72 125 63Z" fill="#C77D7D" opacity="0.5"/>
+        <circle cx="125" cy="100" r="11" fill="#E8C46A" opacity="0.8"/>
+        <circle cx="125" cy="100" r="6" fill="#A8842C" opacity="0.65"/>
+      </g>
+    </svg>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Simple, Flat Pricing</p>
+        <h2>One price, one month, fifteen full days</h2>
+        <p>Unlike our other plans, the Easy Meal isn't priced by the day — it's one flat pack of fifteen complete meal days.</p>
+      </div>
+      <div class="price-grid reveal">
+        <div class="price-card">
+          <p class="mode">Every Day Includes</p>
+          <h3>Easy Meal</h3>
+          <p class="cn">輕享月子餐</p>
+          <ul>
+            <li><strong>Breakfast</strong> — egg &amp; porridge</li>
+            <li><strong>Lunch</strong> — fish soup or lunch soup, entrée, vegetables, rice &amp; grains</li>
+            <li><strong>Dinner</strong> — Taiwanese postpartum soup, dinner soup, entrée, vegetables, rice &amp; grains</li>
+            <li><strong>2 desserts</strong> + a daily healing drink</li>
+            <li>Warm, cooked-from-scratch Zuo Yue Zi dishes — the same full day as our Classic plan</li>
+          </ul>
+          <a href={orderUrl('local_easy', 'en')} class="btn btn-primary">Order online</a>
+        </div>
+        <div class="price-card">
+          <p class="mode">Pricing</p>
+          <h3>One Flat Price</h3>
+          <p class="cn">單一價格</p>
+          <div class="tier-row feat"><span class="d">15 Deliveries</span><span class="p">{usd(products.local_easy_15d.price)}</span></div>
+          <ul>
+            <li><strong>15 complete meal days</strong>, delivered across a 30-day window</li>
+            <li><strong>Every-other-day delivery</strong> — 15 deliveries in total</li>
+            <li>Herbal drinks optional: <strong>{usd(herbalAddonPrice)}</strong>, 2 cups per delivery</li>
+          </ul>
+          <p class="dep">$500 deposit · balance within 3 days of first delivery.</p>
+          <a href={orderUrl('local_easy', 'en')} class="btn btn-ghost">Order online</a>
+        </div>
+      </div>
+      <p class="pricing-foot">Not sure if the every-other-day rhythm fits? Call us at <a href={`tel:${phones.main}`}>{phoneDisplay(phones.main)}</a> — we're happy to talk it through, no pressure.</p>
+    </div>
+  </section>
+
+  <!-- ============ DOWNLOADS ============ -->
+  <section class="actions" id="resources">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Review At Your Own Pace</p>
+        <h2>Download the details</h2>
+        <p>Prefer to look things over on your own? Grab the order form, compare every plan side by side, or browse the full menu.</p>
+      </div>
+
+      <div class="action-downloads reveal">
+        <a href="//file.jingmommy.com/f/Main_Order_Form.pdf" class="action-btn">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg>
+          <span class="lbl"><span class="en">Order Form <span class="pdf-tag">PDF</span></span><span class="cn">下載訂購單</span></span>
+        </a>
+        <a href="//file.jingmommy.com/f/Meal_Comparison_Chart.pdf" class="action-btn">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/></svg>
+          <span class="lbl"><span class="en">Meal Comparison Chart <span class="pdf-tag">PDF</span></span><span class="cn">餐點對照表</span></span>
+        </a>
+        <a href="//file.jingmommy.com/f/Menu.pdf" class="action-btn">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h0a2 2 0 0 0 2-2V2M5 2v20M15 2c-1.5 0-3 1.5-3 4s1.5 4 3 4v12"/></svg>
+          <span class="lbl"><span class="en">Full Menu <span class="pdf-tag">PDF</span></span><span class="cn">菜單</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ UPGRADE ============ -->
+  <section class="upgrade">
+    <div class="upgrade-inner reveal">
+      <p class="eyebrow">Want Food Every Single Day?</p>
+      <h2>Step up to the Classic Meal plan</h2>
+      <p>The very same dishes, from the very same kitchen — arriving daily instead of every other day, so mealtime never needs a thought. And if you start with Easy and change your mind partway through, call us. We'll work it out.</p>
+      <a href={route("/postpartum-meals/classic-postpartum-meals", 'en')} class="btn btn-primary">Explore the Classic Meal — {usd(products.local_classic_30d.price)}</a>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="faq-band" id="faq">
+    <svg class="botan faq-botan" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+      <g>
+        <path d="M185 25 C165 60 140 88 112 108" stroke="#5E6B4F" stroke-width="1.8" fill="none" opacity="0.55"/>
+        <ellipse cx="150" cy="62" rx="10" ry="16" fill="#5E6B4F" opacity="0.35" transform="rotate(30 150 62)"/>
+        <ellipse cx="98" cy="118" rx="28" ry="34" fill="#D99FB0" opacity="0.5"/>
+        <path d="M98 86 C111 94 117 108 113 122 C109 134 100 142 98 144 C96 142 87 134 83 122 C79 108 85 94 98 86Z" fill="#C77D7D" opacity="0.45"/>
+        <circle cx="98" cy="118" r="9" fill="#E8C46A" opacity="0.75"/>
+      </g>
+    </svg>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Good Questions</p>
+        <h2>Before you decide</h2>
+      </div>
+      <div class="faq-list reveal">
+        <details class="faq-item">
+          <summary>Is every other day really enough?</summary>
+          <div class="faq-answer"><p>Each delivery is a complete day of food — a full, stage-by-stage recovery day, the same items as our Classic plan. The every-other-day rhythm is designed for mothers who already have help at home: your family can still cook the meals they're comfortable with, without wearing themselves out over a full month, while every other day you're guaranteed proper Zuo Yue Zi food made the right way. They stay rested, and your recovery stays on track.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What do I eat on the days in between?</summary>
+          <div class="faq-answer"><p>Those days are yours. Family cooking, your own kitchen, or the meal you've been craving since the second trimester. There's no wrong way to fill them — the days we deliver keep your Zuo Yue Zi on track, and the days in between are simply yours.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>How does the every-other-day delivery work?</summary>
+          <div class="faq-answer"><p>You'll receive fifteen deliveries across your thirty days, arriving every other day. We aim to reach your door before noon, though actual times shift with traffic and routes, so an exact hour isn't guaranteed. In remote areas an additional delivery fee may apply. Refrigerate your meals when they arrive, and heat them thoroughly before eating.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I still get the herbal drinks?</summary>
+          <div class="faq-answer"><p>Yes — they're an optional add-on at {usd(herbalAddonPrice)}. Because your deliveries come every other day, the drinks arrive two cups at a time: one for the day your meals come, one for the day in between. The 15 formulas still follow the traditional recovery sequence across your month.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Will I like the food if I didn't grow up with it?</summary>
+          <div class="faq-answer"><p>Most first-timers tell us the food is warmer and more familiar than they expected — savory broths, slow-cooked chicken, gentle vegetables, comforting rice dishes. The easiest way to know for sure is to <a href={route("/sample", 'en')}>try a sample day</a> before committing.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>When should I order?</summary>
+          <div class="faq-answer"><p>At least one month before your due date, if you can. The week your baby arrives, you will not have the bandwidth to compare plans or fill out forms — and you shouldn't have to. Your start date can be adjusted once the baby comes.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TASTE CTA ============ -->
+  <section class="taste" id="taste">
+    <svg class="botan taste-botan-l" viewBox="0 0 260 260" fill="none" aria-hidden="true">
+      <g>
+        <path d="M20 250 C40 210 65 180 95 158" stroke="#5E6B4F" stroke-width="2" fill="none" opacity="0.55"/>
+        <ellipse cx="60" cy="195" rx="12" ry="19" fill="#5E6B4F" opacity="0.35" transform="rotate(-30 60 195)"/>
+        <ellipse cx="125" cy="120" rx="32" ry="38" fill="#D99FB0" opacity="0.6"/>
+        <path d="M125 85 C139 94 146 109 142 125 C138 140 129 149 125 151 C121 149 112 140 108 125 C104 109 111 94 125 85Z" fill="#C77D7D" opacity="0.5"/>
+        <circle cx="125" cy="120" r="10" fill="#E8C46A" opacity="0.8"/>
+      </g>
+    </svg>
+    <svg class="botan taste-botan-r" viewBox="0 0 240 240" fill="none" aria-hidden="true">
+      <g>
+        <path d="M220 10 C200 50 175 80 145 102" stroke="#5E6B4F" stroke-width="2" fill="none" opacity="0.55"/>
+        <ellipse cx="180" cy="65" rx="11" ry="18" fill="#5E6B4F" opacity="0.35" transform="rotate(30 180 65)"/>
+        <ellipse cx="115" cy="140" rx="30" ry="36" fill="#D99FB0" opacity="0.55"/>
+        <circle cx="115" cy="140" r="10" fill="#E8C46A" opacity="0.75"/>
+      </g>
+    </svg>
+    <div class="taste-inner reveal">
+      <p class="eyebrow">Not Sure Yet?</p>
+      <h2>Taste before you commit.</h2>
+      <p>The Easy plan is already the gentlest way into Zuo Yue Zi — and a sample day is gentler still. Have one full day delivered, and let the food make the case.</p>
+      <div class="taste-cta">
+        <a href={route("/sample", 'en')} class="btn btn-primary">Order a sample day</a>
+        <a href={route("/contact", 'en')} class="btn btn-ghost">Contact us</a>
+      </div>
+      <p class="taste-note">Or call {phoneDisplay(phones.main)} — we're usually around later than you'd expect.</p>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  /* Product page — page-unique sections (shared shape across all meal-plan detail pages) */
+  .hero { position: relative; overflow: hidden; padding: 84px 0 60px; background: linear-gradient(180deg, var(--paper) 0%, var(--cream) 100%); }
+  .hero-inner { position: relative; z-index: 3; max-width: 880px; margin: 0 auto; text-align: center; padding: 0 32px; }
+  .hero .eyebrow { margin-bottom: 24px; }
+  .hero h1 { text-transform: none; letter-spacing: .02em; font-size: 38px; line-height: 1.12; color: var(--ink); margin-bottom: 6px; }
+  .hero .cn-title { font-family: "Cormorant Garamond", serif; font-size: 23px; color: var(--gold); letter-spacing: .02em; margin-bottom: 26px; }
+  .hero-sub { font-family: "Cormorant Garamond", serif; font-weight: 500; text-transform: uppercase; letter-spacing: .14em; font-size: 48px; color: var(--ink); line-height: 1.14; margin-bottom: 24px; }
+  .hero .lede { font-size: 22px; color: var(--ink-soft); max-width: 720px; margin: 0 auto 20px; }
+  .hero .lede em { font-style: italic; color: var(--accent-deep); }
+  .hero-price { font-family: "Cormorant Garamond", serif; font-size: 24px; color: var(--ink); margin-bottom: 36px; }
+  .hero-price .from { font-family: "Jost", sans-serif; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 4px; }
+  .hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .hero-banner { position: relative; z-index: 3; max-width: 1120px; margin: 56px auto 0; padding: 0 32px; }
+  .hero-banner .img-slot { height: 440px; }
+
+  /* Image slots — replace with real <img> when photos are available */
+  .img-slot { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+    background: linear-gradient(135deg, #EAE0D3 0%, #DCCBB8 100%); border: 1px dashed var(--accent); border-radius: 3px;
+    color: var(--accent-deep); font-family: "Jost", sans-serif; overflow: hidden; }
+  .img-slot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .img-slot .slot-label { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; padding: 6px 14px; }
+  .img-slot .slot-hint { font-family: "EB Garamond", serif; font-style: italic; font-size: 14px; letter-spacing: 0; color: var(--muted); margin-top: 4px; padding: 0 18px 4px; }
+  .img-slot .slot-icon { font-family: "Cormorant Garamond", serif; font-size: 56px; opacity: .5; margin-bottom: 2px; line-height: 1; }
+
+  .botan { position: absolute; pointer-events: none; opacity: .92; z-index: 1; }
+  section[id] { scroll-margin-top: 78px; }
+
+  /* Opening */
+  .opening { padding: 88px 0 48px; }
+  .opening p { font-size: 19px; color: var(--ink-soft); margin-bottom: 22px; }
+  .opening p em { font-style: italic; color: var(--accent-deep); }
+  .opening .pull { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 23px; line-height: 1.4; color: var(--accent-deep); border-left: 2px solid var(--accent); padding: 14px 0 14px 24px; margin: 32px 0; }
+  .opening .narrow > p:first-of-type::first-letter { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 74px; line-height: .72; float: left; margin: 8px 12px 0 0; color: var(--accent-deep); }
+
+  /* Floral divider */
+  .floral-divider { display: flex; align-items: center; justify-content: center; gap: 20px; padding: 8px 0; background: var(--paper); }
+  .floral-divider .line { height: 1px; width: 90px; background: linear-gradient(90deg, transparent, var(--line)); }
+  .floral-divider .line.r { background: linear-gradient(90deg, var(--line), transparent); }
+  .floral-divider svg { width: 34px; height: 34px; opacity: .9; flex-shrink: 0; }
+
+  /* Daily */
+  .daily { padding: 96px 0; background: var(--cream); position: relative; overflow: hidden;
+    background-image: radial-gradient(circle at 20% 15%, rgba(180,123,92,.05), transparent 45%), radial-gradient(circle at 85% 80%, rgba(94,107,79,.05), transparent 45%); }
+  .daily .wrap { position: relative; z-index: 3; }
+  .daily-botan { top: -24px; right: -30px; width: 200px; opacity: .4; }
+  .section-head { text-align: center; max-width: 680px; margin: 0 auto 60px; }
+  .section-head .eyebrow { margin-bottom: 18px; }
+  .section-head p { font-size: 19px; color: var(--muted); margin-top: 18px; font-style: italic; }
+  .daily-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; max-width: 1040px; margin: 0 auto; }
+  .daily-cell { background: var(--paper); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; transition: all .25s; display: flex; flex-direction: column; }
+  .daily-cell:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .daily-cell .img-slot { height: 180px; border: none; border-bottom: 1px dashed var(--accent); border-radius: 0; }
+  .daily-cell .cell-body { padding: 30px 30px 34px; border-top: 3px solid var(--accent); }
+  .daily-cell .num { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; margin-bottom: 12px; }
+  .daily-cell .num::before { content: ""; position: absolute; inset: 0; z-index: 0; background: radial-gradient(circle, rgba(180,123,92,.16), rgba(180,123,92,.04) 70%, transparent); border-radius: 50%; }
+  .daily-cell .num span { position: relative; z-index: 1; font-family: "Cormorant Garamond", serif; font-size: 34px; font-weight: 500; color: var(--accent); line-height: 1; }
+  .daily-cell h3 { font-size: 24px; margin-bottom: 12px; }
+  .daily-cell p { font-size: 16px; color: var(--ink-soft); margin: 0; line-height: 1.6; }
+
+  /* Gallery */
+  .gallery { padding: 104px 0; background: var(--paper); }
+  .gallery-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 220px 220px; gap: 16px; max-width: 1040px; margin: 0 auto; }
+  .gallery-grid .img-slot:nth-child(1) { grid-row: span 2; }
+  .gallery-note { text-align: center; font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 17px; color: var(--muted); margin-top: 28px; }
+
+  /* Persona */
+  .persona { padding: 104px 0; background: var(--cream); position: relative; overflow: hidden; }
+  .persona-botan { bottom: -40px; right: -40px; width: 280px; opacity: .5; }
+  .persona-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 64px; max-width: 1040px; margin: 0 auto; align-items: start; position: relative; z-index: 3; }
+  .persona-left h2 { font-size: 42px; margin-bottom: 24px; line-height: 1.12; }
+  .persona-left .eyebrow { margin-bottom: 16px; }
+  .persona-left p { font-size: 18px; color: var(--ink-soft); }
+  .persona-right p { font-size: 18.5px; color: var(--ink-soft); margin-bottom: 20px; }
+  .persona-right p em { font-style: italic; color: var(--accent-deep); }
+
+  /* Quote */
+  .quote-mark { position: absolute; font-family: "Cormorant Garamond", serif; font-size: 280px; color: var(--accent); opacity: .07; top: -30px; left: 40px; line-height: 1; z-index: 1; pointer-events: none; }
+
+  /* Add-ons */
+  .addons { padding: 104px 0; background: var(--paper); }
+  .addon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 960px; margin: 0 auto; }
+  .addon-card { background: var(--cream); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; transition: all .25s; display: flex; flex-direction: column; }
+  .addon-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .addon-card .img-slot { height: 200px; border: none; border-bottom: 1px dashed var(--accent); border-radius: 0; }
+  .addon-card .addon-body { padding: 36px 40px 40px; }
+  .addon-card .tag { font-family: "Jost", sans-serif; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .addon-card h3 { font-size: 27px; margin-bottom: 6px; }
+  .addon-card .cn { font-family: "Cormorant Garamond", serif; font-size: 20px; color: var(--gold); margin-bottom: 18px; }
+  .addon-card p { font-size: 16.5px; color: var(--ink-soft); margin-bottom: 14px; line-height: 1.65; }
+  .addon-card p:last-of-type { margin-bottom: 0; }
+  .addon-card p strong { color: var(--ink); font-weight: 500; }
+  .addon-price { font-family: "Cormorant Garamond", serif; font-size: 20px; color: var(--accent-deep); margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); }
+
+  /* Pricing */
+  .pricing { padding: 104px 0; background: var(--cream); position: relative; overflow: hidden;
+    background-image: radial-gradient(circle at 20% 15%, rgba(180,123,92,.05), transparent 45%), radial-gradient(circle at 85% 80%, rgba(94,107,79,.05), transparent 45%); }
+  .pricing .wrap { position: relative; z-index: 3; }
+  .pricing-botan { bottom: -30px; left: -34px; width: 230px; opacity: .38; }
+  .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 960px; margin: 0 auto; }
+  .price-card { background: var(--paper); border: 1px solid var(--line); border-radius: 3px; padding: 48px 44px; text-align: center; transition: all .25s; }
+  .price-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .price-card .mode { font-family: "Jost", sans-serif; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--accent-deep); margin-bottom: 16px; }
+  .price-card h3 { font-size: 28px; margin-bottom: 6px; }
+  .price-card .cn { font-family: "Cormorant Garamond", serif; font-size: 19px; color: var(--gold); margin-bottom: 22px; }
+  .price-card ul { list-style: none; text-align: left; max-width: 300px; margin: 0 auto 30px; }
+  .price-card li { font-size: 16.5px; color: var(--ink-soft); padding: 9px 0; border-bottom: 1px solid var(--line-soft); line-height: 1.5; }
+  .price-card li:last-child { border-bottom: none; }
+  .price-card li strong { color: var(--ink); font-weight: 500; }
+  .pricing-foot { text-align: center; font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 18px; color: var(--muted); margin-top: 36px; }
+  .pricing-foot a { color: var(--accent-deep); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 1px; }
+  .pricing-foot a:hover { color: var(--ink); border-color: var(--ink); }
+  .tier-row { display: flex; justify-content: space-between; align-items: baseline; padding: 13px 0; border-bottom: 1px solid var(--line-soft); }
+  .tier-row:last-child { border-bottom: none; }
+  .tier-row .d { font-family: "Jost", sans-serif; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .tier-row .p { font-family: "Cormorant Garamond", serif; font-size: 26px; font-weight: 500; color: var(--ink); line-height: 1; }
+  .tier-row.feat .d { color: var(--accent-deep); }
+  .tier-row.feat .p { color: var(--accent-deep); }
+  .price-card .dep { font-family: "Jost", sans-serif; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 20px 0 26px; }
+
+  /* Downloads */
+  .actions { padding: 76px 0; background: var(--paper); }
+  .actions .section-head { margin-bottom: 40px; }
+  .action-downloads { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; max-width: 840px; margin: 0 auto; }
+  .action-btn { display: inline-flex; align-items: center; gap: 13px; background: var(--cream); border: 1px solid var(--line); border-left: 3px solid var(--gold); border-radius: 3px; padding: 13px 20px; text-decoration: none; transition: all .22s; }
+  .action-btn:hover { transform: translateY(-2px); border-color: var(--accent); border-left-color: var(--accent-deep); }
+  .action-btn .ico { flex-shrink: 0; width: 20px; height: 20px; color: var(--gold); }
+  .action-btn .lbl { display: flex; flex-direction: column; line-height: 1.1; }
+  .action-btn .en { font-family: "Cormorant Garamond", serif; font-size: 18px; font-weight: 500; color: var(--ink); display: flex; align-items: center; gap: 7px; }
+  .action-btn .cn { font-family: "Jost", sans-serif; font-size: 10px; letter-spacing: .08em; color: var(--muted); margin-top: 3px; }
+  .action-btn .pdf-tag { font-family: "Jost", sans-serif; font-size: 8px; letter-spacing: .14em; color: var(--accent-deep); border: 1px solid var(--line); border-radius: 2px; padding: 1px 5px; }
+
+  /* Upgrade */
+  .upgrade { padding: 92px 0; background: var(--accent-deep); color: var(--paper); text-align: center; position: relative; overflow: hidden; }
+  .upgrade-inner { max-width: 680px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 3; }
+  .upgrade .eyebrow { color: #E8D5C2; margin-bottom: 16px; }
+  .upgrade h2 { color: var(--paper); font-size: 38px; margin-bottom: 18px; }
+  .upgrade p { font-size: 18px; color: #F0E4D8; margin-bottom: 32px; }
+  .upgrade .btn-primary { background: var(--paper); color: var(--accent-deep); }
+  .upgrade .btn-primary:hover { background: var(--cream); color: var(--ink); }
+
+  /* FAQ */
+  .faq-band { padding: 104px 0; background: var(--paper); position: relative; overflow: hidden; }
+  .faq-band .wrap { position: relative; z-index: 3; }
+  .faq-botan { top: -20px; right: -24px; width: 180px; opacity: .35; }
+  .faq-list { max-width: 820px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid var(--line); padding: 6px 0; }
+  .faq-item summary { list-style: none; cursor: pointer; padding: 24px 4px; font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 24px; color: var(--ink); display: flex; justify-content: space-between; align-items: center; gap: 24px; transition: color .2s; line-height: 1.3; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary:hover { color: var(--accent-deep); }
+  .faq-item summary::after { content: "+"; font-family: "Cormorant Garamond", serif; font-size: 32px; font-weight: 300; color: var(--accent); transition: transform .3s; flex-shrink: 0; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item[open] summary { color: var(--accent-deep); }
+  .faq-answer { padding: 0 4px 26px; font-size: 17px; color: var(--ink-soft); line-height: 1.75; }
+  .faq-answer p { margin-bottom: 14px; }
+  .faq-answer p:last-child { margin-bottom: 0; }
+  .faq-answer a { color: var(--accent-deep); border-bottom: 1px solid var(--accent); text-decoration: none; padding-bottom: 1px; }
+  .faq-answer a:hover { color: var(--ink); border-color: var(--ink); }
+
+  /* Taste */
+  .taste { position: relative; overflow: hidden; padding: 108px 0; background: var(--cream-deep); color: var(--ink); text-align: center; }
+  .taste-inner { position: relative; z-index: 3; max-width: 680px; margin: 0 auto; padding: 0 32px; }
+  .taste h2 { margin-bottom: 22px; }
+  .taste p { font-size: 19px; color: var(--ink-soft); margin-bottom: 36px; }
+  .taste-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .taste-note { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 17px; color: var(--muted); margin-top: 28px; }
+  .taste-botan-l { bottom: -30px; left: -40px; width: 260px; opacity: .7; }
+  .taste-botan-r { top: -30px; right: -40px; width: 240px; opacity: .7; }
+
+  @media (max-width: 900px) {
+    .hero h1 { font-size: 30px; letter-spacing: .02em; }
+    .hero-sub { font-size: 34px; letter-spacing: .12em; }
+    .hero .cn-title { font-size: 21px; }
+    .daily-grid, .addon-grid, .price-grid { grid-template-columns: 1fr; gap: 16px; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px 200px; gap: 12px; }
+    .gallery-grid .img-slot:nth-child(1) { grid-row: span 1; grid-column: span 2; }
+    .persona-grid { grid-template-columns: 1fr; gap: 36px; }
+    .persona-left h2 { font-size: 32px; }
+    .hero-banner .img-slot { height: 280px; }
+    .daily, .persona, .addons, .pricing, .faq-band, .gallery, .actions { padding: 72px 0; }
+    .action-downloads { gap: 10px; }
+    .hero { padding: 60px 0 48px; }
+    .upgrade, .taste { padding: 80px 0; }
+    .upgrade h2 { font-size: 30px; }
+    .faq-item summary { font-size: 19px; padding: 18px 0; }
+    .price-card, .addon-card .addon-body { padding: 36px 28px; }
+    .floral-divider .line { width: 50px; }
+    .opening .narrow > p:first-of-type::first-letter { font-size: 58px; }
+    .daily-botan, .pricing-botan, .faq-botan { width: 140px; }
+  }
+  @media (max-width: 560px) {
+    .hero h1 { font-size: 25px; letter-spacing: .02em; }
+    .hero-sub { font-size: 27px; letter-spacing: .1em; }
+    .hero .cn-title { font-size: 18px; }
+    .hero .lede { font-size: 17px; }
+    .gallery-grid { grid-template-columns: 1fr; grid-template-rows: repeat(4, 200px); }
+    .gallery-grid .img-slot:nth-child(1) { grid-column: span 1; }
+    .price-card .amount { font-size: 42px; }
+    .quote-mark { font-size: 180px; left: 0; }
+  }
+</style>

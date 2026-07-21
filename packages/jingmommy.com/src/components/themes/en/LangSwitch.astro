@@ -5,20 +5,30 @@
   the menu opens upward. Styled in the en theme (uses theme.css CSS variables,
   available because Base.astro imports the en theme.css globally).
 
-  The en (new design) and zh sites don't share a 1:1 route structure, so the
-  menu links to each locale's home. Locales come from config/index.ts and
+  The en (new design) and zh sites aren't fully 1:1, but some routes (e.g. the
+  postpartum-meals product pages) share the same path across locales. Mirrors
+  the base theme's Header.astro switchUrl(): if the same path exists in the
+  target locale's route-map, jump straight there; otherwise fall back to that
+  locale's home instead of a 404. Locales come from config/index.ts and
   labels/hreflang from i18n/locales.ts — every locale except the current one
   is listed.
 */
 import LocaleDomainSwitch from '@/components/LocaleDomainSwitch.astro'
 import { locales, localeMeta } from '@/config/index.ts'
+import routeMap from '@/route-map.json'
 
 const pathSegments = Astro.url.pathname.split('/').filter(Boolean)
 const currentLocale = locales.includes(pathSegments[0]) ? pathSegments[0] : locales[0]
+const restSegments = locales.includes(pathSegments[0]) ? pathSegments.slice(1) : pathSegments
+
+function switchUrl(targetLocale: string): string {
+  const target = restSegments.length ? `/${targetLocale}/${restSegments.join('/')}` : `/${targetLocale}`
+  return Object.hasOwn(routeMap, target) ? target : `/${targetLocale}/`
+}
 
 const languages = locales
   .filter(locale => locale !== currentLocale)
-  .map(locale => ({ locale, href: `/${locale}/`, ...localeMeta[locale] }))
+  .map(locale => ({ locale, href: switchUrl(locale), ...localeMeta[locale] }))
 ---
 
 <details class="lang-switch" id="lang-switch">

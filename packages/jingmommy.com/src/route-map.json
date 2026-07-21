@@ -16,6 +16,18 @@
     "title": "Frequently Asked Questions — JingMommy Zuo Yue Zi Postpartum Meals",
     "description": "Answers to the questions families ask most about JingMommy’s Zuo Yue Zi postpartum meal plans — the tradition, the food, breastfeeding, delivery, plans, and ordering."
   },
+  "/en/frozen-postpartum-meals/classic": {
+    "title": "Frozen Classic Meal — Warm, Balanced, Shipped Frozen | JingMommy"
+  },
+  "/en/frozen-postpartum-meals/essential": {
+    "title": "Frozen Essential Meal — Lunch & Dinner, 5 Days a Week | JingMommy"
+  },
+  "/en/frozen-postpartum-meals/herbal": {
+    "title": "Frozen Herbal Meal — The Complete Plan, Shipped Frozen | JingMommy"
+  },
+  "/en/frozen-postpartum-meals/soup-and-dessert": {
+    "title": "Frozen Soup & Dessert — The Slow-Simmered Dishes, Done | JingMommy"
+  },
   "/en/guide/chinese-food-therapy": {
     "title": "Chinese Food Therapy for Postpartum Recovery — JingMommy",
     "description": "Chinese food therapy (食療) for postpartum recovery: ginger, sesame oil, rice wine, red dates, goji, Dang Gui, sesame oil chicken and sea bass soup — the science and tradition behind every JingMommy meal."
@@ -29,6 +41,21 @@
   },
   "/en/plans": {
     "title": "Meal Plans — Chinese Postpartum (Zuo Yue Zi) Delivery — JingMommy"
+  },
+  "/en/postpartum-meals/classic-postpartum-meals": {
+    "title": "Classic Meal Plan — Warm, Balanced Postpartum Meals | JingMommy"
+  },
+  "/en/postpartum-meals/easy-postpartum-meals": {
+    "title": "Easy Meal Plan — Recovery That Fits Your Life | JingMommy"
+  },
+  "/en/postpartum-meals/herbal-postpartum-meals": {
+    "title": "Herbal Meal Plan — The Complete Zuo Yue Zi Program | JingMommy"
+  },
+  "/en/postpartum-meals/low-carb-postpartum-meals": {
+    "title": "Low Carb Meal Plan — Zuo Yue Zi Without the Rice | JingMommy"
+  },
+  "/en/postpartum-meals/vita-postpartum-meals": {
+    "title": "Vita Meal Plan — A Lighter Postpartum Rhythm | JingMommy"
   },
   "/en/sample": {
     "title": "Try a Taste — Free Tasting & Sample Meals — JingMommy"
@@ -44,7 +71,7 @@
     "title": "Founding Story"
   },
   "/en-translated/about": {
-    "order": 8,
+    "order": 10,
     "sidebar": true,
     "title": "Our Story"
   },
@@ -137,16 +164,22 @@
     "title": "Gallery"
   },
   "/en-translated/guide/confinement-care-advice": {
-    "order": 2,
+    "order": 1,
     "sidebar": true,
     "title": "Confinement Care Tips"
   },
   "/en-translated/guide/dos-and-donts": {
+    "order": 2,
     "sidebar": true,
     "title": "Postpartum Foods — What to Eat & Avoid"
   },
+  "/en-translated/guide": {
+    "order": 8,
+    "sidebar": true,
+    "title": "Gentle reminder"
+  },
   "/en-translated/guide/miscarriage-healing-advice": {
-    "order": 4,
+    "order": 3,
     "sidebar": true,
     "title": "Miscarriage Recovery Advice"
   },
@@ -179,7 +212,7 @@
     "title": "ETTV News"
   },
   "/en-translated/news": {
-    "order": 8,
+    "order": 9,
     "sidebar": true,
     "title": "Media Coverage"
   },
@@ -329,7 +362,7 @@
     "title": "金品缘起"
   },
   "/zh-cn/about": {
-    "order": 8,
+    "order": 10,
     "sidebar": true,
     "title": "金品故事"
   },
@@ -422,16 +455,22 @@
     "title": "相簿"
   },
   "/zh-cn/guide/confinement-care-advice": {
-    "order": 2,
+    "order": 1,
     "sidebar": true,
     "title": "坐月子贴心叮咛"
   },
   "/zh-cn/guide/dos-and-donts": {
+    "order": 2,
     "sidebar": true,
     "title": "坐月子可吃＆不可吃"
   },
+  "/zh-cn/guide": {
+    "order": 8,
+    "sidebar": true,
+    "title": "贴心提示"
+  },
   "/zh-cn/guide/miscarriage-healing-advice": {
-    "order": 4,
+    "order": 3,
     "sidebar": true,
     "title": "小产贴心叮咛"
   },
@@ -464,7 +503,7 @@
     "title": "东森新闻"
   },
   "/zh-cn/news": {
-    "order": 8,
+    "order": 9,
     "sidebar": true,
     "title": "媒体报导"
   },
@@ -612,7 +651,7 @@
     "title": "金品緣起"
   },
   "/zh-tw/about": {
-    "order": 8,
+    "order": 10,
     "sidebar": true,
     "title": "金品故事"
   },
@@ -705,16 +744,22 @@
     "title": "相簿"
   },
   "/zh-tw/guide/confinement-care-advice": {
-    "order": 2,
+    "order": 1,
     "sidebar": true,
     "title": "坐月子貼心叮嚀"
   },
   "/zh-tw/guide/dos-and-donts": {
+    "order": 2,
     "sidebar": true,
     "title": "坐月子可吃＆不可吃"
   },
+  "/zh-tw/guide": {
+    "order": 8,
+    "sidebar": true,
+    "title": "貼心提醒"
+  },
   "/zh-tw/guide/miscarriage-healing-advice": {
-    "order": 4,
+    "order": 3,
     "sidebar": true,
     "title": "小產貼心叮嚀"
   },
@@ -747,7 +792,7 @@
     "title": "東森新聞"
   },
   "/zh-tw/news": {
-    "order": 8,
+    "order": 9,
     "sidebar": true,
     "title": "媒體報導"
   },
