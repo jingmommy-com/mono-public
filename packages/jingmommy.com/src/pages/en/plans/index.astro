@@ -1,880 +1,216 @@
 ---
-import Base from "@/layouts/themes/en/Base.astro"
-import TopBar from "@/components/themes/en/TopBar.astro"
-import Footer from "@/components/themes/en/Footer.astro"
-import PageHero from "@/components/themes/en/PageHero.astro"
+import Page from '@/layouts/themes/en/Page.astro'
+import { products, site, phones } from '@/config/index.ts'
+import { usd, phoneDisplay, route, formatNumber, getPathLocale } from '@/utils/index.ts'
 
-import { site, phones, products } from '@/config/index.ts'
-import { route, formatNumber, orderUrl, phoneDisplay, usd } from '@/utils/index.ts'
-
+const locale = getPathLocale(Astro.url.pathname)
 const title =
   "Meal Plans — Chinese Postpartum (Zuo Yue Zi) Delivery — JingMommy"
-const description =
-  `Five fresh and four frozen 30-day Chinese postpartum meal plans, from ${usd(products.local_easy_15d.price)}. Same kitchen, same three-stage Zuo Yue Zi program — delivered fresh in SoCal or shipped frozen nationwide.`
-
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "JingMommy Meal Plans",
-    itemListElement: [
-      {
-        "@type": "Product",
-        name: "Herbal Meal",
-        offers: { "@type": "Offer", price: String(products.local_herbal_30d.price), priceCurrency: "USD" },
-      },
-      {
-        "@type": "Product",
-        name: "Classic Meal",
-        offers: { "@type": "Offer", price: String(products.local_classic_30d.price), priceCurrency: "USD" },
-      },
-      {
-        "@type": "Product",
-        name: "Vita Meal",
-        offers: { "@type": "Offer", price: String(products.local_vita_30d.price), priceCurrency: "USD" },
-      },
-      {
-        "@type": "Product",
-        name: "Low Carb Meal",
-        offers: { "@type": "Offer", price: String(products.local_lowcarb_30d.price), priceCurrency: "USD" },
-      },
-      {
-        "@type": "Product",
-        name: "Easy Meal",
-        offers: { "@type": "Offer", price: String(products.local_easy_15d.price), priceCurrency: "USD" },
-      },
-    ].map((p, i) => ({ "@type": "ListItem", position: i + 1, item: p })),
-  },
-]
 ---
 
-<Base title={title} description={description} jsonLd={jsonLd}>
-  <TopBar active={route("/plans", 'en')} />
+<Page title={title}>
+  <style is:global>
 
-  <PageHero
-    eyebrow="Meal Plans"
-    title="Find the plan that fits your recovery."
-    lede="Same kitchen, same recipes, same three-stage program — delivered fresh, or shipped frozen."
-  >
-    <div class="tabs hero-tabs">
-      <button class="tab active" data-tab="fresh">
-        <div class="tab-title">Fresh Daily</div>
-        <div class="tab-sub">Same-day delivery in Southern California</div>
-      </button>
-      <button class="tab" data-tab="frozen">
-        <div class="tab-title">Frozen Nationwide</div>
-        <div class="tab-sub">
-          FedEx Priority Overnight to the continental US
-        </div>
-      </button>
-    </div>
-  </PageHero>
 
-  <!-- THE PLANS -->
-  <section class="band band-paper" id="plans" style="padding-top:40px">
-    <div class="wrap">
-      <!-- FRESH -->
-      <div class="tab-content active" id="tab-fresh">
-        <p class="tab-intro">
-          Fresh delivery covers most areas of Southern California.
-          <a href={`${route("/contact", 'en')}#delivery`}>Check your zip code →</a>
-        </p>
-        <div class="plan-grid">
-          <div class="plan-card">
-            <div class="plan-name">Herbal Meal</div>
-            <div class="plan-chinese">藥膳月子餐</div>
-            <p class="plan-persona">
-              If you’re going to do this, do it the full way. The complete
-              program — every meal and the daily herbal drinks that have
-              anchored Chinese postpartum recovery for two thousand years.
-            </p>
-            <div class="plan-spec">
-              <div><strong>3 meals a day</strong></div>
-              <div>Daily herbal drinks <strong>included</strong></div>
-            </div>
-            <div class="plan-price">{usd(products.local_herbal_30d.price)}</div>
-            <div class="plan-tag">30 days</div>
-            <a href={route("/postpartum-meals/herbal-postpartum-meals", 'en')} class="plan-link">Learn more →</a>
-          </div>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-          <div class="plan-card">
-            <div class="plan-name">Classic Meal</div>
-            <div class="plan-chinese">精緻月子餐</div>
-            <p class="plan-persona">
-              Three warm meals a day, ready when you are. Recovery food cooked
-              the way it should be cooked, delivered to your door — so the only
-              decision you make at lunchtime is when to eat.
-            </p>
-            <div class="plan-spec">
-              <div><strong>3 meals a day</strong></div>
-              <div>Herbal drinks add-on, {usd(products.herbal_drink.price)}/day</div>
-            </div>
-            <div class="plan-price">{usd(products.local_classic_30d.price)}</div>
-            <div class="plan-tag">30 days</div>
-            <a href={route("/postpartum-meals/classic-postpartum-meals", 'en')} class="plan-link">Learn more →</a>
-          </div>
+  html { scroll-behavior: smooth; }
 
-          <div class="plan-card">
-            <div class="plan-name">Vita Meal</div>
-            <div class="plan-chinese">元氣月子餐</div>
-            <p class="plan-persona">
-              You don’t need to be eating from the moment you wake up. Lunch,
-              dinner, and a dessert — full recovery meals in a lighter daily
-              rhythm, for the days when breakfast is already handled or you just
-              don’t want one.
-            </p>
-            <div class="plan-spec">
-              <div><strong>2 meals a day + dessert</strong></div>
-              <div>Herbal drinks add-on, {usd(products.herbal_drink.price)}/day</div>
-            </div>
-            <div class="plan-price">{usd(products.local_vita_30d.price)}</div>
-            <div class="plan-tag">30 days</div>
-            <a href={route("/postpartum-meals/vita-postpartum-meals", 'en')} class="plan-link">Learn more →</a>
-          </div>
+  body {
+    font-family: 'Georgia', 'Cambria', 'Times New Roman', serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-          <div class="plan-card">
-            <div class="plan-name">Low Carb Meal</div>
-            <div class="plan-chinese">減醣月子餐</div>
-            <p class="plan-persona">
-              You can recover and stay on plan. Three meals a day with the rice,
-              porridge, and sweets set aside — for moms managing blood sugar,
-              weight, or staying low-carb / keto-aware through postpartum.
-            </p>
-            <div class="plan-spec">
-              <div><strong>3 meals a day</strong></div>
-              <div>Herbal drinks add-on, {usd(products.herbal_drink.price)}/day</div>
-            </div>
-            <div class="plan-price">{usd(products.local_lowcarb_30d.price)}</div>
-            <div class="plan-tag">30 days</div>
-            <a href={route("/postpartum-meals/low-carb-postpartum-meals", 'en')} class="plan-link">Learn more →</a>
-          </div>
+  /* Sans-serif for UI elements */
+  .sans { font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; }
 
-          <div class="plan-card">
-            <div class="plan-name">Easy Meal</div>
-            <div class="plan-chinese">輕享月子餐</div>
-            <p class="plan-persona">
-              New to Chinese postpartum food and not sure if you want to commit
-              to thirty straight days? Start here. Real recovery meals delivered
-              every other day — enough to feel the difference, light enough to
-              ease into.
-            </p>
-            <div class="plan-spec">
-              <div><strong>3 meals a day, delivered 15 times</strong></div>
-              <div>Herbal drinks add-on, {usd(products.herbal_drink.price)}/day</div>
-            </div>
-            <div class="plan-price">{usd(products.local_easy_15d.price)}</div>
-            <div class="plan-tag">30 days</div>
-            <a href={route("/postpartum-meals/easy-postpartum-meals", 'en')} class="plan-link">Learn more →</a>
-          </div>
+  /* Container */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
 
-          <div class="plan-card helper-card">
-            <h4>Not sure which one?</h4>
-            <p>
-              Most mothers start with Classic or Herbal. If you’ve never had
-              Chinese postpartum food before, the easiest way to decide is to
-              try a sample first.
-            </p>
-            <a href={route("/sample", 'en')} class="helper-link"
-              >→ Try the {usd(products.local_classic_sample_1d.price)} Local Tasting</a
-            >
-            <a href={`tel:${phones.main}`} class="helper-link"
-              >→ Or call us at {phoneDisplay(phones.main)}</a
-            >
-          </div>
-        </div>
-      </div>
+  .narrow {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
 
-      <!-- FROZEN -->
-      <div class="tab-content" id="tab-frozen">
-        <p class="tab-intro">
-          If you’re outside our delivery area, you’ve probably been wondering
-          whether real Zuo Yue Zi recovery is even possible from where you are.
-          It is. Four plans, our same kitchen, frozen and shipped overnight to
-          the continental US. Shipping included.
-          <br /><span class="tab-intro-note"
-            >If you’re in California, special pricing may apply — call us at <strong
-              >{phoneDisplay(phones.main)}</strong
-            >.</span
-          >
-        </p>
-        <div class="plan-grid">
-          <div class="plan-card">
-            <div class="plan-name">Frozen Herbal Meal</div>
-            <div class="plan-chinese">冷凍藥膳月子餐</div>
-            <p class="plan-persona">
-              You just did one of the hardest things a body can do. The next 30
-              days deserve a real plan, not whatever happens to be in the
-              fridge. The complete program — every meal and the daily herbal
-              drinks.
-            </p>
-            <div class="plan-spec">
-              <div><strong>3 meals + dessert + herbal drink</strong></div>
-            </div>
-            <div class="plan-price">{usd(products.frozen_herbal_4w.price)}</div>
-            <div class="plan-tag">
-              4 weeks · FedEx Priority Overnight shipping included
-            </div>
-            <a href={route("/frozen-postpartum-meals/herbal", 'en')} class="plan-link">Learn more →</a>
-          </div>
+  /* Top nav (fake) */
+  
+  
+  
+  
+  
+  
+  
 
-          <div class="plan-card">
-            <div class="plan-name">Frozen Classic Meal</div>
-            <div class="plan-chinese">冷凍精緻月子餐</div>
-            <p class="plan-persona">
-              Three meals a day, every day, sent to your door — wherever your
-              door is. The food does the work; you just heat and eat.
-            </p>
-            <div class="plan-spec">
-              <div><strong>3 meals + dessert</strong> (no herbal drink)</div>
-            </div>
-            <div class="plan-price">{usd(products.frozen_classic_4w.price)}</div>
-            <div class="plan-tag">
-              4 weeks · FedEx Priority Overnight shipping included
-            </div>
-            <a href={route("/frozen-postpartum-meals/classic", 'en')} class="plan-link">Learn more →</a>
-          </div>
+  /* Section labels (small caps eyebrow) */
+  .eyebrow {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
 
-          <div class="plan-card">
-            <div class="plan-name">Frozen Essential Meal</div>
-            <div class="plan-chinese">冷凍活力月子餐</div>
-            <p class="plan-persona">
-              Maybe you’ve done this before. Maybe your appetite isn’t what it
-              was the first time. Lunch and dinner, five days a week — full
-              recovery meals, with two cheat days each week to eat with family
-              or on your own terms.
-            </p>
-            <div class="plan-spec">
-              <div><strong>2 meals a day + dessert, 5 days/week</strong></div>
-              <div>Herbal drinks add-on, {usd(products.frozen_herbal_drink_7_1w.price)}/week</div>
-            </div>
-            <div class="plan-price">{usd(products.frozen_essential_4w.price)}</div>
-            <div class="plan-tag">
-              4 weeks · FedEx Priority Overnight shipping included
-            </div>
-            <a href={route("/frozen-postpartum-meals/essential", 'en')} class="plan-link">Learn more →</a>
-          </div>
+  /* Typography */
+  h1 {
+    font-family: 'Georgia', serif;
+    font-size: 56px;
+    font-weight: normal;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+  h2 {
+    font-family: 'Georgia', serif;
+    font-size: 38px;
+    font-weight: normal;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  h3 {
+    font-family: 'Georgia', serif;
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  p { margin-bottom: 16px; color: var(--ink-soft); }
+  p.lede {
+    font-style: italic;
+    color: var(--muted);
+    font-size: 19px;
+    line-height: 1.6;
+  }
+  a { color: var(--accent-deep); text-decoration: underline; text-underline-offset: 3px; }
+  a:hover { color: var(--ink); }
 
-          <div class="plan-card">
-            <div class="plan-name">Frozen Soup &amp; Dessert</div>
-            <div class="plan-chinese">冷凍幸福湯品</div>
-            <p class="plan-persona">
-              Some parts of recovery cooking take a whole day to do right. We’ve
-              already done them. The daily postpartum soups, the nourishing
-              recovery stews that rebuild blood and qi, an entrée, and the
-              desserts — cooked, frozen, and ready to heat.
-            </p>
-            <div class="plan-spec">
-              <div>
-                <strong
-                  >1 daily postpartum soup + 2 recovery stew soups + 1 entrée +
-                  2 desserts</strong
-                >
-              </div>
-              <div>Herbal drinks add-on, {usd(products.frozen_herbal_drink_7_1w.price)}/week</div>
-            </div>
-            <div class="plan-price">{usd(products.frozen_soup_dessert_4w.price)}</div>
-            <div class="plan-tag">
-              4 weeks · FedEx Priority Overnight shipping included
-            </div>
-            <a href={route("/frozen-postpartum-meals/soup-and-dessert", 'en')} class="plan-link">Learn more →</a>
-          </div>
+  /* Section spacing */
+  section { padding: 88px 0; }
+  section.dense { padding: 60px 0; }
+  section.alt { background: var(--cream); }
 
-          <div class="plan-card helper-card span2">
-            <h4>How shipping works</h4>
-            <p>
-              Frozen meals ship via FedEx Priority Overnight — the fastest
-              option available, so your food arrives at peak freshness. Each
-              day’s meals come pre-portioned into a single bag — grab one bag,
-              that’s your whole day. No guessing, no decisions.
-            </p>
-            <p style="margin-top:12px">
-              <strong>If your freezer is small:</strong> Either pick up a small upright
-              freezer (worth it if you’re doing a full month), or keep 5 days in the
-              freezer and 2 days in the fridge — they thaw naturally as you go.
-            </p>
-            <a href={route("/sample", 'en')} class="helper-link"
-              >→ Try the {usd(products.frozen_classic_sample_8item.price)} Frozen Tasting (8 items, real recipes)</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  /* Divider rule */
+  .rule {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 0;
+  }
 
-  <!-- COMPARISON -->
-  <section class="band band-cream">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Side-by-side</p>
-        <h2 id="compare-heading">All five plans, one quick look.</h2>
-      </div>
+  /* Hero */
+  .hero {
+    padding: 80px 0 60px;
+    text-align: center;
+  }
+  .hero h1 { max-width: 800px; margin-left: auto; margin-right: auto; }
+  .hero .lede {
+    max-width: 640px;
+    margin: 0 auto 40px;
+    font-size: 19px;
+    font-style: normal;
+    color: var(--ink-soft);
+  }
+  .hero-cta { margin-top: 8px; }
+  .hero .hero-tabs {
+    max-width: 720px;
+    margin: 0 auto;
+  }
 
-      <div class="tab-content active" id="tab-compare-fresh">
-        <div class="compare-wrap">
-          <table class="compare">
-            <thead>
-              <tr
-                ><th></th><th>Herbal</th><th>Classic</th><th>Vita</th><th
-                  >Low Carb</th
-                ><th>Easy</th></tr
-              >
-            </thead>
-            <tbody>
-              <tr
-                ><td>Meals per day</td><td>3</td><td>3</td><td>2 + dessert</td
-                ><td>3</td><td>Every other day</td></tr
-              >
-              <tr
-                ><td>Daily herbal drinks</td><td class="included">Included</td
-                ><td>Add-on {usd(products.herbal_drink.price)}/day</td><td>Add-on {usd(products.herbal_drink.price)}/day</td><td
-                  >Add-on {usd(products.herbal_drink.price)}/day</td
-                ><td>Add-on {usd(products.herbal_drink.price)}/day</td></tr
-              >
-              <tr
-                ><td>What’s distinctive</td><td>Full traditional regimen</td><td
-                  >Three meals, no herbal</td
-                ><td>Lighter, no breakfast</td><td>Reduced carbs and sweets</td
-                ><td>Every other day delivery</td></tr
-              >
-              <tr
-                ><td>30-day price</td><td class="price">{usd(products.local_herbal_30d.price)}</td><td
-                  class="price">{usd(products.local_classic_30d.price)}</td
-                ><td class="price">{usd(products.local_vita_30d.price)}</td><td class="price">{usd(products.local_lowcarb_30d.price)}</td><td
-                  class="price">{usd(products.local_easy_15d.price)}</td
-                ></tr
-              >
-              <tr
-                ><td>Best for</td><td class="best-for"
-                  >The mom doing the full Zuo Yue Zi properly</td
-                ><td class="best-for">The mom whose family handles the herbs</td
-                ><td class="best-for"
-                  >The mom with a smaller appetite or family cooking breakfast</td
-                ><td class="best-for"
-                  >The mom managing blood sugar or staying low-carb</td
-                ><td class="best-for"
-                  >The mom new to Chinese postpartum food, or who wants to ease
-                  in without a daily commitment</td
-                ></tr
-              >
-            </tbody>
-          </table>
-        </div>
-        <p class="table-note">
-          All Fresh plans available in 1, 7, 14, 21, or 30 days. 30 days is the
-          traditional Zuo Yue Zi recommendation.
-        </p>
-      </div>
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    transition: background 0.15s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn:hover { background: var(--accent-deep); color: white; }
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+  .btn-outline:hover { background: var(--ink); color: white; }
 
-      <div class="tab-content" id="tab-compare-frozen">
-        <div class="compare-wrap">
-          <table class="compare">
-            <thead>
-              <tr
-                ><th></th><th>Frozen Herbal</th><th>Frozen Classic</th><th
-                  >Frozen Essential</th
-                ><th>Frozen Soup &amp; Dessert</th></tr
-              >
-            </thead>
-            <tbody>
-              <tr
-                ><td>What’s included</td><td
-                  >3 meals + dessert + herbal drink</td
-                ><td>3 meals + dessert</td><td>2 meals + dessert</td><td
-                  >1 soup + 2 stew soups + entrée + 2 desserts</td
-                ></tr
-              >
-              <tr
-                ><td>Daily structure</td><td>3 meals daily</td><td
-                  >3 meals daily</td
-                ><td>2 meals, 5 days/week</td><td>Soups + entrée daily</td></tr
-              >
-              <tr
-                ><td>Herbal drinks</td><td class="included">Included</td><td
-                  >Add-on {usd(products.frozen_herbal_drink_7_1w.price)}/wk</td
-                ><td>Add-on {usd(products.frozen_herbal_drink_7_1w.price)}/wk</td><td>Add-on {usd(products.frozen_herbal_drink_7_1w.price)}/wk</td></tr
-              >
-              <tr
-                ><td>4-week price</td><td class="price">{usd(products.frozen_herbal_4w.price)}</td><td
-                  class="price">{usd(products.frozen_classic_4w.price)}</td
-                ><td class="price">{usd(products.frozen_essential_4w.price)}</td><td class="price">{usd(products.frozen_soup_dessert_4w.price)}</td></tr
-              >
-              <tr
-                ><td>Best for</td><td class="best-for"
-                  >The mom doing the full traditional program</td
-                ><td class="best-for"
-                  >The mom who wants three meals daily, hands off</td
-                ><td class="best-for"
-                  >The mom with a smaller appetite or her own breakfast routine</td
-                ><td class="best-for"
-                  >The mom who wants the hard-to-cook parts handled</td
-                ></tr
-              >
-            </tbody>
-          </table>
-        </div>
-        <p class="table-note">
-          All Frozen plans available in 1, 2, 3, or 4 weeks. FedEx Priority
-          Overnight shipping included in every price.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- HERBAL PROGRAM -->
-  <section class="band band-paper">
-    <div class="wrap">
-      <div class="section-head reveal" style="max-width:820px">
-        <p class="eyebrow">The Herbal Program</p>
-        <h2>
-          The part that turns Zuo Yue Zi from good recovery into deep recovery.
-        </h2>
-      </div>
-      <div class="narrow" style="padding:0">
-        <p class="lede-serif">
-          If you’ve already chosen a meal plan, you might be wondering whether
-          you really need the herbal drinks too. It’s a fair question. The meals
-          do most of the heavy lifting — warmth, blood, milk, energy.
-        </p>
-        <p>
-          But traditional Zuo Yue Zi was never just food. It was always food,
-          herbs, and rest, working together. The drinks are the part that
-          reaches the deeper layer — the joints, the circulation, the parts of
-          recovery that matter long after the first month is over.
-        </p>
-        <p>
-          That’s why most experienced postpartum families add them. Not because
-          the meals aren’t enough. Because together is what the tradition was
-          always meant to be.
-        </p>
-        <blockquote>
-          I learned this on my own body. With my first baby, I did the meals but
-          skipped the herbs. With my second, I did both. By week 3, the
-          difference was unmistakable — my energy came back, my milk steadied,
-          my joints stopped aching. That’s the reason this part of the program
-          exists.
-          <span class="attr">— Nicole Huang, JingMommy</span>
-        </blockquote>
-
-        <h3 class="herbal-h3">
-          How the drinks match your three stages of recovery
-        </h3>
-        <p>
-          The drinks follow the same three-stage framework as the meals — Mild,
-          Warm, and Heat — because the body does different work each week, and
-          the herbs match it.
-        </p>
-        <p>
-          <strong>Week 1 — Mild: Cleanse and rest.</strong> Your body is still clearing
-          lochia and resetting. The first formulas help that work happen gently, supporting
-          circulation and internal cleansing without pushing the body before it’s
-          ready.
-        </p>
-        <p>
-          <strong>Week 2 — Warm: Replenish and rebuild.</strong> The body shifts from
-          clearing to building. The Week 2 formulas support blood replenishment, joint
-          and ligament recovery (your body is still reabsorbing the relaxin that loosened
-          your joints during pregnancy), and milk supply.
-        </p>
-        <p>
-          <strong>Weeks 3–4 — Heat: Strengthen and fortify.</strong> The deepest restoration
-          phase. The strongest tonifying formulas come last, when the body is ready
-          to receive them. This is the layer that supports energy, mood, sleep, and
-          the long-term warmth Chinese medicine calls protection against 月內風 (yuè
-          nèi fēng) — the cold-sensitivity and joint pain that can follow a woman
-          for years if this window is missed.
-        </p>
-
-        <h3 class="herbal-h3">What’s in the drinks</h3>
-        <p>
-          Across 30 days, you receive <strong
-            >15 different formulas — a new one every two days</strong
-          > — each matched to the stage of recovery your body is in.
-        </p>
-        <p>
-          The core ingredients are the herbs Chinese medicine has used for
-          postpartum recovery for centuries:
-        </p>
-        <ul class="outcomes">
-          <li>
-            <strong>Dang Gui (當歸)</strong> — traditionally used to nourish and move
-            blood
-          </li>
-          <li>
-            <strong>Chuan Xiong (川芎)</strong> — used to support circulation and
-            recovery from labor
-          </li>
-          <li>
-            <strong>Bai Shao (白芍)</strong> — used to calm and balance, often paired
-            with Dang Gui
-          </li>
-          <li>
-            <strong>Shu Di (熟地)</strong> — used for deep blood replenishment
-          </li>
-          <li>
-            <strong>Huang Qi (黃耆)</strong> — used to support energy and immune function
-          </li>
-          <li>And the supporting herbs that round out each stage’s formula</li>
-        </ul>
-        <p>
-          This is not a single bundle brewed daily. Each of the 15 formulas is a
-          specific combination, developed for that stage of recovery.
-        </p>
-
-        <h3 class="herbal-h3">What mothers tell us</h3>
-        <p>
-          Within the 30-day window, here’s what mothers on the herbal drinks
-          come back to tell us most often:
-        </p>
-        <ul class="outcomes">
-          <li>
-            They feel like themselves again sooner — the fog lifts, the energy
-            returns, and it happens earlier than they expected
-          </li>
-          <li>
-            Their milk supply holds steady, even through the exhausting weeks
-          </li>
-          <li>
-            They sleep better and feel more even, with less of the emotional
-            crash
-          </li>
-          <li>The aches, the chill, and the night sweats settle down</li>
-          <li>
-            And the one mothers value most only shows up later: none of the
-            lingering cold-sensitivity and joint pain (月內風) that Chinese
-            medicine warns follows an incomplete recovery
-          </li>
-        </ul>
-        <p style="font-style:italic;color:var(--muted)">
-          Time and again, these are the patterns we hear from mothers who do the
-          full program — not guarantees, but consistent enough that we mention
-          them with confidence.
-        </p>
-
-        <div class="herbal-pricing">
-          <h4>How to Get the Herbal Drinks</h4>
-          <ul>
-            <li>
-              <strong>Included free</strong> in every Herbal Meal plan — fresh and
-              frozen. The full 30-day course of drinks, no add-on cost.
-            </li>
-            <li>
-              <strong>Add to a fresh meal plan — {usd(products.herbal_drink.price)}/day.</strong> Available with
-              Classic, Vita, Low Carb, or Easy plans.
-            </li>
-            <li>
-              <strong>Add to a frozen meal plan — {usd(products.frozen_herbal_drink_7_1w.price)}/week.</strong> Available with
-              Classic, Essential, or Soup &amp; Dessert plans.
-            </li>
-            <li>
-              <strong>{usd(products.herbal_drink_pack_30d.price)} standalone Herbal Pack.</strong> For the mom who has home-cooked
-              meals covered, but doesn’t want to miss the herbal layer of Zuo Yue
-              Zi. Ships nationwide.
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SAMPLE CTA -->
-  <section class="band band-paper">
-    <div class="wrap">
-      <div class="sample-cta reveal">
-        <p class="eyebrow">Try Before You Commit</p>
-        <h2>Most mothers want to taste the food before they choose a plan.</h2>
-        <p>We made it easy to try.</p>
-        <div class="sample-options">
-          <div class="sample-option">
-            <div class="place">Southern California</div>
-            <div class="price-label">{usd(products.local_classic_sample_1d.price)} · Local Tasting</div>
-            <p>
-              A full sample day — breakfast, lunch, dinner, herbal drink,
-              dessert. Delivered to your door.
-            </p>
-          </div>
-          <div class="sample-option">
-            <div class="place">Continental US</div>
-            <div class="price-label">{usd(products.frozen_classic_sample_8item.price)} · Frozen Tasting</div>
-            <p>
-              8 individual items — fish soup, dinner soup, sticky rice, entrée,
-              dessert, breakfast porridge, breakfast egg, healing drink. Same
-              recipes, same packaging as the full plan. Not a complete day’s
-              meals — a real taste of what’s inside.
-            </p>
-          </div>
-        </div>
-        <a href={orderUrl('sample_meals', 'en')} class="btn btn-primary"
-          >Order a Tasting</a
-        >
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="band band-cream">
-    <div class="narrow">
-      <div class="section-head reveal" style="margin-bottom:40px">
-        <p class="eyebrow">Frequently Asked</p>
-        <h2>Questions other mothers have asked.</h2>
-        <p style="font-style:italic;color:var(--muted);margin-top:16px">
-          These are real questions our team answers every day. If yours isn’t
-          here, call us at {phoneDisplay(phones.main)}.
-        </p>
-      </div>
-
-      <details class="faq" open>
-        <summary>Can I skip organ meats like liver and kidneys?</summary>
-        <div class="answer">
-          Organ meats carry specific nutritional value during recovery — that’s
-          why they’ve been part of Zuo Yue Zi for centuries. If you’re hesitant,
-          the broth itself still delivers much of the same benefit, so we’d
-          encourage you to try the broth even if you skip the meat. If you can’t
-          eat them at all, we can substitute — but the more we substitute, the
-          less variety your menu will have over thirty days. Just tell us when
-          you order.
-        </div>
-      </details>
-      <details class="faq">
-        <summary>I’m not Chinese. Is Zuo Yue Zi for me?</summary>
-        <div class="answer">
-          The principles behind Zuo Yue Zi — warmth, rest, targeted nourishment
-          in stages — aren’t culturally exclusive. They’re biological. Your body
-          recovers from birth the same way regardless of which tradition you
-          grew up with. What’s different is that one tradition has been refining
-          the answer for over 2,000 years.
-        </div>
-      </details>
-      <details class="faq">
-        <summary>What if the food tastes too unfamiliar?</summary>
-        <div class="answer">
-          This is exactly why we offer a tasting first. Most mothers expecting
-          strange flavors are surprised by how warming and comforting the food
-          actually is. Order the {usd(products.local_classic_sample_1d.price)} Local Tasting if you’re in our Southern
-          California delivery area, or the {usd(products.frozen_classic_sample_8item.price)} Frozen Tasting if you’re not. If
-          the food’s not for you, you’ll know before committing to a plan.
-        </div>
-      </details>
-      <details class="faq">
-        <summary>Can my partner and family eat the meals too?</summary>
-        <div class="answer">
-          Our meals are designed for one — the new mother. Many of our customers
-          tell us the portions are large enough that their partner ends up
-          sharing, but we can’t promise it. If you want enough food for both of
-          you, the safer answer is to add a Daddy Meal or order a second
-          portion. We’d rather be honest than have you run out three days in.
-        </div>
-      </details>
-      <details class="faq">
-        <summary
-          >I had a C-section or a difficult birth — does that change anything?</summary
-        >
-        <div class="answer">
-          All our plans use the same recovery food — including the warming,
-          iron-replenishing dishes that line up well with C-section healing. The
-          difference is the daily herbal drinks, which work alongside the food
-          at a deeper level over the full thirty days. Many C-section moms
-          choose the Herbal Meal for that reason. Choose the plan that fits when
-          you order, and you can always adjust later.
-        </div>
-      </details>
-      <details class="faq">
-        <summary>What if I’m not breastfeeding?</summary>
-        <div class="answer">
-          We’ll remove the milk-stimulating ingredients from your menu. The food
-          still does its main job — restoring blood, warmth, and energy after
-          birth. The one thing to know: removing those ingredients means fewer
-          dishes in rotation, so the menu can feel slightly more repetitive.
-        </div>
-      </details>
-      <details class="faq">
-        <summary
-          >I’m outside your fresh delivery zone — how does shipping work?</summary
-        >
-        <div class="answer">
-          Frozen meals ship via FedEx Priority Overnight, packed in thermal
-          packaging with ice packs. Each day’s meals come pre-portioned into a
-          single thermal bag — grab one bag, that’s your day. We ship to the
-          continental US (not Alaska or Hawaii). If your freezer is small, you
-          can pick up a small upright freezer or keep 5 days frozen and 2 days
-          thawing in the fridge.
-        </div>
-      </details>
-      <details class="faq">
-        <summary>When should I order if my due date isn’t set yet?</summary>
-        <div class="answer">
-          Over 90% of orders come in before the due date — most mothers want one
-          less thing to worry about. We recommend placing your order at least a
-          month before your due date so we can hold a slot. Once the baby
-          arrives, just let us know — your meals start whenever you notify us,
-          not on a fixed calendar.
-        </div>
-      </details>
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section class="band band-paper">
-    <div class="wrap">
-      <div class="section-head reveal" style="margin-bottom:32px">
-        <p class="eyebrow">Ready</p>
-        <h2>When you’re ready, we’re here.</h2>
-      </div>
-      <div class="narrow" style="padding:0;text-align:center">
-        <p>
-          If you know which plan fits, you can <a href={orderUrl('home', 'en')}
-            >order online →</a
-          >. If you have questions — about timing, plan choice, or anything
-          specific to your situation — call us at
-          <strong>{phoneDisplay(phones.main)}</strong> and we’ll walk you through it.
-        </p>
-        <p class="trusted-line">
-          <strong>Trusted by {formatNumber(site.mothersServed)}+ mothers since {site.founded}.</strong>
-        </p>
-        <blockquote>
-          The food was good, with ample portions and excellent packaging. Now
-          I’m expecting my second and subscribed to their frozen postpartum meal
-          again.
-          <span class="attr">— Veronica C., Baltimore, MD</span>
-        </blockquote>
-      </div>
-
-      <h3 class="two-ways">Two ways to start:</h3>
-      <div class="final-actions">
-        <div class="final-card">
-          <h4>Try a tasting first</h4>
-          <div class="sub">{usd(products.local_classic_sample_1d.price)} Local · {usd(products.frozen_classic_sample_8item.price)} Frozen Tasting</div>
-          <a href={orderUrl('sample_meals', 'en')} class="btn btn-primary"
-            >Order a Tasting</a
-          >
-        </div>
-        <div class="final-card">
-          <h4>Reserve a plan</h4>
-          <div class="sub">Or call {phoneDisplay(phones.main)} with questions</div>
-          <a href={orderUrl('home', 'en')} class="btn btn-primary">Order Now</a>
-        </div>
-      </div>
-      <p class="gift-line">
-        Ordering for someone else? <a href={route("/sample", 'en')}
-          >Gift a plan →</a>
-      </p>
-    </div>
-  </section>
-
-  <Footer />
-</Base>
-
-<script is:inline>
-  document.querySelectorAll(".tab").forEach((tab) => {
-    tab.addEventListener("click", () => {
-      const target = tab.dataset.tab
-      document
-        .querySelectorAll(".tab")
-        .forEach((t) => t.classList.remove("active"))
-      tab.classList.add("active")
-      document
-        .querySelectorAll(".tab-content")
-        .forEach((c) => c.classList.remove("active"))
-      const planGrid = document.getElementById("tab-" + target)
-      const compareBlock = document.getElementById("tab-compare-" + target)
-      if (planGrid) planGrid.classList.add("active")
-      if (compareBlock) compareBlock.classList.add("active")
-      const heading = document.getElementById("compare-heading")
-      if (heading) {
-        heading.textContent =
-          target === "fresh"
-            ? "All five plans, one quick look."
-            : "All four frozen plans, one quick look."
-      }
-    })
-  })
-</script>
-
-<style>
-  /* Page 4 — Meal Plans (scoped, page-specific sections) */
+  /* Tab toggle */
   .tabs {
     display: grid;
     grid-template-columns: 1fr 1fr;
     border: 1px solid var(--line);
-    background: var(--paper);
-    margin: 8px auto 0;
-  }
-  .tabs.hero-tabs {
-    max-width: 720px;
+    margin: 0 0 50px;
+    background: white;
   }
   .tab {
-    padding: 20px 26px;
+    padding: 22px 28px;
     text-align: center;
     cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif;
     border: none;
-    background: var(--paper);
+    background: white;
     color: var(--muted);
     transition: all 0.15s;
   }
   .tab.active {
-    background: var(--accent-deep);
-    color: var(--paper);
+    background: var(--accent);
+    color: white;
   }
-  .tab-title {
-    font-family: "Jost", sans-serif;
-    font-size: 12px;
-    font-weight: 500;
+  .tab .tab-title {
+    font-size: 13px;
+    font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
   }
-  .tab-sub {
-    font-family: "Jost", sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.03em;
-    opacity: 0.85;
-  }
-  .tab-content {
-    display: none;
-  }
-  .tab-content.active {
-    display: block;
-  }
+  .tab .tab-sub { font-size: 13px; opacity: 0.85; }
 
-  .tab-intro {
-    text-align: center;
-    max-width: 720px;
-    margin: 0 auto 34px;
-    font-size: 16px;
-    color: var(--muted);
-  }
-  .tab-intro-note {
-    display: inline-block;
-    margin-top: 10px;
-    font-size: 14px;
-  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
 
+  /* Plan grid */
   .plan-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1px;
     background: var(--line);
     border: 1px solid var(--line);
-    border-radius: 3px;
-    overflow: hidden;
   }
   .plan-card {
-    background: var(--paper);
+    background: white;
     padding: 36px 32px;
     display: flex;
     flex-direction: column;
   }
-  .plan-card.span2 {
-    grid-column: span 2;
-  }
   .plan-name {
-    font-family: "Cormorant Garamond", serif;
-    font-weight: 500;
+    font-family: 'Georgia', serif;
     font-size: 28px;
+    font-weight: normal;
     color: var(--ink);
     margin-bottom: 4px;
   }
   .plan-chinese {
-    font-family: "Jost", sans-serif;
+    font-family: 'Helvetica Neue', sans-serif;
     font-size: 13px;
     color: var(--muted);
     letter-spacing: 0.04em;
@@ -889,7 +225,7 @@ const jsonLd = [
     flex-grow: 1;
   }
   .plan-spec {
-    font-family: "Jost", sans-serif;
+    font-family: 'Helvetica Neue', sans-serif;
     font-size: 14px;
     line-height: 1.8;
     color: var(--ink-soft);
@@ -897,81 +233,79 @@ const jsonLd = [
     padding-top: 18px;
     margin-bottom: 18px;
   }
-  .plan-spec strong {
-    color: var(--ink);
-    font-weight: 500;
-  }
+  .plan-spec strong { color: var(--ink); font-weight: 600; }
   .plan-price {
-    font-family: "Cormorant Garamond", serif;
+    font-family: 'Georgia', serif;
     font-size: 32px;
     color: var(--accent-deep);
     margin-bottom: 4px;
   }
   .plan-tag {
-    font-family: "Jost", sans-serif;
+    font-family: 'Helvetica Neue', sans-serif;
     font-size: 12px;
     color: var(--muted);
     letter-spacing: 0.06em;
-    margin-bottom: 14px;
+    margin-bottom: 6px;
+  }
+  .plan-also {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 18px;
   }
   .plan-link {
-    font-family: "Jost", sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     color: var(--accent-deep);
     text-decoration: none;
     border-bottom: 1px solid var(--accent-deep);
     align-self: flex-start;
     padding-bottom: 2px;
   }
-  .plan-link:hover {
-    color: var(--ink);
-    border-color: var(--ink);
-  }
+  .plan-link:hover { color: var(--ink); border-color: var(--ink); }
+
+  /* Helper card (inside grid) */
   .helper-card {
     background: var(--cream);
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
   }
   .helper-card h4 {
-    font-family: "Cormorant Garamond", serif;
-    font-weight: 500;
-    font-size: 24px;
+    font-family: 'Georgia', serif;
+    font-size: 22px;
+    font-weight: normal;
     margin-bottom: 14px;
   }
-  .helper-card p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--ink-soft);
-  }
-  .helper-link {
-    font-family: "Jost", sans-serif;
-    font-size: 13px;
-    letter-spacing: 0.04em;
+  .helper-card p { font-size: 16px; line-height: 1.6; }
+  .helper-card .helper-link {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
     color: var(--accent-deep);
     text-decoration: none;
-    margin-top: 10px;
+    margin-top: 8px;
     display: block;
   }
-  .helper-link:hover {
-    color: var(--ink);
-  }
 
+  /* Comparison table */
   .compare-wrap {
     overflow-x: auto;
     border: 1px solid var(--line);
-    border-radius: 3px;
-    background: var(--paper);
+    margin-top: 30px;
   }
   table.compare {
     width: 100%;
     border-collapse: collapse;
-    font-family: "Jost", sans-serif;
+    background: white;
+    font-family: 'Helvetica Neue', sans-serif;
     font-size: 14px;
   }
-  table.compare th,
-  table.compare td {
+  table.compare th, table.compare td {
     padding: 18px 16px;
     text-align: left;
     border-bottom: 1px solid var(--line-soft);
@@ -979,18 +313,15 @@ const jsonLd = [
   }
   table.compare th {
     background: var(--cream);
-    font-weight: 500;
+    font-weight: 700;
     color: var(--ink);
     font-size: 13px;
     letter-spacing: 0.04em;
     text-align: center;
   }
-  table.compare th:first-child {
-    text-align: left;
-    background: var(--paper);
-  }
+  table.compare th:first-child { text-align: left; background: white; }
   table.compare td:first-child {
-    font-weight: 500;
+    font-weight: 600;
     color: var(--ink);
     width: 22%;
   }
@@ -998,26 +329,13 @@ const jsonLd = [
     text-align: center;
     color: var(--ink-soft);
   }
-  table.compare tr:last-child td {
-    border-bottom: none;
-  }
-  table.compare .price {
-    font-family: "Cormorant Garamond", serif;
-    color: var(--accent-deep);
-    font-weight: 500;
-    font-size: 20px;
-  }
-  table.compare .included {
-    color: var(--accent-deep);
-    font-weight: 500;
-  }
-  table.compare .best-for {
-    font-style: italic;
-    line-height: 1.4;
-    font-size: 13px;
-  }
+  table.compare tr:last-child td { border-bottom: none; }
+  table.compare .price { color: var(--accent-deep); font-weight: 700; font-size: 16px; }
+  table.compare .included { color: var(--accent-deep); font-weight: 600; }
+  table.compare .best-for { font-style: italic; line-height: 1.4; font-size: 13px; }
+
   .table-note {
-    font-family: "Jost", sans-serif;
+    font-family: 'Helvetica Neue', sans-serif;
     font-size: 13px;
     color: var(--muted);
     font-style: italic;
@@ -1025,38 +343,42 @@ const jsonLd = [
     text-align: center;
   }
 
-  .lede-serif {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 24px;
-    line-height: 1.45;
-    color: var(--ink);
-    margin-bottom: 20px;
+  /* Herbal program section (5) */
+  .herbal-callout {
+    background: white;
+    border: 1px solid var(--line);
+    padding: 40px;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
   }
-  .herbal-h3 {
-    font-size: 26px;
-    margin: 56px 0 20px;
+  .herbal-pricing {
+    background: var(--cream);
+    padding: 28px;
   }
-  blockquote {
-    font-family: "Cormorant Garamond", serif;
-    font-style: italic;
-    font-size: 24px;
-    line-height: 1.42;
-    color: var(--ink);
-    border-left: 2px solid var(--accent);
-    padding: 6px 0 6px 26px;
-    margin: 32px 0;
+  .herbal-pricing h4 {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 18px;
   }
-  blockquote .attr {
-    display: block;
-    font-style: normal;
-    font-family: "Jost", sans-serif;
-    font-size: 13px;
-    color: var(--muted);
-    letter-spacing: 0.04em;
-    margin-top: 14px;
+  .herbal-pricing ul { list-style: none; }
+  .herbal-pricing li {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line-soft);
   }
+  .herbal-pricing li:last-child { border-bottom: none; }
+  .herbal-pricing strong { color: var(--accent-deep); }
+
   ul.outcomes {
-    margin: 16px 0 24px;
+    margin: 16px 0 24px 0;
     list-style: none;
   }
   ul.outcomes li {
@@ -1065,64 +387,45 @@ const jsonLd = [
     color: var(--ink-soft);
   }
   ul.outcomes li::before {
-    content: "·";
+    content: '·';
     position: absolute;
     left: 4px;
-    top: 6px;
     color: var(--accent);
     font-weight: bold;
     font-size: 24px;
     line-height: 1;
-  }
-  .herbal-pricing {
-    background: var(--cream);
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    padding: 28px;
-    margin: 48px 0 0;
-  }
-  .herbal-pricing h4 {
-    font-family: "Jost", sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--accent-deep);
-    margin-bottom: 18px;
-  }
-  .herbal-pricing ul {
-    list-style: none;
-  }
-  .herbal-pricing li {
-    font-size: 15px;
-    line-height: 1.7;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--line-soft);
-    color: var(--ink-soft);
-  }
-  .herbal-pricing li:last-child {
-    border-bottom: none;
-  }
-  .herbal-pricing strong {
-    color: var(--accent-deep);
+    top: 8px;
   }
 
+  blockquote {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink);
+    border-left: 4px solid var(--accent);
+    padding: 12px 0 12px 28px;
+    margin: 32px 0;
+  }
+  blockquote .attr {
+    display: block;
+    font-style: normal;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    margin-top: 14px;
+  }
+
+  /* Sample CTA */
   .sample-cta {
     background: var(--cream);
-    border: 1px solid var(--line);
-    border-radius: 3px;
     padding: 64px 48px;
     text-align: center;
+    border: 1px solid var(--line);
   }
-  .sample-cta h2 {
-    margin-bottom: 16px;
-  }
-  .sample-cta > p {
-    max-width: 560px;
-    margin: 0 auto 12px;
-    font-size: 18px;
-    color: var(--ink-soft);
-  }
+  .sample-cta h2 { margin-bottom: 16px; }
+  .sample-cta p { max-width: 560px; margin: 0 auto 32px; font-size: 18px; }
   .sample-options {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1131,24 +434,22 @@ const jsonLd = [
     margin: 32px auto;
     max-width: 720px;
     border: 1px solid var(--line);
-    border-radius: 3px;
-    overflow: hidden;
   }
   .sample-option {
-    background: var(--paper);
+    background: white;
     padding: 28px 24px;
     text-align: left;
   }
   .sample-option .price-label {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 24px;
+    font-family: 'Georgia', serif;
+    font-size: 22px;
     color: var(--accent-deep);
     margin-bottom: 6px;
   }
   .sample-option .place {
-    font-family: "Jost", sans-serif;
-    font-size: 12px;
-    font-weight: 500;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--ink);
@@ -1161,17 +462,15 @@ const jsonLd = [
     line-height: 1.55;
   }
 
+  /* FAQ */
   details.faq {
     border-bottom: 1px solid var(--line-soft);
     padding: 24px 0;
   }
-  details.faq:first-of-type {
-    border-top: 1px solid var(--line-soft);
-  }
+  details.faq:first-of-type { border-top: 1px solid var(--line-soft); }
   details.faq summary {
-    font-family: "Cormorant Garamond", serif;
-    font-weight: 500;
-    font-size: 23px;
+    font-family: 'Georgia', serif;
+    font-size: 22px;
     color: var(--ink);
     cursor: pointer;
     list-style: none;
@@ -1179,22 +478,18 @@ const jsonLd = [
     padding-right: 40px;
     line-height: 1.4;
   }
-  details.faq summary::-webkit-details-marker {
-    display: none;
-  }
+  details.faq summary::-webkit-details-marker { display: none; }
   details.faq summary::after {
-    content: "+";
+    content: '+';
     position: absolute;
     right: 0;
-    top: -2px;
+    top: 0;
     font-size: 28px;
     color: var(--accent);
     font-weight: 300;
     transition: transform 0.2s;
   }
-  details.faq[open] summary::after {
-    content: "−";
-  }
+  details.faq[open] summary::after { content: '−'; }
   details.faq .answer {
     margin-top: 18px;
     color: var(--ink-soft);
@@ -1202,37 +497,21 @@ const jsonLd = [
     line-height: 1.7;
   }
 
-  .trusted-line {
-    font-family: "Jost", sans-serif;
-    font-size: 14px;
-    letter-spacing: 0.04em;
-    color: var(--accent-deep);
-    margin-top: 20px;
-  }
-  .two-ways {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 24px;
-  }
+  /* Final CTA */
   .final-actions {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
-    margin-top: 28px;
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-top: 36px;
   }
   .final-card {
-    background: var(--paper);
+    background: white;
     border: 1px solid var(--line);
-    border-radius: 3px;
     padding: 36px 28px;
     text-align: center;
   }
   .final-card h4 {
-    font-family: "Cormorant Garamond", serif;
-    font-weight: 500;
+    font-family: 'Georgia', serif;
     font-size: 24px;
     margin-bottom: 8px;
     color: var(--ink);
@@ -1242,28 +521,561 @@ const jsonLd = [
     font-size: 15px;
     margin-bottom: 20px;
   }
-  .gift-line {
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 36px 0;
     text-align: center;
-    margin-top: 32px;
-    font-family: "Jost", sans-serif;
-    font-size: 15px;
     color: var(--muted);
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.06em;
   }
 
-  @media (max-width: 768px) {
-    .plan-grid {
-      grid-template-columns: 1fr;
-    }
-    .plan-card.span2 {
-      grid-column: span 1;
-    }
-    .herbal-callout,
-    .final-actions,
-    .sample-options {
-      grid-template-columns: 1fr;
-    }
-    .sample-cta {
-      padding: 40px 24px;
-    }
+  /* Designer note (visible to client during review only) */
+  .designer-note {
+    background: #FFFBF0;
+    border-left: 3px solid #D4A847;
+    padding: 12px 16px;
+    margin: 20px 0;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    color: #6B5410;
+    font-style: italic;
   }
-</style>
+  .designer-note strong { color: #8B6F1A; font-style: normal; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .plan-grid { grid-template-columns: 1fr; }
+    .plan-grid .helper-card { grid-column: span 1 !important; }
+  }
+  @media (max-width: 720px) {
+    h1 { font-size: 38px; }
+    h2 { font-size: 28px; }
+    .plan-grid { grid-template-columns: 1fr; }
+    .herbal-callout { grid-template-columns: 1fr; }
+    .final-actions { grid-template-columns: 1fr; }
+    .sample-options { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+  </style>
+
+<!-- Top nav -->
+
+<!-- ========== SECTION 1: HERO (merged with Fresh/Frozen toggle) ========== -->
+<section class="hero">
+  <div class="container">
+    <h1>Find the plan that fits your recovery.</h1>
+    <p class="lede">Same kitchen, same recipes, same three-stage program — delivered fresh, or shipped frozen.</p>
+
+    <!-- Tab toggle moved into hero -->
+    <div class="tabs hero-tabs">
+      <button class="tab active" data-tab="fresh">
+        <div class="tab-title">Fresh Daily</div>
+        <div class="tab-sub">Same-day delivery in Southern California</div>
+      </button>
+      <button class="tab" data-tab="frozen">
+        <div class="tab-title">Frozen Nationwide</div>
+        <div class="tab-sub">FedEx Priority Overnight to the continental US</div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 2: THE PLANS ========== -->
+<section class="dense" id="plans" style="padding-top: 0;">
+  <div class="container">
+
+    <!-- FRESH TAB CONTENT -->
+    <div class="tab-content active" id="tab-fresh">
+      <div class="narrow" style="text-align: center; padding: 0 0 30px; margin: 0 auto;">
+        <p style="font-size: 14px; color: var(--muted);">Fresh delivery covers most areas of Southern California. <a href={route("/contact", locale) + "#delivery"}>Check your zip code →</a></p>
+      </div>
+
+      <div class="plan-grid">
+        <!-- Herbal -->
+        <div class="plan-card">
+          <div class="plan-name">Herbal Meal</div>
+          <div class="plan-chinese sans">藥膳月子餐</div>
+          <p class="plan-persona">If you're going to do this, do it the full way. The complete program — every meal and the daily herbal drinks that have anchored Chinese postpartum recovery for two thousand years.</p>
+          <div class="plan-spec sans">
+            <div><strong>3 meals a day</strong></div>
+            <div>Daily herbal drinks <strong>included</strong></div>
+          </div>
+          <div class="plan-price">{usd(products.local_herbal_30d.price)}</div>
+          <div class="plan-tag sans">30 days</div>
+          <a href={route('/postpartum-meals/herbal-postpartum-meals', locale)} class="plan-link sans">Learn more →</a>
+        </div>
+
+        <!-- Classic -->
+        <div class="plan-card">
+          <div class="plan-name">Classic Meal</div>
+          <div class="plan-chinese sans">精緻月子餐</div>
+          <p class="plan-persona">Three warm meals a day, ready when you are. Recovery food cooked the way it should be cooked, delivered to your door — so the only decision you make at lunchtime is when to eat.</p>
+          <div class="plan-spec sans">
+            <div><strong>3 meals a day</strong></div>
+            <div>Herbal drinks add-on, {usd(products.herbal_drink.price)}/day</div>
+          </div>
+          <div class="plan-price">{usd(products.local_classic_30d.price)}</div>
+          <div class="plan-tag sans">30 days</div>
+          <a href={route('/postpartum-meals/classic-postpartum-meals', locale)} class="plan-link sans">Learn more →</a>
+        </div>
+
+        <!-- Vita -->
+        <div class="plan-card">
+          <div class="plan-name">Vita Meal</div>
+          <div class="plan-chinese sans">元氣月子餐</div>
+          <p class="plan-persona">You don't need to be eating from the moment you wake up. Lunch, dinner, and a dessert — full recovery meals in a lighter daily rhythm, for the days when breakfast is already handled or you just don't want one.</p>
+          <div class="plan-spec sans">
+            <div><strong>2 meals a day + dessert</strong></div>
+            <div>Herbal drinks add-on, {usd(products.herbal_drink.price)}/day</div>
+          </div>
+          <div class="plan-price">{usd(products.local_vita_30d.price)}</div>
+          <div class="plan-tag sans">30 days</div>
+          <a href={route('/postpartum-meals/vita-postpartum-meals', locale)} class="plan-link sans">Learn more →</a>
+        </div>
+
+        <!-- Low Carb -->
+        <div class="plan-card">
+          <div class="plan-name">Low Carb Meal</div>
+          <div class="plan-chinese sans">減醣月子餐</div>
+          <p class="plan-persona">You can recover and stay on plan. Three meals a day with the rice, porridge, and sweets set aside — for moms managing blood sugar, weight, or staying low-carb / keto-aware through postpartum.</p>
+          <div class="plan-spec sans">
+            <div><strong>3 meals a day</strong></div>
+            <div>Herbal drinks add-on, {usd(products.herbal_drink.price)}/day</div>
+          </div>
+          <div class="plan-price">{usd(products.local_lowcarb_30d.price)}</div>
+          <div class="plan-tag sans">30 days</div>
+          <a href={route('/postpartum-meals/low-carb-postpartum-meals', locale)} class="plan-link sans">Learn more →</a>
+        </div>
+
+        <!-- Easy -->
+        <div class="plan-card">
+          <div class="plan-name">Easy Meal</div>
+          <div class="plan-chinese sans">輕享月子餐</div>
+          <p class="plan-persona">New to Chinese postpartum food and not sure if you want to commit to thirty straight days? Start here. Real recovery meals delivered every other day — enough to feel the difference, light enough to ease into.</p>
+          <div class="plan-spec sans">
+            <div><strong>3 meals a day, delivered 15 times</strong></div>
+            <div>Herbal drinks add-on, {usd(products.herbal_drink.price)}/day</div>
+          </div>
+          <div class="plan-price">{usd(products.local_easy_15d.price)}</div>
+          <div class="plan-tag sans">30 days</div>
+          <a href={route('/postpartum-meals/easy-postpartum-meals', locale)} class="plan-link sans">Learn more →</a>
+        </div>
+
+        <!-- Helper card -->
+        <div class="helper-card">
+          <h4>Not sure which one?</h4>
+          <p>Most mothers start with Classic or Herbal. If you've never had Chinese postpartum food before, the easiest way to decide is to try a sample first.</p>
+          <a href={route("/sample", locale)} class="helper-link sans">→ Try the {usd(products.local_classic_sample_1d.price)} Local Tasting</a>
+          <a href={`tel:${phones.main}`} class="helper-link sans">→ Or call us at {phoneDisplay(phones.main)}</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FROZEN TAB CONTENT -->
+    <div class="tab-content" id="tab-frozen">
+      <div class="narrow" style="text-align: center; padding: 0 0 30px; margin: 0 auto;">
+        <p class="lede">If you're outside our delivery area, you've probably been wondering whether real Zuo Yue Zi recovery is even possible from where you are. It is. Four plans, our same kitchen, frozen and shipped overnight to the continental US. Shipping included.</p>
+        <p style="font-size: 14px; color: var(--muted); margin-top: 12px;">If you're in California, special pricing may apply — call us at <strong>{phoneDisplay(phones.main)}</strong>.</p>
+      </div>
+
+      <div class="plan-grid">
+        <!-- Frozen Herbal -->
+        <div class="plan-card">
+          <div class="plan-name">Frozen Herbal Meal</div>
+          <div class="plan-chinese sans">冷凍藥膳月子餐</div>
+          <p class="plan-persona">You just did one of the hardest things a body can do. The next 30 days deserve a real plan, not whatever happens to be in the fridge. The complete program — every meal and the daily herbal drinks.</p>
+          <div class="plan-spec sans">
+            <div><strong>3 meals + dessert + herbal drink</strong></div>
+          </div>
+          <div class="plan-price">{usd(products.frozen_herbal_4w.price)}</div>
+          <div class="plan-tag sans">4 weeks · FedEx Priority Overnight shipping included</div>
+          <a href={route('/frozen-postpartum-meals/herbal', locale)} class="plan-link sans">Learn more →</a>
+        </div>
+
+        <!-- Frozen Classic -->
+        <div class="plan-card">
+          <div class="plan-name">Frozen Classic Meal</div>
+          <div class="plan-chinese sans">冷凍精緻月子餐</div>
+          <p class="plan-persona">Three meals a day, every day, sent to your door — wherever your door is. The food does the work; you just heat and eat.</p>
+          <div class="plan-spec sans">
+            <div><strong>3 meals + dessert</strong> (no herbal drink)</div>
+          </div>
+          <div class="plan-price">{usd(products.frozen_classic_4w.price)}</div>
+          <div class="plan-tag sans">4 weeks · FedEx Priority Overnight shipping included</div>
+          <a href={route('/frozen-postpartum-meals/classic', locale)} class="plan-link sans">Learn more →</a>
+        </div>
+
+        <!-- Frozen Vita -->
+        <div class="plan-card">
+          <div class="plan-name">Frozen Essential Meal</div>
+          <div class="plan-chinese sans">冷凍活力月子餐</div>
+          <p class="plan-persona">Maybe you've done this before. Maybe your appetite isn't what it was the first time. Lunch and dinner, five days a week — full recovery meals, with two cheat days each week to eat with family or on your own terms.</p>
+          <div class="plan-spec sans">
+            <div><strong>2 meals a day + dessert, 5 days/week</strong></div>
+            <div>Herbal drinks add-on, {usd(products.frozen_herbal_drink_7_1w.price)}/week</div>
+          </div>
+          <div class="plan-price">{usd(products.frozen_essential_4w.price)}</div>
+          <div class="plan-tag sans">4 weeks · FedEx Priority Overnight shipping included</div>
+          <a href={route('/frozen-postpartum-meals/essential', locale)} class="plan-link sans">Learn more →</a>
+        </div>
+
+        <!-- Frozen Soup & Dessert -->
+        <div class="plan-card">
+          <div class="plan-name">Frozen Soup &amp; Dessert</div>
+          <div class="plan-chinese sans">冷凍幸福湯品</div>
+          <p class="plan-persona">Some parts of recovery cooking take a whole day to do right. We've already done them. The daily postpartum soups, the nourishing recovery stews that rebuild blood and qi, an entrée, and the desserts — cooked, frozen, and ready to heat.</p>
+          <div class="plan-spec sans">
+            <div><strong>1 daily postpartum soup + 2 recovery stew soups + 1 entrée + 2 desserts</strong></div>
+            <div>Herbal drinks add-on, {usd(products.frozen_herbal_drink_7_1w.price)}/week</div>
+          </div>
+          <div class="plan-price">{usd(products.frozen_soup_dessert_4w.price)}</div>
+          <div class="plan-tag sans">4 weeks · FedEx Priority Overnight shipping included</div>
+          <a href={route('/frozen-postpartum-meals/soup-and-dessert', locale)} class="plan-link sans">Learn more →</a>
+        </div>
+
+        <!-- Helper card frozen -->
+        <div class="helper-card" style="grid-column: span 2;">
+          <h4>How shipping works</h4>
+          <p>Frozen meals ship via FedEx Priority Overnight — the fastest option available, so your food arrives at peak freshness. Each day's meals come pre-portioned into a single bag — grab one bag, that's your whole day. No guessing, no decisions.</p>
+          <p style="margin-top: 12px;"><strong>If your freezer is small:</strong> Either pick up a small upright freezer (worth it if you're doing a full month), or keep 5 days in the freezer and 2 days in the fridge — they thaw naturally as you go.</p>
+          <a href={route("/sample", locale)} class="helper-link sans">→ Try the {usd(products.frozen_classic_sample_8item.price)} Frozen Tasting (8 items, real recipes)</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ========== SECTION 4: COMPARISON ========== -->
+<section class="alt">
+  <div class="container">
+    <div class="eyebrow" style="text-align: center;">Side-by-side</div>
+    <h2 id="compare-heading" style="text-align: center;">All five plans, one quick look.</h2>
+
+    <!-- FRESH COMPARISON -->
+    <div class="tab-content active" id="tab-compare-fresh">
+      <div class="compare-wrap">
+        <table class="compare">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Herbal</th>
+              <th>Classic</th>
+              <th>Vita</th>
+              <th>Low Carb</th>
+              <th>Easy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Meals per day</td>
+              <td>3</td>
+              <td>3</td>
+              <td>2 + dessert</td>
+              <td>3</td>
+              <td>Every other day</td>
+            </tr>
+            <tr>
+              <td>Daily herbal drinks</td>
+              <td class="included">Included</td>
+              <td>Add-on {usd(products.herbal_drink.price)}/day</td>
+              <td>Add-on {usd(products.herbal_drink.price)}/day</td>
+              <td>Add-on {usd(products.herbal_drink.price)}/day</td>
+              <td>Add-on {usd(products.herbal_drink.price)}/day</td>
+            </tr>
+            <tr>
+              <td>What's distinctive</td>
+              <td>Full traditional regimen</td>
+              <td>Three meals, no herbal</td>
+              <td>Lighter, no breakfast</td>
+              <td>Reduced carbs and sweets</td>
+              <td>Every other day delivery</td>
+            </tr>
+            <tr>
+              <td>30-day price</td>
+              <td class="price">{usd(products.local_herbal_30d.price)}</td>
+              <td class="price">{usd(products.local_classic_30d.price)}</td>
+              <td class="price">{usd(products.local_vita_30d.price)}</td>
+              <td class="price">{usd(products.local_lowcarb_30d.price)}</td>
+              <td class="price">{usd(products.local_easy_15d.price)}</td>
+            </tr>
+            <tr>
+              <td>Best for</td>
+              <td class="best-for">The mom doing the full Zuo Yue Zi properly</td>
+              <td class="best-for">The mom whose family handles the herbs</td>
+              <td class="best-for">The mom with a smaller appetite or family cooking breakfast</td>
+              <td class="best-for">The mom managing blood sugar or staying low-carb</td>
+              <td class="best-for">The mom new to Chinese postpartum food, or who wants to ease in without a daily commitment</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">All Fresh plans available in 1, 7, 14, 21, or 30 days. 30 days is the traditional Zuo Yue Zi recommendation.</p>
+    </div>
+
+    <!-- FROZEN COMPARISON -->
+    <div class="tab-content" id="tab-compare-frozen">
+      <div class="compare-wrap">
+        <table class="compare">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Frozen Herbal</th>
+              <th>Frozen Classic</th>
+              <th>Frozen Vita</th>
+              <th>Frozen Soup &amp; Dessert</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>What's included</td>
+              <td>3 meals + dessert + herbal drink</td>
+              <td>3 meals + dessert</td>
+              <td>2 meals + dessert</td>
+              <td>1 soup + 2 stew soups + entrée + 2 desserts</td>
+            </tr>
+            <tr>
+              <td>Daily structure</td>
+              <td>3 meals daily</td>
+              <td>3 meals daily</td>
+              <td>2 meals, 5 days/week</td>
+              <td>Soups + entrée daily</td>
+            </tr>
+            <tr>
+              <td>Herbal drinks</td>
+              <td class="included">Included</td>
+              <td>Add-on {usd(products.frozen_herbal_drink_7_1w.price)}/wk</td>
+              <td>Add-on {usd(products.frozen_herbal_drink_7_1w.price)}/wk</td>
+              <td>Add-on {usd(products.frozen_herbal_drink_7_1w.price)}/wk</td>
+            </tr>
+            <tr>
+              <td>4-week price</td>
+              <td class="price">{usd(products.frozen_herbal_4w.price)}</td>
+              <td class="price">{usd(products.frozen_classic_4w.price)}</td>
+              <td class="price">{usd(products.frozen_essential_4w.price)}</td>
+              <td class="price">{usd(products.frozen_soup_dessert_4w.price)}</td>
+            </tr>
+            <tr>
+              <td>Best for</td>
+              <td class="best-for">The mom doing the full traditional program</td>
+              <td class="best-for">The mom who wants three meals daily, hands off</td>
+              <td class="best-for">The mom with a smaller appetite or her own breakfast routine</td>
+              <td class="best-for">The mom who wants the hard-to-cook parts handled</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">All Frozen plans available in 1, 2, 3, or 4 weeks. FedEx Priority Overnight shipping included in every price.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== SECTION 5: HERBAL PROGRAM (v6) ========== -->
+<section id="herbal-program">
+  <div class="container">
+    <div class="eyebrow">The Herbal Program</div>
+    <h2>The part that turns Zuo Yue Zi from good recovery into deep recovery.</h2>
+
+    <div class="narrow" style="padding: 0; margin: 0;">
+      <p class="lede" style="font-style: normal;">If you've already chosen a meal plan, you might be wondering whether you really need the herbal drinks too. It's a fair question. The meals do most of the heavy lifting — warmth, blood, milk, energy.</p>
+      <p>But traditional Zuo Yue Zi was never just food. It was always food, herbs, and rest, working together. The drinks are the part that reaches the deeper layer — the joints, the circulation, the parts of recovery that matter long after the first month is over.</p>
+      <p>That's why most experienced postpartum families add them. Not because the meals aren't enough. Because together is what the tradition was always meant to be.</p>
+
+      <blockquote style="margin: 32px 0;">
+        I learned this on my own body. With my first baby, I did the meals but skipped the herbs. With my second, I did both. By week 3, the difference was unmistakable — my energy came back, my milk steadied, my joints stopped aching. That's the reason this part of the program exists.
+        <span class="attr">— Nicole Huang, Jing Mommy</span>
+      </blockquote>
+    </div>
+
+    <h3 style="font-size: 26px; margin: 56px 0 20px;">How the drinks match your three stages of recovery</h3>
+    <div class="narrow" style="padding: 0; margin: 0;">
+      <p>The drinks follow the same three-stage framework as the meals — Mild, Warm, and Heat — because the body does different work each week, and the herbs match it.</p>
+      <p><strong>Week 1 — Mild: Cleanse and rest.</strong> Your body is still clearing lochia and resetting. The first formulas help that work happen gently, supporting circulation and internal cleansing without pushing the body before it's ready.</p>
+      <p><strong>Week 2 — Warm: Replenish and rebuild.</strong> The body shifts from clearing to building. The Week 2 formulas support blood replenishment, joint and ligament recovery (your body is still reabsorbing the relaxin that loosened your joints during pregnancy), and milk supply.</p>
+      <p><strong>Weeks 3–4 — Heat: Strengthen and fortify.</strong> The deepest restoration phase. The strongest tonifying formulas come last, when the body is ready to receive them. This is the layer that supports energy, mood, sleep, and the long-term warmth Chinese medicine calls protection against 月內風 (yuè nèi fēng) — the cold-sensitivity and joint pain that can follow a woman for years if this window is missed.</p>
+    </div>
+
+    <h3 style="font-size: 26px; margin: 56px 0 20px;">What's in the drinks</h3>
+    <div class="narrow" style="padding: 0; margin: 0;">
+      <p>Across 30 days, you receive <strong>15 different formulas — a new one every two days</strong> — each matched to the stage of recovery your body is in.</p>
+      <p>The core ingredients are the herbs Chinese medicine has used for postpartum recovery for centuries:</p>
+      <ul class="outcomes" style="margin: 16px 0 24px 0;">
+        <li><strong>Dang Gui (當歸)</strong> — traditionally used to nourish and move blood</li>
+        <li><strong>Chuan Xiong (川芎)</strong> — used to support circulation and recovery from labor</li>
+        <li><strong>Bai Shao (白芍)</strong> — used to calm and balance, often paired with Dang Gui</li>
+        <li><strong>Shu Di (熟地)</strong> — used for deep blood replenishment</li>
+        <li><strong>Huang Qi (黃耆)</strong> — used to support energy and immune function</li>
+        <li>And the supporting herbs that round out each stage's formula</li>
+      </ul>
+      <p>This is not a single bundle brewed daily. Each of the 15 formulas is a specific combination, developed for that stage of recovery.</p>
+    </div>
+
+    <h3 style="font-size: 26px; margin: 56px 0 20px;">What mothers tell us</h3>
+    <div class="narrow" style="padding: 0; margin: 0;">
+      <p>Within the 30-day window, here's what mothers on the herbal drinks come back to tell us most often:</p>
+      <ul class="outcomes" style="margin: 16px 0 24px 0;">
+        <li>They feel like themselves again sooner — the fog lifts, the energy returns, and it happens earlier than they expected</li>
+        <li>Their milk supply holds steady, even through the exhausting weeks</li>
+        <li>They sleep better and feel more even, with less of the emotional crash</li>
+        <li>The aches, the chill, and the night sweats settle down</li>
+        <li>And the one mothers value most only shows up later: none of the lingering cold-sensitivity and joint pain (月內風) that Chinese medicine warns follows an incomplete recovery</li>
+      </ul>
+      <p style="font-style: italic; color: var(--muted);">Time and again, these are the patterns we hear from mothers who do the full program — not guarantees, but consistent enough that we mention them with confidence.</p>
+    </div>
+
+    <div class="herbal-pricing" style="margin: 56px 0 32px;">
+      <h4>How to Get the Herbal Drinks</h4>
+      <ul>
+        <li><strong>Included free</strong> in every Herbal Meal plan — fresh and frozen. The full 30-day course of drinks, no add-on cost.</li>
+        <li><strong>Add to a fresh meal plan — {usd(products.herbal_drink.price)}/day.</strong> Available with Classic, Vita, Low Carb, or Easy plans.</li>
+        <li><strong>Add to a frozen meal plan — {usd(products.frozen_herbal_drink_7_1w.price)}/week.</strong> Available with Classic, Vita, or Soup &amp; Dessert plans.</li>
+        <li><strong>{usd(products.herbal_drink_pack_30d.price)} standalone Herbal Pack.</strong> For the mom who has home-cooked meals covered, but doesn't want to miss the herbal layer of Zuo Yue Zi. Ships nationwide.</li>
+      </ul>
+      <a href="#herbal-program" class="plan-link sans" style="margin-top: 20px; display: inline-block;">Learn more about the herbal drinks →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== SECTION 6: SAMPLE CTA ========== -->
+<section>
+  <div class="container">
+    <div class="sample-cta">
+      <div class="eyebrow">Try Before You Commit</div>
+      <h2>Most mothers want to taste the food before they choose a plan.</h2>
+      <p>We made it easy to try.</p>
+
+      <div class="sample-options">
+        <div class="sample-option">
+          <div class="place sans">Southern California</div>
+          <div class="price-label">{usd(products.local_classic_sample_1d.price)} · Local Tasting</div>
+          <p>A full sample day — breakfast, lunch, dinner, herbal drink, dessert. Delivered to your door.</p>
+        </div>
+        <div class="sample-option">
+          <div class="place sans">Continental US</div>
+          <div class="price-label">{usd(products.frozen_classic_sample_8item.price)} · Frozen Tasting</div>
+          <p>8 individual items — sea bass soup, recovery stew soup, oil rice, main, dessert, breakfast porridge, herbal drink. Same recipes, same packaging as the full plan. Not a complete day's meals — a real taste of what's inside.</p>
+        </div>
+      </div>
+
+      <a href={route("/sample", locale)} class="btn">Order a Tasting</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 7: FAQ ========== -->
+<section class="alt">
+  <div class="narrow">
+    <div class="eyebrow">Frequently Asked</div>
+    <h2>Questions other mothers have asked.</h2>
+    <p class="lede">These are real questions our team answers every day. If yours isn't here, call us at {phoneDisplay(phones.main)}.</p>
+
+    <details class="faq" open>
+      <summary>Can I skip organ meats like liver and kidneys?</summary>
+      <div class="answer">Organ meats carry specific nutritional value during recovery — that's why they've been part of Zuo Yue Zi for centuries. If you're hesitant, the broth itself still delivers much of the same benefit, so we'd encourage you to try the broth even if you skip the meat. If you can't eat them at all, we can substitute — but the more we substitute, the less variety your menu will have over thirty days. Just tell us when you order.</div>
+    </details>
+    <details class="faq">
+      <summary>I'm not Chinese. Is Zuo Yue Zi for me?</summary>
+      <div class="answer">The principles behind Zuo Yue Zi — warmth, rest, targeted nourishment in stages — aren't culturally exclusive. They're biological. Your body recovers from birth the same way regardless of which tradition you grew up with. What's different is that one tradition has been refining the answer for over 2,000 years.</div>
+    </details>
+    <details class="faq">
+      <summary>What if the food tastes too unfamiliar?</summary>
+      <div class="answer">This is exactly why we offer a tasting first. Most mothers expecting strange flavors are surprised by how warming and comforting the food actually is. Order the {usd(products.local_classic_sample_1d.price)} Local Tasting if you're in our Southern California delivery area, or the {usd(products.frozen_classic_sample_8item.price)} Frozen Tasting if you're not. If the food's not for you, you'll know before committing to a plan.</div>
+    </details>
+    <details class="faq">
+      <summary>Can my partner and family eat the meals too?</summary>
+      <div class="answer">Our meals are designed for one — the new mother. Many of our customers tell us the portions are large enough that their partner ends up sharing, but we can't promise it. If you want enough food for both of you, the safer answer is to add a Daddy Meal or order a second portion. We'd rather be honest than have you run out three days in.</div>
+    </details>
+    <details class="faq">
+      <summary>I had a C-section or a difficult birth — does that change anything?</summary>
+      <div class="answer">All our plans use the same recovery food — including the warming, iron-replenishing dishes that line up well with C-section healing. The difference is the daily herbal drinks, which work alongside the food at a deeper level over the full thirty days. Many C-section moms choose the Herbal Meal for that reason. Choose the plan that fits when you order, and you can always adjust later.</div>
+    </details>
+    <details class="faq">
+      <summary>What if I'm not breastfeeding?</summary>
+      <div class="answer">We'll remove the milk-stimulating ingredients from your menu. The food still does its main job — restoring blood, warmth, and energy after birth. The one thing to know: removing those ingredients means fewer dishes in rotation, so the menu can feel slightly more repetitive.</div>
+    </details>
+    <details class="faq">
+      <summary>I'm outside your fresh delivery zone — how does shipping work?</summary>
+      <div class="answer">Frozen meals ship via FedEx Priority Overnight, packed in thermal packaging with ice packs. Each day's meals come pre-portioned into a single thermal bag — grab one bag, that's your day. We ship to the continental US (not Alaska or Hawaii). If your freezer is small, you can pick up a small upright freezer or keep 5 days frozen and 2 days thawing in the fridge.</div>
+    </details>
+    <details class="faq">
+      <summary>When should I order if my due date isn't set yet?</summary>
+      <div class="answer">Over 90% of orders come in before the due date — most mothers want one less thing to worry about. We recommend placing your order at least a month before your due date so we can hold a slot. Once the baby arrives, just let us know — your meals start whenever you notify us, not on a fixed calendar.</div>
+    </details>
+  </div>
+</section>
+
+<!-- ========== SECTION 8: FINAL CTA ========== -->
+<section>
+  <div class="container">
+    <div class="eyebrow">Ready</div>
+    <h2>When you're ready, we're here.</h2>
+
+    <div style="max-width: 720px;">
+      <p>If you know which plan fits, you can <a href="https://order.jingmommy.com/en">order online →</a>. If you have questions — about timing, plan choice, or anything specific to your situation — call us at <strong>{phoneDisplay(phones.main)}</strong> and we'll walk you through it.</p>
+
+      <p style="font-family: 'Helvetica Neue', sans-serif; font-size: 14px; letter-spacing: 0.04em; color: var(--accent-deep); margin-top: 20px;"><strong>Trusted by {formatNumber(site.mothersServed)}+ mothers since {site.founded}.</strong></p>
+
+      <blockquote>
+        The food was good, with ample portions and excellent packaging. Now I'm expecting my second and subscribed to their frozen postpartum meal again.
+        <span class="attr">— Veronica C., Baltimore, MD</span>
+      </blockquote>
+    </div>
+
+    <h3 style="text-align: center; margin-top: 40px; font-size: 22px;">Two ways to start:</h3>
+
+    <div class="final-actions">
+      <div class="final-card">
+        <h4>Try a tasting first</h4>
+        <div class="sub sans">{usd(products.local_classic_sample_1d.price)} Local · {usd(products.frozen_classic_sample_8item.price)} Frozen Tasting</div>
+        <a href={route("/sample", locale)} class="btn">Order a Tasting</a>
+      </div>
+      <div class="final-card">
+        <h4>Reserve a plan</h4>
+        <div class="sub sans">Or call {phoneDisplay(phones.main)} with questions</div>
+        <a href="https://order.jingmommy.com/en" class="btn">Order Now</a>
+      </div>
+    </div>
+
+    <p style="text-align: center; margin-top: 32px; font-family: 'Helvetica Neue', sans-serif; font-size: 15px; color: var(--muted);">Ordering for someone else? <a href={route("/sample", locale) + "#gift"}>Gift a plan →</a></p>
+  </div>
+</section>
+
+
+<script is:inline>
+  // Tab toggle - syncs plan grid AND comparison table
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab; // 'fresh' or 'frozen'
+
+      // Toggle all tabs (active state)
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      // Hide all tab-content blocks
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+      // Show the matching plan grid + comparison table
+      const planGrid = document.getElementById('tab-' + target);
+      const compareBlock = document.getElementById('tab-compare-' + target);
+      if (planGrid) planGrid.classList.add('active');
+      if (compareBlock) compareBlock.classList.add('active');
+
+      // Update the comparison heading text
+      const heading = document.getElementById('compare-heading');
+      if (heading) {
+        heading.textContent = (target === 'fresh')
+          ? 'All five plans, one quick look.'
+          : 'All four frozen plans, one quick look.';
+      }
+    });
+  });
+</script>
+</Page>

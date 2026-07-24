@@ -1,30 +1,23 @@
 ---
-import { Image } from "astro:assets"
-import Base from "@/layouts/themes/en/Base.astro"
-import TopBar from "@/components/themes/en/TopBar.astro"
-import Footer from "@/components/themes/en/Footer.astro"
-import Botanical from "@/components/themes/en/Botanical.astro"
-import Plans from "@/components/themes/en/Plans.astro"
-import PressBand from "@/components/themes/en/PressBand.astro"
-import TasteCTA from "@/components/themes/en/TasteCTA.astro"
-import { site, phones, products } from '@/config/index.ts'
-import { route, formatNumber, usd } from '@/utils/index.ts'
-import zyzImg from "@/assets/en/zyz-sesame-oil-chicken.jpg"
-import nicoleImg from "@/assets/en/nicole-huang.jpg"
+import Page from '@/layouts/themes/en/Page.astro'
+import Svg39 from '@/assets/en/svg/en-svg-39.svg'
+import Svg40 from '@/assets/en/svg/en-svg-40.svg'
+import Svg41 from '@/assets/en/svg/en-svg-41.svg'
+import Svg42 from '@/assets/en/svg/en-svg-42.svg'
+import Svg43 from '@/assets/en/svg/en-svg-43.svg'
+import Svg44 from '@/assets/en/svg/en-svg-44.svg'
+import Svg45 from '@/assets/en/svg/en-svg-45.svg'
+import nicoleImg from '@/assets/en/nicole-huang.jpg'
+import zyzImg from '@/assets/en/zyz-sesame-oil-chicken.jpg'
+import { products, phones, site } from '@/config/index.ts'
+import { usd, formatNumber, route, getPathLocale } from '@/utils/index.ts'
 
+const locale = getPathLocale(Astro.url.pathname)
 const title = "JingMommy — Authentic Chinese Postpartum Meals, Delivered"
 const description =
   `JingMommy delivers authentic Chinese postpartum (Zuo Yue Zi) meals across the US. Founded ${site.founded}, ${formatNumber(site.mothersServed)}+ mothers served. Fresh daily in SoCal, frozen nationwide. Featured in LA Times, PBS & Washington Post. Sample meals from ${usd(products.local_classic_sample_1d.price)}.`
 
 // "As featured in" outlets — only used on this page (single-page config).
-const press = [
-  "LA Times",
-  "Washington Post",
-  "PBS",
-  "SET Taiwan",
-  "CTI",
-  "World Journal",
-]
 
 const jsonLd = [
   {
@@ -40,7 +33,7 @@ const jsonLd = [
     address: site.address,
     areaServed: "United States",
     servesCuisine: "Chinese postpartum confinement meals (Zuo Yue Zi)",
-    priceRange: "$$-$$$",
+    priceRange: "$-$$",
     founder: {
       "@type": "Person",
       name: "Nicole Huang",
@@ -120,363 +113,563 @@ const jsonLd = [
 ]
 ---
 
-<Base title={title} description={description} jsonLd={jsonLd}>
-  <TopBar />
+<Page title={title} description={description} jsonLd={jsonLd}>
 
-  <!-- ============ HERO ============ -->
-  <section class="hero hero-signature">
-    <Botanical variant="hero-tl" />
-    <Botanical variant="hero-br" />
-    <div class="hero-inner">
-      <p class="eyebrow reveal">Since {site.founded} · The real Zuo Yue Zi, in English</p>
-      <h1 class="reveal">
-        You planned everything, except the <span
-          style="color:#A8842C;font-size:1.15em;font-weight:600">RECOVERY.</span
-        >
-      </h1>
-      <p class="lede reveal">
-        Fresh, hot Chinese postpartum meals — delivered to your door, every
-        single day.
-      </p>
-      <div class="hero-cta reveal">
-        <a href={route("/plans", 'en')} class="btn btn-primary"
-          >Explore meal plans</a
-        >
-        <a href={route("/sample", 'en')} class="btn btn-ghost"
-          >Try a Taste — Free or from {usd(products.local_classic_sample_1d.price)}</a
-        >
+  <style is:global>
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'EB Garamond','Georgia',serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.7;
+  font-size:18px;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+.display{font-family:'Cormorant Garamond','Georgia',serif}
+.sans{font-family:'Jost','Helvetica Neue',sans-serif}
+
+/* ---- layout ---- */
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+.narrow{max-width:760px;margin:0 auto;padding:0 32px}
+
+/* ---- eyebrow ---- */
+.eyebrow{
+  font-family:'Jost',sans-serif;
+  font-size:12px;font-weight:400;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:var(--accent-deep);
+  margin-bottom:20px;
+}
+
+/* ---- headings ---- */
+h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:74px;line-height:1.04;letter-spacing:.005em;color:var(--ink)}
+.hero h1{letter-spacing:.15em;text-transform:uppercase;font-size:42px;line-height:1.22}
+h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:48px;line-height:1.1;color:var(--ink)}
+h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:30px;line-height:1.2;color:var(--ink)}
+p{margin-bottom:18px}
+p:last-child{margin-bottom:0}
+
+/* ---- top bar ---- */
+
+
+
+
+
+
+
+
+
+
+/* ---- botanical corners ---- */
+.botan{position:absolute;pointer-events:none;opacity:.92;z-index:1}
+
+/* ---- anchor offset for sticky nav ---- */
+section[id]{scroll-margin-top:78px}
+
+/* ---- hero ---- */
+.hero{position:relative;overflow:hidden;padding:80px 0 104px;background:linear-gradient(180deg,var(--paper) 0%,var(--cream) 100%)}
+.hero-inner{position:relative;z-index:3;max-width:880px;margin:0 auto;text-align:center;padding:0 32px}
+.hero h1{margin-bottom:26px}
+.hero .lede{font-size:22px;color:var(--ink-soft);max-width:780px;margin:0 auto 14px;white-space:nowrap}
+.hero .trust{font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:38px}
+.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;padding:16px 32px;border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;transition:all .25s;border:1px solid transparent}
+.btn-primary{background:var(--accent-deep);color:var(--paper)}
+.btn-primary:hover{background:var(--ink);transform:translateY(-1px)}
+.btn-ghost{background:transparent;border-color:var(--accent-deep);color:var(--accent-deep)}
+.btn-ghost:hover{background:var(--accent-deep);color:var(--paper)}
+
+.hero-botan-tl{top:-20px;left:-30px;width:300px}
+.hero-botan-br{bottom:-40px;right:-30px;width:330px}
+
+/* ---- section base ---- */
+section{position:relative}
+.band{padding:104px 0}
+.band-cream{background:var(--cream)}
+.band-paper{background:var(--paper)}
+.center{text-align:center}
+.section-head{text-align:center;max-width:680px;margin:0 auto 64px}
+.section-head .eyebrow{margin-bottom:18px}
+.section-head p{font-size:19px;color:var(--muted);margin-top:18px}
+
+/* ---- three steps ---- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1000px;margin:0 auto}
+.step{text-align:center;position:relative}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:var(--accent);margin-bottom:14px;letter-spacing:.05em}
+.step h3{margin-bottom:12px}
+.step p{font-size:16px;color:var(--muted)}
+.step-rule{width:36px;height:1px;background:var(--accent);margin:0 auto 20px}
+
+/* ---- pillars (what is zyz) ---- */
+.zyz{display:grid;grid-template-columns:1.05fr .95fr;gap:72px;align-items:center;max-width:1060px;margin:0 auto}
+.zyz-img{position:relative;border-radius:3px;overflow:hidden;min-height:440px;background:var(--cream-deep)}
+.zyz-img img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.zyz-body .eyebrow{margin-bottom:18px}
+.zyz-body h2{margin-bottom:24px}
+.zyz-body p{color:var(--ink-soft);font-size:18px}
+.zyz-hook{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:24px;line-height:1.35;color:var(--ink);margin-bottom:22px}
+.zyz-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:23px;line-height:1.4;color:var(--accent-deep);border-left:2px solid var(--accent);padding-left:22px;margin:30px 0 0}
+
+/* ---- partner note ---- */
+.partner{max-width:720px;margin:64px auto 0;background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:42px 46px;text-align:center;position:relative}
+.partner .eyebrow{margin-bottom:14px}
+.partner h3{font-size:27px;margin-bottom:18px}
+.partner p{font-size:17px;color:var(--ink-soft);margin-bottom:14px}
+.partner p:last-child{margin-bottom:0}
+
+/* ---- three testimonials ---- */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1060px;margin:56px auto 0}
+.testi-card{background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:30px 26px;text-align:left;position:relative}
+.testi-card .mark{display:none}
+.testi-card .q{font-family:'EB Garamond',serif;font-size:16.5px;line-height:1.55;color:var(--ink-soft);margin:8px 0 18px;font-style:italic}
+.testi-card .by{font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:3px}
+.testi-card .ctx{font-size:13.5px;color:var(--muted)}
+
+/* ---- stages ---- */
+.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:0;max-width:1040px;margin:60px auto 0;border-top:1px solid var(--line)}
+.stage{padding:40px 30px;border-right:1px solid var(--line)}
+.stage:last-child{border-right:none}
+.stage-tag{font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:14px}
+.stage h3{font-size:25px;margin-bottom:12px}
+.stage p{font-size:15.5px;color:var(--muted)}
+
+/* ---- differentiators ---- */
+.diff{display:grid;grid-template-columns:repeat(3,1fr);gap:50px;max-width:1040px;margin:0 auto}
+.diff-item{text-align:center}
+.diff-mark{font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--accent);line-height:1;margin-bottom:20px}
+.diff-item h3{font-size:24px;margin-bottom:12px}
+.diff-item p{font-size:16px;color:var(--muted)}
+
+/* ---- plans ---- */
+.plans{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;max-width:1080px;margin:0 auto}
+.plan{background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:30px 22px;text-align:center;display:flex;flex-direction:column;transition:all .25s}
+.band-cream .plan{background:var(--paper)}
+.plan:hover{border-color:var(--accent);transform:translateY(-3px)}
+.plan.feat{border-color:var(--accent-deep);border-width:1.5px}
+.plan-badge{font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-deep);height:16px;margin-bottom:8px}
+.plan h3{font-size:23px;margin-bottom:6px}
+.plan-price{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--ink);margin-bottom:4px}
+.plan-per{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.plan-desc{font-size:14.5px;color:var(--muted);line-height:1.55;flex:1;margin-bottom:10px}
+.plan-persona{font-family:'Jost',sans-serif;font-size:11.5px;letter-spacing:.06em;color:var(--accent-deep);border-top:1px solid var(--line-soft);padding-top:12px;margin-bottom:0;font-style:italic}
+/* botanical corner on plan cards */
+.plan{position:relative;overflow:hidden}
+.plan-botan{position:absolute;bottom:-8px;right:-8px;width:64px;height:64px;opacity:0.18;pointer-events:none}
+.plan.feat .plan-botan{opacity:0.28}
+/* botanical image slots — swap src for real vintage illustrations */
+.botan-img{position:absolute;pointer-events:none;opacity:.9;z-index:1}
+.botan-img.tl{top:-10px;left:-20px;width:260px}
+.botan-img.br{bottom:-20px;right:-20px;width:290px}
+
+/* ---- story ---- */
+.story{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:center;max-width:1060px;margin:0 auto}
+.story-portrait{position:relative;border-radius:3px;overflow:hidden;aspect-ratio:4/5;background:var(--cream-deep)}
+.story-portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.story-body .eyebrow{margin-bottom:18px}
+.story-body h2{margin-bottom:10px;font-size:42px}
+.story-body .sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:25px;color:var(--accent-deep);margin-bottom:24px;line-height:1.3}
+.story-body p{font-size:17px;color:var(--ink-soft)}
+.story-sign{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--ink);margin-top:24px}
+.story-more{display:inline-block;margin-top:22px;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:3px;transition:all .2s}
+.story-more:hover{color:var(--ink);border-color:var(--ink)}
+
+/* ---- book teaser ---- */
+.book-teaser{max-width:760px;margin:72px auto 0;text-align:center;border-top:1px solid var(--line);padding-top:48px}
+.book-teaser .eyebrow{margin-bottom:14px}
+.book-teaser h3{font-size:30px;margin-bottom:16px}
+.book-teaser p{font-size:17px;color:var(--ink-soft);max-width:600px;margin:0 auto}
+
+/* ---- testimonial ---- */
+.testi{max-width:820px;margin:0 auto;text-align:center;position:relative;z-index:3}
+.testi-quote{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:34px;line-height:1.32;color:var(--ink);margin-bottom:28px;letter-spacing:.12em;font-style:italic}
+.testi-by{font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-deep)}
+.testi-context{font-size:16px;color:var(--muted);font-style:italic;margin-top:8px}
+.testi-disclaimer{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.04em;color:var(--muted);opacity:.7;margin-top:18px}
+
+/* ---- trust row ---- */
+.trustband{padding:54px 0;background:var(--cream);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.trust-row{display:flex;justify-content:center;align-items:center;gap:54px;flex-wrap:wrap;font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.trust-row .featured{color:var(--ink);font-weight:400}
+.trust-dot{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+
+/* ---- taste cta band ---- */
+.taste{position:relative;overflow:hidden;padding:108px 0;background:var(--accent-deep);color:var(--paper);text-align:center}
+.taste-inner{position:relative;z-index:3;max-width:680px;margin:0 auto;padding:0 32px}
+.taste .eyebrow{color:#E8D5C2}
+.taste h2{color:var(--paper);margin-bottom:22px}
+.taste p{font-size:19px;color:#F0E4D8;margin-bottom:36px}
+.taste .btn-primary{background:var(--paper);color:var(--accent-deep)}
+.taste .btn-primary:hover{background:var(--cream);color:var(--ink)}
+.taste .btn-ghost{border-color:#E8D5C2;color:#F0E4D8}
+.taste .btn-ghost:hover{background:rgba(255,255,255,.12);color:#fff}
+
+/* ---- footer ---- */
+
+
+
+
+
+
+
+
+
+
+
+/* ---- reveal animation ---- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---- responsive ---- */
+@media(max-width:900px){
+  h1{font-size:52px}
+  .hero h1{font-size:40px;letter-spacing:.14em}
+  h2{font-size:38px}
+  .nav{display:none}
+  .nav.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--paper);padding:24px 32px;gap:20px;border-bottom:1px solid var(--line);align-items:flex-start}
+  .menu-btn{display:block}
+  .zyz,.story{grid-template-columns:1fr;gap:40px}
+  .story-portrait{aspect-ratio:3/4;max-width:380px;margin:0 auto}
+  .steps,.diff{grid-template-columns:1fr;gap:44px}
+  .stages{grid-template-columns:1fr}
+  .stage{border-right:none;border-bottom:1px solid var(--line)}
+  .stage:last-child{border-bottom:none}
+  .plans{grid-template-columns:1fr 1fr;gap:12px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .band{padding:72px 0}
+  .hero{padding:64px 0 72px}
+  .hero-botan-tl{width:180px}
+  .hero-botan-br{width:200px}
+  .testi-quote{font-size:26px}
+  .testi-grid{grid-template-columns:1fr;gap:16px;margin-top:36px}
+  .partner{padding:32px 26px;margin-top:48px}
+}
+@media(max-width:560px){
+  h1{font-size:42px}
+  .hero h1{font-size:30px;letter-spacing:.10em}
+  .hero .lede{font-size:15px;white-space:normal}
+  .eyebrow{font-size:10px;letter-spacing:.18em}
+  .hero .eyebrow{white-space:nowrap;font-size:9.5px;letter-spacing:.15em}
+  .plans{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .wrap,.narrow{padding:0 22px}
+  .btn{padding:14px 18px;font-size:11px;letter-spacing:.10em}
+}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+  </style>
+
+<!-- ============ TOP BAR ============ -->
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <!-- botanical illustration corners (vintage rose, watercolor) -->
+  <Svg39 class="botan hero-botan-tl" aria-hidden="true" />
+  <Svg40 class="botan hero-botan-br" aria-hidden="true" />
+
+  <div class="hero-inner">
+    <p class="eyebrow reveal">Since {site.founded} · The real Zuo Yue Zi, in English</p>
+    <h1 class="reveal">You planned everything, except the <span style="color:#A8842C;font-size:1.15em;font-weight:600">RECOVERY.</span></h1>
+    <p class="lede reveal">Fresh, hot Chinese postpartum meals — delivered to your door, every single day.</p>
+    <div class="hero-cta reveal">
+      <a href="#plans" class="btn btn-primary">Explore meal plans</a>
+      <a href="#taste" class="btn btn-ghost">Try a Taste — Free or from {usd(products.local_classic_sample_1d.price)}</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE PROBLEM ============ -->
+<section class="band band-paper">
+  <div class="narrow center reveal">
+    <p class="eyebrow">The fourth trimester</p>
+    <h2 style="margin-bottom:28px">The trimester nobody<br>prepares you for.</h2>
+    <p style="font-size:19px;color:var(--ink-soft)">You've been told how to prepare for pregnancy. For birth. But almost no one tells you how to <em>recover</em> — how to rebuild a body that just spent nine months building a person.</p>
+    <p style="font-size:19px;color:var(--ink-soft)">For over 2,000 years, Chinese mothers have known the answer. They call it Zuo Yue Zi — sitting the month — and it works. We make it simple to follow, wherever you are.</p>
+  </div>
+</section>
+
+<!-- ============ THREE STEPS ============ -->
+<section class="band band-cream">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">How it works</p>
+      <h2>Three steps to a gentler recovery</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-rule"></div>
+        <p class="step-num">Step one</p>
+        <h3>Learn</h3>
+        <p>New to Zuo Yue Zi? We explain the tradition, the three stages of recovery, and what to eat — in plain English, without the guilt.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-rule"></div>
+        <p class="step-num">Step two</p>
+        <h3>Taste</h3>
+        <p>Join a free local tasting, or order a sample meal for {usd(products.local_classic_sample_1d.price)} local or {usd(products.frozen_classic_sample_8item.price)} frozen nationwide. Try the food before you commit — most mothers do exactly that.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-rule"></div>
+        <p class="step-num">Step three</p>
+        <h3>Recover</h3>
+        <p>Choose your plan. We deliver fresh daily across Southern California, or frozen nationwide. You rest. We cook.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ============ THE PROBLEM ============ -->
-  <section class="band band-paper">
-    <div class="narrow center reveal">
-      <p class="eyebrow">The fourth trimester</p>
-      <h2 style="margin-bottom:28px">
-        The trimester nobody<br />prepares you for.
-      </h2>
-      <p style="font-size:19px;color:var(--ink-soft)">
-        You've been told how to prepare for pregnancy. For birth. But almost no
-        one tells you how to
-        <em>recover</em> — how to rebuild a body that just spent nine months building
-        a person.
-      </p>
-      <p style="font-size:19px;color:var(--ink-soft)">
-        For over 2,000 years, Chinese mothers have known the answer. They call
-        it Zuo Yue Zi — sitting the month — and it works. We make it simple to
-        follow, wherever you are.
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ THREE STEPS ============ -->
-  <section class="band band-cream">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">How it works</p>
-        <h2>Three steps to a gentler recovery</h2>
+<!-- ============ WHAT IS ZUO YUE ZI ============ -->
+<section class="band band-paper" id="zyz">
+  <div class="wrap">
+    <div class="zyz">
+      <div class="zyz-img reveal">
+        <img src={zyzImg.src} alt="A black bowl of sesame oil chicken soup with goji berries — a classic Zuo Yue Zi postpartum dish from JingMommy">
       </div>
-      <div class="steps">
-        <div class="step reveal">
-          <div class="step-rule"></div>
-          <p class="step-num">Step one</p>
-          <h3>Learn</h3>
-          <p>
-            New to Zuo Yue Zi? We explain the tradition, the three stages of
-            recovery, and what to eat — in plain English, without the guilt.
-          </p>
-        </div>
-        <div class="step reveal">
-          <div class="step-rule"></div>
-          <p class="step-num">Step two</p>
-          <h3>Taste</h3>
-          <p>
-            Join a free local tasting, or order a sample meal for {usd(products.local_classic_sample_1d.price)} local or
-            {usd(products.frozen_classic_sample_8item.price)} frozen nationwide. Try the food before you commit — most mothers
-            do exactly that.
-          </p>
-        </div>
-        <div class="step reveal">
-          <div class="step-rule"></div>
-          <p class="step-num">Step three</p>
-          <h3>Recover</h3>
-          <p>
-            Choose your plan. We deliver fresh daily across Southern California,
-            or frozen nationwide. You rest. We cook.
-          </p>
-        </div>
+      <div class="zyz-body reveal">
+        <p class="eyebrow">Restorative wisdom</p>
+        <h2>What is Zuo Yue Zi?</h2>
+        <p class="zyz-hook">If you grew up hearing "you should do Zuo Yue Zi" but had no idea how to start — or your partner thinks it sounds old-fashioned — this is for you.</p>
+        <p>Zuo Yue Zi (坐月子), literally "sitting the month," is the Chinese practice of structured postpartum recovery through warmth, rest, and staged nourishment. Practiced for over 2,000 years, it's not a fad, not a restrictive ritual, and not reserved for Chinese families.</p>
+        <p>What you eat in the first 30 days after birth shapes your hormones, your milk supply, and your energy — for months to come.</p>
+        <p class="zyz-quote">"In Chinese tradition, the first month after birth is not a burden to endure — it is the most important gift a woman can give herself."</p>
       </div>
     </div>
-  </section>
 
-  <!-- ============ WHAT IS ZUO YUE ZI ============ -->
-  <section class="band band-paper" id="zyz">
-    <div class="wrap">
-      <div class="zyz">
-        <div class="zyz-img reveal">
-          <Image
-            src={zyzImg}
-            alt="A black bowl of sesame oil chicken soup with goji berries — a classic Zuo Yue Zi postpartum dish from JingMommy"
-            widths={[440, 760]}
-            sizes="(max-width: 900px) 90vw, 520px"
-          />
-        </div>
-        <div class="zyz-body reveal">
-          <p class="eyebrow">Restorative wisdom</p>
-          <h2>What is Zuo Yue Zi?</h2>
-          <p class="zyz-hook">
-            If you grew up hearing "you should do Zuo Yue Zi" but had no idea
-            how to start — or your partner thinks it sounds old-fashioned — this
-            is for you.
-          </p>
-          <p>
-            Zuo Yue Zi (坐月子), literally "sitting the month," is the Chinese
-            practice of structured postpartum recovery through warmth, rest, and
-            staged nourishment. Practiced for over 2,000 years, it's not a fad,
-            not a restrictive ritual, and not reserved for Chinese families.
-          </p>
-          <p>
-            What you eat in the first 30 days after birth shapes your hormones,
-            your milk supply, and your energy — for months to come.
-          </p>
-          <p class="zyz-quote">
-            "In Chinese tradition, the first month after birth is not a burden
-            to endure — it is the most important gift a woman can give herself."
-          </p>
-        </div>
+    <!-- three stages -->
+    <div class="stages">
+      <div class="stage reveal">
+        <p class="stage-tag">Week 1 · Mild</p>
+        <h3>Gentle start</h3>
+        <p>Light, warm nourishment — bone broth, iron-rich liver, calming herbs — to support uterine recovery, rebuild blood, and hydrate deeply.</p>
       </div>
-
-      <!-- three stages -->
-      <div class="stages">
-        <div class="stage reveal">
-          <p class="stage-tag">Week 1 · Mild</p>
-          <h3>Gentle start</h3>
-          <p>
-            Light, warm nourishment — bone broth, iron-rich liver, calming herbs
-            — to support uterine recovery, rebuild blood, and hydrate deeply.
-          </p>
-        </div>
-        <div class="stage reveal">
-          <p class="stage-tag">Week 2 · Warm</p>
-          <h3>Rebuild strength</h3>
-          <p>
-            Blood-nourishing meats, leafy greens, and eucommia bark — long
-            trusted to ease the lower-back ache so many new mothers carry — to
-            restore stamina and support milk flow.
-          </p>
-        </div>
-        <div class="stage reveal">
-          <p class="stage-tag">Weeks 3–4 · Heat</p>
-          <h3>Deep nourishment</h3>
-          <p>
-            Warming, revitalizing meals — sesame oil chicken, rich bone broths —
-            to rebuild Qi, support hormones, and awaken long-term strength.
-          </p>
-        </div>
+      <div class="stage reveal">
+        <p class="stage-tag">Week 2 · Warm</p>
+        <h3>Rebuild strength</h3>
+        <p>Blood-nourishing meats, leafy greens, and eucommia bark — long trusted to ease the lower-back ache so many new mothers carry — to restore stamina and support milk flow.</p>
       </div>
-
-      <div class="partner reveal">
-        <p class="eyebrow">A note for partners &amp; family</p>
-        <h3>For the people who love her</h3>
-        <p>
-          Zuo Yue Zi isn't about isolation or strict rules. It's about making
-          sure she gets warm, nutrient-dense food while her body does profound
-          work — recovering from labor, establishing milk supply, rebalancing
-          hormones.
-        </p>
-        <p>
-          If her mother or grandmother would have cooked for her, this is the
-          modern version of that. You don't have to understand every ingredient.
-          You just have to make sure she's fed — really fed, the way her body
-          needs.
-        </p>
+      <div class="stage reveal">
+        <p class="stage-tag">Weeks 3–4 · Heat</p>
+        <h3>Deep nourishment</h3>
+        <p>Warming, revitalizing meals — sesame oil chicken, rich bone broths — to rebuild Qi, support hormones, and awaken long-term strength.</p>
       </div>
     </div>
-  </section>
 
-  <!-- ============ DIFFERENTIATORS ============ -->
-  <section class="band band-cream">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Why mothers choose us</p>
-        <h2>Care you can taste — and trust</h2>
+    <div class="partner reveal">
+      <p class="eyebrow">A note for partners &amp; family</p>
+      <h3>For the people who love her</h3>
+      <p>Zuo Yue Zi isn't about isolation or strict rules. It's about making sure she gets warm, nutrient-dense food while her body does profound work — recovering from labor, establishing milk supply, rebalancing hormones.</p>
+      <p>If her mother or grandmother would have cooked for her, this is the modern version of that. You don't have to understand every ingredient. You just have to make sure she's fed — really fed, the way her body needs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIFFERENTIATORS ============ -->
+<section class="band band-cream">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Why mothers choose us</p>
+      <h2>Care you can taste — and trust</h2>
+    </div>
+    <div class="diff">
+      <div class="diff-item reveal">
+        <div class="diff-mark">❀</div>
+        <h3>Authentic, not approximated</h3>
+        <p>Every meal follows the real three-stage Zuo Yue Zi framework — the same food wisdom Chinese families have followed for generations. We make the real thing.</p>
       </div>
-      <div class="diff">
-        <div class="diff-item reveal">
-          <div class="diff-mark">❀</div>
-          <h3>Authentic, not approximated</h3>
-          <p>
-            Every meal follows the real three-stage Zuo Yue Zi framework — the
-            same food wisdom Chinese families have followed for generations. We
-            make the real thing.
-          </p>
-        </div>
-        <div class="diff-item reveal">
-          <div class="diff-mark">❀</div>
-          <h3>Our own certified kitchen</h3>
-          <p>
-            We own and operate a 5,000+ sq ft facility in Walnut, CA — with our
-            own certified central kitchen at its heart. Open and transparent, so
-            every mother who visits can see exactly how her food is made.
-          </p>
-        </div>
-        <div class="diff-item reveal">
-          <div class="diff-mark">❀</div>
-          <h3>A real, bilingual team</h3>
-          <p>
-            Questions about your plan or your recovery? You'll reach a person
-            who understands both the food and the feelings — in English or
-            Chinese.
-          </p>
-        </div>
+      <div class="diff-item reveal">
+        <div class="diff-mark">❀</div>
+        <h3>Our own certified kitchen</h3>
+        <p>We own and operate a 5,000+ sq ft facility in Walnut, CA — with our own certified central kitchen at its heart. Open and transparent, so every mother who visits can see exactly how her food is made.</p>
+      </div>
+      <div class="diff-item reveal">
+        <div class="diff-mark">❀</div>
+        <h3>A real, bilingual team</h3>
+        <p>Questions about your plan or your recovery? You'll reach a person who understands both the food and the feelings — in English or Chinese.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ============ TESTIMONIAL ============ -->
-  <section class="band band-paper" id="stories" style="overflow:hidden">
-    <Botanical variant="testimonial" />
-    <div class="testi reveal">
-      <p class="eyebrow" style="margin-bottom:24px">Real stories</p>
-      <p class="testi-quote">
-        "My milk came in so much that I ended up donating and feeding four
-        babies. Any American non-Chinese mamas reading this: don't hesitate.
-        This is the stuff that really nourishes you."
-      </p>
-      <p class="testi-by">Michelle W. · Las Vegas</p>
-      <p class="testi-context">First-time mom · frozen nationwide delivery</p>
-      <p class="testi-disclaimer">
-        Individual results vary. Every body and every recovery is different.
-      </p>
-    </div>
+<!-- ============ TESTIMONIAL ============ -->
+<section class="band band-paper" id="stories" style="overflow:hidden">
+  <Svg41 class="botan" aria-hidden="true" />
+  <div class="testi reveal">
+    <p class="eyebrow" style="margin-bottom:24px">Real stories</p>
+    <p class="testi-quote">"My milk came in so much that I ended up donating and feeding four babies. Any American non-Chinese mamas reading this: don't hesitate. This is the stuff that really nourishes you."</p>
+    <p class="testi-by">Michelle W. · Las Vegas</p>
+    <p class="testi-context">First-time mom · frozen nationwide delivery</p>
+    <p class="testi-disclaimer">Individual results vary. Every body and every recovery is different.</p>
+  </div>
 
-    <div class="wrap">
-      <div class="testi-grid">
-        <div class="testi-card reveal">
-          <p class="q">
-            I originally wanted to try this to connect with my culture. The
-            actual food was better than the tasting box. Worth every penny — you
-            benefit from both the food and the service.
-          </p>
-          <p class="by">Tiffany T. · California</p>
-          <p class="ctx">Second-generation Chinese-American · first baby</p>
-        </div>
-        <div class="testi-card reveal">
-          <p class="q">
-            I don't speak Chinese, but the team answered all my questions in
-            detail. She made me feel comfortable and genuinely cared for.
-            Because of her, I found the right postpartum service for me.
-          </p>
-          <p class="by">Michelle N. · Southern California</p>
-          <p class="ctx">Non-Chinese · C-section recovery</p>
-        </div>
-        <div class="testi-card reveal">
-          <p class="q">
-            It felt like having someone quietly take care of me behind the
-            scenes — at the exact moment I needed it most and had nothing left
-            to give.
-          </p>
-          <p class="by">A JingMommy mother</p>
-          <p class="ctx">Classic Meal · local fresh delivery</p>
-        </div>
+  <div class="wrap">
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="mark">"</div>
+        <p class="q">I originally wanted to try this to connect with my culture. The actual food was better than the tasting box. Worth every penny — you benefit from both the food and the service.</p>
+        <p class="by">Tiffany T. · California</p>
+        <p class="ctx">Second-generation Chinese-American · first baby</p>
+      </div>
+      <div class="testi-card reveal">
+        <div class="mark">"</div>
+        <p class="q">I don't speak Chinese, but the team answered all my questions in detail. She made me feel comfortable and genuinely cared for. Because of her, I found the right postpartum service for me.</p>
+        <p class="by">Michelle N. · Southern California</p>
+        <p class="ctx">Non-Chinese · C-section recovery</p>
+      </div>
+      <div class="testi-card reveal">
+        <div class="mark">"</div>
+        <p class="q">It felt like having someone quietly take care of me behind the scenes — at the exact moment I needed it most and had nothing left to give.</p>
+        <p class="by">A JingMommy mother</p>
+        <p class="ctx">Classic Meal · local fresh delivery</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ============ MEAL PLANS ============ -->
-  <section class="band band-cream" id="plans">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Find your plan</p>
-        <h2>Five ways to be nourished</h2>
-        <p>
-          Fresh daily delivery across Southern California. Frozen nationwide via
-          FedEx. Each plan is a full 30-day course of recovery.
-        </p>
-        <p style="font-size:15px;color:var(--muted);margin-top:10px">
-          Prices shown are for fresh delivery in SoCal. Shipping nationwide?
-          Frozen plans start at {usd(products.frozen_essential_4w.price)} — <a
-            href={route("/plans", 'en')}
-            style="color:var(--accent-deep)">see full plan details</a
-          >.
-        </p>
-      </div>
-      <Plans
-        cta
-        ctaLabel="See full plan details"
-        ctaHref={route("/plans", 'en')}
-      />
+<!-- ============ MEAL PLANS ============ -->
+<section class="band band-cream" id="plans">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Find your plan</p>
+      <h2>Five ways to be nourished</h2>
+      <p>Fresh daily delivery across Southern California. Frozen nationwide via FedEx. Each plan is a full 30-day course of recovery.</p>
+      <p style="font-size:15px;color:var(--muted);margin-top:10px">Prices shown are for fresh delivery in SoCal. Shipping nationwide? Frozen plans start at {usd(products.frozen_essential_4w.price)} — <a href={route("/plans", locale)} style="color:var(--accent-deep)">see full plan details</a>.</p>
     </div>
-  </section>
-
-  <!-- ============ NICOLE STORY ============ -->
-  <section class="band band-paper" id="story">
-    <div class="wrap">
-      <div class="story">
-        <div class="story-portrait reveal">
-          <Image
-            src={nicoleImg}
-            alt="Nicole Huang, founder of JingMommy"
-            widths={[380, 640]}
-            sizes="(max-width: 900px) 80vw, 420px"
-          />
-        </div>
-        <div class="story-body reveal">
-          <p class="eyebrow">Our story</p>
-          <h2>She didn't start a business.</h2>
-          <p class="sub">
-            She started a revolution in how America cares for new mothers.
-          </p>
-          <p>
-            When Nicole Huang had her own children in the United States, her
-            parents were in Taiwan — and there was no one to cook for her. So
-            she did what she has always done: she researched. She immersed
-            herself in the principles of Zuo Yue Zi and applied everything she
-            learned to her own recovery.
-          </p>
-          <p>
-            What she found on the other side surprised her. She couldn't stop
-            thinking about all the mothers who weren't getting that care. She
-            began writing on Yahoo! Blog — then the most widely read platform in
-            the Chinese-speaking world — and her readership grew past
-            <strong>160,000</strong>. Mothers across America found her. What
-            began as a blog became a community; what began as advice became a
-            calling.
-          </p>
-          <p>
-            In 2004 she became a distributor for the postpartum formulas of Dr.
-            Zhuang Shu-Qi, Taiwan's foremost authority on postpartum care. In
-            {site.founded} she founded JingMommy. In 2016 she built out a 5,000+ sq ft
-            facility in Walnut, CA, with its own certified central kitchen —
-            open and transparent, so any mother who visits can see exactly how
-            her food is made.
-          </p>
-          <p>
-            Since {site.founded}, over <strong>{formatNumber(site.mothersServed)} mothers</strong> across the US have trusted
-            JingMommy with their recovery — built on one belief:
-          </p>
-          <p class="story-sign">Your recovery matters, because you matter.</p>
-          <a href={route("/about/founding-story", 'en')} class="story-more"
-            >Read Nicole's full story →</a
-          >
-        </div>
+    <div class="plans">
+      <div class="plan feat reveal">
+        <Svg42 class="plan-botan" aria-hidden="true" />
+        <p class="plan-badge">Most complete</p>
+        <h3>Herbal</h3>
+        <p class="plan-price">{usd(products.local_herbal_30d.price)}</p>
+        <p class="plan-per">30 days</p>
+        <p class="plan-desc">The full, uncompromising experience — three meals plus a daily herbal drink. The closest thing to a grandmother cooking for you.</p>
+        <p class="plan-persona">For the mom who wants to do this completely.</p>
       </div>
-
-      <div class="book-teaser reveal">
-        <p class="eyebrow">Coming soon</p>
-        <h3>Nicole is writing the book.</h3>
-        <p>
-          A guide for English-speaking families on the ancient practice of
-          postpartum confinement care — and how to bring it into modern American
-          life. Drawn from 15 years and over {formatNumber(site.mothersServed)} mothers. Inquiries from
-          publishers and media welcome.
-        </p>
+      <div class="plan reveal">
+        <Svg43 class="plan-botan" aria-hidden="true" />
+        <p class="plan-badge"></p>
+        <h3>Classic</h3>
+        <p class="plan-price">{usd(products.local_classic_30d.price)}</p>
+        <p class="plan-per">30 days</p>
+        <p class="plan-desc">Complete daily support without the guesswork. Three warm, comforting meals a day — meals that feel like Mom's.</p>
+        <p class="plan-persona">For the mom who wants daily care, simply.</p>
+      </div>
+      <div class="plan reveal">
+        <Svg43 class="plan-botan" aria-hidden="true" />
+        <p class="plan-badge"></p>
+        <h3>Vita</h3>
+        <p class="plan-price">{usd(products.local_vita_30d.price)}</p>
+        <p class="plan-per">30 days</p>
+        <p class="plan-desc">A lighter, minimalist take — two nourishing meals a day plus a dessert. Perfect for smaller appetites or warmer seasons.</p>
+        <p class="plan-persona">For the mom who prefers lighter portions.</p>
+      </div>
+      <div class="plan reveal">
+        <Svg43 class="plan-botan" aria-hidden="true" />
+        <p class="plan-badge"></p>
+        <h3>Low Carb</h3>
+        <p class="plan-price">{usd(products.local_lowcarb_30d.price)}</p>
+        <p class="plan-per">30 days</p>
+        <p class="plan-desc">The same warm healing, without rice, grains, or sweet drinks. For the mom caring for her body on her own terms.</p>
+        <p class="plan-persona">For the mom managing blood sugar or going grain-free.</p>
+      </div>
+      <div class="plan reveal">
+        <Svg43 class="plan-botan" aria-hidden="true" />
+        <p class="plan-badge"></p>
+        <h3>Easy</h3>
+        <p class="plan-price">{usd(products.local_easy_15d.price)}</p>
+        <p class="plan-per">30 days · 15 deliveries</p>
+        <p class="plan-desc">Nourishment with breathing room — warm meals every other day. Ideal if you have help at home and want to supplement.</p>
+        <p class="plan-persona">For the mom who has family helping and wants to fill the gaps.</p>
       </div>
     </div>
-  </section>
+    <div class="center reveal" style="margin-top:48px">
+      <a href={route("/plans", locale)} class="btn btn-primary">See full plan details</a>
+    </div>
+  </div>
+</section>
 
-  <PressBand press={press} />
-  <TasteCTA />
-  <Footer />
-</Base>
+<!-- ============ NICOLE STORY ============ -->
+<section class="band band-paper" id="story">
+  <div class="wrap">
+    <div class="story">
+      <div class="story-portrait reveal">
+        <img src={nicoleImg.src} alt="Nicole Huang, founder of JingMommy">
+      </div>
+      <div class="story-body reveal">
+        <p class="eyebrow">Our story</p>
+        <h2>She didn't start a business.</h2>
+        <p class="sub">She started a revolution in how America cares for new mothers.</p>
+        <p>When Nicole Huang had her own children in the United States, her parents were in Taiwan — and there was no one to cook for her. So she did what she has always done: she researched. She immersed herself in the principles of Zuo Yue Zi and applied everything she learned to her own recovery.</p>
+        <p>What she found on the other side surprised her. She couldn't stop thinking about all the mothers who weren't getting that care. She began writing on Yahoo! Blog — then the most widely read platform in the Chinese-speaking world — and her readership grew past <strong>160,000</strong>. Mothers across America found her. What began as a blog became a community; what began as advice became a calling.</p>
+        <p>In 2004 she became a distributor for the postpartum formulas of Dr. Zhuang Shu-Qi, Taiwan's foremost authority on postpartum care. In {site.founded} she founded JingMommy. In 2016 she built out a 5,000+ sq ft facility in Walnut, CA, with its own certified central kitchen — open and transparent, so any mother who visits can see exactly how her food is made.</p>
+        <p>Since {site.founded}, over <strong>{formatNumber(site.mothersServed)} mothers</strong> across the US have trusted JingMommy with their recovery — built on one belief:</p>
+        <p class="story-sign">Your recovery matters, because you matter.</p>
+        <a href={route('/about/founding-story', locale)} class="story-more">Read Nicole's full story →</a>
+      </div>
+    </div>
+
+    <div class="book-teaser reveal">
+      <p class="eyebrow">Coming soon</p>
+      <h3>Nicole is writing the book.</h3>
+      <p>A guide for English-speaking families on the ancient practice of postpartum confinement care — and how to bring it into modern American life. Drawn from 15 years and over {formatNumber(site.mothersServed)} mothers. Inquiries from publishers and media welcome.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST / PRESS ============ -->
+<section class="trustband reveal">
+  <div class="trust-row">
+    <span>As featured in</span>
+    <span class="trust-dot"></span>
+    <span class="featured">LA Times</span>
+    <span class="trust-dot"></span>
+    <span class="featured">Washington Post</span>
+    <span class="trust-dot"></span>
+    <span class="featured">PBS</span>
+    <span class="trust-dot"></span>
+    <span class="featured">SET Taiwan</span>
+    <span class="trust-dot"></span>
+    <span class="featured">CTI</span>
+    <span class="trust-dot"></span>
+    <span class="featured">World Journal</span>
+  </div>
+</section>
+
+<!-- ============ TASTE CTA ============ -->
+<section class="taste" id="taste">
+  <Svg44 class="botan" aria-hidden="true" />
+  <Svg45 class="botan" aria-hidden="true" />
+  <div class="taste-inner reveal">
+    <p class="eyebrow">Not sure yet?</p>
+    <h2>Taste before you commit.</h2>
+    <p>Over {formatNumber(site.mothersServed)} mothers have trusted JingMommy with their recovery — most tried a taste first. Join a free local tasting, or have a full sample day delivered: {usd(products.local_classic_sample_1d.price)} fresh in SoCal, {usd(products.frozen_classic_sample_8item.price)} frozen nationwide.</p>
+    <div class="hero-cta">
+      <a href={route("/contact", locale) + "#reach-us"} class="btn btn-primary">Reserve a free tasting</a>
+      <a href={route("/sample", locale)} class="btn btn-ghost">Order a sample — {usd(products.local_classic_sample_1d.price)} local · {usd(products.frozen_classic_sample_8item.price)} frozen</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+
+<script is:inline>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e);});
+  // close mobile nav on click
+  document.querySelectorAll('#nav a').forEach(function(a){
+    a.addEventListener('click',function(){document.getElementById('nav').classList.remove('open');});
+  });
+})();
+</script>
+</Page>

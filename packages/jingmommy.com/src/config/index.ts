@@ -58,6 +58,16 @@ export const site = {
   founded: '2010',
   mothersServed: 10000,
 }
+// Central kitchen — same building (and city/state/ZIP) as the head office in
+// `site.address`, but a different unit. NOTE: `unit` is currently the office
+// unit as a placeholder — set it to the kitchen's actual unit.
+export const kitchen = {
+  street: '618 Brea Canyon Road',
+  unit: 'Unit F',
+  addressLocality: site.address.addressLocality,
+  addressRegion: site.address.addressRegion,
+  postalCode: site.address.postalCode,
+}
 // Phone numbers — digits only (pure data). Render for display with
 // `phoneDisplay()` from src/utils ((xxx) xxx-xxxx); build tel links inline at
 // the usage site, e.g. href={`tel:${phones.main}`} — never store tel: strings.
@@ -129,6 +139,26 @@ export const orderPaths = {
   // 冷凍活力餐 — official English name is "Essential Meal"
   frozen_essential: '/frozen-essential-postpartum-meals',
   frozen_soup_dessert: '/frozen-postpartum-soup-and-dessert',
+  // Per-week frozen plan order pages. Served at the ROOT (no /en or /zh prefix)
+  // — from https://order.jingmommy.com/en/sitemap.xml — so link with
+  // orderUrl(key) and NO locale so the root URL is used verbatim. Keys match
+  // the `products` ids. Note: 1-week is singular, 2–4 are "-weeks".
+  frozen_herbal_1w: '/frozen-herbal-postpartum-meal-1-week.html',
+  frozen_herbal_2w: '/frozen-herbal-postpartum-meal-2-weeks.html',
+  frozen_herbal_3w: '/frozen-herbal-postpartum-meal-3-weeks.html',
+  frozen_herbal_4w: '/frozen-herbal-postpartum-meal-4-weeks.html',
+  frozen_classic_1w: '/frozen-classic-postpartum-meal-1-week.html',
+  frozen_classic_2w: '/frozen-classic-postpartum-meal-2-weeks.html',
+  frozen_classic_3w: '/frozen-classic-postpartum-meal-3-weeks.html',
+  frozen_classic_4w: '/frozen-classic-postpartum-meal-4-weeks.html',
+  frozen_essential_1w: '/frozen-essential-postpartum-meal-1-week.html',
+  frozen_essential_2w: '/frozen-essential-postpartum-meal-2-weeks.html',
+  frozen_essential_3w: '/frozen-essential-postpartum-meal-3-weeks.html',
+  frozen_essential_4w: '/frozen-essential-postpartum-meal-4-weeks.html',
+  frozen_soup_dessert_1w: '/frozen-postpartum-soup-and-dessert-1-week.html',
+  frozen_soup_dessert_2w: '/frozen-postpartum-soup-and-dessert-2-weeks.html',
+  frozen_soup_dessert_3w: '/frozen-postpartum-soup-and-dessert-3-weeks.html',
+  frozen_soup_dessert_4w: '/frozen-postpartum-soup-and-dessert-4-weeks.html',
   // samples (products ids)
   local_classic_sample_1d: '/sample-meals/sample-meal.html',
   frozen_classic_sample_8item: '/sample-meals/frozen-sample-meal.html',
@@ -273,6 +303,15 @@ export const products = {
   free_local_delivery_minimum_frozen_soup: { price: 200 }, // free delivery for frozen soup & dessert orders above $200
   local_delivery_fee_15d: { price: 200, compare_at_price: 225 }, // every other day delivery so it's 15 trips in 30 days (15 × local_delivery_fee_1trip = $225), but we charge $200 for the 30-day plan
 } satisfies Record<string, Product>
+
+// Deposit taken on multi-day (14–30 day) fresh meal plans; balance due within 3
+// days of first delivery. A policy figure, not a purchasable product SKU — the
+// Herbal plan carries a higher deposit than the other fresh plans. Format for
+// display with `usd()` from src/utils.
+export const deposits = {
+  standard: 500,
+  herbal: 800,
+}
 
 products.local_herbal_30d.compare_at_price ??= products.local_herbal_1d.price * 30
 products.local_herbal_21d.compare_at_price ??= products.local_herbal_1d.price * 21

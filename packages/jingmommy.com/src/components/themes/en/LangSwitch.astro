@@ -64,11 +64,32 @@ const languages = locales
 </details>
 
 <script>
+  const el = document.getElementById('lang-switch') as HTMLDetailsElement | null
+
   // Close the drop-up when clicking outside it
   document.addEventListener('click', (e) => {
-    const el = document.getElementById('lang-switch') as HTMLDetailsElement | null
     if (el?.open && !el.contains(e.target as Node)) el.open = false
   })
+
+  // Near the bottom of the page, lift the switch so it clears the footer.
+  if (el) {
+    let ticking = false
+    const update = () => {
+      ticking = false
+      const remaining =
+        document.documentElement.scrollHeight - (window.scrollY + window.innerHeight)
+      el.classList.toggle('raised', remaining < 110)
+    }
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true
+        requestAnimationFrame(update)
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll, { passive: true })
+    update()
+  }
 </script>
 
 <LocaleDomainSwitch />
@@ -76,9 +97,17 @@ const languages = locales
 <style>
   .lang-switch {
     position: fixed;
-    left: 22px;
+    right: 22px;
     bottom: 22px;
     z-index: 60;
+    transition: transform 0.25s ease;
+  }
+  /* Near the bottom of the page, lift it so it doesn't cover the footer — but
+     only up to 1230px wide; on wider screens the footer doesn't reach it. */
+  @media (max-width: 1230px) {
+    .lang-switch.raised {
+      transform: translateY(-70px);
+    }
   }
   .lang-switch summary {
     display: inline-flex;
@@ -120,7 +149,7 @@ const languages = locales
   /* drop-up menu, opens above the trigger */
   .lang-menu {
     position: absolute;
-    left: 0;
+    right: 0;
     bottom: calc(100% + 8px);
     min-width: 128px;
     background: rgba(250, 246, 241, 0.97);
@@ -151,7 +180,7 @@ const languages = locales
   }
   @media (max-width: 560px) {
     .lang-switch {
-      left: 16px;
+      right: 16px;
       bottom: 16px;
     }
     .lang-switch summary {

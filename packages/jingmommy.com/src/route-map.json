@@ -60,6 +60,16 @@
   "/en/sample": {
     "title": "Try a Taste — Free Tasting & Sample Meals — JingMommy"
   },
+  "/en/sitemap": {
+    "sitemap": false,
+    "title": "Sitemap"
+  },
+  "/en/sitemap.links": {
+    "sitemap": false
+  },
+  "/en/sitemap.xml": {
+    "sitemap": false
+  },
   "/en-translated/about/central-kitchen": {
     "order": 3,
     "sidebar": true,

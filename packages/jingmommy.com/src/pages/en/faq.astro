@@ -1,10 +1,9 @@
 ---
-import Base from "@/layouts/themes/en/Base.astro"
-import TopBar from "@/components/themes/en/TopBar.astro"
-import Footer from "@/components/themes/en/Footer.astro"
-import Botanical from "@/components/themes/en/Botanical.astro"
-import { phones, products } from '@/config/index.ts'
-import { route, phoneDisplay, usd } from '@/utils/index.ts'
+import Page from '@/layouts/themes/en/Page.astro'
+import Svg17 from '@/assets/en/svg/en-svg-17.svg'
+import Svg18 from '@/assets/en/svg/en-svg-18.svg'
+import { products, phones } from '@/config/index.ts'
+import { usd, phoneDisplay } from '@/utils/index.ts'
 
 const title =
   "Frequently Asked Questions — JingMommy Zuo Yue Zi Postpartum Meals"
@@ -13,717 +12,481 @@ const description =
 
 
 // One source of truth: drives both the accordion and the FAQPage schema.
-const categories = [
-  {
-    id: "about-the-tradition",
-    eyebrow: "The Practice",
-    title: "About the Tradition",
-    items: [
-      {
-        q: "What is Zuo Yue Zi?",
-        a: `<p>If you have only just heard about it, that is completely okay. Zuo Yue Zi, literally “sitting the month,” is the Chinese postpartum recovery tradition built around warmth, rest, and staged nourishment during the first month after birth.</p><p>For more than 2,000 years, Chinese families have treated this window as something worth protecting — not a time to “bounce back,” but a time to be fed, supported, and allowed to recover. JingMommy makes that tradition easier to follow in modern life, whether you grew up with it or are discovering it for the first time.</p><p>To learn more about the full tradition, visit our <a href="${route("/guide/why-zuo-yue-zi", 'en')}">Zuo Yue Zi guide</a>.</p>`,
-      },
-      {
-        q: "Is Zuo Yue Zi only for Chinese families?",
-        a: `<p>Not at all. Some moms come to us because their mother or grandmother always told them to do Zuo Yue Zi. Others are not Chinese and simply want a warmer, more structured way to recover after birth.</p><p>The principles behind the tradition — warm food, deep rest, steady nourishment, and support during the fourth trimester — are not limited to one culture. Many moms choose JingMommy because they want that kind of care, even if this is their first time experiencing Chinese postpartum food.</p>`,
-      },
-      {
-        q: "Is 30 days really necessary, or can I do less?",
-        a: `<p>Thirty days can sound like a lot from the outside, so it is a fair question. The reason it is the traditional framework is that postpartum recovery is staged: Mild, Warm, then Heat.</p><p>The early days focus on gentle nourishment and rest. The middle stage focuses on replenishing and rebuilding. The final stage brings in deeper, more fortifying foods many families associate with a complete Zuo Yue Zi — including the kidney-nourishing dishes of the later weeks.</p><p>If you want to experience all three stages of traditional food therapy, we generally recommend at least 21 days. That gives your body enough time to move through the full progression instead of only receiving the early gentle phase.</p><p>You can do less if needed, and some support is better than none. If a full 30-day plan feels like too much for your budget or routine, our Easy Meal plan (${usd(products.local_easy_15d.price)}) can be a good middle option. It delivers every other day — 15 deliveries across the month — so you still receive Chinese postpartum support throughout your recovery while leaving room for your regular foods in between.</p>`,
-      },
-      {
-        q: "My OB or midwife has not heard of Zuo Yue Zi. Should I be worried?",
-        a: `<p>Usually, no. Most Western-trained providers simply have not studied Chinese postpartum care in depth. That does not mean the tradition is unusual to the families who grew up with it — it just comes from a different care system.</p><p>Zuo Yue Zi focuses on many things modern recovery advice also values: steady nourishment, iron-rich foods, protein, hydration, rest, and warm, easy-to-digest meals during a physically demanding recovery window.</p><p>If your provider gives you specific medical instructions, please share them with us. We can help you choose the gentlest plan that fits your situation while respecting your provider’s guidance.</p>`,
-      },
-      {
-        q: "Why is warmth such a big deal after birth? Is this superstition?",
-        a: `<p>It is a fair question, especially if you did not grow up with this tradition. In Chinese postpartum care, warmth is part of the whole recovery environment: warm meals, warm drinks, warm soups, and a body that is not shocked by cold food during a vulnerable time.</p><p>You do not have to think of it as superstition. Think of it as a recovery rhythm. After birth, your body is tired, open, and working hard. Warm, cooked food is the traditional way of making that season feel more supported and less harsh.</p>`,
-      },
-      {
-        q: "Do I really have to avoid cold food and drinks for 30 days?",
-        a: `<p>You do not have to be perfect. Newborn life is already a lot.</p><p>Many moms choose to keep food and drinks warm during this period because it helps them stay aligned with the tradition. If you can avoid ice-cold drinks and straight-from-the-fridge foods, that is usually enough for most families. The goal is not guilt. The goal is to make recovery feel easier on your body.</p>`,
-      },
-      {
-        q: "Do I have to stay in bed for 30 days?",
-        a: `<p>No, and we would not recommend complete immobility. Rest matters, but Zuo Yue Zi is not about lying still all day.</p><p>The traditional idea is gentle movement, plenty of rest, and not pushing your body too hard too soon. You are recovering from birth while caring for a newborn. This is the time to move carefully, eat well, and let other people help.</p>`,
-      },
-    ],
-  },
-  {
-    id: "about-the-food",
-    eyebrow: "On the Table",
-    title: "About the Food",
-    items: [
-      {
-        q: "What does the food actually taste like?",
-        a: `<p>If you are worried it will taste strange, you are not alone. Many moms expect something very medicinal, then feel surprised that the food tastes more like warm home cooking.</p><p>Most dishes are savory, comforting, and broth-forward: ginger, sesame oil, slow-cooked proteins, fish soups, rice, vegetables, and gently sweet desserts. It is traditional, but it is still food you can look forward to eating when you are tired, hungry, and holding a baby with one arm.</p>`,
-      },
-      {
-        q: "Is the food very salty, oily, or heavy?",
-        a: `<p>No. Our meals are prepared lighter than restaurant food because they are designed for postpartum recovery, not takeout cravings.</p><p>You will taste ginger, sesame oil, broths, and warming flavors, but the food should not feel overly salty or greasy. If your partner or family is sharing, they can always add a little salt to their own portion.</p>`,
-      },
-      {
-        q: "Can I skip organ meats like liver or kidney?",
-        a: `<p>We would encourage you to start with the soup first — even if you only sip the broth and do not eat the organ meat itself.</p><p>In traditional Chinese postpartum food therapy, liver and kidney are used during specific recovery stages because they are considered deeply nourishing. The broth carries much of that warming, restorative quality, and many moms who were nervous at first found the flavor gentler than expected.</p><p>If after trying it you genuinely cannot eat them at all, tell us when you order and we can substitute. One honest note: the more we substitute, the less variety your menu will have across the month. We would rather be clear about that upfront — and we would much rather find a solution that keeps you nourished than have you miss out on the recovery benefits entirely.</p>`,
-      },
-      {
-        q: "Can my partner or family eat the meals too?",
-        a: `<p>Yes. Many partners and family members taste or share the meals with mom. It can be a sweet way for them to understand what you are doing and feel part of your recovery.</p><p>Just keep in mind that each plan is designed for one recovering mother. If other people will be eating regularly, you may want to add extra food or a Daddy Meal with local fresh delivery. And because our meals are intentionally prepared lighter than restaurant food, family members can add salt to taste.</p>`,
-      },
-      {
-        q: "What if I have dietary restrictions, allergies, or religious dietary needs?",
-        a: `<p>We get this question often, and it is a good one. We can work around many common restrictions, allergies, and religious dietary needs, though some changes may reduce variety.</p><p>The earlier you tell us, the better. Share exactly what you need to avoid before you order, and we will let you know what is realistic. We would rather be clear upfront than promise something that does not fit your needs.</p>`,
-      },
-    ],
-  },
-  {
-    id: "safety-breastfeeding-and-herbs",
-    eyebrow: "Care & Safety",
-    title: "Safety, Breastfeeding, and Herbs",
-    items: [
-      {
-        q: "Is this safe if I am breastfeeding?",
-        a: `<p>Wondering whether the meals are okay while nursing is one of the most common questions moms ask us, so you are in good company.</p><p>Our meals and herbal drinks are made specifically for the postpartum period, and many of the mothers who choose JingMommy are breastfeeding. Because every body and every medical history is different, if you have a medical condition, take medications, had complications, or were told to avoid certain ingredients, please check with your provider and share their guidance with us.</p>`,
-      },
-      {
-        q: "Will these meals help my milk supply?",
-        a: `<p>If milk supply is on your mind, you are far from alone. It is one of the first things many new moms worry about.</p><p>In the tradition, the first focus is rebuilding the mother’s foundation: warm meals, steady protein, broths, rest, and staged nourishment. When the mother is better supported, many families feel that breastfeeding becomes easier to sustain.</p><p>Everybody is different, so we do not promise a specific result. What we can say is this: postpartum recovery is easier when the mother is consistently fed, hydrated, and supported. That is exactly what this program is designed to help with.</p>`,
-      },
-      {
-        q: "You cook with rice wine. Is that really safe while breastfeeding?",
-        a: `<p>This is a very common question, and we understand why.</p><p>In Taiwanese Zuo Yue Zi, rice wine is not used simply for taste. It is part of the traditional cooking method for many postpartum soups and dishes. We use it in small amounts and cook the food thoroughly over heat, so much of the alcohol cooks off while the warming character remains.</p><p>Because rice wine is part of the traditional recipe structure, our meals are not made without it. If your provider has advised you to avoid all alcohol completely, please follow their guidance and talk with us before choosing your plan.</p>`,
-      },
-      {
-        q: "Are the herbal drinks too strong for postpartum?",
-        a: `<p>They are not meant to be harsh, random, or one-size-fits-all. The herbal drinks follow the same staged idea as the meals: Mild, Warm, then Heat.</p><p>Week 1 is gentler. Weeks 2–4 become more replenishing and fortifying. The point is not to rush the body. The point is to move with the traditional recovery sequence, step by step.</p>`,
-      },
-      {
-        q: "Do I really need the herbal drinks, or are the meals enough?",
-        a: `<p>The meals alone already give you a strong postpartum routine. The herbal drinks add the more complete traditional layer.</p><p>If you want the closest version of a full Zuo Yue Zi experience, the Herbal plan is the easiest choice because the drinks are already included. If you choose Classic, Vita, Low Carb, or Easy, you can still add herbal drinks: ${usd(products.herbal_drink.price)}/day for fresh plans or ${usd(products.frozen_herbal_drink_7_1w.price)}/week for frozen plans. If your family is cooking your meals but you still want the herbal layer, the standalone 30-day Herbal Pack is available for ${usd(products.herbal_drink_pack_30d.price)} and ships nationwide.</p>`,
-      },
-      {
-        q: "What if I am not breastfeeding? Is this still right for me?",
-        a: `<p>That is completely okay. JingMommy is not only for breastfeeding moms.</p><p>If you are not breastfeeding, let us know when you get in touch. We can remove ingredients traditionally used to support milk production from your meals. One thing to be aware of: because our menus are designed as a complete system, removing certain ingredients may cause some dishes to repeat more frequently across your plan.</p><p>The core recovery benefits — warmth, nourishment, blood restoration, and staged postpartum support — remain fully intact.</p>`,
-      },
-    ],
-  },
-  {
-    id: "recovery-and-results",
-    eyebrow: "Healing",
-    title: "Recovery and Results",
-    items: [
-      {
-        q: "I had a C-section. Does this still apply to me?",
-        a: `<p>Yes — and many C-section moms choose this kind of support for exactly that reason.</p><p>A surgical birth can involve greater blood loss, lower appetite, and a longer healing process. The first-week meals are intentionally gentle, while the later stages gradually become more replenishing and warming. In the Zuo Yue Zi tradition, that staged progression is especially important when the body needs extra time and care.</p><p>If your birth involved complications or your provider gave you specific dietary instructions, share them with us. We will help you start in the gentlest way that fits your situation. And if you want the most thorough version of that staged support, many C-section moms choose the Herbal plan — the staged herbal drinks are traditionally used to help the body rebuild blood and strength more efficiently after a harder recovery.</p>`,
-      },
-      {
-        q: "What if I had a difficult birth or complications?",
-        a: `<p>Then gentleness matters even more. The meals can still be a helpful part of your postpartum routine, but your medical situation comes first.</p><p>If you had heavy bleeding, infection, high blood pressure, gestational diabetes concerns, surgery complications, or another medical issue, follow your provider’s instructions. Then tell us what you were advised to avoid, and we will help you decide whether and how to begin. Once your provider gives the green light, this is also where the Herbal plan can do the most: when the body has more rebuilding to do, the week-by-week herbal drinks are traditionally used to support deeper, more efficient restoration than meals alone.</p>`,
-      },
-      {
-        q: "If I only do one or two weeks, what will I miss compared to a full month?",
-        a: `<p>You will still receive support, especially in the early Mild phase when gentle food and rest matter so much.</p><p>What you may miss is the deeper later-stage nourishment of Weeks 3–4 — the Heat phase many families associate with feeling stronger, warmer, and more restored. If your budget, schedule, and storage allow it, the full month gives you the most complete experience. And if a shorter plan is what fits right now, partial support still makes a real difference.</p>`,
-      },
-      {
-        q: "Can I start later if I did not order before birth?",
-        a: `<p>Yes. Ideally, postpartum meals are planned before delivery, but real life does not always work that way.</p><p>If the baby is already here, contact us as soon as possible. We will help you choose the fastest realistic option based on your location, delivery schedule, and whether fresh or frozen meals make more sense for you.</p>`,
-      },
-    ],
-  },
-  {
-    id: "plans-and-choosing",
-    eyebrow: "Choosing Well",
-    title: "Plans and Choosing",
-    items: [
-      {
-        q: "How many plans do you offer, and how are they different?",
-        a: `<p>Five can feel like a lot to sort through, so here is the simple version: we offer five fresh plans in Southern California, plus frozen options for families outside our local delivery area.</p><div class="table-wrap"><table><thead><tr><th>Plan</th><th>Herbal drinks</th><th>Best for</th><th>Fresh · 30 days</th></tr></thead><tbody><tr><td><strong>Herbal</strong></td><td>Included</td><td>The fullest, most traditional experience</td><td>${usd(products.local_herbal_30d.price)}</td></tr><tr><td><strong>Classic</strong></td><td>—</td><td>Complete meal support, without herbs included</td><td>${usd(products.local_classic_30d.price)}</td></tr><tr><td><strong>Vita</strong></td><td>—</td><td>A lighter routine or smaller appetite</td><td>${usd(products.local_vita_30d.price)}</td></tr><tr><td><strong>Low Carb</strong></td><td>—</td><td>Lower-carb recovery support</td><td>${usd(products.local_lowcarb_30d.price)}</td></tr><tr><td><strong>Easy</strong></td><td>—</td><td>Every-other-day delivery, 15 deliveries total</td><td>${usd(products.local_easy_15d.price)}</td></tr></tbody></table></div><p>If you want the complete tradition, Herbal is the fullest option. It is the only fresh plan that already includes the full herbal drink program.</p><p>If you are comparing Herbal and Classic, the difference is simple: Herbal includes the daily herbal drinks. For Classic, herbal drinks can be added for ${usd(products.herbal_drink.price)}/day — just a little more than a daily coffee, but it completes the traditional layer many families want during postpartum recovery.</p><p>For families outside our fresh delivery area, we also offer frozen plans shipped FedEx Priority Overnight with shipping included:</p><div class="table-wrap"><table><thead><tr><th>Frozen plan</th><th>Herbal drinks</th><th>What is included</th><th>4 weeks</th></tr></thead><tbody><tr><td><strong>Frozen Herbal</strong></td><td>Included</td><td>3 meals + dessert + herbal drink</td><td>${usd(products.frozen_herbal_4w.price)}</td></tr><tr><td><strong>Frozen Classic</strong></td><td>Add-on ${usd(products.frozen_herbal_drink_7_1w.price)}/wk</td><td>3 meals + dessert</td><td>${usd(products.frozen_classic_4w.price)}</td></tr><tr><td><strong>Frozen Essential</strong></td><td>Add-on ${usd(products.frozen_herbal_drink_7_1w.price)}/wk</td><td>2 meals + dessert, 5 days/week</td><td>${usd(products.frozen_essential_4w.price)}</td></tr><tr><td><strong>Frozen Soup &amp; Dessert</strong></td><td>Add-on ${usd(products.frozen_herbal_drink_7_1w.price)}/wk</td><td>1 daily soup + 2 recovery stew soups + entrée + 2 desserts</td><td>${usd(products.frozen_soup_dessert_4w.price)}</td></tr></tbody></table></div>`,
-      },
-      {
-        q: "How do I know which full plan is right for me?",
-        a: `<p>Start with three questions: Do you want herbal drinks included? Do you want three meals a day or something lighter? Are you inside the fresh delivery area?</p><p>If you want the most traditional, complete experience, choose Herbal. If you want full meal support but no herbs included, Classic is usually the fit. If your appetite is smaller or you already have some food support at home, Vita may feel easier. If you are keeping carbs lower, Low Carb is the simplest match. If you want flexibility and every-other-day delivery, Easy is a gentle way to begin.</p><p>Still unsure? Text us at <a href="tel:${phones.salesPatricia}">${phoneDisplay(phones.salesPatricia)}</a> with your due date, ZIP code, breastfeeding plan, and any restrictions. We will help you choose without pressure.</p>`,
-      },
-      {
-        q: "What is the difference between fresh and frozen plans?",
-        a: `<p>Fresh plans are best if you are in our local Southern California delivery area and want meals delivered on a regular schedule.</p><p>Frozen plans are best if you live outside the fresh delivery area, want nationwide shipping, or prefer to keep meals in the freezer and heat them as needed. Both are made from JingMommy recipes; the difference is delivery style and storage.</p>`,
-      },
-      {
-        q: "Can I switch plans after I order?",
-        a: `<p>Usually, yes — especially before your meals begin. Before service starts, switching plans is very easy for us to adjust in the system.</p><p>After service has started, changes need to be requested by noon the day before your next delivery. Our central kitchen prepares ingredients and schedules production in advance, so same-day changes are usually not possible.</p><p>If you are still deciding between two plans, contact us before ordering. A quick conversation can prevent choosing something too light, too much, or not aligned with your recovery goals. Text or call us at <a href="tel:${phones.salesPatricia}">${phoneDisplay(phones.salesPatricia)}</a>.</p>`,
-      },
-    ],
-  },
-  {
-    id: "about-the-trial",
-    eyebrow: "Taste First",
-    title: "About the Trial",
-    items: [
-      {
-        q: "Can I try the food before committing to a full plan?",
-        a: `<p>Yes — and most families feel better after tasting first. In Southern California, you can choose between a free tasting party or a ${usd(products.local_classic_sample_1d.price)} local home-delivery sample. If you are outside our fresh delivery area, we offer an ${usd(products.frozen_classic_sample_8item.price)} frozen tasting shipped nationwide.</p><p>Tasting is the easiest way to move from “I am curious” to “I can actually picture myself eating this after birth.”</p>`,
-      },
-      {
-        q: "What happens at the free tasting party?",
-        a: `<p>We host tasting events at our central kitchen in Walnut, CA. You will try 10+ real dishes from our menu — Taiwanese Sticky Rice, sesame oil chicken, slow-cooked soups, desserts, and other postpartum favorites — along with a short class on how Zuo Yue Zi works.</p><p>Your partner or one guest is welcome to join you. The event is free, but registration is required because spots are limited. Priority is usually given to moms whose due date is within the next three months.</p>`,
-      },
-      {
-        q: `What is in the ${usd(products.local_classic_sample_1d.price)} local home-delivery sample?`,
-        a: `<p>The local sample is an at-home way to try JingMommy before choosing a full plan. It is based on our Classic postpartum meal structure and gives you a real taste of the daily rhythm, portion style, and flavors of our meals.</p><p>A typical local sample may include:</p><ul><li>Breakfast porridge</li><li>Breakfast egg dish</li><li>Lunch soup</li><li>Lunch entrée</li><li>Rice or grain</li><li>Warm vegetable side</li><li>Afternoon restorative dessert</li><li>Dinner Taiwanese postpartum soup</li><li>Dinner recovery stew soup</li><li>Dinner entrée</li><li>Rice or grain</li><li>Warm vegetable side</li><li>Evening restorative dessert</li><li>Healing drink (a different drink from the postpartum herbal drink program — gentle and suitable during pregnancy)</li></ul><p>The exact items may vary based on the kitchen menu, but the goal is the same: to let you experience a full JingMommy-style postpartum day — warm, structured, comforting, and easy to imagine during your own recovery.</p>`,
-      },
-      {
-        q: `How is the ${usd(products.frozen_classic_sample_8item.price)} frozen tasting different?`,
-        a: `<p>The frozen tasting ships overnight by FedEx to the continental United States. It includes eight individual items made from our real recipes and packed the same way as the full frozen program: a fish soup, a dinner soup, sticky rice with shiitake, an entrée, a dessert, breakfast porridge, a breakfast egg, and a healing drink.</p><p>It is not meant to be a full day of meals. It is meant to give you a true taste of the food, texture, packaging, and reheating experience before ordering a full frozen plan.</p>`,
-      },
-      {
-        q: "Do the tastings include the herbal drinks?",
-        a: `<p>The tastings include a gentle healing drink, which is a different drink entirely from the postpartum herbal drinks in the Herbal Meal Plan. The herbal drinks are made for after birth and are staged by week, so they are not part of a prenatal tasting.</p>`,
-      },
-    ],
-  },
-  {
-    id: "ordering-timing-and-gifts",
-    eyebrow: "Planning Ahead",
-    title: "Ordering, Timing, and Gifts",
-    items: [
-      {
-        q: "When should I order if my due date is not set yet?",
-        a: `<p>That is completely normal. Babies do not follow calendars.</p><p>We recommend ordering at least one month before your estimated due date so your plan is reserved. After the baby arrives, you confirm the actual start date with customer service. Your order form may ask for your due date, but your real meal start date is based on your actual delivery.</p>`,
-      },
-      {
-        q: "Can I order before the baby is born?",
-        a: `<p>Yes — and that is the best time to plan.</p><p>The first days after birth are not the easiest time to research meals, compare plans, or coordinate family opinions. Ordering during pregnancy lets you make the decision while you still have more mental space. Then, after delivery, you simply confirm your start date.</p>`,
-      },
-      {
-        q: "What if I deliver earlier or later than expected?",
-        a: `<p>That happens all the time. Just text or call customer service by noon the day before your targeted delivery date with your name and order number.</p><p>We will confirm your meal start date and delivery or shipping details based on the real timing, not just the original due date.</p>`,
-      },
-      {
-        q: "Can I arrange this as a gift for someone else?",
-        a: `<p>Yes, and many families do exactly that. A husband, partner, mother, in-law, sister, or friend can place the order, and we coordinate timing and preferences with the mom.</p><p>It is one of the most practical newborn gifts because it does not become clutter, and it does not ask the new mother to do more work. It simply makes sure she is fed.</p>`,
-      },
-      {
-        q: "What information do I need to place a gift order?",
-        a: `<p>The most helpful details are the mom’s name, due date, delivery ZIP code, phone number, food restrictions, and whether she prefers fresh or frozen service.</p><p>If you do not know everything yet, that is okay. Contact us with what you have, and we will help you arrange the rest. For help with gift orders, text or call <a href="tel:${phones.salesPatricia}">${phoneDisplay(phones.salesPatricia)}</a>.</p>`,
-      },
-    ],
-  },
-  {
-    id: "delivery-and-freshness",
-    eyebrow: "How It Arrives",
-    title: "Delivery and Freshness",
-    items: [
-      {
-        q: "How fresh is the food?",
-        a: `<p>Fresh plans are prepared in our kitchen and delivered on a set rhythm in the local delivery area, so moms can eat soon after cooking.</p><p>As the biggest Chinese postpartum meal provider in the USA, we buy fresh ingredients every day. That daily scale works in your favor: ingredients turn over quickly instead of sitting in storage, soups and broths are slow-cooked from scratch in daily batches, and our kitchen team cooks postpartum recovery food every single day on a rotating menu — a practiced rhythm that shows in the quality of every meal.</p><p>Frozen plans are cooked, portioned, frozen, and shipped overnight so they arrive ready for your freezer. Both options are designed to make postpartum eating simple: heat, eat, rest, repeat.</p>`,
-      },
-      {
-        q: "Do you deliver fresh meals to my area?",
-        a: `<p>Fresh delivery covers many parts of Los Angeles County, Orange County, and the Inland Empire from our Walnut, CA kitchen.</p><p>The easiest way to know is to check your ZIP code on our website when you inquire or order. If you are outside our fresh delivery zone, we will guide you toward frozen options instead of leaving you guessing.</p>`,
-      },
-      {
-        q: "I live outside California. Can I still order?",
-        a: `<p>Yes. Frozen plans ship by FedEx Priority Overnight to the continental United States, with shipping included in the plan price.</p><p>Each day’s meals are pre-portioned so you can pull out what you need without trying to organize everything from scratch during newborn life.</p>`,
-      },
-      {
-        q: "How do frozen plans work?",
-        a: `<p>Frozen plans are cooked in our kitchen, packed, and shipped so they can go straight into your freezer when they arrive.</p><p>They are a good fit if you live outside the fresh delivery area, want to complete the full program nationwide, or prefer the convenience of storing meals and heating them on your own schedule.</p>`,
-      },
-      {
-        q: "My freezer is small. Can I still do a full program?",
-        a: `<p>Many families make it work by keeping several days in the freezer and a couple of days in the refrigerator to thaw naturally.</p><p>For a full month of frozen meals, extra freezer space can be helpful. A small upright freezer is often enough. If you are worried about storage, contact us before ordering and we can help you plan realistically.</p>`,
-      },
-      {
-        q: "What should I do when the meals arrive?",
-        a: `<p>If you are not eating right away, refrigerate fresh meals as soon as possible. Reheat everything thoroughly until piping hot before serving.</p><p>Frozen meals should go into the freezer when they arrive, then be thawed and reheated as needed. If anything ever looks or smells off, do not eat it. Contact customer service and we will help you right away.</p>`,
-      },
-    ],
-  },
-  {
-    id: "policies-and-changes",
-    eyebrow: "The Details",
-    title: "Policies and Changes",
-    items: [
-      {
-        q: "What is your refund or cancellation policy?",
-        a: `<p>We try to be clear because postpartum life can change quickly.</p><p>If you cancel before your first delivery, you receive a full refund, minus a 3% credit card processing fee if applicable.</p><p>If you cancel after service has started, your refund is prorated based on the total amount you paid. For example, if you ordered a 30-day plan and received 7 days of meals, you are refunded for the 23 unused days as their share of the full amount paid, minus the 3% card processing fee when applicable.</p><p>This keeps the calculation fair and clear based on the actual number of days served.</p>`,
-      },
-      {
-        q: "When is the remaining balance due?",
-        a: `<p>The remaining balance is due within 3 days after your first meal delivery. This keeps your service uninterrupted and allows the kitchen and delivery team to keep everything on schedule.</p>`,
-      },
-      {
-        q: "Can I pause or adjust my plan once it has started?",
-        a: `<p>Yes, with enough notice. Please share dietary requests at the very beginning, when you order, so we can build them into your plan from day one.</p><p>If you need to pause, skip, or adjust a delivery, contact customer service no later than noon the day before that delivery. The sooner you tell us, the easier it is to help.</p>`,
-      },
-      {
-        q: "What if something is wrong with a meal?",
-        a: `<p>Please contact us right away — if a meal arrives defective, we will replace that item quickly, no back-and-forth needed.</p><p>To keep things simple and fair for every family, we handle these as a one-time replacement of the specific item rather than discounts or additional compensation. Our priority is making sure you have the food you need, fast.</p>`,
-      },
-    ],
-  },
-  {
-    id: "contact-and-support",
-    eyebrow: "We Are Here",
-    title: "Contact and Support",
-    items: [
-      {
-        q: "How do I confirm my start date after delivery?",
-        a: `<p>Text or call customer service at <a href="tel:${phones.customerService}">${phoneDisplay(phones.customerService)}</a> as soon as you know when you would like to begin. The latest time to confirm is noon the day before your targeted first delivery.</p><p>Please include your name and order number so we can find your order quickly. That is the fastest way to lock in your start date and make sure the kitchen and delivery team are ready for you.</p>`,
-      },
-      {
-        q: "Who should I contact if there is an issue after delivery?",
-        a: `<p>Reach out to customer service by phone or text at <a href="tel:${phones.customerService}">${phoneDisplay(phones.customerService)}</a>. Have your name and order number ready if possible.</p><p>One quick guide so you always know where to go: for questions before you order — choosing a plan, gifts, tastings — text or call your sales rep or <a href="tel:${phones.salesPatricia}">${phoneDisplay(phones.salesPatricia)}</a>. For anything after your order is placed — start dates, delivery changes, meal issues — customer service at <a href="tel:${phones.customerService}">${phoneDisplay(phones.customerService)}</a> is your line.</p><p>Postpartum days are busy enough. If something needs attention, we want to help you solve it quickly instead of sending you in circles.</p>`,
-      },
-      {
-        q: "Can I make special requests?",
-        a: `<p>Of course. Tell us as early as you can, ideally when you order. For delivery changes or day-to-day adjustments, contact us no later than noon the day before delivery.</p><p>Some requests are easy, and some depend on the plan or kitchen schedule. Either way, we will tell you clearly what we can do. Reach out to customer service by phone or text at <a href="tel:${phones.customerService}">${phoneDisplay(phones.customerService)}</a>, and have your name and order number ready if possible.</p>`,
-      },
-      {
-        q: "I read everything and still do not know what to choose. What should I do?",
-        a: `<p>That is normal. You are choosing food for one of the most vulnerable months of your life — it should feel like a thoughtful decision.</p><p>Text or call your sales rep or <a href="tel:${phones.salesPatricia}">${phoneDisplay(phones.salesPatricia)}</a> with your due date, ZIP code, whether you plan to breastfeed, any restrictions, and whether you want fresh or frozen delivery. We will help you narrow it down. No pressure, no complicated sales script — just a real person helping you figure out what fits.</p>`,
-      },
-    ],
-  },
-]
-
-const stripTags = (html: string) =>
-  html
-    .replace(/<[^>]+>/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/\s+/g, " ")
-    .trim()
-
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: categories.flatMap((c) =>
-      c.items.map((it) => ({
-        "@type": "Question",
-        name: it.q,
-        acceptedAnswer: { "@type": "Answer", text: stripTags(it.a) },
-      })),
-    ),
-  },
-]
 ---
 
-<Base title={title} description={description} jsonLd={jsonLd}>
-  <TopBar active={route("/faq", 'en')} />
+<Page title={title} description={description}>
 
-  <!-- HERO -->
-  <section class="faq-hero">
-    <Botanical variant="hero-tl" />
-    <Botanical variant="hero-br" />
-    <div class="wrap faq-hero-inner">
-      <p class="eyebrow">Questions &amp; Answers</p>
-      <h1>Frequently Asked Questions</h1>
-      <p class="intro">
-        New to Zuo Yue Zi? Wondering if it feels too traditional, too
-        unfamiliar, or too much to figure out while preparing for a baby? You
-        are exactly who this page is for. Below are the questions families ask
-        us most often — about the tradition, the food, breastfeeding, delivery,
-        timing, and how to choose the right plan. If you still feel unsure after
-        reading, text or call us at <a href={`tel:${phones.salesPatricia}`}>{phoneDisplay(phones.salesPatricia)}</a>. We help
-        moms make this decision every day.
-      </p>
-      <div class="rule"></div>
-    </div>
-  </section>
+  <style is:global>
 
-  <!-- CATEGORY NAV -->
-  <nav class="catnav" aria-label="FAQ categories">
-    <div class="catnav-inner">
-      {categories.map((c) => <a href={`#${c.id}`}>{c.title}</a>)}
-    </div>
-  </nav>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'EB Garamond','Georgia',serif;background:var(--paper);color:var(--ink);font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding:0 32px}
+h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:60px;line-height:1.06;letter-spacing:.18em;text-transform:uppercase}
+h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:38px;line-height:1.12;letter-spacing:.04em}
+a{color:var(--accent-deep)}
 
-  <main class="faq-main">
-    <div class="wrap">
-      {
-        categories.map((c) => (
-          <section class="cat reveal" id={c.id}>
-            <div class="cat-head">
-              <div class="cat-eyebrow">{c.eyebrow}</div>
-              <h2>{c.title}</h2>
-            </div>
-            <div class="faq-list">
-              {c.items.map((it) => (
-                <div class="faq-item">
-                  <button class="faq-q" aria-expanded="false">
-                    <span class="q-text">{it.q}</span>
-                    <span class="q-icon" aria-hidden="true" />
-                  </button>
-                  <div class="faq-a" role="region" set:html={it.a} />
-                </div>
-              ))}
-            </div>
-          </section>
-        ))
-      }
+.botan{position:absolute;pointer-events:none;z-index:1}
 
-      <div class="closing reveal">
-        <Botanical variant="hero-br" />
-        <div class="inner">
-          <div class="eyebrow">Your Next Step</div>
-          <h2>Ready for the next step?</h2>
-          <p>
-            If you are still exploring, start with a <a
-              href={route("/sample", 'en')}>tasting</a
-            >. If you already know you want the full traditional experience,
-            look at the
-            <a href={route("/plans", 'en')}>Herbal plan</a> first. And if you are ordering
-            for someone you love, contact us and we will help you arrange the timing
-            with her.
-          </p>
-          <p>
-            Your job is to recover and bond with your baby. Our job is to make
-            sure you are fed.
-          </p>
-        </div>
-      </div>
-    </div>
-  </main>
+/* top bar */
 
-  <Footer />
-</Base>
+
+
+
+
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:92px 0 60px;text-align:center}
+.hero-botan-tl{top:-30px;left:-40px;width:230px;opacity:.85}
+.hero-botan-br{bottom:-30px;right:-40px;width:210px;opacity:.8}
+.hero .wrap{position:relative;z-index:2}
+.eyebrow{font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:24px}
+.hero p.intro{font-size:20px;color:var(--ink-soft);max-width:680px;margin:28px auto 0;line-height:1.65}
+.hero .rule{width:64px;height:1px;background:var(--accent);margin:36px auto 0;opacity:.6}
+
+/* category nav */
+.catnav{position:sticky;top:68px;z-index:40;background:var(--cream);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.catnav-inner{display:flex;gap:6px;overflow-x:auto;padding:12px 32px;max-width:1120px;margin:0 auto;scrollbar-width:thin}
+.catnav a{flex:0 0 auto;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:7px 14px;border-radius:2px;white-space:nowrap;transition:all .2s}
+.catnav a:hover,.catnav a.active{background:var(--accent-deep);color:var(--paper)}
+
+main{padding:64px 0 40px}
+.cat{position:relative;padding-top:40px;margin-bottom:20px;scroll-margin-top:140px}
+.cat-head{padding-bottom:10px;margin-bottom:16px;border-bottom:1px solid var(--line)}
+.cat-eyebrow{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+
+/* accordion */
+.faq-item{border-bottom:1px solid var(--line-soft)}
+.faq-q{width:100%;background:none;border:none;cursor:pointer;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:22px 4px;font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:500;color:var(--ink);line-height:1.25;transition:color .2s}
+.faq-q:hover{color:var(--accent-deep)}
+.faq-q .q-text{flex:1}
+.q-icon{position:relative;flex:0 0 18px;width:18px;height:18px;margin-top:7px}
+.q-icon::before,.q-icon::after{content:'';position:absolute;background:var(--accent-deep);transition:transform .28s ease,opacity .2s}
+.q-icon::before{top:8px;left:0;width:18px;height:1.5px}
+.q-icon::after{top:0;left:8px;width:1.5px;height:18px}
+.faq-q[aria-expanded="true"] .q-icon::after{transform:scaleY(0);opacity:0}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-a p{padding:0 4px 4px;color:var(--ink-soft)}
+.faq-a p:first-child{padding-top:2px}
+.faq-a p:last-child{padding-bottom:24px}
+.faq-a ul{list-style:none;padding:4px 4px 22px;columns:2;column-gap:32px}
+.faq-a ul li{position:relative;padding-left:18px;margin-bottom:7px;color:var(--ink-soft);break-inside:avoid}
+.faq-a ul li::before{content:'';position:absolute;left:0;top:12px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.faq-a strong{color:var(--ink);font-weight:600}
+.faq-a a{color:var(--accent-deep);text-decoration:underline;text-decoration-color:var(--line)}
+
+.table-wrap{overflow-x:auto;margin:6px 4px 24px}
+table{width:100%;border-collapse:collapse;font-size:16px}
+thead th{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;color:var(--accent-deep);text-align:left;padding:10px 12px;border-bottom:1.5px solid var(--accent)}
+tbody td{padding:11px 12px;border-bottom:1px solid var(--line-soft);color:var(--ink-soft);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+tbody td:last-child{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--ink)}
+tbody td strong{color:var(--ink)}
+
+/* closing */
+.closing{position:relative;overflow:hidden;background:var(--cream);border:1px solid var(--line);padding:56px 44px;margin:48px 0 8px;text-align:center}
+.closing-botan{bottom:-40px;right:-40px;width:200px;opacity:.7}
+.closing .inner{position:relative;z-index:2}
+.closing .eyebrow{margin-bottom:16px}
+.closing h2{margin-bottom:20px}
+.closing p{color:var(--ink-soft);max-width:620px;margin:0 auto 14px}
+
+/* footer */
+
+
+
+
+
+
+
+
+
+/* scroll reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:560px){
+  h1{font-size:38px;letter-spacing:.12em} h2{font-size:30px}
+  body{font-size:17px}
+  .hero{padding:60px 0 44px}
+  .hero-botan-tl,.hero-botan-br{width:130px}
+  .faq-q{font-size:21px}
+  .faq-a ul{columns:1}
+  .closing{padding:40px 24px}
+  .cat{scroll-margin-top:130px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+.faq-q:focus-visible{outline:2px solid var(--accent-deep);outline-offset:3px;border-radius:2px}
+.catnav a:focus-visible,.nav-cta:focus-visible{outline:2px solid var(--accent-deep);outline-offset:2px}
+  </style>
+
+
+<div class="hero">
+<Svg17 class="botan hero-botan-tl" aria-hidden="true" />
+<Svg18 class="botan hero-botan-br" aria-hidden="true" />
+<div class="wrap">
+<div class="eyebrow">Questions &amp; Answers</div>
+<h1>Frequently Asked Questions</h1>
+<p class="intro">New to Zuo Yue Zi? Wondering if it feels too traditional, too unfamiliar, or too much to figure out while preparing for a baby? You are exactly who this page is for. Below are the questions families ask us most often — about the tradition, the food, breastfeeding, delivery, timing, and how to choose the right plan. If you still feel unsure after reading, text or call us at <a href={`tel:${phones.salesPatricia}`}>{phoneDisplay(phones.salesPatricia)}</a>. We help moms make this decision every day.</p>
+<div class="rule"></div>
+</div>
+</div>
+
+<nav class="catnav" aria-label="FAQ categories">
+<div class="catnav-inner">
+<a href="#about-the-tradition">About the Tradition</a><a href="#about-the-food">About the Food</a><a href="#safety-breastfeeding-and-herbs">Safety, Breastfeeding, and Herbs</a><a href="#recovery-and-results">Recovery and Results</a><a href="#plans-and-choosing">Plans and Choosing</a><a href="#about-the-trial">About the Trial</a><a href="#ordering-timing-and-gifts">Ordering, Timing, and Gifts</a><a href="#delivery-and-freshness">Delivery and Freshness</a><a href="#policies-and-changes">Policies and Changes</a><a href="#contact-and-support">Contact and Support</a>
+</div>
+</nav>
+
+<main>
+<div class="wrap">
+<section class="cat reveal" id="about-the-tradition">
+<div class="cat-head">
+<div class="cat-eyebrow">The Practice</div>
+<h2>About the Tradition</h2>
+</div>
+<div class="faq-list">
+<div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">What is Zuo Yue Zi?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>If you have only just heard about it, that is completely okay. Zuo Yue Zi, literally &quot;sitting the month,&quot; is the Chinese postpartum recovery tradition built around warmth, rest, and staged nourishment during the first month after birth.</p>
+<p>For more than 2,000 years, Chinese families have treated this window as something worth protecting — not a time to &quot;bounce back,&quot; but a time to be fed, supported, and allowed to recover. JingMommy makes that tradition easier to follow in modern life, whether you grew up with it or are discovering it for the first time.</p>
+<p>To learn more about the full tradition, visit our Zuo Yue Zi guide.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Is Zuo Yue Zi only for Chinese families?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Not at all. Some moms come to us because their mother or grandmother always told them to do Zuo Yue Zi. Others are not Chinese and simply want a warmer, more structured way to recover after birth.</p>
+<p>The principles behind the tradition — warm food, deep rest, steady nourishment, and support during the fourth trimester — are not limited to one culture. Many moms choose JingMommy because they want that kind of care, even if this is their first time experiencing Chinese postpartum food.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Is 30 days really necessary, or can I do less?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Thirty days can sound like a lot from the outside, so it is a fair question. The reason it is the traditional framework is that postpartum recovery is staged: Mild, Warm, then Heat.</p>
+<p>The early days focus on gentle nourishment and rest. The middle stage focuses on replenishing and rebuilding. The final stage brings in deeper, more fortifying foods many families associate with a complete Zuo Yue Zi — including the kidney-nourishing dishes of the later weeks.</p>
+<p>If you want to experience all three stages of traditional food therapy, we generally recommend at least 21 days. That gives your body enough time to move through the full progression instead of only receiving the early gentle phase.</p>
+<p>You can do less if needed, and some support is better than none. If a full 30-day plan feels like too much for your budget or routine, our Easy Meal plan ({usd(products.local_easy_15d.price)}) can be a good middle option. It delivers every other day — 15 deliveries across the month — so you still receive Chinese postpartum support throughout your recovery while leaving room for your regular foods in between.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">My OB or midwife has not heard of Zuo Yue Zi. Should I be worried?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Usually, no. Most Western-trained providers simply have not studied Chinese postpartum care in depth. That does not mean the tradition is unusual to the families who grew up with it — it just comes from a different care system.</p>
+<p>Zuo Yue Zi focuses on many things modern recovery advice also values: steady nourishment, iron-rich foods, protein, hydration, rest, and warm, easy-to-digest meals during a physically demanding recovery window.</p>
+<p>If your provider gives you specific medical instructions, please share them with us. We can help you choose the gentlest plan that fits your situation while respecting your provider&#x27;s guidance.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Why is warmth such a big deal after birth? Is this superstition?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>It is a fair question, especially if you did not grow up with this tradition. In Chinese postpartum care, warmth is part of the whole recovery environment: warm meals, warm drinks, warm soups, and a body that is not shocked by cold food during a vulnerable time.</p>
+<p>You do not have to think of it as superstition. Think of it as a recovery rhythm. After birth, your body is tired, open, and working hard. Warm, cooked food is the traditional way of making that season feel more supported and less harsh.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Do I really have to avoid cold food and drinks for 30 days?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>You do not have to be perfect. Newborn life is already a lot.</p>
+<p>Many moms choose to keep food and drinks warm during this period because it helps them stay aligned with the tradition. If you can avoid ice-cold drinks and straight-from-the-fridge foods, that is usually enough for most families. The goal is not guilt. The goal is to make recovery feel easier on your body.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Do I have to stay in bed for 30 days?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>No, and we would not recommend complete immobility. Rest matters, but Zuo Yue Zi is not about lying still all day.</p>
+<p>The traditional idea is gentle movement, plenty of rest, and not pushing your body too hard too soon. You are recovering from birth while caring for a newborn. This is the time to move carefully, eat well, and let other people help.</p></div>
+</div>
+</div>
+</section><section class="cat reveal" id="about-the-food">
+<div class="cat-head">
+<div class="cat-eyebrow">On the Table</div>
+<h2>About the Food</h2>
+</div>
+<div class="faq-list">
+<div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">What does the food actually taste like?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>If you are worried it will taste strange, you are not alone. Many moms expect something very medicinal, then feel surprised that the food tastes more like warm home cooking.</p>
+<p>Most dishes are savory, comforting, and broth-forward: ginger, sesame oil, slow-cooked proteins, fish soups, rice, vegetables, and gently sweet desserts. It is traditional, but it is still food you can look forward to eating when you are tired, hungry, and holding a baby with one arm.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Is the food very salty, oily, or heavy?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>No. Our meals are prepared lighter than restaurant food because they are designed for postpartum recovery, not takeout cravings.</p>
+<p>You will taste ginger, sesame oil, broths, and warming flavors, but the food should not feel overly salty or greasy. If your partner or family is sharing, they can always add a little salt to their own portion.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Can I skip organ meats like liver or kidney?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>We would encourage you to start with the soup first — even if you only sip the broth and do not eat the organ meat itself.</p>
+<p>In traditional Chinese postpartum food therapy, liver and kidney are used during specific recovery stages because they are considered deeply nourishing. The broth carries much of that warming, restorative quality, and many moms who were nervous at first found the flavor gentler than expected.</p>
+<p>If after trying it you genuinely cannot eat them at all, tell us when you order and we can substitute. One honest note: the more we substitute, the less variety your menu will have across the month. We would rather be clear about that upfront — and we would much rather find a solution that keeps you nourished than have you miss out on the recovery benefits entirely.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Can my partner or family eat the meals too?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Yes. Many partners and family members taste or share the meals with mom. It can be a sweet way for them to understand what you are doing and feel part of your recovery.</p>
+<p>Just keep in mind that each plan is designed for one recovering mother. If other people will be eating regularly, you may want to add extra food or a Daddy Meal with local fresh delivery. And because our meals are intentionally prepared lighter than restaurant food, family members can add salt to taste.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">What if I have dietary restrictions, allergies, or religious dietary needs?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>We get this question often, and it is a good one. We can work around many common restrictions, allergies, and religious dietary needs, though some changes may reduce variety.</p>
+<p>The earlier you tell us, the better. Share exactly what you need to avoid before you order, and we will let you know what is realistic. We would rather be clear upfront than promise something that does not fit your needs.</p></div>
+</div>
+</div>
+</section><section class="cat reveal" id="safety-breastfeeding-and-herbs">
+<div class="cat-head">
+<div class="cat-eyebrow">Care &amp; Safety</div>
+<h2>Safety, Breastfeeding, and Herbs</h2>
+</div>
+<div class="faq-list">
+<div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Is this safe if I am breastfeeding?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Wondering whether the meals are okay while nursing is one of the most common questions moms ask us, so you are in good company.</p>
+<p>Our meals and herbal drinks are made specifically for the postpartum period, and many of the mothers who choose JingMommy are breastfeeding. Because every body and every medical history is different, if you have a medical condition, take medications, had complications, or were told to avoid certain ingredients, please check with your provider and share their guidance with us.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Will these meals help my milk supply?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>If milk supply is on your mind, you are far from alone. It is one of the first things many new moms worry about.</p>
+<p>In the tradition, the first focus is rebuilding the mother&#x27;s foundation: warm meals, steady protein, broths, rest, and staged nourishment. When the mother is better supported, many families feel that breastfeeding becomes easier to sustain.</p>
+<p>Everybody is different, so we do not promise a specific result. What we can say is this: postpartum recovery is easier when the mother is consistently fed, hydrated, and supported. That is exactly what this program is designed to help with.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">You cook with rice wine. Is that really safe while breastfeeding?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>This is a very common question, and we understand why.</p>
+<p>In Taiwanese Zuo Yue Zi, rice wine is not used simply for taste. It is part of the traditional cooking method for many postpartum soups and dishes. We use it in small amounts and cook the food thoroughly over heat, so much of the alcohol cooks off while the warming character remains.</p>
+<p>Because rice wine is part of the traditional recipe structure, our meals are not made without it. If your provider has advised you to avoid all alcohol completely, please follow their guidance and talk with us before choosing your plan.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Are the herbal drinks too strong for postpartum?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>They are not meant to be harsh, random, or one-size-fits-all. The herbal drinks follow the same staged idea as the meals: Mild, Warm, then Heat.</p>
+<p>Week 1 is gentler. Weeks 2–4 become more replenishing and fortifying. The point is not to rush the body. The point is to move with the traditional recovery sequence, step by step.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Do I really need the herbal drinks, or are the meals enough?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>The meals alone already give you a strong postpartum routine. The herbal drinks add the more complete traditional layer.</p>
+<p>If you want the closest version of a full Zuo Yue Zi experience, the Herbal plan is the easiest choice because the drinks are already included. If you choose Classic, Vita, Low Carb, or Easy, you can still add herbal drinks: {usd(products.herbal_drink.price)}/day for fresh plans or {usd(products.frozen_herbal_drink_7_1w.price)}/week for frozen plans. If your family is cooking your meals but you still want the herbal layer, the standalone 30-day Herbal Pack is available for {usd(products.herbal_drink_pack_30d.price)} and ships nationwide.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">What if I am not breastfeeding? Is this still right for me?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>That is completely okay. JingMommy is not only for breastfeeding moms.</p>
+<p>If you are not breastfeeding, let us know when you get in touch. We can remove ingredients traditionally used to support milk production from your meals. One thing to be aware of: because our menus are designed as a complete system, removing certain ingredients may cause some dishes to repeat more frequently across your plan.</p>
+<p>The core recovery benefits — warmth, nourishment, blood restoration, and staged postpartum support — remain fully intact.</p></div>
+</div>
+</div>
+</section><section class="cat reveal" id="recovery-and-results">
+<div class="cat-head">
+<div class="cat-eyebrow">Healing</div>
+<h2>Recovery and Results</h2>
+</div>
+<div class="faq-list">
+<div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">I had a C-section. Does this still apply to me?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Yes — and many C-section moms choose this kind of support for exactly that reason.</p>
+<p>A surgical birth can involve greater blood loss, lower appetite, and a longer healing process. The first-week meals are intentionally gentle, while the later stages gradually become more replenishing and warming. In the Zuo Yue Zi tradition, that staged progression is especially important when the body needs extra time and care.</p>
+<p>If your birth involved complications or your provider gave you specific dietary instructions, share them with us. We will help you start in the gentlest way that fits your situation. And if you want the most thorough version of that staged support, many C-section moms choose the Herbal plan — the staged herbal drinks are traditionally used to help the body rebuild blood and strength more efficiently after a harder recovery.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">What if I had a difficult birth or complications?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Then gentleness matters even more. The meals can still be a helpful part of your postpartum routine, but your medical situation comes first.</p>
+<p>If you had heavy bleeding, infection, high blood pressure, gestational diabetes concerns, surgery complications, or another medical issue, follow your provider&#x27;s instructions. Then tell us what you were advised to avoid, and we will help you decide whether and how to begin. Once your provider gives the green light, this is also where the Herbal plan can do the most: when the body has more rebuilding to do, the week-by-week herbal drinks are traditionally used to support deeper, more efficient restoration than meals alone.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">If I only do one or two weeks, what will I miss compared to a full month?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>You will still receive support, especially in the early Mild phase when gentle food and rest matter so much.</p>
+<p>What you may miss is the deeper later-stage nourishment of Weeks 3–4 — the Heat phase many families associate with feeling stronger, warmer, and more restored. If your budget, schedule, and storage allow it, the full month gives you the most complete experience. And if a shorter plan is what fits right now, partial support still makes a real difference.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Can I start later if I did not order before birth?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Yes. Ideally, postpartum meals are planned before delivery, but real life does not always work that way.</p>
+<p>If the baby is already here, contact us as soon as possible. We will help you choose the fastest realistic option based on your location, delivery schedule, and whether fresh or frozen meals make more sense for you.</p></div>
+</div>
+</div>
+</section><section class="cat reveal" id="plans-and-choosing">
+<div class="cat-head">
+<div class="cat-eyebrow">Choosing Well</div>
+<h2>Plans and Choosing</h2>
+</div>
+<div class="faq-list">
+<div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">How many plans do you offer, and how are they different?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Five can feel like a lot to sort through, so here is the simple version: we offer five fresh plans in Southern California, plus frozen options for families outside our local delivery area.</p>
+<div class="table-wrap"><table><thead><tr><th>Plan</th><th>Herbal drinks</th><th>Best for</th><th>Fresh · 30 days</th></tr></thead><tbody><tr><td><strong>Herbal</strong></td><td>Included</td><td>The fullest, most traditional experience</td><td>{usd(products.local_herbal_30d.price)}</td></tr><tr><td><strong>Classic</strong></td><td>—</td><td>Complete meal support, without herbs included</td><td>{usd(products.local_classic_30d.price)}</td></tr><tr><td><strong>Vita</strong></td><td>—</td><td>A lighter routine or smaller appetite</td><td>{usd(products.local_vita_30d.price)}</td></tr><tr><td><strong>Low Carb</strong></td><td>—</td><td>Lower-carb recovery support</td><td>{usd(products.local_lowcarb_30d.price)}</td></tr><tr><td><strong>Easy</strong></td><td>—</td><td>Every-other-day delivery, 15 deliveries total</td><td>{usd(products.local_easy_15d.price)}</td></tr></tbody></table></div>
+<p>If you want the complete tradition, Herbal is the fullest option. It is the only fresh plan that already includes the full herbal drink program.</p>
+<p>If you are comparing Herbal and Classic, the difference is simple: Herbal includes the daily herbal drinks. For Classic, herbal drinks can be added for {usd(products.herbal_drink.price)}/day — just a little more than a daily coffee, but it completes the traditional layer many families want during postpartum recovery.</p>
+<p>For families outside our fresh delivery area, we also offer frozen plans shipped FedEx Priority Overnight with shipping included:</p>
+<div class="table-wrap"><table><thead><tr><th>Frozen plan</th><th>Herbal drinks</th><th>What is included</th><th>4 weeks</th></tr></thead><tbody><tr><td><strong>Frozen Herbal</strong></td><td>Included</td><td>3 meals + dessert + herbal drink</td><td>{usd(products.frozen_herbal_4w.price)}</td></tr><tr><td><strong>Frozen Classic</strong></td><td>Add-on {usd(products.frozen_herbal_drink_7_1w.price)}/wk</td><td>3 meals + dessert</td><td>{usd(products.frozen_classic_4w.price)}</td></tr><tr><td><strong>Frozen Vita</strong></td><td>Add-on {usd(products.frozen_herbal_drink_7_1w.price)}/wk</td><td>2 meals + dessert, 5 days/week</td><td>{usd(products.frozen_essential_4w.price)}</td></tr><tr><td><strong>Frozen Soup &amp; Dessert</strong></td><td>Add-on {usd(products.frozen_herbal_drink_7_1w.price)}/wk</td><td>1 daily soup + 2 recovery stew soups + entrée + 2 desserts</td><td>{usd(products.frozen_soup_dessert_4w.price)}</td></tr></tbody></table></div></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">How do I know which full plan is right for me?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Start with three questions: Do you want herbal drinks included? Do you want three meals a day or something lighter? Are you inside the fresh delivery area?</p>
+<p>If you want the most traditional, complete experience, choose Herbal. If you want full meal support but no herbs included, Classic is usually the fit. If your appetite is smaller or you already have some food support at home, Vita may feel easier. If you are keeping carbs lower, Low Carb is the simplest match. If you want flexibility and every-other-day delivery, Easy is a gentle way to begin.</p>
+<p>Still unsure? Text us at <a href={`tel:${phones.salesPatricia}`}>{phoneDisplay(phones.salesPatricia)}</a> with your due date, ZIP code, breastfeeding plan, and any restrictions. We will help you choose without pressure.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">What is the difference between fresh and frozen plans?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Fresh plans are best if you are in our local Southern California delivery area and want meals delivered on a regular schedule.</p>
+<p>Frozen plans are best if you live outside the fresh delivery area, want nationwide shipping, or prefer to keep meals in the freezer and heat them as needed. Both are made from JingMommy recipes; the difference is delivery style and storage.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Can I switch plans after I order?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Usually, yes — especially before your meals begin. Before service starts, switching plans is very easy for us to adjust in the system.</p>
+<p>After service has started, changes need to be requested by noon the day before your next delivery. Our central kitchen prepares ingredients and schedules production in advance, so same-day changes are usually not possible.</p>
+<p>If you are still deciding between two plans, contact us before ordering. A quick conversation can prevent choosing something too light, too much, or not aligned with your recovery goals. Text or call us at <a href={`tel:${phones.salesPatricia}`}>{phoneDisplay(phones.salesPatricia)}</a>.</p></div>
+</div>
+</div>
+</section><section class="cat reveal" id="about-the-trial">
+<div class="cat-head">
+<div class="cat-eyebrow">Taste First</div>
+<h2>About the Trial</h2>
+</div>
+<div class="faq-list">
+<div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Can I try the food before committing to a full plan?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Yes — and most families feel better after tasting first. In Southern California, you can choose between a free tasting party or a {usd(products.local_classic_sample_1d.price)} local home-delivery sample. If you are outside our fresh delivery area, we offer an {usd(products.frozen_classic_sample_8item.price)} frozen tasting shipped nationwide.</p>
+<p>Tasting is the easiest way to move from &quot;I am curious&quot; to &quot;I can actually picture myself eating this after birth.&quot;</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">What happens at the free tasting party?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>We host tasting events at our central kitchen in Walnut, CA. You will try 10+ real dishes from our menu — Taiwanese Sticky Rice, sesame oil chicken, slow-cooked soups, desserts, and other postpartum favorites — along with a short class on how Zuo Yue Zi works.</p>
+<p>Your partner or one guest is welcome to join you. The event is free, but registration is required because spots are limited. Priority is usually given to moms whose due date is within the next three months.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">What is in the {usd(products.local_classic_sample_1d.price)} local home-delivery sample?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>The local sample is an at-home way to try JingMommy before choosing a full plan. It is based on our Classic postpartum meal structure and gives you a real taste of the daily rhythm, portion style, and flavors of our meals.</p>
+<p>A typical local sample may include:</p>
+<ul><li>Breakfast porridge</li><li>Breakfast egg dish</li><li>Lunch soup</li><li>Lunch entrée</li><li>Rice or grain</li><li>Warm vegetable side</li><li>Afternoon restorative dessert</li><li>Dinner Taiwanese postpartum soup</li><li>Dinner recovery stew soup</li><li>Dinner entrée</li><li>Rice or grain</li><li>Warm vegetable side</li><li>Evening restorative dessert</li><li>Healing drink (a different drink from the postpartum herbal drink program — gentle and suitable during pregnancy)</li></ul>
+<p>The exact items may vary based on the kitchen menu, but the goal is the same: to let you experience a full JingMommy-style postpartum day — warm, structured, comforting, and easy to imagine during your own recovery.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">How is the {usd(products.frozen_classic_sample_8item.price)} frozen tasting different?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>The frozen tasting ships overnight by FedEx to the continental United States. It includes eight individual items made from our real recipes and packed the same way as the full frozen program: a sea bass soup, a recovery stew soup, Taiwanese Sticky Rice, an entrée, a restorative dessert, breakfast porridge, a breakfast egg dish, and a healing drink.</p>
+<p>It is not meant to be a full day of meals. It is meant to give you a true taste of the food, texture, packaging, and reheating experience before ordering a full frozen plan.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Do the tastings include the herbal drinks?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>The tastings include a gentle healing drink, which is a different drink entirely from the postpartum herbal drinks in the Herbal Meal Plan. The herbal drinks are made for after birth and are staged by week, so they are not part of a prenatal tasting.</p></div>
+</div>
+</div>
+</section><section class="cat reveal" id="ordering-timing-and-gifts">
+<div class="cat-head">
+<div class="cat-eyebrow">Planning Ahead</div>
+<h2>Ordering, Timing, and Gifts</h2>
+</div>
+<div class="faq-list">
+<div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">When should I order if my due date is not set yet?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>That is completely normal. Babies do not follow calendars.</p>
+<p>We recommend ordering at least one month before your estimated due date so your plan is reserved. After the baby arrives, you confirm the actual start date with customer service. Your order form may ask for your due date, but your real meal start date is based on your actual delivery.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Can I order before the baby is born?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Yes — and that is the best time to plan.</p>
+<p>The first days after birth are not the easiest time to research meals, compare plans, or coordinate family opinions. Ordering during pregnancy lets you make the decision while you still have more mental space. Then, after delivery, you simply confirm your start date.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">What if I deliver earlier or later than expected?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>That happens all the time. Just text or call customer service by noon the day before your targeted delivery date with your name and order number.</p>
+<p>We will confirm your meal start date and delivery or shipping details based on the real timing, not just the original due date.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Can I arrange this as a gift for someone else?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Yes, and many families do exactly that. A husband, partner, mother, in-law, sister, or friend can place the order, and we coordinate timing and preferences with the mom.</p>
+<p>It is one of the most practical newborn gifts because it does not become clutter, and it does not ask the new mother to do more work. It simply makes sure she is fed.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">What information do I need to place a gift order?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>The most helpful details are the mom&#x27;s name, due date, delivery ZIP code, phone number, food restrictions, and whether she prefers fresh or frozen service.</p>
+<p>If you do not know everything yet, that is okay. Contact us with what you have, and we will help you arrange the rest. For help with gift orders, text or call <a href={`tel:${phones.salesPatricia}`}>{phoneDisplay(phones.salesPatricia)}</a>.</p></div>
+</div>
+</div>
+</section><section class="cat reveal" id="delivery-and-freshness">
+<div class="cat-head">
+<div class="cat-eyebrow">How It Arrives</div>
+<h2>Delivery and Freshness</h2>
+</div>
+<div class="faq-list">
+<div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">How fresh is the food?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Fresh plans are prepared in our kitchen and delivered on a set rhythm in the local delivery area, so moms can eat soon after cooking.</p>
+<p>As the biggest Chinese postpartum meal provider in the USA, we buy fresh ingredients every day. That daily scale works in your favor: ingredients turn over quickly instead of sitting in storage, soups and broths are slow-cooked from scratch in daily batches, and our kitchen team cooks postpartum recovery food every single day on a rotating menu — a practiced rhythm that shows in the quality of every meal.</p>
+<p>Frozen plans are cooked, portioned, frozen, and shipped overnight so they arrive ready for your freezer. Both options are designed to make postpartum eating simple: heat, eat, rest, repeat.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Do you deliver fresh meals to my area?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Fresh delivery covers many parts of Los Angeles County, Orange County, and the Inland Empire from our Walnut, CA kitchen.</p>
+<p>The easiest way to know is to check your ZIP code on our website when you inquire or order. If you are outside our fresh delivery zone, we will guide you toward frozen options instead of leaving you guessing.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">I live outside California. Can I still order?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Yes. Frozen plans ship by FedEx Priority Overnight to the continental United States, with shipping included in the plan price.</p>
+<p>Each day&#x27;s meals are pre-portioned so you can pull out what you need without trying to organize everything from scratch during newborn life.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">How do frozen plans work?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Frozen plans are cooked in our kitchen, packed, and shipped so they can go straight into your freezer when they arrive.</p>
+<p>They are a good fit if you live outside the fresh delivery area, want to complete the full program nationwide, or prefer the convenience of storing meals and heating them on your own schedule.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">My freezer is small. Can I still do a full program?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Many families make it work by keeping several days in the freezer and a couple of days in the refrigerator to thaw naturally.</p>
+<p>For a full month of frozen meals, extra freezer space can be helpful. A small upright freezer is often enough. If you are worried about storage, contact us before ordering and we can help you plan realistically.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">What should I do when the meals arrive?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>If you are not eating right away, refrigerate fresh meals as soon as possible. Reheat everything thoroughly until piping hot before serving.</p>
+<p>Frozen meals should go into the freezer when they arrive, then be thawed and reheated as needed. If anything ever looks or smells off, do not eat it. Contact customer service and we will help you right away.</p></div>
+</div>
+</div>
+</section><section class="cat reveal" id="policies-and-changes">
+<div class="cat-head">
+<div class="cat-eyebrow">The Details</div>
+<h2>Policies and Changes</h2>
+</div>
+<div class="faq-list">
+<div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">What is your refund or cancellation policy?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>We try to be clear because postpartum life can change quickly.</p>
+<p>If you cancel before your first delivery, you receive a full refund, minus a 3% credit card processing fee if applicable.</p>
+<p>If you cancel after service has started, your refund is prorated based on the total amount you paid. For example, if you ordered a 30-day plan and received 7 days of meals, you are refunded for the 23 unused days as their share of the full amount paid, minus the 3% card processing fee when applicable.</p>
+<p>This keeps the calculation fair and clear based on the actual number of days served.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">When is the remaining balance due?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>The remaining balance is due within 3 days after your first meal delivery. This keeps your service uninterrupted and allows the kitchen and delivery team to keep everything on schedule.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Can I pause or adjust my plan once it has started?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Yes, with enough notice. Please share dietary requests at the very beginning, when you order, so we can build them into your plan from day one.</p>
+<p>If you need to pause, skip, or adjust a delivery, contact customer service no later than noon the day before that delivery. The sooner you tell us, the easier it is to help.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">What if something is wrong with a meal?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Please contact us right away — if a meal arrives defective, we will replace that item quickly, no back-and-forth needed.</p>
+<p>To keep things simple and fair for every family, we handle these as a one-time replacement of the specific item rather than discounts or additional compensation. Our priority is making sure you have the food you need, fast.</p></div>
+</div>
+</div>
+</section><section class="cat reveal" id="contact-and-support">
+<div class="cat-head">
+<div class="cat-eyebrow">We Are Here</div>
+<h2>Contact and Support</h2>
+</div>
+<div class="faq-list">
+<div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">How do I confirm my start date after delivery?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Text or call customer service at <a href={`tel:${phones.customerService}`}>{phoneDisplay(phones.customerService)}</a> as soon as you know when you would like to begin. The latest time to confirm is noon the day before your targeted first delivery.</p>
+<p>Please include your name and order number so we can find your order quickly. That is the fastest way to lock in your start date and make sure the kitchen and delivery team are ready for you.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Who should I contact if there is an issue after delivery?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Reach out to customer service by phone or text at <a href={`tel:${phones.customerService}`}>{phoneDisplay(phones.customerService)}</a>. Have your name and order number ready if possible.</p>
+<p>One quick guide so you always know where to go: for questions before you order — choosing a plan, gifts, tastings — text or call your sales rep or <a href={`tel:${phones.salesPatricia}`}>{phoneDisplay(phones.salesPatricia)}</a>. For anything after your order is placed — start dates, delivery changes, meal issues — customer service at <a href={`tel:${phones.customerService}`}>{phoneDisplay(phones.customerService)}</a> is your line.</p>
+<p>Postpartum days are busy enough. If something needs attention, we want to help you solve it quickly instead of sending you in circles.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">Can I make special requests?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>Of course. Tell us as early as you can, ideally when you order. For delivery changes or day-to-day adjustments, contact us no later than noon the day before delivery.</p>
+<p>Some requests are easy, and some depend on the plan or kitchen schedule. Either way, we will tell you clearly what we can do. Reach out to customer service by phone or text at <a href={`tel:${phones.customerService}`}>{phoneDisplay(phones.customerService)}</a>, and have your name and order number ready if possible.</p></div>
+</div><div class="faq-item">
+<button class="faq-q" aria-expanded="false"><span class="q-text">I read everything and still do not know what to choose. What should I do?</span><span class="q-icon" aria-hidden="true"></span></button>
+<div class="faq-a" role="region"><p>That is normal. You are choosing food for one of the most vulnerable months of your life — it should feel like a thoughtful decision.</p>
+<p>Text or call your sales rep or <a href={`tel:${phones.salesPatricia}`}>{phoneDisplay(phones.salesPatricia)}</a> with your due date, ZIP code, whether you plan to breastfeed, any restrictions, and whether you want fresh or frozen delivery. We will help you narrow it down. No pressure, no complicated sales script — just a real person helping you figure out what fits.</p></div>
+</div>
+</div>
+</section>
+
+<div class="closing reveal">
+<Svg17 class="botan closing-botan" aria-hidden="true" />
+<div class="inner">
+<div class="eyebrow">Your Next Step</div>
+<h2>Ready for the next step?</h2>
+<p>If you are still exploring, start with a tasting. If you already know you want the full traditional experience, look at the Herbal plan first. And if you are ordering for someone you love, contact us and we will help you arrange the timing with her.</p>
+<p>Your job is to recover and bond with your baby. Our job is to make sure you are fed.</p>
+</div>
+</div>
+</div>
+</main>
+
 
 <script is:inline>
-  document.querySelectorAll(".faq-q").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      var open = btn.getAttribute("aria-expanded") === "true"
-      var panel = btn.nextElementSibling
-      btn.setAttribute("aria-expanded", String(!open))
-      panel.style.maxHeight = open ? null : panel.scrollHeight + "px"
-    })
-  })
-  window.addEventListener("resize", function () {
-    document
-      .querySelectorAll('.faq-q[aria-expanded="true"]')
-      .forEach(function (b) {
-        b.nextElementSibling.style.maxHeight =
-          b.nextElementSibling.scrollHeight + "px"
-      })
-  })
-  var navlinks = [].slice.call(document.querySelectorAll(".catnav a"))
-  var navObs = new IntersectionObserver(
-    function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          navlinks.forEach(function (l) {
-            l.classList.remove("active")
-          })
-          var match = navlinks.find(function (l) {
-            return l.getAttribute("href") === "#" + e.target.id
-          })
-          if (match) match.classList.add("active")
-        }
-      })
-    },
-    { rootMargin: "-140px 0px -65% 0px" },
-  )
-  document.querySelectorAll(".cat").forEach(function (c) {
-    navObs.observe(c)
-  })
+document.querySelectorAll('.faq-q').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var open = btn.getAttribute('aria-expanded')==='true';
+    var panel = btn.nextElementSibling;
+    btn.setAttribute('aria-expanded', String(!open));
+    panel.style.maxHeight = open ? null : panel.scrollHeight + 'px';
+  });
+});
+window.addEventListener('resize', function(){
+  document.querySelectorAll('.faq-q[aria-expanded="true"]').forEach(function(b){
+    b.nextElementSibling.style.maxHeight = b.nextElementSibling.scrollHeight + 'px';
+  });
+});
+// scroll reveal
+var revObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); } });
+}, {rootMargin:'0px 0px -10% 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){revObs.observe(el)});
+// active nav
+var navlinks=[].slice.call(document.querySelectorAll('.catnav a'));
+var navObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      navlinks.forEach(function(l){l.classList.remove('active')});
+      var match=navlinks.find(function(l){return l.getAttribute('href')==='#'+e.target.id});
+      if(match) match.classList.add('active');
+    }
+  });
+}, {rootMargin:'-140px 0px -65% 0px'});
+document.querySelectorAll('.cat').forEach(function(c){navObs.observe(c)});
 </script>
-
-<style>
-  /* Page 8 — FAQ (scoped, page-specific sections) */
-  .faq-hero {
-    position: relative;
-    overflow: hidden;
-    padding: 92px 0 60px;
-    text-align: center;
-    background: linear-gradient(180deg, var(--paper) 0%, var(--cream) 100%);
-  }
-  .faq-hero-inner {
-    position: relative;
-    z-index: 3;
-    max-width: 880px;
-  }
-  .faq-hero h1 {
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-size: 60px;
-    line-height: 1.06;
-  }
-  .faq-hero .intro {
-    font-size: 20px;
-    color: var(--ink-soft);
-    max-width: 680px;
-    margin: 28px auto 0;
-    line-height: 1.65;
-  }
-  .faq-hero .rule {
-    width: 64px;
-    height: 1px;
-    background: var(--accent);
-    margin: 36px auto 0;
-    opacity: 0.6;
-  }
-
-  .catnav {
-    position: sticky;
-    top: 62px;
-    z-index: 40;
-    background: var(--cream);
-    border-top: 1px solid var(--line-soft);
-    border-bottom: 1px solid var(--line-soft);
-  }
-  .catnav-inner {
-    display: flex;
-    gap: 6px;
-    overflow-x: auto;
-    padding: 12px 32px;
-    max-width: 1120px;
-    margin: 0 auto;
-    scrollbar-width: thin;
-  }
-  .catnav a {
-    flex: 0 0 auto;
-    font-family: "Jost", sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    padding: 7px 14px;
-    border-radius: 2px;
-    white-space: nowrap;
-    transition: all 0.2s;
-  }
-  .catnav a:hover,
-  .catnav a.active {
-    background: var(--accent-deep);
-    color: var(--paper);
-  }
-
-  .faq-main {
-    padding: 64px 0 40px;
-  }
-  .faq-main .wrap {
-    max-width: 880px;
-  }
-  .cat {
-    position: relative;
-    padding-top: 40px;
-    margin-bottom: 20px;
-    scroll-margin-top: 140px;
-  }
-  .cat-head {
-    padding-bottom: 10px;
-    margin-bottom: 16px;
-    border-bottom: 1px solid var(--line);
-  }
-  .cat-eyebrow {
-    font-family: "Jost", sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 10px;
-  }
-  .cat-head h2 {
-    font-size: 38px;
-    letter-spacing: 0.04em;
-    line-height: 1.12;
-  }
-
-  .faq-item {
-    border-bottom: 1px solid var(--line-soft);
-  }
-  .faq-q {
-    width: 100%;
-    background: none;
-    border: none;
-    cursor: pointer;
-    text-align: left;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 22px 4px;
-    font-family: "Cormorant Garamond", serif;
-    font-size: 23px;
-    font-weight: 500;
-    color: var(--ink);
-    line-height: 1.25;
-    transition: color 0.2s;
-  }
-  .faq-q:hover {
-    color: var(--accent-deep);
-  }
-  .faq-q:focus-visible {
-    outline: 2px solid var(--accent-deep);
-    outline-offset: 3px;
-    border-radius: 2px;
-  }
-  .q-text {
-    flex: 1;
-  }
-  .q-icon {
-    position: relative;
-    flex: 0 0 18px;
-    width: 18px;
-    height: 18px;
-    margin-top: 7px;
-  }
-  .q-icon::before,
-  .q-icon::after {
-    content: "";
-    position: absolute;
-    background: var(--accent-deep);
-    transition:
-      transform 0.28s ease,
-      opacity 0.2s;
-  }
-  .q-icon::before {
-    top: 8px;
-    left: 0;
-    width: 18px;
-    height: 1.5px;
-  }
-  .q-icon::after {
-    top: 0;
-    left: 8px;
-    width: 1.5px;
-    height: 18px;
-  }
-  .faq-q[aria-expanded="true"] .q-icon::after {
-    transform: scaleY(0);
-    opacity: 0;
-  }
-  .faq-a {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-  }
-  .faq-a :global(p) {
-    padding: 0 4px 4px;
-    color: var(--ink-soft);
-  }
-  .faq-a :global(p:first-child) {
-    padding-top: 2px;
-  }
-  .faq-a :global(p:last-child) {
-    padding-bottom: 24px;
-  }
-  .faq-a :global(ul) {
-    list-style: none;
-    padding: 4px 4px 22px;
-    columns: 2;
-    column-gap: 32px;
-  }
-  .faq-a :global(ul li) {
-    position: relative;
-    padding-left: 18px;
-    margin-bottom: 7px;
-    color: var(--ink-soft);
-    break-inside: avoid;
-  }
-  .faq-a :global(ul li::before) {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 12px;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--accent);
-  }
-  .faq-a :global(strong) {
-    color: var(--ink);
-    font-weight: 600;
-  }
-  .faq-a :global(a) {
-    color: var(--accent-deep);
-    text-decoration: underline;
-    text-decoration-color: var(--line);
-  }
-  .faq-a :global(.table-wrap) {
-    overflow-x: auto;
-    margin: 6px 4px 24px;
-  }
-  .faq-a :global(table) {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 16px;
-  }
-  .faq-a :global(thead th) {
-    font-family: "Jost", sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-weight: 500;
-    color: var(--accent-deep);
-    text-align: left;
-    padding: 10px 12px;
-    border-bottom: 1.5px solid var(--accent);
-  }
-  .faq-a :global(tbody td) {
-    padding: 11px 12px;
-    border-bottom: 1px solid var(--line-soft);
-    color: var(--ink-soft);
-    vertical-align: top;
-  }
-  .faq-a :global(tbody tr:last-child td) {
-    border-bottom: none;
-  }
-  .faq-a :global(tbody td:last-child) {
-    text-align: right;
-    white-space: nowrap;
-    font-variant-numeric: tabular-nums;
-    color: var(--ink);
-  }
-
-  .closing {
-    position: relative;
-    overflow: hidden;
-    background: var(--cream);
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    padding: 56px 44px;
-    margin: 48px 0 8px;
-    text-align: center;
-  }
-  .closing .inner {
-    position: relative;
-    z-index: 2;
-  }
-  .closing .eyebrow {
-    margin-bottom: 16px;
-  }
-  .closing h2 {
-    margin-bottom: 20px;
-  }
-  .closing p {
-    color: var(--ink-soft);
-    max-width: 620px;
-    margin: 0 auto 14px;
-  }
-  .closing a {
-    color: var(--accent-deep);
-  }
-
-  @media (max-width: 560px) {
-    .faq-hero {
-      padding: 60px 0 44px;
-    }
-    .faq-hero h1 {
-      font-size: 38px;
-      letter-spacing: 0.12em;
-    }
-    .cat-head h2 {
-      font-size: 30px;
-    }
-    .faq-q {
-      font-size: 21px;
-    }
-    .faq-a :global(ul) {
-      columns: 1;
-    }
-    .closing {
-      padding: 40px 24px;
-    }
-  }
-</style>
+</Page>

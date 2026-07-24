@@ -1,0 +1,242 @@
+---
+/*
+  Dev reference (not a real content page): an auto-generated map of every <a>
+  link on the /en site. Header (TopBar) and footer (Footer) are shared components,
+  so they're listed once under "Shared components"; each page then shows only its
+  own body links. route()/orderUrl()/tel: targets are resolved. Regenerates from
+  source on every build. Reachable at /en/sitemap.links — excluded from the
+  sitemap (sitemap = false).
+*/
+const sitemap = false
+
+// raw source of every sibling .astro page (this file included, then filtered out)
+const rawModules = import.meta.glob('./**/*.astro', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>
+
+// the two shared chrome components
+import topBarRaw from '@/components/themes/en/TopBar.astro?raw'
+import footerRaw from '@/components/themes/en/Footer.astro?raw'
+
+const ORDER = [
+  'index', 'about/founding-story', 'about/testimonial', 'guide/why-zuo-yue-zi',
+  'guide/chinese-food-therapy', 'plans/index', 'sample/index', 'faq', 'contact',
+  'postpartum-meals/herbal-postpartum-meals', 'postpartum-meals/classic-postpartum-meals',
+  'postpartum-meals/vita-postpartum-meals', 'postpartum-meals/low-carb-postpartum-meals',
+  'postpartum-meals/easy-postpartum-meals', 'frozen-postpartum-meals/herbal',
+  'frozen-postpartum-meals/classic', 'frozen-postpartum-meals/essential',
+  'frozen-postpartum-meals/soup-and-dessert',
+]
+
+const keyOf = (k: string) => k.replace(/^\.\//, '').replace(/\.astro$/, '')
+const routeOf = (id: string) => {
+  const p = id.replace(/\/index$/, '')
+  return p === 'index' ? '/en/' : '/en/' + p
+}
+
+const enHref = (rel: string) => (rel === '/' ? '/en/' : '/en' + rel)
+function resolveHref(raw: string, isExpr: boolean): string {
+  if (!isExpr) return raw
+  // route('/x', locale) · route("/x", 'en') · route('/x', locale) + '#frag'
+  let m = raw.match(/^route\((['"])([^'"]*)\1,\s*[^)]+\)(?:\s*\+\s*(['"])([^'"]*)\3)?$/)
+  if (m) return enHref(m[2]) + (m[4] ?? '')
+  m = raw.match(/^orderUrl\((['"])([^'"]*)\1(?:,\s*[^)]+)?\)$/)
+  if (m) return `[order:${m[2]}]`
+  m = raw.match(/^`tel:\$\{phones\.(\w+)\}`$/)
+  if (m) return `tel:${m[1]}`
+  return raw
+}
+
+type Kind = 'internal' | 'anchor' | 'order' | 'phone' | 'external' | 'file' | 'dead' | 'other'
+function kindOf(h: string): Kind {
+  if (h === '#') return 'dead'
+  if (h.startsWith('/en/')) return 'internal'
+  if (h.startsWith('#')) return 'anchor'
+  if (h.startsWith('[order')) return 'order'
+  if (h.startsWith('tel:')) return 'phone'
+  if (/^https?:\/\/file\.jingmommy/.test(h)) return 'file'
+  if (h.startsWith('http')) return 'external'
+  if (h.endsWith('.html')) return 'dead'
+  return 'other'
+}
+const KLABEL: Record<Kind, string> = {
+  internal: 'internal', anchor: 'on-page ¶', order: 'order system', phone: 'phone',
+  external: 'external', file: 'file / pdf', dead: 'dead / TODO', other: 'other',
+}
+
+const linkRe = /<a\b([^>]*)>([\s\S]*?)<\/a>/g
+const hrefRe = /href=("([^"]*)"|\{((?:[^{}]|\{[^}]*\})*)\})/
+
+interface Row { text: string; href: string; kind: Kind; n: number }
+const row = (text: string, href: string): Row => ({ text: text || '·', href, kind: kindOf(href), n: 1 })
+
+// every <a> in a source, deduped by text+href (template-variable hrefs skipped)
+function extractLinks(src: string): Row[] {
+  const seen = new Map<string, Row>()
+  const re = new RegExp(linkRe.source, 'g')
+  let m
+  while ((m = re.exec(src))) {
+    const hm = m[1].match(hrefRe)
+    if (!hm) continue
+    const isExpr = hm[2] === undefined
+    const raw = isExpr ? hm[3] : hm[2]
+    if (isExpr && /^[A-Za-z_$][\w$]*\.[\w$]+$/.test(raw.trim())) continue // e.g. i.href from a .map()
+    const href = resolveHref(raw, isExpr)
+    const text = m[2].replace(/<[^>]+>/g, '').replace(/\{[^}]*\}/g, '·').replace(/\s+/g, ' ').trim()
+    const key = text + '|' + href
+    const ex = seen.get(key)
+    if (ex) ex.n++
+    else seen.set(key, row(text, href))
+  }
+  return [...seen.values()]
+}
+
+// label/href pairs from a `const NAME = [ { label:'', href:'' }, … ]` array literal
+function arrayLinks(src: string, name: string): { label: string; href: string }[] {
+  const m = src.match(new RegExp(`const ${name}[^=\\n]*=\\s*\\[([\\s\\S]*?)\\n\\]`))
+  if (!m) return []
+  return [...m[1].matchAll(/label:\s*'([^']*)',\s*href:\s*'([^']*)'/g)].map((x) => ({ label: x[1], href: x[2] }))
+}
+
+// ---- shared header (TopBar): logo + nav array + Meal Plans dropdown + CTA ----
+// hrefs in TopBar are locale-relative route() calls; resolve them to /en/… here
+const headerRows: Row[] = []
+const tbLogo = topBarRaw.match(/<a href=\{route\((['"])([^'"]*)\1, locale\)\}\s+class="logo"/)
+if (tbLogo) headerRows.push(row('Logo → home', enHref(tbLogo[2])))
+for (const i of arrayLinks(topBarRaw, 'nav')) headerRows.push(row(i.label, enHref(i.href)))
+for (const i of arrayLinks(topBarRaw, 'localMeals')) headerRows.push(row('↳ ' + i.label, enHref(i.href)))
+for (const i of arrayLinks(topBarRaw, 'frozenMeals')) headerRows.push(row('↳ ' + i.label, enHref(i.href)))
+const tbCta = topBarRaw.match(/<a href=\{route\((['"])([^'"]*)\1, locale\)\}[^>]*nav-cta[^>]*>([\s\S]*?)<\/a>/)
+if (tbCta) headerRows.push(row(tbCta[3].replace(/\s+/g, ' ').trim() + ' (CTA)', enHref(tbCta[2])))
+
+// ---- shared footer ----
+const footerRows = extractLinks(footerRaw)
+
+// ---- per page: body links only ----
+const pages: { id: string; route: string; body: Row[] }[] = []
+for (const id of ORDER) {
+  const key = Object.keys(rawModules).find((k) => keyOf(k) === id)
+  if (!key) continue
+  pages.push({ id, route: routeOf(id), body: extractLinks(rawModules[key]) })
+}
+
+// unified render list: shared card first, then one card per page
+const sections = [
+  {
+    id: 'shared',
+    title: 'Shared components',
+    src: 'TopBar.astro · Footer.astro',
+    groups: [
+      { h: 'Header — nav (on every page)', rows: headerRows },
+      { h: 'Footer (on every page)', rows: footerRows },
+    ],
+  },
+  ...pages.map((p) => ({
+    id: p.id.replace(/\//g, '-'),
+    title: p.route,
+    src: `${p.id}.astro`,
+    groups: [{ h: 'Body', rows: p.body }],
+  })),
+]
+
+const total = headerRows.length + footerRows.length + pages.reduce((s, p) => s + p.body.length, 0)
+const kinds: Kind[] = ['internal', 'anchor', 'order', 'phone', 'file', 'external', 'dead', 'other']
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>EN link map · JingMommy</title>
+    <style is:global>
+      :root{--bg:#faf6f1;--panel:#fffdfa;--ink:#2b1810;--soft:#5c4a40;--faint:#8a776b;--line:#e6ddd2;--accent:#8e5c42;
+        --k-internal:#4c6b3f;--k-anchor:#9a6b1f;--k-order:#8e5c42;--k-phone:#6b5b8e;--k-external:#3f5f6b;--k-file:#4a5a8e;--k-dead:#a8443f;--k-other:#8a776b}
+      @media (prefers-color-scheme:dark){:root{--bg:#211711;--panel:#2b201a;--ink:#f3e9df;--soft:#c9b8ab;--faint:#9a8577;--line:#3d2e25;--accent:#d0966f;
+        --k-internal:#8fb377;--k-anchor:#d9a95a;--k-order:#d0966f;--k-phone:#a99ad0;--k-external:#7fa8b6;--k-file:#8fa0d9;--k-dead:#e0817a;--k-other:#9a8577}}
+      *{box-sizing:border-box}
+      body{margin:0;background:var(--bg);color:var(--ink);line-height:1.5;
+        font-family:'Iowan Old Style','Palatino',Georgia,serif;-webkit-font-smoothing:antialiased}
+      .wrap{max-width:1080px;margin:0 auto;padding:40px 24px 96px}
+      h1{font-size:29px;margin:0 0 4px}
+      .sub{color:var(--faint);font-size:13.5px;margin:0 0 22px;font-family:ui-sans-serif,system-ui,sans-serif}
+      .sub code{font-family:ui-monospace,Menlo,monospace}
+      .legend{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+      .jump{display:flex;flex-wrap:wrap;gap:6px 10px;padding:16px 18px;background:var(--panel);border:1px solid var(--line);
+        border-radius:8px;margin-bottom:32px;font-family:ui-monospace,Menlo,monospace;font-size:12px}
+      .jump a{color:var(--accent);text-decoration:none}
+      .jump a:hover{text-decoration:underline}
+      .jump a.shared{color:var(--ink);font-weight:700}
+      .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;margin-bottom:20px;overflow:hidden;scroll-margin-top:16px}
+      .card.shared{border-color:var(--accent)}
+      .ph{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:15px 20px;border-bottom:1px solid var(--line);
+        background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 7%,transparent),transparent)}
+      .ph h2{font-size:17px;margin:0;font-family:ui-monospace,Menlo,monospace;word-break:break-all}
+      .ph .src{font-size:11px;color:var(--faint);font-family:ui-monospace,Menlo,monospace}
+      .sec{padding:12px 20px 16px}
+      .sec+.sec{border-top:1px dashed var(--line)}
+      .sec h3{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--faint);margin:6px 0 8px;
+        font-family:ui-sans-serif,system-ui,sans-serif}
+      table{width:100%;border-collapse:collapse;font-size:13px}
+      td{padding:5px 8px;vertical-align:top;border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+      tr:last-child td{border-bottom:none}
+      td.t{width:40%;font-family:ui-sans-serif,system-ui,sans-serif;color:var(--soft)}
+      td.h code{font-family:ui-monospace,Menlo,monospace;font-size:12px;word-break:break-all}
+      .n{color:var(--faint);font-size:11px}
+      .empty{color:var(--faint);font-size:12px;font-style:italic}
+      .pill{display:inline-block;font-family:ui-sans-serif,system-ui,sans-serif;font-size:10px;letter-spacing:.03em;
+        padding:1px 7px;border-radius:20px;margin-right:7px;border:1px solid currentColor;white-space:nowrap}
+      .pill.internal{color:var(--k-internal)}.pill.anchor{color:var(--k-anchor)}.pill.order{color:var(--k-order)}
+      .pill.phone{color:var(--k-phone)}.pill.external{color:var(--k-external)}.pill.file{color:var(--k-file)}
+      .pill.dead{color:var(--k-dead);font-weight:700}.pill.other{color:var(--k-other)}
+      @media(max-width:640px){td.t{width:100%;display:block}td.h{display:block;padding-top:0}}
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>JingMommy — English site link map</h1>
+      <p class="sub">
+        Auto-generated from source · {total} unique links · header &amp; footer are shared components,
+        listed once under <code>Shared components</code>; each page shows only its body links.
+        <code>route()</code> → path, <code>orderUrl()</code> → <code>[order:key]</code>, phone → <code>tel:key</code>.
+        Rebuilds on every <code>astro build</code>.
+      </p>
+      <div class="legend">
+        {kinds.map((k) => <span class={`pill ${k}`}>{KLABEL[k]}</span>)}
+      </div>
+      <div class="jump">
+        <a href="#shared" class="shared">shared header + footer</a>
+        {pages.map((p) => <a href={`#${p.id.replace(/\//g, '-')}`}>{p.route}</a>)}
+      </div>
+      {
+        sections.map((s) => (
+          <section class:list={['card', { shared: s.id === 'shared' }]} id={s.id}>
+            <header class="ph"><h2>{s.title}</h2><span class="src">{s.src}</span></header>
+            {s.groups.map((g) => (
+              <div class="sec">
+                <h3>{g.h}</h3>
+                {g.rows.length === 0 ? (
+                  <p class="empty">— none —</p>
+                ) : (
+                  <table>
+                    <tbody>
+                      {g.rows.map((r) => (
+                        <tr>
+                          <td class="t">{r.text} {r.n > 1 && <span class="n">×{r.n}</span>}</td>
+                          <td class="h"><span class={`pill ${r.kind}`}>{KLABEL[r.kind]}</span><code>{r.href}</code></td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+              </div>
+            ))}
+          </section>
+        ))
+      }
+    </div>
+  </body>
+</html>

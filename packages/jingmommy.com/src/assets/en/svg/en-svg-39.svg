@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
+    <g opacity="0.92">
+      <!-- stem and main branch -->
+      <path d="M30 290 C40 240 55 200 80 170 C100 145 115 130 130 110" stroke="#5E6B4F" stroke-width="2.5" fill="none"/>
+      <path d="M80 170 C65 155 50 148 38 152" stroke="#5E6B4F" stroke-width="1.8" fill="none"/>
+      <path d="M100 145 C110 128 108 112 100 102" stroke="#5E6B4F" stroke-width="1.5" fill="none"/>
+      <!-- leaves -->
+      <ellipse cx="45" cy="148" rx="14" ry="22" fill="#5E6B4F" opacity="0.5" transform="rotate(-40 45 148)"/>
+      <ellipse cx="72" cy="125" rx="10" ry="18" fill="#6E7A5C" opacity="0.45" transform="rotate(-20 72 125)"/>
+      <ellipse cx="105" cy="100" rx="9" ry="16" fill="#5E6B4F" opacity="0.4" transform="rotate(10 105 100)"/>
+      <!-- leaf veins -->
+      <path d="M36 156 C42 148 50 142 56 140" stroke="#4A5A40" stroke-width="0.8" fill="none" opacity="0.5"/>
+      <path d="M65 132 C70 124 76 118 80 116" stroke="#4A5A40" stroke-width="0.7" fill="none" opacity="0.4"/>
+      <!-- main rose bloom — outer petals -->
+      <ellipse cx="148" cy="85" rx="38" ry="44" fill="#D99FB0" opacity="0.75"/>
+      <path d="M148 46 C164 54 172 70 168 88 C164 106 152 116 148 118 C144 116 132 106 128 88 C124 70 132 54 148 46Z" fill="#C77D7D" opacity="0.65"/>
+      <path d="M188 85 C180 102 166 110 148 110 C130 110 116 102 108 85 C116 68 130 60 148 60 C166 60 180 68 188 85Z" fill="#C77D7D" opacity="0.6"/>
+      <path d="M148 130 C134 122 126 108 126 90 C126 72 134 58 148 50 C162 58 170 72 170 90 C170 108 162 122 148 130Z" fill="#D99FB0" opacity="0.5"/>
+      <!-- inner petals -->
+      <ellipse cx="148" cy="85" rx="22" ry="28" fill="#C77D7D" opacity="0.7"/>
+      <ellipse cx="148" cy="85" rx="22" ry="28" fill="none" stroke="#A85A5A" stroke-width="0.8" opacity="0.4"/>
+      <!-- stamen center -->
+      <circle cx="148" cy="85" r="12" fill="#E8C46A" opacity="0.9"/>
+      <circle cx="148" cy="85" r="7" fill="#A8842C" opacity="0.7"/>
+      <!-- stamens -->
+      <line x1="148" y1="78" x2="148" y2="72" stroke="#A8842C" stroke-width="1" opacity="0.6"/>
+      <line x1="153" y1="80" x2="157" y2="74" stroke="#A8842C" stroke-width="1" opacity="0.6"/>
+      <line x1="143" y1="80" x2="139" y2="74" stroke="#A8842C" stroke-width="1" opacity="0.6"/>
+      <!-- small bud -->
+      <ellipse cx="112" cy="54" rx="9" ry="14" fill="#D99FB0" opacity="0.65" transform="rotate(-15 112 54)"/>
+      <path d="M112 40 C116 44 116 50 112 54 C108 50 108 44 112 40Z" fill="#C77D7D" opacity="0.55"/>
+      <path d="M112 68 C106 62 106 56 112 54" stroke="#5E6B4F" stroke-width="1.5" fill="none"/>
+      <!-- extra leaf spray -->
+      <path d="M55 220 C70 210 88 215 95 225" stroke="#5E6B4F" stroke-width="1.5" fill="none"/>
+      <ellipse cx="85" cy="212" rx="8" ry="14" fill="#5E6B4F" opacity="0.38" transform="rotate(-30 85 212)"/>
+      <ellipse cx="70" cy="218" rx="7" ry="12" fill="#6E7A5C" opacity="0.35" transform="rotate(-50 70 218)"/>
+    </g>
+  </svg>

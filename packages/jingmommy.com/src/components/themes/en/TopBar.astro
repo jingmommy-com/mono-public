@@ -1,42 +1,304 @@
 ---
-/* Sticky top navigation bar. Shared across all en pages. */
-import { site } from '@/config/index.ts'
-import { route } from '@/utils/index.ts'
+/*
+  Shared top bar for every en (postpartummeal.com) page — identical on all pages.
+  Nav order fixed by planning: Our Story · Why Zuo Yue Zi · Food Therapy ·
+  Meal Plans · Real Stories · FAQ · Contact, with "Try a Taste" as the CTA.
 
-/** Primary top-bar navigation (Try a Taste is rendered as the CTA). */
-const nav = [
-  { label: 'Our Story', href: route('/about/founding-story', 'en') },
-  { label: 'Why Zuo Yue Zi', href: route('/guide/why-zuo-yue-zi', 'en') },
-  { label: 'Food Therapy', href: route('/guide/chinese-food-therapy', 'en') },
-  { label: 'Meal Plans', href: route('/plans', 'en') },
-  { label: 'Real Stories', href: route('/about/testimonial', 'en') },
+  - The current page's item gets an accent underline (.active), derived from
+    Astro.url.pathname (Meal Plans stays active on every meal product page too).
+  - "Meal Plans" opens a dropdown (desktop hover / focus) listing the local +
+    frozen meal pages; on mobile the same links show as an indented tree inside
+    the hamburger menu.
+
+  Styles are component-scoped and self-contained.
+*/
+import { site } from '@/config/index.ts'
+import { getPathLocale, route } from '@/utils/index.ts'
+
+// Locale-relative hrefs (no locale baked in) — resolved with route(href, locale)
+// so this bar works for any locale that reuses the layout.
+const locale = getPathLocale(Astro.url.pathname)
+const prefix = `/${locale}`
+const path = Astro.url.pathname.replace(/\/+$/, '') || prefix
+
+interface NavItem { label: string; href: string; dropdown?: boolean; collapse?: boolean }
+const localMeals: NavItem[] = [
+  { label: 'Herbal Meal', href: '/postpartum-meals/herbal-postpartum-meals' },
+  { label: 'Classic Meal', href: '/postpartum-meals/classic-postpartum-meals' },
+  { label: 'Vita Meal', href: '/postpartum-meals/vita-postpartum-meals' },
+  { label: 'Low Carb Meal', href: '/postpartum-meals/low-carb-postpartum-meals' },
+  { label: 'Easy Meal', href: '/postpartum-meals/easy-postpartum-meals' },
+]
+const frozenMeals: NavItem[] = [
+  { label: 'Frozen Herbal Meal', href: '/frozen-postpartum-meals/herbal' },
+  { label: 'Frozen Classic Meal', href: '/frozen-postpartum-meals/classic' },
+  { label: 'Frozen Essential Meal', href: '/frozen-postpartum-meals/essential' },
+  { label: 'Frozen Soup & Dessert', href: '/frozen-postpartum-meals/soup-and-dessert' },
+]
+const nav: NavItem[] = [
+  { label: 'Our Story', href: '/about/founding-story' },
+  { label: 'Why Zuo Yue Zi', href: '/guide/why-zuo-yue-zi' },
+  { label: 'Food Therapy', href: '/guide/chinese-food-therapy' },
+  { label: 'Meal Plans', href: '/plans', dropdown: true },
+  { label: 'Real Stories', href: '/about/testimonial' },
+  // collapse: hidden on the narrow desktop band (still in the footer + hamburger)
+  { label: 'FAQ', href: '/faq', collapse: true },
+  { label: 'Contact', href: '/contact', collapse: true },
 ]
 
-const navCta = { label: 'Try a Taste', href: route('/sample', 'en') }
-
-interface Props {
-  /** href of the current page, to mark its nav link active. */
-  active?: string
-}
-const { active } = Astro.props
+const isCur = (href: string) => path === route(href, locale).replace(/\/+$/, '')
+const mealActive =
+  path === prefix + '/plans' ||
+  path.startsWith(prefix + '/postpartum-meals') ||
+  path.startsWith(prefix + '/frozen-postpartum-meals')
+const mainActive = (item: NavItem) => (item.dropdown ? mealActive : isCur(item.href))
+const ctaActive = isCur('/sample')
 ---
 
 <header class="topbar">
   <div class="topbar-inner">
-    <a href={route("/", 'en')} class="logo">{site.brandName}</a>
-    <button class="menu-btn" aria-label="Open menu">☰</button>
+    <a href={route('/', locale)} class="logo">{site.brandName}</a>
+    <button
+      class="menu-btn"
+      aria-label="Open menu"
+      onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
     <nav class="nav" id="nav">
       {
-        nav.map((item) => (
-          <a
-            href={item.href}
-            class={active === item.href ? "active" : undefined}
-          >
-            {item.label}
-          </a>
-        ))
+        nav.map((i) =>
+          i.dropdown ? (
+            <div class="nav-item has-dropdown">
+              <a href={route(i.href, locale)} class:list={[{ active: mainActive(i) }]}>
+                {i.label}
+              </a>
+              <div class="dropdown">
+                <div class="dropdown-col">
+                  <span class="dropdown-h">Local Meals</span>
+                  {localMeals.map((m) => (
+                    <a href={route(m.href, locale)} class:list={[{ active: isCur(m.href) }]}>
+                      {m.label}
+                    </a>
+                  ))}
+                </div>
+                <div class="dropdown-col">
+                  <span class="dropdown-h">Frozen Meals</span>
+                  {frozenMeals.map((m) => (
+                    <a href={route(m.href, locale)} class:list={[{ active: isCur(m.href) }]}>
+                      {m.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <a href={route(i.href, locale)} class:list={[{ active: mainActive(i), 'nav-collapse': i.collapse }]}>
+              {i.label}
+            </a>
+          ),
+        )
       }
-      <a href={navCta.href} class="nav-cta">{navCta.label}</a>
+      <a href={route("/sample", locale)} class:list={["nav-cta", { active: ctaActive }]}>Try a Taste</a>
     </nav>
   </div>
 </header>
+
+<style>
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    margin: 0;
+    padding: 0;
+    background: rgba(250, 246, 241, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .topbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 18px 32px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 27px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .nav > a:not(.nav-cta),
+  .nav-item > a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    white-space: nowrap;
+    /* Symmetric transparent borders keep the label vertically centered in the
+       bar, and reserve the underline space so toggling .active never shifts it.
+       The CTA button is excluded so its own 1px border stays intact. */
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  .nav > a:hover,
+  .nav-item > a:hover {
+    color: var(--ink);
+  }
+  .nav > a:not(.nav-cta).active,
+  .nav-item > a.active {
+    color: var(--ink);
+    border-bottom-color: var(--accent);
+  }
+  .nav-cta {
+    border: 1px solid var(--accent-deep);
+    color: var(--accent-deep) !important;
+    padding: 9px 18px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .nav-cta:hover,
+  .nav-cta.active {
+    background: var(--accent-deep);
+    color: var(--paper) !important;
+  }
+  .menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--ink);
+  }
+
+  /* Narrow desktop band: the full nav gets tight, so drop the two secondary
+     items (FAQ + Contact) — both remain in the footer and the hamburger. */
+  @media (min-width: 961px) and (max-width: 1140px) {
+    .nav-collapse {
+      display: none;
+    }
+  }
+
+  /* ---- Meal Plans dropdown (desktop) ---- */
+  .nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  /* invisible bridge so hover survives the gap to the panel */
+  .has-dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 16px;
+  }
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 14px;
+    display: none;
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+    gap: 18px 34px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 22px 28px;
+    box-shadow: 0 14px 34px rgba(43, 24, 16, 0.14);
+    z-index: 60;
+  }
+  .has-dropdown:hover .dropdown,
+  .has-dropdown:focus-within .dropdown {
+    display: grid;
+  }
+  .dropdown-col {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .dropdown-h {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    margin-bottom: 2px;
+  }
+  .dropdown a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink-soft);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .dropdown a:hover,
+  .dropdown a.active {
+    color: var(--accent-deep);
+  }
+
+  /* ---- mobile: hamburger menu with an indented meal tree ---- */
+  @media (max-width: 960px) {
+    .nav {
+      display: none;
+    }
+    .nav.open {
+      display: flex;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 18px;
+      background: var(--paper);
+      padding: 24px 32px 30px;
+      border-bottom: 1px solid var(--line);
+      max-height: calc(100vh - 62px);
+      overflow-y: auto;
+    }
+    .menu-btn {
+      display: block;
+    }
+    .nav-item {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+    .has-dropdown::after {
+      display: none;
+    }
+    .dropdown {
+      position: static;
+      transform: none;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin: 12px 0 0 4px;
+      padding: 0 0 0 16px;
+      border: none;
+      border-left: 1px solid var(--line);
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+  }
+</style>

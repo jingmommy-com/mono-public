@@ -1,15 +1,22 @@
 ---
 /*
-  Base layout for the "en" design.
-  Self-contained html shell: warm-cream botanical theme, self-imported Google
-  Fonts (Cormorant Garamond / EB Garamond / Jost), scroll-reveal + mobile-nav
-  scripts. Every en page renders through this.
+  Minimal Base shell for the "en" (postpartummeal.com) design.
+
+  Fidelity-first rebuild: every en page is fully STANDALONE — it inlines its own
+  <style is:global>, its full markup (top bar, sections, footer), and its own
+  <script>, transcribed 1:1 from docs/en/*.html. This shell intentionally owns
+  nothing visual; it only provides:
+    - the <html>/<head> via the shared Head.astro (SEO, favicons, base meta)
+    - a `head` slot for the page's own font <link>s + JSON-LD
+    - the <body> wrapper
+
+  Anything worth sharing (top bar, footer, botanicals, plan cards…) is a
+  post-rebuild refactor, deliberately deferred so the layout can be verified
+  against the source HTML first.
 */
-import "@/styles/themes/en/theme.css"
-import Head from "@/components/Head.astro"
-import LangSwitch from "@/components/themes/en/LangSwitch.astro"
-import ExternalLinksNewTab from "@/components/themes/en/ExternalLinksNewTab.astro"
-import enSite from '@/i18n/en/site.ts'
+import '@/styles/themes/en/theme.css'
+import Head from '@/components/Head.astro'
+import LangSwitch from '@/components/themes/en/LangSwitch.astro'
 
 interface Props {
   title: string
@@ -18,69 +25,30 @@ interface Props {
   jsonLd?: unknown[]
 }
 
-const {
-  title,
-  description = enSite.description,
-  jsonLd = [],
-} = Astro.props
+const { title, description, jsonLd = [] } = Astro.props
+const headProps = { title, ...(description ? { description } : {}) }
 ---
 
 <!doctype html>
 <html lang="en">
-  <Head title={title} description={description}>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
+  <Head {...headProps}>
+    <slot name="head" />
     {
       jsonLd.map((obj) => (
         <script type="application/ld+json" set:html={JSON.stringify(obj)} />
       ))
     }
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
   </Head>
   <body>
     <slot />
     <LangSwitch />
-    <ExternalLinksNewTab />
-
-    <script is:inline>
-      ;(function () {
-        var els = document.querySelectorAll(".reveal")
-        if (!("IntersectionObserver" in window)) {
-          els.forEach(function (e) {
-            e.classList.add("in")
-          })
-        } else {
-          var io = new IntersectionObserver(
-            function (entries) {
-              entries.forEach(function (en) {
-                if (en.isIntersecting) {
-                  en.target.classList.add("in")
-                  io.unobserve(en.target)
-                }
-              })
-            },
-            { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
-          )
-          els.forEach(function (e) {
-            io.observe(e)
-          })
-        }
-        var nav = document.getElementById("nav")
-        var btn = document.querySelector(".menu-btn")
-        if (btn && nav) {
-          btn.addEventListener("click", function () {
-            nav.classList.toggle("open")
-          })
-          nav.querySelectorAll("a").forEach(function (a) {
-            a.addEventListener("click", function () {
-              nav.classList.remove("open")
-            })
-          })
-        }
-      })()
-    </script>
   </body>
 </html>

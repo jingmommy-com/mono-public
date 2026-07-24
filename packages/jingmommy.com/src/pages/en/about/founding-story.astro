@@ -1,18 +1,19 @@
 ---
-import { Image } from "astro:assets"
-import Base from "@/layouts/themes/en/Base.astro"
-import TopBar from "@/components/themes/en/TopBar.astro"
-import Footer from "@/components/themes/en/Footer.astro"
-import PageHero from "@/components/themes/en/PageHero.astro"
-import BotanSketch from "@/components/themes/en/BotanSketch.astro"
-import CtaBand from "@/components/themes/en/CtaBand.astro"
-import { site, products } from '@/config/index.ts'
-import { route, formatNumber, usd } from '@/utils/index.ts'
-import nicoleImg from "@/assets/en/nicole-huang.jpg"
+import Page from '@/layouts/themes/en/Page.astro'
+import Svg00 from '@/assets/en/svg/en-svg-00.svg'
+import Svg01 from '@/assets/en/svg/en-svg-01.svg'
+import Svg02 from '@/assets/en/svg/en-svg-02.svg'
+import Svg03 from '@/assets/en/svg/en-svg-03.svg'
+import Svg04 from '@/assets/en/svg/en-svg-04.svg'
+import Svg05 from '@/assets/en/svg/en-svg-05.svg'
+import { products, site } from '@/config/index.ts'
+import { usd, formatNumber, route, getPathLocale } from '@/utils/index.ts'
 
+const locale = getPathLocale(Astro.url.pathname)
 const title = "Our Story — Nicole Huang, Founder of JingMommy"
 const description =
   `Nicole Huang built JingMommy to bring authentic Chinese postpartum care — Zuo Yue Zi — to mothers across America. Over ${formatNumber(site.mothersServed)} families served since ${site.founded}. Featured in LA Times and PBS.`
+
 
 const jsonLd = [
   {
@@ -36,339 +37,731 @@ const jsonLd = [
   },
 ]
 
-const ctaButtons = [
-  {
-    label: "Explore Meal Plans",
-    href: route("/plans", 'en'),
-    variant: "primary" as const,
-  },
-  {
-    label: `Try a Taste — from ${usd(products.local_classic_sample_1d.price)}`,
-    href: route("/sample", 'en'),
-    variant: "ghost" as const,
-  },
-]
 ---
 
-<Base title={title} description={description} jsonLd={jsonLd}>
-  <a href="#main" class="skip-link sans">Skip to content</a>
-  <TopBar active={route("/about/founding-story", 'en')} />
+<Page title={title} description={description} jsonLd={jsonLd}>
 
-  <main id="main">
-    <PageHero
-      eyebrow="Founder Story"
-      title="She didn’t start a business."
-      lede="She started a revolution in how America cares for new mothers."
-    />
+  <style is:global>
 
-    <!-- opener -->
-    <section class="opener" aria-label="Who this page is for">
-      <div class="opener-inner">
-        <p class="opener-box reveal">
-          If you grew up hearing about Zuo Yue Zi but never knew how to start —
-          or you’re not Chinese and just discovered this tradition and want to
-          know if it’s really for you — you’re in the right place.
-        </p>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'EB Garamond','Georgia',serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.7;
+  font-size:18px;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+img{max-width:100%;height:auto;display:block}
+.display{font-family:'Cormorant Garamond','Georgia',serif}
+.sans{font-family:'Jost','Helvetica Neue',sans-serif}
+
+/* ---- skip link ---- */
+.skip-link{position:absolute;top:-40px;left:0;background:var(--accent-deep);color:var(--paper);padding:8px 16px;z-index:100;transition:top .2s;font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
+.skip-link:focus{top:0}
+
+/* ---- layout ---- */
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+.narrow{max-width:760px;margin:0 auto;padding:0 32px}
+
+/* ---- eyebrow ---- */
+.eyebrow{
+  font-family:'Jost',sans-serif;
+  font-size:12px;font-weight:400;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:var(--accent-deep);
+  margin-bottom:20px;
+}
+
+/* ---- headings ---- */
+h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:74px;line-height:1.04;letter-spacing:.005em;color:var(--ink)}
+h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:48px;line-height:1.1;color:var(--ink)}
+h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:30px;line-height:1.2;color:var(--ink)}
+p{margin-bottom:18px}
+p:last-child{margin-bottom:0}
+
+/* ---- top bar ---- */
+
+
+
+
+
+
+
+
+
+
+/* ---- anchor offset for sticky nav ---- */
+section[id]{scroll-margin-top:78px}
+
+/* ---- section base ---- */
+section{position:relative}
+.band{padding:104px 0}
+.band-paper{background:var(--paper)}
+.band-cream{background:var(--cream)}
+.band-cream-deep{background:var(--cream-deep)}
+.center{text-align:center}
+
+/* ---- botanical decorations ---- */
+.botan{position:absolute;pointer-events:none;z-index:1}
+
+/* ---- buttons ---- */
+.btn{font-family:'Jost',sans-serif;font-size:13px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;padding:16px 32px;border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;transition:all .25s;border:1px solid transparent}
+.btn-primary{background:var(--accent-deep);color:var(--paper)}
+.btn-primary:hover{background:var(--ink);color:var(--paper)}
+.btn-ghost{background:transparent;border-color:var(--accent-deep);color:var(--accent-deep)}
+.btn-ghost:hover{background:var(--accent-deep);color:var(--paper)}
+.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{position:relative;overflow:hidden;padding:120px 0 100px;background:linear-gradient(180deg,var(--paper) 0%,var(--cream) 100%);text-align:center}
+.hero .inner{position:relative;z-index:3;max-width:820px;margin:0 auto;padding:0 32px}
+.hero h1{font-size:68px;margin-bottom:24px}
+.hero .lede{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:26px;line-height:1.4;color:var(--accent-deep);max-width:620px;margin:0 auto}
+.hero-botan-tl{top:-30px;left:-40px;width:220px}
+.hero-botan-br{bottom:-50px;right:-30px;width:240px}
+
+/* ============================================================
+   RULE 2 OPENER
+   ============================================================ */
+.opener{padding:80px 0 40px;background:var(--paper)}
+.opener-inner{max-width:760px;margin:0 auto;padding:0 32px}
+.opener-box{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:36px 0;
+  text-align:center;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:24px;
+  line-height:1.5;
+  color:var(--ink-soft);
+}
+
+/* ============================================================
+   STORY
+   ============================================================ */
+.story{padding:96px 0 104px;background:var(--paper)}
+.story-inner{max-width:1120px;margin:0 auto;padding:0 32px}
+.story-grid{
+  display:grid;
+  grid-template-columns:1.15fr 1fr;
+  gap:80px;
+  align-items:start;
+}
+.story-text{max-width:580px}
+.story-text .eyebrow{margin-bottom:16px}
+.story-text h2{margin-bottom:36px}
+.story-text p{font-size:18px;line-height:1.75;color:var(--ink-soft);margin-bottom:20px}
+.story-text p.lead{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;
+  line-height:1.4;
+  color:var(--ink);
+  font-weight:500;
+  margin-bottom:24px;
+  font-style:normal;
+}
+.story-text em{font-style:italic;color:var(--accent-deep)}
+.story-text strong{font-weight:600;color:var(--ink)}
+
+.story-image{
+  position:sticky;top:96px;
+  aspect-ratio:4/5;
+  background:var(--cream);
+  border:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:32px;
+  color:var(--muted);
+  font-family:'Jost',sans-serif;
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  line-height:1.8;
+}
+.story-image span{display:block;font-size:10px;color:var(--muted);margin-top:8px;letter-spacing:.06em}
+
+/* ============================================================
+   TIMELINE
+   ============================================================ */
+.timeline-section{position:relative;overflow:hidden;padding:104px 0;background:var(--cream)}
+.timeline-section .head{text-align:center;max-width:680px;margin:0 auto 64px;position:relative;z-index:3}
+.timeline-section .head .eyebrow{margin-bottom:18px}
+.timeline-botan-tl{top:30px;left:-40px;width:180px}
+.timeline-botan-br{bottom:30px;right:-40px;width:180px}
+
+.timeline{max-width:680px;margin:0 auto;position:relative;z-index:3;padding:0 32px}
+.timeline-track{position:relative}
+.timeline-track::before{
+  content:'';
+  position:absolute;
+  left:100px;
+  top:14px;bottom:14px;
+  width:1px;
+  background:var(--accent);
+  opacity:.6;
+}
+.timeline-item{
+  display:grid;
+  grid-template-columns:84px 1fr;
+  gap:36px;
+  align-items:start;
+  padding:22px 0;
+  position:relative;
+}
+.timeline-year{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:500;
+  font-size:28px;
+  color:var(--accent-deep);
+  text-align:right;
+  letter-spacing:.005em;
+  position:relative;
+  padding-right:4px;
+}
+.timeline-year::after{
+  content:'';
+  position:absolute;
+  right:-18px;
+  top:14px;
+  width:10px;height:10px;
+  background:var(--accent);
+  border:2px solid var(--cream);
+  border-radius:50%;
+}
+.timeline-desc{
+  padding-top:6px;
+  padding-left:18px;
+  font-family:'EB Garamond',serif;
+  font-size:17px;
+  line-height:1.65;
+  color:var(--ink-soft);
+}
+.timeline-desc strong{color:var(--ink);font-weight:600}
+
+/* ============================================================
+   CTA BAND
+   ============================================================ */
+.cta-band{position:relative;overflow:hidden;padding:96px 0;background:var(--accent-deep);color:var(--paper);text-align:center}
+.cta-band-inner{position:relative;z-index:3;max-width:680px;margin:0 auto;padding:0 32px}
+.cta-band .eyebrow{color:#E8D5C2;margin-bottom:18px}
+.cta-band h2{color:var(--paper);margin-bottom:18px;font-size:42px}
+.cta-band p{font-size:19px;color:#F0E4D8;margin-bottom:36px}
+.cta-band .btn-primary{background:var(--paper);color:var(--accent-deep)}
+.cta-band .btn-primary:hover{background:var(--cream);color:var(--ink)}
+.cta-band .btn-ghost{border-color:#E8D5C2;color:#F0E4D8}
+.cta-band .btn-ghost:hover{background:rgba(255,255,255,.12);color:#fff}
+.cta-band .hero-cta{margin-top:8px}
+
+/* ============================================================
+   BELIEVES
+   ============================================================ */
+.believes{padding:104px 0;background:var(--paper)}
+.believes-inner{max-width:760px;margin:0 auto;padding:0 32px}
+.believes .head{text-align:center;margin-bottom:48px}
+.believes .head h2{font-size:46px}
+
+.pull-quote{
+  margin:0 auto 48px;
+  padding:0;
+  text-align:center;
+}
+.pull-quote blockquote{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:30px;
+  line-height:1.4;
+  color:var(--ink);
+  margin-bottom:20px;
+  letter-spacing:.005em;
+}
+.pull-quote cite{
+  font-family:'Jost',sans-serif;
+  font-size:12px;
+  font-weight:400;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--accent-deep);
+  font-style:normal;
+}
+
+.believes-body p{
+  font-size:18px;
+  line-height:1.75;
+  color:var(--ink-soft);
+  margin-bottom:20px;
+}
+.believes-body p strong{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:500;
+  font-size:24px;
+  color:var(--ink);
+  display:block;
+  text-align:center;
+  margin:32px 0;
+  font-style:italic;
+}
+
+/* Testimonial */
+.testimonial{
+  margin:48px 0;
+  padding:40px 36px;
+  background:var(--cream);
+  border-left:2px solid var(--accent);
+  position:relative;
+}
+.testimonial-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:24px;
+  line-height:1.5;
+  color:var(--ink);
+  margin-bottom:18px;
+}
+.testimonial-author{
+  font-family:'Jost',sans-serif;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--accent-deep);
+}
+
+/* Tagline */
+.tagline{
+  text-align:center;
+  margin-top:64px;
+  padding-top:48px;
+  border-top:1px solid var(--line);
+}
+.tagline p{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:500;
+  font-size:38px;
+  letter-spacing:.04em;
+  color:var(--accent-deep);
+  margin:0;
+}
+
+/* ============================================================
+   MEDIA / AS SEEN IN
+   ============================================================ */
+.media{position:relative;overflow:hidden;padding:104px 0;background:var(--cream)}
+.media .head{text-align:center;max-width:680px;margin:0 auto 56px;position:relative;z-index:3}
+.media-botan-tl{top:50px;left:-50px;width:200px}
+.media-botan-br{bottom:50px;right:-40px;width:180px}
+
+.media-grid{
+  max-width:880px;
+  margin:0 auto;
+  padding:0 32px;
+  display:grid;
+  gap:24px;
+  position:relative;z-index:3;
+}
+
+.media-item{
+  background:var(--paper);
+  border:1px solid var(--line);
+  padding:36px 40px;
+  display:grid;
+  grid-template-columns:160px 1fr;
+  gap:40px;
+  align-items:center;
+  transition:border-color .25s;
+}
+.media-item:hover{border-color:var(--accent)}
+
+.media-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;
+  font-size:24px;
+  color:var(--ink);
+  letter-spacing:.04em;
+  text-align:center;
+  text-transform:uppercase;
+  border:1px solid var(--line);
+  padding:18px 8px;
+  background:var(--paper);
+}
+.media-logo.zh{font-family:'Cormorant Garamond',serif;letter-spacing:.08em;font-size:22px}
+
+.media-desc{padding:0}
+.media-desc h3{font-size:22px;margin-bottom:10px}
+.media-desc p{font-size:16px;line-height:1.65;color:var(--ink-soft);margin-bottom:10px}
+.media-desc .meta{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.media-link{
+  font-family:'Jost',sans-serif;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--accent-deep);
+  text-decoration:none;
+  border-bottom:1px solid var(--accent);
+  padding-bottom:2px;
+  transition:all .2s;
+}
+.media-link:hover{color:var(--ink);border-color:var(--ink)}
+
+/* ============================================================
+   COMING (book)
+   ============================================================ */
+.coming{padding:104px 0;background:var(--cream-deep);text-align:center}
+.coming-inner{max-width:680px;margin:0 auto;padding:0 32px}
+.coming .eyebrow{margin-bottom:18px}
+.coming h2{font-size:44px;margin-bottom:24px}
+.coming p{font-size:18px;line-height:1.75;color:var(--ink-soft)}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   REVEAL ANIMATION
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+
+/* ============================================================
+   FOCUS STATES
+   ============================================================ */
+a:focus-visible,.btn:focus-visible,.skip-link:focus-visible{
+  outline:2px solid var(--accent-deep);
+  outline-offset:3px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:900px){
+  h1{font-size:52px}
+  h2{font-size:38px}
+  .hero{padding:80px 0 70px}
+  .hero h1{font-size:46px}
+  .hero .lede{font-size:21px}
+  .nav{display:none}
+  .story-grid{grid-template-columns:1fr;gap:40px}
+  .story-image{position:static;order:-1;aspect-ratio:4/3;max-width:440px;margin:0 auto;width:100%}
+  .story-text{max-width:none}
+  .story-text p.lead{font-size:24px}
+  .timeline-track::before{left:74px}
+  .timeline-item{grid-template-columns:60px 1fr;gap:24px}
+  .timeline-year{font-size:22px}
+  .timeline-year::after{right:-14px}
+  .media-item{grid-template-columns:1fr;gap:20px;padding:32px 28px}
+  .media-logo{padding:14px;max-width:200px;margin:0 auto}
+  .pull-quote blockquote{font-size:24px}
+  .tagline p{font-size:30px}
+  .testimonial{padding:32px 26px}
+  .testimonial-quote{font-size:21px}
+  .cta-band{padding:72px 0}
+  .cta-band h2{font-size:34px}
+  .band{padding:72px 0}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px}
+}
+@media(max-width:560px){
+  .hero h1{font-size:38px}
+  .hero .lede{font-size:18px}
+  .opener-box{font-size:20px}
+  h2{font-size:32px}
+  .story-text p.lead{font-size:22px}
+  .pull-quote blockquote{font-size:21px}
+  .timeline-track::before{left:60px}
+  .timeline-item{grid-template-columns:48px 1fr;gap:20px}
+  .timeline-year{font-size:20px}
+  .footer-grid{grid-template-columns:1fr}
+}
+  </style>
+
+<a href="#main" class="skip-link sans">Skip to content</a>
+
+<!-- ============================================================
+     TOP BAR
+     ============================================================ -->
+
+<main id="main">
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <!-- Botanical decorations -->
+    <Svg00 class="botan hero-botan-tl" aria-hidden="true" />
+    <Svg01 class="botan hero-botan-br" aria-hidden="true" />
+
+    <div class="inner">
+      <p class="eyebrow">Founder Story</p>
+      <h1 id="hero-title">She didn&rsquo;t start a business.</h1>
+      <p class="lede">She started a revolution in how America cares for new mothers.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       RULE 2 OPENER
+       ============================================================ -->
+  <section class="opener" aria-label="Who this page is for">
+    <div class="opener-inner">
+      <p class="opener-box reveal">
+        If you grew up hearing about Zuo Yue Zi but never knew how to start &mdash; or you&rsquo;re not Chinese and just discovered this tradition and want to know if it&rsquo;s really for you &mdash; you&rsquo;re in the right place.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       NICOLE'S STORY
+       ============================================================ -->
+  <section class="story" aria-labelledby="story-title">
+    <div class="story-inner">
+      <div class="story-grid">
+        <div class="story-text reveal">
+          <p class="eyebrow">Nicole&rsquo;s Story</p>
+          <h2 id="story-title">From a daughter of Taiwan to founder of an American tradition.</h2>
+
+          <p class="lead">Every mother deserves to be taken care of after she gives birth.</p>
+
+          <p>Not discharged with a pamphlet. Not left to figure it out alone. <em>Taken care of</em> &mdash; the way generations of Chinese families have always understood it: with warmth, with real food, with someone who knows exactly what a body needs after the most demanding experience of its life.</p>
+
+          <p>Nicole Huang built JingMommy because she knew what that care felt like &mdash; and she knew too many mothers in America were going without it.</p>
+
+          <p>Nicole grew up in Taiwan, immigrated to the United States, and eventually earned her MBA from Cal State LA. She moves between both worlds fluently &mdash; the traditional Chinese culture she was raised in, and the modern American life she built. That fluency is exactly what made her see something others missed: that the most important month of a woman&rsquo;s postpartum life was being left entirely to chance.</p>
+
+          <p>When Nicole had her own children in the United States, her parents were in Taiwan &mdash; and there was no one to cook for her. So she did what she has always done: she researched. She immersed herself in the principles of Zuo Yue Zi &mdash; the traditional Chinese practice of postpartum nourishment followed across East Asia for over 2,000 years &mdash; and applied everything she learned to her own recovery. What she found on the other side surprised her. Not just physically, but in the way it felt to be genuinely nourished and genuinely cared for at the moment she needed it most.</p>
+
+          <p><em>She couldn&rsquo;t stop thinking about all the mothers who weren&rsquo;t getting that.</em></p>
+
+          <p>She began helping friends. Then friends of friends. She started writing on Yahoo! Blog &mdash; at the time, the most widely read blogging platform in the Chinese-speaking world &mdash; and her readership grew to over 160,000. Mothers across the United States found her: Chinese-Americans who had grown up with the tradition but needed guidance navigating it in America. Immigrant mothers, far from family, doing it alone. Non-Chinese mothers who had discovered Zuo Yue Zi through research and felt, instinctively, that this was exactly what they had been looking for.</p>
+
+          <p>What began as a blog became a community. What began as advice became a calling.</p>
+        </div>
+
+        <aside class="story-image reveal" aria-label="Photo of Nicole Huang">
+          Nicole Huang &mdash; in the kitchen
+          <span>(photo placeholder — awaiting original photography)</span>
+        </aside>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Nicole's story -->
-    <section class="founder" aria-labelledby="story-title">
-      <div class="founder-inner">
-        <div class="founder-grid">
-          <div class="founder-text reveal">
-            <p class="eyebrow">Nicole’s Story</p>
-            <h2 id="story-title">
-              From a daughter of Taiwan to founder of an American tradition.
-            </h2>
-            <p class="lead">
-              Every mother deserves to be taken care of after she gives birth.
-            </p>
-            <p>
-              Not discharged with a pamphlet. Not left to figure it out alone. <em
-                >Taken care of</em
-              > — the way generations of Chinese families have always understood it:
-              with warmth, with real food, with someone who knows exactly what a body
-              needs after the most demanding experience of its life.
-            </p>
-            <p>
-              Nicole Huang built JingMommy because she knew what that care felt
-              like — and she knew too many mothers in America were going without
-              it.
-            </p>
-            <p>
-              Nicole grew up in Taiwan, immigrated to the United States, and
-              eventually earned her MBA from Cal State LA. She moves between
-              both worlds fluently — the traditional Chinese culture she was
-              raised in, and the modern American life she built. That fluency is
-              exactly what made her see something others missed: that the most
-              important month of a woman’s postpartum life was being left
-              entirely to chance.
-            </p>
-            <p>
-              When Nicole had her own children in the United States, her parents
-              were in Taiwan — and there was no one to cook for her. So she did
-              what she has always done: she researched. She immersed herself in
-              the principles of Zuo Yue Zi — the traditional Chinese practice of
-              postpartum nourishment followed across East Asia for over 2,000
-              years — and applied everything she learned to her own recovery.
-              What she found on the other side surprised her. Not just
-              physically, but in the way it felt to be genuinely nourished and
-              genuinely cared for at the moment she needed it most.
-            </p>
-            <p>
-              <em
-                >She couldn’t stop thinking about all the mothers who weren’t
-                getting that.</em>
-            </p>
-            <p>
-              She began helping friends. Then friends of friends. She started
-              writing on Yahoo! Blog — at the time, the most widely read
-              blogging platform in the Chinese-speaking world — and her
-              readership grew to over 160,000. Mothers across the United States
-              found her: Chinese-Americans who had grown up with the tradition
-              but needed guidance navigating it in America. Immigrant mothers,
-              far from family, doing it alone. Non-Chinese mothers who had
-              discovered Zuo Yue Zi through research and felt, instinctively,
-              that this was exactly what they had been looking for.
-            </p>
-            <p>
-              What began as a blog became a community. What began as advice
-              became a calling.
-            </p>
-          </div>
+  <!-- ============================================================
+       TIMELINE
+       ============================================================ -->
+  <section class="timeline-section" aria-labelledby="timeline-title">
+    <!-- Botanical decorations -->
+    <Svg02 class="botan timeline-botan-tl" aria-hidden="true" />
+    <Svg03 class="botan timeline-botan-br" aria-hidden="true" />
 
-          <aside
-            class="founder-image reveal"
-            aria-label="Photo of Nicole Huang"
-          >
-            <Image
-              src={nicoleImg}
-              alt="Nicole Huang, founder of JingMommy"
-              widths={[440, 640]}
-              sizes="(max-width: 900px) 90vw, 440px"
-            />
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <!-- timeline -->
-    <section class="timeline-section" aria-labelledby="timeline-title">
-      <BotanSketch variant="tl" class="timeline-botan-tl" opacity={0.4} />
-      <BotanSketch variant="br" class="timeline-botan-br" opacity={0.4} />
-      <div class="wrap">
-        <div class="sec-head reveal">
-          <p class="eyebrow">A Two-Decade Journey</p>
-          <h2 id="timeline-title">Built one mother at a time, since 2003.</h2>
-        </div>
-        <div class="timeline">
-          <ol class="timeline-track" aria-label="JingMommy company history">
-            <li class="timeline-item reveal">
-              <div class="timeline-year">2003</div>
-              <div class="timeline-desc">
-                Began formally studying and teaching traditional Zuo Yue Zi
-                postpartum care.
-              </div>
-            </li>
-            <li class="timeline-item reveal">
-              <div class="timeline-year">2004</div>
-              <div class="timeline-desc">
-                Became a distributor for postpartum herbal products developed by
-                Dr. Zhuang Shu-Qi, Taiwan’s leading authority on postpartum
-                care.
-              </div>
-            </li>
-            <li class="timeline-item reveal">
-              <div class="timeline-year">2008</div>
-              <div class="timeline-desc">
-                Entered the postpartum meal space — because advice alone was
-                never going to be enough.
-              </div>
-            </li>
-            <li class="timeline-item reveal">
-              <div class="timeline-year">{site.founded}</div>
-              <div class="timeline-desc">Officially founded JingMommy.</div>
-            </li>
-            <li class="timeline-item reveal">
-              <div class="timeline-year">2016</div>
-              <div class="timeline-desc">
-                Built a new central kitchen in Walnut, California — today over
-                5,000 square feet of certified kitchen and office space, open
-                and transparent.
-              </div>
-            </li>
-            <li class="timeline-item reveal">
-              <div class="timeline-year">Today</div>
-              <div class="timeline-desc">
-                Over <strong>{formatNumber(site.mothersServed)} mothers</strong> across the continental United
-                States have trusted JingMommy with their recovery.
-              </div>
-            </li>
-          </ol>
-        </div>
-      </div>
-    </section>
-
-    <CtaBand
-      eyebrow="Begin Where You Are"
-      heading="Ready to feel the difference?"
-      body="Begin with a tasting, or explore the plans built for the most important month of your life."
-      buttons={ctaButtons}
-    />
-
-    <!-- what Nicole believes -->
-    <section class="believes" aria-labelledby="believes-title">
-      <div class="believes-inner">
-        <div class="head reveal">
-          <p class="eyebrow">What Nicole Believes</p>
-          <h2 id="believes-title">
-            A philosophy of care, refined over 20 years.
-          </h2>
-        </div>
-
-        <div class="pull-quote reveal">
-          <blockquote>
-            Western culture treats postpartum recovery like a race back to
-            normal. Get up. Get out. Get back to work. Chinese medicine says the
-            opposite: this is the window. This is when your body is most open to
-            healing, most responsive to nourishment, most in need of real rest.
-            What you do in this first month shapes how you feel for years.
-          </blockquote>
-          <cite>Nicole Huang — Founder, JingMommy</cite>
-        </div>
-
-        <div class="believes-body">
-          <p class="reveal">
-            The mothers who come to JingMommy arrive from different places. Some
-            grew up hearing about Zuo Yue Zi but never knew how to start — or
-            worried their partner would think it was strange. Some found this
-            tradition through research, wanting specific results: better milk
-            supply, faster recovery, more energy. Some didn’t find JingMommy at
-            all — someone who loved them did, and made the call on their behalf.
-          </p>
-
-          <p class="reveal">
-            <strong>Nicole built this for all three of them.</strong>
-          </p>
-
-          <figure class="testimonial reveal">
-            <p class="testimonial-quote">
-              My milk came in so abundantly that I ended up donating to feed
-              four other babies. Any American non-Chinese mamas reading this:
-              don’t hesitate. This is the stuff that really nourishes you.
-            </p>
-            <figcaption class="testimonial-author">
-              Michelle W. — Las Vegas
-            </figcaption>
-          </figure>
-
-          <p class="reveal">
-            Every meal comes from a kitchen Nicole owns. Every recipe has been
-            refined over more than two decades. Every question is answered by a
-            dedicated, bilingual team — real people who genuinely care and are
-            ready to coordinate around whatever you need.
-          </p>
-        </div>
-
-        <div class="tagline reveal">
-          <p>Real food. Real care. Real recovery.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- as seen in -->
-    <section class="media" aria-labelledby="media-title">
-      <BotanSketch variant="tl" class="media-botan-tl" opacity={0.35} />
-      <BotanSketch variant="br" class="media-botan-br" opacity={0.35} />
+    <div class="wrap">
       <div class="head reveal">
-        <p class="eyebrow">Press &amp; Recognition</p>
-        <h2 id="media-title">As Seen In</h2>
-        <p style="font-size:18px;color:var(--muted);margin-top:12px">
-          JingMommy’s work has been recognized by both American and
-          Chinese-language media.
-        </p>
+        <p class="eyebrow">A Two-Decade Journey</p>
+        <h2 id="timeline-title">Built one mother at a time, since 2003.</h2>
       </div>
 
-      <div class="media-grid">
-        <article class="media-item reveal">
-          <div class="media-logo">LA Times</div>
-          <div class="media-desc">
-            <h3>A cultural feature on Zuo Yue Zi in Southern California</h3>
-            <p>
-              Featured in a Los Angeles Times cultural story on Zuo Yue Zi and
-              the Chinese postpartum meal delivery tradition in Southern
-              California.
-            </p>
-            <p class="meta">January 13, 2013</p>
-            <a
-              class="media-link"
-              href="https://www.latimes.com/health/la-xpm-2013-jan-13-la-me-chinese-birth-20121204-story.html"
-              target="_blank"
-              rel="noopener noreferrer">Read the article</a
-            >
-          </div>
-        </article>
-
-        <article class="media-item reveal">
-          <div class="media-logo">PBS</div>
-          <div class="media-desc">
-            <h3>Lucky Chow: Made in China</h3>
-            <p>
-              Featured on the PBS-distributed food and culture series exploring
-              how traditional Chinese postpartum practices are finding new life
-              in America. The segment visited JingMommy’s kitchen in Walnut, CA
-              — showcasing the food therapy philosophy, the three-stage Zuo Yue
-              Zi recovery diet, and a Chinese postpartum meal delivery operation
-              serving families across the continental United States.
-            </p>
-            <p class="meta">2016</p>
-            <a
-              class="media-link"
-              href="https://youtu.be/VxsV4yu3c5c"
-              target="_blank"
-              rel="noopener noreferrer">Watch the segment</a
-            >
-          </div>
-        </article>
-
-        <article class="media-item reveal">
-          <div class="media-logo zh">中文媒體</div>
-          <div class="media-desc">
-            <h3>Leading Chinese-language media</h3>
-            <p>
-              Multiple features in the leading Chinese-language media serving
-              the US community, including <strong>World Journal</strong> (世界日報),
-              <strong>CTS</strong> (中天新聞), and <strong>EBC</strong> (東森新聞).
-            </p>
-          </div>
-        </article>
+      <div class="timeline">
+        <ol class="timeline-track" aria-label="JingMommy company history">
+          <li class="timeline-item reveal">
+            <div class="timeline-year">2003</div>
+            <div class="timeline-desc">Began formally studying and teaching traditional Zuo Yue Zi postpartum care.</div>
+          </li>
+          <li class="timeline-item reveal">
+            <div class="timeline-year">2004</div>
+            <div class="timeline-desc">Became a distributor for postpartum herbal products developed by Dr. Zhuang Shu-Qi, Taiwan&rsquo;s leading authority on postpartum care.</div>
+          </li>
+          <li class="timeline-item reveal">
+            <div class="timeline-year">2008</div>
+            <div class="timeline-desc">Entered the postpartum meal space &mdash; because advice alone was never going to be enough.</div>
+          </li>
+          <li class="timeline-item reveal">
+            <div class="timeline-year">{site.founded}</div>
+            <div class="timeline-desc">Officially founded JingMommy.</div>
+          </li>
+          <li class="timeline-item reveal">
+            <div class="timeline-year">2016</div>
+            <div class="timeline-desc">Built a new central kitchen in Walnut, California &mdash; today over 5,000 square feet of certified kitchen and office space, open and transparent.</div>
+          </li>
+          <li class="timeline-item reveal">
+            <div class="timeline-year">Today</div>
+            <div class="timeline-desc">Over <strong>{formatNumber(site.mothersServed)} mothers</strong> across the continental United States have trusted JingMommy with their recovery.</div>
+          </li>
+        </ol>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- what's coming -->
-    <section class="coming" aria-labelledby="coming-title">
-      <div class="coming-inner reveal">
-        <p class="eyebrow">What’s Coming</p>
-        <h2 id="coming-title">A book for English-speaking families.</h2>
-        <p>
-          Nicole is currently working on a book for English-speaking families on
-          the ancient practice of Zuo Yue Zi postpartum care and its modern
-          application in the United States. Drawing on more than two decades of
-          experience and over {formatNumber(site.mothersServed)} families served, the book will bridge the
-          gap between traditional Chinese wisdom and the lived reality of
-          mothers in America today.
-        </p>
+  <!-- ============================================================
+       MID-PAGE CTA
+       ============================================================ -->
+  <section class="cta-band" aria-label="Get started">
+    <div class="cta-band-inner reveal">
+      <p class="eyebrow">Begin Where You Are</p>
+      <h2>Ready to feel the difference?</h2>
+      <p>Begin with a tasting, or explore the plans built for the most important month of your life.</p>
+      <div class="hero-cta">
+        <a href={route("/plans", locale)} class="btn btn-primary">Explore Meal Plans</a>
+        <a href={route("/sample", locale)} class="btn btn-ghost">Try a Taste &mdash; from {usd(products.local_classic_sample_1d.price)}</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <CtaBand
-      eyebrow="Take the Next Step"
-      heading="The most important month begins here."
-      body="Choose a plan, or start with a taste. Every step at your pace."
-      buttons={ctaButtons}
-    />
-  </main>
+  <!-- ============================================================
+       WHAT NICOLE BELIEVES
+       ============================================================ -->
+  <section class="believes" aria-labelledby="believes-title">
+    <div class="believes-inner">
+      <div class="head reveal">
+        <p class="eyebrow">What Nicole Believes</p>
+        <h2 id="believes-title">A philosophy of care, refined over 20 years.</h2>
+      </div>
 
-  <Footer />
-</Base>
+      <div class="pull-quote reveal">
+        <blockquote>
+          Western culture treats postpartum recovery like a race back to normal. Get up. Get out. Get back to work. Chinese medicine says the opposite: this is the window. This is when your body is most open to healing, most responsive to nourishment, most in need of real rest. What you do in this first month shapes how you feel for years.
+        </blockquote>
+        <cite>Nicole Huang &mdash; Founder, JingMommy</cite>
+      </div>
+
+      <div class="believes-body">
+        <p class="reveal">The mothers who come to JingMommy arrive from different places. Some grew up hearing about Zuo Yue Zi but never knew how to start &mdash; or worried their partner would think it was strange. Some found this tradition through research, wanting specific results: better milk supply, faster recovery, more energy. Some didn&rsquo;t find JingMommy at all &mdash; someone who loved them did, and made the call on their behalf.</p>
+
+        <p class="reveal"><strong>Nicole built this for all three of them.</strong></p>
+
+        <figure class="testimonial reveal">
+          <p class="testimonial-quote">My milk came in so abundantly that I ended up donating to feed four other babies. Any American non-Chinese mamas reading this: don&rsquo;t hesitate. This is the stuff that really nourishes you.</p>
+          <figcaption class="testimonial-author">Michelle W. &mdash; Las Vegas</figcaption>
+        </figure>
+
+        <p class="reveal">Every meal comes from a kitchen Nicole owns. Every recipe has been refined over more than two decades. Every question is answered by a dedicated, bilingual team &mdash; real people who genuinely care and are ready to coordinate around whatever you need.</p>
+      </div>
+
+      <div class="tagline reveal">
+        <p>Real food. Real care. Real recovery.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       AS SEEN IN
+       ============================================================ -->
+  <section class="media" aria-labelledby="media-title">
+    <!-- Botanical decorations -->
+    <Svg04 class="botan media-botan-tl" aria-hidden="true" />
+    <Svg05 class="botan media-botan-br" aria-hidden="true" />
+
+    <div class="head reveal">
+      <p class="eyebrow">Press &amp; Recognition</p>
+      <h2 id="media-title">As Seen In</h2>
+      <p style="font-size:18px;color:var(--muted);margin-top:12px">JingMommy&rsquo;s work has been recognized by both American and Chinese-language media.</p>
+    </div>
+
+    <div class="media-grid">
+
+      <article class="media-item reveal">
+        <div class="media-logo">LA Times</div>
+        <div class="media-desc">
+          <h3>A cultural feature on Zuo Yue Zi in Southern California</h3>
+          <p>Featured in a Los Angeles Times cultural story on Zuo Yue Zi and the Chinese postpartum meal delivery tradition in Southern California.</p>
+          <p class="meta">January 13, 2013</p>
+          <a class="media-link" href="https://www.latimes.com/health/la-xpm-2013-jan-13-la-me-chinese-birth-20121204-story.html">Read the article</a>
+        </div>
+      </article>
+
+      <article class="media-item reveal">
+        <div class="media-logo">PBS</div>
+        <div class="media-desc">
+          <h3>Lucky Chow: Made in China</h3>
+          <p>Featured on the PBS-distributed food and culture series exploring how traditional Chinese postpartum practices are finding new life in America. The segment visited JingMommy&rsquo;s kitchen in Walnut, CA &mdash; showcasing the food therapy philosophy, the three-stage Zuo Yue Zi recovery diet, and a Chinese postpartum meal delivery operation serving families across the continental United States.</p>
+          <p class="meta">2016</p>
+          <a class="media-link" href="https://youtu.be/VxsV4yu3c5c">Watch the segment</a>
+        </div>
+      </article>
+
+      <article class="media-item reveal">
+        <div class="media-logo zh">中文媒體</div>
+        <div class="media-desc">
+          <h3>Leading Chinese-language media</h3>
+          <p>Multiple features in the leading Chinese-language media serving the US community, including <strong>World Journal</strong> (世界日報), <strong>CTS</strong> (中天新聞), and <strong>EBC</strong> (東森新聞).</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHAT'S COMING
+       ============================================================ -->
+  <section class="coming" aria-labelledby="coming-title">
+    <div class="coming-inner reveal">
+      <p class="eyebrow">What&rsquo;s Coming</p>
+      <h2 id="coming-title">A book for English-speaking families.</h2>
+      <p>Nicole is currently working on a book for English-speaking families on the ancient practice of Zuo Yue Zi postpartum care and its modern application in the United States. Drawing on more than two decades of experience and over {formatNumber(site.mothersServed)} families served, the book will bridge the gap between traditional Chinese wisdom and the lived reality of mothers in America today.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BOTTOM CTA
+       ============================================================ -->
+  <section class="cta-band" aria-label="Get started">
+    <div class="cta-band-inner reveal">
+      <p class="eyebrow">Take the Next Step</p>
+      <h2>The most important month begins here.</h2>
+      <p>Choose a plan, or start with a taste. Every step at your pace.</p>
+      <div class="hero-cta">
+        <a href={route("/plans", locale)} class="btn btn-primary">Explore Meal Plans</a>
+        <a href={route("/sample", locale)} class="btn btn-ghost">Try a Taste &mdash; from {usd(products.local_classic_sample_1d.price)}</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+
+<!-- ============================================================
+     REVEAL ANIMATION (respects prefers-reduced-motion)
+     ============================================================ -->
+<script is:inline>
+(function(){
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.reveal');
+  if(prefersReduced || !('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</Page>

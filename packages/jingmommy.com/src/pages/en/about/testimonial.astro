@@ -1,512 +1,430 @@
 ---
-import Base from "@/layouts/themes/en/Base.astro"
-import TopBar from "@/components/themes/en/TopBar.astro"
-import Footer from "@/components/themes/en/Footer.astro"
-import PageHero from "@/components/themes/en/PageHero.astro"
-import Botanical from "@/components/themes/en/Botanical.astro"
-import CtaBand from "@/components/themes/en/CtaBand.astro"
+import Page from '@/layouts/themes/en/Page.astro'
+import Svg06 from '@/assets/en/svg/en-svg-06.svg'
+import Svg07 from '@/assets/en/svg/en-svg-07.svg'
+import Svg08 from '@/assets/en/svg/en-svg-08.svg'
+import Svg09 from '@/assets/en/svg/en-svg-09.svg'
+import Svg10 from '@/assets/en/svg/en-svg-10.svg'
 import { products } from '@/config/index.ts'
-import { route, orderUrl, usd } from '@/utils/index.ts'
-import { tastingReserveUrl } from '@/utils/index.ts'
+import { usd, route, getPathLocale } from '@/utils/index.ts'
 
+const locale = getPathLocale(Astro.url.pathname)
 const title = "Real Stories — Mothers on JingMommy Postpartum Meals"
 const description =
   "Real reviews from mothers who tried authentic Chinese postpartum (Zuo Yue Zi) meals — Chinese, ABC, and non-Chinese moms across the US. First-name attribution, honest voice, results-vary disclosure."
 ---
 
-<Base title={title} description={description}>
-  <TopBar active={route("/about/testimonial", 'en')} />
+<Page title={title} description={description}>
 
-  <PageHero
-    eyebrow="Real stories"
-    title="From moms who tried it<br />for the first time."
-    lede="Some grew up with this tradition. Some had never heard of it. All of them ordered — and here is what they said."
-  />
+  <style is:global>
 
-  <!-- SPOTLIGHT -->
-  <section class="band band-cream" style="overflow:hidden">
-    <Botanical variant="testimonial" />
-    <div class="wrap">
-      <div class="spotlight reveal">
-        <p class="eyebrow">When you’re worried about your milk</p>
-        <p class="spotlight-quote">
-          “My milk came in so much that I ended up donating and feeding four
-          other babies. Any American non-Chinese mamas reading this: don’t
-          hesitate — this is the stuff that really nourishes you.”
-        </p>
-        <p class="spotlight-by">Michelle W. · Los Angeles, CA</p>
-        <p class="spotlight-context">
-          First-time mom · no family nearby · frozen nationwide delivery
-        </p>
-      </div>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'EB Garamond','Georgia',serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.7;
+  font-size:18px;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+.display{font-family:'Cormorant Garamond','Georgia',serif}
+.sans{font-family:'Jost','Helvetica Neue',sans-serif}
+
+/* ---- layout ---- */
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+.narrow{max-width:760px;margin:0 auto;padding:0 32px}
+
+/* ---- eyebrow ---- */
+.eyebrow{
+  font-family:'Jost',sans-serif;
+  font-size:12px;font-weight:400;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:var(--accent-deep);
+  margin-bottom:20px;
+}
+
+/* ---- headings ---- */
+h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:74px;line-height:1.04;letter-spacing:.005em;color:var(--ink)}
+h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:48px;line-height:1.1;color:var(--ink)}
+h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:30px;line-height:1.2;color:var(--ink)}
+p{margin-bottom:18px}
+p:last-child{margin-bottom:0}
+
+/* ---- top bar ---- */
+
+
+
+
+
+
+
+
+
+
+
+/* ---- botanical corners ---- */
+.botan{position:absolute;pointer-events:none;opacity:.92;z-index:1}
+
+/* ---- anchor offset for sticky nav ---- */
+section[id]{scroll-margin-top:78px}
+
+/* ---- section base ---- */
+section{position:relative}
+.band{padding:104px 0}
+.band-cream{background:var(--cream)}
+.band-paper{background:var(--paper)}
+.center{text-align:center}
+.section-head{text-align:center;max-width:680px;margin:0 auto 64px}
+.section-head .eyebrow{margin-bottom:18px}
+.section-head p{font-size:19px;color:var(--muted);margin-top:18px}
+
+/* ---- buttons ---- */
+.btn{font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;padding:16px 32px;border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;transition:all .25s;border:1px solid transparent}
+.btn-primary{background:var(--accent-deep);color:var(--paper)}
+.btn-primary:hover{background:var(--ink);transform:translateY(-1px)}
+.btn-ghost{background:transparent;border-color:var(--accent-deep);color:var(--accent-deep)}
+.btn-ghost:hover{background:var(--accent-deep);color:var(--paper)}
+.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* ---- page intro ---- */
+.stories-hero{position:relative;overflow:hidden;padding:88px 0 80px;background:linear-gradient(180deg,var(--paper) 0%,var(--cream) 100%);text-align:center}
+.stories-hero .inner{position:relative;z-index:3;max-width:760px;margin:0 auto;padding:0 32px}
+.stories-hero h1{font-size:60px;margin-bottom:22px}
+.stories-hero .lede{font-size:21px;color:var(--ink-soft);max-width:600px;margin:0 auto}
+.stories-hero-botan-tl{top:-26px;left:-30px;width:230px}
+.stories-hero-botan-br{bottom:-50px;right:-30px;width:260px}
+
+/* ---- spotlight (hero story) ---- */
+.spotlight{max-width:840px;margin:0 auto;text-align:center;position:relative;z-index:3}
+.spotlight .eyebrow{margin-bottom:22px}
+.spotlight-quote{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:36px;line-height:1.32;color:var(--ink);margin-bottom:30px;letter-spacing:.005em}
+.spotlight-by{font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-deep)}
+.spotlight-context{font-size:16px;color:var(--muted);font-style:italic;margin-top:8px}
+
+/* ---- featured narrative stories ---- */
+.feature-list{max-width:820px;margin:0 auto}
+.feature{padding:52px 0;border-top:1px solid var(--line)}
+.feature:first-child{border-top:none;padding-top:0}
+.feature:last-child{padding-bottom:0}
+.feature .label{font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:16px}
+.feature h3{font-size:30px;line-height:1.22;margin-bottom:18px;max-width:620px}
+.feature .narrative{font-size:18px;color:var(--ink-soft);margin-bottom:24px;max-width:680px}
+.feature blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;line-height:1.4;color:var(--accent-deep);border-left:2px solid var(--accent);padding-left:24px;margin:0 0 18px}
+.feature .by{font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:2px}
+
+/* ---- shared attribution + compliance disclosure ---- */
+.by{font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep)}
+.disclosure{font-family:'EB Garamond',serif;font-style:italic;font-size:13px;color:var(--muted);margin-top:6px}
+
+/* ---- worry / objection grid ---- */
+.worry-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1080px;margin:0 auto}
+.worry-card{background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:32px 28px;display:flex;flex-direction:column}
+.worry-card .worry{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;line-height:1.3;color:var(--ink);margin-bottom:16px}
+.worry-card .q{font-family:'EB Garamond',serif;font-size:16px;line-height:1.6;color:var(--ink-soft);margin-bottom:18px;flex:1}
+.worry-card .by{color:var(--accent-deep);margin-bottom:0}
+
+/* ---- quote wall ---- */
+.quote-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1080px;margin:0 auto}
+.qw-item{background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:28px 26px;position:relative}
+.qw-item .mark{font-family:'Cormorant Garamond',serif;font-size:44px;line-height:.6;color:var(--accent);opacity:.5;height:22px}
+.qw-item .q{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;line-height:1.4;color:var(--ink);margin:6px 0 16px}
+.qw-item .by{color:var(--accent-deep)}
+
+/* ---- honest voice ---- */
+.honest{max-width:820px;margin:0 auto}
+.honest-pair{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:48px}
+.honest-card{background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:34px 30px}
+.honest-card .q{font-family:'EB Garamond',serif;font-style:italic;font-size:17.5px;line-height:1.6;color:var(--ink-soft);margin-bottom:18px}
+.honest-card .by{color:var(--accent-deep)}
+
+/* ---- taste cta band ---- */
+.taste{position:relative;overflow:hidden;padding:108px 0;background:var(--accent-deep);color:var(--paper);text-align:center}
+.taste-inner{position:relative;z-index:3;max-width:680px;margin:0 auto;padding:0 32px}
+.taste .eyebrow{color:#E8D5C2}
+.taste h2{color:var(--paper);margin-bottom:22px}
+.taste p{font-size:19px;color:#F0E4D8;margin-bottom:36px}
+.taste .btn-primary{background:var(--paper);color:var(--accent-deep)}
+.taste .btn-primary:hover{background:var(--cream);color:var(--ink)}
+.taste .btn-ghost{border-color:#E8D5C2;color:#F0E4D8}
+.taste .btn-ghost:hover{background:rgba(255,255,255,.12);color:#fff}
+
+/* ---- footer ---- */
+
+
+
+
+
+
+
+
+
+
+
+/* ---- reveal animation ---- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---- responsive ---- */
+@media(max-width:900px){
+  h1{font-size:52px}
+  h2{font-size:38px}
+  .nav{display:none}
+  .nav.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--paper);padding:24px 32px;gap:20px;border-bottom:1px solid var(--line);align-items:flex-start}
+  .menu-btn{display:block}
+  .band{padding:72px 0}
+  .stories-hero{padding:64px 0 64px}
+  .stories-hero h1{font-size:44px}
+  .stories-hero-botan-tl{width:150px}
+  .stories-hero-botan-br{width:170px}
+  .spotlight-quote{font-size:28px}
+  .worry-grid{grid-template-columns:1fr;gap:18px}
+  .quote-wall{grid-template-columns:1fr;gap:16px}
+  .honest-pair{grid-template-columns:1fr;gap:18px}
+  .feature h3{font-size:26px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  h1{font-size:38px}
+  .stories-hero h1{font-size:38px}
+  .stories-hero .lede{font-size:18px}
+  .footer-grid{grid-template-columns:1fr}
+  .wrap,.narrow{padding:0 22px}
+}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+  </style>
+
+<!-- ============ TOP BAR ============ -->
+
+<!-- ============ PAGE INTRO ============ -->
+<section class="stories-hero">
+  <Svg06 class="botan stories-hero-botan-tl" aria-hidden="true" />
+  <Svg07 class="botan stories-hero-botan-br" aria-hidden="true" />
+  <div class="inner">
+    <p class="eyebrow reveal">Real stories</p>
+    <h1 class="reveal">From moms who tried it<br>for the first time.</h1>
+    <p class="lede reveal">Some grew up with this tradition. Some had never heard of it. All of them ordered — and here is what they said.</p>
+  </div>
+</section>
+
+<!-- ============ HERO STORY (SPOTLIGHT) ============ -->
+<section class="band band-cream" style="overflow:hidden">
+  <Svg08 class="botan" aria-hidden="true" />
+  <div class="wrap">
+    <div class="spotlight reveal">
+      <p class="eyebrow">When you're worried about your milk</p>
+      <p class="spotlight-quote">"My milk came in so much that I ended up donating and feeding four other babies. Any American non-Chinese mamas reading this: don't hesitate — this is the stuff that really nourishes you."</p>
+      <p class="spotlight-by">Michelle W. · Los Angeles, CA</p>
+      <p class="spotlight-context">First-time mom · no family nearby · frozen nationwide delivery</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- THREE FEATURED STORIES -->
-  <section class="band band-paper">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Three mothers, three reasons</p>
-        <h2>Why they chose it</h2>
-      </div>
-      <div class="feature-list">
-        <div class="feature reveal">
-          <p class="label">When you grew up with it</p>
-          <h3>
-            She was raised on Taiwanese food — and wanted real recovery
-            nutrition, not guesswork.
-          </h3>
-          <p class="narrative">
-            Erin grew up believing food could heal. Her husband is a wonderful
-            cook, but after birth they wanted the real thing. She started with
-            two weeks and extended to a full thirty days.
-          </p>
-          <blockquote>
-            “The food felt nourishing, filling, and protein-forward — cooked the
-            day of and delivered to our door. If we’d tried to cook these
-            recipes ourselves, we’d have spent more on ingredients, no doubt.”
-          </blockquote>
-          <p class="by">Erin C. · Pasadena, CA</p>
-        </div>
-
-        <div class="feature reveal">
-          <p class="label">When you want it to actually work</p>
-          <h3>
-            She wasn’t looking for comfort food. She was looking for results.
-          </h3>
-          <p class="narrative">
-            Mary researched postpartum recovery carefully and wanted
-            nutrient-dense meals that would help her body rebuild. What
-            surprised her was how quickly she bounced back.
-          </p>
-          <blockquote>
-            “The meals were thought out and very nutrient-dense. It definitely
-            helped my healing — I was able to run a half marathon two months
-            postpartum.”
-          </blockquote>
-          <p class="by">Mary V. · Newport Beach, CA</p>
-        </div>
-
-        <div class="feature reveal">
-          <p class="label">When someone gives it to you</p>
-          <h3>
-            Her in-laws gave her 28 days of meals. It turned out to be the gift
-            she didn’t know she needed.
-          </h3>
-          <p class="narrative">
-            Briana lives in Chicago, far from family. Her in-laws ordered a
-            month of meals. She worried the flavors would feel too herbal and
-            unfamiliar — and then the first delivery arrived.
-          </p>
-          <blockquote>
-            “At first I worried the flavors would be too herbal, but it was like
-            homemade comfort food from a traditional Chinese restaurant — not
-            takeout. The gift I didn’t realize I needed.”
-          </blockquote>
-          <p class="by">Briana L. · Chicago, IL</p>
-        </div>
-      </div>
+<!-- ============ THREE FEATURED STORIES ============ -->
+<section class="band band-paper">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Three mothers, three reasons</p>
+      <h2>Why they chose it</h2>
     </div>
-  </section>
+    <div class="feature-list">
 
-  <!-- WORRY GRID -->
-  <section class="band band-cream">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Every worry, answered</p>
-        <h2>Whatever’s giving you pause</h2>
-        <p>
-          Chances are another mother felt exactly the same — and told the story
-          better than we could.
-        </p>
+      <!-- Cultural reconnector -->
+      <div class="feature reveal">
+        <p class="label">When you grew up with it</p>
+        <h3>She was raised on Taiwanese food — and wanted real recovery nutrition, not guesswork.</h3>
+        <p class="narrative">Erin grew up believing food could heal. Her husband is a wonderful cook, but after birth they wanted the real thing. She started with two weeks and extended to a full thirty days.</p>
+        <blockquote>"The food felt nourishing, filling, and protein-forward — cooked the day of and delivered to our door. If we'd tried to cook these recipes ourselves, we'd have spent more on ingredients, no doubt."</blockquote>
+        <p class="by">Erin C. · Pasadena, CA</p>
       </div>
-      <div class="worry-grid">
-        <div class="worry-card reveal">
-          <p class="worry">“Will it even reach me out of state?”</p>
-          <p class="q">
-            “I live in Seattle, so I did a lot of research on Chinese postpartum
-            traditions. The team was so kind, helping me figure out exactly what
-            I needed. The food was hearty and nourishing.”
-          </p>
-          <p class="by">Alexia R. · Seattle, WA</p>
-        </div>
 
-        <div class="worry-card reveal">
-          <p class="worry">“Does frozen shipping ruin the food?”</p>
-          <p class="q">
-            “The food was good, with ample portions and excellent packaging. Now
-            I’m expecting my second and subscribed to their frozen postpartum
-            meal again.”
-          </p>
-          <p class="by">Veronica C. · Baltimore, MD</p>
-        </div>
-
-        <div class="worry-card reveal">
-          <p class="worry">“I’m not Chinese — is this for me?”</p>
-          <p class="q">
-            “I am NOT a traditional Chinese woman. I never liked herbal soup or
-            traditional Chinese foods… but I was so glad I gave it a try.”
-          </p>
-          <p class="by">Nancy Q. · Alhambra, CA</p>
-        </div>
-
-        <div class="worry-card reveal">
-          <p class="worry">“Won’t it just taste bland?”</p>
-          <p class="q">
-            “The food was not as bland as I thought it would be, and was
-            actually seasoned enough.”
-          </p>
-          <p class="by">Maria V. · Temple City, CA</p>
-          <p class="disclosure">
-            She shared this after a complimentary tasting event.
-          </p>
-        </div>
-
-        <div class="worry-card reveal">
-          <p class="worry">“Will my husband actually be into it?”</p>
-          <p class="q">
-            “Did a tasting with my husband and fell in love with the food right
-            away. Portions were big enough to feed both of us most days.”
-          </p>
-          <p class="by">Maria S. · Whittier, CA</p>
-          <p class="disclosure">
-            She shared this after a complimentary tasting event.
-          </p>
-        </div>
-
-        <div class="worry-card reveal">
-          <p class="worry">“Is this only for postpartum?”</p>
-          <p class="q">
-            “Ever since my postpartum experience, I held onto their number. I
-            reached out again for post-surgical meals. Which other service
-            actually cares about your well-being?”
-          </p>
-          <p class="by">Caroline P. · Buena Park, CA</p>
-        </div>
+      <!-- Outcome seeker -->
+      <div class="feature reveal">
+        <p class="label">When you want it to actually work</p>
+        <h3>She wasn't looking for comfort food. She was looking for results.</h3>
+        <p class="narrative">Mary researched postpartum recovery carefully and wanted nutrient-dense meals that would help her body rebuild. What surprised her was how quickly she bounced back.</p>
+        <blockquote>"The meals were thought out and very nutrient-dense. It definitely helped my healing — I was able to run a half marathon two months postpartum."</blockquote>
+        <p class="by">Mary V. · Newport Beach, CA</p>
       </div>
+
+      <!-- Gift / overwhelmed -->
+      <div class="feature reveal">
+        <p class="label">When someone gives it to you</p>
+        <h3>Her in-laws gave her 28 days of meals. It turned out to be the gift she didn't know she needed.</h3>
+        <p class="narrative">Briana lives in Chicago, far from family. Her in-laws ordered a month of meals. She worried the flavors would feel too herbal and unfamiliar — and then the first delivery arrived.</p>
+        <blockquote>"At first I worried the flavors would be too herbal, but it was like homemade comfort food from a traditional Chinese restaurant — not takeout. The gift I didn't realize I needed."</blockquote>
+        <p class="by">Briana L. · Chicago, IL</p>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- QUOTE WALL -->
-  <section class="band band-paper">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">In their words</p>
-        <h2>Said plainly</h2>
+<!-- ============ OBJECTION / WORRY GRID ============ -->
+<section class="band band-cream">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Every worry, answered</p>
+      <h2>Whatever's giving you pause</h2>
+      <p>Chances are another mother felt exactly the same — and told the story better than we could.</p>
+    </div>
+    <div class="worry-grid">
+
+      <div class="worry-card reveal">
+        <p class="worry">"Will it even reach me out of state?"</p>
+        <p class="q">"I live in Seattle, so I did a lot of research on Chinese postpartum traditions. Patricia was so kind, helping me figure out exactly what I needed. The food was hearty and nourishing."</p>
+        <p class="by">Alexia R. · Seattle, WA</p>
       </div>
-      <div class="quote-wall">
-        <div class="qw-item reveal">
-          <div class="mark">“</div>
-          <p class="q">
-            Take care of your body with great food, and take care of your soul
-            with a team that genuinely cares for you.
-          </p>
-          <p class="by">Jessica T. · Pasadena, CA</p>
+
+      <div class="worry-card reveal">
+        <p class="worry">"Does frozen shipping ruin the food?"</p>
+        <p class="q">"The food was good, with ample portions and excellent packaging. Now I'm expecting my second and subscribed to their frozen postpartum meal again."</p>
+        <p class="by">Veronica C. · Baltimore, MD</p>
+      </div>
+
+      <div class="worry-card reveal">
+        <p class="worry">"I'm not Chinese — is this for me?"</p>
+        <p class="q">"I am NOT a traditional Chinese woman. I never liked herbal soup or traditional Chinese foods… but I was so glad I gave it a try."</p>
+        <p class="by">Nancy Q. · Alhambra, CA</p>
+      </div>
+
+      <div class="worry-card reveal">
+        <p class="worry">"Won't it just taste bland?"</p>
+        <p class="q">"The food was not as bland as I thought it would be, and was actually seasoned enough."</p>
+        <p class="by">Maria V. · Temple City, CA</p>
+        <!-- COMPLIANCE: confirmed complimentary-tasting review -->
+        <p class="disclosure">She shared this after a complimentary tasting event.</p>
+      </div>
+
+      <div class="worry-card reveal">
+        <p class="worry">"Will my husband actually be into it?"</p>
+        <p class="q">"Did a tasting with my husband and fell in love with the food right away. Portions were big enough to feed both of us most days."</p>
+        <p class="by">Maria S. · Whittier, CA</p>
+        <!-- COMPLIANCE: confirmed complimentary-tasting review -->
+        <p class="disclosure">She shared this after a complimentary tasting event.</p>
+      </div>
+
+      <div class="worry-card reveal">
+        <p class="worry">"Is this only for postpartum?"</p>
+        <p class="q">"Ever since my postpartum experience with Patricia, I held onto her number. I reached out again for post-surgical meals. Which other rep actually cares about your well-being?"</p>
+        <p class="by">Caroline P. · Buena Park, CA</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUOTE WALL ============ -->
+<section class="band band-paper">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">In their words</p>
+      <h2>Said plainly</h2>
+    </div>
+    <div class="quote-wall">
+
+      <div class="qw-item reveal">
+        <div class="mark">"</div>
+        <p class="q">Take care of your body with great food, and take care of your soul with Patricia, who cares for you.</p>
+        <p class="by">Jessica T. · Pasadena, CA</p>
+      </div>
+
+      <div class="qw-item reveal">
+        <div class="mark">"</div>
+        <p class="q">Low salt, low oil, and perfect for a recovering mommy.</p>
+        <p class="by">Jason A. · San Leandro, CA</p>
+        <!-- COMPLIANCE: VERIFY before launch. If this review followed a complimentary
+             tasting, uncomment the line below:
+        <p class="disclosure">He shared this after a complimentary tasting event.</p>
+        -->
+      </div>
+
+      <div class="qw-item reveal">
+        <div class="mark">"</div>
+        <p class="q">A point of contact who makes the whole process simple is one of the biggest reasons I'm a returning customer.</p>
+        <p class="by">Stephanie C. · Orange County, CA</p>
+      </div>
+
+      <div class="qw-item reveal">
+        <div class="mark">"</div>
+        <p class="q">One of the best investments I made for postpartum life.</p>
+        <p class="by">Katherine L. · Azusa, CA</p>
+      </div>
+
+      <div class="qw-item reveal">
+        <div class="mark">"</div>
+        <p class="q">The portions are huge — I always have leftovers to make my husband a lunch box.</p>
+        <p class="by">Athena C. · Taipei</p>
+      </div>
+
+      <div class="qw-item reveal">
+        <div class="mark">"</div>
+        <p class="q">Ten stars for JingMommy.</p>
+        <p class="by">Michelle W. · Los Angeles, CA</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ HONEST VOICE ============ -->
+<section class="band band-cream">
+  <div class="wrap">
+    <div class="honest">
+      <div class="section-head reveal" style="margin-bottom:0">
+        <p class="eyebrow">The honest truth</p>
+        <h2>We don't only show the raves</h2>
+        <p>These mothers told it straight — and the honest reviews are the ones worth trusting.</p>
+      </div>
+      <div class="honest-pair">
+        <div class="honest-card reveal">
+          <p class="q">"Postpartum is something I take seriously, and JingMommy made my first three weeks with a newborn just a little more manageable. It's pretty pricey — but I'd recommend it if you have the resources."</p>
+          <p class="by">Erin T. · Irvine, CA</p>
         </div>
-        <div class="qw-item reveal">
-          <div class="mark">“</div>
-          <p class="q">
-            Low salt, low oil, and perfect for a recovering mommy.
-          </p>
-          <p class="by">Jason A. · San Leandro, CA</p>
-        </div>
-        <div class="qw-item reveal">
-          <div class="mark">“</div>
-          <p class="q">
-            A point of contact who makes the whole process simple is one of the
-            biggest reasons I’m a returning customer.
-          </p>
-          <p class="by">Stephanie C. · Orange County, CA</p>
-        </div>
-        <div class="qw-item reveal">
-          <div class="mark">“</div>
-          <p class="q">
-            One of the best investments I made for postpartum life.
-          </p>
+        <div class="honest-card reveal">
+          <p class="q">"It's not the fanciest-tasting food — it's nutritious. But when you do the math, plus not having to worry about nourishing yourself, the money is well spent."</p>
           <p class="by">Katherine L. · Azusa, CA</p>
         </div>
-        <div class="qw-item reveal">
-          <div class="mark">“</div>
-          <p class="q">
-            The portions are huge — I always have leftovers to make my husband a
-            lunch box.
-          </p>
-          <p class="by">Athena C. · Taipei</p>
-        </div>
-        <div class="qw-item reveal">
-          <div class="mark">“</div>
-          <p class="q">Ten stars for JingMommy.</p>
-          <p class="by">Michelle W. · Los Angeles, CA</p>
-        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- HONEST VOICE -->
-  <section class="band band-cream">
-    <div class="wrap">
-      <div class="honest">
-        <div class="section-head reveal" style="margin-bottom:0">
-          <p class="eyebrow">The honest truth</p>
-          <h2>We don’t only show the raves</h2>
-          <p>
-            These mothers told it straight — and the honest reviews are the ones
-            worth trusting.
-          </p>
-        </div>
-        <div class="honest-pair">
-          <div class="honest-card reveal">
-            <p class="q">
-              “Postpartum is something I take seriously, and JingMommy made my
-              first three weeks with a newborn just a little more manageable.
-              It’s pretty pricey — but I’d recommend it if you have the
-              resources.”
-            </p>
-            <p class="by">Erin T. · Irvine, CA</p>
-          </div>
-          <div class="honest-card reveal">
-            <p class="q">
-              “It’s not the fanciest-tasting food — it’s nutritious. But when
-              you do the math, plus not having to worry about nourishing
-              yourself, the money is well spent.”
-            </p>
-            <p class="by">Katherine L. · Azusa, CA</p>
-          </div>
-        </div>
-      </div>
+<!-- ============ TASTE CTA ============ -->
+<section class="taste" id="taste">
+  <Svg09 class="botan" aria-hidden="true" />
+  <Svg10 class="botan" aria-hidden="true" />
+  <div class="taste-inner reveal">
+    <p class="eyebrow">Read enough?</p>
+    <h2>Taste it for yourself.</h2>
+    <p>Thousands of mothers tried JingMommy before they ordered — most signed up the same week. Join a free local tasting, or have a full sample day delivered: {usd(products.local_classic_sample_1d.price)} fresh in SoCal, {usd(products.frozen_classic_sample_8item.price)} frozen nationwide.</p>
+    <div class="hero-cta">
+      <a href={route("/contact", locale) + "#reach-us"} class="btn btn-primary">Reserve a tasting</a>
+      <a href={route("/sample", locale)} class="btn btn-ghost">Order a sample — {usd(products.local_classic_sample_1d.price)}</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <CtaBand
-    eyebrow="Read enough?"
-    heading="Taste it for yourself."
-    body={`Thousands of mothers tried JingMommy before they ordered — most signed up the same week. Join a free local tasting, or have a full sample day delivered: ${usd(products.local_classic_sample_1d.price)} fresh in SoCal, ${usd(products.frozen_classic_sample_8item.price)} frozen nationwide.`}
-    buttons={[
-      {
-        label: "Reserve a tasting",
-        href: tastingReserveUrl('en'),
-        variant: "primary",
-      },
-      {
-        label: `Order a sample — ${usd(products.local_classic_sample_1d.price)}`,
-        href: orderUrl('sample_meals', 'en'),
-        variant: "ghost",
-      },
-    ]}
-  />
+<!-- ============ FOOTER ============ -->
 
-  <Footer />
-</Base>
-
-<style>
-  /* Page 5 — Real Stories (scoped, page-specific sections) */
-  .spotlight {
-    max-width: 840px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-    z-index: 3;
-  }
-  .spotlight .eyebrow {
-    margin-bottom: 22px;
-  }
-  .spotlight-quote {
-    font-family: "Cormorant Garamond", serif;
-    font-weight: 500;
-    font-size: 36px;
-    line-height: 1.32;
-    color: var(--ink);
-    margin-bottom: 30px;
-    letter-spacing: 0.005em;
-  }
-  .spotlight-by {
-    font-family: "Jost", sans-serif;
-    font-size: 13px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--accent-deep);
-  }
-  .spotlight-context {
-    font-size: 16px;
-    color: var(--muted);
-    font-style: italic;
-    margin-top: 8px;
-  }
-
-  .feature-list {
-    max-width: 820px;
-    margin: 0 auto;
-  }
-  .feature {
-    padding: 52px 0;
-    border-top: 1px solid var(--line);
-  }
-  .feature:first-child {
-    border-top: none;
-    padding-top: 0;
-  }
-  .feature:last-child {
-    padding-bottom: 0;
-  }
-  .feature .label {
-    font-family: "Jost", sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--accent-deep);
-    margin-bottom: 16px;
-  }
-  .feature h3 {
-    font-size: 30px;
-    line-height: 1.22;
-    margin-bottom: 18px;
-    max-width: 620px;
-  }
-  .feature .narrative {
-    font-size: 18px;
-    color: var(--ink-soft);
-    margin-bottom: 24px;
-    max-width: 680px;
-  }
-  .feature blockquote {
-    font-family: "Cormorant Garamond", serif;
-    font-style: italic;
-    font-size: 24px;
-    line-height: 1.4;
-    color: var(--accent-deep);
-    border-left: 2px solid var(--accent);
-    padding-left: 24px;
-    margin: 0 0 18px;
-  }
-  .by {
-    font-family: "Jost", sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent-deep);
-  }
-  .feature .by {
-    color: var(--ink);
-    margin-bottom: 2px;
-  }
-  .disclosure {
-    font-family: "EB Garamond", serif;
-    font-style: italic;
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 6px;
-  }
-
-  .worry-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    max-width: 1080px;
-    margin: 0 auto;
-  }
-  .worry-card {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    padding: 32px 28px;
-    display: flex;
-    flex-direction: column;
-  }
-  .worry-card .worry {
-    font-family: "Cormorant Garamond", serif;
-    font-style: italic;
-    font-size: 22px;
-    line-height: 1.3;
-    color: var(--ink);
-    margin-bottom: 16px;
-  }
-  .worry-card .q {
-    font-family: "EB Garamond", serif;
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--ink-soft);
-    margin-bottom: 18px;
-    flex: 1;
-  }
-  .worry-card .by {
-    color: var(--accent-deep);
-    margin-bottom: 0;
-  }
-
-  .quote-wall {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-    max-width: 1080px;
-    margin: 0 auto;
-  }
-  .qw-item {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    padding: 28px 26px;
-    position: relative;
-  }
-  .qw-item .mark {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 44px;
-    line-height: 0.6;
-    color: var(--accent);
-    opacity: 0.5;
-    height: 22px;
-  }
-  .qw-item .q {
-    font-family: "Cormorant Garamond", serif;
-    font-style: italic;
-    font-size: 20px;
-    line-height: 1.4;
-    color: var(--ink);
-    margin: 6px 0 16px;
-  }
-  .qw-item .by {
-    color: var(--accent-deep);
-  }
-
-  .honest {
-    max-width: 820px;
-    margin: 0 auto;
-  }
-  .honest-pair {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
-    margin-top: 48px;
-  }
-  .honest-card {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    padding: 34px 30px;
-  }
-  .honest-card .q {
-    font-family: "EB Garamond", serif;
-    font-style: italic;
-    font-size: 17.5px;
-    line-height: 1.6;
-    color: var(--ink-soft);
-    margin-bottom: 18px;
-  }
-  .honest-card .by {
-    color: var(--accent-deep);
-  }
-
-  @media (max-width: 900px) {
-    .spotlight-quote {
-      font-size: 28px;
-    }
-    .worry-grid,
-    .quote-wall,
-    .honest-pair {
-      grid-template-columns: 1fr;
-      gap: 18px;
-    }
-    .feature h3 {
-      font-size: 26px;
-    }
-  }
-</style>
+<script is:inline>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e);});
+  document.querySelectorAll('#nav a').forEach(function(a){
+    a.addEventListener('click',function(){document.getElementById('nav').classList.remove('open');});
+  });
+})();
+</script>
+</Page>

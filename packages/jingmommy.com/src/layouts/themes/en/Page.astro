@@ -1,0 +1,37 @@
+---
+/*
+  Standard en page layout: the html shell (Base) + the shared chrome that every
+  content page carries — the Google Fonts <link>s, the top bar, and the footer.
+  Pages only supply their <style>, body, and any inline <script>; title /
+  description / jsonLd pass straight through to Base → Head.
+
+  (Base stays chrome-free so a bare page like the 404 can use it directly.)
+*/
+import Base from '@/layouts/themes/en/Base.astro'
+import TopBar from '@/components/themes/en/TopBar.astro'
+import Footer from '@/components/themes/en/Footer.astro'
+
+interface Props {
+  title: string
+  description?: string
+  /** JSON-LD structured-data objects to inline in <head>. */
+  jsonLd?: unknown[]
+}
+
+const { title, description, jsonLd } = Astro.props
+---
+
+<Base title={title} description={description} jsonLd={jsonLd}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </Fragment>
+
+  <TopBar />
+  <slot />
+  <Footer />
+</Base>

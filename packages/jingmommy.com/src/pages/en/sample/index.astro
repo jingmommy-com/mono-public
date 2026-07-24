@@ -1,20 +1,19 @@
 ---
-import Base from "@/layouts/themes/en/Base.astro"
-import TopBar from "@/components/themes/en/TopBar.astro"
-import Footer from "@/components/themes/en/Footer.astro"
-import PageHero from "@/components/themes/en/PageHero.astro"
-import BotanSketch from "@/components/themes/en/BotanSketch.astro"
-import Botanical from "@/components/themes/en/Botanical.astro"
-import enBrand from '@/i18n/en/brand.ts'
-import { phones, products } from '@/config/index.ts'
-import { route, orderUrl, phoneDisplay, usd } from '@/utils/index.ts'
-import { tastingReserveUrl } from '@/utils/index.ts'
+import Page from '@/layouts/themes/en/Page.astro'
+import Svg17 from '@/assets/en/svg/en-svg-17.svg'
+import Svg18 from '@/assets/en/svg/en-svg-18.svg'
+import Svg46 from '@/assets/en/svg/en-svg-46.svg'
+import Svg47 from '@/assets/en/svg/en-svg-47.svg'
+import Svg48 from '@/assets/en/svg/en-svg-48.svg'
+import Svg49 from '@/assets/en/svg/en-svg-49.svg'
+import { products, phones } from '@/config/index.ts'
+import { usd, phoneDisplay, route, orderUrl, getPathLocale } from '@/utils/index.ts'
 
+const locale = getPathLocale(Astro.url.pathname)
 const title = "Try a Taste — Free Tasting & Sample Meals — JingMommy"
 const description =
   `Taste authentic Chinese postpartum meals before you commit. Join a free tasting event in Southern California, or order a full sample day — ${usd(products.local_classic_sample_1d.price)} fresh local, ${usd(products.frozen_classic_sample_8item.price)} frozen nationwide. Gift options too.`
 // Free tasting-party reservation, pre-filled with the next active date.
-const tastingUrl = tastingReserveUrl('en')
 
 const jsonLd = [
   {
@@ -41,569 +40,385 @@ const jsonLd = [
 ]
 ---
 
-<Base title={title} description={description} jsonLd={jsonLd}>
-  <TopBar active={route("/sample", 'en')} />
+<Page title={title} description={description} jsonLd={jsonLd}>
 
-  <PageHero
-    eyebrow="Not sure yet?"
-    title="Taste before<br />you commit."
-    lede="The food is the best argument we have. So before you choose a plan, have a taste — at a free event near you, or delivered straight to your door."
-  >
-    <div class="hero-cta" style="margin-top:12px">
-      <a href={tastingUrl} class="btn btn-primary">Reserve a tasting</a>
-      <a href={orderUrl('sample_meals', 'en')} class="btn btn-ghost">Order a sample — from {usd(products.local_classic_sample_1d.price)}</a>
+  <style is:global>
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'EB Garamond','Georgia',serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.7;
+  font-size:18px;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+.display{font-family:'Cormorant Garamond','Georgia',serif}
+.sans{font-family:'Jost','Helvetica Neue',sans-serif}
+
+/* ---- layout ---- */
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+.narrow{max-width:760px;margin:0 auto;padding:0 32px}
+
+/* ---- eyebrow ---- */
+.eyebrow{
+  font-family:'Jost',sans-serif;
+  font-size:12px;font-weight:400;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:var(--accent-deep);
+  margin-bottom:20px;
+}
+
+/* ---- headings ---- */
+h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:74px;line-height:1.04;letter-spacing:.005em;color:var(--ink)}
+h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:48px;line-height:1.1;color:var(--ink)}
+h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:30px;line-height:1.2;color:var(--ink)}
+p{margin-bottom:18px}
+p:last-child{margin-bottom:0}
+
+/* ---- top bar ---- */
+
+
+
+
+
+
+
+
+
+
+
+/* ---- botanical corners ---- */
+.botan{position:absolute;pointer-events:none;opacity:.92;z-index:1}
+
+/* ---- anchor offset for sticky nav ---- */
+section[id]{scroll-margin-top:78px}
+
+/* ---- buttons ---- */
+.btn{font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;padding:16px 32px;border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;transition:all .25s;border:1px solid transparent}
+.btn-primary{background:var(--accent-deep);color:var(--paper)}
+.btn-primary:hover{background:var(--ink);transform:translateY(-1px)}
+.btn-ghost{background:transparent;border-color:var(--accent-deep);color:var(--accent-deep)}
+.btn-ghost:hover{background:var(--accent-deep);color:var(--paper)}
+
+/* ---- section base ---- */
+section{position:relative}
+.band{padding:104px 0}
+.band-cream{background:var(--cream)}
+.band-paper{background:var(--paper)}
+.band-deep{background:var(--cream-deep)}
+.center{text-align:center}
+.section-head{text-align:center;max-width:680px;margin:0 auto 56px}
+.section-head .eyebrow{margin-bottom:18px}
+.section-head p{font-size:19px;color:var(--muted);margin-top:18px}
+
+/* ---- interior hero ---- */
+.t-hero{position:relative;overflow:hidden;padding:84px 0 96px;background:linear-gradient(180deg,var(--paper) 0%,var(--cream) 100%)}
+.t-hero-inner{position:relative;z-index:3;max-width:760px;margin:0 auto;text-align:center;padding:0 32px}
+.t-hero h1{margin-bottom:24px}
+.t-hero .lede{font-size:21px;color:var(--ink-soft);max-width:600px;margin:0 auto 34px}
+.t-hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.t-hero-botan-tl{top:-20px;left:-30px;width:280px}
+.t-hero-botan-br{bottom:-40px;right:-30px;width:300px}
+
+/* ---- trust line ---- */
+.trustline{padding:50px 0;background:var(--cream);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);text-align:center}
+.trustline p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:25px;line-height:1.4;color:var(--accent-deep);max-width:760px;margin:0 auto}
+
+/* ---- two ways to taste ---- */
+.ways{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1000px;margin:0 auto;align-items:stretch}
+.way{background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:42px 40px;display:flex;flex-direction:column;position:relative}
+.way-tag{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:16px}
+.way h3{font-size:27px;margin-bottom:14px}
+.way>p{font-size:16.5px;color:var(--ink-soft);margin-bottom:20px}
+.way .btn{margin-top:auto;align-self:flex-start}
+
+/* sample price rows inside the home-sample card */
+.sample{border-top:1px solid var(--line);padding:20px 0}
+.sample:last-of-type{border-bottom:1px solid var(--line);margin-bottom:24px}
+.sample-place{font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.sample-price{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--ink);margin-bottom:6px}
+.sample-price span{font-size:15px;color:var(--accent-deep);font-style:italic}
+.sample-desc{font-size:14.5px;color:var(--muted);line-height:1.55}
+
+/* either/or note */
+.either-note{max-width:1000px;margin:28px auto 0;text-align:center;font-size:15px;color:var(--muted);font-style:italic}
+
+/* ---- reassurance cards ---- */
+.worry-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1060px;margin:0 auto}
+.worry-card{background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:30px 26px;text-align:left;display:flex;flex-direction:column}
+.worry-card .worry{font-family:'Cormorant Garamond',serif;font-size:21px;line-height:1.3;color:var(--ink);margin-bottom:14px}
+.worry-card .q{font-family:'EB Garamond',serif;font-style:italic;font-size:16px;line-height:1.55;color:var(--ink-soft);margin-bottom:16px}
+.worry-card .by{font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:8px}
+.worry-card .disclosure{font-size:13px;color:var(--muted);font-style:italic;margin-top:auto;padding-top:6px}
+
+/* ---- botanical divider ---- */
+.divider{position:relative;height:120px;background:var(--paper)}
+.divider svg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:200px;opacity:.5}
+
+/* ---- gift zone ---- */
+.gift{position:relative;overflow:hidden;background:var(--cream-deep);padding:104px 0}
+.gift-head{text-align:center;max-width:680px;margin:0 auto 52px}
+.gift-head .eyebrow{color:var(--rose-deep);margin-bottom:18px}
+.gift-head h2{margin-bottom:22px}
+.gift-head p{font-size:19px;color:var(--ink-soft)}
+.gift-lead{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:23px;line-height:1.4;color:var(--accent-deep);max-width:660px;margin:0 auto 0;text-align:center}
+.gift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:980px;margin:52px auto 0}
+.gift-opt{background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:30px 26px;text-align:left}
+.gift-opt h3{font-size:22px;margin-bottom:10px}
+.gift-opt p{font-size:15.5px;color:var(--muted);line-height:1.6}
+.gift-reassure{max-width:720px;margin:44px auto 0;text-align:center;font-size:17px;color:var(--ink-soft)}
+.gift-quote{max-width:760px;margin:52px auto 0;text-align:center;border-top:1px solid var(--line);padding-top:44px}
+.gift-quote .q{font-family:'Cormorant Garamond',serif;font-weight:500;font-style:italic;font-size:27px;line-height:1.36;color:var(--ink);margin-bottom:20px}
+.gift-quote .by{font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep)}
+.gift-cta{text-align:center;margin-top:40px}
+.gift-cta .phone{display:block;margin-top:16px;font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.06em;color:var(--muted)}
+.gift-cta .phone a{color:var(--accent-deep);text-decoration:none}
+
+/* ---- final close band ---- */
+.close{position:relative;overflow:hidden;padding:104px 0;background:var(--accent-deep);color:var(--paper);text-align:center}
+.close-inner{position:relative;z-index:3;max-width:680px;margin:0 auto;padding:0 32px}
+.close .eyebrow{color:#E8D5C2}
+.close h2{color:var(--paper);margin-bottom:20px}
+.close p{font-size:19px;color:#F0E4D8;margin-bottom:34px}
+.close .btn-primary{background:var(--paper);color:var(--accent-deep)}
+.close .btn-primary:hover{background:var(--cream);color:var(--ink)}
+.close .btn-ghost{border-color:#E8D5C2;color:#F0E4D8}
+.close .btn-ghost:hover{background:rgba(255,255,255,.12);color:#fff}
+.close .gift-link{display:block;margin-top:26px;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#E8D5C2;text-decoration:none;border-bottom:1px solid rgba(232,213,194,.5);padding-bottom:3px;width:fit-content;margin-left:auto;margin-right:auto;transition:color .2s}
+.close .gift-link:hover{color:#fff}
+
+/* ---- footer ---- */
+
+
+
+
+
+
+
+
+
+
+
+/* ---- reveal animation ---- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---- responsive ---- */
+@media(max-width:900px){
+  h1{font-size:52px}
+  h2{font-size:38px}
+  .nav{display:none}
+  .nav.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--paper);padding:24px 32px;gap:20px;border-bottom:1px solid var(--line);align-items:flex-start}
+  .menu-btn{display:block}
+  .ways{grid-template-columns:1fr;gap:18px}
+  .worry-grid{grid-template-columns:1fr;gap:16px}
+  .gift-grid{grid-template-columns:1fr;gap:16px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .band,.gift,.close{padding:72px 0}
+  .t-hero{padding:64px 0 72px}
+  .t-hero-botan-tl{width:170px}
+  .t-hero-botan-br{width:185px}
+  .trustline p{font-size:21px}
+}
+@media(max-width:560px){
+  h1{font-size:42px}
+  .t-hero .lede{font-size:18px}
+  .footer-grid{grid-template-columns:1fr}
+  .wrap,.narrow{padding:0 22px}
+  .way{padding:34px 28px}
+}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+  </style>
+
+<!-- ============ TOP BAR ============ -->
+
+<!-- ============ HERO (TASTE — PRIMARY) ============ -->
+<section class="t-hero">
+  <Svg17 class="botan t-hero-botan-tl" aria-hidden="true" />
+  <Svg18 class="botan t-hero-botan-br" aria-hidden="true" />
+
+  <div class="t-hero-inner">
+    <p class="eyebrow reveal">Not sure yet?</p>
+    <h1 class="reveal">Taste before<br>you commit.</h1>
+    <p class="lede reveal">The food is the best argument we have. So before you choose a plan, have a taste — at a free event near you, or delivered straight to your door.</p>
+    <div class="t-hero-cta reveal">
+      <a href={route("/contact", locale) + "#reach-us"} class="btn btn-primary">Reserve a tasting</a>
+      <a href={orderUrl('sample_meals', locale)} class="btn btn-ghost">Order a sample — from {usd(products.local_classic_sample_1d.price)}</a>
     </div>
-  </PageHero>
-
-  <!-- TRUST LINE -->
-  <section class="trustline reveal">
-    <div class="wrap">
-      <p>
-        Time and again, mothers taste JingMommy before they order — and most
-        sign up the same week.
-      </p>
-    </div>
-  </section>
-
-  <!-- TWO WAYS TO TASTE -->
-  <section class="band band-paper">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Two ways to taste</p>
-        <h2>Find out for yourself.</h2>
-        <p>
-          Come to a free event, or have a full day of meals delivered. Whichever
-          fits your week.
-        </p>
-      </div>
-      <div class="ways">
-        <div class="way reveal">
-          <p class="way-tag">Option 1 · Free · At our kitchen</p>
-          <h3>A free in-person tasting event</h3>
-          <p>
-            Join us at our kitchen in Walnut, CA for a free postpartum meal
-            tasting. You’ll try a full spread of our most popular dishes —
-            soups, proteins, vegetables, a healing drink, and dessert. Bring one
-            guest — your partner, your mom, or whoever’s helping you through
-            this.
-          </p>
-          <p
-            style="font-size:15px;color:var(--muted);font-style:italic;margin-bottom:24px"
-          >
-            Events are free, but spots fill quickly — registration is required.
-          </p>
-          <a href={tastingUrl} class="btn btn-primary">Reserve your spot</a>
-        </div>
-
-        <div class="way reveal">
-          <p class="way-tag">Option 2 · Delivered to you</p>
-          <h3>A full sample day at home</h3>
-          <p>
-            Can’t make it to an event? Order a complete sample day — breakfast,
-            lunch, dinner, and a healing drink or dessert soup.
-          </p>
-          <div class="sample">
-            <div class="sample-place">
-              Greater LA · Orange County · Inland Empire
-            </div>
-            <div class="sample-price">
-              {usd(products.local_classic_sample_1d.price)} <span>· fresh, local delivery</span>
-            </div>
-            <div class="sample-desc">
-              A full day of meals, delivered fresh to your door. Some areas
-              within these regions fall outside our route — check your ZIP when
-              you order.
-            </div>
-          </div>
-          <div class="sample">
-            <div class="sample-place">Continental US</div>
-            <div class="sample-price">
-              {usd(products.frozen_classic_sample_8item.price)} <span>· frozen, FedEx overnight</span>
-            </div>
-            <div class="sample-desc">
-              Individual items made from our real recipes, packed the same way
-              as the full plan. A true taste of what’s inside.
-            </div>
-          </div>
-          <a href={orderUrl('sample_meals', 'en')} class="btn btn-primary">Order a sample</a>
-        </div>
-      </div>
-      <p class="either-note reveal">
-        The free event and the {usd(products.local_classic_sample_1d.price)} local sample are two doors into the same
-        thing — choose whichever suits you, not both.
-      </p>
-    </div>
-  </section>
-
-  <!-- WHAT A TASTING CLEARS UP -->
-  <section class="band band-cream">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Before you worry</p>
-        <h2>What a taste tends to settle.</h2>
-        <p>
-          Most of the hesitation moms bring to that first bite turns out to be
-          the easy part.
-        </p>
-      </div>
-      <div class="worry-grid">
-        <div class="worry-card reveal">
-          <p class="worry">“Won’t it just taste bland?”</p>
-          <p class="q">
-            “The food was not as bland as I thought it would be, and was
-            actually seasoned enough.”
-          </p>
-          <p class="by">Maria V. · Temple City, CA</p>
-          <p class="disclosure">
-            She shared this after a complimentary tasting event.
-          </p>
-        </div>
-        <div class="worry-card reveal">
-          <p class="worry">“Will my husband actually be into it?”</p>
-          <p class="q">
-            “Did a tasting with my husband and fell in love with the food right
-            away. Portions were big enough to feed both of us most days.”
-          </p>
-          <p class="by">Maria S. · Whittier, CA</p>
-          <p class="disclosure">
-            She shared this after a complimentary tasting event.
-          </p>
-        </div>
-        <div class="worry-card reveal">
-          <p class="worry">“Is the real plan as good as the sample?”</p>
-          <p class="q">
-            “The actual food was better than the tasting box. Worth every penny.
-            You’ll benefit from both the food and the service.”
-          </p>
-          <p class="by">Tiffany T. · California</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BOTANICAL DIVIDER -->
-  <div class="divider" aria-hidden="true">
-    <svg viewBox="0 0 200 80" fill="none">
-      <path
-        d="M40 40 C70 20 90 40 100 40 C110 40 130 20 160 40"
-        stroke="#B47B5C"
-        stroke-width="1.5"
-        fill="none"
-        opacity="0.6"></path>
-      <circle cx="100" cy="40" r="9" fill="#D99FB0" opacity="0.8"></circle>
-      <circle cx="100" cy="40" r="3" fill="#E8C46A"></circle>
-      <path
-        d="M40 40 C34 34 26 36 24 44 C32 42 36 46 38 52 C42 44 50 44 56 48 C50 38 46 38 40 40Z"
-        fill="#6E7A5C"
-        opacity="0.5"></path>
-      <path
-        d="M160 40 C166 34 174 36 176 44 C168 42 164 46 162 52 C158 44 150 44 144 48 C150 38 154 38 160 40Z"
-        fill="#6E7A5C"
-        opacity="0.5"></path>
-    </svg>
   </div>
+</section>
 
-  <!-- GIFT ZONE -->
-  <section class="gift" id="gift">
-    <BotanSketch variant="br" class="gift-botan" opacity={0.4} />
-    <div class="wrap">
-      <div class="gift-head reveal">
-        <p class="eyebrow">For someone you love</p>
-        <h2>The most meaningful gift<br />you can give a new mother.</h2>
+<!-- ============ TRUST LINE ============ -->
+<section class="trustline reveal">
+  <div class="wrap">
+    <p>Time and again, mothers taste JingMommy before they order — and most sign up the same week.</p>
+  </div>
+</section>
+
+<!-- ============ TWO WAYS TO TASTE ============ -->
+<section class="band band-paper">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Two ways to taste</p>
+      <h2>Find out for yourself.</h2>
+      <p>Come to a free event, or have a full day of meals delivered. Whichever fits your week.</p>
+    </div>
+
+    <div class="ways">
+      <!-- Option 1 — Free local tasting event -->
+      <div class="way reveal">
+        <p class="way-tag">Option 1 · Free · At our kitchen</p>
+        <h3>A free in-person tasting event</h3>
+        <p>Join us at our kitchen in Walnut, CA for a free postpartum meal tasting. You'll try a full spread of our most popular dishes — soups, proteins, vegetables, a healing drink, and dessert. Bring one guest — your partner, your mom, or whoever's helping you through this.</p>
+        <p style="font-size:15px;color:var(--muted);font-style:italic;margin-bottom:24px">Events are free, but spots fill quickly — registration is required.</p>
+        <a href={route("/contact", locale) + "#reach-us"} class="btn btn-primary">Reserve your spot</a>
       </div>
-      <p class="gift-lead reveal">
-        You can’t take the night shifts. You can’t be there every day. But you
-        can make sure she eats — really eats — for the entire first month after
-        birth.
-      </p>
-      <div class="gift-grid">
-        <div class="gift-opt reveal">
-          <h3>A first week</h3>
-          <p>
-            One week of meals — a gentle introduction for a mom who is still
-            finding her footing in those early days.
-          </p>
+
+      <!-- Option 2 — Home sample delivery -->
+      <div class="way reveal">
+        <p class="way-tag">Option 2 · Delivered to you</p>
+        <h3>A full sample day at home</h3>
+        <p>Can't make it to an event? Order a complete sample day — breakfast, lunch, dinner, and a healing drink or dessert soup.</p>
+
+        <div class="sample">
+          <div class="sample-place">Greater LA · Orange County · Inland Empire</div>
+          <div class="sample-price">{usd(products.local_classic_sample_1d.price)} <span>· fresh, local delivery</span></div>
+          <div class="sample-desc">A full day of meals, delivered fresh to your door. Some areas within these regions fall outside our route — check your ZIP when you order.</div>
         </div>
-        <div class="gift-opt reveal">
-          <h3>The full month</h3>
-          <p>
-            A complete 30-day plan, arranged before her due date so it’s ready
-            the moment she comes home with the baby.
-          </p>
+        <div class="sample">
+          <div class="sample-place">Continental US</div>
+          <div class="sample-price">{usd(products.frozen_classic_sample_8item.price)} <span>· frozen, FedEx overnight</span></div>
+          <div class="sample-desc">Individual items made from our real recipes, packed the same way as the full plan. A true taste of what's inside.</div>
         </div>
-        <div class="gift-opt reveal">
-          <h3>Anywhere in the US</h3>
-          <p>
-            Frozen, shipped overnight via FedEx — so you can send real recovery
-            food even if she lives far from you, or far from us.
-          </p>
-        </div>
-      </div>
-      <p class="gift-reassure reveal">
-        Gift orders are available for any plan. We coordinate timing and dietary
-        preferences directly with her — you just tell us who she is and when
-        she’s due.
-      </p>
-      <div class="gift-quote reveal">
-        <p class="q">
-          “At first I worried the flavors would be too herbal, but it was like
-          homemade comfort food — not takeout. The gift I didn’t realize I
-          needed.”
-        </p>
-        <p class="by">
-          Briana L. · Chicago, IL — her in-laws gave her 28 days of meals
-        </p>
-      </div>
-      <div class="gift-cta reveal">
-        <a href={`tel:${phones.main}`} class="btn btn-primary"
-          >Contact us to arrange a gift</a
-        >
-        <span class="phone"
-          >Call or text <a href={`tel:${phones.main}`}>{phoneDisplay(phones.main)}</a> · {
-            enBrand.languages
-          }</span
-        >
+
+        <a href={orderUrl('sample_meals', locale)} class="btn btn-primary">Order a sample</a>
       </div>
     </div>
-  </section>
 
-  <!-- FINAL CLOSE -->
-  <section class="ctaband">
-    <Botanical variant="taste-tl" />
-    <Botanical variant="taste-br" />
-    <div class="ctaband-inner reveal">
-      <p class="eyebrow">Your first step</p>
-      <h2>Start with a taste.</h2>
-      <p>
-        No commitment, no pressure. Just one warm meal that tells you everything
-        you need to know.
-      </p>
-      <div class="hero-cta">
-        <a href={tastingUrl} class="btn btn-primary">Reserve a tasting</a>
-        <a href={orderUrl('sample_meals', 'en')} class="btn btn-ghost">Order a sample — from {usd(products.local_classic_sample_1d.price)}</a>
-      </div>
-      <a href="#gift" class="close-gift-link"
-        >Giving it to someone? Arrange a gift →</a
-      >
+    <p class="either-note reveal">The free event and the {usd(products.local_classic_sample_1d.price)} local sample are two doors into the same thing — choose whichever suits you, not both.</p>
+  </div>
+</section>
+
+<!-- ============ WHAT A TASTING CLEARS UP ============ -->
+<section class="band band-cream">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Before you worry</p>
+      <h2>What a taste tends to settle.</h2>
+      <p>Most of the hesitation moms bring to that first bite turns out to be the easy part.</p>
     </div>
-  </section>
+    <div class="worry-grid">
 
-  <Footer />
-</Base>
+      <div class="worry-card reveal">
+        <p class="worry">"Won't it just taste bland?"</p>
+        <p class="q">"The food was not as bland as I thought it would be, and was actually seasoned enough."</p>
+        <p class="by">Maria V. · Temple City, CA</p>
+        <!-- COMPLIANCE: confirmed complimentary-tasting review — disclosure required -->
+        <p class="disclosure">She shared this after a complimentary tasting event.</p>
+      </div>
 
-<style>
-  /* Page 6 — Try a Taste (scoped, page-specific sections) */
-  .trustline {
-    padding: 50px 0;
-    background: var(--cream);
-    border-top: 1px solid var(--line-soft);
-    border-bottom: 1px solid var(--line-soft);
-    text-align: center;
-  }
-  .trustline p {
-    font-family: "Cormorant Garamond", serif;
-    font-style: italic;
-    font-size: 25px;
-    line-height: 1.4;
-    color: var(--accent-deep);
-    max-width: 760px;
-    margin: 0 auto;
-  }
+      <div class="worry-card reveal">
+        <p class="worry">"Will my husband actually be into it?"</p>
+        <p class="q">"Did a tasting with my husband and fell in love with the food right away. Portions were big enough to feed both of us most days."</p>
+        <p class="by">Maria S. · Whittier, CA</p>
+        <!-- COMPLIANCE: confirmed complimentary-tasting review — disclosure required -->
+        <p class="disclosure">She shared this after a complimentary tasting event.</p>
+      </div>
 
-  .ways {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    max-width: 1000px;
-    margin: 0 auto;
-    align-items: stretch;
-  }
-  .way {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    padding: 42px 40px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-  }
-  .way-tag {
-    font-family: "Jost", sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--accent-deep);
-    margin-bottom: 16px;
-  }
-  .way h3 {
-    font-size: 27px;
-    margin-bottom: 14px;
-  }
-  .way > p {
-    font-size: 16.5px;
-    color: var(--ink-soft);
-    margin-bottom: 20px;
-  }
-  .way .btn {
-    margin-top: auto;
-    align-self: flex-start;
-  }
-  .sample {
-    border-top: 1px solid var(--line);
-    padding: 20px 0;
-  }
-  .sample:last-of-type {
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 24px;
-  }
-  .sample-place {
-    font-family: "Jost", sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 4px;
-  }
-  .sample-price {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 24px;
-    color: var(--ink);
-    margin-bottom: 6px;
-  }
-  .sample-price span {
-    font-size: 15px;
-    color: var(--accent-deep);
-    font-style: italic;
-  }
-  .sample-desc {
-    font-size: 14.5px;
-    color: var(--muted);
-    line-height: 1.55;
-  }
-  .either-note {
-    max-width: 1000px;
-    margin: 28px auto 0;
-    text-align: center;
-    font-size: 15px;
-    color: var(--muted);
-    font-style: italic;
-  }
+      <div class="worry-card reveal">
+        <p class="worry">"Is the real plan as good as the sample?"</p>
+        <p class="q">"The actual food was better than the tasting box. Worth every penny. You'll benefit from both the food and the service."</p>
+        <p class="by">Tiffany T. · California</p>
+      </div>
 
-  .worry-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    max-width: 1060px;
-    margin: 0 auto;
-  }
-  .worry-card {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    padding: 30px 26px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-  }
-  .worry-card .worry {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 21px;
-    line-height: 1.3;
-    color: var(--ink);
-    margin-bottom: 14px;
-  }
-  .worry-card .q {
-    font-family: "EB Garamond", serif;
-    font-style: italic;
-    font-size: 16px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    margin-bottom: 16px;
-  }
-  .worry-card .by {
-    font-family: "Jost", sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent-deep);
-    margin-bottom: 8px;
-  }
-  .worry-card .disclosure {
-    font-size: 13px;
-    color: var(--muted);
-    font-style: italic;
-    margin-top: auto;
-    padding-top: 6px;
-  }
+    </div>
+  </div>
+</section>
 
-  .divider {
-    position: relative;
-    height: 120px;
-    background: var(--paper);
-  }
-  .divider svg {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 200px;
-    opacity: 0.5;
-  }
+<!-- ============ BOTANICAL DIVIDER (audience shift) ============ -->
+<div class="divider" aria-hidden="true">
+  <Svg46 />
+</div>
 
-  .gift {
-    position: relative;
-    overflow: hidden;
-    background: var(--cream-deep);
-    padding: 104px 0;
-  }
-  .gift-botan {
-    top: -10px;
-    right: -20px;
-    width: 230px;
-  }
-  .gift-head {
-    text-align: center;
-    max-width: 680px;
-    margin: 0 auto 32px;
-    position: relative;
-    z-index: 3;
-  }
-  .gift-head .eyebrow {
-    color: var(--rose-deep);
-    margin-bottom: 18px;
-  }
-  .gift-head h2 {
-    margin-bottom: 22px;
-  }
-  .gift-lead {
-    font-family: "Cormorant Garamond", serif;
-    font-style: italic;
-    font-size: 23px;
-    line-height: 1.4;
-    color: var(--accent-deep);
-    max-width: 660px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-    z-index: 3;
-  }
-  .gift-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-    max-width: 980px;
-    margin: 52px auto 0;
-    position: relative;
-    z-index: 3;
-  }
-  .gift-opt {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    padding: 30px 26px;
-    text-align: left;
-  }
-  .gift-opt h3 {
-    font-size: 22px;
-    margin-bottom: 10px;
-  }
-  .gift-opt p {
-    font-size: 15.5px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-  .gift-reassure {
-    max-width: 720px;
-    margin: 44px auto 0;
-    text-align: center;
-    font-size: 17px;
-    color: var(--ink-soft);
-    position: relative;
-    z-index: 3;
-  }
-  .gift-quote {
-    max-width: 760px;
-    margin: 52px auto 0;
-    text-align: center;
-    border-top: 1px solid var(--line);
-    padding-top: 44px;
-    position: relative;
-    z-index: 3;
-  }
-  .gift-quote .q {
-    font-family: "Cormorant Garamond", serif;
-    font-weight: 500;
-    font-style: italic;
-    font-size: 27px;
-    line-height: 1.36;
-    color: var(--ink);
-    margin-bottom: 20px;
-  }
-  .gift-quote .by {
-    font-family: "Jost", sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent-deep);
-  }
-  .gift-cta {
-    text-align: center;
-    margin-top: 40px;
-    position: relative;
-    z-index: 3;
-  }
-  .gift-cta .phone {
-    display: block;
-    margin-top: 16px;
-    font-family: "Jost", sans-serif;
-    font-size: 13px;
-    letter-spacing: 0.06em;
-    color: var(--muted);
-  }
-  .gift-cta .phone a {
-    color: var(--accent-deep);
-    text-decoration: none;
-  }
+<!-- ============ GIFT ZONE (absorbs Page 10 — addressed to the giver) ============ -->
+<section class="gift" id="gift">
+  <Svg47 class="botan" aria-hidden="true" />
 
-  .close-gift-link {
-    display: block;
-    margin: 26px auto 0;
-    width: fit-content;
-    font-family: "Jost", sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #e8d5c2;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(232, 213, 194, 0.5);
-    padding-bottom: 3px;
-    transition: color 0.2s;
-  }
-  .close-gift-link:hover {
-    color: #fff;
-  }
+  <div class="wrap">
+    <div class="gift-head reveal">
+      <p class="eyebrow">For someone you love</p>
+      <h2>The most meaningful gift<br>you can give a new mother.</h2>
+    </div>
 
-  @media (max-width: 900px) {
-    .ways {
-      grid-template-columns: 1fr;
-      gap: 18px;
-    }
-    .worry-grid,
-    .gift-grid {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-    .gift {
-      padding: 72px 0;
-    }
-    .trustline p {
-      font-size: 21px;
-    }
-  }
-  @media (max-width: 560px) {
-    .way {
-      padding: 34px 28px;
-    }
-  }
-</style>
+    <p class="gift-lead reveal">You can't take the night shifts. You can't be there every day. But you can make sure she eats — really eats — for the entire first month after birth.</p>
+
+    <div class="gift-grid">
+      <div class="gift-opt reveal">
+        <h3>A first week</h3>
+        <p>One week of meals — a gentle introduction for a mom who is still finding her footing in those early days.</p>
+      </div>
+      <div class="gift-opt reveal">
+        <h3>The full month</h3>
+        <p>A complete 30-day plan, arranged before her due date so it's ready the moment she comes home with the baby.</p>
+      </div>
+      <div class="gift-opt reveal">
+        <h3>Anywhere in the US</h3>
+        <p>Frozen, shipped overnight via FedEx — so you can send real recovery food even if she lives far from you, or far from us.</p>
+      </div>
+    </div>
+
+    <p class="gift-reassure reveal">Gift orders are available for any plan. We coordinate timing and dietary preferences directly with her — you just tell us who she is and when she's due.</p>
+
+    <div class="gift-quote reveal">
+      <p class="q">"At first I worried the flavors would be too herbal, but it was like homemade comfort food — not takeout. The gift I didn't realize I needed."</p>
+      <p class="by">Briana L. · Chicago, IL — her in-laws gave her 28 days of meals</p>
+    </div>
+
+    <div class="gift-cta reveal">
+      <a href={`tel:${phones.main}`} class="btn btn-primary">Contact us to arrange a gift</a>
+      <span class="phone">Call or text <a href={`tel:${phones.main}`}>{phoneDisplay(phones.main)}</a> · English &amp; Chinese</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CLOSE ============ -->
+<section class="close">
+  <Svg48 class="botan" aria-hidden="true" />
+  <Svg49 class="botan" aria-hidden="true" />
+  <div class="close-inner reveal">
+    <p class="eyebrow">Your first step</p>
+    <h2>Start with a taste.</h2>
+    <p>No commitment, no pressure. Just one warm meal that tells you everything you need to know.</p>
+    <div class="t-hero-cta">
+      <a href={route("/contact", locale) + "#reach-us"} class="btn btn-primary">Reserve a tasting</a>
+      <a href={orderUrl('sample_meals', locale)} class="btn btn-ghost">Order a sample — from {usd(products.local_classic_sample_1d.price)}</a>
+    </div>
+    <a href="#gift" class="gift-link">Giving it to someone? Arrange a gift →</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+
+<script is:inline>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e);});
+  document.querySelectorAll('#nav a').forEach(function(a){
+    a.addEventListener('click',function(){document.getElementById('nav').classList.remove('open');});
+  });
+})();
+</script>
+</Page>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 330" fill="none">
+    <g opacity="0.92">
+      <!-- stem -->
+      <path d="M330 330 C300 290 260 255 220 230 C190 210 170 198 148 185" stroke="#5E6B4F" stroke-width="2.5" fill="none"/>
+      <path d="M220 230 C230 210 228 192 218 178" stroke="#5E6B4F" stroke-width="1.8" fill="none"/>
+      <path d="M260 256 C275 238 278 220 270 206" stroke="#5E6B4F" stroke-width="1.5" fill="none"/>
+      <!-- leaves -->
+      <ellipse cx="222" cy="182" rx="12" ry="20" fill="#5E6B4F" opacity="0.48" transform="rotate(20 222 182)"/>
+      <ellipse cx="265" cy="202" rx="10" ry="18" fill="#6E7A5C" opacity="0.42" transform="rotate(40 265 202)"/>
+      <ellipse cx="185" cy="195" rx="9" ry="16" fill="#5E6B4F" opacity="0.38" transform="rotate(-10 185 195)"/>
+      <!-- leaf veins -->
+      <path d="M216 188 C220 180 226 174 230 172" stroke="#4A5A40" stroke-width="0.7" fill="none" opacity="0.45"/>
+      <!-- main rose bloom -->
+      <ellipse cx="185" cy="152" rx="40" ry="46" fill="#D99FB0" opacity="0.78"/>
+      <path d="M185 110 C202 118 212 136 208 154 C204 172 192 182 185 184 C178 182 166 172 162 154 C158 136 168 118 185 110Z" fill="#C77D7D" opacity="0.68"/>
+      <path d="M228 152 C220 170 206 178 185 178 C164 178 150 170 142 152 C150 134 164 126 185 126 C206 126 220 134 228 152Z" fill="#C77D7D" opacity="0.62"/>
+      <path d="M185 194 C170 186 160 170 160 152 C160 134 170 118 185 110 C200 118 210 134 210 152 C210 170 200 186 185 194Z" fill="#D99FB0" opacity="0.52"/>
+      <!-- inner -->
+      <ellipse cx="185" cy="152" rx="24" ry="30" fill="#C77D7D" opacity="0.72"/>
+      <circle cx="185" cy="152" r="13" fill="#E8C46A" opacity="0.92"/>
+      <circle cx="185" cy="152" r="8" fill="#A8842C" opacity="0.72"/>
+      <!-- stamens -->
+      <line x1="185" y1="144" x2="185" y2="138" stroke="#A8842C" stroke-width="1" opacity="0.6"/>
+      <line x1="191" y1="146" x2="195" y2="140" stroke="#A8842C" stroke-width="1" opacity="0.6"/>
+      <line x1="179" y1="146" x2="175" y2="140" stroke="#A8842C" stroke-width="1" opacity="0.6"/>
+      <!-- small bud -->
+      <ellipse cx="148" cy="110" rx="9" ry="13" fill="#D99FB0" opacity="0.62" transform="rotate(20 148 110)"/>
+      <path d="M148 97 C152 102 152 108 148 110 C144 108 144 102 148 97Z" fill="#C77D7D" opacity="0.52"/>
+      <path d="M148 122 C140 116 140 110 148 110" stroke="#5E6B4F" stroke-width="1.5" fill="none"/>
+      <!-- leaf spray -->
+      <path d="M290 290 C276 272 258 268 248 275" stroke="#5E6B4F" stroke-width="1.5" fill="none"/>
+      <ellipse cx="260" cy="270" rx="8" ry="14" fill="#5E6B4F" opacity="0.36" transform="rotate(30 260 270)"/>
+      <ellipse cx="278" cy="278" rx="7" ry="12" fill="#6E7A5C" opacity="0.32" transform="rotate(50 278 278)"/>
+    </g>
+  </svg>

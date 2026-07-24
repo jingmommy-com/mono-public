@@ -1,70 +1,138 @@
 ---
-/* Site footer. Shared across all en pages. */
-import enBrand from '@/i18n/en/brand.ts'
+/*
+  Shared footer for every en (postpartummeal.com) page — identical on all pages.
+  Markup/design from the postpartum-meals product pages. Brand name, founding
+  year, and city/state come from config (site.brandName, site.founded,
+  site.address); the copyright year is the current build year. Styles are
+  component-scoped and self-contained.
+*/
 import { site, phones } from '@/config/index.ts'
-import { route, phoneDisplay } from '@/utils/index.ts'
+import { phoneDisplay, getPathLocale, route } from '@/utils/index.ts'
 
-const footerColumns = [
-  {
-    heading: 'Explore',
-    links: [
-      { label: 'Our Story', href: route('/about/founding-story', 'en') },
-      { label: 'Why Zuo Yue Zi', href: route('/guide/why-zuo-yue-zi', 'en') },
-      { label: 'Chinese Food Therapy', href: route('/guide/chinese-food-therapy', 'en') },
-      { label: 'Meal Plans', href: route('/plans', 'en') },
-      { label: 'Real Stories', href: route('/about/testimonial', 'en') },
-    ],
-  },
-  {
-    heading: 'Get Started',
-    links: [
-      { label: 'Try a Taste', href: route('/sample', 'en') },
-      { label: 'FAQ', href: route('/faq', 'en') },
-      { label: 'Contact', href: route('/contact', 'en') },
-    ],
-  },
-  {
-    heading: 'Reach Us',
-    links: [
-      { label: phoneDisplay(phones.main), href: `tel:${phones.main}` },
-      { label: enBrand.languages, href: route('/contact', 'en') },
-      { label: `${site.address.addressLocality}, ${site.address.addressRegion}` },
-      { label: 'Fresh local · Frozen nationwide' },
-    ],
-  },
-]
+const locale = getPathLocale(Astro.url.pathname)
 const year = new Date().getFullYear()
 ---
 
 <footer class="footer">
-  <div class="wrap">
+  <div class="footer-wrap">
     <div class="footer-grid">
       <div>
-        <a href={route("/", 'en')} class="logo">{site.brandName}</a>
-        <p class="footer-tag">{enBrand.tagline}</p>
+        <a href={route("/", locale)} class="logo">{site.brandName}</a>
+        <p class="footer-tag">
+          Authentic Chinese postpartum meals, delivered with care since {site.founded}.
+        </p>
       </div>
-      {
-        footerColumns.map((col) => (
-          <div>
-            <h4>{col.heading}</h4>
-            <ul>
-              {col.links.map((link) => (
-                <li>
-                  {link.href ? (
-                    <a href={link.href}>{link.label}</a>
-                  ) : (
-                    link.label
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))
-      }
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href={route("/about/founding-story", locale)}>Our Story</a></li>
+          <li><a href={route("/guide/why-zuo-yue-zi", locale)}>Why Zuo Yue Zi</a></li>
+          <li><a href={route("/guide/chinese-food-therapy", locale)}>Chinese Food Therapy</a></li>
+          <li><a href={route("/plans", locale)}>Meal Plans</a></li>
+          <li><a href={route("/about/testimonial", locale)}>Real Stories</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get Started</h4>
+        <ul>
+          <li><a href={route("/sample", locale)}>Try a Taste</a></li>
+          <li><a href={route("/faq", locale)}>FAQ</a></li>
+          <li><a href={route("/contact", locale)}>Contact</a></li>
+          <li><a href={route("/sitemap", locale)}>Sitemap</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Reach Us</h4>
+        <ul>
+          <li><a href={`tel:${phones.main}`}>{phoneDisplay(phones.main)}</a></li>
+          <li><a href={route("/contact", locale) + "#reach-us"}>English &amp; Chinese</a></li>
+          <li>{site.address.addressLocality}, {site.address.addressRegion}</li>
+          <li>Fresh local · Frozen nationwide</li>
+        </ul>
+      </div>
     </div>
     <div class="footer-bottom">
-      <span>© {year} {site.brandName} · {enBrand.domain}</span>
-      <span>{enBrand.promise}</span>
+      <span>© {year} {site.brandName} · postpartummeal.com</span>
+      <span>Your recovery matters, because you matter.</span>
     </div>
   </div>
 </footer>
+
+<style>
+  .footer {
+    margin: 0;
+    padding: 72px 0 40px;
+    background: var(--ink);
+    color: #cbbdb3;
+  }
+  .footer-wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+  .footer .logo {
+    display: block;
+    margin-bottom: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 27px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--paper);
+    text-decoration: none;
+  }
+  .footer-tag {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #a89b91;
+    max-width: 280px;
+  }
+  .footer h4 {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--paper);
+    margin-bottom: 18px;
+  }
+  .footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .footer li {
+    margin-bottom: 11px;
+  }
+  .footer a {
+    color: #cbbdb3;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.2s;
+  }
+  .footer a:hover {
+    color: var(--paper);
+  }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-top: 1px solid #4a3a33;
+    padding-top: 28px;
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: #8a7d73;
+  }
+  @media (max-width: 900px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

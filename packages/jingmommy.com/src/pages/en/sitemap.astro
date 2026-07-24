@@ -1,0 +1,143 @@
+---
+/*
+  Human-readable sitemap for the en (postpartummeal.com) site. Mirrors the
+  zh-tw sitemap, but rendered in the en design (Page layout + botanical theme).
+  Auto-built from route-map.json — every /en route with sitemap !== false,
+  grouped by top-level section. Excluded from the sitemap itself.
+*/
+const sitemap = false
+import Page from '@/layouts/themes/en/Page.astro'
+import routeMap from '@/route-map.json'
+import { getPathLocale } from '@/utils/index.ts'
+
+const locale = getPathLocale(Astro.url.pathname)
+const prefix = `/${locale}`
+const title = 'Sitemap'
+
+type RouteEntry = { title?: string; sitemap?: boolean }
+const allRoutes = routeMap as Record<string, RouteEntry>
+const excluded = new Set(['/404', '/', prefix])
+const humanize = (s: string) => s.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
+
+const routes = Object.entries(allRoutes)
+  .filter(([href, meta]) => href.startsWith(prefix + '/') && !excluded.has(href) && meta.sitemap !== false)
+  .sort(([a], [b]) => a.localeCompare(b))
+
+const sectionMap = new Map<string, { sectionHref: string; sectionTitle: string; pages: { href: string; title: string }[] }>()
+for (const [href, meta] of routes) {
+  const topSegment = href.slice(prefix.length + 1).split('/')[0]
+  const sectionHref = `${prefix}/${topSegment}`
+  if (!sectionMap.has(sectionHref)) {
+    sectionMap.set(sectionHref, {
+      sectionHref,
+      sectionTitle: allRoutes[sectionHref]?.title ?? humanize(topSegment),
+      pages: [],
+    })
+  }
+  sectionMap.get(sectionHref)!.pages.push({ href, title: meta.title ?? href })
+}
+const sections = [...sectionMap.values()]
+---
+
+<Page title={title}>
+  <section class="sitemap">
+    <div class="sitemap-inner">
+      <p class="sitemap-eyebrow">Sitemap</p>
+      <h1>Every page on the site</h1>
+      <div class="sitemap-cols">
+        {
+          sections.map((s) => (
+            <div class="sitemap-section">
+              <h2><a href={s.sectionHref}>{s.sectionTitle}</a></h2>
+              <ul>
+                {s.pages.map((p) => (
+                  <li><a href={p.href}>{p.title}</a></li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .sitemap {
+      background: var(--paper);
+      padding: 80px 0 100px;
+    }
+    .sitemap-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    .sitemap-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--accent-deep);
+      text-align: center;
+      margin: 0 0 18px;
+    }
+    .sitemap h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: 52px;
+      line-height: 1.08;
+      color: var(--ink);
+      text-align: center;
+      margin: 0 0 60px;
+    }
+    .sitemap-cols {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 46px 48px;
+    }
+    .sitemap-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: 25px;
+      line-height: 1.2;
+      margin: 0 0 14px;
+      padding-bottom: 11px;
+      border-bottom: 1px solid var(--line);
+    }
+    .sitemap-section h2 a {
+      color: var(--ink);
+      text-decoration: none;
+      text-transform: capitalize;
+    }
+    .sitemap-section h2 a:hover {
+      color: var(--accent-deep);
+    }
+    .sitemap-section ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .sitemap-section li a {
+      color: var(--accent-deep);
+      text-decoration: none;
+      font-size: 16px;
+      line-height: 1.45;
+    }
+    .sitemap-section li a:hover {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    @media (max-width: 560px) {
+      .sitemap h1 {
+        font-size: 40px;
+      }
+      .sitemap {
+        padding: 56px 0 72px;
+      }
+    }
+  </style>
+</Page>
